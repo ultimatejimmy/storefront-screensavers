@@ -71,14 +71,15 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="sub-category">Category</label>
-            <select id="sub-category" class="form-control" required>
-              <option value="Minimalist">Minimalist</option>
-              <option value="Nature">Nature</option>
-              <option value="Sci-Fi">Sci-Fi</option>
-              <option value="Anime">Anime</option>
-              <option value="Art">Art</option>
-            </select>
+            <label class="form-label">Category</label>
+            <input type="hidden" id="sub-category" value="Minimalist" required>
+            <div class="category-pills" id="form-category-pills">
+              <button type="button" class="cat-pill active" data-value="Minimalist">Minimalist</button>
+              <button type="button" class="cat-pill" data-value="Nature">Nature</button>
+              <button type="button" class="cat-pill" data-value="Sci-Fi">Sci-Fi</button>
+              <button type="button" class="cat-pill" data-value="Anime">Anime</button>
+              <button type="button" class="cat-pill" data-value="Art">Art</button>
+            </div>
           </div>
 
           <div class="form-group">

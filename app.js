@@ -92,6 +92,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Form Category Pills Handler
+  const catPills = document.querySelectorAll('#form-category-pills .cat-pill');
+  const subCategoryInput = document.getElementById('sub-category');
+  if (catPills && subCategoryInput) {
+    catPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        catPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        subCategoryInput.value = pill.getAttribute('data-value');
+      });
+    });
+  }
+
   // Submission Form & File Upload Dropzone
   const btnModeFile = document.getElementById('btn-mode-file');
   const btnModeUrl = document.getElementById('btn-mode-url');
