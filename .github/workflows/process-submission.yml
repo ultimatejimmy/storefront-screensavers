@@ -14,11 +14,6 @@ jobs:
     if: contains(github.event.issue.title, 'Screensaver Submission')
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-      pull-requests: write
-      issues: write
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
