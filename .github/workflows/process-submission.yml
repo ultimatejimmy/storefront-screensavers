@@ -145,3 +145,14 @@ jobs:
           title: "New Screensaver Submission: ${{ github.event.issue.title }}"
           body: "Automated PR generated from issue #${{ github.event.issue.number }}. Includes downloaded full-res image and resized thumbnail."
           branch: "submission-${{ github.event.issue.number }}"
+
+      - name: Comment on Issue
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            🎉 **Submission Received & Pending Review!**
+            
+            An automated Pull Request containing the full-resolution wallpaper and generated thumbnail has been created.
+            
+            **Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, the wallpaper will immediately appear in the web catalog and KOReader Storefront plugin!
