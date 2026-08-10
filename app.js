@@ -61,47 +61,92 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Filter Buttons
-  const tagBtns = document.querySelectorAll('.tag-btn');
+  // Helper to check if item matches selected categories
+  function itemMatchesCategories(item, activeCats) {
+    if (!activeCats || activeCats.length === 0 || activeCats.includes('all')) return true;
+    let itemCats = [];
+    if (Array.isArray(item.category)) {
+      itemCats = item.category.map(c => String(c).toLowerCase());
+    } else if (typeof item.category === 'string') {
+      itemCats = item.category.split(',').map(c => c.trim().toLowerCase());
+    }
+    return activeCats.some(ac => itemCats.includes(ac));
+  }
+
+  function getActiveFilterCategories() {
+    const activeBtns = document.querySelectorAll('.category-tags .tag-btn.active');
+    const cats = Array.from(activeBtns).map(b => b.getAttribute('data-category').toLowerCase());
+    return cats;
+  }
+
+  function applyFilters() {
+    const activeCats = getActiveFilterCategories();
+    const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
+
+    const filtered = catalogData.filter(item => {
+      const matchCat = itemMatchesCategories(item, activeCats);
+      const matchSearch = !q || (
+        (item.title && item.title.toLowerCase().includes(q)) ||
+        (item.author && item.author.toLowerCase().includes(q)) ||
+        (item.category && String(item.category).toLowerCase().includes(q))
+      );
+      return matchCat && matchSearch;
+    });
+
+    renderGallery(filtered);
+  }
+
+  // Gallery Multi-Select Filter Buttons
+  const tagBtns = document.querySelectorAll('.category-tags .tag-btn');
+  const allTagBtn = document.querySelector('.category-tags .tag-btn[data-category="all"]');
+
   tagBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      tagBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
       const cat = btn.getAttribute('data-category');
+
       if (cat === 'all') {
-        renderGallery(catalogData);
+        tagBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
       } else {
-        const filtered = catalogData.filter(i => i.category.toLowerCase() === cat.toLowerCase());
-        renderGallery(filtered);
+        if (allTagBtn) allTagBtn.classList.remove('active');
+        btn.classList.toggle('active');
+
+        // If no categories active, revert back to All
+        const anyActive = document.querySelectorAll('.category-tags .tag-btn.active[data-category]:not([data-category="all"])');
+        if (anyActive.length === 0 && allTagBtn) {
+          allTagBtn.classList.add('active');
+        }
       }
+
+      applyFilters();
     });
   });
 
   // Search filter
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase();
-      const filtered = catalogData.filter(i => 
-        i.title.toLowerCase().includes(q) || 
-        i.author.toLowerCase().includes(q) ||
-        i.category.toLowerCase().includes(q)
-      );
-      renderGallery(filtered);
+    searchInput.addEventListener('input', () => {
+      applyFilters();
     });
   }
 
-  // Form Category Pills Handler
+  // Form Multi-Select Category Pills Handler
   const catPills = document.querySelectorAll('#form-category-pills .cat-pill');
   const subCategoryInput = document.getElementById('sub-category');
   if (catPills && subCategoryInput) {
     catPills.forEach(pill => {
       pill.addEventListener('click', (e) => {
         e.preventDefault();
-        catPills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-        subCategoryInput.value = pill.getAttribute('data-value');
+        pill.classList.toggle('active');
+
+        const activePills = document.querySelectorAll('#form-category-pills .cat-pill.active');
+        if (activePills.length === 0) {
+          pill.classList.add('active'); // ensure at least one category stays selected
+        }
+
+        const selectedVals = Array.from(document.querySelectorAll('#form-category-pills .cat-pill.active'))
+          .map(p => p.getAttribute('data-value'));
+        subCategoryInput.value = selectedVals.join(', ');
       });
     });
   }
