@@ -256,6 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
         previewSpecs.textContent = selectedFileMeta;
         dropzonePrompt.style.display = 'none';
         dropzonePreview.style.display = 'flex';
+        initCropper(img);
       };
       img.src = e.target.result;
     };
@@ -302,6 +303,229 @@ document.addEventListener('DOMContentLoaded', () => {
     return null;
   }
 
+  // Interactive 3:4 Cropper Module
+  const cropperContainer = document.getElementById('cropper-container');
+  const cropperCanvas = document.getElementById('cropper-canvas');
+  const cropZoomSlider = document.getElementById('crop-zoom-slider');
+  const zoomValLabel = document.getElementById('zoom-val');
+  const btnAutoFocal = document.getElementById('btn-auto-focal');
+
+  let cropImageObj = null;
+  let cropState = {
+    zoom: 1,
+    offsetX: 0,
+    offsetY: 0,
+    isDragging: false,
+    startX: 0,
+    startY: 0
+  };
+
+  const FRAME_W = 270;
+  const FRAME_H = 360; // 3:4 ratio
+
+  function initCropper(imgObj) {
+    cropImageObj = imgObj;
+    cropState.zoom = 1;
+    if (cropZoomSlider) cropZoomSlider.value = 1;
+    if (zoomValLabel) zoomValLabel.textContent = '1.0x';
+
+    if (cropperCanvas) {
+      cropperCanvas.width = FRAME_W;
+      cropperCanvas.height = FRAME_H;
+    }
+
+    autoDetectFocalPoint();
+    if (cropperContainer) cropperContainer.style.display = 'block';
+  }
+
+  function autoDetectFocalPoint() {
+    if (!cropImageObj || !cropperCanvas) return;
+
+    const imgW = cropImageObj.naturalWidth || cropImageObj.width;
+    const imgH = cropImageObj.naturalHeight || cropImageObj.height;
+
+    const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
+    const scaledW = imgW * baseScale * cropState.zoom;
+    const scaledH = imgH * baseScale * cropState.zoom;
+
+    try {
+      const sampleCanvas = document.createElement('canvas');
+      const ctx = sampleCanvas.getContext('2d');
+      const sW = 64, sH = 64;
+      sampleCanvas.width = sW;
+      sampleCanvas.height = sH;
+      ctx.drawImage(cropImageObj, 0, 0, sW, sH);
+      const imgData = ctx.getImageData(0, 0, sW, sH).data;
+
+      let maxVar = -1;
+      let bestX = sW / 2, bestY = sH / 2;
+
+      const step = 8;
+      for (let y = 0; y < sH; y += step) {
+        for (let x = 0; x < sW; x += step) {
+          let sum = 0, count = 0;
+          for (let cy = y; cy < y + step && cy < sH; cy++) {
+            for (let cx = x; cx < x + step && cx < sW; cx++) {
+              const idx = (cy * sW + cx) * 4;
+              const lum = 0.299 * imgData[idx] + 0.587 * imgData[idx + 1] + 0.114 * imgData[idx + 2];
+              sum += lum;
+              count++;
+            }
+          }
+          const mean = sum / count;
+          let variance = 0;
+          for (let cy = y; cy < y + step && cy < sH; cy++) {
+            for (let cx = x; cx < x + step && cx < sW; cx++) {
+              const idx = (cy * sW + cx) * 4;
+              const lum = 0.299 * imgData[idx] + 0.587 * imgData[idx + 1] + 0.114 * imgData[idx + 2];
+              variance += Math.pow(lum - mean, 2);
+            }
+          }
+          if (variance > maxVar) {
+            maxVar = variance;
+            bestX = x + step / 2;
+            bestY = y + step / 2;
+          }
+        }
+      }
+
+      const focalPctX = bestX / sW;
+      const focalPctY = bestY / sH;
+
+      cropState.offsetX = (FRAME_W / 2) - (scaledW * focalPctX);
+      cropState.offsetY = (FRAME_H / 2) - (scaledH * focalPctY);
+      clampCropOffsets(scaledW, scaledH);
+    } catch (err) {
+      cropState.offsetX = (FRAME_W - scaledW) / 2;
+      cropState.offsetY = (FRAME_H - scaledH) / 2;
+    }
+
+    drawCropper();
+  }
+
+  function clampCropOffsets(scaledW, scaledH) {
+    cropState.offsetX = Math.min(0, Math.max(FRAME_W - scaledW, cropState.offsetX));
+    cropState.offsetY = Math.min(0, Math.max(FRAME_H - scaledH, cropState.offsetY));
+  }
+
+  function drawCropper() {
+    if (!cropImageObj || !cropperCanvas) return;
+    const ctx = cropperCanvas.getContext('2d');
+    const imgW = cropImageObj.naturalWidth || cropImageObj.width;
+    const imgH = cropImageObj.naturalHeight || cropImageObj.height;
+
+    const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
+    const scaledW = imgW * baseScale * cropState.zoom;
+    const scaledH = imgH * baseScale * cropState.zoom;
+
+    clampCropOffsets(scaledW, scaledH);
+
+    ctx.clearRect(0, 0, FRAME_W, FRAME_H);
+    ctx.drawImage(cropImageObj, cropState.offsetX, cropState.offsetY, scaledW, scaledH);
+
+    // Rule of thirds grid overlay
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+
+    ctx.beginPath();
+    ctx.moveTo(FRAME_W / 3, 0); ctx.lineTo(FRAME_W / 3, FRAME_H);
+    ctx.moveTo((FRAME_W / 3) * 2, 0); ctx.lineTo((FRAME_W / 3) * 2, FRAME_H);
+    ctx.moveTo(0, FRAME_H / 3); ctx.lineTo(FRAME_W, FRAME_H / 3);
+    ctx.moveTo(0, (FRAME_H / 3) * 2); ctx.lineTo(FRAME_W, (FRAME_H / 3) * 2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  if (cropperCanvas) {
+    cropperCanvas.addEventListener('mousedown', (e) => {
+      cropState.isDragging = true;
+      cropState.startX = e.clientX - cropState.offsetX;
+      cropState.startY = e.clientY - cropState.offsetY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!cropState.isDragging) return;
+      cropState.offsetX = e.clientX - cropState.startX;
+      cropState.offsetY = e.clientY - cropState.startY;
+      drawCropper();
+    });
+
+    window.addEventListener('mouseup', () => {
+      cropState.isDragging = false;
+    });
+
+    cropperCanvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        cropState.isDragging = true;
+        cropState.startX = e.touches[0].clientX - cropState.offsetX;
+        cropState.startY = e.touches[0].clientY - cropState.offsetY;
+      }
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!cropState.isDragging || e.touches.length !== 1) return;
+      cropState.offsetX = e.touches[0].clientX - cropState.startX;
+      cropState.offsetY = e.touches[0].clientY - cropState.startY;
+      drawCropper();
+    });
+
+    window.addEventListener('touchend', () => {
+      cropState.isDragging = false;
+    });
+  }
+
+  if (cropZoomSlider) {
+    cropZoomSlider.addEventListener('input', (e) => {
+      cropState.zoom = parseFloat(e.target.value);
+      if (zoomValLabel) zoomValLabel.textContent = cropState.zoom.toFixed(1) + 'x';
+      drawCropper();
+    });
+  }
+
+  if (btnAutoFocal) {
+    btnAutoFocal.addEventListener('click', (e) => {
+      e.preventDefault();
+      autoDetectFocalPoint();
+    });
+  }
+
+  function getCroppedBlob() {
+    return new Promise((resolve) => {
+      if (!cropImageObj) {
+        resolve(selectedFile);
+        return;
+      }
+      const outCanvas = document.createElement('canvas');
+      const TARGET_W = 1860;
+      const TARGET_H = 2480;
+      outCanvas.width = TARGET_W;
+      outCanvas.height = TARGET_H;
+      const ctx = outCanvas.getContext('2d');
+
+      const imgW = cropImageObj.naturalWidth || cropImageObj.width;
+      const imgH = cropImageObj.naturalHeight || cropImageObj.height;
+
+      const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
+      const scaledW = imgW * baseScale * cropState.zoom;
+      const scaledH = imgH * baseScale * cropState.zoom;
+
+      const scaleFactor = TARGET_W / FRAME_W;
+      const drawX = cropState.offsetX * scaleFactor;
+      const drawY = cropState.offsetY * scaleFactor;
+      const drawW = scaledW * scaleFactor;
+      const drawH = scaledH * scaleFactor;
+
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, TARGET_W, TARGET_H);
+      ctx.drawImage(cropImageObj, drawX, drawY, drawW, drawH);
+
+      outCanvas.toBlob((blob) => {
+        resolve(blob || selectedFile);
+      }, 'image/jpeg', 0.92);
+    });
+  }
+
   // Submission Form Submit Handler
   if (submitForm) {
     submitForm.addEventListener('submit', async (e) => {
@@ -320,12 +544,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (btnSubmitIssue) {
-          btnSubmitIssue.textContent = 'Uploading image... ⏳';
+          btnSubmitIssue.textContent = 'Processing & uploading crop... ⏳';
           btnSubmitIssue.disabled = true;
         }
 
+        // Get 3:4 cropped image blob
+        const fileToUpload = await getCroppedBlob();
+
         // Try automatic image host upload
-        const uploadedUrl = await uploadImageFile(selectedFile);
+        const uploadedUrl = await uploadImageFile(fileToUpload);
 
         if (uploadedUrl) {
           imageUrl = uploadedUrl;

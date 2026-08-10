@@ -113,17 +113,19 @@ jobs:
               print(f"Failed to download image from {img_url}")
               exit(1)
 
+          from PIL import Image, ImageOps
+
           img = Image.open(BytesIO(r.content))
           if img.mode != 'RGB':
               img = img.convert('RGB')
 
-          # Save full resolution image
-          img.save(full_path, 'JPEG', quality=90)
+          # Save 3:4 master wallpaper (1860x2480)
+          master_img = ImageOps.fit(img, (1860, 2480), Image.Resampling.LANCZOS)
+          master_img.save(full_path, 'JPEG', quality=92)
 
-          # Generate compressed thumbnail (max width 600px)
-          thumb = img.copy()
-          thumb.thumbnail((600, 800), Image.Resampling.LANCZOS)
-          thumb.save(thumb_path, 'JPEG', quality=80)
+          # Save 3:4 thumbnail (600x800)
+          thumb_img = ImageOps.fit(img, (600, 800), Image.Resampling.LANCZOS)
+          thumb_img.save(thumb_path, 'JPEG', quality=85)
 
           raw_base = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
           full_url = raw_base + full_path
