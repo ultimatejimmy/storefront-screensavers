@@ -116,23 +116,23 @@
                   <button type="button" id="btn-remove-file" class="btn-remove">✕ Remove</button>
                 </div>
               </div>
+            </div>
 
-              <!-- Interactive 3:4 Focal Point Cropper -->
-              <div id="cropper-container" style="display:none; margin-top: 1rem; background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); text-align: left;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
-                  <span style="font-size: 0.85rem; font-weight: 600; color: var(--accent-purple);">✂️ 3:4 E-Ink Screen Crop</span>
-                  <button type="button" id="btn-auto-focal" class="tag-btn" style="font-size:0.75rem; padding: 0.25rem 0.6rem;">🎯 Auto-Detect Subject</button>
-                </div>
-                <div class="cropper-canvas-wrap" style="position:relative; max-height: 380px; overflow:hidden; display:flex; justify-content:center; align-items:center; background:#000; border-radius:6px; cursor:move;">
-                  <canvas id="cropper-canvas"></canvas>
-                </div>
-                <div style="display:flex; gap:0.75rem; align-items:center; margin-top: 0.75rem;">
-                  <span style="font-size: 0.8rem; color: var(--text-muted);">Zoom:</span>
-                  <input type="range" id="crop-zoom-slider" min="1" max="3" step="0.05" value="1" style="flex:1;">
-                  <span id="zoom-val" style="font-size:0.75rem; color:var(--text-secondary); width:32px;">1.0x</span>
-                </div>
-                <span style="font-size:0.75rem; color: var(--text-muted); display:block; margin-top:0.3rem;">💡 Drag image to position your main subject inside the 3:4 e-reader frame.</span>
+            <!-- Interactive 3:4 Focal Point Cropper (Outside Dropzone) -->
+            <div id="cropper-container" style="display:none; margin-top: 1rem; background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); text-align: left;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--accent-purple);">✂️ 3:4 E-Ink Screen Crop</span>
+                <button type="button" id="btn-auto-focal" class="tag-btn" style="font-size:0.75rem; padding: 0.25rem 0.6rem;">🎯 Auto-Detect Subject</button>
               </div>
+              <div class="cropper-canvas-wrap" style="position:relative; max-height: 380px; overflow:hidden; display:flex; justify-content:center; align-items:center; background:#000; border-radius:6px; cursor:move;">
+                <canvas id="cropper-canvas"></canvas>
+              </div>
+              <div style="display:flex; gap:0.75rem; align-items:center; margin-top: 0.75rem;">
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Zoom:</span>
+                <input type="range" id="crop-zoom-slider" min="1" max="3" step="0.05" value="1" style="flex:1;">
+                <span id="zoom-val" style="font-size:0.75rem; color:var(--text-secondary); width:32px;">1.0x</span>
+              </div>
+              <span style="font-size:0.75rem; color: var(--text-muted); display:block; margin-top:0.3rem;">💡 Drag image to position your main subject inside the 3:4 e-reader frame.</span>
             </div>
 
             <!-- Direct URL Box (hidden by default) -->

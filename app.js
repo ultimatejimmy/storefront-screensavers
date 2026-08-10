@@ -194,9 +194,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle dropzone click & file selection
   if (dropzoneBox && subFile) {
     dropzoneBox.addEventListener('click', (e) => {
-      if (e.target !== btnRemoveFile && !btnRemoveFile.contains(e.target)) {
-        subFile.click();
+      if (btnRemoveFile && (e.target === btnRemoveFile || btnRemoveFile.contains(e.target))) {
+        return;
       }
+      if (cropperContainer && (e.target === cropperContainer || cropperContainer.contains(e.target))) {
+        return;
+      }
+      subFile.click();
     });
 
     ['dragenter', 'dragover'].forEach(evt => {
@@ -231,9 +235,11 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         selectedFile = null;
         selectedFileMeta = null;
+        cropImageObj = null;
         subFile.value = '';
         dropzonePrompt.style.display = 'block';
         dropzonePreview.style.display = 'none';
+        if (cropperContainer) cropperContainer.style.display = 'none';
       });
     }
   }
