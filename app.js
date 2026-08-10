@@ -97,7 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const subCategoryInput = document.getElementById('sub-category');
   if (catPills && subCategoryInput) {
     catPills.forEach(pill => {
-      pill.addEventListener('click', () => {
+      pill.addEventListener('click', (e) => {
+        e.preventDefault();
         catPills.forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
         subCategoryInput.value = pill.getAttribute('data-value');
