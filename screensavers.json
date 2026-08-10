@@ -1,46 +1,46 @@
 [
   {
-    "id": "humpback-whale-sea",
-    "title": "Stormy Seas Humpback Whale",
-    "author": "OceanArt",
+    "id": "foggy-forest-pines",
+    "title": "Foggy Mountain Pines",
+    "author": "Unsplash (CC0)",
     "category": "Nature",
     "compatibility": ["Kindle", "Kobo", "Boox", "PocketBook"],
-    "thumbnailUrl": "https://utfs.io/f/aPKH5e9W4OtE8mEFmPANJmkB2sFvWY1OXUyf3wPLiR80MHxq",
-    "fullUrl": "https://utfs.io/f/aPKH5e9W4OtE8mEFmPANJmkB2sFvWY1OXUyf3wPLiR80MHxq",
-    "downloads": 401,
-    "likes": 702
+    "thumbnailUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&sat=-100",
+    "fullUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&auto=format&fit=crop&sat=-100",
+    "downloads": 142,
+    "likes": 289
   },
   {
-    "id": "window-with-cat",
-    "title": "Cozy Window with a Cat",
-    "author": "PixelCat",
+    "id": "minimalist-ocean-waves",
+    "title": "Minimalist Ocean Horizon",
+    "author": "Unsplash (CC0)",
     "category": "Minimalist",
     "compatibility": ["Kindle", "Kobo", "Boox"],
-    "thumbnailUrl": "https://utfs.io/f/aPKH5e9W4OtE0r6ApVJ71kyBjWhZMiRXdVlS2w8FObYAzaPe",
-    "fullUrl": "https://utfs.io/f/aPKH5e9W4OtE0r6ApVJ71kyBjWhZMiRXdVlS2w8FObYAzaPe",
-    "downloads": 303,
-    "likes": 511
+    "thumbnailUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&sat=-100",
+    "fullUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&sat=-100",
+    "downloads": 210,
+    "likes": 412
   },
   {
-    "id": "shai-hulud-dune",
-    "title": "Shai-Hulud Desert Worm",
-    "author": "DuneFan",
+    "id": "cosmic-nebula-monochrome",
+    "title": "Deep Space Nebula",
+    "author": "Unsplash (CC0)",
     "category": "Sci-Fi",
     "compatibility": ["Kindle Paperwhite", "Scribe", "Oasis"],
-    "thumbnailUrl": "https://utfs.io/f/aPKH5e9W4OtEkRCKSUqIEU1YZV2s3fDqcyi7xlCRLwNSv9Bh",
-    "fullUrl": "https://utfs.io/f/aPKH5e9W4OtEkRCKSUqIEU1YZV2s3fDqcyi7xlCRLwNSv9Bh",
-    "downloads": 256,
-    "likes": 392
+    "thumbnailUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&sat=-100",
+    "fullUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&sat=-100",
+    "downloads": 98,
+    "likes": 175
   },
   {
-    "id": "snorlax-sleep",
-    "title": "Sleeping Snorlax",
-    "author": "PokeArt",
-    "category": "Anime",
+    "id": "cozy-window-cat",
+    "title": "Sleepy Tabby Cat",
+    "author": "Unsplash (CC0)",
+    "category": "Minimalist",
     "compatibility": ["Kindle", "Kobo", "ReMarkable"],
-    "thumbnailUrl": "https://utfs.io/f/aPKH5e9W4OtE6g9HOzD1ArVXg5DWtnsxvN7hcOPG9SfFQMiR",
-    "fullUrl": "https://utfs.io/f/aPKH5e9W4OtE6g9HOzD1ArVXg5DWtnsxvN7hcOPG9SfFQMiR",
-    "downloads": 189,
-    "likes": 310
+    "thumbnailUrl": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600&auto=format&fit=crop&sat=-100",
+    "fullUrl": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=1200&auto=format&fit=crop&sat=-100",
+    "downloads": 315,
+    "likes": 530
   }
 ]

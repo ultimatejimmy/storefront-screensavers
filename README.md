@@ -42,9 +42,8 @@ All screensavers hosted or linked in this repository are submitted by the commun
 
 To request removal of a copyrighted image:
 - File a GitHub Issue labeled `dmca-takedown` with the image title and proof of ownership.
-- Alternatively, contact `takedown@readerbackdrop-catalog.org`.
 
-Takedown requests are reviewed and processed within 48 hours.
+Takedown requests are reviewed and processed promptly.
 
 ---
 
