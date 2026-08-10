@@ -14,6 +14,11 @@ jobs:
     if: contains(github.event.issue.title, 'Screensaver Submission')
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -146,6 +151,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Add screensaver and thumbnail: ${{ github.event.issue.title }}"
           title: "New Screensaver Submission: ${{ github.event.issue.title }}"
           body: "Automated PR generated from issue #${{ github.event.issue.number }}. Includes downloaded full-res image and resized thumbnail."
