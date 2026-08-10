@@ -441,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.drawImage(cropImageObj, cropState.offsetX, cropState.offsetY, scaledW, scaledH);
 
     // Rule of thirds grid overlay
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
     ctx.lineWidth = 1;
     ctx.setLineDash([4, 4]);
 
@@ -452,6 +452,26 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.moveTo(0, (FRAME_H / 3) * 2); ctx.lineTo(FRAME_W, (FRAME_H / 3) * 2);
     ctx.stroke();
     ctx.setLineDash([]);
+
+    // Draw 3:4 E-Ink Screen Outline Border
+    ctx.strokeStyle = 'rgba(139, 92, 246, 0.8)'; // accent purple
+    ctx.lineWidth = 2;
+    ctx.strokeRect(1, 1, FRAME_W - 2, FRAME_H - 2);
+
+    // Draw Cyan Corner Brackets
+    const cLen = 16;
+    ctx.strokeStyle = '#06b6d4'; // bright cyan
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    // Top-Left
+    ctx.moveTo(0, cLen); ctx.lineTo(0, 0); ctx.lineTo(cLen, 0);
+    // Top-Right
+    ctx.moveTo(FRAME_W - cLen, 0); ctx.lineTo(FRAME_W, 0); ctx.lineTo(FRAME_W, cLen);
+    // Bottom-Left
+    ctx.moveTo(0, FRAME_H - cLen); ctx.lineTo(0, FRAME_H); ctx.lineTo(cLen, FRAME_H);
+    // Bottom-Right
+    ctx.moveTo(FRAME_W - cLen, FRAME_H); ctx.lineTo(FRAME_W, FRAME_H); ctx.lineTo(FRAME_W, FRAME_H - cLen);
+    ctx.stroke();
   }
 
   if (cropperCanvas) {
