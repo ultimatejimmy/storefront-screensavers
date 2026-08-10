@@ -410,21 +410,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function clampCropOffsets(scaledW, scaledH) {
-    if (scaledW >= FRAME_W) {
-      cropState.offsetX = Math.min(0, Math.max(FRAME_W - scaledW, cropState.offsetX));
-    } else {
-      const minX = 0;
-      const maxX = FRAME_W - scaledW;
-      cropState.offsetX = Math.max(minX, Math.min(maxX, cropState.offsetX));
-    }
+    const padX = Math.max(0, (FRAME_W - scaledW) / 2);
+    const padY = Math.max(0, (FRAME_H - scaledH) / 2);
 
-    if (scaledH >= FRAME_H) {
-      cropState.offsetY = Math.min(0, Math.max(FRAME_H - scaledH, cropState.offsetY));
-    } else {
-      const minY = 0;
-      const maxY = FRAME_H - scaledH;
-      cropState.offsetY = Math.max(minY, Math.min(maxY, cropState.offsetY));
-    }
+    const minX = Math.min(0, FRAME_W - scaledW) - padX;
+    const maxX = Math.max(0, FRAME_W - scaledW) + padX;
+    const minY = Math.min(0, FRAME_H - scaledH) - padY;
+    const maxY = Math.max(0, FRAME_H - scaledH) + padY;
+
+    cropState.offsetX = Math.max(minX, Math.min(maxX, cropState.offsetX));
+    cropState.offsetY = Math.max(minY, Math.min(maxY, cropState.offsetY));
   }
 
   function drawCropper() {
