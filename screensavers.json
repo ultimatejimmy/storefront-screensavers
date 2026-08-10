@@ -74,5 +74,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/starry-cat.jpg",
     "downloads": 0,
     "likes": 1
+  },
+  {
+    "id": "eyes-in-the-woods",
+    "title": "Eyes in the woods",
+    "author": "brpjtf2",
+    "category": "Nature, Art",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/eyes-in-the-woods.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/eyes-in-the-woods.jpg",
+    "downloads": 0,
+    "likes": 1
   }
 ]
