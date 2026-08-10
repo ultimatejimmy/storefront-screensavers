@@ -8,6 +8,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  workflows: write
 
 jobs:
   process-submission:
@@ -18,6 +19,7 @@ jobs:
       contents: write
       pull-requests: write
       issues: write
+      workflows: write
 
     steps:
       - name: Checkout Repository
@@ -156,6 +158,9 @@ jobs:
           title: "New Screensaver Submission: ${{ github.event.issue.title }}"
           body: "Automated PR generated from issue #${{ github.event.issue.number }}. Includes downloaded full-res image and resized thumbnail."
           branch: "submission-${{ github.event.issue.number }}"
+          add-paths: |
+            images/**
+            screensavers.json
 
       - name: Comment on Issue
         uses: peter-evans/create-or-update-comment@v3
