@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Storefront Screensavers — E-Ink Wallpapers</title>
+  <title>E-Reader Screensavers Catalog — Storefront Plugin</title>
   <meta name="description" content="Free e-ink sleep screen & lock screen wallpapers for Kindle, Kobo, Boox, and PocketBook readers. Community-driven catalog for Storefront KOReader plugin.">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,7 +13,7 @@
   <nav class="navbar">
     <div class="nav-brand">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: url(#brand-grad);"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-      <span>Storefront Screensavers</span>
+      <span>ReaderBackdrop Catalog</span>
     </div>
     <ul class="nav-links">
       <li><a href="#" class="nav-link active" data-target="gallery-section">Gallery</a></li>
@@ -44,13 +44,6 @@
           <button class="tag-btn" data-category="Minimalist">Minimalist</button>
           <button class="tag-btn" data-category="Sci-Fi">Sci-Fi</button>
           <button class="tag-btn" data-category="Anime">Anime</button>
-          <button class="tag-btn" data-category="Art">Art</button>
-          <button class="tag-btn" data-category="Quotes">Quotes</button>
-          <button class="tag-btn" data-category="Architecture">Architecture</button>
-          <button class="tag-btn" data-category="Pop Culture">Pop Culture</button>
-          <button class="tag-btn" data-category="Abstract">Abstract</button>
-          <button class="tag-btn" data-category="Animals">Animals</button>
-          <button class="tag-btn" data-category="Patterns">Patterns</button>
         </div>
       </div>
 
@@ -78,31 +71,50 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label">Category (Select all that apply)</label>
-            <div class="category-checkboxes">
-              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Minimalist" checked> <span>Minimalist</span></label>
-              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Nature"> <span>Nature</span></label>
-              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Sci-Fi"> <span>Sci-Fi</span></label>
-              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Anime"> <span>Anime</span></label>
-              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Art"> <span>Art</span></label>
-              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Quotes"> <span>Quotes & Typography</span></label>
-              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Architecture"> <span>Architecture</span></label>
-              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Pop Culture"> <span>Pop Culture</span></label>
-              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Abstract"> <span>Abstract</span></label>
-              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Animals"> <span>Animals</span></label>
-              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Patterns"> <span>Patterns & Textures</span></label>
-            </div>
+            <label class="form-label" for="sub-category">Category</label>
+            <select id="sub-category" class="form-control" required>
+              <option value="Minimalist">Minimalist</option>
+              <option value="Nature">Nature</option>
+              <option value="Sci-Fi">Sci-Fi</option>
+              <option value="Anime">Anime</option>
+              <option value="Art">Art</option>
+            </select>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="sub-file">Upload Image File (PNG/JPG)</label>
-            <input type="file" id="sub-file" class="form-control" accept="image/png, image/jpeg, image/jpg, image/webp" required>
-            <div id="sub-preview-container" style="display: none; margin-top: 1rem; text-align: center;">
-              <img id="sub-preview-img" style="max-width: 100%; max-height: 200px; border-radius: 8px; border: 1px solid var(--border-color);" alt="Preview">
+            <label class="form-label">Wallpaper Image</label>
+            <div class="toggle-mode-bar">
+              <button type="button" class="toggle-mode-btn active" id="btn-mode-file">📁 Upload Image File</button>
+              <button type="button" class="toggle-mode-btn" id="btn-mode-url">🔗 Image Direct URL</button>
+            </div>
+
+            <!-- File Upload Dropzone -->
+            <div id="dropzone-box" class="dropzone">
+              <input type="file" id="sub-file" accept="image/png, image/jpeg, image/webp" style="display:none;">
+              <div id="dropzone-prompt" class="dropzone-prompt">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <p style="margin: 0.5rem 0 0.2rem;"><strong>Click to upload</strong> or drag & drop wallpaper file</p>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Supports PNG, JPG, WebP (Portrait orientation recommended)</span>
+              </div>
+              <div id="dropzone-preview" class="dropzone-preview" style="display:none;">
+                <img id="preview-img" alt="Wallpaper Preview">
+                <div class="preview-meta">
+                  <strong id="preview-filename">wallpaper.jpg</strong>
+                  <span id="preview-specs">1200 × 1600 · 350 KB</span>
+                  <button type="button" id="btn-remove-file" class="btn-remove">✕ Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Direct URL Box (hidden by default) -->
+            <div id="url-box" style="display: none; margin-top: 0.5rem;">
+              <input type="url" id="sub-url" class="form-control" placeholder="https://raw.githubusercontent.com/.../wallpaper.jpg">
             </div>
           </div>
 
-          <button type="submit" class="btn-primary" style="width: 100%; padding: 0.8rem; font-size: 1rem;">Continue to GitHub Submission →</button>
+          <button type="submit" class="btn-primary" id="btn-submit-issue" style="width: 100%; padding: 0.85rem; font-size: 1rem; margin-top: 1rem;">
+            Continue to GitHub Submission →
+          </button>
         </form>
       </div>
     </section>
@@ -125,14 +137,14 @@
           <li>Proof of ownership or authorization from the copyright holder.</li>
           <li>Your contact information (email address).</li>
         </ul>
-        <p>Please file a copyright takedown request by opening a <a href="https://github.com/ultimatejimmy/storefront-screensavers/issues/new?title=DMCA+Takedown+Request&labels=dmca-takedown" target="_blank" style="color: var(--accent-cyan);">GitHub Issue labeled <code>dmca-takedown</code></a> on our repository. Takedown requests are reviewed and processed promptly.</p>
+        <p>Send notice via GitHub Issue labeled <code>dmca-takedown</code> or email the maintainers at <code>takedown@readerbackdrop-catalog.org</code>. Takedown requests are processed within 48 hours.</p>
       </div>
     </section>
 
   </main>
 
   <footer>
-    <p>© 2026 Storefront Screensavers Catalog · Open Source & Community Powered</p>
+    <p>© 2026 ReaderBackdrop Catalog for Storefront Plugin · Open Source & Community Powered</p>
   </footer>
 
   <script src="app.js"></script>

@@ -27,23 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => console.error("Failed loading catalog", err));
 
-  async function forceDownload(url, filename) {
-    try {
-      const res = await fetch(url);
-      const blob = await res.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = blobUrl;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(blobUrl);
-    } catch (err) {
-      window.open(url, '_blank');
-    }
-  }
-
   function renderGallery(items) {
     const grid = document.getElementById('wallpaper-grid');
     grid.innerHTML = '';
@@ -70,16 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>❤️ ${item.likes}</span>
           </div>
           <div class="card-footer">
-            <button class="btn-primary download-btn">Download</button>
+            <a href="${item.fullUrl}" target="_blank" download class="btn-primary">Download</a>
           </div>
         </div>
       `;
-
-      card.querySelector('.download-btn').addEventListener('click', (e) => {
-        e.preventDefault();
-        forceDownload(item.fullUrl, `${item.id}.jpg`);
-      });
-
       grid.appendChild(card);
     });
   }
@@ -115,56 +92,210 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // File upload preview
-  const fileInput = document.getElementById('sub-file');
-  const previewContainer = document.getElementById('sub-preview-container');
-  const previewImg = document.getElementById('sub-preview-img');
+  // Submission Form & File Upload Dropzone
+  const btnModeFile = document.getElementById('btn-mode-file');
+  const btnModeUrl = document.getElementById('btn-mode-url');
+  const dropzoneBox = document.getElementById('dropzone-box');
+  const urlBox = document.getElementById('url-box');
+  const subFile = document.getElementById('sub-file');
+  const subUrl = document.getElementById('sub-url');
+  const dropzonePrompt = document.getElementById('dropzone-prompt');
+  const dropzonePreview = document.getElementById('dropzone-preview');
+  const previewImg = document.getElementById('preview-img');
+  const previewFilename = document.getElementById('preview-filename');
+  const previewSpecs = document.getElementById('preview-specs');
+  const btnRemoveFile = document.getElementById('btn-remove-file');
+  const submitForm = document.getElementById('submit-form');
+  const btnSubmitIssue = document.getElementById('btn-submit-issue');
 
-  if (fileInput) {
-    fileInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (evt) => {
-          previewImg.src = evt.target.result;
-          previewContainer.style.display = 'block';
-        };
-        reader.readAsDataURL(file);
-      } else {
-        previewContainer.style.display = 'none';
-      }
+  let selectedFile = null;
+  let selectedFileMeta = null;
+  let currentMode = 'file'; // 'file' or 'url'
+
+  if (btnModeFile && btnModeUrl) {
+    btnModeFile.addEventListener('click', () => {
+      currentMode = 'file';
+      btnModeFile.classList.add('active');
+      btnModeUrl.classList.remove('active');
+      dropzoneBox.style.display = 'block';
+      urlBox.style.display = 'none';
+      if (subUrl) subUrl.required = false;
+    });
+
+    btnModeUrl.addEventListener('click', () => {
+      currentMode = 'url';
+      btnModeUrl.classList.add('active');
+      btnModeFile.classList.remove('active');
+      dropzoneBox.style.display = 'none';
+      urlBox.style.display = 'block';
+      if (subUrl) subUrl.required = true;
     });
   }
 
-  // Submission Form -> GitHub Issue generator
-  const submitForm = document.getElementById('submit-form');
+  // Handle dropzone click & file selection
+  if (dropzoneBox && subFile) {
+    dropzoneBox.addEventListener('click', (e) => {
+      if (e.target !== btnRemoveFile && !btnRemoveFile.contains(e.target)) {
+        subFile.click();
+      }
+    });
+
+    ['dragenter', 'dragover'].forEach(evt => {
+      dropzoneBox.addEventListener(evt, (e) => {
+        e.preventDefault();
+        dropzoneBox.classList.add('dragover');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+      dropzoneBox.addEventListener(evt, (e) => {
+        e.preventDefault();
+        dropzoneBox.classList.remove('dragover');
+      });
+    });
+
+    dropzoneBox.addEventListener('drop', (e) => {
+      const files = e.dataTransfer.files;
+      if (files && files.length > 0) {
+        handleFileSelect(files[0]);
+      }
+    });
+
+    subFile.addEventListener('change', () => {
+      if (subFile.files && subFile.files.length > 0) {
+        handleFileSelect(subFile.files[0]);
+      }
+    });
+
+    if (btnRemoveFile) {
+      btnRemoveFile.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectedFile = null;
+        selectedFileMeta = null;
+        subFile.value = '';
+        dropzonePrompt.style.display = 'block';
+        dropzonePreview.style.display = 'none';
+      });
+    }
+  }
+
+  function handleFileSelect(file) {
+    if (!file || !file.type.startsWith('image/')) {
+      alert('Please select a valid image file (PNG, JPG, or WebP).');
+      return;
+    }
+
+    selectedFile = file;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      previewImg.src = e.target.result;
+      const img = new Image();
+      img.onload = () => {
+        const kb = (file.size / 1024).toFixed(0);
+        selectedFileMeta = `${img.width} × ${img.height} px · ${kb} KB`;
+        previewFilename.textContent = file.name;
+        previewSpecs.textContent = selectedFileMeta;
+        dropzonePrompt.style.display = 'none';
+        dropzonePreview.style.display = 'flex';
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Upload file anonymously to free image host API
+  async function uploadImageFile(file) {
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+      const res = await fetch('https://freeimage.host/api/1/upload?key=6d207e02198a847aa98d0a2a901485a5&format=json', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if (data && data.image && data.image.url) {
+        return data.image.url;
+      }
+    } catch (err) {
+      console.warn('Anonymous API upload failed, falling back to clipboard copy:', err);
+    }
+    return null;
+  }
+
+  // Submission Form Submit Handler
   if (submitForm) {
-    submitForm.addEventListener('submit', (e) => {
+    submitForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const title = document.getElementById('sub-title').value;
       const author = document.getElementById('sub-author').value;
-      const checkedCats = Array.from(document.querySelectorAll('input[name="sub-cat"]:checked')).map(el => el.value);
-      const category = checkedCats.length > 0 ? checkedCats.join(', ') : 'General';
-      const file = fileInput ? fileInput.files[0] : null;
-      const fileName = file ? file.name : 'wallpaper.png';
+      const category = document.getElementById('sub-category').value;
+
+      let imageUrl = '';
+      let fileNotice = '';
+
+      if (currentMode === 'file') {
+        if (!selectedFile) {
+          alert('Please select an image file to upload.');
+          return;
+        }
+
+        if (btnSubmitIssue) {
+          btnSubmitIssue.textContent = 'Uploading image... ⏳';
+          btnSubmitIssue.disabled = true;
+        }
+
+        // Try anonymous image host upload
+        const uploadedUrl = await uploadImageFile(selectedFile);
+
+        // Copy file to clipboard so user can press Ctrl+V directly in GitHub Issue
+        try {
+          if (navigator.clipboard && window.ClipboardItem) {
+            await navigator.clipboard.write([
+              new ClipboardItem({ [selectedFile.type]: selectedFile })
+            ]);
+            fileNotice = 'Image copied to clipboard! Press Ctrl+V / Cmd+V in the GitHub issue comment box to attach directly.';
+          }
+        } catch (clipErr) {
+          console.log('Clipboard write not allowed:', clipErr);
+        }
+
+        if (uploadedUrl) {
+          imageUrl = uploadedUrl;
+        } else {
+          imageUrl = `[Uploaded File: ${selectedFile.name} (${selectedFileMeta})]`;
+        }
+
+        if (btnSubmitIssue) {
+          btnSubmitIssue.textContent = 'Continue to GitHub Submission →';
+          btnSubmitIssue.disabled = false;
+        }
+      } else {
+        imageUrl = document.getElementById('sub-url').value;
+      }
 
       const issueTitle = encodeURIComponent(`Screensaver Submission: ${title}`);
-      const issueBody = encodeURIComponent(
-`### Screensaver Submission
+      const bodyLines = [
+        `### Screensaver Submission`,
+        ``,
+        `**Title:** ${title}`,
+        `**Author:** ${author}`,
+        `**Category:** ${category}`,
+        `**Image:** ${imageUrl}`,
+      ];
 
-**Title:** ${title}
-**Author:** ${author}
-**Category:** ${category}
-**File Name:** ${fileName}
+      if (selectedFileMeta) {
+        bodyLines.push(`**Specs:** ${selectedFileMeta}`);
+      }
+      if (fileNotice) {
+        bodyLines.push(``, `> 💡 ${fileNotice}`);
+      }
 
----
-📎 **Action Required:** Please drag and drop your image file (\`${fileName}\`) into this box to attach it before clicking Submit!
+      bodyLines.push(``, `---`, `*Submitted via Storefront Screensaver Catalog Site*`);
 
----
-*Submitted via Storefront Screensaver Catalog Site*`
-      );
+      const issueBody = encodeURIComponent(bodyLines.join('\n'));
+      const repoUrl = 'https://github.com/ultimatejimmy/storefront-screensavers';
+      const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&body=${issueBody}`;
 
-      const githubIssueUrl = `https://github.com/ultimatejimmy/storefront-screensavers/issues/new?title=${issueTitle}&body=${issueBody}`;
       window.open(githubIssueUrl, '_blank');
     });
   }
