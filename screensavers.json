@@ -1,0 +1,46 @@
+[
+  {
+    "id": "humpback-whale-sea",
+    "title": "Stormy Seas Humpback Whale",
+    "author": "OceanArt",
+    "category": "Nature",
+    "compatibility": ["Kindle", "Kobo", "Boox", "PocketBook"],
+    "thumbnailUrl": "https://utfs.io/f/aPKH5e9W4OtE8mEFmPANJmkB2sFvWY1OXUyf3wPLiR80MHxq",
+    "fullUrl": "https://utfs.io/f/aPKH5e9W4OtE8mEFmPANJmkB2sFvWY1OXUyf3wPLiR80MHxq",
+    "downloads": 401,
+    "likes": 702
+  },
+  {
+    "id": "window-with-cat",
+    "title": "Cozy Window with a Cat",
+    "author": "PixelCat",
+    "category": "Minimalist",
+    "compatibility": ["Kindle", "Kobo", "Boox"],
+    "thumbnailUrl": "https://utfs.io/f/aPKH5e9W4OtE0r6ApVJ71kyBjWhZMiRXdVlS2w8FObYAzaPe",
+    "fullUrl": "https://utfs.io/f/aPKH5e9W4OtE0r6ApVJ71kyBjWhZMiRXdVlS2w8FObYAzaPe",
+    "downloads": 303,
+    "likes": 511
+  },
+  {
+    "id": "shai-hulud-dune",
+    "title": "Shai-Hulud Desert Worm",
+    "author": "DuneFan",
+    "category": "Sci-Fi",
+    "compatibility": ["Kindle Paperwhite", "Scribe", "Oasis"],
+    "thumbnailUrl": "https://utfs.io/f/aPKH5e9W4OtEkRCKSUqIEU1YZV2s3fDqcyi7xlCRLwNSv9Bh",
+    "fullUrl": "https://utfs.io/f/aPKH5e9W4OtEkRCKSUqIEU1YZV2s3fDqcyi7xlCRLwNSv9Bh",
+    "downloads": 256,
+    "likes": 392
+  },
+  {
+    "id": "snorlax-sleep",
+    "title": "Sleeping Snorlax",
+    "author": "PokeArt",
+    "category": "Anime",
+    "compatibility": ["Kindle", "Kobo", "ReMarkable"],
+    "thumbnailUrl": "https://utfs.io/f/aPKH5e9W4OtE6g9HOzD1ArVXg5DWtnsxvN7hcOPG9SfFQMiR",
+    "fullUrl": "https://utfs.io/f/aPKH5e9W4OtE6g9HOzD1ArVXg5DWtnsxvN7hcOPG9SfFQMiR",
+    "downloads": 189,
+    "likes": 310
+  }
+]
