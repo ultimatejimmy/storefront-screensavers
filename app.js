@@ -410,8 +410,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function clampCropOffsets(scaledW, scaledH) {
-    cropState.offsetX = Math.min(0, Math.max(FRAME_W - scaledW, cropState.offsetX));
-    cropState.offsetY = Math.min(0, Math.max(FRAME_H - scaledH, cropState.offsetY));
+    if (scaledW >= FRAME_W) {
+      cropState.offsetX = Math.min(0, Math.max(FRAME_W - scaledW, cropState.offsetX));
+    } else {
+      const minX = 0;
+      const maxX = FRAME_W - scaledW;
+      cropState.offsetX = Math.max(minX, Math.min(maxX, cropState.offsetX));
+    }
+
+    if (scaledH >= FRAME_H) {
+      cropState.offsetY = Math.min(0, Math.max(FRAME_H - scaledH, cropState.offsetY));
+    } else {
+      const minY = 0;
+      const maxY = FRAME_H - scaledH;
+      cropState.offsetY = Math.max(minY, Math.min(maxY, cropState.offsetY));
+    }
   }
 
   function drawCropper() {
@@ -426,7 +439,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     clampCropOffsets(scaledW, scaledH);
 
-    ctx.clearRect(0, 0, FRAME_W, FRAME_H);
+    // Fill background with solid black for letterbox padding
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, FRAME_W, FRAME_H);
+
     ctx.drawImage(cropImageObj, cropState.offsetX, cropState.offsetY, scaledW, scaledH);
 
     // Rule of thirds grid overlay
