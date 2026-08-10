@@ -4,8 +4,13 @@
     "title": "Foggy Mountain Pines",
     "author": "Unsplash (CC0)",
     "category": "Nature",
-    "compatibility": ["Kindle", "Kobo", "Boox", "PocketBook"],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/foggy-forest-pines.jpg",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox",
+      "PocketBook"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/foggy-forest-pines.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/foggy-forest-pines.jpg",
     "downloads": 142,
     "likes": 289
@@ -15,8 +20,12 @@
     "title": "Minimalist Ocean Horizon",
     "author": "Unsplash (CC0)",
     "category": "Minimalist",
-    "compatibility": ["Kindle", "Kobo", "Boox"],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimalist-ocean-waves.jpg",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimalist-ocean-waves.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimalist-ocean-waves.jpg",
     "downloads": 210,
     "likes": 412
@@ -26,8 +35,12 @@
     "title": "Deep Space Nebula",
     "author": "Unsplash (CC0)",
     "category": "Sci-Fi",
-    "compatibility": ["Kindle Paperwhite", "Scribe", "Oasis"],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/cosmic-nebula-monochrome.jpg",
+    "compatibility": [
+      "Kindle Paperwhite",
+      "Scribe",
+      "Oasis"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/cosmic-nebula-monochrome.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/cosmic-nebula-monochrome.jpg",
     "downloads": 98,
     "likes": 175
@@ -37,8 +50,12 @@
     "title": "Sleepy Tabby Cat",
     "author": "Unsplash (CC0)",
     "category": "Minimalist",
-    "compatibility": ["Kindle", "Kobo", "ReMarkable"],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/cozy-window-cat.jpg",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "ReMarkable"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/cozy-window-cat.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/cozy-window-cat.jpg",
     "downloads": 315,
     "likes": 530

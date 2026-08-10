@@ -16,14 +16,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-python-version: '3.10'
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install Pillow requests
 
-      - name: Process Image and Update Catalog
+      - name: Process Image, Generate Thumbnail, and Update Catalog
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
@@ -36,18 +36,49 @@ jobs:
           title_match = re.search(r'\*\*Title:\*\*\s*(.*)', body)
           author_match = re.search(r'\*\*Author:\*\*\s*(.*)', body)
           category_match = re.search(r'\*\*Category:\*\*\s*(.*)', body)
-          url_match = re.search(r'\*\*Image URL:\*\*\s*(.*)', body)
+          
+          # Match markdown image URL or plain URL
+          url_match = re.search(r'https?://[^\s\)]+(?:\.png|\.jpg|\.jpeg|\.webp|githubusercontent[^\s\)]+)', body, re.IGNORECASE)
 
           if not (title_match and url_match):
-              print("Could not parse issue body")
-              exit(0)
+              print("Could not parse title or image attachment from issue body.")
+              exit(1)
 
           title = title_match.group(1).strip()
           author = author_match.group(1).strip() if author_match else "Community"
           category = category_match.group(1).strip() if category_match else "General"
-          img_url = url_match.group(1).strip()
+          img_url = url_match.group(0).strip()
 
           item_id = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
+
+          # Prepare directories
+          os.makedirs('images', exist_ok=True)
+          os.makedirs('images/thumbnails', exist_ok=True)
+
+          full_path = f'images/{item_id}.jpg'
+          thumb_path = f'images/thumbnails/{item_id}.jpg'
+
+          # Download image
+          r = requests.get(img_url, headers={'User-Agent': 'Mozilla/5.0'})
+          if r.status_code != 200:
+              print(f"Failed to download image from {img_url}")
+              exit(1)
+
+          img = Image.open(BytesIO(r.content))
+          if img.mode != 'RGB':
+              img = img.convert('RGB')
+
+          # Save full resolution image
+          img.save(full_path, 'JPEG', quality=90)
+
+          # Generate compressed thumbnail (max width 600px)
+          thumb = img.copy()
+          thumb.thumbnail((600, 800), Image.Resampling.LANCZOS)
+          thumb.save(thumb_path, 'JPEG', quality=80)
+
+          raw_base = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
+          full_url = raw_base + full_path
+          thumb_url = raw_base + thumb_path
 
           with open('screensavers.json', 'r') as f:
               catalog = json.load(f)
@@ -58,24 +89,32 @@ jobs:
               "author": author,
               "category": category,
               "compatibility": ["Kindle", "Kobo", "Boox"],
-              "thumbnailUrl": img_url,
-              "fullUrl": img_url,
+              "thumbnailUrl": thumb_url,
+              "fullUrl": full_url,
               "downloads": 0,
               "likes": 1
           }
 
-          catalog.append(new_entry)
+          # Check if id exists and update, or append
+          updated = False
+          for idx, item in enumerate(catalog):
+              if item['id'] == item_id:
+                  catalog[idx] = new_entry
+                  updated = True
+                  break
+          if not updated:
+              catalog.append(new_entry)
 
           with open('screensavers.json', 'w') as f:
               json.dump(catalog, f, indent=2)
 
-          print(f"Added entry: {title}")
+          print(f"Successfully processed and generated thumbnail for: {title}")
           EOF
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: "Add screensaver: ${{ github.event.issue.title }}"
+          commit-message: "Add screensaver and thumbnail: ${{ github.event.issue.title }}"
           title: "New Screensaver Submission: ${{ github.event.issue.title }}"
-          body: "Automated PR from issue #${{ github.event.issue.number }}"
+          body: "Automated PR generated from issue #${{ github.event.issue.number }}. Includes downloaded full-res image and resized thumbnail."
           branch: "submission-${{ github.event.issue.number }}"
