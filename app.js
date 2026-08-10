@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Fetch catalog
-  fetch('screensavers.json')
+  // Fetch catalog (cache-busted for instant updates)
+  fetch(`screensavers.json?t=${Date.now()}`, { cache: 'no-cache' })
     .then(res => res.json())
     .then(data => {
       catalogData = data;
-      renderGallery(catalogData);
+      applyFilters();
     })
     .catch(err => console.error("Failed loading catalog", err));
 
