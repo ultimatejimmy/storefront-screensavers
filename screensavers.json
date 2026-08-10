@@ -59,5 +59,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/cozy-window-cat.jpg",
     "downloads": 315,
     "likes": 530
+  },
+  {
+    "id": "starry-cat",
+    "title": "Starry Cat",
+    "author": "brpjtf2",
+    "category": "Nature, Abstract, Art",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/starry-cat.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/starry-cat.jpg",
+    "downloads": 0,
+    "likes": 1
   }
 ]
