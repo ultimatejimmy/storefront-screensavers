@@ -37,17 +37,43 @@ jobs:
           author_match = re.search(r'\*\*Author:\*\*\s*(.*)', body)
           category_match = re.search(r'\*\*Category:\*\*\s*(.*)', body)
           
-          # Match markdown image URL or plain URL
-          url_match = re.search(r'https?://[^\s\)]+(?:\.png|\.jpg|\.jpeg|\.webp|githubusercontent[^\s\)]+)', body, re.IGNORECASE)
+          # Match markdown image ![alt](url), direct image URL, user-attachments, or URL in Image: field
+          url_match_str = None
 
-          if not (title_match and url_match):
+          # 1. Check Image: line for direct URL
+          img_line = re.search(r'\*\*Image:\*\*\s*(.*)', body)
+          if img_line:
+              u = re.search(r'https?://[^\s\)\"]+', img_line.group(1))
+              if u:
+                  url_match_str = u.group(0)
+
+          # 2. Check markdown image tag ![...](url)
+          if not url_match_str:
+              md_img = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', body)
+              if md_img:
+                  url_match_str = md_img.group(1)
+
+          # 3. Fallback: match any image/github URL in body
+          if not url_match_str:
+              any_url = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur)[^\s\)\"]*', body, re.IGNORECASE)
+              if any_url:
+                  url_match_str = any_url.group(0)
+
+          # 4. Final fallback: any URL in issue body
+          if not url_match_str:
+              any_url = re.search(r'https?://[^\s\)\"]+', body)
+              if any_url:
+                  url_match_str = any_url.group(0)
+
+          if not (title_match and url_match_str):
               print("Could not parse title or image attachment from issue body.")
+              print(f"Issue Body:\n{body}")
               exit(1)
 
           title = title_match.group(1).strip()
           author = author_match.group(1).strip() if author_match else "Community"
           category = category_match.group(1).strip() if category_match else "General"
-          img_url = url_match.group(0).strip()
+          img_url = url_match_str.strip()
 
           item_id = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
 
@@ -59,9 +85,10 @@ jobs:
           thumb_path = f'images/thumbnails/{item_id}.jpg'
 
           # Download image
-          r = requests.get(img_url, headers={'User-Agent': 'Mozilla/5.0'})
+          headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+          r = requests.get(img_url, headers=headers, allow_redirects=True, timeout=30)
           if r.status_code != 200:
-              print(f"Failed to download image from {img_url}")
+              print(f"Failed to download image from {img_url} (HTTP Status {r.status_code})")
               exit(1)
 
           img = Image.open(BytesIO(r.content))
