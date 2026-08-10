@@ -120,7 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const title = document.getElementById('sub-title').value;
       const author = document.getElementById('sub-author').value;
-      const category = document.getElementById('sub-category').value;
+      const checkedCats = Array.from(document.querySelectorAll('input[name="sub-cat"]:checked')).map(el => el.value);
+      const category = checkedCats.length > 0 ? checkedCats.join(', ') : 'General';
       const file = fileInput ? fileInput.files[0] : null;
       const fileName = file ? file.name : 'wallpaper.png';
 

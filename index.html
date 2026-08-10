@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Storefront Screensavers — E-Ink Wallpapers & Sleep Screens</title>
+  <title>Storefront Screensavers — E-Ink Wallpapers</title>
   <meta name="description" content="Free e-ink sleep screen & lock screen wallpapers for Kindle, Kobo, Boox, and PocketBook readers. Community-driven catalog for Storefront KOReader plugin.">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -44,6 +44,13 @@
           <button class="tag-btn" data-category="Minimalist">Minimalist</button>
           <button class="tag-btn" data-category="Sci-Fi">Sci-Fi</button>
           <button class="tag-btn" data-category="Anime">Anime</button>
+          <button class="tag-btn" data-category="Art">Art</button>
+          <button class="tag-btn" data-category="Quotes">Quotes</button>
+          <button class="tag-btn" data-category="Architecture">Architecture</button>
+          <button class="tag-btn" data-category="Pop Culture">Pop Culture</button>
+          <button class="tag-btn" data-category="Abstract">Abstract</button>
+          <button class="tag-btn" data-category="Animals">Animals</button>
+          <button class="tag-btn" data-category="Patterns">Patterns</button>
         </div>
       </div>
 
@@ -71,14 +78,20 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="sub-category">Category</label>
-            <select id="sub-category" class="form-control" required>
-              <option value="Minimalist">Minimalist</option>
-              <option value="Nature">Nature</option>
-              <option value="Sci-Fi">Sci-Fi</option>
-              <option value="Anime">Anime</option>
-              <option value="Art">Art</option>
-            </select>
+            <label class="form-label">Category (Select all that apply)</label>
+            <div class="category-checkboxes">
+              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Minimalist" checked> <span>Minimalist</span></label>
+              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Nature"> <span>Nature</span></label>
+              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Sci-Fi"> <span>Sci-Fi</span></label>
+              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Anime"> <span>Anime</span></label>
+              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Art"> <span>Art</span></label>
+              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Quotes"> <span>Quotes & Typography</span></label>
+              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Architecture"> <span>Architecture</span></label>
+              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Pop Culture"> <span>Pop Culture</span></label>
+              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Abstract"> <span>Abstract</span></label>
+              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Animals"> <span>Animals</span></label>
+              <label class="cat-pill"><input type="checkbox" name="sub-cat" value="Patterns"> <span>Patterns & Textures</span></label>
+            </div>
           </div>
 
           <div class="form-group">

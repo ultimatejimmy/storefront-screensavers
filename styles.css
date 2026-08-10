@@ -374,6 +374,56 @@ body::after {
   border-color: var(--accent-purple);
 }
 
+select.form-control {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+select.form-control option {
+  background-color: #161c2d;
+  color: #f3f4f6;
+  padding: 8px 12px;
+}
+
+select.form-control option:hover,
+select.form-control option:focus,
+select.form-control option:checked {
+  background-color: var(--accent-purple) !important;
+  color: #ffffff !important;
+}
+
+.category-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.cat-pill input {
+  display: none;
+}
+
+.cat-pill span {
+  display: inline-block;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+
+.cat-pill input:checked + span {
+  background: var(--accent-purple);
+  color: #ffffff;
+  border-color: var(--accent-purple);
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
+}
+
 .legal-box {
   background: var(--bg-glass);
   border: 1px solid var(--border-color);
