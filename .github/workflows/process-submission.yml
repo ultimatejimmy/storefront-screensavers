@@ -169,7 +169,7 @@ jobs:
           # Create Pull Request using gh CLI
           gh pr create \
             --title "New Screensaver Submission: ${ISSUE_TITLE}" \
-            --body "Automated PR generated from issue #${ISSUE_NUM}. Includes downloaded full-res image and resized thumbnail." \
+            --body "Closes #${ISSUE_NUM}. Automated PR generated from issue #${ISSUE_NUM}. Includes downloaded full-res image and resized thumbnail." \
             --head "${BRANCH_NAME}" \
             --base "main" || true
 
