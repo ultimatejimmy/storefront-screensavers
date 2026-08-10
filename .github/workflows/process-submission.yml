@@ -143,6 +143,10 @@ jobs:
           print(f"Successfully processed and generated thumbnail for: {title}")
           EOF
 
+      - name: Clean working tree of workflow modifications
+        run: |
+          git checkout -- .github/ || true
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
@@ -151,6 +155,7 @@ jobs:
           title: "New Screensaver Submission: ${{ github.event.issue.title }}"
           body: "Automated PR generated from issue #${{ github.event.issue.number }}. Includes downloaded full-res image and resized thumbnail."
           branch: "submission-${{ github.event.issue.number }}"
+          delete-branch: true
           add-paths: |
             images/**
             screensavers.json
