@@ -2,7 +2,6 @@
 
 A community-driven, curated catalog of e-ink screensavers and lock screen wallpapers for Kindle, Kobo, Boox, PocketBook, and other e-readers. Powered by the [Storefront KOReader Plugin](https://github.com/ultimatejimmy/storefront.koplugin).
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![GitHub Pages](https://img.shields.io/badge/hosted--on-GitHub%20Pages-purple.svg)
 
 ---
