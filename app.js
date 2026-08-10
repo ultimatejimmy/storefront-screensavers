@@ -262,22 +262,43 @@ document.addEventListener('DOMContentLoaded', () => {
     reader.readAsDataURL(file);
   }
 
-  // Upload file anonymously to free image host API
+  // Upload file anonymously to free image host API (CORS enabled)
   async function uploadImageFile(file) {
+    // 1. Try ImgBB API
     try {
       const formData = new FormData();
+      formData.append('key', '6d207e02198a847aa98d0a2a901485a5');
       formData.append('image', file);
-      const res = await fetch('https://freeimage.host/api/1/upload?key=6d207e02198a847aa98d0a2a901485a5&format=json', {
+      const res = await fetch('https://api.imgbb.com/1/upload', {
         method: 'POST',
         body: formData
       });
       const data = await res.json();
-      if (data && data.image && data.image.url) {
-        return data.image.url;
+      if (data && data.data && (data.data.url || data.data.display_url)) {
+        return data.data.url || data.data.display_url;
       }
-    } catch (err) {
-      console.warn('Anonymous API upload failed, falling back to clipboard copy:', err);
+    } catch (err1) {
+      console.warn('ImgBB upload attempt failed:', err1);
     }
+
+    // 2. Try Litterbox / Catbox API
+    try {
+      const formData = new FormData();
+      formData.append('reqtype', 'fileupload');
+      formData.append('time', '72h');
+      formData.append('fileToUpload', file);
+      const res = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
+        method: 'POST',
+        body: formData
+      });
+      const text = await res.text();
+      if (text && text.trim().startsWith('http')) {
+        return text.trim();
+      }
+    } catch (err2) {
+      console.warn('Catbox upload attempt failed:', err2);
+    }
+
     return null;
   }
 
@@ -303,25 +324,25 @@ document.addEventListener('DOMContentLoaded', () => {
           btnSubmitIssue.disabled = true;
         }
 
-        // Try anonymous image host upload
+        // Try automatic image host upload
         const uploadedUrl = await uploadImageFile(selectedFile);
-
-        // Copy file to clipboard so user can press Ctrl+V directly in GitHub Issue
-        try {
-          if (navigator.clipboard && window.ClipboardItem) {
-            await navigator.clipboard.write([
-              new ClipboardItem({ [selectedFile.type]: selectedFile })
-            ]);
-            fileNotice = 'Image copied to clipboard! Press Ctrl+V / Cmd+V in the GitHub issue comment box to attach directly.';
-          }
-        } catch (clipErr) {
-          console.log('Clipboard write not allowed:', clipErr);
-        }
 
         if (uploadedUrl) {
           imageUrl = uploadedUrl;
+          fileNotice = 'Image automatically uploaded to CDN! A Pull Request will be generated for review.';
         } else {
           imageUrl = `[Uploaded File: ${selectedFile.name} (${selectedFileMeta})]`;
+          // Copy file to clipboard fallback if upload fails
+          try {
+            if (navigator.clipboard && window.ClipboardItem) {
+              await navigator.clipboard.write([
+                new ClipboardItem({ [selectedFile.type]: selectedFile })
+              ]);
+              fileNotice = 'Image copied to clipboard! Press Ctrl+V / Cmd+V in the GitHub issue comment box to attach directly.';
+            }
+          } catch (clipErr) {
+            console.log('Clipboard write not allowed:', clipErr);
+          }
         }
 
         if (btnSubmitIssue) {
