@@ -89,11 +89,28 @@ jobs:
           full_path = f'images/{item_id}.jpg'
           thumb_path = f'images/thumbnails/{item_id}.jpg'
 
-          # Download image
+          # Download image with retries
+          import time
           headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
-          r = requests.get(img_url, headers=headers, allow_redirects=True, timeout=30)
-          if r.status_code != 200:
-              print(f"Failed to download image from {img_url} (HTTP Status {r.status_code})")
+          r = None
+          max_retries = 3
+          for attempt in range(max_retries):
+              try:
+                  print(f"Downloading image from {img_url} (attempt {attempt + 1}/{max_retries})...")
+                  r = requests.get(img_url, headers=headers, allow_redirects=True, timeout=60)
+                  if r.status_code == 200:
+                      break
+                  print(f"HTTP Status {r.status_code}, retrying...")
+              except (requests.exceptions.RequestException, Exception) as exc:
+                  print(f"Download attempt {attempt + 1} failed: {exc}")
+                  if attempt < max_retries - 1:
+                      time.sleep(2)
+                  else:
+                      print("All download attempts failed.")
+                      exit(1)
+
+          if not r or r.status_code != 200:
+              print(f"Failed to download image from {img_url}")
               exit(1)
 
           img = Image.open(BytesIO(r.content))
