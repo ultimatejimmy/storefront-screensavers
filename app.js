@@ -27,6 +27,23 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => console.error("Failed loading catalog", err));
 
+  async function forceDownload(url, filename) {
+    try {
+      const res = await fetch(url);
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(blobUrl);
+    } catch (err) {
+      window.open(url, '_blank');
+    }
+  }
+
   function renderGallery(items) {
     const grid = document.getElementById('wallpaper-grid');
     grid.innerHTML = '';
@@ -53,10 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>❤️ ${item.likes}</span>
           </div>
           <div class="card-footer">
-            <a href="${item.fullUrl}" target="_blank" download class="btn-primary">Download</a>
+            <button class="btn-primary download-btn">Download</button>
           </div>
         </div>
       `;
+
+      card.querySelector('.download-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        forceDownload(item.fullUrl, `${item.id}.jpg`);
+      });
+
       grid.appendChild(card);
     });
   }
