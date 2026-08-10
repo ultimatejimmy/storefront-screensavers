@@ -89,5 +89,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/eyes-in-the-woods.jpg",
     "downloads": 0,
     "likes": 1
+  },
+  {
+    "id": "trash-panda",
+    "title": "Trash Panda",
+    "author": "brpjtf2",
+    "category": "Nature",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/trash-panda.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/trash-panda.jpg",
+    "downloads": 0,
+    "likes": 1
   }
 ]
