@@ -143,22 +143,35 @@ jobs:
           print(f"Successfully processed and generated thumbnail for: {title}")
           EOF
 
-      - name: Clean working tree of workflow modifications
-        run: |
-          git checkout -- .github/ || true
-
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Add screensaver and thumbnail: ${{ github.event.issue.title }}"
-          title: "New Screensaver Submission: ${{ github.event.issue.title }}"
-          body: "Automated PR generated from issue #${{ github.event.issue.number }}. Includes downloaded full-res image and resized thumbnail."
-          branch: "submission-${{ github.event.issue.number }}"
-          delete-branch: true
-          add-paths: |
-            images/**
-            screensavers.json
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUM: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          BRANCH_NAME="submission-${ISSUE_NUM}"
+          
+          # Remove stale remote branch if present
+          git push origin --delete "${BRANCH_NAME}" || true
+          
+          # Create fresh clean branch from current HEAD
+          git checkout -b "${BRANCH_NAME}"
+          
+          # Stage exclusively image assets and catalog json
+          git add images/ screensavers.json
+          git commit -m "Add screensaver and thumbnail for issue #${ISSUE_NUM}"
+          
+          # Push clean branch
+          git push origin "${BRANCH_NAME}" --force
+          
+          # Create Pull Request using gh CLI
+          gh pr create \
+            --title "New Screensaver Submission: ${ISSUE_TITLE}" \
+            --body "Automated PR generated from issue #${ISSUE_NUM}. Includes downloaded full-res image and resized thumbnail." \
+            --head "${BRANCH_NAME}" \
+            --base "main" || true
 
       - name: Comment on Issue
         uses: peter-evans/create-or-update-comment@v3
