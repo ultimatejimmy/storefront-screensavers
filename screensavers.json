@@ -104,5 +104,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/trash-panda.jpg",
     "downloads": 0,
     "likes": 1
+  },
+  {
+    "id": "house-elf-liberation-front",
+    "title": "House Elf Liberation Front",
+    "author": "brpjtf2",
+    "category": "Art, Pop Culture",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/house-elf-liberation-front.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/house-elf-liberation-front.jpg",
+    "downloads": 0,
+    "likes": 1
   }
 ]
