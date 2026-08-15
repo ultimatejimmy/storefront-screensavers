@@ -39,11 +39,28 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(item => {
       const card = document.createElement('div');
       card.className = 'card';
+
+      const authorDisplay = item.authorUrl
+        ? `<a href="${item.authorUrl}" target="_blank" style="color: inherit; text-decoration: underline;">${item.author}</a>`
+        : item.author;
+
+      let attributionHtml = '';
+      if (item.license || item.sourceUrl) {
+        const licText = item.license || 'Open Access';
+        const licLink = item.sourceUrl || item.licenseUrl || '#';
+        attributionHtml = `
+          <div class="card-attribution">
+            <a href="${licLink}" target="_blank" class="license-tag">${licText}</a>
+            ${item.attribution ? `<span style="font-size: 0.7rem; color: var(--text-muted);">${item.attribution}</span>` : ''}
+          </div>
+        `;
+      }
+
       card.innerHTML = `
         <div class="card-image-wrap">
           <img class="card-img" src="${item.thumbnailUrl}" alt="${item.title}" loading="lazy">
           <div class="card-overlay">
-            <span style="font-size: 0.8rem; background: rgba(0,0,0,0.6); padding: 0.25rem 0.5rem; border-radius: 4px;">by ${item.author}</span>
+            <span style="font-size: 0.8rem; background: rgba(0,0,0,0.6); padding: 0.25rem 0.5rem; border-radius: 4px;">by ${authorDisplay}</span>
           </div>
         </div>
         <div class="card-body">
@@ -52,11 +69,19 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>🏷️ ${item.category}</span>
             <span>❤️ ${item.likes}</span>
           </div>
+          ${attributionHtml}
           <div class="card-footer">
             <a href="${item.fullUrl}" target="_blank" download class="btn-primary">Download</a>
+            <button type="button" class="btn-suggest-change" title="Suggest Change / Report Issue" data-id="${item.id}">✏️</button>
           </div>
         </div>
       `;
+
+      const btnSuggest = card.querySelector('.btn-suggest-change');
+      if (btnSuggest) {
+        btnSuggest.addEventListener('click', () => openSuggestDrawer(item));
+      }
+
       grid.appendChild(card);
     });
   }
@@ -643,4 +668,271 @@ document.addEventListener('DOMContentLoaded', () => {
       window.open(githubIssueUrl, '_blank');
     });
   }
+
+  // --- Submission Mode Switcher: Single vs Bulk ---
+  const btnSubmitSingle = document.getElementById('btn-submit-single');
+  const btnSubmitBulk = document.getElementById('btn-submit-bulk');
+  const submitFormEl = document.getElementById('submit-form');
+  const bulkSubmitContainer = document.getElementById('bulk-submit-container');
+
+  if (btnSubmitSingle && btnSubmitBulk) {
+    btnSubmitSingle.addEventListener('click', () => {
+      btnSubmitSingle.classList.add('active');
+      btnSubmitBulk.classList.remove('active');
+      if (submitFormEl) submitFormEl.style.display = 'block';
+      if (bulkSubmitContainer) bulkSubmitContainer.style.display = 'none';
+    });
+
+    btnSubmitBulk.addEventListener('click', () => {
+      btnSubmitBulk.classList.add('active');
+      btnSubmitSingle.classList.remove('active');
+      if (submitFormEl) submitFormEl.style.display = 'none';
+      if (bulkSubmitContainer) bulkSubmitContainer.style.display = 'block';
+    });
+  }
+
+  // --- Bulk Queue Logic ---
+  const bulkDropzoneBox = document.getElementById('bulk-dropzone-box');
+  const subBulkFiles = document.getElementById('sub-bulk-files');
+  const bulkQueueList = document.getElementById('bulk-queue-list');
+  const btnSubmitBulkAll = document.getElementById('btn-submit-bulk-all');
+
+  let bulkQueue = []; // items: { id, file, title, author, category, previewUrl }
+
+  if (bulkDropzoneBox && subBulkFiles) {
+    bulkDropzoneBox.addEventListener('click', () => subBulkFiles.click());
+
+    ['dragenter', 'dragover'].forEach(evt => {
+      bulkDropzoneBox.addEventListener(evt, (e) => {
+        e.preventDefault();
+        bulkDropzoneBox.classList.add('dragover');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+      bulkDropzoneBox.addEventListener(evt, (e) => {
+        e.preventDefault();
+        bulkDropzoneBox.classList.remove('dragover');
+      });
+    });
+
+    bulkDropzoneBox.addEventListener('drop', (e) => {
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        handleBulkFiles(e.dataTransfer.files);
+      }
+    });
+
+    subBulkFiles.addEventListener('change', () => {
+      if (subBulkFiles.files && subBulkFiles.files.length > 0) {
+        handleBulkFiles(subBulkFiles.files);
+      }
+    });
+  }
+
+  function handleBulkFiles(files) {
+    const fileArray = Array.from(files).filter(f => f.type.startsWith('image/')).slice(0, 10);
+    fileArray.forEach(file => {
+      const qId = 'item-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4);
+      const cleanTitle = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+      const formattedTitle = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
+
+      const queueItem = {
+        id: qId,
+        file: file,
+        title: formattedTitle,
+        author: 'Community',
+        category: 'Minimalist',
+        previewUrl: URL.createObjectURL(file)
+      };
+      bulkQueue.push(queueItem);
+    });
+    renderBulkQueue();
+  }
+
+  function renderBulkQueue() {
+    if (!bulkQueueList) return;
+    bulkQueueList.innerHTML = '';
+
+    if (bulkQueue.length === 0) {
+      if (btnSubmitBulkAll) btnSubmitBulkAll.style.display = 'none';
+      return;
+    }
+
+    if (btnSubmitBulkAll) {
+      btnSubmitBulkAll.style.display = 'block';
+      btnSubmitBulkAll.textContent = `Submit All (${bulkQueue.length}) Wallpapers →`;
+    }
+
+    bulkQueue.forEach((item, idx) => {
+      const card = document.createElement('div');
+      card.className = 'bulk-item-card';
+      card.innerHTML = `
+        <img class="bulk-item-thumb" src="${item.previewUrl}" alt="Queue Thumbnail">
+        <div class="bulk-item-fields">
+          <input type="text" class="form-control bulk-input-title" data-idx="${idx}" value="${item.title}" placeholder="Title" required>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="text" class="form-control bulk-input-author" data-idx="${idx}" value="${item.author}" placeholder="Author / Artist" required style="flex: 1;">
+            <select class="form-control bulk-input-category" data-idx="${idx}" style="flex: 1;">
+              <option value="Minimalist" ${item.category === 'Minimalist' ? 'selected' : ''}>Minimalist</option>
+              <option value="Nature" ${item.category === 'Nature' ? 'selected' : ''}>Nature</option>
+              <option value="Architecture" ${item.category === 'Architecture' ? 'selected' : ''}>Architecture</option>
+              <option value="Fantasy" ${item.category === 'Fantasy' ? 'selected' : ''}>Fantasy</option>
+              <option value="Sci-Fi" ${item.category === 'Sci-Fi' ? 'selected' : ''}>Sci-Fi</option>
+              <option value="Anime" ${item.category === 'Anime' ? 'selected' : ''}>Anime</option>
+              <option value="Abstract" ${item.category === 'Abstract' ? 'selected' : ''}>Abstract</option>
+              <option value="Art" ${item.category === 'Art' ? 'selected' : ''}>Art</option>
+              <option value="Pop Culture" ${item.category === 'Pop Culture' ? 'selected' : ''}>Pop Culture</option>
+              <option value="Quotes" ${item.category === 'Quotes' ? 'selected' : ''}>Quotes</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" class="btn-remove bulk-btn-remove" data-idx="${idx}">✕</button>
+      `;
+
+      card.querySelector('.bulk-input-title').addEventListener('input', (e) => {
+        bulkQueue[idx].title = e.target.value;
+      });
+      card.querySelector('.bulk-input-author').addEventListener('input', (e) => {
+        bulkQueue[idx].author = e.target.value;
+      });
+      card.querySelector('.bulk-input-category').addEventListener('change', (e) => {
+        bulkQueue[idx].category = e.target.value;
+      });
+      card.querySelector('.bulk-btn-remove').addEventListener('click', () => {
+        bulkQueue.splice(idx, 1);
+        renderBulkQueue();
+      });
+
+      bulkQueueList.appendChild(card);
+    });
+  }
+
+  if (btnSubmitBulkAll) {
+    btnSubmitBulkAll.addEventListener('click', async () => {
+      if (bulkQueue.length === 0) return;
+
+      btnSubmitBulkAll.disabled = true;
+      btnSubmitBulkAll.textContent = `Uploading batch (1 of ${bulkQueue.length})... ⏳`;
+
+      for (let i = 0; i < bulkQueue.length; i++) {
+        const item = bulkQueue[i];
+        btnSubmitBulkAll.textContent = `Processing image ${i + 1} of ${bulkQueue.length}... ⏳`;
+
+        let imageUrl = await uploadImageFile(item.file);
+        if (!imageUrl) {
+          imageUrl = `[Uploaded File: ${item.file.name}]`;
+        }
+
+        const issueTitle = encodeURIComponent(`Screensaver Submission: ${item.title}`);
+        const bodyLines = [
+          `### Screensaver Submission`,
+          ``,
+          `**Title:** ${item.title}`,
+          `**Author:** ${item.author}`,
+          `**Category:** ${item.category}`,
+          `**Image:** ${imageUrl}`,
+          `**Specs:** Batch upload (${(item.file.size / 1024).toFixed(0)} KB)`,
+          ``,
+          `---`,
+          `*Submitted via Storefront Screensaver Catalog Site (Batch Upload ${i + 1}/${bulkQueue.length})*`
+        ];
+
+        const issueBody = encodeURIComponent(bodyLines.join('\n'));
+        const repoUrl = 'https://github.com/ultimatejimmy/storefront-screensavers';
+        const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&body=${issueBody}`;
+
+        window.open(githubIssueUrl, '_blank');
+      }
+
+      btnSubmitBulkAll.disabled = false;
+      btnSubmitBulkAll.textContent = `Submit All (${bulkQueue.length}) Wallpapers →`;
+      alert(`Opened ${bulkQueue.length} GitHub submission tab(s)! Click submit on each tab to finish.`);
+    });
+  }
+
+  // --- Suggest Change Drawer Logic ---
+  const drawerBackdrop = document.getElementById('suggest-drawer-backdrop');
+  const suggestDrawer = document.getElementById('suggest-drawer');
+  const btnCloseSuggest = document.getElementById('btn-close-suggest');
+  const suggestForm = document.getElementById('suggest-form');
+  const suggestTypeSelect = document.getElementById('suggest-type');
+  const groupSuggestUrl = document.getElementById('group-suggest-url');
+
+  function openSuggestDrawer(item) {
+    if (!suggestDrawer || !drawerBackdrop) return;
+
+    document.getElementById('suggest-item-id').value = item.id || '';
+    document.getElementById('suggest-target-img').src = item.thumbnailUrl || '';
+    document.getElementById('suggest-target-title').textContent = item.title || 'Wallpaper';
+    document.getElementById('suggest-target-author').textContent = `by ${item.author || 'Unknown'}`;
+
+    document.getElementById('suggest-title').value = item.title || '';
+    document.getElementById('suggest-author').value = item.author || '';
+    document.getElementById('suggest-category').value = item.category || '';
+    document.getElementById('suggest-reason').value = '';
+
+    suggestDrawer.classList.add('open');
+    drawerBackdrop.classList.add('open');
+  }
+
+  function closeSuggestDrawer() {
+    if (!suggestDrawer || !drawerBackdrop) return;
+    suggestDrawer.classList.remove('open');
+    drawerBackdrop.classList.remove('open');
+  }
+
+  if (btnCloseSuggest) btnCloseSuggest.addEventListener('click', closeSuggestDrawer);
+  if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeSuggestDrawer);
+
+  if (suggestTypeSelect && groupSuggestUrl) {
+    suggestTypeSelect.addEventListener('change', () => {
+      groupSuggestUrl.style.display = (suggestTypeSelect.value === 'replacement') ? 'block' : 'none';
+    });
+  }
+
+  if (suggestForm) {
+    suggestForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const itemId = document.getElementById('suggest-item-id').value;
+      const targetTitle = document.getElementById('suggest-target-title').textContent;
+      const type = suggestTypeSelect.value;
+      const newTitle = document.getElementById('suggest-title').value;
+      const newAuthor = document.getElementById('suggest-author').value;
+      const newCategory = document.getElementById('suggest-category').value;
+      const newUrl = document.getElementById('suggest-url').value;
+      const reason = document.getElementById('suggest-reason').value;
+
+      const typeLabels = {
+        metadata: 'Metadata Correction',
+        replacement: 'Replacement Image',
+        issue: 'Low Quality / Issue Report'
+      };
+
+      const issueTitle = encodeURIComponent(`Change Suggestion: [${itemId}] ${targetTitle}`);
+      const bodyLines = [
+        `### Catalog Change Suggestion`,
+        ``,
+        `**Target Item ID:** \`${itemId}\``,
+        `**Change Type:** ${typeLabels[type] || type}`,
+        ``,
+        `**Proposed Title:** ${newTitle}`,
+        `**Proposed Author:** ${newAuthor}`,
+        `**Proposed Category:** ${newCategory}`,
+      ];
+
+      if (type === 'replacement' && newUrl) {
+        bodyLines.push(`**Replacement Image URL:** ${newUrl}`);
+      }
+
+      bodyLines.push(``, `**Reason / Details:**`, reason, ``, `---`, `*Submitted via Storefront Screensaver Catalog Site*`);
+
+      const issueBody = encodeURIComponent(bodyLines.join('\n'));
+      const repoUrl = 'https://github.com/ultimatejimmy/storefront-screensavers';
+      const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&labels=suggest-change&body=${issueBody}`;
+
+      window.open(githubIssueUrl, '_blank');
+      closeSuggestDrawer();
+    });
+  }
 });
+
