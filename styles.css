@@ -304,17 +304,18 @@ body::after {
 }
 
 .card-image-wrap.transparent-bg .card-img {
-  object-fit: fill;
   width: 100%;
   height: 100%;
+  object-fit: contain;
   position: absolute;
   inset: 0;
   padding: 0;
+  margin: 0;
   transition: transform 0.4s ease;
 }
 
 .card-image-wrap.transparent-bg:hover .card-img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 /* Book Text Mode Preview for Transparent Overlays (Sherlock Holmes - A Study in Scarlet) */
