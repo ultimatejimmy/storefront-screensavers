@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Storefront Screensavers - Wallhaven Review</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #0f172a; color: #f8fafc; font-family: system-ui, sans-serif; margin: 0; padding: 20px; }
+    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 16px; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+    h1 { margin: 0; font-size: 1.4rem; }
+    .stats { color: #94a3b8; font-size: 0.9rem; margin-top: 4px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .card { background: #1e293b; border: 2px solid #334155; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.2s; }
+    .card.approved { border-color: #22c55e; }
+    .card.rejected { border-color: #ef4444; opacity: 0.4; filter: grayscale(80%); }
+    .card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; background: #1e293b; }
+    .card-body { padding: 12px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .card-title { font-size: 0.95rem; font-weight: 600; color: #f1f5f9; margin: 0; }
+    .card-author { font-size: 0.8rem; color: #94a3b8; margin: 0; }
+    .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+    .badge { padding: 2px 8px; font-size: 0.7rem; border-radius: 4px; background: #334155; color: #cbd5e1; }
+    .badge-lic { background: #0369a1; color: #bae6fd; }
+    .actions { display: flex; gap: 8px; margin-top: auto; padding-top: 8px; }
+    .actions button { flex: 1; padding: 8px; font-weight: 600; border-radius: 6px; border: none; cursor: pointer; font-size: 0.85rem; }
+    .btn-approve { background: #22c55e; color: #052e16; }
+    .btn-reject  { background: #ef4444; color: #450a0a; }
+    .btn-export  { background: #8b5cf6; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; border: none; cursor: pointer; font-weight: bold; white-space: nowrap; }
+  </style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>🖼 Wallhaven Modern Screensaver Review</h1>
+    <div class="stats" id="stats">Loading…</div>
+  </div>
+  <button class="btn-export" onclick="exportApproved()">💾 Export approved_wallhaven.json</button>
+</header>
+<div class="grid" id="grid"></div>
+<script>
+const candidates = [
+  {
+    "id": "wh-8g9wyy",
+    "title": "Ketewstudio Minimalism Anime",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8g9wyy.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8g9wyy.png",
+    "previewPath": "review_thumbs_wallhaven/wh-8g9wyy.jpg"
+  },
+  {
+    "id": "wh-zpdjww",
+    "title": "Black Minimalism Centered",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/zp/wallhaven-zpdjww.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/zp/wallhaven-zpdjww.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-zpdjww.jpg"
+  },
+  {
+    "id": "wh-e86q5l",
+    "title": "Black Minimalism Centered",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e86q5l.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e86q5l.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-e86q5l.jpg"
+  },
+  {
+    "id": "wh-8g9m8j",
+    "title": "Anime Minimalism Miyamoto Musashi (Vagabond)",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8g9m8j.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8g9m8j.png",
+    "previewPath": "review_thumbs_wallhaven/wh-8g9m8j.jpg"
+  },
+  {
+    "id": "wh-xedgkd",
+    "title": "Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xedgkd.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xedgkd.png",
+    "previewPath": "review_thumbs_wallhaven/wh-xedgkd.jpg"
+  },
+  {
+    "id": "wh-rqpmjj",
+    "title": "Lego Digital Art Black",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/rq/wallhaven-rqpmjj.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/rq/wallhaven-rqpmjj.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-rqpmjj.jpg"
+  },
+  {
+    "id": "wh-lyj1kp",
+    "title": "Goldn_Arts Painting Canvas",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyj1kp.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyj1kp.png",
+    "previewPath": "review_thumbs_wallhaven/wh-lyj1kp.jpg"
+  },
+  {
+    "id": "wh-3q6mry",
+    "title": "Knight Digital Art Dark",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/3q/wallhaven-3q6mry.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/3q/wallhaven-3q6mry.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-3q6mry.jpg"
+  },
+  {
+    "id": "wh-qrmqp5",
+    "title": "Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrmqp5.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrmqp5.png",
+    "previewPath": "review_thumbs_wallhaven/wh-qrmqp5.jpg"
+  },
+  {
+    "id": "wh-gwd5ee",
+    "title": "Shotaro Kaneda Akira Manga",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwd5ee.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwd5ee.png",
+    "previewPath": "review_thumbs_wallhaven/wh-gwd5ee.jpg"
+  },
+  {
+    "id": "wh-e86d9k",
+    "title": "Blender Paper Airplane",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e86d9k.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e86d9k.png",
+    "previewPath": "review_thumbs_wallhaven/wh-e86d9k.jpg"
+  },
+  {
+    "id": "wh-21oqwm",
+    "title": "Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/21/wallhaven-21oqwm.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/21/wallhaven-21oqwm.png",
+    "previewPath": "review_thumbs_wallhaven/wh-21oqwm.jpg"
+  },
+  {
+    "id": "wh-k8log6",
+    "title": "Vortex 3D Abstract Simple Background",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/k8/wallhaven-k8log6.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/k8/wallhaven-k8log6.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-k8log6.jpg"
+  },
+  {
+    "id": "wh-ogj9m9",
+    "title": "Street Fighter Vi Capcom Artwork",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/og/wallhaven-ogj9m9.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/og/wallhaven-ogj9m9.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-ogj9m9.jpg"
+  },
+  {
+    "id": "wh-yq9x8x",
+    "title": "Nasa Humor Text",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/yq/wallhaven-yq9x8x.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/yq/wallhaven-yq9x8x.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-yq9x8x.jpg"
+  },
+  {
+    "id": "wh-qrozvd",
+    "title": "Pulsars Science Black Background",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrozvd.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrozvd.png",
+    "previewPath": "review_thumbs_wallhaven/wh-qrozvd.jpg"
+  },
+  {
+    "id": "wh-jedwzp",
+    "title": "Artem Demura Dark Robes",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/je/wallhaven-jedwzp.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/je/wallhaven-jedwzp.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-jedwzp.jpg"
+  },
+  {
+    "id": "wh-ogjdy7",
+    "title": "Trigun Vash The Stampede Minimalism",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/og/wallhaven-ogjdy7.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/og/wallhaven-ogjdy7.png",
+    "previewPath": "review_thumbs_wallhaven/wh-ogjdy7.jpg"
+  },
+  {
+    "id": "wh-xed2mo",
+    "title": "Linux Arch Linux Pink",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xed2mo.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xed2mo.png",
+    "previewPath": "review_thumbs_wallhaven/wh-xed2mo.jpg"
+  },
+  {
+    "id": "wh-jedx5w",
+    "title": "Mew Pokémon Minimalism",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/je/wallhaven-jedx5w.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/je/wallhaven-jedx5w.png",
+    "previewPath": "review_thumbs_wallhaven/wh-jedx5w.jpg"
+  },
+  {
+    "id": "wh-7jl91e",
+    "title": "Anime Minimalism White",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/7j/wallhaven-7jl91e.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/7j/wallhaven-7jl91e.png",
+    "previewPath": "review_thumbs_wallhaven/wh-7jl91e.jpg"
+  },
+  {
+    "id": "wh-e86kwo",
+    "title": "Dark Simple Background Centered",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e86kwo.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e86kwo.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-e86kwo.jpg"
+  },
+  {
+    "id": "wh-rqp8x1",
+    "title": "Cgi Digital Art 3D Abstract",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/rq/wallhaven-rqp8x1.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/rq/wallhaven-rqp8x1.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-rqp8x1.jpg"
+  },
+  {
+    "id": "wh-jed8yq",
+    "title": "Landscape Nature Mountains",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Minimalist",
+    "sourceUrl": "https://w.wallhaven.cc/full/je/wallhaven-jed8yq.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/je/wallhaven-jed8yq.png",
+    "previewPath": "review_thumbs_wallhaven/wh-jed8yq.jpg"
+  },
+  {
+    "id": "wh-xedg6l",
+    "title": "Bsk_Photo Photography Scenery",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xedg6l.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xedg6l.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-xedg6l.jpg"
+  },
+  {
+    "id": "wh-qrmkqq",
+    "title": "Hitoritabikenkyu Photography Rural",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrmkqq.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrmkqq.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-qrmkqq.jpg"
+  },
+  {
+    "id": "wh-rqp9jw",
+    "title": "Forza Horizon 6 Porsche 911 Car",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/rq/wallhaven-rqp9jw.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/rq/wallhaven-rqp9jw.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-rqp9jw.jpg"
+  },
+  {
+    "id": "wh-d8ojdm",
+    "title": "Mount Hood Landscape Volcano",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/d8/wallhaven-d8ojdm.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/d8/wallhaven-d8ojdm.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-d8ojdm.jpg"
+  },
+  {
+    "id": "wh-mlg59k",
+    "title": "Lorenzo Decaria Hillsboro Hillsboro, Or",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/ml/wallhaven-mlg59k.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ml/wallhaven-mlg59k.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-mlg59k.jpg"
+  },
+  {
+    "id": "wh-xedo8v",
+    "title": "Dom Haughton England Edale Valley",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xedo8v.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xedo8v.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-xedo8v.jpg"
+  },
+  {
+    "id": "wh-jeyo1m",
+    "title": "Tides Of Annihilation Dark Post Apocalypse",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/je/wallhaven-jeyo1m.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/je/wallhaven-jeyo1m.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-jeyo1m.jpg"
+  },
+  {
+    "id": "wh-5ym8p1",
+    "title": "Artstation Digital Art Illustration",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/5y/wallhaven-5ym8p1.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/5y/wallhaven-5ym8p1.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-5ym8p1.jpg"
+  },
+  {
+    "id": "wh-lyj5gl",
+    "title": "Lison Zhao Zermatt Matterhorn",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyj5gl.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyj5gl.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-lyj5gl.jpg"
+  },
+  {
+    "id": "wh-lyj56q",
+    "title": "City Fog Horror",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyj56q.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyj56q.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-lyj56q.jpg"
+  },
+  {
+    "id": "wh-qrm855",
+    "title": "Artstation Ultrawide Wide Angle",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrm855.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrm855.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-qrm855.jpg"
+  },
+  {
+    "id": "wh-8g9vo2",
+    "title": "Pierre (Tounis_9) Switzerland Lake Lugano",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8g9vo2.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8g9vo2.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-8g9vo2.jpg"
+  },
+  {
+    "id": "wh-7jev2v",
+    "title": "Marc Barrot Hong Kong China",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/7j/wallhaven-7jev2v.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/7j/wallhaven-7jev2v.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-7jev2v.jpg"
+  },
+  {
+    "id": "wh-mlg6d8",
+    "title": "Total War: Warhammer Iii Sega Creative Assembly",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/ml/wallhaven-mlg6d8.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ml/wallhaven-mlg6d8.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-mlg6d8.jpg"
+  },
+  {
+    "id": "wh-po71ke",
+    "title": "Pierre (Tounis_9) Switzerland Émosson Dam",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/po/wallhaven-po71ke.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/po/wallhaven-po71ke.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-po71ke.jpg"
+  },
+  {
+    "id": "wh-7je7gv",
+    "title": "Artstation Reflection Digital Art",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/7j/wallhaven-7je7gv.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/7j/wallhaven-7je7gv.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-7je7gv.jpg"
+  },
+  {
+    "id": "wh-gwmo13",
+    "title": "Jeff Salhany Lake Louise Banff National Park",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwmo13.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwmo13.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-gwmo13.jpg"
+  },
+  {
+    "id": "wh-gwmkpe",
+    "title": "Nature Photography Depth Of Field",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwmkpe.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwmkpe.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-gwmkpe.jpg"
+  },
+  {
+    "id": "wh-8gjxoy",
+    "title": "Retro Style Surreal Architecture",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8gjxoy.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8gjxoy.png",
+    "previewPath": "review_thumbs_wallhaven/wh-8gjxoy.jpg"
+  },
+  {
+    "id": "wh-e86g7k",
+    "title": "Dom Haughton England Godrevy Lighthouse",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e86g7k.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e86g7k.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-e86g7k.jpg"
+  },
+  {
+    "id": "wh-212gxx",
+    "title": "Philipp A Urlich Artstation Dragon",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/21/wallhaven-212gxx.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/21/wallhaven-212gxx.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-212gxx.jpg"
+  },
+  {
+    "id": "wh-d8dxzm",
+    "title": "Philipp A Urlich Artstation Dragon",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/d8/wallhaven-d8dxzm.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/d8/wallhaven-d8dxzm.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-d8dxzm.jpg"
+  },
+  {
+    "id": "wh-e82xxr",
+    "title": "Mountains Rocks Nature",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e82xxr.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e82xxr.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-e82xxr.jpg"
+  },
+  {
+    "id": "wh-po7q59",
+    "title": "Patagonia Cerro Torre Argentina",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Nature/Landscapes",
+    "sourceUrl": "https://w.wallhaven.cc/full/po/wallhaven-po7q59.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/po/wallhaven-po7q59.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-po7q59.jpg"
+  },
+  {
+    "id": "wh-lydkg2",
+    "title": "Leo (Artist) Pixiv Digital Art",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lydkg2.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lydkg2.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-lydkg2.jpg"
+  },
+  {
+    "id": "wh-vpe9w8",
+    "title": "Hisanori Rurikoin Temple Kyoto",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/vp/wallhaven-vpe9w8.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/vp/wallhaven-vpe9w8.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-vpe9w8.jpg"
+  },
+  {
+    "id": "wh-d8ojrl",
+    "title": "Eric Hallquist Artstation Sky",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/d8/wallhaven-d8ojrl.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/d8/wallhaven-d8ojrl.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-d8ojrl.jpg"
+  },
+  {
+    "id": "wh-3q2zdd",
+    "title": "C.H Lam Takayama Japan",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/3q/wallhaven-3q2zdd.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/3q/wallhaven-3q2zdd.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-3q2zdd.jpg"
+  },
+  {
+    "id": "wh-1q2p3v",
+    "title": "Building Architecture Rooftops",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/1q/wallhaven-1q2p3v.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/1q/wallhaven-1q2p3v.png",
+    "previewPath": "review_thumbs_wallhaven/wh-1q2p3v.jpg"
+  },
+  {
+    "id": "wh-yq2pjk",
+    "title": "Gavin O'Donnell Artstation Plants",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/yq/wallhaven-yq2pjk.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/yq/wallhaven-yq2pjk.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-yq2pjk.jpg"
+  },
+  {
+    "id": "wh-9ogo1k",
+    "title": "Krys Decker Digital Art Agatha (Krys Decker)",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/9o/wallhaven-9ogo1k.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/9o/wallhaven-9ogo1k.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-9ogo1k.jpg"
+  },
+  {
+    "id": "wh-jeymlm",
+    "title": "Li Feng Norway Ålesund",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/je/wallhaven-jeymlm.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/je/wallhaven-jeymlm.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-jeymlm.jpg"
+  },
+  {
+    "id": "wh-xedrm3",
+    "title": "Digital Art Artwork Illustration",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xedrm3.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xedrm3.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-xedrm3.jpg"
+  },
+  {
+    "id": "wh-8g9qy1",
+    "title": "Digital Art Artwork Illustration",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8g9qy1.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8g9qy1.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-8g9qy1.jpg"
+  },
+  {
+    "id": "wh-og6ej5",
+    "title": "Genjo Mountains Asian Architecture",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/og/wallhaven-og6ej5.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/og/wallhaven-og6ej5.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-og6ej5.jpg"
+  },
+  {
+    "id": "wh-yq2pdx",
+    "title": "The Odyssey (2026) Christopher Nolan Hoyte Van Hoytema",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/yq/wallhaven-yq2pdx.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/yq/wallhaven-yq2pdx.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-yq2pdx.jpg"
+  },
+  {
+    "id": "wh-gwm3oq",
+    "title": "Anime Girls Gibun Kono Subarashii Sekai Ni Shukufuku Wo!",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwm3oq.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwm3oq.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-gwm3oq.jpg"
+  },
+  {
+    "id": "wh-k8d18q",
+    "title": "Digital Art Artwork Illustration",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/k8/wallhaven-k8d18q.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/k8/wallhaven-k8d18q.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-k8d18q.jpg"
+  },
+  {
+    "id": "wh-xedxrd",
+    "title": "Monochrome Architecture Low-Angle",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xedxrd.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/xe/wallhaven-xedxrd.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-xedxrd.jpg"
+  },
+  {
+    "id": "wh-3q6jx3",
+    "title": "Deltakosh Digital Art Artwork",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/3q/wallhaven-3q6jx3.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/3q/wallhaven-3q6jx3.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-3q6jx3.jpg"
+  },
+  {
+    "id": "wh-mly1ly",
+    "title": "Dave Wong Vernazza Cinque Terre",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/ml/wallhaven-mly1ly.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ml/wallhaven-mly1ly.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-mly1ly.jpg"
+  },
+  {
+    "id": "wh-rqpml1",
+    "title": "Assassins Creed Black Flag Resynced Video Games Waterfall",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/rq/wallhaven-rqpml1.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/rq/wallhaven-rqpml1.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-rqpml1.jpg"
+  },
+  {
+    "id": "wh-212e39",
+    "title": "Cgi Digital Art Mist",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/21/wallhaven-212e39.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/21/wallhaven-212e39.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-212e39.jpg"
+  },
+  {
+    "id": "wh-zp9q7y",
+    "title": "Digital Art Artwork Illustration",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Architecture",
+    "sourceUrl": "https://w.wallhaven.cc/full/zp/wallhaven-zp9q7y.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/zp/wallhaven-zp9q7y.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-zp9q7y.jpg"
+  },
+  {
+    "id": "wh-zpdj5o",
+    "title": "Space Dark Planet",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/zp/wallhaven-zpdj5o.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/zp/wallhaven-zpdj5o.png",
+    "previewPath": "review_thumbs_wallhaven/wh-zpdj5o.jpg"
+  },
+  {
+    "id": "wh-lyje9y",
+    "title": "Neptune Ascii Art Simple Background",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyje9y.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyje9y.png",
+    "previewPath": "review_thumbs_wallhaven/wh-lyje9y.jpg"
+  },
+  {
+    "id": "wh-po7x6p",
+    "title": "Space Deep Space Simple Background",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/po/wallhaven-po7x6p.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/po/wallhaven-po7x6p.png",
+    "previewPath": "review_thumbs_wallhaven/wh-po7x6p.jpg"
+  },
+  {
+    "id": "wh-gwm3zq",
+    "title": "Ascii Art Astronaut Low Light",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwm3zq.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwm3zq.png",
+    "previewPath": "review_thumbs_wallhaven/wh-gwm3zq.jpg"
+  },
+  {
+    "id": "wh-gwmyk7",
+    "title": "Anime Girls Smiling Hatsune Miku",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwmyk7.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwmyk7.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-gwmyk7.jpg"
+  },
+  {
+    "id": "wh-mlgmjm",
+    "title": "Space Deep Space Simple Background",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/ml/wallhaven-mlgmjm.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ml/wallhaven-mlgmjm.png",
+    "previewPath": "review_thumbs_wallhaven/wh-mlgmjm.jpg"
+  },
+  {
+    "id": "wh-7jl2lv",
+    "title": "Night Space Alone",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/7j/wallhaven-7jl2lv.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/7j/wallhaven-7jl2lv.png",
+    "previewPath": "review_thumbs_wallhaven/wh-7jl2lv.jpg"
+  },
+  {
+    "id": "wh-jeygp5",
+    "title": "Indie Virtual Youtuber Stars Long Sleeves",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/je/wallhaven-jeygp5.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/je/wallhaven-jeygp5.png",
+    "previewPath": "review_thumbs_wallhaven/wh-jeygp5.jpg"
+  },
+  {
+    "id": "wh-gwm6m3",
+    "title": "Artstation Wide Screen Wide Angle",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwm6m3.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/gw/wallhaven-gwm6m3.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-gwm6m3.jpg"
+  },
+  {
+    "id": "wh-og6ezm",
+    "title": "Digital Art Colorful Low Light",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/og/wallhaven-og6ezm.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/og/wallhaven-og6ezm.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-og6ezm.jpg"
+  },
+  {
+    "id": "wh-6lpzx7",
+    "title": "Space Deep Space Simple Background",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/6l/wallhaven-6lpzx7.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/6l/wallhaven-6lpzx7.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-6lpzx7.jpg"
+  },
+  {
+    "id": "wh-9o93mx",
+    "title": "Planet Stars Space",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/9o/wallhaven-9o93mx.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/9o/wallhaven-9o93mx.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-9o93mx.jpg"
+  },
+  {
+    "id": "wh-5y3l75",
+    "title": "Paolo Cagol Spacescapes Spaceship",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/5y/wallhaven-5y3l75.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/5y/wallhaven-5y3l75.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-5y3l75.jpg"
+  },
+  {
+    "id": "wh-lyd8xl",
+    "title": "Arc Raiders Embark Studios Abstract",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyd8xl.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyd8xl.png",
+    "previewPath": "review_thumbs_wallhaven/wh-lyd8xl.jpg"
+  },
+  {
+    "id": "wh-w5drp6",
+    "title": "Space Digital Art Dark Background",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/w5/wallhaven-w5drp6.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/w5/wallhaven-w5drp6.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-w5drp6.jpg"
+  },
+  {
+    "id": "wh-e86ggr",
+    "title": "Dune (Movie) Dune: Part Two Catpuccin",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e86ggr.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/e8/wallhaven-e86ggr.png",
+    "previewPath": "review_thumbs_wallhaven/wh-e86ggr.jpg"
+  },
+  {
+    "id": "wh-po7rdj",
+    "title": "Digital Art Cgi Spacesuit",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/po/wallhaven-po7rdj.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/po/wallhaven-po7rdj.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-po7rdj.jpg"
+  },
+  {
+    "id": "wh-k8l6ym",
+    "title": "Space Deep Space Space Art",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/k8/wallhaven-k8l6ym.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/k8/wallhaven-k8l6ym.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-k8l6ym.jpg"
+  },
+  {
+    "id": "wh-8g91zy",
+    "title": "Space Deep Space Planet",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8g91zy.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/8g/wallhaven-8g91zy.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-8g91zy.jpg"
+  },
+  {
+    "id": "wh-w5d2l6",
+    "title": "Aemeath (Wuthering Waves) Wuthering Waves Stars",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/w5/wallhaven-w5d2l6.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/w5/wallhaven-w5d2l6.png",
+    "previewPath": "review_thumbs_wallhaven/wh-w5d2l6.jpg"
+  },
+  {
+    "id": "wh-k8d8xq",
+    "title": "Starkiteckt Neptune Planet",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Sci-Fi/Space",
+    "sourceUrl": "https://w.wallhaven.cc/full/k8/wallhaven-k8d8xq.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/k8/wallhaven-k8d8xq.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-k8d8xq.jpg"
+  },
+  {
+    "id": "wh-mlg7qm",
+    "title": "Abstract Blue Purple",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/ml/wallhaven-mlg7qm.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ml/wallhaven-mlg7qm.png",
+    "previewPath": "review_thumbs_wallhaven/wh-mlg7qm.jpg"
+  },
+  {
+    "id": "wh-qrmykq",
+    "title": "Pixel Art Pokémon Emerald Pokémon",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrmykq.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrmykq.png",
+    "previewPath": "review_thumbs_wallhaven/wh-qrmykq.jpg"
+  },
+  {
+    "id": "wh-yq2z7x",
+    "title": "Alexandre Cabanel Angel Fallen Angel",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/yq/wallhaven-yq2z7x.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/yq/wallhaven-yq2z7x.png",
+    "previewPath": "review_thumbs_wallhaven/wh-yq2z7x.jpg"
+  },
+  {
+    "id": "wh-7je51y",
+    "title": "Hiroki Kawanabe Painting Canvas",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/7j/wallhaven-7je51y.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/7j/wallhaven-7je51y.png",
+    "previewPath": "review_thumbs_wallhaven/wh-7je51y.jpg"
+  },
+  {
+    "id": "wh-w5djjp",
+    "title": "Artstation Women Cgi",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/w5/wallhaven-w5djjp.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/w5/wallhaven-w5djjp.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-w5djjp.jpg"
+  },
+  {
+    "id": "wh-yq2zwl",
+    "title": "Ascii Art Nicola Samori Death",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/yq/wallhaven-yq2zwl.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/yq/wallhaven-yq2zwl.png",
+    "previewPath": "review_thumbs_wallhaven/wh-yq2zwl.jpg"
+  },
+  {
+    "id": "wh-212k56",
+    "title": "Dai Dark Q Hayashida Manga",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/21/wallhaven-212k56.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/21/wallhaven-212k56.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-212k56.jpg"
+  },
+  {
+    "id": "wh-6lykzx",
+    "title": "8K Gradient Violet",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/6l/wallhaven-6lykzx.png",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/6l/wallhaven-6lykzx.png",
+    "previewPath": "review_thumbs_wallhaven/wh-6lykzx.jpg"
+  },
+  {
+    "id": "wh-qrm1k5",
+    "title": "Mrito00 Mushoku Tensei Roxy Migurdia (Mushoku Tensei)",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrm1k5.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/qr/wallhaven-qrm1k5.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-qrm1k5.jpg"
+  },
+  {
+    "id": "wh-lyjpmr",
+    "title": "Artdroiiid_Ii Anime Anime Girls",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyjpmr.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/ly/wallhaven-lyjpmr.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-lyjpmr.jpg"
+  },
+  {
+    "id": "wh-og6m69",
+    "title": "Iskanderednaksi Original Characters Women",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/og/wallhaven-og6m69.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/og/wallhaven-og6m69.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-og6m69.jpg"
+  },
+  {
+    "id": "wh-k8l697",
+    "title": "Japan Snow Forest",
+    "author": "Wallhaven Contributor",
+    "authorUrl": "https://wallhaven.cc",
+    "category": "Dark/Abstract",
+    "sourceUrl": "https://w.wallhaven.cc/full/k8/wallhaven-k8l697.jpg",
+    "license": "Personal Use (Community Upload)",
+    "licenseUrl": "https://wallhaven.cc",
+    "attribution": "Wallhaven.cc",
+    "imageUrl": "https://w.wallhaven.cc/full/k8/wallhaven-k8l697.jpg",
+    "previewPath": "review_thumbs_wallhaven/wh-k8l697.jpg"
+  }
+];
+const state = {};
+candidates.forEach(c => state[c.id] = true);
+
+function render() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  let nApp = 0, nRej = 0;
+  candidates.forEach(c => {
+    const app = state[c.id];
+    app ? nApp++ : nRej++;
+    const card = document.createElement('div');
+    card.className = 'card ' + (app ? 'approved' : 'rejected');
+    card.innerHTML = `
+      <img src="${c.previewPath}" alt="${c.title}" loading="lazy">
+      <div class="card-body">
+        <p class="card-title">${c.title}</p>
+        <p class="card-author">${c.author}</p>
+        <div class="badges">
+          <span class="badge">${c.category}</span>
+          <span class="badge badge-lic">${c.license}</span>
+        </div>
+        <div class="actions">
+          <button class="btn-approve" onclick="set('${c.id}',true)">✅ Approve</button>
+          <button class="btn-reject"  onclick="set('${c.id}',false)">❌ Reject</button>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  document.getElementById('stats').innerText =
+    `${candidates.length} total  ·  ${nApp} approved  ·  ${nRej} rejected`;
+}
+
+function set(id, v) { state[id] = v; render(); }
+
+function exportApproved() {
+  const list = candidates.filter(c => state[c.id]);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(list,null,2)], {type:'application/json'}));
+  a.download = 'approved_wallhaven.json';
+  a.click();
+}
+
+render();
+</script>
+</body>
+</html>

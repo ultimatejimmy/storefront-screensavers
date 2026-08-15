@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Storefront Screensavers - Reddit Review</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #0f172a; color: #f8fafc; font-family: system-ui, sans-serif; margin: 0; padding: 20px; }
+    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 16px; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+    h1 { margin: 0; font-size: 1.4rem; }
+    .stats { color: #94a3b8; font-size: 0.9rem; margin-top: 4px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .card { background: #1e293b; border: 2px solid #334155; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.2s; }
+    .card.approved { border-color: #22c55e; }
+    .card.rejected { border-color: #ef4444; opacity: 0.4; filter: grayscale(80%); }
+    .card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; background: #1e293b; }
+    .card-body { padding: 12px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .card-title { font-size: 0.95rem; font-weight: 600; color: #f1f5f9; margin: 0; }
+    .card-author { font-size: 0.8rem; color: #94a3b8; margin: 0; }
+    .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+    .badge { padding: 2px 8px; font-size: 0.7rem; border-radius: 4px; background: #334155; color: #cbd5e1; }
+    .badge-lic { background: #0369a1; color: #bae6fd; }
+    .actions { display: flex; gap: 8px; margin-top: auto; padding-top: 8px; }
+    .actions button { flex: 1; padding: 8px; font-weight: 600; border-radius: 6px; border: none; cursor: pointer; font-size: 0.85rem; }
+    .btn-approve { background: #22c55e; color: #052e16; }
+    .btn-reject  { background: #ef4444; color: #450a0a; }
+    .btn-export  { background: #8b5cf6; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; border: none; cursor: pointer; font-weight: bold; white-space: nowrap; }
+  </style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>🖼 Reddit Screensaver Review</h1>
+    <div class="stats" id="stats">Loading…</div>
+  </div>
+  <button class="btn-export" onclick="exportApproved()">💾 Export approved_reddit.json</button>
+</header>
+<div class="grid" id="grid"></div>
+<script>
+const candidates = [
+  {
+    "id": "rd-1kn8wn2-klsydcc4cy0f1",
+    "title": "My turn to share some screensavers (Image 4)",
+    "author": "u/Sad-Bobcat-6313",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kn8wn2/my_turn_to_share_some_screensavers/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kn8wn2/my_turn_to_share_some_screensavers/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kn8wn2/my_turn_to_share_some_screensavers/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/klsydcc4cy0f1.jpg?width=3024&format=pjpg&auto=webp&s=2af88f258ae725540e69d201d43f512798bacbbc",
+    "previewPath": "review_thumbs_reddit/rd-1kn8wn2-klsydcc4cy0f1.jpg"
+  },
+  {
+    "id": "rd-1kn8wn2-l7it6cc4cy0f1",
+    "title": "My turn to share some screensavers (Image 5)",
+    "author": "u/Sad-Bobcat-6313",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kn8wn2/my_turn_to_share_some_screensavers/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kn8wn2/my_turn_to_share_some_screensavers/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kn8wn2/my_turn_to_share_some_screensavers/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/l7it6cc4cy0f1.jpg?width=3024&format=pjpg&auto=webp&s=dfd558948badfc3e43f99a15df0b77f01ee3f600",
+    "previewPath": "review_thumbs_reddit/rd-1kn8wn2-l7it6cc4cy0f1.jpg"
+  },
+  {
+    "id": "rd-1kkv8de-3zi9unzjbd0f1",
+    "title": "Some of the screensavers that i made for my Kobo Aura (Image 1)",
+    "author": "u/SauceSiordia",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/3zi9unzjbd0f1.png?width=768&format=png&auto=webp&s=a582e6a7f99123a6e278f208a2ec8deba8164cf3",
+    "previewPath": "review_thumbs_reddit/rd-1kkv8de-3zi9unzjbd0f1.jpg"
+  },
+  {
+    "id": "rd-1kkv8de-626146zjbd0f1",
+    "title": "Some of the screensavers that i made for my Kobo Aura (Image 2)",
+    "author": "u/SauceSiordia",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/626146zjbd0f1.png?width=768&format=png&auto=webp&s=0a2528fc085ea3011225388f3d5229f689de1fcb",
+    "previewPath": "review_thumbs_reddit/rd-1kkv8de-626146zjbd0f1.jpg"
+  },
+  {
+    "id": "rd-1kkv8de-gaexkyyjbd0f1",
+    "title": "Some of the screensavers that i made for my Kobo Aura (Image 3)",
+    "author": "u/SauceSiordia",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/gaexkyyjbd0f1.png?width=768&format=png&auto=webp&s=f44ab3a85e5269ece6ac7661fc504ba3661edafe",
+    "previewPath": "review_thumbs_reddit/rd-1kkv8de-gaexkyyjbd0f1.jpg"
+  },
+  {
+    "id": "rd-1kkv8de-k0tmziyjbd0f1",
+    "title": "Resting Viking Warrior",
+    "author": "u/SauceSiordia",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/k0tmziyjbd0f1.png?width=768&format=png&auto=webp&s=e7a587024dba6797ea998b7ef2b8593e74c772f1",
+    "previewPath": "review_thumbs_reddit/rd-1kkv8de-k0tmziyjbd0f1.jpg"
+  },
+  {
+    "id": "rd-1kkv8de-n07wscyjbd0f1",
+    "title": "Samus Aran in Armor",
+    "author": "u/SauceSiordia",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/n07wscyjbd0f1.png?width=768&format=png&auto=webp&s=0f087843259e246ba4d5f33f65fd5ed73f36cd23",
+    "previewPath": "review_thumbs_reddit/rd-1kkv8de-n07wscyjbd0f1.jpg"
+  },
+  {
+    "id": "rd-1kkv8de-of501lzjbd0f1",
+    "title": "Artistic female portrait",
+    "author": "u/SauceSiordia",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/of501lzjbd0f1.png?width=768&format=png&auto=webp&s=3489721ed6ecc79f072815db7bd2d50e5a061885",
+    "previewPath": "review_thumbs_reddit/rd-1kkv8de-of501lzjbd0f1.jpg"
+  },
+  {
+    "id": "rd-1kkv8de-oxxpxqzjbd0f1",
+    "title": "Ryu vs Ken Hadouken",
+    "author": "u/SauceSiordia",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/oxxpxqzjbd0f1.png?width=768&format=png&auto=webp&s=3df4abf93451a27fda17edfa5525523f6c5c7f46",
+    "previewPath": "review_thumbs_reddit/rd-1kkv8de-oxxpxqzjbd0f1.jpg"
+  },
+  {
+    "id": "rd-1kkv8de-rez6pryjbd0f1",
+    "title": "Luigi reading a book",
+    "author": "u/SauceSiordia",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/rez6pryjbd0f1.png?width=768&format=png&auto=webp&s=1048ff2362ee3ffa94ad768602f594d6696784db",
+    "previewPath": "review_thumbs_reddit/rd-1kkv8de-rez6pryjbd0f1.jpg"
+  },
+  {
+    "id": "rd-1kkv8de-s25llzyjbd0f1",
+    "title": "Pepe Punching Meme",
+    "author": "u/SauceSiordia",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/s25llzyjbd0f1.png?width=768&format=png&auto=webp&s=1f7ecef4d4e5a7096f9ca1b6611607062e7030dd",
+    "previewPath": "review_thumbs_reddit/rd-1kkv8de-s25llzyjbd0f1.jpg"
+  },
+  {
+    "id": "rd-1kkv8de-w7uqnpzjbd0f1",
+    "title": "Some of the screensavers that i made for my Kobo Aura (Image 10)",
+    "author": "u/SauceSiordia",
+    "authorUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "category": "r/koreader",
+    "sourceUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "license": "Community Upload",
+    "licenseUrl": "https://reddit.com/r/koreader/comments/1kkv8de/some_of_the_screensavers_that_i_made_for_my_kobo/",
+    "attribution": "Reddit Community",
+    "imageUrl": "https://preview.redd.it/w7uqnpzjbd0f1.png?width=768&format=png&auto=webp&s=17494e53d633cd6625e00de362f1c17a9849a798",
+    "previewPath": "review_thumbs_reddit/rd-1kkv8de-w7uqnpzjbd0f1.jpg"
+  }
+];
+const state = {};
+candidates.forEach(c => state[c.id] = true);
+
+function render() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  let nApp = 0, nRej = 0;
+  candidates.forEach(c => {
+    const app = state[c.id];
+    app ? nApp++ : nRej++;
+    const card = document.createElement('div');
+    card.className = 'card ' + (app ? 'approved' : 'rejected');
+    const safeTitle = c.title.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const safeAuthor = c.author.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    card.innerHTML = `
+      <img src="${c.previewPath}" alt="${safeTitle}" loading="lazy">
+      <div class="card-body">
+        <p class="card-title">${safeTitle}</p>
+        <p class="card-author">${safeAuthor}</p>
+        <div class="badges">
+          <span class="badge">${c.category}</span>
+          <span class="badge badge-lic"><a href="${c.sourceUrl}" target="_blank" style="color:inherit; text-decoration:none;">🔗 Original Post</a></span>
+        </div>
+        <div class="actions">
+          <button class="btn-approve" onclick="set('${c.id}',true)">✅ Approve</button>
+          <button class="btn-reject"  onclick="set('${c.id}',false)">❌ Reject</button>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  document.getElementById('stats').innerText =
+    `${candidates.length} total  ·  ${nApp} approved  ·  ${nRej} rejected`;
+}
+
+function set(id, v) { state[id] = v; render(); }
+
+function exportApproved() {
+  const list = candidates.filter(c => state[c.id]);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(list,null,2)], {type:'application/json'}));
+  a.download = 'approved_reddit.json';
+  a.click();
+}
+
+render();
+</script>
+</body>
+</html>
