@@ -144,19 +144,64 @@ body::after {
   margin: 0 auto 2rem;
 }
 
-/* Controls Bar */
+/* Controls Bar (Fixed to Top on Scroll) */
 .controls-bar {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   gap: 1rem;
   margin-bottom: 2.5rem;
-  background: var(--bg-card);
+  background: rgba(11, 15, 25, 0.85);
   padding: 1rem 1.5rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 73px;
+  z-index: 90;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.controls-row-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.overlay-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-glass);
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-color);
+}
+
+.mode-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding-left: 0.4rem;
+}
+
+.mode-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.mode-btn.active {
+  background: var(--accent-purple);
+  color: white;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
 }
 
 .search-box {
@@ -247,6 +292,45 @@ body::after {
   aspect-ratio: 3/4;
   overflow: hidden;
   background: #111827;
+}
+
+/* Checkerboard Background for Transparent Overlays (Default) */
+.card-image-wrap.transparent-bg {
+  background-color: #e5e5f7;
+  background-image: repeating-linear-gradient(45deg, #c4c4cd 25%, transparent 25%, transparent 75%, #c4c4cd 75%, #c4c4cd), repeating-linear-gradient(45deg, #c4c4cd 25%, #e5e5f7 25%, #e5e5f7 75%, #c4c4cd 75%, #c4c4cd);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+}
+
+.card-image-wrap.transparent-bg .card-img {
+  object-fit: contain;
+}
+
+/* Book Text Mode Preview for Transparent Overlays */
+.card-image-wrap.transparent-bg.book-text-mode {
+  background-color: #f4f3ef !important;
+  background-image: none !important;
+}
+
+.card-image-wrap.transparent-bg.book-text-mode::before {
+  content: "CHAPTER 1\n\nIt was a quiet evening in the old library. The rain tapped softly against the window pane as Jane turned the page. The aroma of old paper and cedar filled the room. She paused, looking closely at the passage she had read three times already. The mysteries of the ancient text began to unfold before her eyes...";
+  position: absolute;
+  inset: 12px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: #1f2937;
+  overflow: hidden;
+  opacity: 0.85;
+  pointer-events: none;
+  white-space: pre-wrap;
+  user-select: none;
+  z-index: 1;
+}
+
+.card-image-wrap.transparent-bg.book-text-mode .card-img {
+  position: relative;
+  z-index: 2;
 }
 
 .card-img {

@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => console.error("Failed loading catalog", err));
 
+  let currentOverlayMode = localStorage.getItem('overlayMode') || 'checkerboard';
+
   function renderGallery(items) {
     const grid = document.getElementById('wallpaper-grid');
     grid.innerHTML = '';
@@ -56,8 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
+      // Check if transparent item
+      const isTransparent = (
+        (typeof item.category === 'string' && item.category.toLowerCase().includes('transparent')) ||
+        (Array.isArray(item.category) && item.category.some(c => String(c).toLowerCase().includes('transparent'))) ||
+        (item.thumbnailUrl && item.thumbnailUrl.toLowerCase().endsWith('.png')) ||
+        (item.id && item.id.startsWith('rb-'))
+      );
+
+      const wrapClass = 'card-image-wrap' + (isTransparent ? ' transparent-bg' : '') + (isTransparent && currentOverlayMode === 'booktext' ? ' book-text-mode' : '');
+
       card.innerHTML = `
-        <div class="card-image-wrap">
+        <div class="${wrapClass}">
           <img class="card-img" src="${item.thumbnailUrl}" alt="${item.title}" loading="lazy">
           <div class="card-overlay">
             <span style="font-size: 0.8rem; background: rgba(0,0,0,0.6); padding: 0.25rem 0.5rem; border-radius: 4px;">by ${authorDisplay}</span>
@@ -66,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="card-body">
           <h3 class="card-title">${item.title}</h3>
           <div class="card-meta">
-            <span>🏷️ ${item.category}</span>
+            <span>🏷️ ${Array.isArray(item.category) ? item.category.join(', ') : item.category}</span>
             <span>❤️ ${item.likes}</span>
           </div>
           ${attributionHtml}
@@ -83,6 +95,38 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       grid.appendChild(card);
+    });
+  }
+
+  // Transparent Overlay Preview Mode Toggle Listener
+  const overlayToggleBtns = document.querySelectorAll('#overlay-mode-toggle .mode-btn');
+  if (overlayToggleBtns.length > 0) {
+    // Set initial active state based on localStorage
+    overlayToggleBtns.forEach(btn => {
+      if (btn.getAttribute('data-mode') === currentOverlayMode) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+
+      btn.addEventListener('click', () => {
+        const mode = btn.getAttribute('data-mode');
+        currentOverlayMode = mode;
+        localStorage.setItem('overlayMode', mode);
+
+        overlayToggleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Apply class to all current transparent wraps
+        const transparentWraps = document.querySelectorAll('.card-image-wrap.transparent-bg');
+        transparentWraps.forEach(wrap => {
+          if (mode === 'booktext') {
+            wrap.classList.add('book-text-mode');
+          } else {
+            wrap.classList.remove('book-text-mode');
+          }
+        });
+      });
     });
   }
 
