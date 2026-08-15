@@ -13,7 +13,10 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/foggy-forest-pines.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/foggy-forest-pines.jpg",
     "downloads": 142,
-    "likes": 289
+    "likes": 289,
+    "license": "Community Share",
+    "attribution": "Unsplash (CC0)",
+    "sourceUrl": ""
   },
   {
     "id": "minimalist-ocean-waves",
@@ -28,7 +31,10 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimalist-ocean-waves.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimalist-ocean-waves.jpg",
     "downloads": 210,
-    "likes": 412
+    "likes": 412,
+    "license": "Community Share",
+    "attribution": "Unsplash (CC0)",
+    "sourceUrl": ""
   },
   {
     "id": "cosmic-nebula-monochrome",
@@ -43,7 +49,10 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/cosmic-nebula-monochrome.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/cosmic-nebula-monochrome.jpg",
     "downloads": 98,
-    "likes": 175
+    "likes": 175,
+    "license": "Community Share",
+    "attribution": "Unsplash (CC0)",
+    "sourceUrl": ""
   },
   {
     "id": "cozy-window-cat",
@@ -58,7 +67,10 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/cozy-window-cat.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/cozy-window-cat.jpg",
     "downloads": 315,
-    "likes": 530
+    "likes": 530,
+    "license": "Community Share",
+    "attribution": "Unsplash (CC0)",
+    "sourceUrl": ""
   },
   {
     "id": "starry-cat",
@@ -73,7 +85,10 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/starry-cat.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/starry-cat.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "license": "Community Share",
+    "attribution": "brpjtf2",
+    "sourceUrl": ""
   },
   {
     "id": "eyes-in-the-woods",
@@ -88,7 +103,10 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/eyes-in-the-woods.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/eyes-in-the-woods.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "license": "Community Share",
+    "attribution": "brpjtf2",
+    "sourceUrl": ""
   },
   {
     "id": "trash-panda",
@@ -103,7 +121,10 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/trash-panda.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/trash-panda.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "license": "Community Share",
+    "attribution": "brpjtf2",
+    "sourceUrl": ""
   },
   {
     "id": "house-elf-liberation-front",
@@ -118,7 +139,10 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/house-elf-liberation-front.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/house-elf-liberation-front.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "license": "Community Share",
+    "attribution": "brpjtf2",
+    "sourceUrl": ""
   },
   {
     "id": "durer-rhinoceros-woodcut",
@@ -4682,7 +4706,7 @@
     "title": "Monochrome Ink Landscape I",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4703,7 +4727,7 @@
     "title": "Starry Forest Night",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4724,7 +4748,7 @@
     "title": "Ocean Wave Stipple Art",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4745,7 +4769,7 @@
     "title": "Deep Forest Fog",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4766,7 +4790,7 @@
     "title": "Geometric Lunar Cycles",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Minimalist",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4787,7 +4811,7 @@
     "title": "Mountain Lake Reflection",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4808,7 +4832,7 @@
     "title": "Cozy Library Nook",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Minimalist",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4829,7 +4853,7 @@
     "title": "Dense Evergreen Forest",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4850,7 +4874,7 @@
     "title": "Celestial Sun & Stars",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Abstract",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4871,7 +4895,7 @@
     "title": "Atmospheric Cloud Horizons",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4892,7 +4916,7 @@
     "title": "Monochrome Ink Landscape II",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4934,7 +4958,7 @@
     "title": "Starlit Mountain Peak",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Sci-Fi",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4955,7 +4979,7 @@
     "title": "Ink Wash Pine Woods",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4976,7 +5000,7 @@
     "title": "Moonlit Ocean Horizon",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4997,7 +5021,7 @@
     "title": "Abstract Wave Ribbons",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Abstract",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5018,7 +5042,7 @@
     "title": "High Detail Wilderness",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5039,7 +5063,7 @@
     "title": "Minimalist Crescent Moon",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Minimalist",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5060,7 +5084,7 @@
     "title": "Bamboo Forest Sunlight",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5081,7 +5105,7 @@
     "title": "Botanical Leaf Silhouette",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5102,7 +5126,7 @@
     "title": "Atmospheric Mountain Fog",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5123,7 +5147,7 @@
     "title": "High Resolution Landscape II-A",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5144,7 +5168,7 @@
     "title": "High Resolution Landscape II-B",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5165,7 +5189,7 @@
     "title": "High Resolution Landscape II-C",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5186,7 +5210,7 @@
     "title": "High Resolution Master Canvas",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5207,7 +5231,7 @@
     "title": "Cosmic Portal Horizon",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Sci-Fi",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5228,7 +5252,7 @@
     "title": "Starry Night Valley Vista",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5249,7 +5273,7 @@
     "title": "Mountain Sunset Outline",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5291,7 +5315,7 @@
     "title": "Minimalist Desert Cactus",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5312,7 +5336,7 @@
     "title": "Ink Splash Waves",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5333,7 +5357,7 @@
     "title": "Cozy Coffee & Reading",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Minimalist",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5354,7 +5378,7 @@
     "title": "Japanese Torii Gate",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Architecture",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5375,7 +5399,7 @@
     "title": "Forest Under Stars",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5396,7 +5420,7 @@
     "title": "Geometric Mountain Sun",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5417,7 +5441,7 @@
     "title": "Misty Pine Forest Path",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5438,7 +5462,7 @@
     "title": "Solitary Tree in Fog",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5459,7 +5483,7 @@
     "title": "Minimalist Star Lines",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Sci-Fi",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5480,7 +5504,7 @@
     "title": "Celestial Moon Phase",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Sci-Fi",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5501,7 +5525,7 @@
     "title": "Quiet Lake Reflection",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5522,7 +5546,7 @@
     "title": "Starlight Mountain Vista",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5543,7 +5567,7 @@
     "title": "Quiet Woodland Path",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5564,7 +5588,7 @@
     "title": "Crescent Moon & Waves",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5585,7 +5609,7 @@
     "title": "Minimalist Floral Stems",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5606,7 +5630,7 @@
     "title": "Mountain Ridge Line Art",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5627,7 +5651,7 @@
     "title": "Appa Soaring",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Pop Culture",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5648,7 +5672,7 @@
     "title": "Solitary Mountain Peak",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5669,7 +5693,7 @@
     "title": "Forest Canopy Starlight",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5690,7 +5714,7 @@
     "title": "Misty Pine Ridge",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5711,7 +5735,7 @@
     "title": "Lunar Celestial Eclipse",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Sci-Fi",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5732,7 +5756,7 @@
     "title": "Detailed Botanical Ferns",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5753,7 +5777,7 @@
     "title": "Floating Island Sanctuary",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Sci-Fi",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5774,7 +5798,7 @@
     "title": "Minimalist Dune Horizon",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5816,7 +5840,7 @@
     "title": "Ink-Wash Wave Crest",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5837,7 +5861,7 @@
     "title": "Crescent Moon Reader",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Minimalist",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5858,7 +5882,7 @@
     "title": "Starry Sky Valley",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5879,7 +5903,7 @@
     "title": "Serene Bamboo Grove",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5900,7 +5924,7 @@
     "title": "Dark Celestial Constellations",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Sci-Fi",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5921,7 +5945,7 @@
     "title": "Mountain Sunset Silhouette",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5942,7 +5966,7 @@
     "title": "Cozy Coffee & Open Book",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Minimalist",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5963,7 +5987,7 @@
     "title": "Starlight Forest Vista",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5984,7 +6008,7 @@
     "title": "Midnight Sea Lighthouse",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -6005,7 +6029,7 @@
     "title": "Deep Space Galaxy Swirl",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Sci-Fi",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -6026,7 +6050,7 @@
     "title": "Geometric Topographic Lines",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Minimalist",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -6047,7 +6071,7 @@
     "title": "Minimalist Wildflowers",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -6068,7 +6092,7 @@
     "title": "Japanese Castle Under Moon",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Architecture",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -6089,7 +6113,7 @@
     "title": "Sunlit Pine Woods",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -6110,7 +6134,7 @@
     "title": "Desert Night Dunes",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -6131,7 +6155,7 @@
     "title": "Forest River Reflections",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -6152,7 +6176,7 @@
     "title": "High Contrast Cloudscape",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -6173,7 +6197,7 @@
     "title": "Atmospheric Mist Valley",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Nature",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -6194,7 +6218,7 @@
     "title": "Geometric Mandala Pattern",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Abstract",
+    "category": "Transparent",
     "compatibility": [
       "Kindle",
       "Kobo",

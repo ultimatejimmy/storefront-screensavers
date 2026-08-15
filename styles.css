@@ -306,7 +306,7 @@ body::after {
 .card-image-wrap.transparent-bg .card-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: fill;
   position: absolute;
   inset: 0;
   padding: 0;
