@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalog Management Studio — Storefront Screensavers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="studio-body">
+
+  <!-- Header / Navigation Bar -->
+  <header class="studio-header">
+    <div class="header-left">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Catalog Studio</h1>
+          <span class="brand-badge">Storefront</span>
+        </div>
+      </div>
+      <div class="header-stats" id="header-stats">
+        <span class="stat-item"><strong id="stat-total">0</strong> Screensavers</span>
+        <span class="stat-divider">•</span>
+        <span class="stat-item"><strong id="stat-categories">0</strong> Categories</span>
+        <span class="stat-divider">•</span>
+        <span class="stat-item"><strong id="stat-transparent">0</strong> Transparent</span>
+      </div>
+    </div>
+
+    <div class="header-center">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="catalog-search" class="search-input" placeholder="Search by title, author, category, ID... (Press '/' to focus)" autocomplete="off">
+        <button id="clear-search-btn" class="clear-search-btn" title="Clear search">✕</button>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <button class="btn btn-secondary" id="btn-sync-all" title="Sync CREDITS.md, verify images & thumbnails, and normalize catalog URLs">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        <span>Sync Everything</span>
+      </button>
+
+      <button class="btn btn-secondary" id="btn-backups" title="View catalog snapshots & backups">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+        <span>Backups</span>
+      </button>
+
+      <button class="btn btn-primary" id="btn-add-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        <span>Add Wallpaper</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Filter & Controls Toolbar -->
+  <div class="toolbar">
+    <div class="category-scroll-container">
+      <div class="category-chips" id="category-chips">
+        <button class="chip active" data-category="all">All <span class="chip-count" id="count-all">0</span></button>
+        <!-- Dynamic category chips will be injected here -->
+      </div>
+    </div>
+
+    <div class="toolbar-actions">
+      <div class="filter-dropdown-group">
+        <label for="filter-status" class="toolbar-label">Status:</label>
+        <select id="filter-status" class="select-input">
+          <option value="all">All Items</option>
+          <option value="transparent">Transparent PNGs</option>
+          <option value="missing-source">Missing Source URL</option>
+          <option value="missing-attribution">Missing Attribution</option>
+        </select>
+      </div>
+
+      <div class="filter-dropdown-group">
+        <label for="sort-by" class="toolbar-label">Sort:</label>
+        <select id="sort-by" class="select-input">
+          <option value="default">Catalog Order</option>
+          <option value="title-asc">Title (A-Z)</option>
+          <option value="title-desc">Title (Z-A)</option>
+          <option value="author-asc">Author (A-Z)</option>
+          <option value="category">Category</option>
+          <option value="likes-desc">Most Likes</option>
+          <option value="downloads-desc">Most Downloads</option>
+        </select>
+      </div>
+
+      <div class="filter-dropdown-group">
+        <label class="toolbar-label">Transparency:</label>
+        <div class="view-toggles" id="overlay-mode-toggles">
+          <button type="button" class="view-btn active" id="btn-mode-grid" title="Light Checkerboard Grid">🏁 Grid</button>
+          <button type="button" class="view-btn" id="btn-mode-book" title="Book Text Background">📖 Book</button>
+        </div>
+      </div>
+
+      <div class="view-toggles">
+        <button class="view-btn active" id="view-grid-btn" title="Grid View">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        </button>
+        <button class="view-btn" id="view-table-btn" title="Table View">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Batch Action Floating Bar -->
+  <div class="batch-bar hidden" id="batch-bar">
+    <div class="batch-info">
+      <span class="batch-count" id="batch-count">0 items selected</span>
+      <button class="batch-btn-clear" id="batch-clear-btn">Deselect All</button>
+    </div>
+    <div class="batch-actions">
+      <div class="batch-action-item">
+        <select id="batch-category-select" class="select-input select-small">
+          <option value="">Add Category...</option>
+        </select>
+        <button class="btn btn-secondary btn-small" id="batch-apply-category">+ Add to Selected</button>
+      </div>
+      <div class="batch-action-item">
+        <button class="btn btn-danger btn-small" id="batch-delete-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          Delete Selected
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main App Layout -->
+  <main class="studio-main">
+
+    <!-- Catalog Content -->
+    <div class="catalog-container" id="catalog-container">
+      <!-- Grid View -->
+      <div class="catalog-grid" id="catalog-grid"></div>
+      
+      <!-- Table View (Hidden by default) -->
+      <div class="catalog-table-wrapper hidden" id="catalog-table-wrapper">
+        <table class="catalog-table" id="catalog-table">
+          <thead>
+            <tr>
+              <th width="36"><input type="checkbox" id="table-select-all" title="Select All"></th>
+              <th width="70">Preview</th>
+              <th>Title</th>
+              <th>Categories</th>
+              <th>Author / Artist</th>
+              <th>License</th>
+              <th width="100">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="catalog-table-body"></tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state hidden" id="empty-state">
+        <div class="empty-icon">🔍</div>
+        <h3>No screensavers found</h3>
+        <p>Try adjusting your search query or category filters.</p>
+        <button class="btn btn-secondary" id="empty-reset-btn">Reset Filters</button>
+      </div>
+    </div>
+
+    <!-- Inspector / Detail Edit Drawer -->
+    <aside class="inspector-drawer" id="inspector-drawer">
+      <div class="inspector-header">
+        <div class="inspector-title-group">
+          <span class="inspector-eyebrow" id="inspector-eyebrow">Screensaver Details</span>
+          <h2 id="inspector-title">Item Title</h2>
+        </div>
+        <button class="close-btn" id="inspector-close-btn" title="Close inspector (Esc)">✕</button>
+      </div>
+
+      <div class="inspector-body">
+        <!-- Live E-Reader Preview Mockup -->
+        <div class="preview-section">
+          <div class="preview-toolbar">
+            <span class="preview-label">Live E-Reader Preview</span>
+            <div class="preview-mode-toggles">
+              <button class="mode-chip active" id="preview-mode-frame" data-mode="device">Device Frame</button>
+              <button class="mode-chip" id="preview-mode-grid" data-mode="grid">Checkerboard</button>
+              <button class="mode-chip" id="preview-mode-book" data-mode="book">Book Text</button>
+            </div>
+          </div>
+
+          <div class="device-mockup-outer">
+            <div class="device-mockup" id="device-mockup">
+              <div class="device-screen-container" id="device-screen-container">
+                <img id="inspector-preview-img" class="device-screen-img" src="" alt="Screensaver Preview">
+                <div class="book-text-simulation hidden" id="book-text-sim">
+                  <p>It was a bright cold day in April, and the clocks were striking thirteen. Winston Smith, his chin nuzzled into his breast in an effort to escape the vile wind, slipped quickly through the glass doors of Victory Mansions...</p>
+                  <p>The hallway smelt of boiled cabbage and old rag mats. At one end of it a coloured poster, too large for indoor display, had been tacked to the wall.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="image-dimensions-info">
+            <span>Target Master: <strong>1860 × 2480</strong></span>
+            <span>Thumb: <strong>600 × 800</strong></span>
+            <span id="inspector-file-ext-badge" class="format-badge">JPG</span>
+          </div>
+        </div>
+
+        <!-- Image Replacement Station -->
+        <div class="form-section image-replacement-station">
+          <div class="section-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path><line x1="16" y1="5" x2="22" y2="5"></line><line x1="19" y1="2" x2="19" y2="8"></line><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
+            <span>Replace / Update Image</span>
+          </div>
+
+          <div class="dropzone" id="replace-dropzone">
+            <input type="file" id="replace-file-input" accept="image/png, image/jpeg, image/webp" class="file-input-hidden">
+            <div class="dropzone-content">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <p><strong>Drag & drop replacement image</strong> or <span class="upload-link">browse</span></p>
+              <span class="dropzone-hint">Supports PNG (with transparency), JPG, WEBP</span>
+            </div>
+          </div>
+
+          <div class="url-input-row">
+            <input type="url" id="replace-url-input" class="text-input" placeholder="Or paste direct image URL...">
+            <button class="btn btn-secondary btn-small" id="btn-replace-from-url">Fetch & Replace</button>
+          </div>
+        </div>
+
+        <!-- Form Edit Fields -->
+        <div class="form-section">
+          <div class="section-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            <span>Metadata & Attributes</span>
+          </div>
+
+          <form id="inspector-form" onsubmit="return false;">
+            <div class="form-group">
+              <label for="edit-title">Title</label>
+              <input type="text" id="edit-title" class="text-input" required>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-id">
+                <span>Unique ID / Slug</span>
+                <span class="field-hint">(Renaming updates files & catalog)</span>
+              </label>
+              <input type="text" id="edit-id" class="text-input font-mono" required>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-author">Creator / Artist</label>
+              <input type="text" id="edit-author" class="text-input" placeholder="e.g. Katsushika Hokusai, Unsplash (CC0)">
+            </div>
+
+            <div class="form-group">
+              <label>Categories (Select one or more)</label>
+              <div class="category-pill-selector" id="edit-category-pills">
+                <!-- Dynamically populated category checkboxes -->
+              </div>
+              <div class="category-add-inline">
+                <input type="text" id="edit-category-custom-input" placeholder="+ Add new custom category (press Enter)...">
+                <button type="button" class="btn btn-secondary btn-small" id="btn-add-custom-category-edit">Add</button>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label for="edit-license">License</label>
+                <select id="edit-license" class="select-input">
+                  <option value="CC0">CC0 (Public Domain)</option>
+                  <option value="Public Domain">Public Domain</option>
+                  <option value="Community Share">Community Share</option>
+                  <option value="Unsplash License">Unsplash License</option>
+                  <option value="Pexels License">Pexels License</option>
+                  <option value="Creative Commons">Creative Commons</option>
+                  <option value="custom">+ Custom License...</option>
+                </select>
+                <input type="text" id="edit-license-custom" class="text-input hidden mt-1" placeholder="Custom license name...">
+              </div>
+              <div class="form-group flex-1">
+                <label for="edit-author-url">Creator Profile URL</label>
+                <input type="url" id="edit-author-url" class="text-input" placeholder="https://...">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-source-url">
+                <span>Source / Origin URL</span>
+                <a href="#" id="edit-source-url-test" class="link-test-btn" target="_blank" rel="noopener">Open link ↗</a>
+              </label>
+              <input type="url" id="edit-source-url" class="text-input" placeholder="https://...">
+            </div>
+
+            <div class="form-group">
+              <label for="edit-attribution">Attribution Markdown / Text</label>
+              <input type="text" id="edit-attribution" class="text-input" placeholder="e.g. [The Met Open Access](https://...)">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label for="edit-likes">Likes</label>
+                <input type="number" id="edit-likes" class="text-input" min="0">
+              </div>
+              <div class="form-group flex-1">
+                <label for="edit-downloads">Downloads</label>
+                <input type="number" id="edit-downloads" class="text-input" min="0">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Inspector Footer Actions -->
+      <div class="inspector-footer">
+        <div class="inspector-footer-left">
+          <button class="btn btn-danger" id="btn-delete-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            <span>Delete</span>
+          </button>
+        </div>
+        <div class="inspector-footer-right">
+          <button class="btn btn-secondary" id="btn-cancel-edit">Cancel</button>
+          <button class="btn btn-primary" id="btn-save-edit">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Save Changes</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Add Screensaver Modal -->
+  <div class="modal-overlay hidden" id="add-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3>Add New Screensaver</h3>
+          <p>Upload a wallpaper image or provide an image link. Master (1860×2480) and thumbnail (600×800) are generated automatically.</p>
+        </div>
+        <button class="close-btn" id="add-modal-close-btn">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Add Image Dropzone -->
+        <div class="dropzone modal-dropzone" id="add-dropzone">
+          <input type="file" id="add-file-input" accept="image/png, image/jpeg, image/webp" class="file-input-hidden">
+          <div class="dropzone-content" id="add-dropzone-content">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <p><strong>Drag & drop wallpaper image here</strong> or <span class="upload-link">browse file</span></p>
+            <span class="dropzone-hint">PNG (transparent), JPG, WEBP</span>
+          </div>
+          <div class="preview-thumbnail-container hidden" id="add-preview-container">
+            <img id="add-preview-img" src="" alt="Uploaded image preview">
+            <button type="button" class="btn-remove-preview" id="add-remove-preview-btn">✕ Remove Image</button>
+          </div>
+        </div>
+
+        <div class="form-divider"><span>OR ENTER IMAGE URL</span></div>
+
+        <div class="form-group">
+          <input type="url" id="add-image-url" class="text-input" placeholder="https://example.com/image.jpg (optional if file uploaded above)">
+        </div>
+
+        <div class="form-group">
+          <label for="add-title">Wallpaper Title *</label>
+          <input type="text" id="add-title" class="text-input" placeholder="e.g. Misty Mountain Pines" required>
+        </div>
+
+        <div class="form-group">
+          <label>Categories (Select one or more)</label>
+          <div class="category-pill-selector" id="add-category-pills">
+            <!-- Dynamically populated category checkboxes -->
+          </div>
+          <div class="category-add-inline">
+            <input type="text" id="add-category-custom-input" placeholder="+ Add new custom category (press Enter)...">
+            <button type="button" class="btn btn-secondary btn-small" id="btn-add-custom-category-add">Add</button>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="add-author">Creator / Artist</label>
+            <input type="text" id="add-author" class="text-input" placeholder="e.g. Unsplash (CC0)">
+          </div>
+          <div class="form-group flex-1">
+            <label for="add-license">License</label>
+            <select id="add-license" class="select-input">
+              <option value="CC0">CC0 (Public Domain)</option>
+              <option value="Community Share">Community Share</option>
+              <option value="Public Domain">Public Domain</option>
+              <option value="Unsplash License">Unsplash License</option>
+              <option value="Pexels License">Pexels License</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="add-source-url">Source / Origin URL</label>
+          <input type="url" id="add-source-url" class="text-input" placeholder="https://unsplash.com/photos/...">
+        </div>
+
+        <div class="form-group">
+          <label for="add-attribution">Attribution Text</label>
+          <input type="text" id="add-attribution" class="text-input" placeholder="e.g. Unsplash / Artist Name">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="add-modal-cancel-btn">Cancel</button>
+        <button class="btn btn-primary" id="add-modal-submit-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <span>Create Screensaver</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Backups & Snapshot Drawer -->
+  <div class="modal-overlay hidden" id="backups-modal">
+    <div class="modal-card modal-card-wide">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3>Catalog Snapshots & Backups</h3>
+          <p>Every modification creates an automatic timestamped snapshot in <code>tools/backups/</code>. You can restore any past version at any time.</p>
+        </div>
+        <button class="close-btn" id="backups-modal-close-btn">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="backups-list" id="backups-list">
+          <div class="backup-loading">Loading backups...</div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="backups-modal-close-btn2">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-overlay hidden" id="delete-confirm-modal">
+    <div class="modal-card modal-card-small">
+      <div class="modal-header">
+        <h3 class="text-danger">Confirm Deletion</h3>
+        <button class="close-btn" id="delete-confirm-close-btn">✕</button>
+      </div>
+      <div class="modal-body">
+        <p id="delete-confirm-message">Are you sure you want to delete this screensaver from the catalog?</p>
+        <div class="delete-file-option">
+          <label class="checkbox-label">
+            <input type="checkbox" id="delete-files-checkbox" checked>
+            <span>Also delete image and thumbnail files from disk</span>
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="delete-confirm-cancel-btn">Cancel</button>
+        <button class="btn btn-danger" id="delete-confirm-action-btn">Permanently Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

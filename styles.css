@@ -114,11 +114,12 @@ body::after {
 
 /* Main Container */
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 2.5rem 2rem;
   width: 100%;
   flex: 1;
+  box-sizing: border-box;
 }
 
 /* Hero Section */
@@ -267,8 +268,9 @@ body::after {
 /* Grid Layout */
 .wallpaper-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.75rem;
+  width: 100%;
 }
 
 .card {
@@ -816,5 +818,22 @@ footer {
 .suggest-target-info span {
   color: var(--text-muted);
   font-size: 0.8rem;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+  .navbar {
+    padding: 1rem 1.25rem;
+  }
+  .wallpaper-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+  .hero h1 {
+    font-size: 2.2rem;
+  }
 }
 
