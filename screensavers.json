@@ -121,51 +121,9 @@
     "likes": 1
   },
   {
-    "id": "met-wheat-field-cypresses-van-gogh",
-    "title": "Wheat Field with Cypresses",
-    "author": "Vincent van Gogh",
-    "authorUrl": "https://www.metmuseum.org/art/collection/search/436535",
-    "category": "Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.metmuseum.org/art/collection/search/436535",
-    "attribution": "The Metropolitan Museum of Art (Open Access)",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/met-wheat-field-cypresses-van-gogh.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/met-wheat-field-cypresses-van-gogh.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "met-sudden-shower-atake-hiroshige",
-    "title": "Sudden Shower over Shin-Ohashi Bridge",
-    "author": "Utagawa Hiroshige",
-    "authorUrl": "https://www.metmuseum.org/art/collection/search/37168",
-    "category": "Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.metmuseum.org/art/collection/search/37168",
-    "attribution": "The Metropolitan Museum of Art (Open Access)",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/met-sudden-shower-atake-hiroshige.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/met-sudden-shower-atake-hiroshige.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "durer-rhinoceros-woodcut",
     "title": "The Rhinoceros (Woodcut)",
-    "author": "Albrecht D\u00fcrer",
+    "author": "Albrecht Dürer",
     "authorUrl": "https://www.metmuseum.org/art/collection/search/366556",
     "category": "Art",
     "compatibility": [
@@ -184,30 +142,9 @@
     "likes": 1
   },
   {
-    "id": "durer-knight-death-devil",
-    "title": "Knight, Death and the Devil",
-    "author": "Albrecht D\u00fcrer",
-    "authorUrl": "https://www.metmuseum.org/art/collection/search/366557",
-    "category": "Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.metmuseum.org/art/collection/search/366557",
-    "attribution": "The Metropolitan Museum of Art (Open Access)",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/durer-knight-death-devil.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/durer-knight-death-devil.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "durer-melencolia-i",
     "title": "Melencolia I",
-    "author": "Albrecht D\u00fcrer",
+    "author": "Albrecht Dürer",
     "authorUrl": "https://www.metmuseum.org/art/collection/search/366559",
     "category": "Art",
     "compatibility": [
@@ -247,27 +184,6 @@
     "likes": 1
   },
   {
-    "id": "met-water-lilies-monet",
-    "title": "Bridge over a Pond of Water Lilies",
-    "author": "Claude Monet",
-    "authorUrl": "https://www.metmuseum.org/art/collection/search/437125",
-    "category": "Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.metmuseum.org/art/collection/search/437125",
-    "attribution": "The Metropolitan Museum of Art (Open Access)",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/met-water-lilies-monet.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/met-water-lilies-monet.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "met-wanderer-fog-parody",
     "title": "Mountain Landscape in Mist",
     "author": "Caspar David Friedrich",
@@ -289,92 +205,8 @@
     "likes": 1
   },
   {
-    "id": "rijks-milkmaid-vermeer",
-    "title": "The Milkmaid",
-    "author": "Johannes Vermeer",
-    "authorUrl": "https://www.rijksmuseum.nl/en/collection/SK-A-2344",
-    "category": "Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.rijksmuseum.nl/en/collection/SK-A-2344",
-    "attribution": "Rijksmuseum, Amsterdam",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/rijks-milkmaid-vermeer.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/rijks-milkmaid-vermeer.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "obi-botanical-fern-engraving",
-    "title": "Vintage Botanical Ferns",
-    "author": "Old Book Illustrations",
-    "authorUrl": "https://www.oldbookillustrations.com",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Public Domain",
-    "licenseUrl": "https://en.wikipedia.org/wiki/Public_domain",
-    "sourceUrl": "https://www.oldbookillustrations.com",
-    "attribution": "Old Book Illustrations Archive",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/obi-botanical-fern-engraving.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/obi-botanical-fern-engraving.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "obi-majestic-oak-engraving",
-    "title": "Ancient Oak Tree Engraving",
-    "author": "Old Book Illustrations",
-    "authorUrl": "https://www.oldbookillustrations.com",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Public Domain",
-    "licenseUrl": "https://en.wikipedia.org/wiki/Public_domain",
-    "sourceUrl": "https://www.oldbookillustrations.com",
-    "attribution": "Old Book Illustrations Archive",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/obi-majestic-oak-engraving.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/obi-majestic-oak-engraving.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "haeckel-discomedusae-jellyfish",
-    "title": "Kunstformen der Natur \u2014 Jellyfish",
-    "author": "Ernst Haeckel",
-    "authorUrl": "https://www.rawpixel.com/search?tags=$publicdomain",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.rawpixel.com/image/3284065",
-    "attribution": "Rawpixel Public Domain",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/haeckel-discomedusae-jellyfish.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/haeckel-discomedusae-jellyfish.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "haeckel-orchidae-botanical",
-    "title": "Kunstformen der Natur \u2014 Orchids",
+    "title": "Kunstformen der Natur — Orchids",
     "author": "Ernst Haeckel",
     "authorUrl": "https://www.rawpixel.com/search?tags=$publicdomain",
     "category": "Nature",
@@ -390,48 +222,6 @@
     "attribution": "Rawpixel Public Domain",
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/haeckel-orchidae-botanical.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/haeckel-orchidae-botanical.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "pine-forest-mist-valley",
-    "title": "Misty Alpine Forest Valley",
-    "author": "Unsplash Nature",
-    "authorUrl": "https://unsplash.com",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com/photos/forest-in-mist",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/pine-forest-mist-valley.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/pine-forest-mist-valley.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "yosemite-valley-granite-monolith",
-    "title": "Yosemite Valley Granite Monolith",
-    "author": "Unsplash Landscape",
-    "authorUrl": "https://unsplash.com",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com/photos/yosemite-valley",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/yosemite-valley-granite-monolith.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/yosemite-valley-granite-monolith.jpg",
     "downloads": 0,
     "likes": 1
   },
@@ -478,48 +268,6 @@
     "likes": 1
   },
   {
-    "id": "mount-fuji-cherry-blossoms",
-    "title": "Mount Fuji & Cherry Blossoms",
-    "author": "Pixabay Japan",
-    "authorUrl": "https://pixabay.com",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Pixabay License",
-    "licenseUrl": "https://pixabay.com/service/license-summary/",
-    "sourceUrl": "https://pixabay.com",
-    "attribution": "Pixabay",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/mount-fuji-cherry-blossoms.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/mount-fuji-cherry-blossoms.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "minimal-geometric-shadows",
-    "title": "Minimalist Staircase Shadows",
-    "author": "Unsplash Minimal",
-    "authorUrl": "https://unsplash.com",
-    "category": "Minimalist",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimal-geometric-shadows.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimal-geometric-shadows.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "minimal-lone-tree-snow",
     "title": "Solitary Tree in Winter Snow",
     "author": "Unsplash Minimal",
@@ -562,27 +310,6 @@
     "likes": 1
   },
   {
-    "id": "minimal-sand-dune-curves",
-    "title": "Desert Dune Curves & Light",
-    "author": "Unsplash Minimal",
-    "authorUrl": "https://unsplash.com",
-    "category": "Minimalist",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimal-sand-dune-curves.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimal-sand-dune-curves.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "minimal-moon-over-mountain",
     "title": "Crescent Moon over Ridge",
     "author": "Unsplash Minimal",
@@ -600,27 +327,6 @@
     "attribution": "Unsplash",
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimal-moon-over-mountain.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimal-moon-over-mountain.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "gothic-cathedral-spiral-stairs",
-    "title": "Gothic Cathedral Spiral Staircase",
-    "author": "Unsplash Architecture",
-    "authorUrl": "https://unsplash.com",
-    "category": "Architecture",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/gothic-cathedral-spiral-stairs.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/gothic-cathedral-spiral-stairs.jpg",
     "downloads": 0,
     "likes": 1
   },
@@ -667,48 +373,6 @@
     "likes": 1
   },
   {
-    "id": "nasa-carina-nebula-james-webb",
-    "title": "Carina Nebula Cosmic Cliffs (JWST)",
-    "author": "NASA / Space Telescope Science Institute",
-    "authorUrl": "https://www.nasa.gov",
-    "category": "Sci-Fi",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Public Domain",
-    "licenseUrl": "https://www.nasa.gov/multimedia/guidelines/index.html",
-    "sourceUrl": "https://www.nasa.gov/image-article/carina-nebula-cosmic-cliffs/",
-    "attribution": "NASA / STScI Public Domain",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nasa-carina-nebula-james-webb.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nasa-carina-nebula-james-webb.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "nasa-pillars-of-creation-hubble",
-    "title": "Pillars of Creation (Hubble)",
-    "author": "NASA / ESA / Hubble Heritage Team",
-    "authorUrl": "https://www.nasa.gov",
-    "category": "Sci-Fi",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Public Domain",
-    "licenseUrl": "https://www.nasa.gov/multimedia/guidelines/index.html",
-    "sourceUrl": "https://www.nasa.gov/image-feature/goddard/2017/hubble-takes-a-close-up-view-of-the-pillars-of-creation",
-    "attribution": "NASA Public Domain",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nasa-pillars-of-creation-hubble.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nasa-pillars-of-creation-hubble.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "nasa-earth-rise-apollo-8",
     "title": "Earthrise from Moon Orbit (Apollo 8)",
     "author": "NASA / Bill Anders",
@@ -751,90 +415,6 @@
     "likes": 1
   },
   {
-    "id": "vintage-astronomy-star-chart-constellations",
-    "title": "Celestial Constellations Map (1890)",
-    "author": "Old Book Illustrations",
-    "authorUrl": "https://www.oldbookillustrations.com",
-    "category": "Sci-Fi",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Public Domain",
-    "licenseUrl": "https://en.wikipedia.org/wiki/Public_domain",
-    "sourceUrl": "https://www.oldbookillustrations.com",
-    "attribution": "Public Domain Archive",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/vintage-astronomy-star-chart-constellations.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/vintage-astronomy-star-chart-constellations.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "reddit-ghibli-spirited-away-train",
-    "title": "Water Railway Sunset (Spirited Away Vibe)",
-    "author": "Reddit r/koreader (u/paper_reader)",
-    "authorUrl": "https://www.reddit.com/r/koreader/",
-    "category": "Anime",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share (Implied)",
-    "licenseUrl": "https://www.reddit.com/r/koreader/",
-    "sourceUrl": "https://www.reddit.com/r/koreader/comments/screensavers_share/",
-    "attribution": "r/koreader Community Share",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/reddit-ghibli-spirited-away-train.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/reddit-ghibli-spirited-away-train.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "reddit-cyberpunk-tokyo-alley-rain",
-    "title": "Neon Alley Rain (Cyberpunk)",
-    "author": "Reddit r/koreader (u/eink_enthusiast)",
-    "authorUrl": "https://www.reddit.com/r/koreader/",
-    "category": "Anime",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share (Implied)",
-    "licenseUrl": "https://www.reddit.com/r/koreader/",
-    "sourceUrl": "https://www.reddit.com/r/koreader/",
-    "attribution": "r/koreader Community Share",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/reddit-cyberpunk-tokyo-alley-rain.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/reddit-cyberpunk-tokyo-alley-rain.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "reddit-totoro-bus-stop-rain",
-    "title": "Forest Bus Stop (Totoro Line Art)",
-    "author": "Reddit r/koreader (u/bookish_art)",
-    "authorUrl": "https://www.reddit.com/r/koreader/",
-    "category": "Anime",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share (Implied)",
-    "licenseUrl": "https://www.reddit.com/r/koreader/",
-    "sourceUrl": "https://www.reddit.com/r/koreader/",
-    "attribution": "r/koreader Community Share",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/reddit-totoro-bus-stop-rain.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/reddit-totoro-bus-stop-rain.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "reddit-fantasy-wizard-tower-mountains",
     "title": "Wizard Tower in Misty Peaks",
     "author": "Reddit r/koreader (u/fantasy_fanatic)",
@@ -852,27 +432,6 @@
     "attribution": "r/koreader Community Share",
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/reddit-fantasy-wizard-tower-mountains.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/reddit-fantasy-wizard-tower-mountains.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "rawpixel-vintage-art-deco-pattern",
-    "title": "Vintage Art Deco Geometric Tiles",
-    "author": "Rawpixel Public Domain",
-    "authorUrl": "https://www.rawpixel.com/search?tags=$publicdomain",
-    "category": "Abstract",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.rawpixel.com",
-    "attribution": "Rawpixel Public Domain",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/rawpixel-vintage-art-deco-pattern.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/rawpixel-vintage-art-deco-pattern.jpg",
     "downloads": 0,
     "likes": 1
   },
@@ -982,51 +541,9 @@
     "likes": 1
   },
   {
-    "id": "van-gogh-starry-night-rhone",
-    "title": "Starry Night Over the Rh\u00f4ne",
-    "author": "Vincent van Gogh",
-    "authorUrl": "https://www.metmuseum.org",
-    "category": "Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.metmuseum.org",
-    "attribution": "Public Domain Masterwork",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/van-gogh-starry-night-rhone.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/van-gogh-starry-night-rhone.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "monet-water-lilies-green",
-    "title": "Water Lilies & Japanese Bridge",
-    "author": "Claude Monet",
-    "authorUrl": "https://www.metmuseum.org/art/collection/search/437125",
-    "category": "Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.metmuseum.org/art/collection/search/437125",
-    "attribution": "The Metropolitan Museum of Art (Open Access)",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/monet-water-lilies-green.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/monet-water-lilies-green.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "durer-melencolia-woodcut",
     "title": "Melencolia I Engraving",
-    "author": "Albrecht D\u00fcrer",
+    "author": "Albrecht Dürer",
     "authorUrl": "https://www.metmuseum.org/art/collection/search/366559",
     "category": "Art",
     "compatibility": [
@@ -1041,27 +558,6 @@
     "attribution": "The Metropolitan Museum of Art (Open Access)",
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/durer-melencolia-woodcut.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/durer-melencolia-woodcut.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "durer-rhinoceros-etching",
-    "title": "The Rhinoceros (1515 Woodcut)",
-    "author": "Albrecht D\u00fcrer",
-    "authorUrl": "https://www.metmuseum.org/art/collection/search/366556",
-    "category": "Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.metmuseum.org/art/collection/search/366556",
-    "attribution": "The Metropolitan Museum of Art (Open Access)",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/durer-rhinoceros-etching.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/durer-rhinoceros-etching.jpg",
     "downloads": 0,
     "likes": 1
   },
@@ -1150,48 +646,6 @@
     "likes": 1
   },
   {
-    "id": "nature-skogafoss-iceland-mist",
-    "title": "Sk\u00f3gafoss Waterfall Mist & Basalt",
-    "author": "Unsplash Nature",
-    "authorUrl": "https://unsplash.com",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-skogafoss-iceland-mist.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-skogafoss-iceland-mist.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "nature-norwegian-fjord-calm",
-    "title": "Norwegian Fjord Glassy Reflection",
-    "author": "Unsplash Nature",
-    "authorUrl": "https://unsplash.com",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-norwegian-fjord-calm.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-norwegian-fjord-calm.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "nature-dolomites-tre-cime-peaks",
     "title": "Dolomites Tre Cime Sharp Ridge",
     "author": "Unsplash Landscape",
@@ -1213,27 +667,6 @@
     "likes": 1
   },
   {
-    "id": "nature-sakura-canopy-tokyo-river",
-    "title": "Meguro River Sakura Canopy Tokyo",
-    "author": "Unsplash Japan",
-    "authorUrl": "https://unsplash.com",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-sakura-canopy-tokyo-river.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-sakura-canopy-tokyo-river.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "nature-milky-way-pine-silhouettes",
     "title": "Milky Way Galaxy over Pine Silhouette",
     "author": "Unsplash Space",
@@ -1251,48 +684,6 @@
     "attribution": "Unsplash",
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-milky-way-pine-silhouettes.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-milky-way-pine-silhouettes.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "nature-bamboo-grove-kyoto-green",
-    "title": "Arashiyama Bamboo Grove Path",
-    "author": "Unsplash Japan",
-    "authorUrl": "https://unsplash.com",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-bamboo-grove-kyoto-green.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-bamboo-grove-kyoto-green.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "nature-autumn-birch-trees-golden",
-    "title": "Golden Autumn Birch Canopy",
-    "author": "Unsplash Nature",
-    "authorUrl": "https://unsplash.com",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-autumn-birch-trees-golden.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-autumn-birch-trees-golden.jpg",
     "downloads": 0,
     "likes": 1
   },
@@ -1381,69 +772,6 @@
     "likes": 1
   },
   {
-    "id": "minimal-mountain-ridge-layers",
-    "title": "Layered Mountain Ridge Silhouettes",
-    "author": "Unsplash Minimal",
-    "authorUrl": "https://unsplash.com",
-    "category": "Minimalist",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimal-mountain-ridge-layers.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimal-mountain-ridge-layers.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "minimal-water-ripples-zen",
-    "title": "Zen Water Ripples & Concentric Circles",
-    "author": "Unsplash Minimal",
-    "authorUrl": "https://unsplash.com",
-    "category": "Minimalist",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimal-water-ripples-zen.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimal-water-ripples-zen.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "minimal-lone-tree-snow-field",
-    "title": "Solitary Tree in Winter Snow Field",
-    "author": "Unsplash Minimal",
-    "authorUrl": "https://unsplash.com",
-    "category": "Minimalist",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimal-lone-tree-snow-field.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimal-lone-tree-snow-field.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "arch-louvre-glass-pyramid",
     "title": "Louvre Glass Pyramid Angles",
     "author": "Unsplash Architecture",
@@ -1486,69 +814,6 @@
     "likes": 1
   },
   {
-    "id": "arch-taj-mahal-reflection-pool",
-    "title": "Taj Mahal Marble Reflection Pool",
-    "author": "Unsplash Heritage",
-    "authorUrl": "https://unsplash.com",
-    "category": "Architecture",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/arch-taj-mahal-reflection-pool.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/arch-taj-mahal-reflection-pool.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "arch-gothic-stained-glass-rose",
-    "title": "Notre-Dame Cathedral Rose Window Silhouette",
-    "author": "Unsplash Architecture",
-    "authorUrl": "https://unsplash.com",
-    "category": "Architecture",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/arch-gothic-stained-glass-rose.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/arch-gothic-stained-glass-rose.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "arch-venice-rialto-grand-canal",
-    "title": "Venice Grand Canal & Stone Bridge Arches",
-    "author": "Unsplash Travel",
-    "authorUrl": "https://unsplash.com",
-    "category": "Architecture",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Unsplash License",
-    "licenseUrl": "https://unsplash.com/license",
-    "sourceUrl": "https://unsplash.com",
-    "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/arch-venice-rialto-grand-canal.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/arch-venice-rialto-grand-canal.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "nasa-andromeda-galaxy-hubble",
     "title": "Andromeda Galaxy M31 Core & Spiral Arms",
     "author": "NASA / ESA / Hubble",
@@ -1571,7 +836,7 @@
   },
   {
     "id": "nasa-jwst-deep-field-smacs0723",
-    "title": "Webb\u2019s First Deep Field (SMACS 0723)",
+    "title": "Webb’s First Deep Field (SMACS 0723)",
     "author": "NASA / ESA / CSA / STScI",
     "authorUrl": "https://www.nasa.gov",
     "category": "Sci-Fi",
@@ -1587,48 +852,6 @@
     "attribution": "NASA / STScI Public Domain",
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nasa-jwst-deep-field-smacs0723.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nasa-jwst-deep-field-smacs0723.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "nasa-mars-canyons-orbit",
-    "title": "Mars Surface Canyons & Valles Marineris",
-    "author": "NASA / JPL-Caltech",
-    "authorUrl": "https://www.nasa.gov",
-    "category": "Sci-Fi",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Public Domain",
-    "licenseUrl": "https://www.nasa.gov/multimedia/guidelines/index.html",
-    "sourceUrl": "https://www.nasa.gov",
-    "attribution": "NASA / JPL Public Domain",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nasa-mars-canyons-orbit.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nasa-mars-canyons-orbit.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "nasa-sun-solar-flare-prominence",
-    "title": "Solar Dynamics Observatory Solar Flare",
-    "author": "NASA / SDO",
-    "authorUrl": "https://www.nasa.gov",
-    "category": "Sci-Fi",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Public Domain",
-    "licenseUrl": "https://www.nasa.gov/multimedia/guidelines/index.html",
-    "sourceUrl": "https://www.nasa.gov",
-    "attribution": "NASA SDO Public Domain",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nasa-sun-solar-flare-prominence.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nasa-sun-solar-flare-prominence.jpg",
     "downloads": 0,
     "likes": 1
   },
@@ -1675,51 +898,9 @@
     "likes": 1
   },
   {
-    "id": "quote-borges-babel-library-page",
-    "title": "Library of Babel Typography",
-    "author": "Jorge Luis Borges / Community Art",
-    "authorUrl": "https://github.com/ultimatejimmy/storefront-screensavers",
-    "category": "Quotes",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://github.com/ultimatejimmy/storefront-screensavers",
-    "attribution": "Public Domain Literature",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/quote-borges-babel-library-page.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/quote-borges-babel-library-page.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "quote-tolkien-wander-lost-art",
-    "title": "Not All Those Who Wander Are Lost",
-    "author": "J.R.R. Tolkien / Community Art",
-    "authorUrl": "https://github.com/ultimatejimmy/storefront-screensavers",
-    "category": "Quotes",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://github.com/ultimatejimmy/storefront-screensavers",
-    "attribution": "Literary Quote Art",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/quote-tolkien-wander-lost-art.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/quote-tolkien-wander-lost-art.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "artic-28560",
     "title": "The Bedroom",
-    "author": "Vincent van Gogh (Dutch, 1853\u20131890)",
+    "author": "Vincent van Gogh (Dutch, 1853–1890)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -1740,7 +921,7 @@
   {
     "id": "artic-20684",
     "title": "Paris Street; Rainy Day",
-    "author": "Gustave Caillebotte (French, 1848\u20131894)",
+    "author": "Gustave Caillebotte (French, 1848–1894)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -1760,8 +941,8 @@
   },
   {
     "id": "artic-27992",
-    "title": "A Sunday on La Grande Jatte \u2014 1884",
-    "author": "Georges Seurat (French, 1859\u20131891)",
+    "title": "A Sunday on La Grande Jatte — 1884",
+    "author": "Georges Seurat (French, 1859–1891)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -1803,7 +984,7 @@
   {
     "id": "artic-89503",
     "title": "Under the Wave off Kanagawa (Kanagawa oki nami ura), also known as The Great Wave, from the series \"Thirty-Six Views of Mount Fuji (Fugaku sanjurokkei)\"",
-    "author": "Katsushika Hokusai \u845b\u98fe \u5317\u658e",
+    "author": "Katsushika Hokusai 葛飾 北斎",
     "authorUrl": "https://www.artic.edu",
     "category": "Print",
     "compatibility": [
@@ -1824,7 +1005,7 @@
   {
     "id": "artic-87479",
     "title": "The Assumption of the Virgin",
-    "author": "El Greco (Dom\u00e9nikos Theotok\u00f3poulos; Greek, active in Spain, 1541\u20131614)",
+    "author": "El Greco (Doménikos Theotokópoulos; Greek, active in Spain, 1541–1614)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -1845,7 +1026,7 @@
   {
     "id": "artic-64818",
     "title": "Stacks of Wheat (End of Summer)",
-    "author": "Claude Monet (French, 1840\u20131926)",
+    "author": "Claude Monet (French, 1840–1926)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -1866,7 +1047,7 @@
   {
     "id": "artic-16568",
     "title": "Water Lilies",
-    "author": "Claude Monet (French, 1840\u20131926)",
+    "author": "Claude Monet (French, 1840–1926)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -1887,7 +1068,7 @@
   {
     "id": "artic-14655",
     "title": "Two Sisters (On the Terrace)",
-    "author": "Pierre-Auguste Renoir (French, 1841\u20131919)",
+    "author": "Pierre-Auguste Renoir (French, 1841–1919)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -1908,7 +1089,7 @@
   {
     "id": "artic-80607",
     "title": "Self-Portrait",
-    "author": "Vincent van Gogh (Dutch, 1853\u20131890)",
+    "author": "Vincent van Gogh (Dutch, 1853–1890)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -1929,7 +1110,7 @@
   {
     "id": "artic-61128",
     "title": "At the Moulin Rouge",
-    "author": "Henri de Toulouse-Lautrec (French, 1864\u20131901)",
+    "author": "Henri de Toulouse-Lautrec (French, 1864–1901)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -1950,7 +1131,7 @@
   {
     "id": "artic-16571",
     "title": "Arrival of the Normandy Train, Gare Saint-Lazare",
-    "author": "Claude Monet (French, 1840\u20131926)",
+    "author": "Claude Monet (French, 1840–1926)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -1971,7 +1152,7 @@
   {
     "id": "artic-111436",
     "title": "The Basket of Apples",
-    "author": "Paul Cezanne (French, 1839\u20131906)",
+    "author": "Paul Cezanne (French, 1839–1906)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -1992,7 +1173,7 @@
   {
     "id": "artic-11723",
     "title": "Woman at Her Toilette",
-    "author": "Berthe Morisot (French, 1841\u20131895)",
+    "author": "Berthe Morisot (French, 1841–1895)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2013,7 +1194,7 @@
   {
     "id": "artic-15468",
     "title": "Saint George and the Dragon",
-    "author": "Bernat Martorell (Spanish, active from 1427\u2013died 1452)",
+    "author": "Bernat Martorell (Spanish, active from 1427–died 1452)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2034,7 +1215,7 @@
   {
     "id": "artic-90048",
     "title": "Distant View of Niagara Falls",
-    "author": "Thomas Cole (American, born England, 1801\u20131848)",
+    "author": "Thomas Cole (American, born England, 1801–1848)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2055,7 +1236,7 @@
   {
     "id": "artic-14598",
     "title": "The Beach at Sainte-Adresse",
-    "author": "Claude Monet (French, 1840\u20131926)",
+    "author": "Claude Monet (French, 1840–1926)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2097,7 +1278,7 @@
   {
     "id": "artic-25865",
     "title": "The Herring Net",
-    "author": "Winslow Homer (American, 1836\u20131910)",
+    "author": "Winslow Homer (American, 1836–1910)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2118,7 +1299,7 @@
   {
     "id": "artic-154235",
     "title": "The Girl by the Window",
-    "author": "Edvard Munch (Norwegian, 1863\u20131944)",
+    "author": "Edvard Munch (Norwegian, 1863–1944)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2139,7 +1320,7 @@
   {
     "id": "artic-16487",
     "title": "The Bay of Marseille, Seen from L'Estaque",
-    "author": "Paul Cezanne (French, 1839\u20131906)",
+    "author": "Paul Cezanne (French, 1839–1906)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2160,7 +1341,7 @@
   {
     "id": "artic-869",
     "title": "The Watermill with the Great Red Roof",
-    "author": "Meindert Hobbema (Dutch, 1638\u20131709)",
+    "author": "Meindert Hobbema (Dutch, 1638–1709)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2201,7 +1382,7 @@
   },
   {
     "id": "artic-61603",
-    "title": "Ballet at the Paris Op\u00e9ra",
+    "title": "Ballet at the Paris Opéra",
     "author": "Edgar Degas",
     "authorUrl": "https://www.artic.edu",
     "category": "Drawing and Watercolor",
@@ -2244,7 +1425,7 @@
   {
     "id": "artic-69780",
     "title": "The Fountain, Villa Torlonia, Frascati, Italy",
-    "author": "John Singer Sargent (American, 1856\u20131925)",
+    "author": "John Singer Sargent (American, 1856–1925)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2285,8 +1466,8 @@
   },
   {
     "id": "artic-56905",
-    "title": "Nocturne: Blue and Gold\u2014Southampton Water",
-    "author": "James McNeill Whistler (American, 1834\u20131903)",
+    "title": "Nocturne: Blue and Gold—Southampton Water",
+    "author": "James McNeill Whistler (American, 1834–1903)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2307,7 +1488,7 @@
   {
     "id": "artic-81558",
     "title": "Acrobats at the Cirque Fernando (Francisca and Angelina Wartenberg)",
-    "author": "Pierre-Auguste Renoir (French, 1841\u20131919)",
+    "author": "Pierre-Auguste Renoir (French, 1841–1919)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2328,7 +1509,7 @@
   {
     "id": "artic-5848",
     "title": "Landscape with Saint John on Patmos",
-    "author": "Nicolas Poussin (French, 1594\u20131665)",
+    "author": "Nicolas Poussin (French, 1594–1665)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2349,7 +1530,7 @@
   {
     "id": "artic-4796",
     "title": "Fishing Boats with Hucksters Bargaining for Fish",
-    "author": "Joseph Mallord William Turner (English, 1775\u20131851)",
+    "author": "Joseph Mallord William Turner (English, 1775–1851)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2370,7 +1551,7 @@
   {
     "id": "artic-109780",
     "title": "Love of Winter",
-    "author": "George Wesley Bellows (American, 1882\u20131925)",
+    "author": "George Wesley Bellows (American, 1882–1925)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2391,7 +1572,7 @@
   {
     "id": "artic-14572",
     "title": "The Millinery Shop",
-    "author": "Edgar Degas (French, 1834\u20131917)",
+    "author": "Edgar Degas (French, 1834–1917)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2412,7 +1593,7 @@
   {
     "id": "artic-95998",
     "title": "Old Man with a Gold Chain",
-    "author": "Rembrandt van Rijn (Dutch, 1606\u20131669)",
+    "author": "Rembrandt van Rijn (Dutch, 1606–1669)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2517,7 +1698,7 @@
   {
     "id": "artic-146701",
     "title": "Mountain Brook",
-    "author": "Albert Bierstadt (American, born Solingen, Prussia, now Germany, 1830\u20131902)",
+    "author": "Albert Bierstadt (American, born Solingen, Prussia, now Germany, 1830–1902)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2559,7 +1740,7 @@
   {
     "id": "artic-84709",
     "title": "Still Life with Game Fowl",
-    "author": "Juan S\u00e1nchez Cot\u00e1n (Spanish, 1560\u20131627)",
+    "author": "Juan Sánchez Cotán (Spanish, 1560–1627)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2579,8 +1760,8 @@
   },
   {
     "id": "artic-19339",
-    "title": "Arl\u00e9siennes (Mistral)",
-    "author": "Paul Gauguin (French, 1848\u20131903)",
+    "title": "Arlésiennes (Mistral)",
+    "author": "Paul Gauguin (French, 1848–1903)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2601,7 +1782,7 @@
   {
     "id": "artic-28849",
     "title": "A City Park",
-    "author": "William Merritt Chase (American, 1849\u20131916)",
+    "author": "William Merritt Chase (American, 1849–1916)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2622,7 +1803,7 @@
   {
     "id": "artic-15401",
     "title": "At Mouquin's",
-    "author": "William Glackens (American, 1870\u20131938)",
+    "author": "William Glackens (American, 1870–1938)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2643,7 +1824,7 @@
   {
     "id": "artic-193664",
     "title": "The Captive Slave (Ira Aldridge)",
-    "author": "John Philip Simpson (English, 1782\u20131847)",
+    "author": "John Philip Simpson (English, 1782–1847)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2664,7 +1845,7 @@
   {
     "id": "artic-64724",
     "title": "The Home of the Heron",
-    "author": "George Inness (American, 1825\u20131894)",
+    "author": "George Inness (American, 1825–1894)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2685,7 +1866,7 @@
   {
     "id": "artic-81512",
     "title": "Interrupted Reading",
-    "author": "Jean-Baptiste-Camille Corot (French, 1796\u20131875)",
+    "author": "Jean-Baptiste-Camille Corot (French, 1796–1875)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2706,7 +1887,7 @@
   {
     "id": "artic-44892",
     "title": "Fish (Still Life)",
-    "author": "\u00c9douard Manet (French, 1832\u20131883)",
+    "author": "Édouard Manet (French, 1832–1883)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2727,7 +1908,7 @@
   {
     "id": "artic-144969",
     "title": "The Interior of the Palm House on the Pfaueninsel Near Potsdam",
-    "author": "Carl Blechen (German, 1798\u20131840)",
+    "author": "Carl Blechen (German, 1798–1840)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2748,7 +1929,7 @@
   {
     "id": "artic-44018",
     "title": "Croquet Scene",
-    "author": "Winslow Homer (American, 1836\u20131910)",
+    "author": "Winslow Homer (American, 1836–1910)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2769,7 +1950,7 @@
   {
     "id": "artic-76571",
     "title": "View of Cotopaxi",
-    "author": "Frederic Edwin Church (American, 1826\u20131900)",
+    "author": "Frederic Edwin Church (American, 1826–1900)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2790,7 +1971,7 @@
   {
     "id": "artic-16551",
     "title": "Beata Beatrix",
-    "author": "Dante Gabriel Rossetti (English, 1828\u20131882)",
+    "author": "Dante Gabriel Rossetti (English, 1828–1882)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2832,7 +2013,7 @@
   {
     "id": "artic-97910",
     "title": "The Advance-Guard, or The Military Sacrifice (The Ambush)",
-    "author": "Frederic Remington (American, 1861\u20131909)",
+    "author": "Frederic Remington (American, 1861–1909)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2853,7 +2034,7 @@
   {
     "id": "artic-105466",
     "title": "The Battle between the Gods and the Giants",
-    "author": "Joachim Antonisz. Wtewael (Dutch, c. 1566\u20131638)",
+    "author": "Joachim Antonisz. Wtewael (Dutch, c. 1566–1638)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2916,7 +2097,7 @@
   {
     "id": "artic-14591",
     "title": "Woman Reading",
-    "author": "\u00c9douard Manet (French, 1832\u20131883)",
+    "author": "Édouard Manet (French, 1832–1883)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -2937,7 +2118,7 @@
   {
     "id": "artic-23972",
     "title": "Virgin and Child with the Young Saint John the Baptist",
-    "author": "Correggio (Antonio Allegri; Italian, 1489\u20131534)",
+    "author": "Correggio (Antonio Allegri; Italian, 1489–1534)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -3000,7 +2181,7 @@
   {
     "id": "artic-60812",
     "title": "Merahi metua no Tehamana (Tehamana Has Many Parents or The Ancestors of Tehamana)",
-    "author": "Paul Gauguin (French, 1848\u20131903)",
+    "author": "Paul Gauguin (French, 1848–1903)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -3042,7 +2223,7 @@
   {
     "id": "artic-100829",
     "title": "Magnolias on Light Blue Velvet Cloth",
-    "author": "Martin Johnson Heade (American, 1819\u20131904)",
+    "author": "Martin Johnson Heade (American, 1819–1904)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -3063,7 +2244,7 @@
   {
     "id": "artic-111559",
     "title": "Boy on a Ram",
-    "author": "Francisco Jos\u00e9 de Goya y Lucientes (Spanish, 1746\u20131828)",
+    "author": "Francisco José de Goya y Lucientes (Spanish, 1746–1828)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -3147,7 +2328,7 @@
   {
     "id": "artic-72801",
     "title": "Icebound",
-    "author": "John Henry Twachtman (American, 1853\u20131902)",
+    "author": "John Henry Twachtman (American, 1853–1902)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -3168,7 +2349,7 @@
   {
     "id": "artic-14574",
     "title": "Henri Degas and His Niece Lucie Degas (The Artist's Uncle and Cousin)",
-    "author": "Edgar Degas (French, 1834\u20131917)",
+    "author": "Edgar Degas (French, 1834–1917)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -3188,8 +2369,8 @@
   },
   {
     "id": "artic-120154",
-    "title": "Still Life\u2014Strawberries, Nuts, &c.",
-    "author": "Raphaelle Peale (American, 1774\u20131825)",
+    "title": "Still Life—Strawberries, Nuts, &c.",
+    "author": "Raphaelle Peale (American, 1774–1825)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -3210,7 +2391,7 @@
   {
     "id": "artic-111617",
     "title": "Cabin in the Cotton",
-    "author": "Horace Pippin (American, 1888\u20131946)",
+    "author": "Horace Pippin (American, 1888–1946)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -3231,7 +2412,7 @@
   {
     "id": "artic-16488",
     "title": "Armida Encounters the Sleeping Rinaldo",
-    "author": "Giovanni Battista Tiepolo (Italian, 1696\u20131770)",
+    "author": "Giovanni Battista Tiepolo (Italian, 1696–1770)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -3252,7 +2433,7 @@
   {
     "id": "artic-16169",
     "title": "The Beheading of Saint John the Baptist",
-    "author": "Giovanni di Paolo (Italian, 1398\u20131482)",
+    "author": "Giovanni di Paolo (Italian, 1398–1482)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -3315,7 +2496,7 @@
   {
     "id": "artic-64729",
     "title": "Early Morning, Tarpon Springs",
-    "author": "George Inness (American, 1825\u20131894)",
+    "author": "George Inness (American, 1825–1894)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
@@ -3336,7 +2517,7 @@
   {
     "id": "artic-109926",
     "title": "Landscape: Window Overlooking the Woods",
-    "author": "\u00c9douard Vuillard (French, 1868-1940)",
+    "author": "Édouard Vuillard (French, 1868-1940)",
     "authorUrl": "https://www.artic.edu",
     "category": "Painting",
     "compatibility": [
