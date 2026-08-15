@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      // Check if item is an explicit Transparent Overlay (e.g. ReaderBackdrop or Transparent category)
+      // Check if item is an explicit Transparent (e.g. ReaderBackdrop or Transparent category)
       const isTransparent = (
         (typeof item.category === 'string' && item.category.toLowerCase().includes('transparent')) ||
         (Array.isArray(item.category) && item.category.some(c => String(c).toLowerCase().includes('transparent'))) ||
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Transparent Overlay Preview Mode Toggle Listener
+  // Transparent Preview Mode Toggle Listener
   const overlayToggleBtns = document.querySelectorAll('#overlay-mode-toggle .mode-btn');
   if (overlayToggleBtns.length > 0) {
     // Set initial active state based on localStorage
