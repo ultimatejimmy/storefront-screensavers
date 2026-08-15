@@ -16,7 +16,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Melencolia I | Albrecht Dürer | Fine Art | CC0 | [The Metropolitan Museum of Art (Open Access)](https://www.metmuseum.org/art/collection/search/366559) |
 | Fine Wind, Clear Morning (Red Fuji) | Katsushika Hokusai | Fine Art | CC0 | [The Metropolitan Museum of Art (Open Access)](https://www.metmuseum.org/art/collection/search/56434) |
 | Mountain Landscape in Mist | Caspar David Friedrich | Fine Art | CC0 | [The Metropolitan Museum of Art (Open Access)](https://www.metmuseum.org/art/collection/search/436332) |
-| Kunstformen der Natur — Orchids | Ernst Haeckel | Nature | CC0 | [Rawpixel Public Domain](https://www.rawpixel.com/image/3284066) |
 | Arashiyama Bamboo Grove Path | Unsplash Japan | Nature | Unsplash License | [Unsplash](https://unsplash.com/photos/bamboo-grove) |
 | Golden Autumn Birch Canopy | Pexels Nature | Nature | Pexels License | [Pexels](https://www.pexels.com) |
 | Solitary Tree in Winter Snow | Unsplash Minimal | Minimalist | Unsplash License | [Unsplash](https://unsplash.com) |
@@ -128,16 +127,16 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Early Morning, Tarpon Springs | George Inness (American, 1825–1894) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/ef96e79b-f481-8114-0804-4bd39c101983/full/843,/0/default.jpg) |
 | Landscape: Window Overlooking the Woods | Édouard Vuillard (French, 1868-1940) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/a1dc6109-6e0c-7801-ebe8-8c95fec2c4e4/full/843,/0/default.jpg) |
 | Comet-Hale-Bopp-29-03-1997 hires adj | Philipp Salzgeber | Sci-Fi | CC BY-SA 2.0 at | [Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/d/df/Comet-Hale-Bopp-29-03-1997_hires_adj.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original) |
-| Cat Looking Out Window | ReaderBackdrop Community | Transparent Overlay | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE0r6ApVJ71kyBjWhZMiRXdVlS2w8FObYAzaPe) |
-| Spirited Away Dragon Haku | ReaderBackdrop Community | Transparent Overlay | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtEDaQbT1kg1Rv9Q4x2AOUjHkWJyhEB0iTsM3rp) |
-| Frieren and Fern | ReaderBackdrop Community | Transparent Overlay | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtEK7ONM0LP328apSoqs0djReMAxhvCfDLbTXyk) |
-| Garfield Reading Book | ReaderBackdrop Community | Transparent Overlay | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtEnajfhoZDR0cFIhzoxPMfHWVpeCd76U4GQa9q) |
-| Reading a Newspaper Engraving | ReaderBackdrop Community | Transparent Overlay | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE7iGVYJqUnRi1KLNkmetbI3xcUzPh0a9MBuXj) |
-| Baymax Waving | ReaderBackdrop Community | Transparent Overlay | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE6zPSxqD1ArVXg5DWtnsxvN7hcOPG9SfFQMiR) |
-| Marvel Superheroes Cover | ReaderBackdrop Community | Transparent Overlay | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE6CKdB1D1ArVXg5DWtnsxvN7hcOPG9SfFQMiR) |
+| Cat Looking Out Window | ReaderBackdrop Community | Transparent | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE0r6ApVJ71kyBjWhZMiRXdVlS2w8FObYAzaPe) |
+| Spirited Away Dragon Haku | ReaderBackdrop Community | Transparent | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtEDaQbT1kg1Rv9Q4x2AOUjHkWJyhEB0iTsM3rp) |
+| Frieren and Fern | ReaderBackdrop Community | Anime, Transparent | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtEK7ONM0LP328apSoqs0djReMAxhvCfDLbTXyk) |
+| Garfield Reading Book | ReaderBackdrop Community | Transparent, Pop Culture | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtEnajfhoZDR0cFIhzoxPMfHWVpeCd76U4GQa9q) |
+| Reading a Newspaper Engraving | ReaderBackdrop Community | Transparent | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE7iGVYJqUnRi1KLNkmetbI3xcUzPh0a9MBuXj) |
+| Baymax Waving | ReaderBackdrop Community | Transparent, Pop Culture | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE6zPSxqD1ArVXg5DWtnsxvN7hcOPG9SfFQMiR) |
+| Marvel Superheroes Cover | ReaderBackdrop Community | Transparent, Pop Culture | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE6CKdB1D1ArVXg5DWtnsxvN7hcOPG9SfFQMiR) |
 | Ketewstudio Minimalism Anime | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/8g/wallhaven-8g9wyy.png) |
 | Black Minimalism Centered | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/zp/wallhaven-zpdjww.jpg) |
-| Lego Digital Art Black | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/rq/wallhaven-rqpmjj.jpg) |
+| Lego Digital Art Black | Wallhaven Contributor | Minimalist, Pop Culture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/rq/wallhaven-rqpmjj.jpg) |
 | Goldn_Arts Painting Canvas | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/ly/wallhaven-lyj1kp.png) |
 | Knight Digital Art Dark | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/3q/wallhaven-3q6mry.jpg) |
 | Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrmqp5.png) |
@@ -149,9 +148,9 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Pulsars Science Black Background | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrozvd.png) |
 | Artem Demura Dark Robes | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jedwzp.jpg) |
 | Trigun Vash The Stampede Minimalism | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/og/wallhaven-ogjdy7.png) |
-| Mew Pokémon Minimalism | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jedx5w.png) |
+| Mew Pokémon Minimalism | Wallhaven Contributor | Minimalist, Pop Culture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jedx5w.png) |
 | Anime Minimalism White | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/7j/wallhaven-7jl91e.png) |
-| Dark Simple Background Centered | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/e8/wallhaven-e86kwo.jpg) |
+| Dark Simple Background Centered | Wallhaven Contributor | Minimalist, Pop Culture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/e8/wallhaven-e86kwo.jpg) |
 | Cgi Digital Art 3D Abstract | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/rq/wallhaven-rqp8x1.jpg) |
 | Landscape Nature Mountains | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jed8yq.png) |
 | Bsk_Photo Photography Scenery | Wallhaven Contributor | Nature | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/xe/wallhaven-xedg6l.jpg) |
@@ -184,13 +183,13 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | C.H Lam Takayama Japan | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/3q/wallhaven-3q2zdd.jpg) |
 | Building Architecture Rooftops | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/1q/wallhaven-1q2p3v.png) |
 | Gavin O'Donnell Artstation Plants | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/yq/wallhaven-yq2pjk.jpg) |
-| Krys Decker Digital Art Agatha (Krys Decker) | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/9o/wallhaven-9ogo1k.jpg) |
+| Krys Decker Digital Art Agatha (Krys Decker) | Wallhaven Contributor | Architecture, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/9o/wallhaven-9ogo1k.jpg) |
 | Li Feng Norway Ålesund | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jeymlm.jpg) |
 | Digital Art Artwork Illustration | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/xe/wallhaven-xedrm3.jpg) |
 | Digital Art Artwork Illustration | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/8g/wallhaven-8g9qy1.jpg) |
 | Genjo Mountains Asian Architecture | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/og/wallhaven-og6ej5.jpg) |
 | The Odyssey (2026) Christopher Nolan Hoyte Van Hoytema | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/yq/wallhaven-yq2pdx.jpg) |
-| Anime Girls Gibun Kono Subarashii Sekai Ni Shukufuku Wo! | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/gw/wallhaven-gwm3oq.jpg) |
+| Anime Girls Gibun Kono Subarashii Sekai Ni Shukufuku Wo! | Wallhaven Contributor | Architecture, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/gw/wallhaven-gwm3oq.jpg) |
 | Digital Art Artwork Illustration | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/k8/wallhaven-k8d18q.jpg) |
 | Monochrome Architecture Low-Angle | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/xe/wallhaven-xedxrd.jpg) |
 | Deltakosh Digital Art Artwork | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/3q/wallhaven-3q6jx3.jpg) |
@@ -202,11 +201,11 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Neptune Ascii Art Simple Background | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/ly/wallhaven-lyje9y.png) |
 | Space Deep Space Simple Background | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/po/wallhaven-po7x6p.png) |
 | Ascii Art Astronaut Low Light | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/gw/wallhaven-gwm3zq.png) |
-| Anime Girls Smiling Hatsune Miku | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/gw/wallhaven-gwmyk7.jpg) |
+| Anime Girls Smiling Hatsune Miku | Wallhaven Contributor | Sci-Fi, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/gw/wallhaven-gwmyk7.jpg) |
 | Space Deep Space Simple Background | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/ml/wallhaven-mlgmjm.png) |
 | Night Space Alone | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/7j/wallhaven-7jl2lv.png) |
-| Indie Virtual Youtuber Stars Long Sleeves | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jeygp5.png) |
-| Artstation Wide Screen Wide Angle | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/gw/wallhaven-gwm6m3.jpg) |
+| Indie Virtual Youtuber Stars Long Sleeves | Wallhaven Contributor | Sci-Fi, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jeygp5.png) |
+| Artstation Wide Screen Wide Angle | Wallhaven Contributor | Sci-Fi, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/gw/wallhaven-gwm6m3.jpg) |
 | Digital Art Colorful Low Light | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/og/wallhaven-og6ezm.jpg) |
 | Space Deep Space Simple Background | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/6l/wallhaven-6lpzx7.jpg) |
 | Planet Stars Space | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/9o/wallhaven-9o93mx.jpg) |
@@ -217,97 +216,88 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Digital Art Cgi Spacesuit | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/po/wallhaven-po7rdj.jpg) |
 | Space Deep Space Space Art | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/k8/wallhaven-k8l6ym.jpg) |
 | Space Deep Space Planet | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/8g/wallhaven-8g91zy.jpg) |
-| Aemeath (Wuthering Waves) Wuthering Waves Stars | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/w5/wallhaven-w5d2l6.png) |
+| Aemeath (Wuthering Waves) Wuthering Waves Stars | Wallhaven Contributor | Sci-Fi, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/w5/wallhaven-w5d2l6.png) |
 | Starkiteckt Neptune Planet | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/k8/wallhaven-k8d8xq.jpg) |
 | Abstract Blue Purple | Wallhaven Contributor | Abstract | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/ml/wallhaven-mlg7qm.png) |
-| Pixel Art Pokémon Emerald Pokémon | Wallhaven Contributor | Abstract | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrmykq.png) |
+| Pixel Art Pokémon Emerald Pokémon | Wallhaven Contributor | Abstract, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrmykq.png) |
 | Alexandre Cabanel Angel Fallen Angel | Wallhaven Contributor | Abstract | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/yq/wallhaven-yq2z7x.png) |
 | Hiroki Kawanabe Painting Canvas | Wallhaven Contributor | Abstract | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/7j/wallhaven-7je51y.png) |
 | Artstation Women Cgi | Wallhaven Contributor | Abstract | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/w5/wallhaven-w5djjp.jpg) |
 | Ascii Art Nicola Samori Death | Wallhaven Contributor | Abstract | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/yq/wallhaven-yq2zwl.png) |
-| Dai Dark Q Hayashida Manga | Wallhaven Contributor | Abstract | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/21/wallhaven-212k56.jpg) |
+| Dai Dark Q Hayashida Manga | Wallhaven Contributor | Abstract, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/21/wallhaven-212k56.jpg) |
 | 8K Gradient Violet | Wallhaven Contributor | Abstract | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/6l/wallhaven-6lykzx.png) |
-| Mrito00 Mushoku Tensei Roxy Migurdia (Mushoku Tensei) | Wallhaven Contributor | Abstract | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrm1k5.jpg) |
+| Mrito00 Mushoku Tensei Roxy Migurdia (Mushoku Tensei) | Wallhaven Contributor | Abstract, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrm1k5.jpg) |
 | Japan Snow Forest | Wallhaven Contributor | Abstract | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/k8/wallhaven-k8l697.jpg) |
-| Monochrome Ink Landscape I | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Starry Forest Night | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Ocean Wave Stipple Art | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Deep Forest Fog | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Geometric Lunar Cycles | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Mountain Lake Reflection | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Cozy Library Nook | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Dense Evergreen Forest | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Celestial Sun & Stars | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Atmospheric Cloud Horizons | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Monochrome Ink Landscape II | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Minimalist Frame Border Overlay | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Starlit Mountain Peak | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Ink Wash Pine Woods | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Moonlit Ocean Horizon | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Abstract Wave Ribbons | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| High Detail Wilderness | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Minimalist Crescent Moon | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Bamboo Forest Sunlight | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Botanical Leaf Silhouette | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Atmospheric Mountain Fog | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| High Resolution Landscape II-A | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| High Resolution Landscape II-B | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| High Resolution Landscape II-C | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| High Resolution Master Canvas | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Cosmic Portal Horizon | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Starry Night Valley Vista | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Mountain Sunset Outline | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Ink Line Pine Tree Overlay | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Minimalist Desert Cactus | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Ink Splash Waves | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Cozy Coffee & Reading | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Japanese Torii Gate | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Forest Under Stars | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Geometric Mountain Sun | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Misty Pine Forest Path | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Solitary Tree in Fog | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Minimalist Star Lines | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Celestial Moon Phase | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Quiet Lake Reflection | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Starlight Mountain Vista | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Quiet Woodland Path | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Crescent Moon & Waves | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Minimalist Floral Stems | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Mountain Ridge Line Art | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Appa Soaring | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Solitary Mountain Peak | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Forest Canopy Starlight | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Misty Pine Ridge | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Lunar Celestial Eclipse | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Detailed Botanical Ferns | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Floating Island Sanctuary | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Minimalist Dune Horizon | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Minimalist Geometric Line Art Overlay | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Ink-Wash Wave Crest | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Crescent Moon Reader | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Starry Sky Valley | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Serene Bamboo Grove | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Dark Celestial Constellations | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Mountain Sunset Silhouette | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Cozy Coffee & Open Book | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Starlight Forest Vista | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Midnight Sea Lighthouse | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Deep Space Galaxy Swirl | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Geometric Topographic Lines | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Minimalist Wildflowers | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Japanese Castle Under Moon | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Sunlit Pine Woods | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Desert Night Dunes | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Forest River Reflections | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| High Contrast Cloudscape | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Atmospheric Mist Valley | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-| Geometric Mandala Pattern | u/WhisperingSea4 | Transparent Overlay | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
-
----
-
-## License Definitions
-
-- **CC0**: Dedicated to the public domain worldwide.
-- **Public Domain**: Works whose copyright has expired.
-- **Unsplash / Pexels License**: Free for commercial and non-commercial use.
-- **Community Share**: Shared publicly for community e-reader use.
+| Monochrome Ink Landscape I | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Starry Forest Night | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Ocean Wave Stipple Art | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Deep Forest Fog | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Geometric Lunar Cycles | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Mountain Lake Reflection | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Cozy Library Nook | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Dense Evergreen Forest | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Celestial Sun & Stars | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Atmospheric Cloud Horizons | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Monochrome Ink Landscape II | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Minimalist Frame Border Overlay | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Starlit Mountain Peak | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Ink Wash Pine Woods | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Moonlit Ocean Horizon | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Abstract Wave Ribbons | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| High Detail Wilderness | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Minimalist Crescent Moon | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Bamboo Forest Sunlight | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Botanical Leaf Silhouette | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Atmospheric Mountain Fog | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| High Resolution Landscape II-A | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| High Resolution Landscape II-B | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| High Resolution Landscape II-C | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| High Resolution Master Canvas | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Cosmic Portal Horizon | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Starry Night Valley Vista | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Mountain Sunset Outline | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Ink Line Pine Tree Overlay | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Minimalist Desert Cactus | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Ink Splash Waves | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Cozy Coffee & Reading | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Japanese Torii Gate | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Forest Under Stars | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Geometric Mountain Sun | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Misty Pine Forest Path | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Solitary Tree in Fog | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Minimalist Star Lines | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Celestial Moon Phase | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Quiet Lake Reflection | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Starlight Mountain Vista | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Quiet Woodland Path | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Crescent Moon & Waves | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Minimalist Floral Stems | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Mountain Ridge Line Art | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Appa Soaring | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Solitary Mountain Peak | u/WhisperingSea4 | Transparent, Anime | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Forest Canopy Starlight | u/WhisperingSea4 | Transparent, Anime | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Misty Pine Ridge | u/WhisperingSea4 | Transparent, Anime | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Lunar Celestial Eclipse | u/WhisperingSea4 | Transparent, Anime | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Detailed Botanical Ferns | u/WhisperingSea4 | Transparent, Anime | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Floating Island Sanctuary | u/WhisperingSea4 | Transparent, Anime | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Minimalist Dune Horizon | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Minimalist Geometric Line Art Overlay | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Ink-Wash Wave Crest | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Crescent Moon Reader | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Starry Sky Valley | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Serene Bamboo Grove | u/WhisperingSea4 | Transparent, Anime | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Dark Celestial Constellations | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Mountain Sunset Silhouette | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Cozy Coffee & Open Book | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Starlight Forest Vista | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Midnight Sea Lighthouse | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Deep Space Galaxy Swirl | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Geometric Topographic Lines | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Minimalist Wildflowers | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Japanese Castle Under Moon | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Sunlit Pine Woods | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Desert Night Dunes | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Forest River Reflections | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| High Contrast Cloudscape | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Atmospheric Mist Valley | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
+| Geometric Mandala Pattern | u/WhisperingSea4 | Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |

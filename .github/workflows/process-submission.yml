@@ -87,11 +87,8 @@ jobs:
           os.makedirs('images/thumbnails', exist_ok=True)
           os.makedirs('images/thumbnails/plugin', exist_ok=True)
 
-          # Detect transparent images (PNG source URLs or Transparent category)
-          is_transparent = (
-              img_url.lower().endswith('.png') or
-              category.lower() == 'transparent'
-          )
+          # Detect transparent overlays (only when category is Transparent)
+          is_transparent = (category.lower() == 'transparent')
 
           if is_transparent:
               full_path = f'images/{item_id}.png'

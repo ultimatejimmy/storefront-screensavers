@@ -229,27 +229,6 @@
     "likes": 1
   },
   {
-    "id": "haeckel-orchidae-botanical",
-    "title": "Kunstformen der Natur — Orchids",
-    "author": "Ernst Haeckel",
-    "authorUrl": "https://www.rawpixel.com/search?tags=$publicdomain",
-    "category": "Nature",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.rawpixel.com/image/3284066",
-    "attribution": "Rawpixel Public Domain",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/haeckel-orchidae-botanical.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/haeckel-orchidae-botanical.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "bamboo-grove-kyoto-arashiyama",
     "title": "Arashiyama Bamboo Grove Path",
     "author": "Unsplash Japan",
@@ -2629,7 +2608,10 @@
     "title": "Frieren and Fern",
     "author": "ReaderBackdrop Community",
     "authorUrl": "https://readerbackdrop.com/",
-    "category": "Transparent",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2651,7 +2633,10 @@
     "title": "Garfield Reading Book",
     "author": "ReaderBackdrop Community",
     "authorUrl": "https://readerbackdrop.com/",
-    "category": "Transparent",
+    "category": [
+      "Transparent",
+      "Pop Culture"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2695,7 +2680,10 @@
     "title": "Baymax Waving",
     "author": "ReaderBackdrop Community",
     "authorUrl": "https://readerbackdrop.com/",
-    "category": "Transparent",
+    "category": [
+      "Transparent",
+      "Pop Culture"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2717,7 +2705,10 @@
     "title": "Marvel Superheroes Cover",
     "author": "ReaderBackdrop Community",
     "authorUrl": "https://readerbackdrop.com/",
-    "category": "Transparent",
+    "category": [
+      "Transparent",
+      "Pop Culture"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2781,7 +2772,10 @@
     "title": "Lego Digital Art Black",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Minimalist",
+    "category": [
+      "Minimalist",
+      "Pop Culture"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -3033,7 +3027,10 @@
     "title": "Mew Pokémon Minimalism",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Minimalist",
+    "category": [
+      "Minimalist",
+      "Pop Culture"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -3075,7 +3072,10 @@
     "title": "Dark Simple Background Centered",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Minimalist",
+    "category": [
+      "Minimalist",
+      "Pop Culture"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -3768,7 +3768,10 @@
     "title": "Krys Decker Digital Art Agatha (Krys Decker)",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Architecture",
+    "category": [
+      "Architecture",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -3894,7 +3897,10 @@
     "title": "Anime Girls Gibun Kono Subarashii Sekai Ni Shukufuku Wo!",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Architecture",
+    "category": [
+      "Architecture",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4146,7 +4152,10 @@
     "title": "Anime Girls Smiling Hatsune Miku",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Sci-Fi",
+    "category": [
+      "Sci-Fi",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4209,7 +4218,10 @@
     "title": "Indie Virtual Youtuber Stars Long Sleeves",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Sci-Fi",
+    "category": [
+      "Sci-Fi",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4230,7 +4242,10 @@
     "title": "Artstation Wide Screen Wide Angle",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Sci-Fi",
+    "category": [
+      "Sci-Fi",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4461,7 +4476,10 @@
     "title": "Aemeath (Wuthering Waves) Wuthering Waves Stars",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Sci-Fi",
+    "category": [
+      "Sci-Fi",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4524,7 +4542,10 @@
     "title": "Pixel Art Pokémon Emerald Pokémon",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Abstract",
+    "category": [
+      "Abstract",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4629,7 +4650,10 @@
     "title": "Dai Dark Q Hayashida Manga",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Abstract",
+    "category": [
+      "Abstract",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -4671,7 +4695,10 @@
     "title": "Mrito00 Mushoku Tensei Roxy Migurdia (Mushoku Tensei)",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Abstract",
+    "category": [
+      "Abstract",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5725,7 +5752,10 @@
     "title": "Solitary Mountain Peak",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Transparent",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5747,7 +5777,10 @@
     "title": "Forest Canopy Starlight",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Transparent",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5769,7 +5802,10 @@
     "title": "Misty Pine Ridge",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Transparent",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5791,7 +5827,10 @@
     "title": "Lunar Celestial Eclipse",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Transparent",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5813,7 +5852,10 @@
     "title": "Detailed Botanical Ferns",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Transparent",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5835,7 +5877,10 @@
     "title": "Floating Island Sanctuary",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Transparent",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5967,7 +6012,10 @@
     "title": "Serene Bamboo Grove",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Transparent",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",

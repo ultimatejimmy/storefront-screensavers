@@ -24,6 +24,26 @@ This repository serves two main purposes:
 - **Suggest Changes & Feedback**: Submit corrections to titles, artists, categories, or flag low-quality entries directly via the ✏️ slide-in drawer on any wallpaper card.
 - **Open Access & CC0 Sourcing**: Curated collection featuring high-resolution masterworks from The Metropolitan Museum of Art, Rijksmuseum, Old Book Illustrations, Rawpixel, and NASA. All attributed in [`CREDITS.md`](CREDITS.md).
 - **Maintainer Review & Seeding Tool**: Local HTML approval gallery (`tools/seed/review.html`) allowing maintainers to visually approve/reject candidate screensavers before committing.
+- **Catalog Management Studio**: Local interactive UI (`start_studio.bat` or `python tools/catalog_studio.py`) for editing titles, metadata, replacing images with automatic e-reader resizing, adding new wallpapers, deleting entries, and syncing `CREDITS.md`.
+
+---
+
+## Catalog Management Studio (Local Web UI)
+
+For maintaining, editing, and expanding the catalog locally with an interactive graphical interface:
+
+1. **Launch**: Double click [`start_studio.bat`](start_studio.bat) or run:
+   ```bash
+   python tools/catalog_studio.py
+   ```
+2. The Studio opens automatically in your browser at `http://127.0.0.1:5173`.
+3. **Capabilities**:
+   - **Edit Titles & Metadata**: Click any item card to edit its title, slug ID, artist, category, device compatibility tags, license, and attribution.
+   - **Replace Images**: Drag and drop a new image or paste a URL to automatically regenerate the master 1860×2480 image and 600×800 thumbnail.
+   - **Add New Wallpapers**: Upload new wallpapers with automatic ID slugging, category presets, and metadata formatting.
+   - **Delete & Cleanup**: Permanently remove items from the catalog with optional deletion of orphan image files.
+   - **Sync Credits**: 1-click regeneration of [`CREDITS.md`](CREDITS.md) to keep attribution in sync with `screensavers.json`.
+   - **Automatic Backups**: Every modification creates a timestamped backup in `tools/backups/` with 1-click restore.
 
 ---
 
