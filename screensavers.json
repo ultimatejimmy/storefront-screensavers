@@ -112,7 +112,10 @@
     "id": "trash-panda",
     "title": "Trash Panda",
     "author": "brpjtf2",
-    "category": "Nature",
+    "category": [
+      "Nature",
+      "Pop Culture"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -124,7 +127,8 @@
     "likes": 1,
     "license": "Community Share",
     "attribution": "brpjtf2",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "authorUrl": ""
   },
   {
     "id": "house-elf-liberation-front",
@@ -712,8 +716,8 @@
     "likes": 1
   },
   {
-    "id": "nature-jellyfish-glow-deep-sea",
-    "title": "Deep Sea Glowing Jellyfish",
+    "id": "nature-snug-cat",
+    "title": "Snuggled Cat",
     "author": "Unsplash Nature",
     "authorUrl": "https://unsplash.com",
     "category": "Nature",
@@ -727,8 +731,8 @@
     "licenseUrl": "https://unsplash.com/license",
     "sourceUrl": "https://unsplash.com",
     "attribution": "Unsplash",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-jellyfish-glow-deep-sea.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-jellyfish-glow-deep-sea.jpg",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-snug-cat.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-snug-cat.jpg",
     "downloads": 0,
     "likes": 1
   },
@@ -758,7 +762,10 @@
     "title": "Solitary Coast Lighthouse in Sea Fog",
     "author": "Unsplash Minimal",
     "authorUrl": "https://unsplash.com",
-    "category": "Minimalist",
+    "category": [
+      "Minimalist",
+      "Nature"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -876,27 +883,6 @@
     "attribution": "r/koreader Community Share",
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/anime-lofi-desk-cat-window.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/anime-lofi-desk-cat-window.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "anime-ghibli-floating-castle-sky",
-    "title": "Grassland Castle in the Clouds",
-    "author": "Reddit r/koreader (u/ghibli_fan)",
-    "authorUrl": "https://www.reddit.com/r/koreader/",
-    "category": "Anime",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share (Implied)",
-    "licenseUrl": "https://www.reddit.com/r/koreader/",
-    "sourceUrl": "https://www.reddit.com/r/koreader/",
-    "attribution": "r/koreader Community Share",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/anime-ghibli-floating-castle-sky.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/anime-ghibli-floating-castle-sky.jpg",
     "downloads": 0,
     "likes": 1
   },
@@ -1363,27 +1349,6 @@
     "likes": 1
   },
   {
-    "id": "artic-43714",
-    "title": "E-10: English Dining Room of the Georgian Period, 1770-90",
-    "author": "Designed by Narcissa Niblack Thorne",
-    "authorUrl": "https://www.artic.edu",
-    "category": "Architecture",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0 / Public Domain",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.artic.edu/iiif/2/416b87c8-515f-0066-5c44-b7562162f2c0/full/843,/0/default.jpg",
-    "attribution": "Art Institute of Chicago",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-43714.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-43714.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "artic-61603",
     "title": "Ballet at the Paris Opéra",
     "author": "Edgar Degas",
@@ -1401,27 +1366,6 @@
     "attribution": "Art Institute of Chicago",
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-61603.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-61603.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
-    "id": "artic-156538",
-    "title": "Chicago Stock Exchange Trading Room: Reconstruction at the Art Institute of Chicago",
-    "author": "Adler & Sullivan, original architects; American, 1883-1896",
-    "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0 / Public Domain",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.artic.edu/iiif/2/47b28b55-ced6-502d-f111-fbe0033f8dc8/full/843,/0/default.jpg",
-    "attribution": "Art Institute of Chicago",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-156538.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-156538.jpg",
     "downloads": 0,
     "likes": 1
   },
@@ -2203,27 +2147,6 @@
     "likes": 1
   },
   {
-    "id": "artic-91620",
-    "title": "Portrait Vessel",
-    "author": "Ceramist unknown (Moche)",
-    "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0 / Public Domain",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.artic.edu/iiif/2/239e0072-de08-cb26-1484-4776fc27b0fb/full/843,/0/default.jpg",
-    "attribution": "Art Institute of Chicago",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-91620.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-91620.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "artic-100829",
     "title": "Magnolias on Light Blue Velvet Cloth",
     "author": "Martin Johnson Heade (American, 1819–1904)",
@@ -2455,27 +2378,6 @@
     "likes": 1
   },
   {
-    "id": "artic-111380",
-    "title": "Seated Bodhisattva",
-    "author": "Japan",
-    "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "CC0 / Public Domain",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "sourceUrl": "https://www.artic.edu/iiif/2/1d30ac4e-c91c-d91d-705f-acdce9e6efb4/full/843,/0/default.jpg",
-    "attribution": "Art Institute of Chicago",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-111380.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-111380.jpg",
-    "downloads": 0,
-    "likes": 1
-  },
-  {
     "id": "artic-27987",
     "title": "Jacques and Berthe Lipchitz",
     "author": "Amedeo Modigliani",
@@ -2586,7 +2488,10 @@
     "title": "Spirited Away Dragon Haku",
     "author": "ReaderBackdrop Community",
     "authorUrl": "https://readerbackdrop.com/",
-    "category": "Transparent",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2602,56 +2507,6 @@
     "downloads": 0,
     "likes": 1,
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-272a5125.png"
-  },
-  {
-    "id": "rb-38391ca3",
-    "title": "Frieren and Fern",
-    "author": "ReaderBackdrop Community",
-    "authorUrl": "https://readerbackdrop.com/",
-    "category": [
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Upload",
-    "licenseUrl": "https://readerbackdrop.com/",
-    "sourceUrl": "https://utfs.io/f/aPKH5e9W4OtEK7ONM0LP328apSoqs0djReMAxhvCfDLbTXyk",
-    "attribution": "ReaderBackdrop.com",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/rb-38391ca3.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/rb-38391ca3.png",
-    "downloads": 0,
-    "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-38391ca3.png"
-  },
-  {
-    "id": "rb-7020e67a",
-    "title": "Garfield Reading Book",
-    "author": "ReaderBackdrop Community",
-    "authorUrl": "https://readerbackdrop.com/",
-    "category": [
-      "Transparent",
-      "Pop Culture"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Upload",
-    "licenseUrl": "https://readerbackdrop.com/",
-    "sourceUrl": "https://utfs.io/f/aPKH5e9W4OtEnajfhoZDR0cFIhzoxPMfHWVpeCd76U4GQa9q",
-    "attribution": "ReaderBackdrop.com",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/rb-7020e67a.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/rb-7020e67a.png",
-    "downloads": 0,
-    "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-7020e67a.png"
   },
   {
     "id": "rb-9748dd72",
@@ -2674,31 +2529,6 @@
     "downloads": 0,
     "likes": 1,
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-9748dd72.png"
-  },
-  {
-    "id": "rb-021f2c60",
-    "title": "Baymax Waving",
-    "author": "ReaderBackdrop Community",
-    "authorUrl": "https://readerbackdrop.com/",
-    "category": [
-      "Transparent",
-      "Pop Culture"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Upload",
-    "licenseUrl": "https://readerbackdrop.com/",
-    "sourceUrl": "https://utfs.io/f/aPKH5e9W4OtE6zPSxqD1ArVXg5DWtnsxvN7hcOPG9SfFQMiR",
-    "attribution": "ReaderBackdrop.com",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/rb-021f2c60.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/rb-021f2c60.png",
-    "downloads": 0,
-    "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-021f2c60.png"
   },
   {
     "id": "rb-d1a37588",
@@ -2838,7 +2668,10 @@
     "title": "Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Minimalist",
+    "category": [
+      "Minimalist",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2859,7 +2692,10 @@
     "title": "Shotaro Kaneda Akira Manga",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Minimalist",
+    "category": [
+      "Minimalist",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2880,7 +2716,10 @@
     "title": "Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Minimalist",
+    "category": [
+      "Minimalist",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2922,7 +2761,10 @@
     "title": "Street Fighter Vi Capcom Artwork",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Minimalist",
+    "category": [
+      "Minimalist",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -3029,7 +2871,8 @@
     "authorUrl": "https://wallhaven.cc",
     "category": [
       "Minimalist",
-      "Pop Culture"
+      "Pop Culture",
+      "Anime"
     ],
     "compatibility": [
       "Kindle",
@@ -3051,7 +2894,10 @@
     "title": "Anime Minimalism White",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Minimalist",
+    "category": [
+      "Minimalist",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -3642,7 +3488,10 @@
     "title": "Leo (Artist) Pixiv Digital Art",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Architecture",
+    "category": [
+      "Architecture",
+      "Anime"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",

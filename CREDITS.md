@@ -10,7 +10,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Sleepy Tabby Cat | Unsplash (CC0) | Minimalist | Community Share | Unsplash (CC0) |
 | Starry Cat | brpjtf2 | Nature | Community Share | brpjtf2 |
 | Eyes in the woods | brpjtf2 | Nature | Community Share | brpjtf2 |
-| Trash Panda | brpjtf2 | Nature | Community Share | brpjtf2 |
+| Trash Panda | brpjtf2 | Nature, Pop Culture | Community Share | brpjtf2 |
 | House Elf Liberation Front | brpjtf2 | Pop Culture | Community Share | brpjtf2 |
 | The Rhinoceros (Woodcut) | Albrecht Dürer | Fine Art | CC0 | [The Metropolitan Museum of Art (Open Access)](https://www.metmuseum.org/art/collection/search/366556) |
 | Melencolia I | Albrecht Dürer | Fine Art | CC0 | [The Metropolitan Museum of Art (Open Access)](https://www.metmuseum.org/art/collection/search/366559) |
@@ -39,15 +39,14 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Dolomites Tre Cime Sharp Ridge | Unsplash Landscape | Nature | Unsplash License | [Unsplash](https://unsplash.com) |
 | Milky Way Galaxy over Pine Silhouette | Unsplash Space | Nature | Unsplash License | [Unsplash](https://unsplash.com) |
 | Emerald Fern Leaves & Dewdrops | Unsplash Nature | Nature | Unsplash License | [Unsplash](https://unsplash.com) |
-| Deep Sea Glowing Jellyfish | Unsplash Nature | Nature | Unsplash License | [Unsplash](https://unsplash.com) |
+| Snuggled Cat | Unsplash Nature | Nature | Unsplash License | [Unsplash](https://unsplash.com) |
 | Minimalist Dark Mode Geometric Ray Lines | Unsplash Minimal | Minimalist | Unsplash License | [Unsplash](https://unsplash.com) |
-| Solitary Coast Lighthouse in Sea Fog | Unsplash Minimal | Minimalist | Unsplash License | [Unsplash](https://unsplash.com) |
+| Solitary Coast Lighthouse in Sea Fog | Unsplash Minimal | Minimalist, Nature | Unsplash License | [Unsplash](https://unsplash.com) |
 | Louvre Glass Pyramid Angles | Unsplash Architecture | Architecture | Unsplash License | [Unsplash](https://unsplash.com) |
 | Golden Gate Bridge Towers in Morning Fog | Unsplash Architecture | Architecture | Unsplash License | [Unsplash](https://unsplash.com) |
 | Andromeda Galaxy M31 Core & Spiral Arms | NASA / ESA / Hubble | Sci-Fi | Public Domain | [NASA / ESA Public Domain](https://www.nasa.gov) |
 | Webb’s First Deep Field (SMACS 0723) | NASA / ESA / CSA / STScI | Sci-Fi | Public Domain | [NASA / STScI Public Domain](https://www.nasa.gov) |
 | Cozy Lofi Study Desk & Sleeping Cat | Reddit r/koreader (u/lofi_reader) | Anime | Community Share (Implied) | [r/koreader Community Share](https://www.reddit.com/r/koreader/) |
-| Grassland Castle in the Clouds | Reddit r/koreader (u/ghibli_fan) | Anime | Community Share (Implied) | [r/koreader Community Share](https://www.reddit.com/r/koreader/) |
 | The Bedroom | Vincent van Gogh (Dutch, 1853–1890) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/6644829f-f292-c5c4-a73c-0356a6fdbf0d/full/843,/0/default.jpg) |
 | Paris Street; Rainy Day | Gustave Caillebotte (French, 1848–1894) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/f8fd76e9-c396-5678-36ed-6a348c904d27/full/843,/0/default.jpg) |
 | A Sunday on La Grande Jatte — 1884 | Georges Seurat (French, 1859–1891) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/2d484387-2509-5e8e-2c43-22f9981972eb/full/843,/0/default.jpg) |
@@ -70,9 +69,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | The Girl by the Window | Edvard Munch (Norwegian, 1863–1944) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/d7df2633-3b40-f570-c906-211503a37cde/full/843,/0/default.jpg) |
 | The Bay of Marseille, Seen from L'Estaque | Paul Cezanne (French, 1839–1906) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/d4ca6321-8656-3d3f-a362-2ee297b2b813/full/843,/0/default.jpg) |
 | The Watermill with the Great Red Roof | Meindert Hobbema (Dutch, 1638–1709) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/237c25a2-6051-a8e7-1610-a01938d4deab/full/843,/0/default.jpg) |
-| E-10: English Dining Room of the Georgian Period, 1770-90 | Designed by Narcissa Niblack Thorne | Architecture | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/416b87c8-515f-0066-5c44-b7562162f2c0/full/843,/0/default.jpg) |
 | Ballet at the Paris Opéra | Edgar Degas | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/cb34b0a8-bc51-d063-aab1-47c7debf3a7b/full/843,/0/default.jpg) |
-| Chicago Stock Exchange Trading Room: Reconstruction at the Art Institute of Chicago | Adler & Sullivan, original architects; American, 1883-1896 | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/47b28b55-ced6-502d-f111-fbe0033f8dc8/full/843,/0/default.jpg) |
 | The Fountain, Villa Torlonia, Frascati, Italy | John Singer Sargent (American, 1856–1925) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/3f9aa9db-61e1-7060-fdb0-bfd7e41ddd08/full/843,/0/default.jpg) |
 | Lozenge Composition with Yellow, Black, Blue, Red, and Gray | Piet Mondrian | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/25f660ee-f1db-d13b-42a5-56df97c98ba7/full/843,/0/default.jpg) |
 | Nocturne: Blue and Gold—Southampton Water | James McNeill Whistler (American, 1834–1903) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/50034c7f-ce51-00f1-430e-a6f7efc233fc/full/843,/0/default.jpg) |
@@ -110,7 +107,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | The Annunciation | Jean Hey (Master of Moulins; Netherlandish, c. 1480-c.1504) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/77951d0c-d781-eac6-f4ff-f13cc5cfc0cf/full/843,/0/default.jpg) |
 | Stela of Amenemhat and Hemet | Egyptian; probably Thebes (now Luxor), Egypt | Architecture | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/9365a024-75ce-75e9-756f-1c2c96eadec9/full/843,/0/default.jpg) |
 | Merahi metua no Tehamana (Tehamana Has Many Parents or The Ancestors of Tehamana) | Paul Gauguin (French, 1848–1903) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/48268fc7-2eb4-ded6-1293-e91f27b66478/full/843,/0/default.jpg) |
-| Portrait Vessel | Ceramist unknown (Moche) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/239e0072-de08-cb26-1484-4776fc27b0fb/full/843,/0/default.jpg) |
 | Magnolias on Light Blue Velvet Cloth | Martin Johnson Heade (American, 1819–1904) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/0729fbba-51e3-a2d7-6d4d-61c2be62af3f/full/843,/0/default.jpg) |
 | Boy on a Ram | Francisco José de Goya y Lucientes (Spanish, 1746–1828) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/e54a695c-16df-cf45-9dd4-b517e8c32cc3/full/843,/0/default.jpg) |
 | The Nativity | Fra Bartolommeo (Baccio della Porta; Italian, 1472-1517) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/40fdb1d6-93fe-2916-78fb-f56a1ac261f1/full/843,/0/default.jpg) |
@@ -122,34 +118,30 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Cabin in the Cotton | Horace Pippin (American, 1888–1946) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/18dd28cc-ae57-b852-cbc4-d184c6f0555d/full/843,/0/default.jpg) |
 | Armida Encounters the Sleeping Rinaldo | Giovanni Battista Tiepolo (Italian, 1696–1770) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/633f464c-203f-f7b9-a251-7a2073f4b05d/full/843,/0/default.jpg) |
 | The Beheading of Saint John the Baptist | Giovanni di Paolo (Italian, 1398–1482) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/af91bb7d-0af4-ef10-5b4d-052da0b6e21a/full/843,/0/default.jpg) |
-| Seated Bodhisattva | Japan | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/1d30ac4e-c91c-d91d-705f-acdce9e6efb4/full/843,/0/default.jpg) |
 | Jacques and Berthe Lipchitz | Amedeo Modigliani | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/7e649536-b186-c3f5-3e6d-0d22d5d798ef/full/843,/0/default.jpg) |
 | Early Morning, Tarpon Springs | George Inness (American, 1825–1894) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/ef96e79b-f481-8114-0804-4bd39c101983/full/843,/0/default.jpg) |
 | Landscape: Window Overlooking the Woods | Édouard Vuillard (French, 1868-1940) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/a1dc6109-6e0c-7801-ebe8-8c95fec2c4e4/full/843,/0/default.jpg) |
 | Comet-Hale-Bopp-29-03-1997 hires adj | Philipp Salzgeber | Sci-Fi | CC BY-SA 2.0 at | [Wikimedia Commons](https://upload.wikimedia.org/wikipedia/commons/d/df/Comet-Hale-Bopp-29-03-1997_hires_adj.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original) |
 | Cat Looking Out Window | ReaderBackdrop Community | Transparent | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE0r6ApVJ71kyBjWhZMiRXdVlS2w8FObYAzaPe) |
-| Spirited Away Dragon Haku | ReaderBackdrop Community | Transparent | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtEDaQbT1kg1Rv9Q4x2AOUjHkWJyhEB0iTsM3rp) |
-| Frieren and Fern | ReaderBackdrop Community | Anime, Transparent | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtEK7ONM0LP328apSoqs0djReMAxhvCfDLbTXyk) |
-| Garfield Reading Book | ReaderBackdrop Community | Transparent, Pop Culture | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtEnajfhoZDR0cFIhzoxPMfHWVpeCd76U4GQa9q) |
+| Spirited Away Dragon Haku | ReaderBackdrop Community | Anime, Transparent | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtEDaQbT1kg1Rv9Q4x2AOUjHkWJyhEB0iTsM3rp) |
 | Reading a Newspaper Engraving | ReaderBackdrop Community | Transparent | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE7iGVYJqUnRi1KLNkmetbI3xcUzPh0a9MBuXj) |
-| Baymax Waving | ReaderBackdrop Community | Transparent, Pop Culture | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE6zPSxqD1ArVXg5DWtnsxvN7hcOPG9SfFQMiR) |
 | Marvel Superheroes Cover | ReaderBackdrop Community | Transparent, Pop Culture | Community Upload | [ReaderBackdrop.com](https://utfs.io/f/aPKH5e9W4OtE6CKdB1D1ArVXg5DWtnsxvN7hcOPG9SfFQMiR) |
 | Ketewstudio Minimalism Anime | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/8g/wallhaven-8g9wyy.png) |
 | Black Minimalism Centered | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/zp/wallhaven-zpdjww.jpg) |
 | Lego Digital Art Black | Wallhaven Contributor | Minimalist, Pop Culture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/rq/wallhaven-rqpmjj.jpg) |
 | Goldn_Arts Painting Canvas | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/ly/wallhaven-lyj1kp.png) |
 | Knight Digital Art Dark | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/3q/wallhaven-3q6mry.jpg) |
-| Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrmqp5.png) |
-| Shotaro Kaneda Akira Manga | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/gw/wallhaven-gwd5ee.png) |
-| Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/21/wallhaven-21oqwm.png) |
+| Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk | Wallhaven Contributor | Minimalist, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrmqp5.png) |
+| Shotaro Kaneda Akira Manga | Wallhaven Contributor | Minimalist, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/gw/wallhaven-gwd5ee.png) |
+| Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk | Wallhaven Contributor | Minimalist, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/21/wallhaven-21oqwm.png) |
 | Vortex 3D Abstract Simple Background | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/k8/wallhaven-k8log6.jpg) |
-| Street Fighter Vi Capcom Artwork | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/og/wallhaven-ogj9m9.jpg) |
+| Street Fighter Vi Capcom Artwork | Wallhaven Contributor | Minimalist, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/og/wallhaven-ogj9m9.jpg) |
 | Nasa Humor Text | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/yq/wallhaven-yq9x8x.jpg) |
 | Pulsars Science Black Background | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrozvd.png) |
 | Artem Demura Dark Robes | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jedwzp.jpg) |
 | Trigun Vash The Stampede Minimalism | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/og/wallhaven-ogjdy7.png) |
-| Mew Pokémon Minimalism | Wallhaven Contributor | Minimalist, Pop Culture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jedx5w.png) |
-| Anime Minimalism White | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/7j/wallhaven-7jl91e.png) |
+| Mew Pokémon Minimalism | Wallhaven Contributor | Minimalist, Pop Culture, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jedx5w.png) |
+| Anime Minimalism White | Wallhaven Contributor | Minimalist, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/7j/wallhaven-7jl91e.png) |
 | Dark Simple Background Centered | Wallhaven Contributor | Minimalist, Pop Culture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/e8/wallhaven-e86kwo.jpg) |
 | Cgi Digital Art 3D Abstract | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/rq/wallhaven-rqp8x1.jpg) |
 | Landscape Nature Mountains | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jed8yq.png) |
@@ -177,7 +169,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Philipp A Urlich Artstation Dragon | Wallhaven Contributor | Nature | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/d8/wallhaven-d8dxzm.jpg) |
 | Mountains Rocks Nature | Wallhaven Contributor | Nature | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/e8/wallhaven-e82xxr.jpg) |
 | Patagonia Cerro Torre Argentina | Wallhaven Contributor | Nature | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/po/wallhaven-po7q59.jpg) |
-| Leo (Artist) Pixiv Digital Art | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/ly/wallhaven-lydkg2.jpg) |
+| Leo (Artist) Pixiv Digital Art | Wallhaven Contributor | Architecture, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/ly/wallhaven-lydkg2.jpg) |
 | Hisanori Rurikoin Temple Kyoto | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/vp/wallhaven-vpe9w8.jpg) |
 | Eric Hallquist Artstation Sky | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/d8/wallhaven-d8ojrl.jpg) |
 | C.H Lam Takayama Japan | Wallhaven Contributor | Architecture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/3q/wallhaven-3q2zdd.jpg) |
