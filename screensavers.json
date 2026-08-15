@@ -235,8 +235,11 @@
       "front",
       "house",
       "liberation",
-      "pop culture"
-    ]
+      "pop culture",
+      "harry potter",
+      "dobby"
+    ],
+    "authorUrl": ""
   },
   {
     "id": "durer-rhinoceros-woodcut",
@@ -3604,8 +3607,8 @@
     "author": "ReaderBackdrop Community",
     "authorUrl": "https://readerbackdrop.com/",
     "category": [
-      "Transparent",
-      "Pop Culture"
+      "Pop Culture",
+      "Transparent"
     ],
     "compatibility": [
       "Kindle",
@@ -3632,7 +3635,11 @@
       "overlay",
       "pop culture",
       "superheroes",
-      "transparent"
+      "transparent",
+      "spiderman",
+      "captain america",
+      "ant man",
+      "hulk"
     ]
   },
   {
@@ -4107,9 +4114,9 @@
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
     "category": [
+      "Anime",
       "Minimalist",
-      "Pop Culture",
-      "Anime"
+      "Pop Culture"
     ],
     "compatibility": [
       "Kindle",
@@ -4134,7 +4141,8 @@
       "minimalist",
       "monochrome",
       "pop culture",
-      "simple"
+      "simple",
+      "pokemon"
     ]
   },
   {
@@ -4203,7 +4211,9 @@
       "minimalist",
       "monochrome",
       "pop culture",
-      "simple"
+      "simple",
+      "south park",
+      "kenny"
     ]
   },
   {
@@ -6802,7 +6812,7 @@
   },
   {
     "id": "whisperingsea4-celestial-sun-stars",
-    "title": "Celestial Sun & Stars",
+    "title": "Floating house",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -6836,12 +6846,14 @@
       "sunlight",
       "sunrise",
       "sunset",
-      "transparent"
+      "transparent",
+      "balloon",
+      "house"
     ]
   },
   {
     "id": "whisperingsea4-atmospheric-cloud-horizons",
-    "title": "Atmospheric Cloud Horizons",
+    "title": "Winding Road",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -6875,7 +6887,7 @@
   },
   {
     "id": "whisperingsea4-monochrome-ink-landscape-2",
-    "title": "Monochrome Ink Landscape II",
+    "title": "House Tree",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -6906,7 +6918,7 @@
   },
   {
     "id": "whisperingsea4-minimalist-frame-border",
-    "title": "Minimalist Frame Border Overlay",
+    "title": "Big Window",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -6941,7 +6953,7 @@
   },
   {
     "id": "whisperingsea4-starlit-mountain-peak",
-    "title": "Starlit Mountain Peak",
+    "title": "Wolf",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -6977,7 +6989,7 @@
   },
   {
     "id": "whisperingsea4-ink-wash-pine-woods",
-    "title": "Ink Wash Pine Woods",
+    "title": "Big city",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7009,7 +7021,8 @@
       "pines",
       "transparent",
       "wash",
-      "woods"
+      "woods",
+      "bus"
     ]
   },
   {
@@ -7055,7 +7068,7 @@
   },
   {
     "id": "whisperingsea4-abstract-wave-ribbons",
-    "title": "Abstract Wave Ribbons",
+    "title": "Crossing cliff",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7086,7 +7099,7 @@
   },
   {
     "id": "whisperingsea4-high-detail-wilderness",
-    "title": "High Detail Wilderness",
+    "title": "UFO",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7112,15 +7125,20 @@
       "koreader overlay",
       "overlay",
       "transparent",
-      "wilderness"
+      "wilderness",
+      "alien",
+      "abduct"
     ]
   },
   {
     "id": "whisperingsea4-minimalist-crescent-moon",
-    "title": "Minimalist Crescent Moon",
+    "title": "Reeling in sky",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Abstract",
+      "Transparent"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -7155,7 +7173,7 @@
   },
   {
     "id": "whisperingsea4-bamboo-forest-sunlight",
-    "title": "Bamboo Forest Sunlight",
+    "title": "Beach view",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7198,7 +7216,7 @@
   },
   {
     "id": "whisperingsea4-botanical-leaf-silhouette",
-    "title": "Botanical Leaf Silhouette",
+    "title": "Abducted by book",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7232,7 +7250,7 @@
   },
   {
     "id": "whisperingsea4-atmospheric-mountain-fog",
-    "title": "Atmospheric Mountain Fog",
+    "title": "House in dark",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7271,7 +7289,7 @@
   },
   {
     "id": "whisperingsea4-highres-landscape-2a",
-    "title": "High Resolution Landscape II-A",
+    "title": "Bat Castle",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7297,12 +7315,14 @@
       "landscape",
       "overlay",
       "resolution",
-      "transparent"
+      "transparent",
+      "dracula",
+      "vampire"
     ]
   },
   {
     "id": "whisperingsea4-highres-landscape-2b",
-    "title": "High Resolution Landscape II-B",
+    "title": "Underwater Balloon",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7328,12 +7348,14 @@
       "landscape",
       "overlay",
       "resolution",
-      "transparent"
+      "transparent",
+      "sea",
+      "fish"
     ]
   },
   {
     "id": "whisperingsea4-highres-landscape-2c",
-    "title": "High Resolution Landscape II-C",
+    "title": "Shadow self",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7359,15 +7381,21 @@
       "landscape",
       "overlay",
       "resolution",
-      "transparent"
+      "transparent",
+      "dragon",
+      "rabbit",
+      "bunny"
     ]
   },
   {
     "id": "whisperingsea4-highres-master-canvas",
-    "title": "High Resolution Master Canvas",
+    "title": "Big sword",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -7396,10 +7424,13 @@
   },
   {
     "id": "whisperingsea4-cosmic-portal-horizon",
-    "title": "Cosmic Portal Horizon",
+    "title": "Tower",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Fantasy",
+      "Transparent"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -7427,7 +7458,7 @@
   },
   {
     "id": "whisperingsea4-starry-night-valley-vista",
-    "title": "Starry Night Valley Vista",
+    "title": "Floating balloon house",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7495,12 +7526,13 @@
       "sunlight",
       "sunrise",
       "sunset",
-      "transparent"
+      "transparent",
+      "balloon"
     ]
   },
   {
     "id": "whisperingsea4-dark-woodland-trail",
-    "title": "Ink Line Pine Tree Overlay",
+    "title": "Floating balloon",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7539,10 +7571,13 @@
   },
   {
     "id": "whisperingsea4-minimalist-desert-cactus",
-    "title": "Minimalist Desert Cactus",
+    "title": "Archer",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -7581,7 +7616,7 @@
   },
   {
     "id": "whisperingsea4-ink-splash-waves",
-    "title": "Ink Splash Waves",
+    "title": "Wolf Hunt",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7607,15 +7642,20 @@
       "overlay",
       "splash",
       "transparent",
-      "waves"
+      "waves",
+      "wolves",
+      "laughing"
     ]
   },
   {
     "id": "whisperingsea4-cozy-coffee-reading",
-    "title": "Cozy Coffee & Reading",
+    "title": "Inky face",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
-    "category": "Transparent",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -7686,7 +7726,7 @@
   },
   {
     "id": "whisperingsea4-forest-under-stars",
-    "title": "Forest Under Stars",
+    "title": "Inky wolves",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7718,12 +7758,13 @@
       "stars",
       "transparent",
       "trees",
-      "woods"
+      "woods",
+      "wolf"
     ]
   },
   {
     "id": "whisperingsea4-geometric-mountain-sun",
-    "title": "Geometric Mountain Sun",
+    "title": "Wolves",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7768,7 +7809,7 @@
   },
   {
     "id": "whisperingsea4-misty-pine-forest-path",
-    "title": "Misty Pine Forest Path",
+    "title": "On the water",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7789,20 +7830,13 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-misty-pine-forest-path.png",
     "tags": [
       "backdrop",
-      "evergreen",
-      "forest",
       "koreader overlay",
       "landscape",
-      "misty",
       "nature",
       "overlay",
       "path",
-      "pine",
-      "pine trees",
-      "pines",
       "transparent",
-      "trees",
-      "woods"
+      "house"
     ]
   },
   {
@@ -7914,7 +7948,7 @@
   },
   {
     "id": "whisperingsea4-quiet-lake-reflection",
-    "title": "Quiet Lake Reflection",
+    "title": "Bird floaty",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7945,7 +7979,7 @@
   },
   {
     "id": "whisperingsea4-starlight-mountain-vista",
-    "title": "Starlight Mountain Vista",
+    "title": "Moolit path",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -7976,12 +8010,15 @@
       "starlight",
       "summit",
       "transparent",
-      "vista"
+      "vista",
+      "trees",
+      "sword",
+      "dark"
     ]
   },
   {
     "id": "whisperingsea4-quiet-woodland-path",
-    "title": "Quiet Woodland Path",
+    "title": "Crooked building",
     "author": "u/WhisperingSea4",
     "authorUrl": "https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/",
     "category": "Transparent",
@@ -8007,7 +8044,8 @@
       "path",
       "quiet",
       "transparent",
-      "woodland"
+      "woodland",
+      "house"
     ]
   },
   {
