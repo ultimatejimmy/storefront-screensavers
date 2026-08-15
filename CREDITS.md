@@ -1,0 +1,93 @@
+# External Sourcing & Attribution Credits
+
+All open access, Public Domain, CC0, and community-shared screensavers in this catalog are credited below in accordance with their respective licenses and attribution requirements.
+
+| Title | Creator / Artist | Category | License | Source & Attribution |
+|---|---|---|---|---|
+| The Bedroom | Vincent van Gogh (Dutch, 1853–1890) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/6644829f-f292-c5c4-a73c-0356a6fdbf0d/full/843,/0/default.jpg) |
+| Paris Street; Rainy Day | Gustave Caillebotte (French, 1848–1894) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/f8fd76e9-c396-5678-36ed-6a348c904d27/full/843,/0/default.jpg) |
+| A Sunday on La Grande Jatte — 1884 | Georges Seurat (French, 1859–1891) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/2d484387-2509-5e8e-2c43-22f9981972eb/full/843,/0/default.jpg) |
+| Coronation Stone of Moctezuma Xocoyotzin | Maker unknown (Mexica, Aztec) | Sculpture | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/ea8c5d62-6ce8-88e8-feb1-e0053cf534c5/full/843,/0/default.jpg) |
+| Under the Wave off Kanagawa (Kanagawa oki nami ura), also known as The Great Wave, from the series "Thirty-Six Views of Mount Fuji (Fugaku sanjurokkei)" | Katsushika Hokusai 葛飾 北斎 | Print | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/2fa24f36-cc26-41b6-4b49-12bba2a6c1c8/full/843,/0/default.jpg) |
+| The Assumption of the Virgin | El Greco (Doménikos Theotokópoulos; Greek, active in Spain, 1541–1614) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/47fd1564-93f5-f30b-7786-013421133b4a/full/843,/0/default.jpg) |
+| Stacks of Wheat (End of Summer) | Claude Monet (French, 1840–1926) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/a38e2828-ec6f-ece1-a30f-70243449197b/full/843,/0/default.jpg) |
+| Water Lilies | Claude Monet (French, 1840–1926) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/3c27b499-af56-f0d5-93b5-a7f2f1ad5813/full/843,/0/default.jpg) |
+| Two Sisters (On the Terrace) | Pierre-Auguste Renoir (French, 1841–1919) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/3a608f55-d76e-fa96-d0b1-0789fbc48f1e/full/843,/0/default.jpg) |
+| Self-Portrait | Vincent van Gogh (Dutch, 1853–1890) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/47c5bcb8-62ef-e5d7-55e7-f5121f409a30/full/843,/0/default.jpg) |
+| At the Moulin Rouge | Henri de Toulouse-Lautrec (French, 1864–1901) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/defb4004-b500-218d-3d9b-9a02423f097d/full/843,/0/default.jpg) |
+| Arrival of the Normandy Train, Gare Saint-Lazare | Claude Monet (French, 1840–1926) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/0f1cc0e0-e42e-be16-3f71-2022da38cb93/full/843,/0/default.jpg) |
+| The Basket of Apples | Paul Cezanne (French, 1839–1906) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/52ac8996-3460-cf71-cb42-5c4d0aa29b74/full/843,/0/default.jpg) |
+| Woman at Her Toilette | Berthe Morisot (French, 1841–1895) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/78c80988-6524-cec7-c661-a4c0a706d06f/full/843,/0/default.jpg) |
+| Saint George and the Dragon | Bernat Martorell (Spanish, active from 1427–died 1452) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/8a0e4ac9-43ea-bc3e-884b-ee27f8a10501/full/843,/0/default.jpg) |
+| Distant View of Niagara Falls | Thomas Cole (American, born England, 1801–1848) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/18092196-50ae-3ff1-9205-1b3110e966c3/full/843,/0/default.jpg) |
+| The Beach at Sainte-Adresse | Claude Monet (French, 1840–1926) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/95be2572-b53d-8e7b-abc9-10eb48d4fa5d/full/843,/0/default.jpg) |
+| Improvisation No. 30 (Cannons) | Vasily Kandinsky | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/b5bc6b66-9e6e-fe57-dcec-fc49e820e904/full/843,/0/default.jpg) |
+| The Herring Net | Winslow Homer (American, 1836–1910) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/5dca7347-c6dc-24dd-d073-d705b9cdc575/full/843,/0/default.jpg) |
+| The Girl by the Window | Edvard Munch (Norwegian, 1863–1944) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/d7df2633-3b40-f570-c906-211503a37cde/full/843,/0/default.jpg) |
+| The Bay of Marseille, Seen from L'Estaque | Paul Cezanne (French, 1839–1906) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/d4ca6321-8656-3d3f-a362-2ee297b2b813/full/843,/0/default.jpg) |
+| The Watermill with the Great Red Roof | Meindert Hobbema (Dutch, 1638–1709) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/237c25a2-6051-a8e7-1610-a01938d4deab/full/843,/0/default.jpg) |
+| E-10: English Dining Room of the Georgian Period, 1770-90 | Designed by Narcissa Niblack Thorne | Miniature room | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/416b87c8-515f-0066-5c44-b7562162f2c0/full/843,/0/default.jpg) |
+| Ballet at the Paris Opéra | Edgar Degas | Drawing and Watercolor | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/cb34b0a8-bc51-d063-aab1-47c7debf3a7b/full/843,/0/default.jpg) |
+| Chicago Stock Exchange Trading Room: Reconstruction at the Art Institute of Chicago | Adler & Sullivan, original architects; American, 1883-1896 | Installation | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/47b28b55-ced6-502d-f111-fbe0033f8dc8/full/843,/0/default.jpg) |
+| The Fountain, Villa Torlonia, Frascati, Italy | John Singer Sargent (American, 1856–1925) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/3f9aa9db-61e1-7060-fdb0-bfd7e41ddd08/full/843,/0/default.jpg) |
+| Lozenge Composition with Yellow, Black, Blue, Red, and Gray | Piet Mondrian | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/25f660ee-f1db-d13b-42a5-56df97c98ba7/full/843,/0/default.jpg) |
+| Nocturne: Blue and Gold—Southampton Water | James McNeill Whistler (American, 1834–1903) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/50034c7f-ce51-00f1-430e-a6f7efc233fc/full/843,/0/default.jpg) |
+| Acrobats at the Cirque Fernando (Francisca and Angelina Wartenberg) | Pierre-Auguste Renoir (French, 1841–1919) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/321c45f5-22a3-84a2-44cc-cf66642d4cf2/full/843,/0/default.jpg) |
+| Landscape with Saint John on Patmos | Nicolas Poussin (French, 1594–1665) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/aa870b0d-5a1b-660a-6dc6-56c12109cf6e/full/843,/0/default.jpg) |
+| Fishing Boats with Hucksters Bargaining for Fish | Joseph Mallord William Turner (English, 1775–1851) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/8641479e-c93e-f1a8-9925-19be061706da/full/843,/0/default.jpg) |
+| Love of Winter | George Wesley Bellows (American, 1882–1925) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/18ab0c35-e35c-0216-9afd-f93357920db1/full/843,/0/default.jpg) |
+| The Millinery Shop | Edgar Degas (French, 1834–1917) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/6f513908-03cc-b974-633b-adfce56b7936/full/843,/0/default.jpg) |
+| Old Man with a Gold Chain | Rembrandt van Rijn (Dutch, 1606–1669) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/3eaab3a3-2b47-9fdd-121c-050f6b8d9ccb/full/843,/0/default.jpg) |
+| Hercules and the Lernaean Hydra | Gustave Moreau (French, 1826-1898) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/2ae64c8a-266d-470a-a25a-c83127564636/full/843,/0/default.jpg) |
+| Shiva as Lord of the Dance (Nataraja) | India | Sculpture | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/cf50f037-5fb2-e197-0e56-3ae701edb3e2/full/843,/0/default.jpg) |
+| Coffin and Mummy of Paankhaenamun | Egyptian; Thebes (now Luxor), Egypt | Funerary Object | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/93270aaf-16a5-1604-c6c8-0f3c003eb7a1/full/843,/0/default.jpg) |
+| Woman before an Aquarium | Henri Matisse | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/d0e36029-27fc-bf4e-357a-55cfbaf7bdfd/full/843,/0/default.jpg) |
+| Mountain Brook | Albert Bierstadt (American, born Solingen, Prussia, now Germany, 1830–1902) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/d55b0cfc-0716-d6cd-3b38-5742903ce046/full/843,/0/default.jpg) |
+| After the Hurricane, Bahamas | Winslow Homer | Drawing and Watercolor | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/b34de958-1cbe-065f-4941-c34f64d2b366/full/843,/0/default.jpg) |
+| Still Life with Game Fowl | Juan Sánchez Cotán (Spanish, 1560–1627) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/f2021182-1302-f76f-97f1-4e7850030e3b/full/843,/0/default.jpg) |
+| Arlésiennes (Mistral) | Paul Gauguin (French, 1848–1903) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/ae6ac285-6887-dd76-4570-d379c786dfae/full/843,/0/default.jpg) |
+| A City Park | William Merritt Chase (American, 1849–1916) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/72a76270-d6f4-e744-d47b-307873a8e8ff/full/843,/0/default.jpg) |
+| At Mouquin's | William Glackens (American, 1870–1938) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/b146368d-a855-63ac-6115-04b835c60bb0/full/843,/0/default.jpg) |
+| The Captive Slave (Ira Aldridge) | John Philip Simpson (English, 1782–1847) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/5490fd49-dd52-4fd7-7d41-d871dcffae55/full/843,/0/default.jpg) |
+| The Home of the Heron | George Inness (American, 1825–1894) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/0f2d999d-0173-2935-a6d0-0175bb97b2a9/full/843,/0/default.jpg) |
+| Interrupted Reading | Jean-Baptiste-Camille Corot (French, 1796–1875) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/1c2d32a7-790c-501a-e124-00f28cf5052d/full/843,/0/default.jpg) |
+| Fish (Still Life) | Édouard Manet (French, 1832–1883) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/0cbe27e8-2fec-3445-bc48-ce40a8f2dc25/full/843,/0/default.jpg) |
+| The Interior of the Palm House on the Pfaueninsel Near Potsdam | Carl Blechen (German, 1798–1840) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/38bb6be4-223e-af7a-7e18-f9ad0c388d3c/full/843,/0/default.jpg) |
+| Croquet Scene | Winslow Homer (American, 1836–1910) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/f7b2db45-f393-653c-07ef-84319b0cdb92/full/843,/0/default.jpg) |
+| View of Cotopaxi | Frederic Edwin Church (American, 1826–1900) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/33fc29fc-097b-576b-c9e6-c3352d9d3f15/full/843,/0/default.jpg) |
+| Beata Beatrix | Dante Gabriel Rossetti (English, 1828–1882) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/194674a2-f451-65f7-ba46-6aac4d894f0b/full/843,/0/default.jpg) |
+| Still Life with Dead Game, Fruits, and Vegetables in a Market | Frans Snyders (Flemish, 1579-1657) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/d9bde524-38b2-4262-3338-e4d06a50746d/full/843,/0/default.jpg) |
+| The Advance-Guard, or The Military Sacrifice (The Ambush) | Frederic Remington (American, 1861–1909) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/f1e03813-f9c7-f4f8-fbe8-a5eeae84fda4/full/843,/0/default.jpg) |
+| The Battle between the Gods and the Giants | Joachim Antonisz. Wtewael (Dutch, c. 1566–1638) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/8111acce-c8ce-2ef3-5f32-61cd63905c7d/full/843,/0/default.jpg) |
+| Flower Clouds | Odilon Redon | Drawing and Watercolor | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/fb2077d9-82cc-ca7e-f450-5471d7f78c9a/full/843,/0/default.jpg) |
+| The Fountains | Hubert Robert (French, 1733-1808) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/62fd0e14-d7fe-0d01-ab00-1eed84b4f294/full/843,/0/default.jpg) |
+| Woman Reading | Édouard Manet (French, 1832–1883) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/fd991fea-0c13-8444-7879-aba467f1d9db/full/843,/0/default.jpg) |
+| Virgin and Child with the Young Saint John the Baptist | Correggio (Antonio Allegri; Italian, 1489–1534) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/d63b9402-c42b-cce3-aa63-6d213ad621cd/full/843,/0/default.jpg) |
+| The Annunciation | Jean Hey (Master of Moulins; Netherlandish, c. 1480-c.1504) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/77951d0c-d781-eac6-f4ff-f13cc5cfc0cf/full/843,/0/default.jpg) |
+| Stela of Amenemhat and Hemet | Egyptian; probably Thebes (now Luxor), Egypt | Architectural fragment | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/9365a024-75ce-75e9-756f-1c2c96eadec9/full/843,/0/default.jpg) |
+| Merahi metua no Tehamana (Tehamana Has Many Parents or The Ancestors of Tehamana) | Paul Gauguin (French, 1848–1903) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/48268fc7-2eb4-ded6-1293-e91f27b66478/full/843,/0/default.jpg) |
+| Portrait Vessel | Ceramist unknown (Moche) | Ceramics | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/239e0072-de08-cb26-1484-4776fc27b0fb/full/843,/0/default.jpg) |
+| Magnolias on Light Blue Velvet Cloth | Martin Johnson Heade (American, 1819–1904) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/0729fbba-51e3-a2d7-6d4d-61c2be62af3f/full/843,/0/default.jpg) |
+| Boy on a Ram | Francisco José de Goya y Lucientes (Spanish, 1746–1828) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/e54a695c-16df-cf45-9dd4-b517e8c32cc3/full/843,/0/default.jpg) |
+| The Nativity | Fra Bartolommeo (Baccio della Porta; Italian, 1472-1517) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/40fdb1d6-93fe-2916-78fb-f56a1ac261f1/full/843,/0/default.jpg) |
+| Autumn Maples with Poem Slips | Tosa Mitsuoki | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/86e919b9-d366-b3ca-d26f-4c16880474a3/full/843,/0/default.jpg) |
+| Retable and Frontal of the Life of Christ and the Virgin | Spanish | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/97908967-4d35-cde9-6d90-7e90d3fa1dd6/full/843,/0/default.jpg) |
+| Icebound | John Henry Twachtman (American, 1853–1902) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/3ae75415-0551-ae17-c478-3b8687a6f246/full/843,/0/default.jpg) |
+| Henri Degas and His Niece Lucie Degas (The Artist's Uncle and Cousin) | Edgar Degas (French, 1834–1917) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/ba4d7ead-bd10-e02d-6f5f-613050d7062e/full/843,/0/default.jpg) |
+| Still Life—Strawberries, Nuts, &c. | Raphaelle Peale (American, 1774–1825) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/1cddae1c-99d5-462f-4aa6-128c0732ac11/full/843,/0/default.jpg) |
+| Cabin in the Cotton | Horace Pippin (American, 1888–1946) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/18dd28cc-ae57-b852-cbc4-d184c6f0555d/full/843,/0/default.jpg) |
+| Armida Encounters the Sleeping Rinaldo | Giovanni Battista Tiepolo (Italian, 1696–1770) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/633f464c-203f-f7b9-a251-7a2073f4b05d/full/843,/0/default.jpg) |
+| The Beheading of Saint John the Baptist | Giovanni di Paolo (Italian, 1398–1482) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/af91bb7d-0af4-ef10-5b4d-052da0b6e21a/full/843,/0/default.jpg) |
+| Seated Bodhisattva | Japan | Sculpture | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/1d30ac4e-c91c-d91d-705f-acdce9e6efb4/full/843,/0/default.jpg) |
+| Jacques and Berthe Lipchitz | Amedeo Modigliani | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/7e649536-b186-c3f5-3e6d-0d22d5d798ef/full/843,/0/default.jpg) |
+| Early Morning, Tarpon Springs | George Inness (American, 1825–1894) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/ef96e79b-f481-8114-0804-4bd39c101983/full/843,/0/default.jpg) |
+| Landscape: Window Overlooking the Woods | Édouard Vuillard (French, 1868-1940) | Painting | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/a1dc6109-6e0c-7801-ebe8-8c95fec2c4e4/full/843,/0/default.jpg) |
+
+---
+
+## License Definitions
+
+- **CC0 (Creative Commons Zero)**: Dedicated to the public domain worldwide with no legal attribution requirement.
+- **Public Domain**: Works whose copyright has expired (pre-1928 engravings/lithographs) or US Government works.
+- **Unsplash License / Pexels License**: Free for commercial and non-commercial use.
+- **Community Share (Implied)**: Shared publicly by creators on r/koreader with permission for community use.
