@@ -6,7 +6,7 @@ A community-driven, curated catalog of e-ink screensavers and lock screen wallpa
 
 ---
 
-## 📖 Overview
+## Overview
 
 This repository serves two main purposes:
 1. **Catalog Source of Truth (`screensavers.json`)**: An automated JSON catalog consumed directly by the Storefront KOReader plugin to browse and install screensavers on e-readers.
@@ -14,7 +14,7 @@ This repository serves two main purposes:
 
 ---
 
-## 🎨 Features
+## Features
 
 - **Optimized for E-Ink**: High contrast, minimal grayscale imagery curated specifically for e-paper screens.
 - **Categorized Browsing**: Filter wallpapers by `Nature`, `Minimalist`, `Sci-Fi`, `Anime`, and more.
@@ -23,7 +23,7 @@ This repository serves two main purposes:
 
 ---
 
-## 📤 How to Submit a Screensaver
+## How to Submit a Screensaver
 
 1. Visit the web gallery or open a new issue using our submission template.
 2. Fill out the details:
@@ -35,7 +35,7 @@ This repository serves two main purposes:
 
 ---
 
-## ⚖️ Legal & Takedown Policy (DMCA)
+## Legal & Takedown Policy (DMCA)
 
 All screensavers hosted or linked in this repository are submitted by the community. We respect intellectual property rights and handle copyright claims promptly.
 
@@ -46,16 +46,10 @@ Takedown requests are reviewed and processed promptly.
 
 ---
 
-## 🚀 GitHub Pages Setup
+## GitHub Pages Setup
 
 To enable the web gallery on your fork/repo:
 1. Go to **Settings** -> **Pages**.
 2. Select **Source**: `Deploy from a branch`.
 3. Choose branch `main` and folder `/ (root)`.
 4. Click **Save**.
-
----
-
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for details.
