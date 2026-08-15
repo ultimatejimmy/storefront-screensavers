@@ -43,13 +43,3 @@ To request removal of a copyrighted image:
 - File a GitHub Issue labeled `dmca-takedown` with the image title and proof of ownership.
 
 Takedown requests are reviewed and processed promptly.
-
----
-
-## GitHub Pages Setup
-
-To enable the web gallery on your fork/repo:
-1. Go to **Settings** -> **Pages**.
-2. Select **Source**: `Deploy from a branch`.
-3. Choose branch `main` and folder `/ (root)`.
-4. Click **Save**.
