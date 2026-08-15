@@ -24,6 +24,14 @@ class TestCatalogStudio(unittest.TestCase):
         self.assertIn('id', item)
         self.assertIn('title', item)
         self.assertIn('category', item)
+        self.assertIn('tags', item)
+        self.assertIsInstance(item['tags'], list)
+
+    def test_tags_present_on_all_items(self):
+        for item in self.catalog:
+            self.assertIn('tags', item, f"Item {item.get('id')} missing tags")
+            self.assertIsInstance(item['tags'], list, f"Item {item.get('id')} tags is not a list")
+            self.assertGreater(len(item['tags']), 0, f"Item {item.get('id')} has empty tags list")
 
     def test_image_processing_pil(self):
         # Create test RGBA image

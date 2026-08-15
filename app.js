@@ -58,6 +58,19 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
+      // Tags HTML
+      let tagsHtml = '';
+      if (Array.isArray(item.tags) && item.tags.length > 0) {
+        const topTags = item.tags.slice(0, 3);
+        const moreCount = item.tags.length - 3;
+        tagsHtml = `
+          <div class="card-tags">
+            ${topTags.map(tag => `<button type="button" class="card-tag-chip" data-tag="${tag}" title="Search #${tag}">#${tag}</button>`).join('')}
+            ${moreCount > 0 ? `<span class="card-tags-more" title="${item.tags.slice(3).join(', ')}">+${moreCount}</span>` : ''}
+          </div>
+        `;
+      }
+
       // Check if item is an explicit Transparent (e.g. ReaderBackdrop or Transparent category)
       const isTransparent = (
         (typeof item.category === 'string' && item.category.toLowerCase().includes('transparent')) ||
@@ -80,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>🏷️ ${Array.isArray(item.category) ? item.category.join(', ') : item.category}</span>
             <span>❤️ ${item.likes}</span>
           </div>
+          ${tagsHtml}
           ${attributionHtml}
           <div class="card-footer">
             <a href="${item.fullUrl}" target="_blank" download class="btn-primary">Download</a>
@@ -87,6 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `;
+
+      // Tag chip click to filter
+      const chipBtns = card.querySelectorAll('.card-tag-chip');
+      chipBtns.forEach(chip => {
+        chip.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const tag = chip.getAttribute('data-tag');
+          if (searchInput) {
+            searchInput.value = tag;
+            applyFilters();
+            searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      });
 
       const btnSuggest = card.querySelector('.btn-suggest-change');
       if (btnSuggest) {
@@ -107,9 +135,13 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         btn.classList.remove('active');
       }
+    });
 
+    overlayToggleBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const mode = btn.getAttribute('data-mode');
+        if (mode === currentOverlayMode) return;
+
         currentOverlayMode = mode;
         localStorage.setItem('overlayMode', mode);
 
@@ -119,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Apply class to all current transparent wraps
         const transparentWraps = document.querySelectorAll('.card-image-wrap.transparent-bg');
         transparentWraps.forEach(wrap => {
-          if (mode === 'booktext') {
+          if (currentOverlayMode === 'booktext') {
             wrap.classList.add('book-text-mode');
           } else {
             wrap.classList.remove('book-text-mode');
@@ -163,7 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const matchSearch = !q || (
         (item.title && item.title.toLowerCase().includes(q)) ||
         (item.author && item.author.toLowerCase().includes(q)) ||
-        (item.category && String(item.category).toLowerCase().includes(q))
+        (item.category && String(item.category).toLowerCase().includes(q)) ||
+        (Array.isArray(item.tags) && item.tags.some(t => String(t).toLowerCase().includes(q)))
       );
       return matchCat && matchSearch;
     });
@@ -692,6 +725,8 @@ document.addEventListener('DOMContentLoaded', () => {
         imageUrl = document.getElementById('sub-url').value;
       }
 
+      const subTags = document.getElementById('sub-tags') ? document.getElementById('sub-tags').value.trim() : '';
+
       const issueTitle = encodeURIComponent(`Screensaver Submission: ${title}`);
       const bodyLines = [
         `### Screensaver Submission`,
@@ -699,8 +734,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `**Title:** ${title}`,
         `**Author:** ${author}`,
         `**Category:** ${category}`,
-        `**Image:** ${imageUrl}`,
       ];
+
+      if (subTags) {
+        bodyLines.push(`**Tags:** ${subTags}`);
+      }
+
+      bodyLines.push(`**Image:** ${imageUrl}`);
 
       if (selectedFileMeta) {
         bodyLines.push(`**Specs:** ${selectedFileMeta}`);
@@ -919,6 +959,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('suggest-title').value = item.title || '';
     document.getElementById('suggest-author').value = item.author || '';
     document.getElementById('suggest-category').value = item.category || '';
+    const suggestTagsEl = document.getElementById('suggest-tags');
+    if (suggestTagsEl) {
+      suggestTagsEl.value = Array.isArray(item.tags) ? item.tags.join(', ') : (item.tags || '');
+    }
     document.getElementById('suggest-reason').value = '';
 
     suggestDrawer.classList.add('open');
@@ -949,6 +993,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const newTitle = document.getElementById('suggest-title').value;
       const newAuthor = document.getElementById('suggest-author').value;
       const newCategory = document.getElementById('suggest-category').value;
+      const newTags = document.getElementById('suggest-tags') ? document.getElementById('suggest-tags').value.trim() : '';
       const newUrl = document.getElementById('suggest-url').value;
       const reason = document.getElementById('suggest-reason').value;
 
@@ -969,6 +1014,10 @@ document.addEventListener('DOMContentLoaded', () => {
         `**Proposed Author:** ${newAuthor}`,
         `**Proposed Category:** ${newCategory}`,
       ];
+
+      if (newTags) {
+        bodyLines.push(`**Proposed Tags:** ${newTags}`);
+      }
 
       if (type === 'replacement' && newUrl) {
         bodyLines.push(`**Replacement Image URL:** ${newUrl}`);

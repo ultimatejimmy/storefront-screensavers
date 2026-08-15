@@ -82,6 +82,12 @@
     editCategoryPills: document.getElementById('edit-category-pills'),
     editCategoryCustomInput: document.getElementById('edit-category-custom-input'),
     btnAddCustomCategoryEdit: document.getElementById('btn-add-custom-category-edit'),
+    editTagsContainer: document.getElementById('edit-tags-container'),
+    editTagsChips: document.getElementById('edit-tags-chips'),
+    editTagInput: document.getElementById('edit-tag-input'),
+    btnAddTagEdit: document.getElementById('btn-add-tag-edit'),
+    batchTagInput: document.getElementById('batch-tag-input'),
+    batchApplyTag: document.getElementById('batch-apply-tag'),
     editLicense: document.getElementById('edit-license'),
     editLicenseCustom: document.getElementById('edit-license-custom'),
     editAuthorUrl: document.getElementById('edit-author-url'),
@@ -147,6 +153,48 @@
       return cat.split(',').map(c => c.trim()).filter(Boolean);
     }
     return [];
+  }
+
+  // Helper to extract clean tags list from an item
+  function getItemTags(item) {
+    if (!item || !item.tags) return [];
+    if (Array.isArray(item.tags)) {
+      return item.tags.map(t => String(t).trim().toLowerCase()).filter(Boolean);
+    }
+    if (typeof item.tags === 'string' && item.tags.trim()) {
+      return item.tags.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
+    }
+    return [];
+  }
+
+  function renderTagsEditor(tagsList) {
+    if (!el.editTagsChips) return;
+    el.editTagsChips.innerHTML = '';
+    
+    tagsList.forEach((tag, idx) => {
+      const chip = document.createElement('span');
+      chip.className = 'tag-chip-editor';
+      chip.innerHTML = `
+        <span>#${escapeHtml(tag)}</span>
+        <button type="button" class="tag-remove-btn" data-idx="${idx}" title="Remove tag">✕</button>
+      `;
+      chip.querySelector('.tag-remove-btn').addEventListener('click', () => {
+        tagsList.splice(idx, 1);
+        renderTagsEditor(tagsList);
+      });
+      el.editTagsChips.appendChild(chip);
+    });
+  }
+
+  function addTagToEditor(tagsList, newTagStr) {
+    if (!newTagStr) return;
+    const parts = newTagStr.split(',').map(t => t.trim().toLowerCase().replace(/^#/, '')).filter(Boolean);
+    for (const p of parts) {
+      if (!tagsList.includes(p)) {
+        tagsList.push(p);
+      }
+    }
+    renderTagsEditor(tagsList);
   }
 
   // Initialize
@@ -283,10 +331,12 @@
       const q = state.searchQuery.toLowerCase().trim();
       list = list.filter(item => {
         const cats = getItemCategories(item).join(' ').toLowerCase();
+        const tags = getItemTags(item);
         return (item.title && item.title.toLowerCase().includes(q)) ||
                (item.id && item.id.toLowerCase().includes(q)) ||
                (item.author && item.author.toLowerCase().includes(q)) ||
                cats.includes(q) ||
+               tags.some(t => t.includes(q)) ||
                (item.license && item.license.toLowerCase().includes(q)) ||
                (item.attribution && item.attribution.toLowerCase().includes(q));
       });
@@ -375,6 +425,11 @@
       const isBookText = state.overlayMode === 'book';
       const transparentClasses = isTransparent ? (isBookText ? 'is-transparent booktext-mode' : 'is-transparent') : '';
 
+      const tags = getItemTags(item);
+      const tagBadges = tags.length > 0
+        ? `<div class="card-tags-row">${tags.slice(0, 3).map(t => `<span class="card-tag-badge">#${escapeHtml(t)}</span>`).join('')}${tags.length > 3 ? `<span class="card-tag-badge" title="${escapeHtml(tags.slice(3).join(', '))}">+${tags.length - 3}</span>` : ''}</div>`
+        : '';
+
       return `
         <div class="catalog-card ${isSelected ? 'selected' : ''}" data-id="${escapeHtml(item.id)}">
           <div class="card-thumb-wrapper ${transparentClasses}">
@@ -386,6 +441,7 @@
             <div class="card-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
             <div class="card-author" title="${escapeHtml(item.author || '')}">by ${escapeHtml(item.author || 'Unknown')}</div>
             <div class="card-categories-row">${catBadges}</div>
+            ${tagBadges}
             <div class="card-actions">
               <button class="card-btn btn-edit-card" data-id="${escapeHtml(item.id)}" title="Edit metadata & images">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
@@ -415,12 +471,18 @@
         ? categories.map(c => `<span class="card-category-tag">${escapeHtml(c)}</span>`).join(' ')
         : '<span class="card-category-tag">General</span>';
 
+      const tags = getItemTags(item);
+      const tagCells = tags.length > 0
+        ? `<div class="table-tags-cell">${tags.slice(0, 3).map(t => `<span class="card-tag-badge">#${escapeHtml(t)}</span>`).join(' ')}</div>`
+        : '<span class="text-tertiary">-</span>';
+
       return `
         <tr class="${isSelected ? 'selected' : ''}" data-id="${escapeHtml(item.id)}">
           <td><input type="checkbox" class="table-row-checkbox" data-id="${escapeHtml(item.id)}" ${isSelected ? 'checked' : ''}></td>
           <td><img class="table-thumb" src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(item.title)}" loading="lazy"></td>
           <td><strong>${escapeHtml(item.title)}</strong><br><small class="text-tertiary">${escapeHtml(item.id)}</small></td>
           <td><div class="card-categories-row">${catBadges}</div></td>
+          <td>${tagCells}</td>
           <td>${escapeHtml(item.author || 'Unknown')}</td>
           <td><small>${escapeHtml(item.license || 'Community')}</small></td>
           <td>
@@ -464,6 +526,11 @@
     const currentCats = getItemCategories(item);
     renderCategoryPills(el.editCategoryPills, currentCats);
     if (el.editCategoryCustomInput) el.editCategoryCustomInput.value = '';
+
+    // Tags editor
+    state.activeItemTags = getItemTags(item);
+    renderTagsEditor(state.activeItemTags);
+    if (el.editTagInput) el.editTagInput.value = '';
 
     // License
     const knownLicenses = ['CC0', 'Public Domain', 'Community Share', 'Unsplash License', 'Pexels License', 'Creative Commons'];
@@ -549,6 +616,7 @@
       author: el.editAuthor.value.trim(),
       authorUrl: el.editAuthorUrl.value.trim(),
       category: categoryValue,
+      tags: state.activeItemTags || [],
       license: license,
       sourceUrl: el.editSourceUrl.value.trim(),
       attribution: el.editAttribution.value.trim(),
@@ -1097,9 +1165,67 @@
       if (cat) executeBatchAddCategory(cat);
     });
 
+    if (el.batchApplyTag && el.batchTagInput) {
+      el.batchApplyTag.addEventListener('click', async () => {
+        const tag = el.batchTagInput.value.trim().toLowerCase().replace(/^#/, '');
+        if (!tag) {
+          showToast('Please enter a tag name', 'error');
+          return;
+        }
+        if (state.selectedIds.size === 0) return;
+
+        try {
+          const res = await fetch('/api/catalog/batch', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'add_tags',
+              tags: [tag],
+              ids: Array.from(state.selectedIds)
+            })
+          });
+          const data = await res.json();
+          if (data.success) {
+            showToast(`Added #${tag} to ${state.selectedIds.size} items!`, 'success');
+            el.batchTagInput.value = '';
+            await loadCatalogData();
+          }
+        } catch (err) {
+          showToast('Batch tag error: ' + err.message, 'error');
+        }
+      });
+      el.batchTagInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          el.batchApplyTag.click();
+        }
+      });
+    }
+
     el.batchDeleteBtn.addEventListener('click', () => {
       executeBatchDelete();
     });
+
+    // Inspector Tag Editor
+    if (el.editTagInput) {
+      el.editTagInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ',') {
+          e.preventDefault();
+          if (state.activeItemTags) {
+            addTagToEditor(state.activeItemTags, el.editTagInput.value);
+            el.editTagInput.value = '';
+          }
+        }
+      });
+    }
+    if (el.btnAddTagEdit && el.editTagInput) {
+      el.btnAddTagEdit.addEventListener('click', () => {
+        if (state.activeItemTags) {
+          addTagToEditor(state.activeItemTags, el.editTagInput.value);
+          el.editTagInput.value = '';
+        }
+      });
+    }
 
     // Custom category inline adders
     if (el.btnAddCustomCategoryEdit && el.editCategoryCustomInput) {

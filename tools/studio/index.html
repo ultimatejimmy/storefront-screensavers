@@ -126,7 +126,11 @@
         <select id="batch-category-select" class="select-input select-small">
           <option value="">Add Category...</option>
         </select>
-        <button class="btn btn-secondary btn-small" id="batch-apply-category">+ Add to Selected</button>
+        <button class="btn btn-secondary btn-small" id="batch-apply-category">+ Add Category</button>
+      </div>
+      <div class="batch-action-item">
+        <input type="text" id="batch-tag-input" class="text-input text-small" placeholder="Tag name..." style="width: 130px; height: 32px; padding: 4px 8px; font-size: 0.8rem;">
+        <button class="btn btn-secondary btn-small" id="batch-apply-tag">🏷️ + Add Tag</button>
       </div>
       <div class="batch-action-item">
         <button class="btn btn-danger btn-small" id="batch-delete-btn">
@@ -154,6 +158,7 @@
               <th width="70">Preview</th>
               <th>Title</th>
               <th>Categories</th>
+              <th>Tags</th>
               <th>Author / Artist</th>
               <th>License</th>
               <th width="100">Actions</th>
@@ -269,6 +274,19 @@
               <div class="category-add-inline">
                 <input type="text" id="edit-category-custom-input" placeholder="+ Add new custom category (press Enter)...">
                 <button type="button" class="btn btn-secondary btn-small" id="btn-add-custom-category-edit">Add</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Tags & Topics (Search Keywords)</label>
+              <div class="tags-editor-container" id="edit-tags-container">
+                <div class="tags-chips-list" id="edit-tags-chips">
+                  <!-- Tag chips rendered dynamically -->
+                </div>
+                <div class="tag-input-wrapper">
+                  <input type="text" id="edit-tag-input" class="text-input tag-input" placeholder="+ Type tag & press Enter or comma...">
+                  <button type="button" class="btn btn-secondary btn-small" id="btn-add-tag-edit">+ Add</button>
+                </div>
               </div>
             </div>
 

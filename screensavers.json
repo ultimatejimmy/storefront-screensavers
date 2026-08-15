@@ -16,7 +16,27 @@
     "likes": 289,
     "license": "Community Share",
     "attribution": "Unsplash (CC0)",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "tags": [
+      "alpine",
+      "atmospheric",
+      "evergreen",
+      "fog",
+      "foggy",
+      "forest",
+      "hazy",
+      "landscape",
+      "mist",
+      "moody",
+      "mountain",
+      "nature",
+      "peaks",
+      "pine trees",
+      "pines",
+      "summit",
+      "trees",
+      "woods"
+    ]
   },
   {
     "id": "minimalist-ocean-waves",
@@ -34,7 +54,21 @@
     "likes": 412,
     "license": "Community Share",
     "attribution": "Unsplash (CC0)",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "tags": [
+      "clean",
+      "coastal",
+      "horizon",
+      "line art",
+      "marine",
+      "minimalist",
+      "monochrome",
+      "ocean",
+      "sea",
+      "simple",
+      "water",
+      "waves"
+    ]
   },
   {
     "id": "cosmic-nebula-monochrome",
@@ -52,7 +86,18 @@
     "likes": 175,
     "license": "Community Share",
     "attribution": "Unsplash (CC0)",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "tags": [
+      "astronomy",
+      "cosmos",
+      "deep",
+      "galaxy",
+      "nebula",
+      "sci-fi",
+      "space",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "cozy-window-cat",
@@ -70,7 +115,25 @@
     "likes": 530,
     "license": "Community Share",
     "attribution": "Unsplash (CC0)",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "tags": [
+      "animal",
+      "cat",
+      "clean",
+      "cozy",
+      "feline",
+      "interior",
+      "kitten",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "pet",
+      "simple",
+      "sleepy",
+      "tabby",
+      "view",
+      "window"
+    ]
   },
   {
     "id": "starry-cat",
@@ -88,7 +151,16 @@
     "likes": 1,
     "license": "Community Share",
     "attribution": "brpjtf2",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "tags": [
+      "animal",
+      "cat",
+      "feline",
+      "kitten",
+      "nature",
+      "pet",
+      "starry"
+    ]
   },
   {
     "id": "eyes-in-the-woods",
@@ -106,7 +178,12 @@
     "likes": 1,
     "license": "Community Share",
     "attribution": "brpjtf2",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "tags": [
+      "eyes",
+      "nature",
+      "woods"
+    ]
   },
   {
     "id": "trash-panda",
@@ -128,7 +205,13 @@
     "license": "Community Share",
     "attribution": "brpjtf2",
     "sourceUrl": "",
-    "authorUrl": ""
+    "authorUrl": "",
+    "tags": [
+      "nature",
+      "panda",
+      "pop culture",
+      "trash"
+    ]
   },
   {
     "id": "house-elf-liberation-front",
@@ -146,7 +229,14 @@
     "likes": 1,
     "license": "Community Share",
     "attribution": "brpjtf2",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "tags": [
+      "elf",
+      "front",
+      "house",
+      "liberation",
+      "pop culture"
+    ]
   },
   {
     "id": "durer-rhinoceros-woodcut",
@@ -167,7 +257,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/durer-rhinoceros-woodcut.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/durer-rhinoceros-woodcut.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "rhinoceros",
+      "woodcut"
+    ]
   },
   {
     "id": "durer-melencolia-i",
@@ -188,7 +283,11 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/durer-melencolia-i.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/durer-melencolia-i.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "melencolia"
+    ]
   },
   {
     "id": "met-red-fuji-hokusai",
@@ -209,7 +308,21 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/met-red-fuji-hokusai.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/met-red-fuji-hokusai.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "classic art",
+      "clear",
+      "fine",
+      "fine art",
+      "fuji",
+      "hokusai",
+      "japanese art",
+      "morning",
+      "red",
+      "ukiyo-e",
+      "wind",
+      "woodblock"
+    ]
   },
   {
     "id": "met-wanderer-fog-parody",
@@ -230,7 +343,21 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/met-wanderer-fog-parody.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/met-wanderer-fog-parody.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "alpine",
+      "atmospheric",
+      "fine art",
+      "fog",
+      "hazy",
+      "landscape",
+      "mist",
+      "moody",
+      "mountain",
+      "nature",
+      "peaks",
+      "summit"
+    ]
   },
   {
     "id": "bamboo-grove-kyoto-arashiyama",
@@ -251,7 +378,21 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bamboo-grove-kyoto-arashiyama.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bamboo-grove-kyoto-arashiyama.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "arashiyama",
+      "bamboo",
+      "botanical",
+      "east asia",
+      "forest",
+      "grove",
+      "japan",
+      "japanese",
+      "nature",
+      "oriental",
+      "path",
+      "traditional"
+    ]
   },
   {
     "id": "autumn-birch-forest-canopy",
@@ -272,7 +413,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/autumn-birch-forest-canopy.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/autumn-birch-forest-canopy.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "autumn",
+      "birch",
+      "canopy",
+      "forest",
+      "golden",
+      "landscape",
+      "nature",
+      "trees",
+      "woods"
+    ]
   },
   {
     "id": "minimal-lone-tree-snow",
@@ -293,7 +445,21 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimal-lone-tree-snow.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimal-lone-tree-snow.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "botanical",
+      "clean",
+      "foliage",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "nature",
+      "simple",
+      "snow",
+      "solitary",
+      "tree",
+      "winter"
+    ]
   },
   {
     "id": "minimal-calm-lake-fog",
@@ -314,7 +480,22 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimal-calm-lake-fog.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimal-calm-lake-fog.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "atmospheric",
+      "clean",
+      "fog",
+      "hazy",
+      "horizon",
+      "lake",
+      "line art",
+      "minimalist",
+      "mist",
+      "monochrome",
+      "moody",
+      "silent",
+      "simple"
+    ]
   },
   {
     "id": "minimal-moon-over-mountain",
@@ -335,7 +516,26 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimal-moon-over-mountain.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimal-moon-over-mountain.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "alpine",
+      "celestial",
+      "clean",
+      "crescent",
+      "landscape",
+      "line art",
+      "lunar",
+      "minimalist",
+      "monochrome",
+      "moon",
+      "mountain",
+      "nature",
+      "night",
+      "peaks",
+      "ridge",
+      "simple",
+      "summit"
+    ]
   },
   {
     "id": "ancient-greek-parthenon-columns",
@@ -356,7 +556,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ancient-greek-parthenon-columns.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ancient-greek-parthenon-columns.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "columns",
+      "daylight",
+      "parthenon",
+      "solar",
+      "sun",
+      "sunlight",
+      "sunrise",
+      "sunset"
+    ]
   },
   {
     "id": "classic-library-book-aisle",
@@ -377,7 +588,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/classic-library-book-aisle.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/classic-library-book-aisle.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "books",
+      "bookshelves",
+      "cozy",
+      "library",
+      "literature",
+      "old",
+      "study",
+      "wooden"
+    ]
   },
   {
     "id": "nasa-earth-rise-apollo-8",
@@ -398,7 +620,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nasa-earth-rise-apollo-8.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nasa-earth-rise-apollo-8.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "apollo",
+      "celestial",
+      "crescent",
+      "earthrise",
+      "lunar",
+      "moon",
+      "night",
+      "orbit",
+      "sci-fi"
+    ]
   },
   {
     "id": "nasa-jupiter-great-red-spot",
@@ -419,7 +652,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nasa-jupiter-great-red-spot.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nasa-jupiter-great-red-spot.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "atmospheric",
+      "clouds",
+      "juno",
+      "jupiter",
+      "sci-fi",
+      "sky",
+      "swirling",
+      "weather"
+    ]
   },
   {
     "id": "reddit-fantasy-wizard-tower-mountains",
@@ -440,7 +683,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/reddit-fantasy-wizard-tower-mountains.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/reddit-fantasy-wizard-tower-mountains.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "alpine",
+      "fantasy",
+      "landscape",
+      "misty",
+      "mountain",
+      "nature",
+      "peaks",
+      "summit",
+      "tower",
+      "wizard"
+    ]
   },
   {
     "id": "abstract-monochrome-fluid-ink",
@@ -461,7 +716,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/abstract-monochrome-fluid-ink.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/abstract-monochrome-fluid-ink.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "fluid",
+      "ink",
+      "monochrome",
+      "swirls"
+    ]
   },
   {
     "id": "abstract-topographic-map-lines",
@@ -482,7 +744,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/abstract-topographic-map-lines.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/abstract-topographic-map-lines.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "contour",
+      "lines",
+      "minimal",
+      "topographic"
+    ]
   },
   {
     "id": "nypl-vintage-travel-poster-switzerland",
@@ -503,7 +772,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nypl-vintage-travel-poster-switzerland.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nypl-vintage-travel-poster-switzerland.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "alps",
+      "pop culture",
+      "poster",
+      "swiss",
+      "travel",
+      "vintage"
+    ]
   },
   {
     "id": "quote-borges-library-of-babel",
@@ -524,7 +801,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/quote-borges-library-of-babel.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/quote-borges-library-of-babel.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "babel",
+      "books",
+      "cozy",
+      "library",
+      "literature",
+      "quotes",
+      "study",
+      "typography"
+    ]
   },
   {
     "id": "quote-calvino-invisible-cities",
@@ -545,7 +832,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/quote-calvino-invisible-cities.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/quote-calvino-invisible-cities.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "book",
+      "cities",
+      "invisible",
+      "quote",
+      "quotes"
+    ]
   },
   {
     "id": "durer-melencolia-woodcut",
@@ -566,7 +860,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/durer-melencolia-woodcut.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/durer-melencolia-woodcut.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "classic art",
+      "engraving",
+      "etching",
+      "fine art",
+      "lithograph",
+      "melencolia",
+      "vintage",
+      "woodcut"
+    ]
   },
   {
     "id": "klimt-golden-tree-life",
@@ -587,7 +891,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/klimt-golden-tree-life.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/klimt-golden-tree-life.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "botanical",
+      "fine art",
+      "foliage",
+      "life",
+      "nature",
+      "nouveau",
+      "tree"
+    ]
   },
   {
     "id": "da-vinci-vitruvian-man-sketch",
@@ -608,7 +921,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/da-vinci-vitruvian-man-sketch.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/da-vinci-vitruvian-man-sketch.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "man",
+      "proportions",
+      "vitruvian"
+    ]
   },
   {
     "id": "botanical-monstera-leaf-veins",
@@ -629,7 +948,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/botanical-monstera-leaf-veins.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/botanical-monstera-leaf-veins.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "botanical",
+      "foliage",
+      "leaf",
+      "macro",
+      "monstera",
+      "nature",
+      "plants",
+      "veins"
+    ]
   },
   {
     "id": "nature-misty-redwood-fog",
@@ -650,7 +979,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-misty-redwood-fog.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-misty-redwood-fog.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "atmospheric",
+      "california",
+      "coastal",
+      "fog",
+      "hazy",
+      "mist",
+      "moody",
+      "nature",
+      "redwood"
+    ]
   },
   {
     "id": "nature-dolomites-tre-cime-peaks",
@@ -671,7 +1011,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-dolomites-tre-cime-peaks.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-dolomites-tre-cime-peaks.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "cime",
+      "dolomites",
+      "nature",
+      "ridge",
+      "sharp",
+      "tre"
+    ]
   },
   {
     "id": "nature-milky-way-pine-silhouettes",
@@ -692,7 +1040,24 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-milky-way-pine-silhouettes.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-milky-way-pine-silhouettes.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "astronomy",
+      "cosmos",
+      "evergreen",
+      "forest",
+      "galaxy",
+      "milky",
+      "nature",
+      "pine",
+      "pine trees",
+      "pines",
+      "silhouette",
+      "space",
+      "stars",
+      "universe",
+      "way"
+    ]
   },
   {
     "id": "nature-fern-leaves-dewdrops",
@@ -713,7 +1078,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-fern-leaves-dewdrops.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-fern-leaves-dewdrops.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "dewdrops",
+      "emerald",
+      "fern",
+      "leaves",
+      "nature"
+    ]
   },
   {
     "id": "nature-snug-cat",
@@ -734,7 +1106,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nature-snug-cat.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nature-snug-cat.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "animal",
+      "cat",
+      "feline",
+      "kitten",
+      "nature",
+      "pet",
+      "snuggled"
+    ]
   },
   {
     "id": "minimal-dark-ray-lines",
@@ -755,7 +1136,23 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimal-dark-ray-lines.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimal-dark-ray-lines.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "clean",
+      "dark",
+      "geometric",
+      "geometry",
+      "line art",
+      "lines",
+      "minimalist",
+      "mode",
+      "monochrome",
+      "patterns",
+      "ray",
+      "shapes",
+      "simple"
+    ]
   },
   {
     "id": "minimal-lighthouse-mist-coast",
@@ -779,7 +1176,27 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/minimal-lighthouse-mist-coast.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/minimal-lighthouse-mist-coast.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "atmospheric",
+      "beacon",
+      "clean",
+      "coast",
+      "fog",
+      "hazy",
+      "lighthouse",
+      "line art",
+      "maritime",
+      "minimalist",
+      "mist",
+      "monochrome",
+      "moody",
+      "nature",
+      "ocean",
+      "sea",
+      "simple",
+      "solitary"
+    ]
   },
   {
     "id": "arch-louvre-glass-pyramid",
@@ -800,7 +1217,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/arch-louvre-glass-pyramid.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/arch-louvre-glass-pyramid.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "angles",
+      "architecture",
+      "glass",
+      "louvre",
+      "pyramid"
+    ]
   },
   {
     "id": "arch-golden-gate-morning-fog",
@@ -821,7 +1245,20 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/arch-golden-gate-morning-fog.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/arch-golden-gate-morning-fog.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "atmospheric",
+      "bridge",
+      "fog",
+      "gate",
+      "golden",
+      "hazy",
+      "mist",
+      "moody",
+      "morning",
+      "towers"
+    ]
   },
   {
     "id": "nasa-andromeda-galaxy-hubble",
@@ -842,7 +1279,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nasa-andromeda-galaxy-hubble.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nasa-andromeda-galaxy-hubble.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "andromeda",
+      "arms",
+      "core",
+      "galaxy",
+      "sci-fi",
+      "spiral"
+    ]
   },
   {
     "id": "nasa-jwst-deep-field-smacs0723",
@@ -863,7 +1308,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nasa-jwst-deep-field-smacs0723.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nasa-jwst-deep-field-smacs0723.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "deep",
+      "field",
+      "first",
+      "sci-fi",
+      "smacs",
+      "webb"
+    ]
   },
   {
     "id": "anime-lofi-desk-cat-window",
@@ -884,7 +1337,23 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/anime-lofi-desk-cat-window.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/anime-lofi-desk-cat-window.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "animal",
+      "anime",
+      "cat",
+      "cozy",
+      "desk",
+      "feline",
+      "interior",
+      "kitten",
+      "lofi",
+      "pet",
+      "sleeping",
+      "study",
+      "view",
+      "window"
+    ]
   },
   {
     "id": "artic-28560",
@@ -905,7 +1374,11 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-28560.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-28560.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "bedroom",
+      "fine art"
+    ]
   },
   {
     "id": "artic-20684",
@@ -926,7 +1399,22 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-20684.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-20684.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "botanical",
+      "day",
+      "fine art",
+      "foliage",
+      "moody",
+      "nature",
+      "paris",
+      "rain",
+      "rainy",
+      "street",
+      "tree",
+      "water",
+      "weather"
+    ]
   },
   {
     "id": "artic-27992",
@@ -947,7 +1435,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-27992.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-27992.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "daylight",
+      "fine art",
+      "grande",
+      "jatte",
+      "solar",
+      "sun",
+      "sunday",
+      "sunlight",
+      "sunrise",
+      "sunset"
+    ]
   },
   {
     "id": "artic-75644",
@@ -968,7 +1468,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-75644.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-75644.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "coronation",
+      "fine art",
+      "moctezuma",
+      "stone",
+      "xocoyotzin"
+    ]
   },
   {
     "id": "artic-89503",
@@ -989,7 +1496,31 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-89503.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-89503.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "also",
+      "classic art",
+      "fine art",
+      "fugaku",
+      "fuji",
+      "great",
+      "hokusai",
+      "japanese art",
+      "kanagawa",
+      "known",
+      "mount",
+      "nami",
+      "oki",
+      "sanjurokkei",
+      "series",
+      "six",
+      "thirty",
+      "ukiyo-e",
+      "ura",
+      "views",
+      "wave",
+      "woodblock"
+    ]
   },
   {
     "id": "artic-87479",
@@ -1010,7 +1541,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-87479.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-87479.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "assumption",
+      "fine art",
+      "virgin"
+    ]
   },
   {
     "id": "artic-64818",
@@ -1031,7 +1567,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-64818.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-64818.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "end",
+      "fine art",
+      "stacks",
+      "summer",
+      "wheat"
+    ]
   },
   {
     "id": "artic-16568",
@@ -1052,7 +1595,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-16568.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-16568.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "lilies",
+      "water"
+    ]
   },
   {
     "id": "artic-14655",
@@ -1073,7 +1621,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-14655.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-14655.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "sisters",
+      "terrace",
+      "two"
+    ]
   },
   {
     "id": "artic-80607",
@@ -1094,7 +1648,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-80607.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-80607.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "portrait",
+      "self"
+    ]
   },
   {
     "id": "artic-61128",
@@ -1115,7 +1674,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-61128.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-61128.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "moulin",
+      "rouge"
+    ]
   },
   {
     "id": "artic-16571",
@@ -1136,7 +1700,21 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-16571.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-16571.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "arrival",
+      "fine art",
+      "gare",
+      "lazare",
+      "moody",
+      "normandy",
+      "rain",
+      "rainy",
+      "saint",
+      "train",
+      "water",
+      "weather"
+    ]
   },
   {
     "id": "artic-111436",
@@ -1157,7 +1735,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-111436.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-111436.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "apples",
+      "basket",
+      "fine art"
+    ]
   },
   {
     "id": "artic-11723",
@@ -1178,7 +1761,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-11723.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-11723.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "her",
+      "toilette",
+      "woman"
+    ]
   },
   {
     "id": "artic-15468",
@@ -1199,7 +1788,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-15468.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-15468.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "creature",
+      "dragon",
+      "fantasy",
+      "fine art",
+      "george",
+      "mythical",
+      "saint"
+    ]
   },
   {
     "id": "artic-90048",
@@ -1220,7 +1818,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-90048.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-90048.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "distant",
+      "falls",
+      "fine art",
+      "niagara",
+      "view"
+    ]
   },
   {
     "id": "artic-14598",
@@ -1241,7 +1846,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-14598.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-14598.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "adresse",
+      "beach",
+      "fine art",
+      "sainte"
+    ]
   },
   {
     "id": "artic-8991",
@@ -1262,7 +1873,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-8991.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-8991.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "cannons",
+      "fine art",
+      "improvisation"
+    ]
   },
   {
     "id": "artic-25865",
@@ -1283,7 +1899,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-25865.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-25865.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "herring",
+      "net"
+    ]
   },
   {
     "id": "artic-154235",
@@ -1304,7 +1925,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-154235.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-154235.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "cozy",
+      "fine art",
+      "girl",
+      "interior",
+      "view",
+      "window"
+    ]
   },
   {
     "id": "artic-16487",
@@ -1325,7 +1954,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-16487.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-16487.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "bay",
+      "estaque",
+      "fine art",
+      "marseille",
+      "seen"
+    ]
   },
   {
     "id": "artic-869",
@@ -1346,7 +1982,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-869.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-869.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "great",
+      "red",
+      "roof",
+      "watermill"
+    ]
   },
   {
     "id": "artic-61603",
@@ -1367,7 +2010,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-61603.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-61603.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "ballet",
+      "fine art",
+      "paris"
+    ]
   },
   {
     "id": "artic-69780",
@@ -1388,7 +2036,20 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-69780.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-69780.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "animal",
+      "cat",
+      "feline",
+      "fine art",
+      "fountain",
+      "frascati",
+      "italy",
+      "kitten",
+      "pet",
+      "torlonia",
+      "villa"
+    ]
   },
   {
     "id": "artic-109819",
@@ -1409,7 +2070,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-109819.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-109819.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "black",
+      "blue",
+      "composition",
+      "fine art",
+      "gray",
+      "lozenge",
+      "red",
+      "yellow"
+    ]
   },
   {
     "id": "artic-56905",
@@ -1430,7 +2101,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-56905.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-56905.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "blue",
+      "fine art",
+      "gold",
+      "nocturne",
+      "southampton",
+      "water"
+    ]
   },
   {
     "id": "artic-81558",
@@ -1451,7 +2130,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-81558.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-81558.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "acrobats",
+      "angelina",
+      "cirque",
+      "fernando",
+      "fine art",
+      "francisca",
+      "wartenberg"
+    ]
   },
   {
     "id": "artic-5848",
@@ -1472,7 +2160,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-5848.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-5848.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "john",
+      "landscape",
+      "patmos",
+      "saint"
+    ]
   },
   {
     "id": "artic-4796",
@@ -1493,7 +2188,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-4796.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-4796.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "bargaining",
+      "boats",
+      "fine art",
+      "fish",
+      "fishing",
+      "hucksters"
+    ]
   },
   {
     "id": "artic-109780",
@@ -1514,7 +2217,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-109780.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-109780.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "love",
+      "winter"
+    ]
   },
   {
     "id": "artic-14572",
@@ -1535,7 +2243,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-14572.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-14572.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "millinery",
+      "shop"
+    ]
   },
   {
     "id": "artic-95998",
@@ -1556,7 +2269,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-95998.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-95998.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "chain",
+      "fine art",
+      "gold",
+      "man",
+      "old"
+    ]
   },
   {
     "id": "artic-20579",
@@ -1577,7 +2297,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-20579.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-20579.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "hercules",
+      "hydra",
+      "lernaean"
+    ]
   },
   {
     "id": "artic-24548",
@@ -1598,7 +2324,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-24548.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-24548.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "dance",
+      "fine art",
+      "lord",
+      "nataraja",
+      "shiva"
+    ]
   },
   {
     "id": "artic-64339",
@@ -1619,7 +2352,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-64339.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-64339.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "coffin",
+      "fine art",
+      "mummy",
+      "paankhaenamun"
+    ]
   },
   {
     "id": "artic-27984",
@@ -1640,7 +2379,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-27984.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-27984.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "aquarium",
+      "fine art",
+      "woman"
+    ]
   },
   {
     "id": "artic-146701",
@@ -1661,7 +2405,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-146701.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-146701.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "alpine",
+      "brook",
+      "fine art",
+      "landscape",
+      "mountain",
+      "nature",
+      "peaks",
+      "summit"
+    ]
   },
   {
     "id": "artic-16776",
@@ -1682,7 +2436,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-16776.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-16776.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "bahamas",
+      "fine art",
+      "hurricane"
+    ]
   },
   {
     "id": "artic-84709",
@@ -1703,7 +2462,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-84709.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-84709.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "fowl",
+      "game",
+      "life",
+      "still"
+    ]
   },
   {
     "id": "artic-19339",
@@ -1724,7 +2490,11 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-19339.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-19339.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "mistral"
+    ]
   },
   {
     "id": "artic-28849",
@@ -1745,7 +2515,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-28849.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-28849.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "buildings",
+      "city",
+      "fine art",
+      "park",
+      "skyline",
+      "urban"
+    ]
   },
   {
     "id": "artic-15401",
@@ -1766,7 +2545,11 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-15401.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-15401.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "mouquin"
+    ]
   },
   {
     "id": "artic-193664",
@@ -1787,7 +2570,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-193664.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-193664.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "aldridge",
+      "captive",
+      "fine art",
+      "ira",
+      "slave"
+    ]
   },
   {
     "id": "artic-64724",
@@ -1808,7 +2598,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-64724.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-64724.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "heron",
+      "home"
+    ]
   },
   {
     "id": "artic-81512",
@@ -1829,7 +2624,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-81512.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-81512.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "book",
+      "cozy",
+      "fine art",
+      "interrupted",
+      "library",
+      "literature",
+      "reading"
+    ]
   },
   {
     "id": "artic-44892",
@@ -1850,7 +2654,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-44892.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-44892.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "fish",
+      "life",
+      "still"
+    ]
   },
   {
     "id": "artic-144969",
@@ -1871,7 +2681,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-144969.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-144969.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "house",
+      "interior",
+      "near",
+      "palm",
+      "pfaueninsel",
+      "potsdam"
+    ]
   },
   {
     "id": "artic-44018",
@@ -1892,7 +2711,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-44018.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-44018.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "croquet",
+      "fine art",
+      "scene"
+    ]
   },
   {
     "id": "artic-76571",
@@ -1913,7 +2737,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-76571.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-76571.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "cotopaxi",
+      "fine art",
+      "view"
+    ]
   },
   {
     "id": "artic-16551",
@@ -1934,7 +2763,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-16551.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-16551.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "beata",
+      "beatrix",
+      "fine art"
+    ]
   },
   {
     "id": "artic-62042",
@@ -1955,7 +2789,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-62042.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-62042.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "dead",
+      "fine art",
+      "fruits",
+      "game",
+      "life",
+      "market",
+      "still",
+      "vegetables"
+    ]
   },
   {
     "id": "artic-97910",
@@ -1976,7 +2820,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-97910.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-97910.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "advance",
+      "ambush",
+      "fine art",
+      "guard",
+      "military",
+      "sacrifice"
+    ]
   },
   {
     "id": "artic-105466",
@@ -1997,7 +2849,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-105466.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-105466.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "battle",
+      "fine art",
+      "giants",
+      "gods"
+    ]
   },
   {
     "id": "artic-76395",
@@ -2018,7 +2876,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-76395.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-76395.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "atmospheric",
+      "bloom",
+      "botanical",
+      "clouds",
+      "fine art",
+      "floral",
+      "flower",
+      "plants",
+      "sky",
+      "weather"
+    ]
   },
   {
     "id": "artic-57051",
@@ -2039,7 +2909,11 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-57051.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-57051.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "fountains"
+    ]
   },
   {
     "id": "artic-14591",
@@ -2060,7 +2934,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-14591.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-14591.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "book",
+      "cozy",
+      "fine art",
+      "library",
+      "literature",
+      "reading",
+      "woman"
+    ]
   },
   {
     "id": "artic-23972",
@@ -2081,7 +2964,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-23972.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-23972.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "baptist",
+      "child",
+      "fine art",
+      "john",
+      "saint",
+      "virgin",
+      "young"
+    ]
   },
   {
     "id": "artic-16327",
@@ -2102,7 +2994,11 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-16327.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-16327.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "annunciation",
+      "fine art"
+    ]
   },
   {
     "id": "artic-127859",
@@ -2123,7 +3019,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-127859.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-127859.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "amenemhat",
+      "architecture",
+      "hemet",
+      "stela"
+    ]
   },
   {
     "id": "artic-60812",
@@ -2144,7 +3046,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-60812.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-60812.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "ancestors",
+      "fine art",
+      "has",
+      "many",
+      "merahi",
+      "metua",
+      "parents",
+      "tehamana"
+    ]
   },
   {
     "id": "artic-100829",
@@ -2165,7 +3077,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-100829.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-100829.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "blue",
+      "cloth",
+      "fine art",
+      "light",
+      "magnolias",
+      "velvet"
+    ]
   },
   {
     "id": "artic-111559",
@@ -2186,7 +3106,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-111559.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-111559.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "boy",
+      "fine art",
+      "ram"
+    ]
   },
   {
     "id": "artic-184371",
@@ -2207,7 +3132,11 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-184371.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-184371.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "nativity"
+    ]
   },
   {
     "id": "artic-127644",
@@ -2228,7 +3157,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-127644.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-127644.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "autumn",
+      "fine art",
+      "maples",
+      "poem",
+      "slips"
+    ]
   },
   {
     "id": "artic-88793",
@@ -2249,7 +3185,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-88793.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-88793.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "christ",
+      "fine art",
+      "frontal",
+      "life",
+      "retable",
+      "virgin"
+    ]
   },
   {
     "id": "artic-72801",
@@ -2270,7 +3214,11 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-72801.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-72801.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "icebound"
+    ]
   },
   {
     "id": "artic-14574",
@@ -2291,7 +3239,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-14574.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-14574.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "artist",
+      "cousin",
+      "degas",
+      "fine art",
+      "henri",
+      "his",
+      "lucie",
+      "niece",
+      "uncle"
+    ]
   },
   {
     "id": "artic-120154",
@@ -2312,7 +3271,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-120154.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-120154.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "fine art",
+      "life",
+      "nuts",
+      "still",
+      "strawberries"
+    ]
   },
   {
     "id": "artic-111617",
@@ -2333,7 +3299,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-111617.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-111617.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "cabin",
+      "cotton",
+      "fine art"
+    ]
   },
   {
     "id": "artic-16488",
@@ -2354,7 +3325,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-16488.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-16488.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "armida",
+      "encounters",
+      "fine art",
+      "rinaldo",
+      "sleeping"
+    ]
   },
   {
     "id": "artic-16169",
@@ -2375,7 +3353,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-16169.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-16169.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "baptist",
+      "beheading",
+      "fine art",
+      "john",
+      "saint"
+    ]
   },
   {
     "id": "artic-27987",
@@ -2396,7 +3381,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-27987.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-27987.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "berthe",
+      "fine art",
+      "jacques",
+      "lipchitz"
+    ]
   },
   {
     "id": "artic-64729",
@@ -2417,7 +3408,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-64729.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-64729.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "early",
+      "fine art",
+      "morning",
+      "springs",
+      "tarpon"
+    ]
   },
   {
     "id": "artic-109926",
@@ -2438,7 +3436,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/artic-109926.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/artic-109926.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "cozy",
+      "fine art",
+      "interior",
+      "landscape",
+      "overlooking",
+      "view",
+      "window",
+      "woods"
+    ]
   },
   {
     "id": "wiki-184641",
@@ -2459,7 +3467,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wiki-184641.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wiki-184641.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "adj",
+      "bopp",
+      "comet",
+      "hale",
+      "hires",
+      "sci-fi"
+    ]
   },
   {
     "id": "rb-a143886c",
@@ -2481,7 +3497,24 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/rb-a143886c.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-a143886c.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-a143886c.png",
+    "tags": [
+      "animal",
+      "backdrop",
+      "cat",
+      "cozy",
+      "feline",
+      "interior",
+      "kitten",
+      "koreader overlay",
+      "looking",
+      "out",
+      "overlay",
+      "pet",
+      "transparent",
+      "view",
+      "window"
+    ]
   },
   {
     "id": "rb-272a5125",
@@ -2506,7 +3539,24 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/rb-272a5125.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-272a5125.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-272a5125.png",
+    "tags": [
+      "anime",
+      "away",
+      "backdrop",
+      "creature",
+      "dragon",
+      "fantasy",
+      "ghibli",
+      "haku",
+      "koreader overlay",
+      "miyazaki",
+      "mythical",
+      "overlay",
+      "spirited",
+      "spirited away",
+      "transparent"
+    ]
   },
   {
     "id": "rb-9748dd72",
@@ -2528,7 +3578,25 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/rb-9748dd72.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-9748dd72.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-9748dd72.png",
+    "tags": [
+      "backdrop",
+      "book",
+      "classic art",
+      "cozy",
+      "engraving",
+      "etching",
+      "koreader overlay",
+      "library",
+      "literature",
+      "lithograph",
+      "newspaper",
+      "overlay",
+      "reading",
+      "transparent",
+      "vintage",
+      "woodcut"
+    ]
   },
   {
     "id": "rb-d1a37588",
@@ -2553,7 +3621,19 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/rb-d1a37588.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-d1a37588.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/rb-d1a37588.png",
+    "tags": [
+      "avengers",
+      "backdrop",
+      "comic",
+      "cover",
+      "koreader overlay",
+      "marvel",
+      "overlay",
+      "pop culture",
+      "superheroes",
+      "transparent"
+    ]
   },
   {
     "id": "wh-8g9wyy",
@@ -2574,7 +3654,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-8g9wyy.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-8g9wyy.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "anime",
+      "clean",
+      "ketewstudio",
+      "line art",
+      "minimalism",
+      "minimalist",
+      "monochrome",
+      "simple"
+    ]
   },
   {
     "id": "wh-zpdjww",
@@ -2595,7 +3685,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-zpdjww.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-zpdjww.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "black",
+      "centered",
+      "clean",
+      "line art",
+      "minimalism",
+      "minimalist",
+      "monochrome",
+      "simple"
+    ]
   },
   {
     "id": "wh-rqpmjj",
@@ -2619,7 +3719,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-rqpmjj.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-rqpmjj.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "black",
+      "clean",
+      "digital",
+      "lego",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "pop culture",
+      "simple"
+    ]
   },
   {
     "id": "wh-lyj1kp",
@@ -2640,7 +3751,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-lyj1kp.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-lyj1kp.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "canvas",
+      "clean",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "painting",
+      "simple"
+    ]
   },
   {
     "id": "wh-3q6mry",
@@ -2661,7 +3781,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-3q6mry.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-3q6mry.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "clean",
+      "dark",
+      "digital",
+      "knight",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "simple"
+    ]
   },
   {
     "id": "wh-qrmqp5",
@@ -2685,7 +3815,20 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-qrmqp5.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-qrmqp5.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "anime",
+      "berserk",
+      "clean",
+      "guts",
+      "line art",
+      "minimalist",
+      "miyamoto",
+      "monochrome",
+      "musashi",
+      "simple",
+      "vagabond"
+    ]
   },
   {
     "id": "wh-gwd5ee",
@@ -2709,7 +3852,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-gwd5ee.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-gwd5ee.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "akira",
+      "anime",
+      "clean",
+      "kaneda",
+      "line art",
+      "manga",
+      "minimalist",
+      "monochrome",
+      "shotaro",
+      "simple"
+    ]
   },
   {
     "id": "wh-21oqwm",
@@ -2733,7 +3888,20 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-21oqwm.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-21oqwm.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "anime",
+      "berserk",
+      "clean",
+      "guts",
+      "line art",
+      "minimalist",
+      "miyamoto",
+      "monochrome",
+      "musashi",
+      "simple",
+      "vagabond"
+    ]
   },
   {
     "id": "wh-k8log6",
@@ -2754,7 +3922,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-k8log6.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-k8log6.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "background",
+      "clean",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "simple",
+      "vortex"
+    ]
   },
   {
     "id": "wh-ogj9m9",
@@ -2778,7 +3956,23 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-ogj9m9.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-ogj9m9.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "anime",
+      "artwork",
+      "botanical",
+      "capcom",
+      "clean",
+      "fighter",
+      "foliage",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "nature",
+      "simple",
+      "street",
+      "tree"
+    ]
   },
   {
     "id": "wh-yq9x8x",
@@ -2799,7 +3993,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-yq9x8x.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-yq9x8x.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "clean",
+      "humor",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "nasa",
+      "simple",
+      "text"
+    ]
   },
   {
     "id": "wh-qrozvd",
@@ -2820,7 +4024,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-qrozvd.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-qrozvd.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "background",
+      "black",
+      "clean",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "pulsars",
+      "science",
+      "simple"
+    ]
   },
   {
     "id": "wh-jedwzp",
@@ -2841,7 +4056,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-jedwzp.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-jedwzp.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "artem",
+      "clean",
+      "dark",
+      "demura",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "robes",
+      "simple"
+    ]
   },
   {
     "id": "wh-ogjdy7",
@@ -2862,7 +4088,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-ogjdy7.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-ogjdy7.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "clean",
+      "line art",
+      "minimalism",
+      "minimalist",
+      "monochrome",
+      "simple",
+      "stampede",
+      "trigun",
+      "vash"
+    ]
   },
   {
     "id": "wh-jedx5w",
@@ -2887,7 +4124,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-jedx5w.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-jedx5w.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "anime",
+      "clean",
+      "line art",
+      "mew",
+      "minimalism",
+      "minimalist",
+      "monochrome",
+      "pop culture",
+      "simple"
+    ]
   },
   {
     "id": "wh-7jl91e",
@@ -2911,7 +4159,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-7jl91e.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-7jl91e.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "anime",
+      "clean",
+      "line art",
+      "minimalism",
+      "minimalist",
+      "monochrome",
+      "simple",
+      "white"
+    ]
   },
   {
     "id": "wh-e86kwo",
@@ -2935,7 +4193,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-e86kwo.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-e86kwo.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "background",
+      "centered",
+      "clean",
+      "dark",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "pop culture",
+      "simple"
+    ]
   },
   {
     "id": "wh-rqp8x1",
@@ -2956,7 +4225,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-rqp8x1.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-rqp8x1.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "cgi",
+      "clean",
+      "digital",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "simple"
+    ]
   },
   {
     "id": "wh-jed8yq",
@@ -2977,7 +4256,21 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-jed8yq.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-jed8yq.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "alpine",
+      "clean",
+      "landscape",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "mountain",
+      "mountains",
+      "nature",
+      "peaks",
+      "simple",
+      "summit"
+    ]
   },
   {
     "id": "wh-xedg6l",
@@ -2998,7 +4291,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-xedg6l.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-xedg6l.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "nature",
+      "photography",
+      "scenery"
+    ]
   },
   {
     "id": "wh-qrmkqq",
@@ -3019,7 +4317,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-qrmkqq.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-qrmkqq.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "hitoritabikenkyu",
+      "nature",
+      "photography",
+      "rural"
+    ]
   },
   {
     "id": "wh-rqp9jw",
@@ -3040,7 +4344,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-rqp9jw.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-rqp9jw.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "car",
+      "forza",
+      "horizon",
+      "nature",
+      "porsche"
+    ]
   },
   {
     "id": "wh-d8ojdm",
@@ -3061,7 +4372,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-d8ojdm.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-d8ojdm.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "hood",
+      "landscape",
+      "mount",
+      "nature",
+      "volcano"
+    ]
   },
   {
     "id": "wh-mlg59k",
@@ -3082,7 +4400,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-mlg59k.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-mlg59k.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "decaria",
+      "hillsboro",
+      "lorenzo",
+      "nature"
+    ]
   },
   {
     "id": "wh-xedo8v",
@@ -3103,7 +4427,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-xedo8v.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-xedo8v.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "dom",
+      "edale",
+      "england",
+      "haughton",
+      "nature",
+      "valley"
+    ]
   },
   {
     "id": "wh-jeyo1m",
@@ -3124,7 +4456,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-jeyo1m.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-jeyo1m.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "annihilation",
+      "apocalypse",
+      "dark",
+      "nature",
+      "post",
+      "tides"
+    ]
   },
   {
     "id": "wh-5ym8p1",
@@ -3145,7 +4485,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-5ym8p1.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-5ym8p1.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "artstation",
+      "digital",
+      "illustration",
+      "nature"
+    ]
   },
   {
     "id": "wh-lyj5gl",
@@ -3166,7 +4512,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-lyj5gl.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-lyj5gl.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "lison",
+      "matterhorn",
+      "nature",
+      "zermatt",
+      "zhao"
+    ]
   },
   {
     "id": "wh-lyj56q",
@@ -3187,7 +4540,21 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-lyj56q.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-lyj56q.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "atmospheric",
+      "buildings",
+      "city",
+      "fog",
+      "hazy",
+      "horror",
+      "mist",
+      "moody",
+      "nature",
+      "skyline",
+      "urban"
+    ]
   },
   {
     "id": "wh-qrm855",
@@ -3208,7 +4575,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-qrm855.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-qrm855.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "angle",
+      "artstation",
+      "nature",
+      "ultrawide",
+      "wide"
+    ]
   },
   {
     "id": "wh-8g9vo2",
@@ -3229,7 +4603,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-8g9vo2.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-8g9vo2.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "lake",
+      "lugano",
+      "nature",
+      "pierre",
+      "switzerland"
+    ]
   },
   {
     "id": "wh-7jev2v",
@@ -3250,7 +4631,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-7jev2v.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-7jev2v.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "barrot",
+      "china",
+      "hong",
+      "kong",
+      "marc",
+      "nature"
+    ]
   },
   {
     "id": "wh-mlg6d8",
@@ -3271,7 +4660,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-mlg6d8.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-mlg6d8.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "assembly",
+      "creative",
+      "nature",
+      "sega",
+      "total",
+      "war",
+      "warhammer"
+    ]
   },
   {
     "id": "wh-po71ke",
@@ -3292,7 +4690,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-po71ke.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-po71ke.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "dam",
+      "nature",
+      "pierre",
+      "switzerland"
+    ]
   },
   {
     "id": "wh-7je7gv",
@@ -3313,7 +4717,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-7je7gv.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-7je7gv.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "artstation",
+      "digital",
+      "nature",
+      "reflection"
+    ]
   },
   {
     "id": "wh-gwmo13",
@@ -3334,7 +4744,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-gwmo13.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-gwmo13.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "banff",
+      "jeff",
+      "lake",
+      "louise",
+      "national",
+      "nature",
+      "park",
+      "salhany"
+    ]
   },
   {
     "id": "wh-gwmkpe",
@@ -3355,7 +4775,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-gwmkpe.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-gwmkpe.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "depth",
+      "field",
+      "nature",
+      "photography"
+    ]
   },
   {
     "id": "wh-8gjxoy",
@@ -3376,7 +4802,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-8gjxoy.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-8gjxoy.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "classic",
+      "nature",
+      "nostalgia",
+      "retro",
+      "style",
+      "surreal",
+      "vintage"
+    ]
   },
   {
     "id": "wh-e86g7k",
@@ -3397,7 +4833,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-e86g7k.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-e86g7k.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "beacon",
+      "coast",
+      "dom",
+      "england",
+      "godrevy",
+      "haughton",
+      "lighthouse",
+      "maritime",
+      "nature",
+      "ocean"
+    ]
   },
   {
     "id": "wh-212gxx",
@@ -3418,7 +4866,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-212gxx.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-212gxx.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "artstation",
+      "creature",
+      "dragon",
+      "fantasy",
+      "mythical",
+      "nature",
+      "philipp",
+      "urlich"
+    ]
   },
   {
     "id": "wh-d8dxzm",
@@ -3439,7 +4897,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-d8dxzm.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-d8dxzm.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "artstation",
+      "creature",
+      "dragon",
+      "fantasy",
+      "mythical",
+      "nature",
+      "philipp",
+      "urlich"
+    ]
   },
   {
     "id": "wh-e82xxr",
@@ -3460,7 +4928,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-e82xxr.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-e82xxr.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "alpine",
+      "landscape",
+      "mountain",
+      "mountains",
+      "nature",
+      "peaks",
+      "rocks",
+      "summit"
+    ]
   },
   {
     "id": "wh-po7q59",
@@ -3481,7 +4959,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-po7q59.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-po7q59.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "argentina",
+      "cerro",
+      "nature",
+      "patagonia",
+      "torre"
+    ]
   },
   {
     "id": "wh-lydkg2",
@@ -3505,7 +4990,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-lydkg2.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-lydkg2.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "anime",
+      "architecture",
+      "artist",
+      "digital",
+      "leo",
+      "pixiv"
+    ]
   },
   {
     "id": "wh-vpe9w8",
@@ -3526,7 +5019,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-vpe9w8.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-vpe9w8.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "hisanori",
+      "kyoto",
+      "rurikoin",
+      "temple"
+    ]
   },
   {
     "id": "wh-d8ojrl",
@@ -3547,7 +5047,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-d8ojrl.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-d8ojrl.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "artstation",
+      "eric",
+      "hallquist",
+      "sky"
+    ]
   },
   {
     "id": "wh-3q2zdd",
@@ -3568,7 +5075,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-3q2zdd.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-3q2zdd.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "east asia",
+      "japan",
+      "japanese",
+      "lam",
+      "oriental",
+      "takayama",
+      "traditional"
+    ]
   },
   {
     "id": "wh-1q2p3v",
@@ -3589,7 +5106,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-1q2p3v.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-1q2p3v.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "building",
+      "rooftops"
+    ]
   },
   {
     "id": "wh-yq2pjk",
@@ -3610,7 +5132,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-yq2pjk.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-yq2pjk.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "artstation",
+      "donnell",
+      "gavin",
+      "plants"
+    ]
   },
   {
     "id": "wh-9ogo1k",
@@ -3634,7 +5163,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-9ogo1k.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-9ogo1k.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "agatha",
+      "anime",
+      "architecture",
+      "decker",
+      "digital",
+      "krys"
+    ]
   },
   {
     "id": "wh-jeymlm",
@@ -3655,7 +5192,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-jeymlm.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-jeymlm.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "daylight",
+      "feng",
+      "norway",
+      "solar",
+      "sun",
+      "sunlight",
+      "sunrise",
+      "sunset"
+    ]
   },
   {
     "id": "wh-xedrm3",
@@ -3676,7 +5224,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-xedrm3.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-xedrm3.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "artwork",
+      "digital",
+      "illustration"
+    ]
   },
   {
     "id": "wh-8g9qy1",
@@ -3697,7 +5251,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-8g9qy1.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-8g9qy1.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "artwork",
+      "digital",
+      "illustration"
+    ]
   },
   {
     "id": "wh-og6ej5",
@@ -3718,7 +5278,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-og6ej5.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-og6ej5.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "alpine",
+      "architecture",
+      "asian",
+      "genjo",
+      "landscape",
+      "mountain",
+      "mountains",
+      "nature",
+      "peaks",
+      "summit"
+    ]
   },
   {
     "id": "wh-yq2pdx",
@@ -3739,7 +5311,16 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-yq2pdx.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-yq2pdx.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "christopher",
+      "hoyte",
+      "hoytema",
+      "nolan",
+      "odyssey",
+      "van"
+    ]
   },
   {
     "id": "wh-gwm3oq",
@@ -3763,7 +5344,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-gwm3oq.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-gwm3oq.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "anime",
+      "architecture",
+      "gibun",
+      "girls",
+      "kono",
+      "sekai",
+      "shukufuku",
+      "subarashii"
+    ]
   },
   {
     "id": "wh-k8d18q",
@@ -3784,7 +5375,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-k8d18q.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-k8d18q.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "artwork",
+      "digital",
+      "illustration"
+    ]
   },
   {
     "id": "wh-xedxrd",
@@ -3805,7 +5402,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-xedxrd.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-xedxrd.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "angle",
+      "architecture",
+      "low",
+      "monochrome"
+    ]
   },
   {
     "id": "wh-3q6jx3",
@@ -3826,7 +5429,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-3q6jx3.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-3q6jx3.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "artwork",
+      "deltakosh",
+      "digital"
+    ]
   },
   {
     "id": "wh-mly1ly",
@@ -3847,7 +5456,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-mly1ly.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-mly1ly.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "cinque",
+      "dave",
+      "terre",
+      "vernazza",
+      "wong"
+    ]
   },
   {
     "id": "wh-rqpml1",
@@ -3868,7 +5485,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-rqpml1.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-rqpml1.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "assassins",
+      "black",
+      "creed",
+      "flag",
+      "games",
+      "resynced",
+      "video",
+      "waterfall"
+    ]
   },
   {
     "id": "wh-212e39",
@@ -3889,7 +5517,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-212e39.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-212e39.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "cgi",
+      "digital",
+      "mist"
+    ]
   },
   {
     "id": "wh-zp9q7y",
@@ -3910,7 +5544,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-zp9q7y.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-zp9q7y.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "architecture",
+      "artwork",
+      "digital",
+      "illustration"
+    ]
   },
   {
     "id": "wh-zpdj5o",
@@ -3931,7 +5571,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-zpdj5o.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-zpdj5o.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "astronomy",
+      "cosmos",
+      "dark",
+      "galaxy",
+      "planet",
+      "sci-fi",
+      "space",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "wh-lyje9y",
@@ -3952,7 +5603,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-lyje9y.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-lyje9y.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "ascii",
+      "background",
+      "neptune",
+      "sci-fi",
+      "simple"
+    ]
   },
   {
     "id": "wh-po7x6p",
@@ -3973,7 +5631,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-po7x6p.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-po7x6p.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "astronomy",
+      "background",
+      "cosmos",
+      "deep",
+      "galaxy",
+      "sci-fi",
+      "simple",
+      "space",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "wh-gwm3zq",
@@ -3994,7 +5664,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-gwm3zq.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-gwm3zq.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "ascii",
+      "astronaut",
+      "light",
+      "low",
+      "sci-fi"
+    ]
   },
   {
     "id": "wh-gwmyk7",
@@ -4018,7 +5695,21 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-gwmyk7.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-gwmyk7.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "anime",
+      "daylight",
+      "girls",
+      "hatsune",
+      "miku",
+      "sci-fi",
+      "smiling",
+      "solar",
+      "sun",
+      "sunlight",
+      "sunrise",
+      "sunset"
+    ]
   },
   {
     "id": "wh-mlgmjm",
@@ -4039,7 +5730,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-mlgmjm.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-mlgmjm.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "astronomy",
+      "background",
+      "cosmos",
+      "deep",
+      "galaxy",
+      "sci-fi",
+      "simple",
+      "space",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "wh-7jl2lv",
@@ -4060,7 +5763,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-7jl2lv.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-7jl2lv.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "alone",
+      "astronomy",
+      "cosmos",
+      "galaxy",
+      "night",
+      "sci-fi",
+      "space",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "wh-jeygp5",
@@ -4084,7 +5798,20 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-jeygp5.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-jeygp5.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "anime",
+      "astronomy",
+      "constellations",
+      "indie",
+      "long",
+      "night sky",
+      "sci-fi",
+      "sleeves",
+      "stars",
+      "virtual",
+      "youtuber"
+    ]
   },
   {
     "id": "wh-gwm6m3",
@@ -4108,7 +5835,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-gwm6m3.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-gwm6m3.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "angle",
+      "anime",
+      "artstation",
+      "sci-fi",
+      "screen",
+      "wide"
+    ]
   },
   {
     "id": "wh-og6ezm",
@@ -4129,7 +5864,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-og6ezm.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-og6ezm.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "colorful",
+      "digital",
+      "light",
+      "low",
+      "sci-fi"
+    ]
   },
   {
     "id": "wh-6lpzx7",
@@ -4150,7 +5892,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-6lpzx7.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-6lpzx7.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "astronomy",
+      "background",
+      "cosmos",
+      "deep",
+      "galaxy",
+      "sci-fi",
+      "simple",
+      "space",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "wh-9o93mx",
@@ -4171,7 +5925,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-9o93mx.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-9o93mx.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "astronomy",
+      "constellations",
+      "cosmos",
+      "galaxy",
+      "night sky",
+      "planet",
+      "sci-fi",
+      "space",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "wh-5y3l75",
@@ -4192,7 +5958,20 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-5y3l75.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-5y3l75.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "astronomy",
+      "cagol",
+      "cosmos",
+      "galaxy",
+      "paolo",
+      "sci-fi",
+      "space",
+      "spacescapes",
+      "spaceship",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "wh-lyd8xl",
@@ -4213,7 +5992,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-lyd8xl.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-lyd8xl.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "arc",
+      "embark",
+      "raiders",
+      "sci-fi",
+      "studios"
+    ]
   },
   {
     "id": "wh-w5drp6",
@@ -4234,7 +6021,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-w5drp6.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-w5drp6.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "astronomy",
+      "background",
+      "cosmos",
+      "dark",
+      "digital",
+      "galaxy",
+      "sci-fi",
+      "space",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "wh-e86ggr",
@@ -4255,7 +6054,20 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-e86ggr.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-e86ggr.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "animal",
+      "cat",
+      "catpuccin",
+      "dune",
+      "feline",
+      "kitten",
+      "movie",
+      "part",
+      "pet",
+      "sci-fi",
+      "two"
+    ]
   },
   {
     "id": "wh-po7rdj",
@@ -4276,7 +6088,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-po7rdj.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-po7rdj.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "astronomy",
+      "cgi",
+      "cosmos",
+      "digital",
+      "galaxy",
+      "sci-fi",
+      "space",
+      "spacesuit",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "wh-k8l6ym",
@@ -4297,7 +6121,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-k8l6ym.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-k8l6ym.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "astronomy",
+      "cosmos",
+      "deep",
+      "galaxy",
+      "sci-fi",
+      "space",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "wh-8g91zy",
@@ -4318,7 +6152,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-8g91zy.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-8g91zy.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "astronomy",
+      "cosmos",
+      "deep",
+      "galaxy",
+      "planet",
+      "sci-fi",
+      "space",
+      "stars",
+      "universe"
+    ]
   },
   {
     "id": "wh-w5d2l6",
@@ -4342,7 +6187,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-w5d2l6.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-w5d2l6.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "aemeath",
+      "anime",
+      "astronomy",
+      "constellations",
+      "night sky",
+      "sci-fi",
+      "stars",
+      "waves",
+      "wuthering"
+    ]
   },
   {
     "id": "wh-k8d8xq",
@@ -4363,7 +6219,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-k8d8xq.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-k8d8xq.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "neptune",
+      "planet",
+      "sci-fi",
+      "starkiteckt"
+    ]
   },
   {
     "id": "wh-mlg7qm",
@@ -4384,7 +6246,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-mlg7qm.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-mlg7qm.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "blue",
+      "purple"
+    ]
   },
   {
     "id": "wh-qrmykq",
@@ -4408,7 +6275,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-qrmykq.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-qrmykq.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "anime",
+      "emerald",
+      "pixel"
+    ]
   },
   {
     "id": "wh-yq2z7x",
@@ -4429,7 +6302,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-yq2z7x.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-yq2z7x.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "alexandre",
+      "angel",
+      "cabanel",
+      "fallen"
+    ]
   },
   {
     "id": "wh-7je51y",
@@ -4450,7 +6330,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-7je51y.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-7je51y.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "canvas",
+      "hiroki",
+      "kawanabe",
+      "painting"
+    ]
   },
   {
     "id": "wh-w5djjp",
@@ -4471,7 +6358,13 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-w5djjp.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-w5djjp.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "artstation",
+      "cgi",
+      "women"
+    ]
   },
   {
     "id": "wh-yq2zwl",
@@ -4492,7 +6385,14 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-yq2zwl.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-yq2zwl.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "ascii",
+      "death",
+      "nicola",
+      "samori"
+    ]
   },
   {
     "id": "wh-212k56",
@@ -4516,7 +6416,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-212k56.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-212k56.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "anime",
+      "dai",
+      "dark",
+      "hayashida",
+      "manga"
+    ]
   },
   {
     "id": "wh-6lykzx",
@@ -4537,7 +6445,12 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-6lykzx.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-6lykzx.png",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "gradient",
+      "violet"
+    ]
   },
   {
     "id": "wh-qrm1k5",
@@ -4561,7 +6474,15 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-qrm1k5.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-qrm1k5.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "anime",
+      "migurdia",
+      "mushoku",
+      "roxy",
+      "tensei"
+    ]
   },
   {
     "id": "wh-k8l697",
@@ -4582,7 +6503,21 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wh-k8l697.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wh-k8l697.jpg",
     "downloads": 0,
-    "likes": 1
+    "likes": 1,
+    "tags": [
+      "abstract",
+      "east asia",
+      "forest",
+      "japan",
+      "japanese",
+      "landscape",
+      "nature",
+      "oriental",
+      "snow",
+      "traditional",
+      "trees",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-monochrome-ink-landscape-1",
@@ -4604,7 +6539,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-monochrome-ink-landscape-1.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-monochrome-ink-landscape-1.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-monochrome-ink-landscape-1.png",
+    "tags": [
+      "backdrop",
+      "ink",
+      "koreader overlay",
+      "landscape",
+      "monochrome",
+      "overlay",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-starry-forest-night",
@@ -4626,7 +6570,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-starry-forest-night.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starry-forest-night.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starry-forest-night.png",
+    "tags": [
+      "backdrop",
+      "forest",
+      "koreader overlay",
+      "landscape",
+      "nature",
+      "night",
+      "overlay",
+      "starry",
+      "transparent",
+      "trees",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-ocean-wave-stipple-art",
@@ -4648,7 +6605,21 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-ocean-wave-stipple-art.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-ocean-wave-stipple-art.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-ocean-wave-stipple-art.png",
+    "tags": [
+      "backdrop",
+      "coastal",
+      "koreader overlay",
+      "marine",
+      "ocean",
+      "overlay",
+      "sea",
+      "stipple",
+      "transparent",
+      "water",
+      "wave",
+      "waves"
+    ]
   },
   {
     "id": "whisperingsea4-deep-forest-fog",
@@ -4670,7 +6641,24 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-deep-forest-fog.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-deep-forest-fog.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-deep-forest-fog.png",
+    "tags": [
+      "atmospheric",
+      "backdrop",
+      "deep",
+      "fog",
+      "forest",
+      "hazy",
+      "koreader overlay",
+      "landscape",
+      "mist",
+      "moody",
+      "nature",
+      "overlay",
+      "transparent",
+      "trees",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-geometric-lunar-cycles",
@@ -4692,7 +6680,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-geometric-lunar-cycles.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-geometric-lunar-cycles.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-geometric-lunar-cycles.png",
+    "tags": [
+      "abstract",
+      "backdrop",
+      "cycles",
+      "geometric",
+      "geometry",
+      "koreader overlay",
+      "lunar",
+      "overlay",
+      "patterns",
+      "shapes",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-mountain-lake-reflection",
@@ -4714,7 +6715,21 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-mountain-lake-reflection.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-mountain-lake-reflection.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-mountain-lake-reflection.png",
+    "tags": [
+      "alpine",
+      "backdrop",
+      "koreader overlay",
+      "lake",
+      "landscape",
+      "mountain",
+      "nature",
+      "overlay",
+      "peaks",
+      "reflection",
+      "summit",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-cozy-library-nook",
@@ -4736,7 +6751,19 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-cozy-library-nook.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-cozy-library-nook.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-cozy-library-nook.png",
+    "tags": [
+      "backdrop",
+      "books",
+      "cozy",
+      "koreader overlay",
+      "library",
+      "literature",
+      "nook",
+      "overlay",
+      "study",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-dense-evergreen-forest",
@@ -4758,7 +6785,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-dense-evergreen-forest.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-dense-evergreen-forest.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-dense-evergreen-forest.png",
+    "tags": [
+      "backdrop",
+      "dense",
+      "evergreen",
+      "forest",
+      "koreader overlay",
+      "landscape",
+      "nature",
+      "overlay",
+      "transparent",
+      "trees",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-celestial-sun-stars",
@@ -4780,7 +6820,24 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-celestial-sun-stars.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-celestial-sun-stars.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-celestial-sun-stars.png",
+    "tags": [
+      "astronomy",
+      "backdrop",
+      "celestial",
+      "constellations",
+      "daylight",
+      "koreader overlay",
+      "night sky",
+      "overlay",
+      "solar",
+      "stars",
+      "sun",
+      "sunlight",
+      "sunrise",
+      "sunset",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-atmospheric-cloud-horizons",
@@ -4802,7 +6859,19 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-atmospheric-cloud-horizons.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-atmospheric-cloud-horizons.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-atmospheric-cloud-horizons.png",
+    "tags": [
+      "atmospheric",
+      "backdrop",
+      "cloud",
+      "clouds",
+      "horizons",
+      "koreader overlay",
+      "overlay",
+      "sky",
+      "transparent",
+      "weather"
+    ]
   },
   {
     "id": "whisperingsea4-monochrome-ink-landscape-2",
@@ -4824,7 +6893,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-monochrome-ink-landscape-2.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-monochrome-ink-landscape-2.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-monochrome-ink-landscape-2.png",
+    "tags": [
+      "backdrop",
+      "ink",
+      "koreader overlay",
+      "landscape",
+      "monochrome",
+      "overlay",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-minimalist-frame-border",
@@ -4846,7 +6924,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-minimalist-frame-border.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-frame-border.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-frame-border.png",
+    "tags": [
+      "backdrop",
+      "border",
+      "clean",
+      "frame",
+      "koreader overlay",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "overlay",
+      "simple",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-starlit-mountain-peak",
@@ -4868,7 +6959,21 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-starlit-mountain-peak.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starlit-mountain-peak.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starlit-mountain-peak.png",
+    "tags": [
+      "alpine",
+      "backdrop",
+      "koreader overlay",
+      "landscape",
+      "mountain",
+      "nature",
+      "overlay",
+      "peak",
+      "peaks",
+      "starlit",
+      "summit",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-ink-wash-pine-woods",
@@ -4890,7 +6995,22 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-ink-wash-pine-woods.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-ink-wash-pine-woods.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-ink-wash-pine-woods.png",
+    "tags": [
+      "backdrop",
+      "evergreen",
+      "forest",
+      "ink",
+      "koreader overlay",
+      "nature",
+      "overlay",
+      "pine",
+      "pine trees",
+      "pines",
+      "transparent",
+      "wash",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-moonlit-ocean-horizon",
@@ -4912,7 +7032,26 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-moonlit-ocean-horizon.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-moonlit-ocean-horizon.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-moonlit-ocean-horizon.png",
+    "tags": [
+      "backdrop",
+      "celestial",
+      "coastal",
+      "crescent",
+      "horizon",
+      "koreader overlay",
+      "lunar",
+      "marine",
+      "moon",
+      "moonlit",
+      "night",
+      "ocean",
+      "overlay",
+      "sea",
+      "transparent",
+      "water",
+      "waves"
+    ]
   },
   {
     "id": "whisperingsea4-abstract-wave-ribbons",
@@ -4934,7 +7073,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-abstract-wave-ribbons.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-abstract-wave-ribbons.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-abstract-wave-ribbons.png",
+    "tags": [
+      "abstract",
+      "backdrop",
+      "koreader overlay",
+      "overlay",
+      "ribbons",
+      "transparent",
+      "wave"
+    ]
   },
   {
     "id": "whisperingsea4-high-detail-wilderness",
@@ -4956,7 +7104,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-high-detail-wilderness.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-high-detail-wilderness.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-high-detail-wilderness.png",
+    "tags": [
+      "backdrop",
+      "detail",
+      "high",
+      "koreader overlay",
+      "overlay",
+      "transparent",
+      "wilderness"
+    ]
   },
   {
     "id": "whisperingsea4-minimalist-crescent-moon",
@@ -4978,7 +7135,23 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-minimalist-crescent-moon.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-crescent-moon.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-crescent-moon.png",
+    "tags": [
+      "backdrop",
+      "celestial",
+      "clean",
+      "crescent",
+      "koreader overlay",
+      "line art",
+      "lunar",
+      "minimalist",
+      "monochrome",
+      "moon",
+      "night",
+      "overlay",
+      "simple",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-bamboo-forest-sunlight",
@@ -5000,7 +7173,28 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-bamboo-forest-sunlight.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-bamboo-forest-sunlight.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-bamboo-forest-sunlight.png",
+    "tags": [
+      "backdrop",
+      "bamboo",
+      "botanical",
+      "daylight",
+      "forest",
+      "grove",
+      "japan",
+      "koreader overlay",
+      "landscape",
+      "nature",
+      "overlay",
+      "solar",
+      "sun",
+      "sunlight",
+      "sunrise",
+      "sunset",
+      "transparent",
+      "trees",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-botanical-leaf-silhouette",
@@ -5022,7 +7216,19 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-botanical-leaf-silhouette.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-botanical-leaf-silhouette.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-botanical-leaf-silhouette.png",
+    "tags": [
+      "backdrop",
+      "botanical",
+      "foliage",
+      "koreader overlay",
+      "leaf",
+      "nature",
+      "overlay",
+      "plants",
+      "silhouette",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-atmospheric-mountain-fog",
@@ -5044,7 +7250,24 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-atmospheric-mountain-fog.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-atmospheric-mountain-fog.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-atmospheric-mountain-fog.png",
+    "tags": [
+      "alpine",
+      "atmospheric",
+      "backdrop",
+      "fog",
+      "hazy",
+      "koreader overlay",
+      "landscape",
+      "mist",
+      "moody",
+      "mountain",
+      "nature",
+      "overlay",
+      "peaks",
+      "summit",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-highres-landscape-2a",
@@ -5066,7 +7289,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-highres-landscape-2a.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-highres-landscape-2a.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-highres-landscape-2a.png",
+    "tags": [
+      "backdrop",
+      "high",
+      "koreader overlay",
+      "landscape",
+      "overlay",
+      "resolution",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-highres-landscape-2b",
@@ -5088,7 +7320,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-highres-landscape-2b.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-highres-landscape-2b.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-highres-landscape-2b.png",
+    "tags": [
+      "backdrop",
+      "high",
+      "koreader overlay",
+      "landscape",
+      "overlay",
+      "resolution",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-highres-landscape-2c",
@@ -5110,7 +7351,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-highres-landscape-2c.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-highres-landscape-2c.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-highres-landscape-2c.png",
+    "tags": [
+      "backdrop",
+      "high",
+      "koreader overlay",
+      "landscape",
+      "overlay",
+      "resolution",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-highres-master-canvas",
@@ -5132,7 +7382,17 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-highres-master-canvas.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-highres-master-canvas.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-highres-master-canvas.png",
+    "tags": [
+      "backdrop",
+      "canvas",
+      "high",
+      "koreader overlay",
+      "master",
+      "overlay",
+      "resolution",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-cosmic-portal-horizon",
@@ -5154,7 +7414,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-cosmic-portal-horizon.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-cosmic-portal-horizon.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-cosmic-portal-horizon.png",
+    "tags": [
+      "backdrop",
+      "cosmic",
+      "horizon",
+      "koreader overlay",
+      "overlay",
+      "portal",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-starry-night-valley-vista",
@@ -5176,7 +7445,17 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-starry-night-valley-vista.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starry-night-valley-vista.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starry-night-valley-vista.png",
+    "tags": [
+      "backdrop",
+      "koreader overlay",
+      "night",
+      "overlay",
+      "starry",
+      "transparent",
+      "valley",
+      "vista"
+    ]
   },
   {
     "id": "whisperingsea4-mountain-sunset-outline",
@@ -5198,7 +7477,26 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-mountain-sunset-outline.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-mountain-sunset-outline.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-mountain-sunset-outline.png",
+    "tags": [
+      "alpine",
+      "backdrop",
+      "daylight",
+      "koreader overlay",
+      "landscape",
+      "mountain",
+      "nature",
+      "outline",
+      "overlay",
+      "peaks",
+      "solar",
+      "summit",
+      "sun",
+      "sunlight",
+      "sunrise",
+      "sunset",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-dark-woodland-trail",
@@ -5220,7 +7518,24 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-dark-woodland-trail.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-dark-woodland-trail.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-dark-woodland-trail.png",
+    "tags": [
+      "backdrop",
+      "botanical",
+      "evergreen",
+      "foliage",
+      "forest",
+      "ink",
+      "koreader overlay",
+      "line",
+      "nature",
+      "overlay",
+      "pine",
+      "pine trees",
+      "pines",
+      "transparent",
+      "tree"
+    ]
   },
   {
     "id": "whisperingsea4-minimalist-desert-cactus",
@@ -5242,7 +7557,27 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-minimalist-desert-cactus.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-desert-cactus.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-desert-cactus.png",
+    "tags": [
+      "arid",
+      "backdrop",
+      "botanical",
+      "cactus",
+      "clean",
+      "desert",
+      "dunes",
+      "koreader overlay",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "overlay",
+      "plants",
+      "sand",
+      "simple",
+      "succulent",
+      "transparent",
+      "wilderness"
+    ]
   },
   {
     "id": "whisperingsea4-ink-splash-waves",
@@ -5264,7 +7599,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-ink-splash-waves.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-ink-splash-waves.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-ink-splash-waves.png",
+    "tags": [
+      "backdrop",
+      "ink",
+      "koreader overlay",
+      "overlay",
+      "splash",
+      "transparent",
+      "waves"
+    ]
   },
   {
     "id": "whisperingsea4-cozy-coffee-reading",
@@ -5286,7 +7630,22 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-cozy-coffee-reading.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-cozy-coffee-reading.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-cozy-coffee-reading.png",
+    "tags": [
+      "backdrop",
+      "book",
+      "cafe",
+      "coffee",
+      "cozy",
+      "koreader overlay",
+      "library",
+      "literature",
+      "morning",
+      "overlay",
+      "reading",
+      "transparent",
+      "warm"
+    ]
   },
   {
     "id": "whisperingsea4-japanese-torii-gate",
@@ -5308,7 +7667,22 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-japanese-torii-gate.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-japanese-torii-gate.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-japanese-torii-gate.png",
+    "tags": [
+      "architecture",
+      "backdrop",
+      "east asia",
+      "gate",
+      "japan",
+      "japanese",
+      "koreader overlay",
+      "oriental",
+      "overlay",
+      "shrine",
+      "torii",
+      "traditional",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-forest-under-stars",
@@ -5330,7 +7704,22 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-forest-under-stars.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-forest-under-stars.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-forest-under-stars.png",
+    "tags": [
+      "astronomy",
+      "backdrop",
+      "constellations",
+      "forest",
+      "koreader overlay",
+      "landscape",
+      "nature",
+      "night sky",
+      "overlay",
+      "stars",
+      "transparent",
+      "trees",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-geometric-mountain-sun",
@@ -5352,7 +7741,30 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-geometric-mountain-sun.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-geometric-mountain-sun.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-geometric-mountain-sun.png",
+    "tags": [
+      "abstract",
+      "alpine",
+      "backdrop",
+      "daylight",
+      "geometric",
+      "geometry",
+      "koreader overlay",
+      "landscape",
+      "mountain",
+      "nature",
+      "overlay",
+      "patterns",
+      "peaks",
+      "shapes",
+      "solar",
+      "summit",
+      "sun",
+      "sunlight",
+      "sunrise",
+      "sunset",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-misty-pine-forest-path",
@@ -5374,7 +7786,24 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-misty-pine-forest-path.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-misty-pine-forest-path.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-misty-pine-forest-path.png",
+    "tags": [
+      "backdrop",
+      "evergreen",
+      "forest",
+      "koreader overlay",
+      "landscape",
+      "misty",
+      "nature",
+      "overlay",
+      "path",
+      "pine",
+      "pine trees",
+      "pines",
+      "transparent",
+      "trees",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-solitary-tree-in-fog",
@@ -5396,7 +7825,23 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-solitary-tree-in-fog.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-solitary-tree-in-fog.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-solitary-tree-in-fog.png",
+    "tags": [
+      "atmospheric",
+      "backdrop",
+      "botanical",
+      "fog",
+      "foliage",
+      "hazy",
+      "koreader overlay",
+      "mist",
+      "moody",
+      "nature",
+      "overlay",
+      "solitary",
+      "transparent",
+      "tree"
+    ]
   },
   {
     "id": "whisperingsea4-minimalist-star-lines",
@@ -5418,7 +7863,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-minimalist-star-lines.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-star-lines.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-star-lines.png",
+    "tags": [
+      "backdrop",
+      "clean",
+      "koreader overlay",
+      "line art",
+      "lines",
+      "minimalist",
+      "monochrome",
+      "overlay",
+      "simple",
+      "star",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-celestial-moon-phase",
@@ -5440,7 +7898,19 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-celestial-moon-phase.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-celestial-moon-phase.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-celestial-moon-phase.png",
+    "tags": [
+      "backdrop",
+      "celestial",
+      "crescent",
+      "koreader overlay",
+      "lunar",
+      "moon",
+      "night",
+      "overlay",
+      "phase",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-quiet-lake-reflection",
@@ -5462,7 +7932,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-quiet-lake-reflection.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-quiet-lake-reflection.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-quiet-lake-reflection.png",
+    "tags": [
+      "backdrop",
+      "koreader overlay",
+      "lake",
+      "overlay",
+      "quiet",
+      "reflection",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-starlight-mountain-vista",
@@ -5484,7 +7963,21 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-starlight-mountain-vista.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starlight-mountain-vista.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starlight-mountain-vista.png",
+    "tags": [
+      "alpine",
+      "backdrop",
+      "koreader overlay",
+      "landscape",
+      "mountain",
+      "nature",
+      "overlay",
+      "peaks",
+      "starlight",
+      "summit",
+      "transparent",
+      "vista"
+    ]
   },
   {
     "id": "whisperingsea4-quiet-woodland-path",
@@ -5506,7 +7999,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-quiet-woodland-path.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-quiet-woodland-path.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-quiet-woodland-path.png",
+    "tags": [
+      "backdrop",
+      "koreader overlay",
+      "overlay",
+      "path",
+      "quiet",
+      "transparent",
+      "woodland"
+    ]
   },
   {
     "id": "whisperingsea4-crescent-moon-waves",
@@ -5528,7 +8030,19 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-crescent-moon-waves.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-crescent-moon-waves.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-crescent-moon-waves.png",
+    "tags": [
+      "backdrop",
+      "celestial",
+      "crescent",
+      "koreader overlay",
+      "lunar",
+      "moon",
+      "night",
+      "overlay",
+      "transparent",
+      "waves"
+    ]
   },
   {
     "id": "whisperingsea4-minimalist-floral-stems",
@@ -5550,7 +8064,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-minimalist-floral-stems.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-floral-stems.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-floral-stems.png",
+    "tags": [
+      "backdrop",
+      "clean",
+      "floral",
+      "koreader overlay",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "overlay",
+      "simple",
+      "stems",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-mountain-ridge-line-art",
@@ -5572,7 +8099,21 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-mountain-ridge-line-art.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-mountain-ridge-line-art.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-mountain-ridge-line-art.png",
+    "tags": [
+      "alpine",
+      "backdrop",
+      "koreader overlay",
+      "landscape",
+      "line",
+      "mountain",
+      "nature",
+      "overlay",
+      "peaks",
+      "ridge",
+      "summit",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-appa-soaring",
@@ -5594,7 +8135,15 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-appa-soaring.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-appa-soaring.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-appa-soaring.png",
+    "tags": [
+      "appa",
+      "backdrop",
+      "koreader overlay",
+      "overlay",
+      "soaring",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-solitary-mountain-peak",
@@ -5619,7 +8168,22 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-solitary-mountain-peak.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-solitary-mountain-peak.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-solitary-mountain-peak.png",
+    "tags": [
+      "alpine",
+      "anime",
+      "backdrop",
+      "koreader overlay",
+      "landscape",
+      "mountain",
+      "nature",
+      "overlay",
+      "peak",
+      "peaks",
+      "solitary",
+      "summit",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-forest-canopy-starlight",
@@ -5644,7 +8208,21 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-forest-canopy-starlight.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-forest-canopy-starlight.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-forest-canopy-starlight.png",
+    "tags": [
+      "anime",
+      "backdrop",
+      "canopy",
+      "forest",
+      "koreader overlay",
+      "landscape",
+      "nature",
+      "overlay",
+      "starlight",
+      "transparent",
+      "trees",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-misty-pine-ridge",
@@ -5669,7 +8247,22 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-misty-pine-ridge.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-misty-pine-ridge.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-misty-pine-ridge.png",
+    "tags": [
+      "anime",
+      "backdrop",
+      "evergreen",
+      "forest",
+      "koreader overlay",
+      "misty",
+      "nature",
+      "overlay",
+      "pine",
+      "pine trees",
+      "pines",
+      "ridge",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-lunar-celestial-eclipse",
@@ -5694,7 +8287,17 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-lunar-celestial-eclipse.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-lunar-celestial-eclipse.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-lunar-celestial-eclipse.png",
+    "tags": [
+      "anime",
+      "backdrop",
+      "celestial",
+      "eclipse",
+      "koreader overlay",
+      "lunar",
+      "overlay",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-detailed-botanical-ferns",
@@ -5719,7 +8322,17 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-detailed-botanical-ferns.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-detailed-botanical-ferns.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-detailed-botanical-ferns.png",
+    "tags": [
+      "anime",
+      "backdrop",
+      "botanical",
+      "detailed",
+      "ferns",
+      "koreader overlay",
+      "overlay",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-floating-island-sanctuary",
@@ -5744,7 +8357,17 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-floating-island-sanctuary.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-floating-island-sanctuary.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-floating-island-sanctuary.png",
+    "tags": [
+      "anime",
+      "backdrop",
+      "floating",
+      "island",
+      "koreader overlay",
+      "overlay",
+      "sanctuary",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-minimalist-dune-horizon",
@@ -5766,7 +8389,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-minimalist-dune-horizon.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-dune-horizon.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-dune-horizon.png",
+    "tags": [
+      "backdrop",
+      "clean",
+      "dune",
+      "horizon",
+      "koreader overlay",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "overlay",
+      "simple",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-minimalist-geometric-line",
@@ -5788,7 +8424,24 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-minimalist-geometric-line.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-geometric-line.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-geometric-line.png",
+    "tags": [
+      "abstract",
+      "backdrop",
+      "clean",
+      "geometric",
+      "geometry",
+      "koreader overlay",
+      "line",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "overlay",
+      "patterns",
+      "shapes",
+      "simple",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-ink-wash-wave-crest",
@@ -5810,7 +8463,17 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-ink-wash-wave-crest.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-ink-wash-wave-crest.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-ink-wash-wave-crest.png",
+    "tags": [
+      "backdrop",
+      "crest",
+      "ink",
+      "koreader overlay",
+      "overlay",
+      "transparent",
+      "wash",
+      "wave"
+    ]
   },
   {
     "id": "whisperingsea4-crescent-moon-reader",
@@ -5832,7 +8495,19 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-crescent-moon-reader.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-crescent-moon-reader.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-crescent-moon-reader.png",
+    "tags": [
+      "backdrop",
+      "celestial",
+      "crescent",
+      "koreader overlay",
+      "lunar",
+      "moon",
+      "night",
+      "overlay",
+      "reader",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-starry-sky-valley",
@@ -5854,7 +8529,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-starry-sky-valley.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starry-sky-valley.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starry-sky-valley.png",
+    "tags": [
+      "backdrop",
+      "koreader overlay",
+      "overlay",
+      "sky",
+      "starry",
+      "transparent",
+      "valley"
+    ]
   },
   {
     "id": "whisperingsea4-serene-bamboo-grove",
@@ -5879,7 +8563,21 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-serene-bamboo-grove.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-serene-bamboo-grove.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-serene-bamboo-grove.png",
+    "tags": [
+      "anime",
+      "backdrop",
+      "bamboo",
+      "botanical",
+      "forest",
+      "grove",
+      "japan",
+      "koreader overlay",
+      "nature",
+      "overlay",
+      "serene",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-dark-celestial-constellations",
@@ -5901,7 +8599,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-dark-celestial-constellations.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-dark-celestial-constellations.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-dark-celestial-constellations.png",
+    "tags": [
+      "backdrop",
+      "celestial",
+      "constellations",
+      "dark",
+      "koreader overlay",
+      "overlay",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-mountain-sunset-silhouette",
@@ -5923,7 +8630,26 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-mountain-sunset-silhouette.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-mountain-sunset-silhouette.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-mountain-sunset-silhouette.png",
+    "tags": [
+      "alpine",
+      "backdrop",
+      "daylight",
+      "koreader overlay",
+      "landscape",
+      "mountain",
+      "nature",
+      "overlay",
+      "peaks",
+      "silhouette",
+      "solar",
+      "summit",
+      "sun",
+      "sunlight",
+      "sunrise",
+      "sunset",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-cozy-coffee-open-book",
@@ -5945,7 +8671,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-cozy-coffee-open-book.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-cozy-coffee-open-book.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-cozy-coffee-open-book.png",
+    "tags": [
+      "backdrop",
+      "book",
+      "cafe",
+      "coffee",
+      "cozy",
+      "koreader overlay",
+      "morning",
+      "open",
+      "overlay",
+      "transparent",
+      "warm"
+    ]
   },
   {
     "id": "whisperingsea4-starlight-forest-vista",
@@ -5967,7 +8706,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-starlight-forest-vista.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starlight-forest-vista.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-starlight-forest-vista.png",
+    "tags": [
+      "backdrop",
+      "forest",
+      "koreader overlay",
+      "landscape",
+      "nature",
+      "overlay",
+      "starlight",
+      "transparent",
+      "trees",
+      "vista",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-midnight-sea-lighthouse",
@@ -5989,7 +8741,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-midnight-sea-lighthouse.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-midnight-sea-lighthouse.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-midnight-sea-lighthouse.png",
+    "tags": [
+      "backdrop",
+      "beacon",
+      "coast",
+      "koreader overlay",
+      "lighthouse",
+      "maritime",
+      "midnight",
+      "ocean",
+      "overlay",
+      "sea",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-deep-space-galaxy-swirl",
@@ -6011,7 +8776,21 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-deep-space-galaxy-swirl.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-deep-space-galaxy-swirl.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-deep-space-galaxy-swirl.png",
+    "tags": [
+      "astronomy",
+      "backdrop",
+      "cosmos",
+      "deep",
+      "galaxy",
+      "koreader overlay",
+      "overlay",
+      "space",
+      "stars",
+      "swirl",
+      "transparent",
+      "universe"
+    ]
   },
   {
     "id": "whisperingsea4-geometric-topographic-lines",
@@ -6033,7 +8812,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-geometric-topographic-lines.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-geometric-topographic-lines.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-geometric-topographic-lines.png",
+    "tags": [
+      "abstract",
+      "backdrop",
+      "geometric",
+      "geometry",
+      "koreader overlay",
+      "lines",
+      "overlay",
+      "patterns",
+      "shapes",
+      "topographic",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-minimalist-wildflowers",
@@ -6055,7 +8847,24 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-minimalist-wildflowers.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-wildflowers.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-minimalist-wildflowers.png",
+    "tags": [
+      "backdrop",
+      "bloom",
+      "botanical",
+      "clean",
+      "floral",
+      "flower",
+      "koreader overlay",
+      "line art",
+      "minimalist",
+      "monochrome",
+      "overlay",
+      "plants",
+      "simple",
+      "transparent",
+      "wildflowers"
+    ]
   },
   {
     "id": "whisperingsea4-japanese-castle-under-moon",
@@ -6077,7 +8886,28 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-japanese-castle-under-moon.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-japanese-castle-under-moon.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-japanese-castle-under-moon.png",
+    "tags": [
+      "architecture",
+      "backdrop",
+      "castle",
+      "celestial",
+      "crescent",
+      "east asia",
+      "fortress",
+      "historic",
+      "japan",
+      "japanese",
+      "koreader overlay",
+      "lunar",
+      "medieval",
+      "moon",
+      "night",
+      "oriental",
+      "overlay",
+      "traditional",
+      "transparent"
+    ]
   },
   {
     "id": "whisperingsea4-sunlit-pine-woods",
@@ -6099,7 +8929,27 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-sunlit-pine-woods.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-sunlit-pine-woods.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-sunlit-pine-woods.png",
+    "tags": [
+      "backdrop",
+      "daylight",
+      "evergreen",
+      "forest",
+      "koreader overlay",
+      "nature",
+      "overlay",
+      "pine",
+      "pine trees",
+      "pines",
+      "solar",
+      "sun",
+      "sunlight",
+      "sunlit",
+      "sunrise",
+      "sunset",
+      "transparent",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-desert-night-dunes",
@@ -6121,7 +8971,19 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-desert-night-dunes.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-desert-night-dunes.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-desert-night-dunes.png",
+    "tags": [
+      "arid",
+      "backdrop",
+      "desert",
+      "dunes",
+      "koreader overlay",
+      "night",
+      "overlay",
+      "sand",
+      "transparent",
+      "wilderness"
+    ]
   },
   {
     "id": "whisperingsea4-forest-river-reflections",
@@ -6143,7 +9005,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-forest-river-reflections.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-forest-river-reflections.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-forest-river-reflections.png",
+    "tags": [
+      "backdrop",
+      "forest",
+      "koreader overlay",
+      "landscape",
+      "nature",
+      "overlay",
+      "reflections",
+      "river",
+      "transparent",
+      "trees",
+      "woods"
+    ]
   },
   {
     "id": "whisperingsea4-high-contrast-cloudscape",
@@ -6165,7 +9040,20 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-high-contrast-cloudscape.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-high-contrast-cloudscape.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-high-contrast-cloudscape.png",
+    "tags": [
+      "atmospheric",
+      "backdrop",
+      "clouds",
+      "cloudscape",
+      "contrast",
+      "high",
+      "koreader overlay",
+      "overlay",
+      "sky",
+      "transparent",
+      "weather"
+    ]
   },
   {
     "id": "whisperingsea4-atmospheric-mist-valley",
@@ -6187,7 +9075,16 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-atmospheric-mist-valley.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-atmospheric-mist-valley.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-atmospheric-mist-valley.png",
+    "tags": [
+      "atmospheric",
+      "backdrop",
+      "koreader overlay",
+      "mist",
+      "overlay",
+      "transparent",
+      "valley"
+    ]
   },
   {
     "id": "whisperingsea4-geometric-mandala-pattern",
@@ -6209,6 +9106,22 @@
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/whisperingsea4-geometric-mandala-pattern.png",
     "downloads": 0,
     "likes": 1,
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-geometric-mandala-pattern.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/whisperingsea4-geometric-mandala-pattern.png",
+    "tags": [
+      "abstract",
+      "backdrop",
+      "geometric",
+      "geometry",
+      "koreader overlay",
+      "mandala",
+      "meditation",
+      "overlay",
+      "pattern",
+      "patterns",
+      "sacred geometry",
+      "shapes",
+      "spiritual",
+      "transparent"
+    ]
   }
 ]

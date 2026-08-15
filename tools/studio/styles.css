@@ -1144,6 +1144,88 @@ body.studio-body {
   white-space: nowrap;
 }
 
+/* Tags Editor in Inspector Drawer */
+.tags-editor-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--bg-input);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.tags-chips-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-height: 24px;
+}
+
+.tag-chip-editor {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-main);
+  font-size: 0.76rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.tag-chip-editor .tag-remove-btn {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.8rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag-chip-editor .tag-remove-btn:hover {
+  color: var(--danger);
+}
+
+.tag-input-wrapper {
+  display: flex;
+  gap: 6px;
+}
+
+.tag-input {
+  height: 30px;
+  font-size: 0.8rem;
+  flex: 1;
+}
+
+.card-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.card-tag-badge {
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #38bdf8;
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.table-tags-cell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  max-width: 220px;
+}
+
 .link-test-btn {
   font-size: 0.72rem;
   color: var(--accent-primary);

@@ -131,6 +131,16 @@ def sync_all_catalog():
             continue
         catalog_ids.add(item_id)
 
+        # Normalize tags
+        cur_tags = item.get('tags') or []
+        if isinstance(cur_tags, str):
+            cur_tags = [t.strip().lower() for t in cur_tags.split(',') if t.strip()]
+        elif isinstance(cur_tags, list):
+            cur_tags = [str(t).strip().lower() for t in cur_tags if str(t).strip()]
+        else:
+            cur_tags = []
+        item['tags'] = sorted(list(set(cur_tags)))
+
         # Detect actual file extension on disk
         ext = None
         for candidate_ext in ['png', 'jpg', 'jpeg', 'webp']:
@@ -595,6 +605,29 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 for x in catalog:
                     if x.get('id') in target_ids:
                         x['category'] = cat
+            elif action == 'add_tags':
+                new_tags = payload.get('tags') or []
+                if isinstance(new_tags, str):
+                    new_tags = [t.strip().lower() for t in new_tags.split(',') if t.strip()]
+                for x in catalog:
+                    if x.get('id') in target_ids:
+                        cur_tags = x.get('tags') or []
+                        if isinstance(cur_tags, str):
+                            cur_tags = [t.strip().lower() for t in cur_tags.split(',') if t.strip()]
+                        t_set = set(str(t).strip().lower() for t in cur_tags if str(t).strip())
+                        for nt in new_tags:
+                            nt_clean = str(nt).strip().lower()
+                            if nt_clean:
+                                t_set.add(nt_clean)
+                        x['tags'] = sorted(list(t_set))
+            elif action == 'remove_tag':
+                rem_tag = (payload.get('tag') or '').strip().lower()
+                for x in catalog:
+                    if x.get('id') in target_ids:
+                        cur_tags = x.get('tags') or []
+                        if isinstance(cur_tags, str):
+                            cur_tags = [t.strip().lower() for t in cur_tags.split(',') if t.strip()]
+                        x['tags'] = [t for t in cur_tags if str(t).strip().lower() != rem_tag]
             elif action == 'set_license':
                 license_val = payload.get('license')
                 for x in catalog:

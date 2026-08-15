@@ -397,6 +397,45 @@ body::after {
   color: var(--text-secondary);
 }
 
+/* Card Tags & Chips */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+  align-items: center;
+}
+
+.card-tag-chip {
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  color: #c4b5fd;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  line-height: 1.2;
+}
+
+.card-tag-chip:hover {
+  background: var(--accent-purple);
+  color: #ffffff;
+  border-color: var(--accent-purple);
+  transform: translateY(-1px);
+}
+
+.card-tags-more {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  cursor: help;
+}
+
 .card-footer {
   margin-top: auto;
   padding-top: 0.75rem;
