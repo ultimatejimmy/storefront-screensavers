@@ -238,15 +238,10 @@ body::after {
 
 .category-tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  overflow-x: auto;
   padding-bottom: 0.25rem;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.category-tags::-webkit-scrollbar {
-  display: none;
+  overflow: hidden;
 }
 
 .tag-btn {
@@ -272,8 +267,8 @@ body::after {
 /* Grid Layout */
 .wallpaper-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  gap: 2rem;
 }
 
 .card {
@@ -310,24 +305,32 @@ body::after {
 
 .card-image-wrap.transparent-bg .card-img {
   object-fit: contain;
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+  transform: scale(1.04);
 }
 
-/* Book Text Mode Preview for Transparent Overlays (Moby Dick, Chapter 1) */
+.card-image-wrap.transparent-bg:hover .card-img {
+  transform: scale(1.08);
+}
+
+/* Book Text Mode Preview for Transparent Overlays (Sherlock Holmes - A Study in Scarlet) */
 .card-image-wrap.transparent-bg.book-text-mode {
-  background-color: #f4f3ef !important;
+  background-color: #f6f5f0 !important;
   background-image: none !important;
 }
 
 .card-image-wrap.transparent-bg.book-text-mode::before {
-  content: "CHAPTER 1\A\A Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul...";
+  content: "CHAPTER 1\A Mr. Sherlock Holmes\A\A In the year 1878 I took my degree of Doctor of Medicine at the University of London, and proceeded to Netley to go through the course prescribed for surgeons in the army. Having completed my studies there, I was duly attached to the Fifth Northumberland Fusiliers as Assistant Surgeon. The regiment was stationed in India at the time, and before I could join it, the second Afghan war had broken out. On landing at Bombay, I learned that my corps had advanced through the passes, and was already deep in the enemy's country. I followed, however, with many other officers who were in the same situation, and succeeded in reaching Candahar in safety, where I found my regiment, and at once entered upon my new duties. The campaign brought honours and promotion to many, but for me it had nothing but misfortune and disaster...";
   position: absolute;
-  inset: 12px;
+  inset: 10px;
   font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
-  font-size: 0.72rem;
-  line-height: 1.45;
-  color: #1f2937;
+  font-size: 0.65rem;
+  line-height: 1.35;
+  color: #111827;
   overflow: hidden;
-  opacity: 0.9;
+  opacity: 0.92;
   pointer-events: none;
   white-space: pre-wrap;
   user-select: none;

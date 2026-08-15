@@ -58,12 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      // Check if transparent item
+      // Check if item is an explicit Transparent Overlay (e.g. ReaderBackdrop or Transparent category)
       const isTransparent = (
         (typeof item.category === 'string' && item.category.toLowerCase().includes('transparent')) ||
         (Array.isArray(item.category) && item.category.some(c => String(c).toLowerCase().includes('transparent'))) ||
-        (item.thumbnailUrl && item.thumbnailUrl.toLowerCase().endsWith('.png')) ||
-        (item.id && item.id.startsWith('rb-'))
+        (item.id && typeof item.id === 'string' && item.id.startsWith('rb-'))
       );
 
       const wrapClass = 'card-image-wrap' + (isTransparent ? ' transparent-bg' : '') + (isTransparent && currentOverlayMode === 'booktext' ? ' book-text-mode' : '');
@@ -139,7 +138,14 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (typeof item.category === 'string') {
       itemCats = item.category.split(',').map(c => c.trim().toLowerCase());
     }
-    return activeCats.some(ac => itemCats.includes(ac));
+
+    return activeCats.some(ac => {
+      const acNorm = ac.toLowerCase();
+      if (acNorm.includes('transparent')) {
+        return itemCats.some(ic => ic.includes('transparent'));
+      }
+      return itemCats.includes(acNorm);
+    });
   }
 
   function getActiveFilterCategories() {
