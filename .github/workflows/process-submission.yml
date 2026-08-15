@@ -33,15 +33,15 @@ jobs:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           python - << 'EOF'
-          import os, json, re, requests
-          from PIL import Image
+          import os, json, re, requests, time
+          from PIL import Image, ImageOps
           from io import BytesIO
 
           body = os.environ.get('ISSUE_BODY', '')
           title_match = re.search(r'\*\*Title:\*\*\s*(.*)', body)
           author_match = re.search(r'\*\*Author:\*\*\s*(.*)', body)
           category_match = re.search(r'\*\*Category:\*\*\s*(.*)', body)
-          
+
           # Match markdown image ![alt](url), direct image URL, user-attachments, or URL in Image: field
           url_match_str = None
 
@@ -85,12 +85,23 @@ jobs:
           # Prepare directories
           os.makedirs('images', exist_ok=True)
           os.makedirs('images/thumbnails', exist_ok=True)
+          os.makedirs('images/thumbnails/plugin', exist_ok=True)
 
-          full_path = f'images/{item_id}.jpg'
-          thumb_path = f'images/thumbnails/{item_id}.jpg'
+          # Detect transparent images (PNG source URLs or Transparent category)
+          is_transparent = (
+              img_url.lower().endswith('.png') or
+              category.lower() == 'transparent'
+          )
 
-          # Download image with retries
-          import time
+          if is_transparent:
+              full_path = f'images/{item_id}.png'
+              thumb_web_path = f'images/thumbnails/{item_id}.png'          # Web: RGBA with alpha
+              thumb_plugin_path = f'images/thumbnails/plugin/{item_id}.png' # Plugin: checkerboard-composited RGB
+          else:
+              full_path = f'images/{item_id}.jpg'
+              thumb_web_path = f'images/thumbnails/{item_id}.jpg'
+              thumb_plugin_path = None  # No plugin variant needed for opaque images
+
           headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
           r = None
           max_retries = 3
@@ -113,23 +124,73 @@ jobs:
               print(f"Failed to download image from {img_url}")
               exit(1)
 
-          from PIL import Image, ImageOps
-
           img = Image.open(BytesIO(r.content))
-          if img.mode != 'RGB':
-              img = img.convert('RGB')
 
-          # Save 3:4 master wallpaper (1860x2480)
-          master_img = ImageOps.fit(img, (1860, 2480), Image.Resampling.LANCZOS)
-          master_img.save(full_path, 'JPEG', quality=92)
+          CHECKERBOARD_TILE = 12
+          CB_LIGHT = (255, 255, 255, 255)
+          CB_DARK  = (210, 210, 210, 255)
 
-          # Save 3:4 thumbnail (600x800)
-          thumb_img = ImageOps.fit(img, (600, 800), Image.Resampling.LANCZOS)
-          thumb_img.save(thumb_path, 'JPEG', quality=85)
+          def make_checkerboard(w, h):
+              bg = Image.new('RGBA', (w, h))
+              pixels = bg.load()
+              for y in range(h):
+                  cy = y // CHECKERBOARD_TILE
+                  for x in range(w):
+                      cx = x // CHECKERBOARD_TILE
+                      pixels[x, y] = CB_LIGHT if (cx + cy) % 2 == 0 else CB_DARK
+              return bg
+
+          def fit_transparent(img_rgba, target_w, target_h):
+              """Proportionally fit an RGBA image into a transparent canvas of target_w x target_h."""
+              canvas = Image.new('RGBA', (target_w, target_h), (0, 0, 0, 0))
+              img_rgba.thumbnail((target_w, target_h), Image.Resampling.LANCZOS)
+              x = (target_w - img_rgba.width) // 2
+              y = (target_h - img_rgba.height) // 2
+              canvas.paste(img_rgba, (x, y), img_rgba)
+              return canvas
+
+          def composite_over_checkerboard(img_rgba, target_w, target_h):
+              """Composite RGBA image over a checkerboard background, return RGB."""
+              bg = make_checkerboard(target_w, target_h)
+              img_rgba.thumbnail((target_w, target_h), Image.Resampling.LANCZOS)
+              x = (target_w - img_rgba.width) // 2
+              y = (target_h - img_rgba.height) // 2
+              bg.paste(img_rgba, (x, y), img_rgba)
+              return bg.convert('RGB')
+
+          if is_transparent:
+              img_rgba = img.convert('RGBA')
+
+              # Full-res master: transparent RGBA PNG (1860x2480)
+              master_transparent = fit_transparent(img_rgba.copy(), 1860, 2480)
+              master_transparent.save(full_path, 'PNG')
+
+              # Web thumbnail: transparent RGBA PNG (600x800) — used by web catalog
+              web_thumb = fit_transparent(img_rgba.copy(), 600, 800)
+              web_thumb.save(thumb_web_path, 'PNG')
+
+              # Plugin thumbnail: checkerboard-composited RGB PNG (600x800) — used by KOReader plugin
+              plugin_thumb = composite_over_checkerboard(img_rgba.copy(), 600, 800)
+              plugin_thumb.save(thumb_plugin_path, 'PNG')
+
+              print(f"Transparent image processed: web thumb={thumb_web_path}, plugin thumb={thumb_plugin_path}")
+          else:
+              img_rgb = img.convert('RGB')
+
+              # Full-res master: JPEG (1860x2480)
+              master_img = ImageOps.fit(img_rgb, (1860, 2480), Image.Resampling.LANCZOS)
+              master_img.save(full_path, 'JPEG', quality=92)
+
+              # Thumbnail: JPEG (600x800)
+              thumb_img = ImageOps.fit(img_rgb, (600, 800), Image.Resampling.LANCZOS)
+              thumb_img.save(thumb_web_path, 'JPEG', quality=85)
+
+              print(f"Opaque image processed: thumb={thumb_web_path}")
 
           raw_base = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
           full_url = raw_base + full_path
-          thumb_url = raw_base + thumb_path
+          thumb_url = raw_base + thumb_web_path
+          plugin_thumb_url = (raw_base + thumb_plugin_path) if thumb_plugin_path else thumb_url
 
           with open('screensavers.json', 'r') as f:
               catalog = json.load(f)
@@ -141,6 +202,7 @@ jobs:
               "category": category,
               "compatibility": ["Kindle", "Kobo", "Boox"],
               "thumbnailUrl": thumb_url,
+              "pluginThumbnailUrl": plugin_thumb_url,
               "fullUrl": full_url,
               "downloads": 0,
               "likes": 1
@@ -161,6 +223,7 @@ jobs:
 
           print(f"Successfully processed and generated thumbnail for: {title}")
           EOF
+
 
       - name: Create Pull Request
         env:
