@@ -171,11 +171,15 @@ def sync_all_catalog():
                             m_img = m_img.convert('RGBA')
                         elif ext != 'png' and m_img.mode != 'RGB':
                             m_img = m_img.convert('RGB')
-                        thumb_img = ImageOps.fit(m_img, (600, 800), Image.Resampling.LANCZOS)
+                        thumb_img = ImageOps.fit(m_img, (300, 400), Image.Resampling.LANCZOS)
                         if ext == 'png':
-                            thumb_img.save(thumb_path, 'PNG', optimize=True)
+                            try:
+                                thumb_quant = thumb_img.quantize(colors=256, method=Image.Quantize.FASTOCTREE)
+                                thumb_quant.save(thumb_path, 'PNG', optimize=True)
+                            except Exception:
+                                thumb_img.save(thumb_path, 'PNG', optimize=True)
                         else:
-                            thumb_img.save(thumb_path, 'JPEG', quality=85)
+                            thumb_img.save(thumb_path, 'JPEG', quality=78, optimize=True)
                         thumbnails_regenerated += 1
                 except Exception as e:
                     print(f"Error regenerating thumbnail for {item_id}: {e}")
@@ -260,25 +264,30 @@ def process_and_save_image(image_bytes, item_id, is_png=False):
     thumb_abs_path = os.path.join(REPO_ROOT, thumb_rel_path)
 
     # Master: 1860 x 2480 (3:4 ratio)
-    # Thumbnail: 600 x 800 (3:4 ratio)
+    # Thumbnail: 300 x 400 (3:4 ratio) optimized for fast e-ink transfers
     if has_alpha:
         if img.mode != 'RGBA':
             img = img.convert('RGBA')
         
         master_img = ImageOps.fit(img, (1860, 2480), Image.Resampling.LANCZOS)
-        thumb_img = ImageOps.fit(img, (600, 800), Image.Resampling.LANCZOS)
+        thumb_img = ImageOps.fit(img, (300, 400), Image.Resampling.LANCZOS)
         
         master_img.save(full_abs_path, 'PNG', optimize=True)
-        thumb_img.save(thumb_abs_path, 'PNG', optimize=True)
+        # Quantize thumbnail to 8-bit palette with alpha for 85%+ smaller file size
+        try:
+            thumb_quant = thumb_img.quantize(colors=256, method=Image.Quantize.FASTOCTREE)
+            thumb_quant.save(thumb_abs_path, 'PNG', optimize=True)
+        except Exception:
+            thumb_img.save(thumb_abs_path, 'PNG', optimize=True)
     else:
         if img.mode != 'RGB':
             img = img.convert('RGB')
             
         master_img = ImageOps.fit(img, (1860, 2480), Image.Resampling.LANCZOS)
-        thumb_img = ImageOps.fit(img, (600, 800), Image.Resampling.LANCZOS)
+        thumb_img = ImageOps.fit(img, (300, 400), Image.Resampling.LANCZOS)
         
         master_img.save(full_abs_path, 'JPEG', quality=92)
-        thumb_img.save(thumb_abs_path, 'JPEG', quality=85)
+        thumb_img.save(thumb_abs_path, 'JPEG', quality=78, optimize=True)
 
     # If the extension changed (e.g. was jpg, now png or vice-versa), clean up old file if exists
     other_ext = "jpg" if ext == "png" else "png"
