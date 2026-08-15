@@ -241,6 +241,12 @@ body::after {
   gap: 0.5rem;
   overflow-x: auto;
   padding-bottom: 0.25rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.category-tags::-webkit-scrollbar {
+  display: none;
 }
 
 .tag-btn {
@@ -306,22 +312,22 @@ body::after {
   object-fit: contain;
 }
 
-/* Book Text Mode Preview for Transparent Overlays */
+/* Book Text Mode Preview for Transparent Overlays (Moby Dick, Chapter 1) */
 .card-image-wrap.transparent-bg.book-text-mode {
   background-color: #f4f3ef !important;
   background-image: none !important;
 }
 
 .card-image-wrap.transparent-bg.book-text-mode::before {
-  content: "CHAPTER 1\n\nIt was a quiet evening in the old library. The rain tapped softly against the window pane as Jane turned the page. The aroma of old paper and cedar filled the room. She paused, looking closely at the passage she had read three times already. The mysteries of the ancient text began to unfold before her eyes...";
+  content: "CHAPTER 1\A\A Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul...";
   position: absolute;
   inset: 12px;
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Georgia', 'Garamond', 'Times New Roman', serif;
   font-size: 0.72rem;
   line-height: 1.45;
   color: #1f2937;
   overflow: hidden;
-  opacity: 0.85;
+  opacity: 0.9;
   pointer-events: none;
   white-space: pre-wrap;
   user-select: none;
