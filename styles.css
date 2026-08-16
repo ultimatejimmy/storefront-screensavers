@@ -478,37 +478,15 @@ body::after {
   font-variant-numeric: tabular-nums;
   font-weight: 500;
   color: var(--text-secondary);
-  transition: var(--transition);
+  font-size: 0.78rem;
+  padding: 0.15rem 0.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
 }
 
 .stat-item svg {
   stroke: var(--accent-green);
-  transition: var(--transition);
-}
-
-.stat-item.like-btn {
-  cursor: pointer;
-  padding: 2px 6px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.stat-item.like-btn:hover {
-  background: rgba(16, 185, 129, 0.15);
-  border-color: rgba(16, 185, 129, 0.4);
-  color: #6ee7b7;
-}
-
-.stat-item.like-btn.liked {
-  background: rgba(16, 185, 129, 0.2);
-  border-color: var(--accent-green);
-  color: #34d399;
-}
-
-.stat-item.like-btn.liked svg {
-  fill: #10b981;
-  stroke: #10b981;
 }
 
 /* Card Tags & Chips */

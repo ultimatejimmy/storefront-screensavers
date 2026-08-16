@@ -18,24 +18,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Fetch catalog (cache-busted for instant updates)
+  const RATINGS_API_URL = 'https://storefront-vote.ultimatejimmy.workers.dev';
+  let liveRatings = {};
+
+  // Fetch catalog & sync live ratings from Cloudflare worker
   fetch(`screensavers.json?t=${Date.now()}`, { cache: 'no-cache' })
     .then(res => res.json())
     .then(data => {
-      catalogData = data;
+      catalogData = data.map((item, idx) => ({ ...item, _originalIndex: idx }));
       applyFilters();
+      fetchLiveRatings();
     })
     .catch(err => console.error("Failed loading catalog", err));
 
+  async function fetchLiveRatings() {
+    try {
+      const res = await fetch(`${RATINGS_API_URL}/ratings`, { cache: 'no-cache' });
+      if (res.ok) {
+        liveRatings = await res.json();
+        if (Array.isArray(catalogData)) {
+          catalogData.forEach(item => {
+            const r = liveRatings[item.id] || (item.id && liveRatings[item.id.toLowerCase()]);
+            if (r) {
+              item.likes = Math.max(0, (r.up || 0) - (r.down || 0));
+              item.wilson = r.wilson || 0;
+            } else {
+              item.likes = 0;
+              item.wilson = 0;
+            }
+          });
+          applyFilters();
+        }
+      }
+    } catch (e) {
+      console.warn('Could not fetch live ratings from worker:', e);
+    }
+  }
+
   let currentOverlayMode = localStorage.getItem('overlayMode') || 'checkerboard';
-  
-  // Track user likes & downloads in localStorage
-  let userLikes = new Set(JSON.parse(localStorage.getItem('storefront_user_likes') || '[]'));
   let userDownloads = JSON.parse(localStorage.getItem('storefront_user_downloads') || '{}');
 
   function getItemLikes(item) {
-    const baseLikes = item.likes || 0;
-    return userLikes.has(item.id) ? baseLikes + 1 : baseLikes;
+    const r = liveRatings[item.id] || (item.id && liveRatings[item.id.toLowerCase()]);
+    if (r) {
+      return Math.max(0, (r.up || 0) - (r.down || 0));
+    }
+    return item.likes || 0;
   }
 
   function getItemDownloads(item) {
@@ -95,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const wrapClass = 'card-image-wrap' + (isTransparent ? ' transparent-bg' : '') + (isTransparent && currentOverlayMode === 'booktext' ? ' book-text-mode' : '');
 
-      const isLiked = userLikes.has(item.id);
       const likesCount = getItemLikes(item);
       const downloadsCount = getItemDownloads(item);
 
@@ -111,10 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="card-meta">
             <span class="card-category-badge">🏷️ ${Array.isArray(item.category) ? item.category.join(', ') : item.category}</span>
             <div class="card-stats">
-              <button type="button" class="stat-item like-btn ${isLiked ? 'liked' : ''}" data-id="${item.id}" title="${isLiked ? 'Remove Thumbs Up' : 'Thumbs Up!'}">
+              <span class="stat-item rating-stat" title="${likesCount} thumbs up in KOReader">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
                 <span class="like-count">${likesCount}</span>
-              </button>
+              </span>
               <span class="stat-item download-stat" title="${downloadsCount} downloads">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 <span class="download-count">${downloadsCount}</span>
@@ -146,26 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       });
-
-      // Thumbs-up toggle
-      const likeBtn = card.querySelector('.like-btn');
-      if (likeBtn) {
-        likeBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          if (userLikes.has(item.id)) {
-            userLikes.delete(item.id);
-            likeBtn.classList.remove('liked');
-            likeBtn.setAttribute('title', 'Thumbs Up!');
-          } else {
-            userLikes.add(item.id);
-            likeBtn.classList.add('liked');
-            likeBtn.setAttribute('title', 'Remove Thumbs Up');
-          }
-          localStorage.setItem('storefront_user_likes', JSON.stringify([...userLikes]));
-          likeBtn.querySelector('.like-count').textContent = getItemLikes(item);
-        });
-      }
 
       // Download button click tracking
       const downloadBtn = card.querySelector('.card-download-btn');
@@ -254,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeCats = getActiveFilterCategories();
     const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
     const sortSelect = document.getElementById('sort-select');
-    const sortBy = sortSelect ? sortSelect.value : 'default';
+    const sortBy = sortSelect ? sortSelect.value : 'likes';
 
     let filtered = catalogData.filter(item => {
       const matchCat = itemMatchesCategories(item, activeCats);
@@ -267,16 +274,27 @@ document.addEventListener('DOMContentLoaded', () => {
       return matchCat && matchSearch;
     });
 
-    if (sortBy === 'likes') {
-      filtered.sort((a, b) => (getItemLikes(b) - getItemLikes(a)) || (a.title || '').localeCompare(b.title || ''));
-    } else if (sortBy === 'downloads') {
-      filtered.sort((a, b) => (getItemDownloads(b) - getItemDownloads(a)) || (a.title || '').localeCompare(b.title || ''));
+    if (sortBy === 'downloads') {
+      filtered.sort((a, b) => (getItemDownloads(b) - getItemDownloads(a)) || ((b._originalIndex || 0) - (a._originalIndex || 0)));
+    } else if (sortBy === 'newest') {
+      filtered.sort((a, b) => {
+        if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
+        return (b._originalIndex || 0) - (a._originalIndex || 0);
+      });
+    } else if (sortBy === 'oldest') {
+      filtered.sort((a, b) => {
+        if (a.dateAdded && b.dateAdded) return new Date(a.dateAdded) - new Date(b.dateAdded);
+        return (a._originalIndex || 0) - (b._originalIndex || 0);
+      });
     } else if (sortBy === 'title-asc') {
       filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
     } else if (sortBy === 'title-desc') {
       filtered.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
     } else if (sortBy === 'author-asc') {
       filtered.sort((a, b) => (a.author || '').localeCompare(b.author || ''));
+    } else {
+      // Default: Most Popular (Thumbs Up) with newest additions as tiebreaker
+      filtered.sort((a, b) => (getItemLikes(b) - getItemLikes(a)) || ((b._originalIndex || 0) - (a._originalIndex || 0)));
     }
 
     renderGallery(filtered);

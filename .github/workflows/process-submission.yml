@@ -202,7 +202,7 @@ jobs:
               "pluginThumbnailUrl": plugin_thumb_url,
               "fullUrl": full_url,
               "downloads": 0,
-              "likes": 1
+              "likes": 0
           }
 
           # Check if id exists and update, or append
