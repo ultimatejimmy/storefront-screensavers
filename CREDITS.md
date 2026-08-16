@@ -306,7 +306,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Steampunk Airship Dirigible | outchy | Sci-Fi, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Alien Reading a Book | outchy | Sci-Fi, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Andy Capp Classic Comic | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Apple of Knowledge Silhouette | outchy | Minimalist, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Floating Astronaut Spacewalk | outchy | Sci-Fi, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Babar the Elephant Reading | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Bart Simpson Slouch | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -318,7 +317,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | The Great Wave Crest (Ink Style) | outchy | Fine Art, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | James Bond 007 (Sean Connery) | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | James Bond 007 Lineup | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Booked Typography Banner | outchy | Quotes, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Ornate Bookshelf Border Frame | outchy | Art, Architecture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Bookmarks Are For Quitters | outchy | Quotes, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | E-Reader with Stacked Books | outchy | Art, Minimalist, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -332,10 +330,10 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Brain Power Knowledge Book | outchy | Sci-Fi, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Johnny Bravo Flexing | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Bugs Bunny Relaxing | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Bulbasaur Peeking Corner | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Bulbasaur Sleeping Corner | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | The Cat in the Hat | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Prehistoric Caveman with Club | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Charlie Brown Sitting | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Charlie Brown | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Charlie Brown & Snoopy | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Chuck Norris Dual Uzi | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Coffee Cup Ring Stain | outchy | Art, Minimalist, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -359,7 +357,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Madcap Caricature Smile | outchy | Pop Culture, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Silverback Gorilla Reading | outchy | Nature, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Thoughtful Gorilla Thinker | outchy | Nature, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| The Grinch Wicked Grin | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| The Grinch | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | The Grinch Grumpy Scowl | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Carl Fredricksen (Pixar's Up) | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Reading is My Happy Place | outchy | Quotes, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -372,14 +370,14 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Grand Classical Library Hall | outchy | Architecture, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | The Lorax (Dr. Seuss) | outchy | Pop Culture, Nature, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Noir Detective with Revolver | outchy | Pop Culture, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Marvin the Martian with Raygun | outchy | Sci-Fi, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Marvin the Martian | outchy | Pop Culture, Sci-Fi, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Mickey Mouse Classic Pose | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Mighty Mouse Flying Superhero | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Cartoon Gloved Hands (Mickey Style) | outchy | Pop Culture, Minimalist, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Retro Sci-Fi Mind Control Helmet | outchy | Sci-Fi, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Minion Standing (Despicable Me) | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Two Minions Laughing | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Crescent Moon with Night Clouds | outchy | Nature, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Mind Control Cat | outchy | Pop Culture, Sci-Fi, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Minion Running (Despicable Me) | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Two Minions | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Moonrise | outchy | Art, Nature, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Loch Ness Monster (Nessie) | outchy | Fantasy, Nature, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Jimmy Neutron: Boy Genius | outchy | Sci-Fi, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Hands Holding Vintage Newspaper | outchy | Art, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -389,20 +387,21 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | The Pink Panther Stalking | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Raising the Jolly Roger (Iwo Jima Parody) | outchy | Pop Culture, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Hand Holding Skull Grimoire | outchy | Fantasy, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Pikachu | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Pikachu & Pokémon Starters | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Popeye Spinach Muscle Flex | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Popeye the Sailor Man | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Popeye Thinking Pose | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Popeye Punching Pose | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Popeye Ready for Action | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Popeye Reading a Large Book | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| E-reader | outchy | Art, Nature, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| E-Reader Frame with Stylus Pen | outchy | Minimalist, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Reading & Literature Word Cloud | outchy | Quotes, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Ripped Paper Hole Reveal | outchy | Abstract, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Torn Paper Border Frame | outchy | Art, Minimalist, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Retro Tin Toy Robot | outchy | Sci-Fi, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Crinkled Plastic Wrap Texture | outchy | Abstract, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Chemistry Flasks & Science Book | outchy | Sci-Fi, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Science Lab Equipment Doodles | outchy | Sci-Fi, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Great Pioneers of Science (Einstein, Curie, Tesla) | outchy | Art, Sci-Fi, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Great Pioneers of Science (Einstein, Curie, Tesla) | outchy | Sci-Fi, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Dexter (Dexter's Laboratory) | outchy | Pop Culture, Sci-Fi, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Scottish Terrier with Glasses | outchy | Nature, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Great White Shark Surfacing | outchy | Nature, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -410,8 +409,8 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Skeleton Reading an Open Book | outchy | Fantasy, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Gothic Skull Ornamental Border | outchy | Art, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Botanical Floral Skull Art | outchy | Art, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Snoopy on Doghouse | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Sonic the Hedgehog | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Snoopy Reading on Doghouse | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Sonic the Hedgehog Running | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Deep Space Astronaut in Suit | outchy | Sci-Fi, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Speedy Gonzales '¡Ándale!' | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Dynamic Ink Splatter Splash | outchy | Abstract, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -419,7 +418,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Stewie Griffin (Family Guy) | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Celestial Vintage Sun Face | outchy | Art, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Superman LEGO Minifigure | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Superman Reading | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Superman Reading in Fortress | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Tasmanian Devil (Taz) | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Circuit Board Tech Tree | outchy | Sci-Fi, Abstract, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Sleepy Cat on Ledge (Simon's Cat Style) | outchy | Pop Culture, Minimalist, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -427,5 +426,5 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Celtic Sacred Tree of Life | outchy | Nature, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Where's Waldo? Peeking Corner | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Woody Woodpecker Furious | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Yosemite Sam | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Yosemite Sam Dual Pistols | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Ziploc Sealed Bag Overlay | outchy | Abstract, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
