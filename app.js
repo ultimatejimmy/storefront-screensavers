@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(item => {
       const card = document.createElement('div');
       card.className = 'card';
+      card.id = `item-${item.id}`;
 
       const authorDisplay = item.authorUrl
         ? `<a href="${item.authorUrl}" target="_blank" style="color: inherit; text-decoration: underline;">${item.author}</a>`
@@ -1104,34 +1105,56 @@ document.addEventListener('DOMContentLoaded', () => {
       const typeLabels = {
         metadata: 'Metadata Correction',
         replacement: 'Replacement Image',
+        dmca: 'DMCA / Copyright Infringement',
         issue: 'Low Quality / Issue Report'
       };
 
-      const issueTitle = encodeURIComponent(`Change Suggestion: [${itemId}] ${targetTitle}`);
+      const isDmca = (type === 'dmca');
+      const issueTitle = encodeURIComponent(isDmca ? `DMCA Takedown Notice: [${itemId}] ${targetTitle}` : `Change Suggestion: [${itemId}] ${targetTitle}`);
+      const issueLabel = isDmca ? 'dmca-takedown' : 'suggest-change';
+
       const bodyLines = [
-        `### Catalog Change Suggestion`,
+        isDmca ? `### DMCA / Copyright Infringement Notice` : `### Catalog Change Suggestion`,
         ``,
         `**Target Item ID:** \`${itemId}\``,
-        `**Change Type:** ${typeLabels[type] || type}`,
+        `**Target Title:** ${targetTitle}`,
+        `**Report / Change Type:** ${typeLabels[type] || type}`,
         ``,
-        `**Proposed Title:** ${newTitle}`,
-        `**Proposed Author:** ${newAuthor}`,
-        `**Proposed Category:** ${newCategory}`,
       ];
 
-      if (newTags) {
-        bodyLines.push(`**Proposed Tags:** ${newTags}`);
+      if (isDmca) {
+        bodyLines.push(
+          `**Original Work / Proof of Ownership:**`,
+          reason,
+          ``,
+          `**Contact Info:** ${newAuthor || 'Provided via GitHub'}`,
+          ``,
+          `**Statement of Good Faith:**`,
+          `I have a good faith belief that the use of the material is not authorized by the copyright owner, its agent, or the law.`
+        );
+      } else {
+        bodyLines.push(
+          `**Proposed Title:** ${newTitle}`,
+          `**Proposed Author:** ${newAuthor}`,
+          `**Proposed Category:** ${newCategory}`,
+        );
+
+        if (newTags) {
+          bodyLines.push(`**Proposed Tags:** ${newTags}`);
+        }
+
+        if (type === 'replacement' && newUrl) {
+          bodyLines.push(`**Replacement Image URL:** ${newUrl}`);
+        }
+
+        bodyLines.push(``, `**Reason / Details:**`, reason);
       }
 
-      if (type === 'replacement' && newUrl) {
-        bodyLines.push(`**Replacement Image URL:** ${newUrl}`);
-      }
-
-      bodyLines.push(``, `**Reason / Details:**`, reason, ``, `---`, `*Submitted via Storefront Screensaver Catalog Site*`);
+      bodyLines.push(``, `---`, `*Submitted via Storefront Screensaver Catalog Site*`);
 
       const issueBody = encodeURIComponent(bodyLines.join('\n'));
       const repoUrl = 'https://github.com/ultimatejimmy/storefront-screensavers';
-      const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&labels=suggest-change&body=${issueBody}`;
+      const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&labels=${issueLabel}&body=${issueBody}`;
 
       window.open(githubIssueUrl, '_blank');
       closeSuggestDrawer();
