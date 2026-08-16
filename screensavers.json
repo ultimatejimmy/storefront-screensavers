@@ -9698,13 +9698,12 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-bart-simpson-slouch.png"
   },
   {
-    "id": "outchy-cozy-bear-reading-book",
-    "title": "Cozy Bear Reading a Book",
+    "id": "outchy-captain-caveman",
+    "title": "Captain Caveman",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
-      "Nature",
-      "Art",
+      "Pop Culture",
       "Transparent"
     ],
     "compatibility": [
@@ -9717,22 +9716,20 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-cozy-bear-reading-book.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-cozy-bear-reading-book.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-captain-caveman.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-captain-caveman.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
-      "animal",
-      "bear",
-      "book",
-      "cozy",
-      "cute",
-      "grizzly",
-      "nature",
-      "reading",
+      "captain caveman",
+      "cartoon",
+      "caveman",
+      "classic animation",
+      "club",
+      "hanna barbera",
       "transparent"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-cozy-bear-reading-book.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-captain-caveman.png"
   },
   {
     "id": "outchy-hands-on-frosted-glass",
@@ -10054,82 +10051,12 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-ornate-book-border-frame.png"
   },
   {
-    "id": "outchy-vintage-bookmarks-collection",
-    "title": "Vintage Ribbon Bookmarks",
+    "id": "outchy-bookmarks-are-for-quitters",
+    "title": "Bookmarks Are For Quitters",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
-      "Art",
-      "Minimalist",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share",
-    "licenseUrl": "https://www.reddit.com/user/outchy/",
-    "sourceUrl": "https://www.reddit.com/user/outchy/",
-    "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-vintage-bookmarks-collection.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-vintage-bookmarks-collection.png",
-    "downloads": 0,
-    "likes": 1,
-    "tags": [
-      "bookmarks",
-      "books",
-      "clean",
-      "reading accessories",
-      "ribbon",
-      "transparent",
-      "vintage"
-    ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-vintage-bookmarks-collection.png"
-  },
-  {
-    "id": "outchy-solitary-book-reader-silhouette",
-    "title": "Book Reader Silhouette",
-    "author": "outchy",
-    "authorUrl": "https://www.reddit.com/user/outchy/",
-    "category": [
-      "Art",
-      "Minimalist",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share",
-    "licenseUrl": "https://www.reddit.com/user/outchy/",
-    "sourceUrl": "https://www.reddit.com/user/outchy/",
-    "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-solitary-book-reader-silhouette.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-solitary-book-reader-silhouette.png",
-    "downloads": 0,
-    "likes": 1,
-    "tags": [
-      "minimalist",
-      "open book",
-      "peaceful",
-      "reader",
-      "reading",
-      "silhouette",
-      "transparent"
-    ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-solitary-book-reader-silhouette.png"
-  },
-  {
-    "id": "outchy-stacked-vintage-books-corner",
-    "title": "Stacked Vintage Books Corner",
-    "author": "outchy",
-    "authorUrl": "https://www.reddit.com/user/outchy/",
-    "category": [
-      "Art",
+      "Quotes",
       "Pop Culture",
       "Transparent"
     ],
@@ -10143,25 +10070,96 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-stacked-vintage-books-corner.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-stacked-vintage-books-corner.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-bookmarks-are-for-quitters.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-bookmarks-are-for-quitters.png",
+    "downloads": 0,
+    "likes": 1,
+    "tags": [
+      "bookish",
+      "bookmarks are for quitters",
+      "books",
+      "humor",
+      "reading quote",
+      "transparent",
+      "typography"
+    ],
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-bookmarks-are-for-quitters.png"
+  },
+  {
+    "id": "outchy-ereader-with-stacked-books",
+    "title": "E-Reader with Stacked Books",
+    "author": "outchy",
+    "authorUrl": "https://www.reddit.com/user/outchy/",
+    "category": [
+      "Art",
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox",
+      "PocketBook"
+    ],
+    "license": "Community Share",
+    "licenseUrl": "https://www.reddit.com/user/outchy/",
+    "sourceUrl": "https://www.reddit.com/user/outchy/",
+    "attribution": "outchy on /r/koreader",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-ereader-with-stacked-books.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-ereader-with-stacked-books.png",
+    "downloads": 0,
+    "likes": 1,
+    "tags": [
+      "books",
+      "e-reader",
+      "ereader",
+      "isometric",
+      "kindle",
+      "kobo",
+      "koreader",
+      "stack",
+      "transparent"
+    ],
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-ereader-with-stacked-books.png"
+  },
+  {
+    "id": "outchy-small-stack-of-books",
+    "title": "Small Stack of Books",
+    "author": "outchy",
+    "authorUrl": "https://www.reddit.com/user/outchy/",
+    "category": [
+      "Art",
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox",
+      "PocketBook"
+    ],
+    "license": "Community Share",
+    "licenseUrl": "https://www.reddit.com/user/outchy/",
+    "sourceUrl": "https://www.reddit.com/user/outchy/",
+    "attribution": "outchy on /r/koreader",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-small-stack-of-books.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-small-stack-of-books.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
       "books",
       "corner overlay",
-      "hardcover",
-      "library",
+      "minimalist",
+      "paperback",
       "reading",
       "stack",
-      "transparent",
-      "vintage books"
+      "transparent"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-stacked-vintage-books-corner.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-small-stack-of-books.png"
   },
   {
-    "id": "outchy-pile-of-open-books-reading",
-    "title": "Pile of Antique Books",
+    "id": "outchy-tall-stack-of-books",
+    "title": "Tall Stack of Books",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -10179,21 +10177,20 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-pile-of-open-books-reading.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-pile-of-open-books-reading.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-tall-stack-of-books.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-tall-stack-of-books.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
-      "antique",
       "books",
-      "leatherbound",
+      "hardcover",
       "library",
       "literature",
-      "pile",
       "reading",
+      "stack",
       "transparent"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-pile-of-open-books-reading.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-tall-stack-of-books.png"
   },
   {
     "id": "outchy-towering-book-stack",
@@ -10267,12 +10264,12 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-classic-wooden-bookshelf-corner.png"
   },
   {
-    "id": "outchy-surreal-wave-of-books",
-    "title": "Surreal Tidal Wave of Books",
+    "id": "outchy-happy-book-character-waving",
+    "title": "Happy Book Character Waving",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
-      "Fantasy",
+      "Pop Culture",
       "Art",
       "Transparent"
     ],
@@ -10286,20 +10283,21 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-surreal-wave-of-books.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-surreal-wave-of-books.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-happy-book-character-waving.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-happy-book-character-waving.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
-      "books",
-      "fantasy",
-      "flying pages",
-      "ocean of knowledge",
-      "surreal",
+      "book",
+      "character",
+      "childhood",
+      "cute",
+      "mascot",
+      "reading",
       "transparent",
-      "wave"
+      "waving"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-surreal-wave-of-books.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-happy-book-character-waving.png"
   },
   {
     "id": "outchy-cute-bookworm-reading-glasses",
@@ -10826,8 +10824,8 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-heavy-spiderweb-screen-shatter.png"
   },
   {
-    "id": "outchy-gargoyle-demon-crouching",
-    "title": "Gargoyle Demon Crouching",
+    "id": "outchy-creepy-grinning-shadow",
+    "title": "Creepy Grinning Shadow",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -10845,8 +10843,8 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-gargoyle-demon-crouching.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-gargoyle-demon-crouching.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-creepy-grinning-shadow.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-creepy-grinning-shadow.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
@@ -10859,7 +10857,7 @@
       "transparent",
       "wings"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-gargoyle-demon-crouching.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-creepy-grinning-shadow.png"
   },
   {
     "id": "outchy-dick-tracy-yellow-fedora",
@@ -11110,8 +11108,8 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-inspector-gadget-peeking.png"
   },
   {
-    "id": "outchy-inspector-gadget-copter",
-    "title": "Inspector Gadget 'Go Go Gadget Copter'",
+    "id": "outchy-inspector-gadget-investigating",
+    "title": "Inspector Gadget Investigating",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -11128,8 +11126,8 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-inspector-gadget-copter.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-inspector-gadget-copter.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-inspector-gadget-investigating.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-inspector-gadget-investigating.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
@@ -11140,7 +11138,7 @@
       "inspector gadget",
       "transparent"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-inspector-gadget-copter.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-inspector-gadget-investigating.png"
   },
   {
     "id": "outchy-garfield-sleeping-pose",
@@ -11460,8 +11458,8 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-the-grinch-wicked-grin.png"
   },
   {
-    "id": "outchy-the-grinch-holding-book",
-    "title": "The Grinch Holding a Book",
+    "id": "outchy-the-grinch-grumpy-scowl",
+    "title": "The Grinch Grumpy Scowl",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -11478,8 +11476,8 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-the-grinch-holding-book.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-the-grinch-holding-book.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-the-grinch-grumpy-scowl.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-the-grinch-grumpy-scowl.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
@@ -11491,7 +11489,7 @@
       "transparent",
       "whoville"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-the-grinch-holding-book.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-the-grinch-grumpy-scowl.png"
   },
   {
     "id": "outchy-carl-fredricksen-up",
@@ -11564,8 +11562,8 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-reading-is-my-happy-place.png"
   },
   {
-    "id": "outchy-homer-simpson-thinking-donut",
-    "title": "Homer Simpson Pondering",
+    "id": "outchy-homer-simpson-woo-hoo",
+    "title": "Homer Simpson 'Woo-Hoo!'",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -11582,8 +11580,8 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-homer-simpson-thinking-donut.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-homer-simpson-thinking-donut.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-homer-simpson-woo-hoo.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-homer-simpson-woo-hoo.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
@@ -11595,11 +11593,11 @@
       "the simpsons",
       "transparent"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-homer-simpson-thinking-donut.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-homer-simpson-woo-hoo.png"
   },
   {
-    "id": "outchy-homer-simpson-reading-book",
-    "title": "Homer Simpson Reading",
+    "id": "outchy-homer-simpson-kilroy-peeking",
+    "title": "Homer Simpson 'Kilroy' Peeking",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -11616,8 +11614,8 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-homer-simpson-reading-book.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-homer-simpson-reading-book.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-homer-simpson-kilroy-peeking.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-homer-simpson-kilroy-peeking.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
@@ -11629,7 +11627,7 @@
       "the simpsons",
       "transparent"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-homer-simpson-reading-book.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-homer-simpson-kilroy-peeking.png"
   },
   {
     "id": "outchy-girl-glasses-reading-book",
@@ -11668,8 +11666,8 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-girl-glasses-reading-book.png"
   },
   {
-    "id": "outchy-mowgli-and-baloo-jungle-book",
-    "title": "Mowgli & Baloo (The Jungle Book)",
+    "id": "outchy-king-louie-jungle-book",
+    "title": "King Louie (The Jungle Book)",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -11687,8 +11685,8 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-mowgli-and-baloo-jungle-book.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-mowgli-and-baloo-jungle-book.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-king-louie-jungle-book.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-king-louie-jungle-book.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
@@ -11701,11 +11699,11 @@
       "the jungle book",
       "transparent"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-mowgli-and-baloo-jungle-book.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-king-louie-jungle-book.png"
   },
   {
-    "id": "outchy-kirby-reading-book",
-    "title": "Kirby Floating with Book",
+    "id": "outchy-kirby-corner-companion",
+    "title": "Kirby Corner Companion",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -11723,8 +11721,8 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-kirby-reading-book.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-kirby-reading-book.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-kirby-corner-companion.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-kirby-corner-companion.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
@@ -11737,7 +11735,7 @@
       "transparent",
       "video game"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-kirby-reading-book.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-kirby-corner-companion.png"
   },
   {
     "id": "outchy-lego-minifigure-standing",
@@ -12408,13 +12406,13 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-the-pink-panther-stalking.png"
   },
   {
-    "id": "outchy-pirate-captain-skull-crossbones",
-    "title": "Pirate Captain Skull & Crossbones",
+    "id": "outchy-raising-the-jolly-roger",
+    "title": "Raising the Jolly Roger (Iwo Jima Parody)",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
-      "Fantasy",
       "Pop Culture",
+      "Fantasy",
       "Transparent"
     ],
     "compatibility": [
@@ -12427,30 +12425,30 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-pirate-captain-skull-crossbones.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-pirate-captain-skull-crossbones.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-raising-the-jolly-roger.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-raising-the-jolly-roger.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
-      "buccaneer",
-      "captain",
-      "crossbones",
+      "flag",
+      "iwo jima",
       "jolly roger",
-      "pirate",
-      "skull",
-      "transparent",
-      "tricorne hat"
+      "parody",
+      "pirates",
+      "silhouette",
+      "skull and crossbones",
+      "transparent"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-pirate-captain-skull-crossbones.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-raising-the-jolly-roger.png"
   },
   {
-    "id": "outchy-pirate-hook-and-compass",
-    "title": "Pirate Hook & Navigational Compass",
+    "id": "outchy-hand-holding-skull-grimoire",
+    "title": "Hand Holding Skull Grimoire",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
       "Fantasy",
-      "Pop Culture",
+      "Art",
       "Transparent"
     ],
     "compatibility": [
@@ -12463,25 +12461,25 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-pirate-hook-and-compass.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-pirate-hook-and-compass.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-hand-holding-skull-grimoire.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-hand-holding-skull-grimoire.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
-      "compass",
-      "hook",
-      "map",
-      "nautical",
-      "pirate",
-      "seafaring",
-      "transparent",
-      "treasure"
+      "book of shadows",
+      "crossbones",
+      "dark fantasy",
+      "gothic",
+      "grimoire",
+      "skeleton hand",
+      "skull",
+      "transparent"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-pirate-hook-and-compass.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-hand-holding-skull-grimoire.png"
   },
   {
-    "id": "outchy-pikachu-and-pokemon-friends",
-    "title": "Pikachu & Pokémon Starters",
+    "id": "outchy-pikachu",
+    "title": "Pikachu",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -12499,8 +12497,8 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-pikachu-and-pokemon-friends.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-pikachu-and-pokemon-friends.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-pikachu.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-pikachu.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
@@ -12586,7 +12584,7 @@
   },
   {
     "id": "outchy-popeye-punching-power",
-    "title": "Popeye Punching Pose",
+    "title": "Popeye Thinking Pose",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -12689,13 +12687,13 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-popeye-reading-large-book.png"
   },
   {
-    "id": "outchy-solitary-tree-field-reader",
-    "title": "Solitary Reader Beneath Tree",
+    "id": "outchy-ereader",
+    "title": "E-reader",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
-      "Nature",
       "Art",
+      "Nature",
       "Transparent"
     ],
     "compatibility": [
@@ -12708,8 +12706,8 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-solitary-tree-field-reader.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-solitary-tree-field-reader.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-ereader.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-ereader.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
@@ -12723,41 +12721,6 @@
       "tree"
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-solitary-tree-field-reader.png"
-  },
-  {
-    "id": "outchy-row-of-open-reading-books",
-    "title": "Row of Open Reading Books",
-    "author": "outchy",
-    "authorUrl": "https://www.reddit.com/user/outchy/",
-    "category": [
-      "Art",
-      "Minimalist",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share",
-    "licenseUrl": "https://www.reddit.com/user/outchy/",
-    "sourceUrl": "https://www.reddit.com/user/outchy/",
-    "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-row-of-open-reading-books.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-row-of-open-reading-books.png",
-    "downloads": 0,
-    "likes": 1,
-    "tags": [
-      "library",
-      "minimalist row",
-      "open books",
-      "pages",
-      "reading",
-      "study",
-      "transparent"
-    ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-row-of-open-reading-books.png"
   },
   {
     "id": "outchy-ripped-paper-hole-reveal",
@@ -12971,13 +12934,13 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-science-lab-equipment-doodle.png"
   },
   {
-    "id": "outchy-mad-scientist-laboratory-club",
-    "title": "Science Club Lab Equipment",
+    "id": "outchy-great-pioneers-of-science",
+    "title": "Great Pioneers of Science (Einstein, Curie, Tesla)",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
-      "Sci-Fi",
       "Art",
+      "Sci-Fi",
       "Transparent"
     ],
     "compatibility": [
@@ -12990,29 +12953,33 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-mad-scientist-laboratory-club.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-mad-scientist-laboratory-club.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-great-pioneers-of-science.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-great-pioneers-of-science.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
-      "bunsen burner",
-      "lab equipment",
-      "microscope",
-      "research",
-      "science club",
-      "test tubes",
+      "curie",
+      "darwin",
+      "einstein",
+      "galileo",
+      "inventors",
+      "newton",
+      "physicists",
+      "portraits",
+      "science",
+      "tesla",
       "transparent"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-mad-scientist-laboratory-club.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-great-pioneers-of-science.png"
   },
   {
-    "id": "outchy-mad-scientist-mixing-beakers",
-    "title": "Mad Scientist Mixing Potions",
+    "id": "outchy-dexters-laboratory",
+    "title": "Dexter (Dexter's Laboratory)",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
-      "Sci-Fi",
       "Pop Culture",
+      "Sci-Fi",
       "Transparent"
     ],
     "compatibility": [
@@ -13025,21 +12992,21 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-mad-scientist-mixing-beakers.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-mad-scientist-mixing-beakers.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-dexters-laboratory.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-dexters-laboratory.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
-      "chemist",
-      "experiment",
-      "flasks",
-      "funny cartoon",
-      "lab coat",
-      "mad scientist",
-      "potions",
+      "90s cartoon",
+      "cartoon network",
+      "dexter",
+      "dexters laboratory",
+      "genndy tartakovsky",
+      "inventor",
+      "science",
       "transparent"
     ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-mad-scientist-mixing-beakers.png"
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-dexters-laboratory.png"
   },
   {
     "id": "outchy-scottish-terrier-reading-glasses",
@@ -13259,7 +13226,7 @@
   },
   {
     "id": "outchy-snoopy-reading-on-doghouse",
-    "title": "Snoopy Reading on Doghouse",
+    "title": "Snoopy on Doghouse",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -13293,8 +13260,8 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-snoopy-reading-on-doghouse.png"
   },
   {
-    "id": "outchy-sonic-the-hedgehog-running",
-    "title": "Sonic the Hedgehog Running",
+    "id": "outchy-sonic-the-hedgehog",
+    "title": "Sonic the Hedgehog",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -13312,8 +13279,8 @@
     "licenseUrl": "https://www.reddit.com/user/outchy/",
     "sourceUrl": "https://www.reddit.com/user/outchy/",
     "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-sonic-the-hedgehog-running.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-sonic-the-hedgehog-running.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-sonic-the-hedgehog.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-sonic-the-hedgehog.png",
     "downloads": 0,
     "likes": 1,
     "tags": [
@@ -13575,7 +13542,7 @@
   },
   {
     "id": "outchy-superman-reading-book",
-    "title": "Superman Reading in Fortress",
+    "title": "Superman Reading",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -13858,7 +13825,7 @@
   },
   {
     "id": "outchy-yosemite-sam-dual-pistols",
-    "title": "Yosemite Sam Dual Pistols",
+    "title": "Yosemite Sam",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
