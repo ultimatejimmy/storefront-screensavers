@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Storefront Screensavers — E-Reader Wallpaper Catalog</title>
   <meta name="description" content="Free e-ink sleep screen & lock screen wallpapers for Kindle, Kobo, Boox, and PocketBook readers. Community-driven catalog for Storefront KOReader plugin.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,7 +13,7 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-brand">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: url(#brand-grad);"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: url(#brand-grad);"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
       <span>Storefront Screensavers</span>
     </div>
     <ul class="nav-links">
@@ -38,6 +39,20 @@
           <div class="search-box">
             <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             <input type="text" id="search-input" class="search-input" placeholder="Search wallpapers or creators...">
+          </div>
+          <div class="sort-box">
+            <label for="sort-select" class="sort-label">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="11" y2="14"></line><line x1="21" y1="18" x2="15" y2="18"></line></svg>
+              <span>Sort:</span>
+            </label>
+            <select id="sort-select" class="sort-select">
+              <option value="default">Default / Featured</option>
+              <option value="likes">Most Popular (Thumbs Up)</option>
+              <option value="downloads">Most Downloaded</option>
+              <option value="title-asc">Title (A → Z)</option>
+              <option value="title-desc">Title (Z → A)</option>
+              <option value="author-asc">Author (A → Z)</option>
+            </select>
           </div>
           <div class="overlay-mode-toggle" id="overlay-mode-toggle">
             <span class="mode-label">Transparent Mode:</span>
@@ -141,7 +156,7 @@
             <!-- Interactive 3:4 Focal Point Cropper (Outside Dropzone) -->
             <div id="cropper-container" style="display:none; margin-top: 1rem; background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); text-align: left;">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
-                <span style="font-size: 0.85rem; font-weight: 600; color: var(--accent-purple);">✂️ 3:4 E-Ink Screen Crop</span>
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--accent-green);">✂️ 3:4 E-Ink Screen Crop</span>
                 <button type="button" id="btn-auto-focal" class="tag-btn" style="font-size:0.75rem; padding: 0.25rem 0.6rem;">🎯 Auto-Detect Subject</button>
               </div>
               <div class="cropper-canvas-wrap" style="position:relative; max-height: 420px; overflow:hidden; display:flex; justify-content:center; align-items:center; background:#0b0f19; padding: 14px; border-radius:8px; border: 1px solid var(--border-color); cursor:move;">

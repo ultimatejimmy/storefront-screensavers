@@ -28,6 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(err => console.error("Failed loading catalog", err));
 
   let currentOverlayMode = localStorage.getItem('overlayMode') || 'checkerboard';
+  
+  // Track user likes & downloads in localStorage
+  let userLikes = new Set(JSON.parse(localStorage.getItem('storefront_user_likes') || '[]'));
+  let userDownloads = JSON.parse(localStorage.getItem('storefront_user_downloads') || '{}');
+
+  function getItemLikes(item) {
+    const baseLikes = item.likes || 0;
+    return userLikes.has(item.id) ? baseLikes + 1 : baseLikes;
+  }
+
+  function getItemDownloads(item) {
+    const baseDownloads = item.downloads || 0;
+    const addedDownloads = userDownloads[item.id] || 0;
+    return baseDownloads + addedDownloads;
+  }
 
   function renderGallery(items) {
     const grid = document.getElementById('wallpaper-grid');
@@ -80,6 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const wrapClass = 'card-image-wrap' + (isTransparent ? ' transparent-bg' : '') + (isTransparent && currentOverlayMode === 'booktext' ? ' book-text-mode' : '');
 
+      const isLiked = userLikes.has(item.id);
+      const likesCount = getItemLikes(item);
+      const downloadsCount = getItemDownloads(item);
+
       card.innerHTML = `
         <div class="${wrapClass}">
           <img class="card-img" src="${item.thumbnailUrl}" alt="${item.title}" loading="lazy">
@@ -90,13 +109,25 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="card-body">
           <h3 class="card-title">${item.title}</h3>
           <div class="card-meta">
-            <span>🏷️ ${Array.isArray(item.category) ? item.category.join(', ') : item.category}</span>
-            <span>❤️ ${item.likes}</span>
+            <span class="card-category-badge">🏷️ ${Array.isArray(item.category) ? item.category.join(', ') : item.category}</span>
+            <div class="card-stats">
+              <button type="button" class="stat-item like-btn ${isLiked ? 'liked' : ''}" data-id="${item.id}" title="${isLiked ? 'Remove Thumbs Up' : 'Thumbs Up!'}">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                <span class="like-count">${likesCount}</span>
+              </button>
+              <span class="stat-item download-stat" title="${downloadsCount} downloads">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span class="download-count">${downloadsCount}</span>
+              </span>
+            </div>
           </div>
           ${tagsHtml}
           ${attributionHtml}
           <div class="card-footer">
-            <a href="${item.fullUrl}" target="_blank" download class="btn-primary">Download</a>
+            <a href="${item.fullUrl}" target="_blank" download class="btn-primary card-download-btn" data-id="${item.id}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Download</span>
+            </a>
             <button type="button" class="btn-suggest-change" title="Suggest Change / Report Issue" data-id="${item.id}">✏️</button>
           </div>
         </div>
@@ -115,6 +146,39 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       });
+
+      // Thumbs-up toggle
+      const likeBtn = card.querySelector('.like-btn');
+      if (likeBtn) {
+        likeBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (userLikes.has(item.id)) {
+            userLikes.delete(item.id);
+            likeBtn.classList.remove('liked');
+            likeBtn.setAttribute('title', 'Thumbs Up!');
+          } else {
+            userLikes.add(item.id);
+            likeBtn.classList.add('liked');
+            likeBtn.setAttribute('title', 'Remove Thumbs Up');
+          }
+          localStorage.setItem('storefront_user_likes', JSON.stringify([...userLikes]));
+          likeBtn.querySelector('.like-count').textContent = getItemLikes(item);
+        });
+      }
+
+      // Download button click tracking
+      const downloadBtn = card.querySelector('.card-download-btn');
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+          userDownloads[item.id] = (userDownloads[item.id] || 0) + 1;
+          localStorage.setItem('storefront_user_downloads', JSON.stringify(userDownloads));
+          const dlSpan = card.querySelector('.download-count');
+          if (dlSpan) {
+            dlSpan.textContent = getItemDownloads(item);
+          }
+        });
+      }
 
       const btnSuggest = card.querySelector('.btn-suggest-change');
       if (btnSuggest) {
@@ -189,8 +253,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function applyFilters() {
     const activeCats = getActiveFilterCategories();
     const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
+    const sortSelect = document.getElementById('sort-select');
+    const sortBy = sortSelect ? sortSelect.value : 'default';
 
-    const filtered = catalogData.filter(item => {
+    let filtered = catalogData.filter(item => {
       const matchCat = itemMatchesCategories(item, activeCats);
       const matchSearch = !q || (
         (item.title && item.title.toLowerCase().includes(q)) ||
@@ -200,6 +266,18 @@ document.addEventListener('DOMContentLoaded', () => {
       );
       return matchCat && matchSearch;
     });
+
+    if (sortBy === 'likes') {
+      filtered.sort((a, b) => (getItemLikes(b) - getItemLikes(a)) || (a.title || '').localeCompare(b.title || ''));
+    } else if (sortBy === 'downloads') {
+      filtered.sort((a, b) => (getItemDownloads(b) - getItemDownloads(a)) || (a.title || '').localeCompare(b.title || ''));
+    } else if (sortBy === 'title-asc') {
+      filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+    } else if (sortBy === 'title-desc') {
+      filtered.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
+    } else if (sortBy === 'author-asc') {
+      filtered.sort((a, b) => (a.author || '').localeCompare(b.author || ''));
+    }
 
     renderGallery(filtered);
   }
@@ -234,6 +312,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
     searchInput.addEventListener('input', () => {
+      applyFilters();
+    });
+  }
+
+  // Sort dropdown listener
+  const sortSelect = document.getElementById('sort-select');
+  if (sortSelect) {
+    sortSelect.addEventListener('change', () => {
       applyFilters();
     });
   }
