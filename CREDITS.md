@@ -46,7 +46,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Golden Gate Bridge Towers in Morning Fog | Unsplash Architecture | Architecture | Unsplash License | [Unsplash](https://unsplash.com) |
 | Andromeda Galaxy M31 Core & Spiral Arms | NASA / ESA / Hubble | Sci-Fi | Public Domain | [NASA / ESA Public Domain](https://www.nasa.gov) |
 | Webb’s First Deep Field (SMACS 0723) | NASA / ESA / CSA / STScI | Sci-Fi | Public Domain | [NASA / STScI Public Domain](https://www.nasa.gov) |
-| Cozy Lofi Study Desk & Sleeping Cat | Reddit r/koreader (u/lofi_reader) | Anime | Community Share (Implied) | [r/koreader Community Share](https://www.reddit.com/r/koreader/) |
+| Sailing in space | Reddit r/koreader (u/lofi_reader) | Abstract, Art, Fantasy | Community Share (Implied) | [r/koreader Community Share](https://www.reddit.com/r/koreader/) |
 | The Bedroom | Vincent van Gogh (Dutch, 1853–1890) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/6644829f-f292-c5c4-a73c-0356a6fdbf0d/full/843,/0/default.jpg) |
 | Paris Street; Rainy Day | Gustave Caillebotte (French, 1848–1894) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/f8fd76e9-c396-5678-36ed-6a348c904d27/full/843,/0/default.jpg) |
 | A Sunday on La Grande Jatte — 1884 | Georges Seurat (French, 1859–1891) | Fine Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/2d484387-2509-5e8e-2c43-22f9981972eb/full/843,/0/default.jpg) |
@@ -204,7 +204,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Paolo Cagol Spacescapes Spaceship | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/5y/wallhaven-5y3l75.jpg) |
 | Arc Raiders Embark Studios Abstract | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/ly/wallhaven-lyd8xl.png) |
 | Space Digital Art Dark Background | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/w5/wallhaven-w5drp6.jpg) |
-| Dune (Movie) Dune: Part Two Catpuccin | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/e8/wallhaven-e86ggr.png) |
+| Dune (Movie) Dune: Part Two | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/e8/wallhaven-e86ggr.png) |
 | Digital Art Cgi Spacesuit | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/po/wallhaven-po7rdj.jpg) |
 | Space Deep Space Space Art | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/k8/wallhaven-k8l6ym.jpg) |
 | Space Deep Space Planet | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/8g/wallhaven-8g91zy.jpg) |

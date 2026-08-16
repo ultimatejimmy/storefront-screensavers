@@ -1322,11 +1322,15 @@
     ]
   },
   {
-    "id": "anime-lofi-desk-cat-window",
-    "title": "Cozy Lofi Study Desk & Sleeping Cat",
+    "id": "space-sail",
+    "title": "Sailing in space",
     "author": "Reddit r/koreader (u/lofi_reader)",
     "authorUrl": "https://www.reddit.com/r/koreader/",
-    "category": "Anime",
+    "category": [
+      "Abstract",
+      "Art",
+      "Fantasy"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -1337,25 +1341,15 @@
     "licenseUrl": "https://www.reddit.com/r/koreader/",
     "sourceUrl": "https://www.reddit.com/r/koreader/",
     "attribution": "r/koreader Community Share",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/anime-lofi-desk-cat-window.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/anime-lofi-desk-cat-window.jpg",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/space-sail.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/space-sail.jpg",
     "downloads": 0,
     "likes": 1,
     "tags": [
-      "animal",
-      "anime",
-      "cat",
-      "cozy",
-      "desk",
-      "feline",
-      "interior",
-      "kitten",
-      "lofi",
-      "pet",
-      "sleeping",
-      "study",
       "view",
-      "window"
+      "boat",
+      "sky",
+      "space"
     ]
   },
   {
@@ -6047,7 +6041,7 @@
   },
   {
     "id": "wh-e86ggr",
-    "title": "Dune (Movie) Dune: Part Two Catpuccin",
+    "title": "Dune (Movie) Dune: Part Two",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
     "category": "Sci-Fi",
@@ -6067,14 +6061,9 @@
     "likes": 1,
     "tags": [
       "animal",
-      "cat",
-      "catpuccin",
       "dune",
-      "feline",
-      "kitten",
       "movie",
       "part",
-      "pet",
       "sci-fi",
       "two"
     ]
@@ -7899,11 +7888,11 @@
       "gnarled trunk",
       "woodcut",
       "tree hollow",
-      "intricate bark",
       "ink engraving",
       "botanical",
       "nature",
-      "transparent"
+      "transparent",
+      "bark"
     ]
   },
   {
