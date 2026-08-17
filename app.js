@@ -1101,17 +1101,52 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.addEventListener('hashchange', scrollToCardFromHash);
 
-  // --- Suggest Change & DMCA Drawer Logic ---
   const drawerBackdrop = document.getElementById('suggest-drawer-backdrop');
   const suggestDrawer = document.getElementById('suggest-drawer');
+  const drawerHeadingTitle = document.getElementById('drawer-heading-title');
   const btnCloseSuggest = document.getElementById('btn-close-suggest');
   const suggestForm = document.getElementById('suggest-form');
   const suggestTypeSelect = document.getElementById('suggest-type');
+  const drawerTabBtns = document.querySelectorAll('#drawer-action-tabs .drawer-tab-btn');
   const groupSuggestUrl = document.getElementById('group-suggest-url');
   const groupDmcaFields = document.getElementById('group-dmca-fields');
   const groupMetadataFields = document.getElementById('group-metadata-fields');
   const labelSuggestReason = document.getElementById('label-suggest-reason');
   const btnSubmitSuggest = document.getElementById('btn-submit-suggest');
+
+  function setDrawerTab(type) {
+    if (suggestTypeSelect) {
+      suggestTypeSelect.value = type;
+    }
+    drawerTabBtns.forEach(btn => {
+      if (btn.getAttribute('data-type') === type) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    if (drawerHeadingTitle) {
+      if (type === 'dmca') {
+        drawerHeadingTitle.textContent = '🛡️ File DMCA Takedown Notice';
+      } else if (type === 'replacement') {
+        drawerHeadingTitle.textContent = '🖼️ Suggest Replacement Image';
+      } else if (type === 'issue') {
+        drawerHeadingTitle.textContent = '⚠️ Report Issue / Quality';
+      } else {
+        drawerHeadingTitle.textContent = '✏️ Suggest a Change';
+      }
+    }
+
+    updateDrawerFormState();
+  }
+
+  drawerTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const type = btn.getAttribute('data-type');
+      setDrawerTab(type);
+    });
+  });
 
   function updateDrawerFormState() {
     if (!suggestTypeSelect) return;
@@ -1148,9 +1183,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('suggest-target-title').textContent = item.title || 'Wallpaper';
     document.getElementById('suggest-target-author').textContent = `by ${item.author || 'Unknown'}`;
 
-    if (suggestTypeSelect) {
-      suggestTypeSelect.value = defaultType;
-    }
+    setDrawerTab(defaultType);
 
     document.getElementById('suggest-title').value = item.title || '';
     document.getElementById('suggest-author').value = item.author || '';
@@ -1165,8 +1198,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (dmcaOwnerEl) dmcaOwnerEl.value = '';
     const dmcaProofEl = document.getElementById('dmca-proof');
     if (dmcaProofEl) dmcaProofEl.value = '';
-
-    updateDrawerFormState();
 
     suggestDrawer.classList.add('open');
     drawerBackdrop.classList.add('open');

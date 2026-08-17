@@ -792,18 +792,43 @@ footer {
   text-decoration: none;
 }
 
+.card-footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-download-btn {
+  flex: 1 1 0%;
+  min-width: 0;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.82rem;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
 .btn-card-icon, .btn-suggest-change, .btn-copy-link {
-  background: var(--bg-glass);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  padding: 0.6rem 0.75rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: var(--transition);
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  max-width: 34px;
+  padding: 0;
+  flex: 0 0 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  box-sizing: border-box;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
   text-decoration: none;
   user-select: none;
 }
@@ -819,6 +844,53 @@ footer {
   background: var(--accent-green);
   color: #0b0f19;
   border-color: var(--accent-green);
+}
+
+/* Drawer Action Tabs */
+.drawer-action-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.drawer-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.55rem 0.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.drawer-tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.drawer-tab-btn.active {
+  background: var(--accent-green);
+  color: #0b0f19;
+  font-weight: 700;
+}
+
+.drawer-tab-btn.dmca-tab.active {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.drawer-tab-btn.dmca-tab:not(.active):hover {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
 }
 
 @keyframes card-glow-pulse {

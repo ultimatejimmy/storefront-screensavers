@@ -238,7 +238,7 @@
   <div id="suggest-drawer-backdrop" class="drawer-backdrop"></div>
   <div id="suggest-drawer" class="suggest-drawer">
     <div class="drawer-header">
-      <h3>✏️ Suggest a Change</h3>
+      <h3 id="drawer-heading-title">✏️ Suggest a Change</h3>
       <button type="button" id="btn-close-suggest" class="btn-close-drawer">✕</button>
     </div>
     <div class="drawer-body">
@@ -250,31 +250,38 @@
         </div>
       </div>
 
+      <!-- Action Mode Tabs (Always Visible) -->
+      <div class="drawer-action-tabs" id="drawer-action-tabs">
+        <button type="button" class="drawer-tab-btn active" data-type="metadata">✏️ Edit Info</button>
+        <button type="button" class="drawer-tab-btn" data-type="replacement">🖼️ Replace</button>
+        <button type="button" class="drawer-tab-btn dmca-tab" data-type="dmca">🛡️ DMCA</button>
+        <button type="button" class="drawer-tab-btn" data-type="issue">⚠️ Issue</button>
+      </div>
+
       <form id="suggest-form">
         <input type="hidden" id="suggest-item-id">
-        
-        <div class="form-group">
-          <label class="form-label" for="suggest-type">Action / Report Type</label>
-          <select id="suggest-type" class="form-control">
-            <option value="metadata">✏️ Correct Metadata (Title, Author, Category)</option>
-            <option value="replacement">🖼️ Suggest Higher Quality / Replacement Image</option>
-            <option value="dmca">🛡️ Report Copyright Infringement (DMCA Takedown)</option>
-            <option value="issue">⚠️ Report Low Quality / Inappropriate</option>
-          </select>
-        </div>
+        <input type="hidden" id="suggest-type" value="metadata">
 
         <!-- DMCA Banner & Dedicated Fields -->
-        <div id="group-dmca-fields" style="display: none; background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.25rem;">
-          <p style="font-size: 0.8rem; color: #fca5a5; margin-bottom: 0.75rem; line-height: 1.4;">
-            <strong>🛡️ DMCA Takedown:</strong> Submitting this notice will file an official copyright takedown request on GitHub for this specific wallpaper.
-          </p>
-          <div class="form-group" style="margin-bottom: 0.75rem;">
-            <label class="form-label" for="dmca-owner" style="font-size: 0.82rem;">Copyright Holder / Organization</label>
-            <input type="text" id="dmca-owner" class="form-control" placeholder="e.g. Artist Name / Studio">
+        <div id="group-dmca-fields" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: var(--radius-sm); padding: 1.15rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 1rem;">
+            <span style="font-size: 1.3rem;">🛡️</span>
+            <div>
+              <strong style="color: #f87171; font-size: 0.92rem; display: block;">File Copyright Infringement Notice</strong>
+              <p style="font-size: 0.78rem; color: #fca5a5; margin-top: 0.2rem; line-height: 1.4;">
+                This will submit an official DMCA removal request for this specific image on GitHub.
+              </p>
+            </div>
           </div>
+          
+          <div class="form-group" style="margin-bottom: 0.85rem;">
+            <label class="form-label" for="dmca-owner" style="font-size: 0.82rem; color: #fca5a5;">Copyright Holder / Studio / Artist Name *</label>
+            <input type="text" id="dmca-owner" class="form-control" placeholder="e.g. Jane Doe / Studio Name">
+          </div>
+
           <div class="form-group" style="margin-bottom: 0;">
-            <label class="form-label" for="dmca-proof" style="font-size: 0.82rem;">Proof of Ownership / Original Work Link</label>
-            <input type="url" id="dmca-proof" class="form-control" placeholder="https://yourportfolio.com/original-art...">
+            <label class="form-label" for="dmca-proof" style="font-size: 0.82rem; color: #fca5a5;">Proof of Ownership / Original Artwork Link *</label>
+            <input type="url" id="dmca-proof" class="form-control" placeholder="https://portfolio.art/original-artwork...">
           </div>
         </div>
 
