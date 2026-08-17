@@ -156,7 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               <span>Download</span>
             </a>
-            <button type="button" class="btn-suggest-change" title="Suggest Change / Report Issue" data-id="${item.id}">✏️</button>
+            <button type="button" class="btn-copy-link" title="Copy direct link to wallpaper" data-id="${item.id}">🔗</button>
+            <button type="button" class="btn-suggest-change" title="Suggest Change / Report DMCA Takedown" data-id="${item.id}">✏️</button>
           </div>
         </div>
       `;
@@ -174,6 +175,27 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       });
+
+      // Copy direct link button
+      const copyBtn = card.querySelector('.btn-copy-link');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const permalink = `${window.location.origin}${window.location.pathname}#item-${item.id}`;
+          navigator.clipboard.writeText(permalink).then(() => {
+            copyBtn.classList.add('copied');
+            copyBtn.textContent = '✓';
+            showToast(`Copied direct link for "${item.title}"!`);
+            window.history.replaceState(null, '', `#item-${item.id}`);
+            setTimeout(() => {
+              copyBtn.classList.remove('copied');
+              copyBtn.textContent = '🔗';
+            }, 2000);
+          }).catch(() => {
+            prompt('Copy direct link:', permalink);
+          });
+        });
+      }
 
       // Download button click tracking
       const downloadBtn = card.querySelector('.card-download-btn');
@@ -195,6 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       grid.appendChild(card);
     });
+
+    scrollToCardFromHash();
   }
 
   // Transparent Preview Mode Toggle Listener
@@ -1045,21 +1069,88 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Suggest Change Drawer Logic ---
+  // --- Toast Notification Helper ---
+  function showToast(message) {
+    let toast = document.getElementById('catalog-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'catalog-toast';
+      toast.className = 'toast-notice';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2800);
+  }
+
+  // --- Scroll to Card from URL Hash ---
+  function scrollToCardFromHash() {
+    if (!window.location.hash) return;
+    const rawHash = window.location.hash.replace(/^#/, '');
+    const targetId = rawHash.startsWith('item-') ? rawHash : `item-${rawHash}`;
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      setTimeout(() => {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetEl.classList.add('card-highlight');
+        setTimeout(() => targetEl.classList.remove('card-highlight'), 3000);
+      }, 300);
+    }
+  }
+  window.addEventListener('hashchange', scrollToCardFromHash);
+
+  // --- Suggest Change & DMCA Drawer Logic ---
   const drawerBackdrop = document.getElementById('suggest-drawer-backdrop');
   const suggestDrawer = document.getElementById('suggest-drawer');
   const btnCloseSuggest = document.getElementById('btn-close-suggest');
   const suggestForm = document.getElementById('suggest-form');
   const suggestTypeSelect = document.getElementById('suggest-type');
   const groupSuggestUrl = document.getElementById('group-suggest-url');
+  const groupDmcaFields = document.getElementById('group-dmca-fields');
+  const groupMetadataFields = document.getElementById('group-metadata-fields');
+  const labelSuggestReason = document.getElementById('label-suggest-reason');
+  const btnSubmitSuggest = document.getElementById('btn-submit-suggest');
 
-  function openSuggestDrawer(item) {
+  function updateDrawerFormState() {
+    if (!suggestTypeSelect) return;
+    const type = suggestTypeSelect.value;
+    const isDmca = (type === 'dmca');
+    const isReplacement = (type === 'replacement');
+
+    if (groupDmcaFields) {
+      groupDmcaFields.style.display = isDmca ? 'block' : 'none';
+    }
+    if (groupMetadataFields) {
+      groupMetadataFields.style.display = isDmca ? 'none' : 'block';
+    }
+    if (groupSuggestUrl) {
+      groupSuggestUrl.style.display = isReplacement ? 'block' : 'none';
+    }
+    if (labelSuggestReason) {
+      labelSuggestReason.textContent = isDmca 
+        ? 'Infringement Description & Ownership Details' 
+        : 'Reason / Additional Notes';
+    }
+    if (btnSubmitSuggest) {
+      btnSubmitSuggest.textContent = isDmca 
+        ? 'Submit DMCA Notice on GitHub →' 
+        : 'Submit Suggestion on GitHub →';
+    }
+  }
+
+  function openSuggestDrawer(item, defaultType = 'metadata') {
     if (!suggestDrawer || !drawerBackdrop) return;
 
     document.getElementById('suggest-item-id').value = item.id || '';
     document.getElementById('suggest-target-img').src = item.thumbnailUrl || '';
     document.getElementById('suggest-target-title').textContent = item.title || 'Wallpaper';
     document.getElementById('suggest-target-author').textContent = `by ${item.author || 'Unknown'}`;
+
+    if (suggestTypeSelect) {
+      suggestTypeSelect.value = defaultType;
+    }
 
     document.getElementById('suggest-title').value = item.title || '';
     document.getElementById('suggest-author').value = item.author || '';
@@ -1069,6 +1160,13 @@ document.addEventListener('DOMContentLoaded', () => {
       suggestTagsEl.value = Array.isArray(item.tags) ? item.tags.join(', ') : (item.tags || '');
     }
     document.getElementById('suggest-reason').value = '';
+
+    const dmcaOwnerEl = document.getElementById('dmca-owner');
+    if (dmcaOwnerEl) dmcaOwnerEl.value = '';
+    const dmcaProofEl = document.getElementById('dmca-proof');
+    if (dmcaProofEl) dmcaProofEl.value = '';
+
+    updateDrawerFormState();
 
     suggestDrawer.classList.add('open');
     drawerBackdrop.classList.add('open');
@@ -1082,34 +1180,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnCloseSuggest) btnCloseSuggest.addEventListener('click', closeSuggestDrawer);
   if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeSuggestDrawer);
-
-  if (suggestTypeSelect && groupSuggestUrl) {
-    suggestTypeSelect.addEventListener('change', () => {
-      groupSuggestUrl.style.display = (suggestTypeSelect.value === 'replacement') ? 'block' : 'none';
-    });
-  }
+  if (suggestTypeSelect) suggestTypeSelect.addEventListener('change', updateDrawerFormState);
 
   if (suggestForm) {
     suggestForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const itemId = document.getElementById('suggest-item-id').value;
       const targetTitle = document.getElementById('suggest-target-title').textContent;
-      const type = suggestTypeSelect.value;
-      const newTitle = document.getElementById('suggest-title').value;
-      const newAuthor = document.getElementById('suggest-author').value;
-      const newCategory = document.getElementById('suggest-category').value;
-      const newTags = document.getElementById('suggest-tags') ? document.getElementById('suggest-tags').value.trim() : '';
-      const newUrl = document.getElementById('suggest-url').value;
-      const reason = document.getElementById('suggest-reason').value;
+      const type = suggestTypeSelect ? suggestTypeSelect.value : 'metadata';
+      const isDmca = (type === 'dmca');
 
       const typeLabels = {
         metadata: 'Metadata Correction',
         replacement: 'Replacement Image',
-        dmca: 'DMCA / Copyright Infringement',
+        dmca: 'DMCA / Copyright Infringement Notice',
         issue: 'Low Quality / Issue Report'
       };
 
-      const isDmca = (type === 'dmca');
       const issueTitle = encodeURIComponent(isDmca ? `DMCA Takedown Notice: [${itemId}] ${targetTitle}` : `Change Suggestion: [${itemId}] ${targetTitle}`);
       const issueLabel = isDmca ? 'dmca-takedown' : 'suggest-change';
 
@@ -1123,16 +1210,28 @@ document.addEventListener('DOMContentLoaded', () => {
       ];
 
       if (isDmca) {
+        const dmcaOwner = document.getElementById('dmca-owner') ? document.getElementById('dmca-owner').value.trim() : '';
+        const dmcaProof = document.getElementById('dmca-proof') ? document.getElementById('dmca-proof').value.trim() : '';
+        const reason = document.getElementById('suggest-reason').value;
+
         bodyLines.push(
-          `**Original Work / Proof of Ownership:**`,
+          `**Copyright Owner / Authorized Representative:** ${dmcaOwner || 'Not specified'}`,
+          `**Proof of Ownership / Original Source:** ${dmcaProof || 'Attached below'}`,
+          ``,
+          `**Infringement Details:**`,
           reason,
           ``,
-          `**Contact Info:** ${newAuthor || 'Provided via GitHub'}`,
-          ``,
           `**Statement of Good Faith:**`,
-          `I have a good faith belief that the use of the material is not authorized by the copyright owner, its agent, or the law.`
+          `I have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.`
         );
       } else {
+        const newTitle = document.getElementById('suggest-title').value;
+        const newAuthor = document.getElementById('suggest-author').value;
+        const newCategory = document.getElementById('suggest-category').value;
+        const newTags = document.getElementById('suggest-tags') ? document.getElementById('suggest-tags').value.trim() : '';
+        const newUrl = document.getElementById('suggest-url') ? document.getElementById('suggest-url').value.trim() : '';
+        const reason = document.getElementById('suggest-reason').value;
+
         bodyLines.push(
           `**Proposed Title:** ${newTitle}`,
           `**Proposed Author:** ${newAuthor}`,
