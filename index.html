@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Reader Screensavers Catalog — Storefront Plugin</title>
+  <title>Storefront Screensavers — E-Reader Wallpaper Catalog</title>
   <meta name="description" content="Free e-ink sleep screen & lock screen wallpapers for Kindle, Kobo, Boox, and PocketBook readers. Community-driven catalog for Storefront KOReader plugin.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,8 +13,8 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-brand">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: url(#brand-grad);"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-      <span>ReaderBackdrop Catalog</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: url(#brand-grad);"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      <span>Storefront Screensavers</span>
     </div>
     <ul class="nav-links">
       <li><a href="#" class="nav-link active" data-target="gallery-section">Gallery</a></li>
@@ -34,9 +35,31 @@
 
       <!-- Search & Filters -->
       <div class="controls-bar">
-        <div class="search-box">
-          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="search-input" class="search-input" placeholder="Search wallpapers or creators...">
+        <div class="controls-row-top">
+          <div class="search-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="search-input" class="search-input" placeholder="Search wallpapers or creators...">
+          </div>
+          <div class="sort-box">
+            <label for="sort-select" class="sort-label">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="7" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="11" y2="14"></line><line x1="21" y1="18" x2="15" y2="18"></line></svg>
+              <span>Sort:</span>
+            </label>
+            <select id="sort-select" class="sort-select">
+              <option value="likes" selected>Most Popular (Thumbs Up)</option>
+              <option value="downloads">Most Downloaded</option>
+              <option value="newest">Submitted Date (Newest First)</option>
+              <option value="oldest">Submitted Date (Oldest First)</option>
+              <option value="title-asc">Title (A → Z)</option>
+              <option value="title-desc">Title (Z → A)</option>
+              <option value="author-asc">Author (A → Z)</option>
+            </select>
+          </div>
+          <div class="overlay-mode-toggle" id="overlay-mode-toggle">
+            <span class="mode-label">Transparent Mode:</span>
+            <button type="button" class="mode-btn active" data-mode="checkerboard" title="Show Checkerboard Grid">🏁 Grid</button>
+            <button type="button" class="mode-btn" data-mode="booktext" title="Show Book Text Background">📖 Book Text</button>
+          </div>
         </div>
         <div class="category-tags">
           <button class="tag-btn active" data-category="all">All</button>
@@ -50,6 +73,7 @@
           <button class="tag-btn" data-category="Art">Art</button>
           <button class="tag-btn" data-category="Pop Culture">Pop Culture</button>
           <button class="tag-btn" data-category="Quotes">Quotes</button>
+          <button class="tag-btn" data-category="Transparent">Transparent</button>
         </div>
       </div>
 
@@ -60,11 +84,18 @@
     <!-- Submit Section -->
     <section id="submit-section" class="section">
       <div class="hero">
-        <h1>Submit Your Screensaver</h1>
+        <h1>Submit Wallpaper(s)</h1>
         <p>Share your custom e-ink wallpapers with the Storefront community. Submissions are reviewed automatically via GitHub Actions.</p>
       </div>
 
       <div class="form-card">
+        <!-- Submission Mode Toggle: Single vs Bulk -->
+        <div class="toggle-mode-bar" style="margin-bottom: 1.5rem;">
+          <button type="button" class="toggle-mode-btn active" id="btn-submit-single">📄 Single Submission</button>
+          <button type="button" class="toggle-mode-btn" id="btn-submit-bulk">📁 Bulk Upload (Batch)</button>
+        </div>
+
+        <!-- Single Submission Form -->
         <form id="submit-form">
           <div class="form-group">
             <label class="form-label" for="sub-title">Wallpaper Title</label>
@@ -91,6 +122,11 @@
               <button type="button" class="tag-btn cat-pill" data-value="Pop Culture">Pop Culture</button>
               <button type="button" class="tag-btn cat-pill" data-value="Quotes">Quotes</button>
             </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sub-tags">Tags / Keywords (comma-separated)</label>
+            <input type="text" id="sub-tags" class="form-control" placeholder="e.g. mountain, fog, landscape, pines, moody">
           </div>
 
           <div class="form-group">
@@ -121,7 +157,7 @@
             <!-- Interactive 3:4 Focal Point Cropper (Outside Dropzone) -->
             <div id="cropper-container" style="display:none; margin-top: 1rem; background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); text-align: left;">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
-                <span style="font-size: 0.85rem; font-weight: 600; color: var(--accent-purple);">✂️ 3:4 E-Ink Screen Crop</span>
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--accent-green);">✂️ 3:4 E-Ink Screen Crop</span>
                 <button type="button" id="btn-auto-focal" class="tag-btn" style="font-size:0.75rem; padding: 0.25rem 0.6rem;">🎯 Auto-Detect Subject</button>
               </div>
               <div class="cropper-canvas-wrap" style="position:relative; max-height: 420px; overflow:hidden; display:flex; justify-content:center; align-items:center; background:#0b0f19; padding: 14px; border-radius:8px; border: 1px solid var(--border-color); cursor:move;">
@@ -143,7 +179,7 @@
 
           <div class="form-group" style="margin-top: 1.25rem; margin-bottom: 0.75rem;">
             <label style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--text-secondary); cursor: pointer; line-height: 1.4;">
-              <input type="checkbox" id="sub-agree" required style="margin-top: 0.15rem; accent-color: var(--accent-purple); width: 16px; height: 16px;">
+              <input type="checkbox" id="sub-agree" required style="margin-top: 0.15rem; accent-color: var(--accent-green); width: 16px; height: 16px;">
               <span>
                 <strong>Community Agreement:</strong> I confirm this wallpaper is submitted voluntarily for community use under a non-commercial open license. I acknowledge that the maintainers do not claim ownership of this content and generate zero profit from it.
               </span>
@@ -154,6 +190,37 @@
             Continue to GitHub Submission →
           </button>
         </form>
+
+        <!-- Bulk Submission Container (hidden by default) -->
+        <div id="bulk-submit-container" style="display: none;">
+          <div class="form-group">
+            <label class="form-label">Batch Image Upload</label>
+            <div id="bulk-dropzone-box" class="dropzone">
+              <input type="file" id="sub-bulk-files" accept="image/png, image/jpeg, image/webp" multiple style="display:none;">
+              <div class="dropzone-prompt">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <p style="margin: 0.5rem 0 0.2rem;"><strong>Click to select multiple files</strong> or drag & drop</p>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Queue up to 10 images for batch submission</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Queue List -->
+          <div id="bulk-queue-list" class="bulk-queue-list" style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;"></div>
+
+          <div class="form-group" style="margin-top: 1.25rem; margin-bottom: 0.75rem;">
+            <label style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--text-secondary); cursor: pointer; line-height: 1.4;">
+              <input type="checkbox" id="sub-bulk-agree" required style="margin-top: 0.15rem; accent-color: var(--accent-green); width: 16px; height: 16px;">
+              <span>
+                <strong>Community Agreement:</strong> I confirm these wallpapers are submitted voluntarily for community use under a non-commercial open license. I acknowledge that the maintainers do not claim ownership and generate zero profit.
+              </span>
+            </label>
+          </div>
+
+          <button type="button" class="btn-primary" id="btn-submit-bulk-all" style="width: 100%; padding: 0.85rem; font-size: 1rem; margin-top: 0.5rem; display: none;">
+            Submit All Queued Wallpapers →
+          </button>
+        </div>
       </div>
     </section>
 
@@ -199,13 +266,18 @@
           <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
             We strictly respect intellectual property rights. If you are a copyright owner or authorized representative and wish to request removal of an image:
           </p>
-          <ul style="padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.6;">
-            <li>Open a GitHub issue with the label <code>dmca-takedown</code> specifying the image title and URL.</li>
-            <li>Include evidence or statement of copyright ownership.</li>
+          <ul style="padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+            <li><strong>Wallpaper identification:</strong> The Title, Item ID (e.g. <code>foggy-forest-pines</code>), or direct image link.</li>
+            <li><strong>Proof of ownership:</strong> Evidence or authorization confirming you represent the copyright holder.</li>
+            <li><strong>Contact information:</strong> Your name and contact info (email address or GitHub handle).</li>
           </ul>
-          <p style="color: var(--text-secondary); margin-top: 0.75rem;">
+          <p style="color: var(--text-secondary); margin-bottom: 1.25rem;">
             Verified takedown requests are processed and removed within <strong>24–48 hours</strong>.
           </p>
+          <a href="https://github.com/ultimatejimmy/storefront-screensavers/issues/new?title=DMCA+Takedown+Request&labels=dmca-takedown&body=%23%23%23+DMCA+%2F+Copyright+Takedown+Notice%0A%0A%2A%2AInfringing+Wallpaper+Title+%2F+ID%3A%2A%2A+%0A%2A%2AImage+Filename+%2F+URL%3A%2A%2A+%0A%2A%2AOriginal+Work+%2F+Proof+of+Ownership%3A%2A%2A+%0A%2A%2AContact+Email+%2F+Information%3A%2A%2A+%0A%0A%2A%2AStatement+of+Good+Faith%3A%2A%2A%0AI+have+a+good+faith+belief+that+the+use+of+the+material+is+not+authorized+by+the+copyright+owner%2C+its+agent%2C+or+the+law." target="_blank" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; text-decoration: none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <span>Open DMCA Notice on GitHub →</span>
+          </a>
         </div>
 
         <div>
@@ -230,10 +302,121 @@
 
   </main>
 
+  <!-- Suggest Change Drawer Overlay & Drawer -->
+  <div id="suggest-drawer-backdrop" class="drawer-backdrop"></div>
+  <div id="suggest-drawer" class="suggest-drawer">
+    <div class="drawer-header">
+      <h3 id="drawer-heading-title">✏️ Suggest a Change</h3>
+      <button type="button" id="btn-close-suggest" class="btn-close-drawer">✕</button>
+    </div>
+    <div class="drawer-body">
+      <div class="suggest-target-card">
+        <img id="suggest-target-img" src="" alt="Target Wallpaper">
+        <div class="suggest-target-info">
+          <strong id="suggest-target-title">Title</strong>
+          <span id="suggest-target-author">by Author</span>
+        </div>
+      </div>
+
+      <!-- Action Mode Tabs (Always Visible) -->
+      <div class="drawer-action-tabs" id="drawer-action-tabs">
+        <button type="button" class="drawer-tab-btn active" data-type="metadata">✏️ Edit Info</button>
+        <button type="button" class="drawer-tab-btn" data-type="replacement">🖼️ Replace</button>
+        <button type="button" class="drawer-tab-btn dmca-tab" data-type="dmca">🛡️ DMCA</button>
+        <button type="button" class="drawer-tab-btn" data-type="issue">⚠️ Issue</button>
+      </div>
+
+      <form id="suggest-form">
+        <input type="hidden" id="suggest-item-id">
+        <input type="hidden" id="suggest-type" value="metadata">
+
+        <!-- DMCA Banner & Dedicated Fields -->
+        <div id="group-dmca-fields" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: var(--radius-sm); padding: 1.15rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 1rem;">
+            <span style="font-size: 1.3rem;">🛡️</span>
+            <div>
+              <strong style="color: #f87171; font-size: 0.92rem; display: block;">File Copyright Infringement Notice</strong>
+              <p style="font-size: 0.78rem; color: #fca5a5; margin-top: 0.2rem; line-height: 1.4;">
+                This will submit an official DMCA removal request for this specific image on GitHub.
+              </p>
+            </div>
+          </div>
+          
+          <div class="form-group" style="margin-bottom: 0.85rem;">
+            <label class="form-label" for="dmca-owner" style="font-size: 0.82rem; color: #fca5a5;">Copyright Holder / Studio / Artist Name *</label>
+            <input type="text" id="dmca-owner" class="form-control" placeholder="e.g. Jane Doe / Studio Name">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" for="dmca-proof" style="font-size: 0.82rem; color: #fca5a5;">Proof of Ownership / Original Artwork Link *</label>
+            <input type="url" id="dmca-proof" class="form-control" placeholder="https://portfolio.art/original-artwork...">
+          </div>
+        </div>
+
+        <!-- Metadata Correction Fields -->
+        <div id="group-metadata-fields">
+          <div class="form-group">
+            <label class="form-label" for="suggest-title">Suggested Title</label>
+            <input type="text" id="suggest-title" class="form-control" placeholder="Proposed title">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="suggest-author">Suggested Author / Credit</label>
+            <input type="text" id="suggest-author" class="form-control" placeholder="Proposed artist name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="suggest-category">Suggested Category</label>
+            <input type="text" id="suggest-category" class="form-control" placeholder="e.g. Art, Nature">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="suggest-tags">Suggested Tags (comma-separated)</label>
+            <input type="text" id="suggest-tags" class="form-control" placeholder="e.g. ghibli, anime, fantasy, dragon">
+          </div>
+        </div>
+
+        <!-- Replacement Image Fields (Upload + URL) -->
+        <div class="form-group" id="group-suggest-url" style="display: none;">
+          <label class="form-label">Replacement Image Source</label>
+          <input type="file" id="replace-file-input" accept="image/*" style="display: none;">
+          
+          <div id="replace-dropzone" class="replace-dropzone">
+            <div id="replace-dropzone-prompt">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <span>Click or drag image file to upload</span>
+              <small style="color: var(--text-muted); font-size: 0.75rem;">PNG, JPG, or WebP</small>
+            </div>
+            <div id="replace-dropzone-preview" style="display: none; align-items: center; gap: 0.75rem;">
+              <img id="replace-preview-img" src="" alt="Replacement Preview" style="width: 50px; height: 66px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-color);">
+              <div style="display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; text-align: left;">
+                <strong id="replace-preview-name" style="font-size: 0.82rem; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"></strong>
+                <span id="replace-preview-meta" style="font-size: 0.72rem; color: var(--text-muted);"></span>
+                <button type="button" id="btn-remove-replace-file" style="background: none; border: none; color: #f87171; font-size: 0.75rem; cursor: pointer; text-align: left; padding: 0;">✕ Remove</button>
+              </div>
+            </div>
+          </div>
+
+          <label class="form-label" for="suggest-url" style="font-size: 0.8rem; margin-top: 0.5rem;">Or Direct Image URL (optional)</label>
+          <input type="url" id="suggest-url" class="form-control" placeholder="https://example.com/image.jpg">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="suggest-reason" id="label-suggest-reason">Reason / Additional Notes</label>
+          <textarea id="suggest-reason" class="form-control" rows="3" placeholder="Explain the change, issue, or infringement details..." required></textarea>
+        </div>
+
+        <button type="submit" id="btn-submit-suggest" class="btn-primary" style="width: 100%; padding: 0.85rem;">
+          Submit Suggestion on GitHub →
+        </button>
+      </form>
+    </div>
+  </div>
+
   <footer>
-    <p>© 2026 ReaderBackdrop Catalog for Storefront Plugin · Open Source & Community Powered</p>
+    <p>© 2026 Storefront Screensavers Catalog · Open Source & Community Powered</p>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

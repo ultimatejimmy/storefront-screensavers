@@ -18,14 +18,74 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Fetch catalog (cache-busted for instant updates)
+  const RATINGS_API_URL = 'https://storefront-vote.ultimatejimmy.workers.dev';
+  let liveRatings = {};
+
+  // Fetch catalog & sync live ratings from Cloudflare worker
   fetch(`screensavers.json?t=${Date.now()}`, { cache: 'no-cache' })
     .then(res => res.json())
     .then(data => {
-      catalogData = data;
+      catalogData = data.map((item, idx) => ({ ...item, _originalIndex: idx }));
       applyFilters();
+      fetchLiveRatings();
     })
     .catch(err => console.error("Failed loading catalog", err));
+
+  async function fetchLiveRatings() {
+    try {
+      const res = await fetch(`${RATINGS_API_URL}/ratings`, { cache: 'no-cache' });
+      if (res.ok) {
+        liveRatings = await res.json();
+        if (Array.isArray(catalogData)) {
+          catalogData.forEach(item => {
+            const r = liveRatings[item.id] || (item.id && liveRatings[item.id.toLowerCase()]);
+            if (r) {
+              item.likes = Math.max(0, (r.up || 0) - (r.down || 0));
+              item.wilson = r.wilson || 0;
+              item.downloads = r.downloads || 0;
+            } else {
+              item.likes = 0;
+              item.wilson = 0;
+              item.downloads = 0;
+            }
+          });
+          applyFilters();
+        }
+      }
+    } catch (e) {
+      console.warn('Could not fetch live ratings from worker:', e);
+    }
+  }
+
+  async function trackWebDownload(itemId) {
+    try {
+      await fetch(`${RATINGS_API_URL}/download`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ repo_id: itemId, item_kind: 'screensaver' })
+      });
+    } catch (e) {
+      console.warn('Could not track download:', e);
+    }
+  }
+
+  let currentOverlayMode = localStorage.getItem('overlayMode') || 'checkerboard';
+
+  function getItemLikes(item) {
+    const r = liveRatings[item.id] || (item.id && liveRatings[item.id.toLowerCase()]);
+    if (r) {
+      return Math.max(0, (r.up || 0) - (r.down || 0));
+    }
+    return item.likes || 0;
+  }
+
+  function getItemDownloads(item) {
+    const r = liveRatings[item.id] || (item.id && liveRatings[item.id.toLowerCase()]);
+    if (r && r.downloads !== undefined) {
+      return r.downloads;
+    }
+    return item.downloads || 0;
+  }
 
   function renderGallery(items) {
     const grid = document.getElementById('wallpaper-grid');
@@ -39,25 +99,178 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(item => {
       const card = document.createElement('div');
       card.className = 'card';
+      card.id = `item-${item.id}`;
+
+      const authorDisplay = item.authorUrl
+        ? `<a href="${item.authorUrl}" target="_blank" style="color: inherit; text-decoration: underline;">${item.author}</a>`
+        : item.author;
+
+      let attributionHtml = '';
+      if (item.license || item.sourceUrl) {
+        const licText = item.license || 'Open Access';
+        const licLink = item.sourceUrl || item.licenseUrl || '#';
+        attributionHtml = `
+          <div class="card-attribution">
+            <a href="${licLink}" target="_blank" class="license-tag">${licText}</a>
+            ${item.attribution ? `<span style="font-size: 0.7rem; color: var(--text-muted);">${item.attribution}</span>` : ''}
+          </div>
+        `;
+      }
+
+      // Tags HTML
+      let tagsHtml = '';
+      if (Array.isArray(item.tags) && item.tags.length > 0) {
+        const topTags = item.tags.slice(0, 3);
+        const moreCount = item.tags.length - 3;
+        tagsHtml = `
+          <div class="card-tags">
+            ${topTags.map(tag => `<button type="button" class="card-tag-chip" data-tag="${tag}" title="Search #${tag}">#${tag}</button>`).join('')}
+            ${moreCount > 0 ? `<span class="card-tags-more" title="${item.tags.slice(3).join(', ')}">+${moreCount}</span>` : ''}
+          </div>
+        `;
+      }
+
+      // Check if item is an explicit Transparent (e.g. ReaderBackdrop or Transparent category)
+      const isTransparent = (
+        (typeof item.category === 'string' && item.category.toLowerCase().includes('transparent')) ||
+        (Array.isArray(item.category) && item.category.some(c => String(c).toLowerCase().includes('transparent'))) ||
+        (item.id && typeof item.id === 'string' && item.id.startsWith('rb-'))
+      );
+
+      const wrapClass = 'card-image-wrap' + (isTransparent ? ' transparent-bg' : '') + (isTransparent && currentOverlayMode === 'booktext' ? ' book-text-mode' : '');
+
+      const likesCount = getItemLikes(item);
+      const downloadsCount = getItemDownloads(item);
+
       card.innerHTML = `
-        <div class="card-image-wrap">
+        <div class="${wrapClass}">
           <img class="card-img" src="${item.thumbnailUrl}" alt="${item.title}" loading="lazy">
           <div class="card-overlay">
-            <span style="font-size: 0.8rem; background: rgba(0,0,0,0.6); padding: 0.25rem 0.5rem; border-radius: 4px;">by ${item.author}</span>
+            <span style="font-size: 0.8rem; background: rgba(0,0,0,0.6); padding: 0.25rem 0.5rem; border-radius: 4px;">by ${authorDisplay}</span>
           </div>
         </div>
         <div class="card-body">
           <h3 class="card-title">${item.title}</h3>
           <div class="card-meta">
-            <span>🏷️ ${item.category}</span>
-            <span>❤️ ${item.likes}</span>
+            <span class="card-category-badge">🏷️ ${Array.isArray(item.category) ? item.category.join(', ') : item.category}</span>
+            <div class="card-stats">
+              <span class="stat-item rating-stat" title="${likesCount} thumbs up in KOReader">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                <span class="like-count">${likesCount}</span>
+              </span>
+              <span class="stat-item download-stat" title="${downloadsCount} downloads">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span class="download-count">${downloadsCount}</span>
+              </span>
+            </div>
           </div>
+          ${tagsHtml}
+          ${attributionHtml}
           <div class="card-footer">
-            <a href="${item.fullUrl}" target="_blank" download class="btn-primary">Download</a>
+            <a href="${item.fullUrl}" target="_blank" download class="btn-primary card-download-btn" data-id="${item.id}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Download</span>
+            </a>
+            <button type="button" class="btn-copy-link" title="Copy direct link to wallpaper" data-id="${item.id}">🔗</button>
+            <button type="button" class="btn-suggest-change" title="Suggest Change / Report DMCA Takedown" data-id="${item.id}">✏️</button>
           </div>
         </div>
       `;
+
+      // Tag chip click to filter
+      const chipBtns = card.querySelectorAll('.card-tag-chip');
+      chipBtns.forEach(chip => {
+        chip.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const tag = chip.getAttribute('data-tag');
+          if (searchInput) {
+            searchInput.value = tag;
+            applyFilters();
+            searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      });
+
+      // Copy direct link button
+      const copyBtn = card.querySelector('.btn-copy-link');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const permalink = `${window.location.origin}${window.location.pathname}#item-${item.id}`;
+          navigator.clipboard.writeText(permalink).then(() => {
+            copyBtn.classList.add('copied');
+            copyBtn.textContent = '✓';
+            showToast(`Copied direct link for "${item.title}"!`);
+            window.history.replaceState(null, '', `#item-${item.id}`);
+            setTimeout(() => {
+              copyBtn.classList.remove('copied');
+              copyBtn.textContent = '🔗';
+            }, 2000);
+          }).catch(() => {
+            prompt('Copy direct link:', permalink);
+          });
+        });
+      }
+
+      // Download button click tracking
+      const downloadBtn = card.querySelector('.card-download-btn');
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+          const key = item.id;
+          if (!liveRatings[key]) liveRatings[key] = { up: 0, down: 0, wilson: 0, downloads: 0 };
+          liveRatings[key].downloads = (liveRatings[key].downloads || 0) + 1;
+          const dlSpan = card.querySelector('.download-count');
+          if (dlSpan) {
+            dlSpan.textContent = getItemDownloads(item);
+          }
+          trackWebDownload(item.id);
+        });
+      }
+
+      const btnSuggest = card.querySelector('.btn-suggest-change');
+      if (btnSuggest) {
+        btnSuggest.addEventListener('click', () => openSuggestDrawer(item));
+      }
+
       grid.appendChild(card);
+    });
+
+    scrollToCardFromHash();
+  }
+
+  // Transparent Preview Mode Toggle Listener
+  const overlayToggleBtns = document.querySelectorAll('#overlay-mode-toggle .mode-btn');
+  if (overlayToggleBtns.length > 0) {
+    // Set initial active state based on localStorage
+    overlayToggleBtns.forEach(btn => {
+      if (btn.getAttribute('data-mode') === currentOverlayMode) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    overlayToggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mode = btn.getAttribute('data-mode');
+        if (mode === currentOverlayMode) return;
+
+        currentOverlayMode = mode;
+        localStorage.setItem('overlayMode', mode);
+
+        overlayToggleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Apply class to all current transparent wraps
+        const transparentWraps = document.querySelectorAll('.card-image-wrap.transparent-bg');
+        transparentWraps.forEach(wrap => {
+          if (currentOverlayMode === 'booktext') {
+            wrap.classList.add('book-text-mode');
+          } else {
+            wrap.classList.remove('book-text-mode');
+          }
+        });
+      });
     });
   }
 
@@ -70,7 +283,14 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (typeof item.category === 'string') {
       itemCats = item.category.split(',').map(c => c.trim().toLowerCase());
     }
-    return activeCats.some(ac => itemCats.includes(ac));
+
+    return activeCats.some(ac => {
+      const acNorm = ac.toLowerCase();
+      if (acNorm.includes('transparent')) {
+        return itemCats.some(ic => ic.includes('transparent'));
+      }
+      return itemCats.includes(acNorm);
+    });
   }
 
   function getActiveFilterCategories() {
@@ -82,16 +302,42 @@ document.addEventListener('DOMContentLoaded', () => {
   function applyFilters() {
     const activeCats = getActiveFilterCategories();
     const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
+    const sortSelect = document.getElementById('sort-select');
+    const sortBy = sortSelect ? sortSelect.value : 'likes';
 
-    const filtered = catalogData.filter(item => {
+    let filtered = catalogData.filter(item => {
       const matchCat = itemMatchesCategories(item, activeCats);
       const matchSearch = !q || (
         (item.title && item.title.toLowerCase().includes(q)) ||
         (item.author && item.author.toLowerCase().includes(q)) ||
-        (item.category && String(item.category).toLowerCase().includes(q))
+        (item.category && String(item.category).toLowerCase().includes(q)) ||
+        (Array.isArray(item.tags) && item.tags.some(t => String(t).toLowerCase().includes(q)))
       );
       return matchCat && matchSearch;
     });
+
+    if (sortBy === 'downloads') {
+      filtered.sort((a, b) => (getItemDownloads(b) - getItemDownloads(a)) || ((b._originalIndex || 0) - (a._originalIndex || 0)));
+    } else if (sortBy === 'newest') {
+      filtered.sort((a, b) => {
+        if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
+        return (b._originalIndex || 0) - (a._originalIndex || 0);
+      });
+    } else if (sortBy === 'oldest') {
+      filtered.sort((a, b) => {
+        if (a.dateAdded && b.dateAdded) return new Date(a.dateAdded) - new Date(b.dateAdded);
+        return (a._originalIndex || 0) - (b._originalIndex || 0);
+      });
+    } else if (sortBy === 'title-asc') {
+      filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+    } else if (sortBy === 'title-desc') {
+      filtered.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
+    } else if (sortBy === 'author-asc') {
+      filtered.sort((a, b) => (a.author || '').localeCompare(b.author || ''));
+    } else {
+      // Default: Most Popular (Thumbs Up) with newest additions as tiebreaker
+      filtered.sort((a, b) => (getItemLikes(b) - getItemLikes(a)) || ((b._originalIndex || 0) - (a._originalIndex || 0)));
+    }
 
     renderGallery(filtered);
   }
@@ -126,6 +372,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
     searchInput.addEventListener('input', () => {
+      applyFilters();
+    });
+  }
+
+  // Sort dropdown listener
+  const sortSelect = document.getElementById('sort-select');
+  if (sortSelect) {
+    sortSelect.addEventListener('change', () => {
       applyFilters();
     });
   }
@@ -617,6 +871,8 @@ document.addEventListener('DOMContentLoaded', () => {
         imageUrl = document.getElementById('sub-url').value;
       }
 
+      const subTags = document.getElementById('sub-tags') ? document.getElementById('sub-tags').value.trim() : '';
+
       const issueTitle = encodeURIComponent(`Screensaver Submission: ${title}`);
       const bodyLines = [
         `### Screensaver Submission`,
@@ -624,8 +880,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `**Title:** ${title}`,
         `**Author:** ${author}`,
         `**Category:** ${category}`,
-        `**Image:** ${imageUrl}`,
       ];
+
+      if (subTags) {
+        bodyLines.push(`**Tags:** ${subTags}`);
+      }
+
+      bodyLines.push(`**Image:** ${imageUrl}`);
 
       if (selectedFileMeta) {
         bodyLines.push(`**Specs:** ${selectedFileMeta}`);
@@ -634,11 +895,6 @@ document.addEventListener('DOMContentLoaded', () => {
         bodyLines.push(``, `> 💡 ${fileNotice}`);
       }
 
-      bodyLines.push(
-        ``,
-        `> ☑️ **Community Agreement:** Submitted freely for community use under open non-commercial terms. Contributor confirms catalog maintainers do not claim ownership and generate zero profit.`
-      );
-
       bodyLines.push(``, `---`, `*Submitted via Storefront Screensaver Catalog Site*`);
 
       const issueBody = encodeURIComponent(bodyLines.join('\n'));
@@ -646,6 +902,522 @@ document.addEventListener('DOMContentLoaded', () => {
       const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&body=${issueBody}`;
 
       window.open(githubIssueUrl, '_blank');
+    });
+  }
+
+  // --- Submission Mode Switcher: Single vs Bulk ---
+  const btnSubmitSingle = document.getElementById('btn-submit-single');
+  const btnSubmitBulk = document.getElementById('btn-submit-bulk');
+  const submitFormEl = document.getElementById('submit-form');
+  const bulkSubmitContainer = document.getElementById('bulk-submit-container');
+
+  if (btnSubmitSingle && btnSubmitBulk) {
+    btnSubmitSingle.addEventListener('click', () => {
+      btnSubmitSingle.classList.add('active');
+      btnSubmitBulk.classList.remove('active');
+      if (submitFormEl) submitFormEl.style.display = 'block';
+      if (bulkSubmitContainer) bulkSubmitContainer.style.display = 'none';
+    });
+
+    btnSubmitBulk.addEventListener('click', () => {
+      btnSubmitBulk.classList.add('active');
+      btnSubmitSingle.classList.remove('active');
+      if (submitFormEl) submitFormEl.style.display = 'none';
+      if (bulkSubmitContainer) bulkSubmitContainer.style.display = 'block';
+    });
+  }
+
+  // --- Bulk Queue Logic ---
+  const bulkDropzoneBox = document.getElementById('bulk-dropzone-box');
+  const subBulkFiles = document.getElementById('sub-bulk-files');
+  const bulkQueueList = document.getElementById('bulk-queue-list');
+  const btnSubmitBulkAll = document.getElementById('btn-submit-bulk-all');
+
+  let bulkQueue = []; // items: { id, file, title, author, category, previewUrl }
+
+  if (bulkDropzoneBox && subBulkFiles) {
+    bulkDropzoneBox.addEventListener('click', () => subBulkFiles.click());
+
+    ['dragenter', 'dragover'].forEach(evt => {
+      bulkDropzoneBox.addEventListener(evt, (e) => {
+        e.preventDefault();
+        bulkDropzoneBox.classList.add('dragover');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+      bulkDropzoneBox.addEventListener(evt, (e) => {
+        e.preventDefault();
+        bulkDropzoneBox.classList.remove('dragover');
+      });
+    });
+
+    bulkDropzoneBox.addEventListener('drop', (e) => {
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        handleBulkFiles(e.dataTransfer.files);
+      }
+    });
+
+    subBulkFiles.addEventListener('change', () => {
+      if (subBulkFiles.files && subBulkFiles.files.length > 0) {
+        handleBulkFiles(subBulkFiles.files);
+      }
+    });
+  }
+
+  function handleBulkFiles(files) {
+    const fileArray = Array.from(files).filter(f => f.type.startsWith('image/')).slice(0, 10);
+    fileArray.forEach(file => {
+      const qId = 'item-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4);
+      const cleanTitle = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+      const formattedTitle = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
+
+      const queueItem = {
+        id: qId,
+        file: file,
+        title: formattedTitle,
+        author: 'Community',
+        category: 'Minimalist',
+        previewUrl: URL.createObjectURL(file)
+      };
+      bulkQueue.push(queueItem);
+    });
+    renderBulkQueue();
+  }
+
+  function renderBulkQueue() {
+    if (!bulkQueueList) return;
+    bulkQueueList.innerHTML = '';
+
+    if (bulkQueue.length === 0) {
+      if (btnSubmitBulkAll) btnSubmitBulkAll.style.display = 'none';
+      return;
+    }
+
+    if (btnSubmitBulkAll) {
+      btnSubmitBulkAll.style.display = 'block';
+      btnSubmitBulkAll.textContent = `Submit All (${bulkQueue.length}) Wallpapers →`;
+    }
+
+    bulkQueue.forEach((item, idx) => {
+      const card = document.createElement('div');
+      card.className = 'bulk-item-card';
+      card.innerHTML = `
+        <img class="bulk-item-thumb" src="${item.previewUrl}" alt="Queue Thumbnail">
+        <div class="bulk-item-fields">
+          <input type="text" class="form-control bulk-input-title" data-idx="${idx}" value="${item.title}" placeholder="Title" required>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="text" class="form-control bulk-input-author" data-idx="${idx}" value="${item.author}" placeholder="Author / Artist" required style="flex: 1;">
+            <select class="form-control bulk-input-category" data-idx="${idx}" style="flex: 1;">
+              <option value="Minimalist" ${item.category === 'Minimalist' ? 'selected' : ''}>Minimalist</option>
+              <option value="Nature" ${item.category === 'Nature' ? 'selected' : ''}>Nature</option>
+              <option value="Architecture" ${item.category === 'Architecture' ? 'selected' : ''}>Architecture</option>
+              <option value="Fantasy" ${item.category === 'Fantasy' ? 'selected' : ''}>Fantasy</option>
+              <option value="Sci-Fi" ${item.category === 'Sci-Fi' ? 'selected' : ''}>Sci-Fi</option>
+              <option value="Anime" ${item.category === 'Anime' ? 'selected' : ''}>Anime</option>
+              <option value="Abstract" ${item.category === 'Abstract' ? 'selected' : ''}>Abstract</option>
+              <option value="Art" ${item.category === 'Art' ? 'selected' : ''}>Art</option>
+              <option value="Pop Culture" ${item.category === 'Pop Culture' ? 'selected' : ''}>Pop Culture</option>
+              <option value="Quotes" ${item.category === 'Quotes' ? 'selected' : ''}>Quotes</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" class="btn-remove bulk-btn-remove" data-idx="${idx}">✕</button>
+      `;
+
+      card.querySelector('.bulk-input-title').addEventListener('input', (e) => {
+        bulkQueue[idx].title = e.target.value;
+      });
+      card.querySelector('.bulk-input-author').addEventListener('input', (e) => {
+        bulkQueue[idx].author = e.target.value;
+      });
+      card.querySelector('.bulk-input-category').addEventListener('change', (e) => {
+        bulkQueue[idx].category = e.target.value;
+      });
+      card.querySelector('.bulk-btn-remove').addEventListener('click', () => {
+        bulkQueue.splice(idx, 1);
+        renderBulkQueue();
+      });
+
+      bulkQueueList.appendChild(card);
+    });
+  }
+
+  if (btnSubmitBulkAll) {
+    btnSubmitBulkAll.addEventListener('click', async () => {
+      if (bulkQueue.length === 0) return;
+
+      btnSubmitBulkAll.disabled = true;
+      btnSubmitBulkAll.textContent = `Uploading batch (1 of ${bulkQueue.length})... ⏳`;
+
+      for (let i = 0; i < bulkQueue.length; i++) {
+        const item = bulkQueue[i];
+        btnSubmitBulkAll.textContent = `Processing image ${i + 1} of ${bulkQueue.length}... ⏳`;
+
+        let imageUrl = await uploadImageFile(item.file);
+        if (!imageUrl) {
+          imageUrl = `[Uploaded File: ${item.file.name}]`;
+        }
+
+        const issueTitle = encodeURIComponent(`Screensaver Submission: ${item.title}`);
+        const bodyLines = [
+          `### Screensaver Submission`,
+          ``,
+          `**Title:** ${item.title}`,
+          `**Author:** ${item.author}`,
+          `**Category:** ${item.category}`,
+          `**Image:** ${imageUrl}`,
+          `**Specs:** Batch upload (${(item.file.size / 1024).toFixed(0)} KB)`,
+          ``,
+          `---`,
+          `*Submitted via Storefront Screensaver Catalog Site (Batch Upload ${i + 1}/${bulkQueue.length})*`
+        ];
+
+        const issueBody = encodeURIComponent(bodyLines.join('\n'));
+        const repoUrl = 'https://github.com/ultimatejimmy/storefront-screensavers';
+        const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&body=${issueBody}`;
+
+        window.open(githubIssueUrl, '_blank');
+      }
+
+      btnSubmitBulkAll.disabled = false;
+      btnSubmitBulkAll.textContent = `Submit All (${bulkQueue.length}) Wallpapers →`;
+      alert(`Opened ${bulkQueue.length} GitHub submission tab(s)! Click submit on each tab to finish.`);
+    });
+  }
+
+  // --- Toast Notification Helper ---
+  function showToast(message) {
+    let toast = document.getElementById('catalog-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'catalog-toast';
+      toast.className = 'toast-notice';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2800);
+  }
+
+  // --- Scroll to Card from URL Hash ---
+  function scrollToCardFromHash() {
+    if (!window.location.hash) return;
+    const rawHash = window.location.hash.replace(/^#/, '');
+    const targetId = rawHash.startsWith('item-') ? rawHash : `item-${rawHash}`;
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      setTimeout(() => {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetEl.classList.add('card-highlight');
+        setTimeout(() => targetEl.classList.remove('card-highlight'), 3000);
+      }, 300);
+    }
+  }
+  window.addEventListener('hashchange', scrollToCardFromHash);
+
+  const drawerBackdrop = document.getElementById('suggest-drawer-backdrop');
+  const suggestDrawer = document.getElementById('suggest-drawer');
+  const drawerHeadingTitle = document.getElementById('drawer-heading-title');
+  const btnCloseSuggest = document.getElementById('btn-close-suggest');
+  const suggestForm = document.getElementById('suggest-form');
+  const suggestTypeSelect = document.getElementById('suggest-type');
+  const drawerTabBtns = document.querySelectorAll('#drawer-action-tabs .drawer-tab-btn');
+  const groupSuggestUrl = document.getElementById('group-suggest-url');
+  const groupDmcaFields = document.getElementById('group-dmca-fields');
+  const groupMetadataFields = document.getElementById('group-metadata-fields');
+  const labelSuggestReason = document.getElementById('label-suggest-reason');
+  const btnSubmitSuggest = document.getElementById('btn-submit-suggest');
+
+  function setDrawerTab(type) {
+    if (suggestTypeSelect) {
+      suggestTypeSelect.value = type;
+    }
+    drawerTabBtns.forEach(btn => {
+      if (btn.getAttribute('data-type') === type) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    if (drawerHeadingTitle) {
+      if (type === 'dmca') {
+        drawerHeadingTitle.textContent = '🛡️ File DMCA Takedown Notice';
+      } else if (type === 'replacement') {
+        drawerHeadingTitle.textContent = '🖼️ Suggest Replacement Image';
+      } else if (type === 'issue') {
+        drawerHeadingTitle.textContent = '⚠️ Report Issue / Quality';
+      } else {
+        drawerHeadingTitle.textContent = '✏️ Suggest a Change';
+      }
+    }
+
+    updateDrawerFormState();
+  }
+
+  drawerTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const type = btn.getAttribute('data-type');
+      setDrawerTab(type);
+    });
+  });
+
+  function updateDrawerFormState() {
+    if (!suggestTypeSelect) return;
+    const type = suggestTypeSelect.value;
+    const isDmca = (type === 'dmca');
+    const isReplacement = (type === 'replacement');
+
+    if (groupDmcaFields) {
+      groupDmcaFields.style.display = isDmca ? 'block' : 'none';
+    }
+    if (groupMetadataFields) {
+      groupMetadataFields.style.display = isDmca ? 'none' : 'block';
+    }
+    if (groupSuggestUrl) {
+      groupSuggestUrl.style.display = isReplacement ? 'block' : 'none';
+    }
+    if (labelSuggestReason) {
+      labelSuggestReason.textContent = isDmca 
+        ? 'Infringement Description & Ownership Details' 
+        : 'Reason / Additional Notes';
+    }
+    if (btnSubmitSuggest) {
+      btnSubmitSuggest.textContent = isDmca 
+        ? 'Submit DMCA Notice on GitHub →' 
+        : 'Submit Suggestion on GitHub →';
+    }
+  }
+
+  function openSuggestDrawer(item, defaultType = 'metadata') {
+    if (!suggestDrawer || !drawerBackdrop) return;
+
+    document.getElementById('suggest-item-id').value = item.id || '';
+    document.getElementById('suggest-target-img').src = item.thumbnailUrl || '';
+    document.getElementById('suggest-target-title').textContent = item.title || 'Wallpaper';
+    document.getElementById('suggest-target-author').textContent = `by ${item.author || 'Unknown'}`;
+
+    setDrawerTab(defaultType);
+
+    document.getElementById('suggest-title').value = item.title || '';
+    document.getElementById('suggest-author').value = item.author || '';
+    document.getElementById('suggest-category').value = item.category || '';
+    const suggestTagsEl = document.getElementById('suggest-tags');
+    if (suggestTagsEl) {
+      suggestTagsEl.value = Array.isArray(item.tags) ? item.tags.join(', ') : (item.tags || '');
+    }
+    document.getElementById('suggest-reason').value = '';
+
+    const dmcaOwnerEl = document.getElementById('dmca-owner');
+    if (dmcaOwnerEl) dmcaOwnerEl.value = '';
+    const dmcaProofEl = document.getElementById('dmca-proof');
+    if (dmcaProofEl) dmcaProofEl.value = '';
+
+    // Reset replacement file upload state
+    resetReplaceFileState();
+
+    suggestDrawer.classList.add('open');
+    drawerBackdrop.classList.add('open');
+  }
+
+  function closeSuggestDrawer() {
+    if (!suggestDrawer || !drawerBackdrop) return;
+    suggestDrawer.classList.remove('open');
+    drawerBackdrop.classList.remove('open');
+    resetReplaceFileState();
+  }
+
+  // Replacement File Upload Handler
+  const replaceDropzone = document.getElementById('replace-dropzone');
+  const replaceFileInput = document.getElementById('replace-file-input');
+  const replacePrompt = document.getElementById('replace-dropzone-prompt');
+  const replacePreview = document.getElementById('replace-dropzone-preview');
+  const replacePreviewImg = document.getElementById('replace-preview-img');
+  const replacePreviewName = document.getElementById('replace-preview-name');
+  const replacePreviewMeta = document.getElementById('replace-preview-meta');
+  const btnRemoveReplaceFile = document.getElementById('btn-remove-replace-file');
+
+  let replaceSelectedFile = null;
+  let replaceSelectedMeta = '';
+
+  function resetReplaceFileState() {
+    replaceSelectedFile = null;
+    replaceSelectedMeta = '';
+    if (replaceFileInput) replaceFileInput.value = '';
+    if (replacePreviewImg) replacePreviewImg.src = '';
+    if (replacePrompt) replacePrompt.style.display = 'flex';
+    if (replacePreview) replacePreview.style.display = 'none';
+    const suggestUrlInput = document.getElementById('suggest-url');
+    if (suggestUrlInput) suggestUrlInput.value = '';
+  }
+
+  if (replaceDropzone && replaceFileInput) {
+    replaceDropzone.addEventListener('click', (e) => {
+      if (e.target !== btnRemoveReplaceFile && !e.target.closest('#btn-remove-replace-file')) {
+        replaceFileInput.click();
+      }
+    });
+
+    replaceFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) handleReplaceFile(file);
+    });
+
+    replaceDropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      replaceDropzone.classList.add('dragover');
+    });
+
+    replaceDropzone.addEventListener('dragleave', () => {
+      replaceDropzone.classList.remove('dragover');
+    });
+
+    replaceDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      replaceDropzone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file) handleReplaceFile(file);
+    });
+  }
+
+  if (btnRemoveReplaceFile) {
+    btnRemoveReplaceFile.addEventListener('click', (e) => {
+      e.stopPropagation();
+      resetReplaceFileState();
+    });
+  }
+
+  function handleReplaceFile(file) {
+    if (!file || !file.type.startsWith('image/')) {
+      alert('Please select a valid image file (PNG, JPG, or WebP).');
+      return;
+    }
+
+    replaceSelectedFile = file;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (replacePreviewImg) replacePreviewImg.src = e.target.result;
+      const img = new Image();
+      img.onload = () => {
+        const kb = (file.size / 1024).toFixed(0);
+        replaceSelectedMeta = `${img.width} × ${img.height} px · ${kb} KB`;
+        if (replacePreviewName) replacePreviewName.textContent = file.name;
+        if (replacePreviewMeta) replacePreviewMeta.textContent = replaceSelectedMeta;
+        if (replacePrompt) replacePrompt.style.display = 'none';
+        if (replacePreview) replacePreview.style.display = 'flex';
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  if (btnCloseSuggest) btnCloseSuggest.addEventListener('click', closeSuggestDrawer);
+  if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeSuggestDrawer);
+  if (suggestTypeSelect) suggestTypeSelect.addEventListener('change', updateDrawerFormState);
+
+  if (suggestForm) {
+    suggestForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const itemId = document.getElementById('suggest-item-id').value;
+      const targetTitle = document.getElementById('suggest-target-title').textContent;
+      const type = suggestTypeSelect ? suggestTypeSelect.value : 'metadata';
+      const isDmca = (type === 'dmca');
+      const isReplacement = (type === 'replacement');
+
+      const typeLabels = {
+        metadata: 'Metadata Correction',
+        replacement: 'Replacement Image',
+        dmca: 'DMCA / Copyright Infringement Notice',
+        issue: 'Low Quality / Issue Report'
+      };
+
+      const issueTitle = encodeURIComponent(isDmca ? `DMCA Takedown Notice: [${itemId}] ${targetTitle}` : `Change Suggestion: [${itemId}] ${targetTitle}`);
+      const issueLabel = isDmca ? 'dmca-takedown' : 'suggest-change';
+
+      let replacementImageUrl = '';
+      if (isReplacement) {
+        const enteredUrl = document.getElementById('suggest-url') ? document.getElementById('suggest-url').value.trim() : '';
+        if (replaceSelectedFile) {
+          if (btnSubmitSuggest) {
+            btnSubmitSuggest.disabled = true;
+            btnSubmitSuggest.textContent = 'Uploading replacement image... ⏳';
+          }
+          const uploadedUrl = await uploadImageFile(replaceSelectedFile);
+          replacementImageUrl = uploadedUrl || `[Uploaded Image: ${replaceSelectedFile.name}]`;
+          if (btnSubmitSuggest) {
+            btnSubmitSuggest.disabled = false;
+            btnSubmitSuggest.textContent = 'Submit Suggestion on GitHub →';
+          }
+        } else if (enteredUrl) {
+          replacementImageUrl = enteredUrl;
+        } else {
+          alert('Please upload an image file or enter an image URL for the replacement.');
+          return;
+        }
+      }
+
+      const bodyLines = [
+        isDmca ? `### DMCA / Copyright Infringement Notice` : `### Catalog Change Suggestion`,
+        ``,
+        `**Target Item ID:** \`${itemId}\``,
+        `**Target Title:** ${targetTitle}`,
+        `**Report / Change Type:** ${typeLabels[type] || type}`,
+        ``,
+      ];
+
+      if (isDmca) {
+        const dmcaOwner = document.getElementById('dmca-owner') ? document.getElementById('dmca-owner').value.trim() : '';
+        const dmcaProof = document.getElementById('dmca-proof') ? document.getElementById('dmca-proof').value.trim() : '';
+        const reason = document.getElementById('suggest-reason').value;
+
+        bodyLines.push(
+          `**Copyright Owner / Authorized Representative:** ${dmcaOwner || 'Not specified'}`,
+          `**Proof of Ownership / Original Source:** ${dmcaProof || 'Attached below'}`,
+          ``,
+          `**Infringement Details:**`,
+          reason,
+          ``,
+          `**Statement of Good Faith:**`,
+          `I have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.`
+        );
+      } else {
+        const newTitle = document.getElementById('suggest-title').value;
+        const newAuthor = document.getElementById('suggest-author').value;
+        const newCategory = document.getElementById('suggest-category').value;
+        const newTags = document.getElementById('suggest-tags') ? document.getElementById('suggest-tags').value.trim() : '';
+        const reason = document.getElementById('suggest-reason').value;
+
+        bodyLines.push(
+          `**Proposed Title:** ${newTitle}`,
+          `**Proposed Author:** ${newAuthor}`,
+          `**Proposed Category:** ${newCategory}`,
+        );
+
+        if (newTags) {
+          bodyLines.push(`**Proposed Tags:** ${newTags}`);
+        }
+
+        if (isReplacement && replacementImageUrl) {
+          bodyLines.push(`**Replacement Image:** ${replacementImageUrl}`);
+          if (replaceSelectedMeta) {
+            bodyLines.push(`**Replacement Specs:** ${replaceSelectedMeta}`);
+          }
+        }
+
+        bodyLines.push(``, `**Reason / Details:**`, reason);
+      }
+
+      bodyLines.push(``, `---`, `*Submitted via Storefront Screensaver Catalog Site*`);
+
+      const issueBody = encodeURIComponent(bodyLines.join('\n'));
+      const repoUrl = 'https://github.com/ultimatejimmy/storefront-screensavers';
+      const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&labels=${issueLabel}&body=${issueBody}`;
+
+      window.open(githubIssueUrl, '_blank');
+      closeSuggestDrawer();
     });
   }
 });
