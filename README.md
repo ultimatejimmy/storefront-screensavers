@@ -1,10 +1,11 @@
-# E-Reader Screensavers & Wallpaper Catalog
+![GitHub Pages](https://img.shields.io/badge/hosted--on-GitHub%20Pages-purple.svg)
+# Storefront E-Reader Screensavers & Wallpaper Catalog
 
 A community-driven, curated catalog of e-ink screensavers and lock screen wallpapers for Kindle, Kobo, Boox, PocketBook, and other e-readers. Powered by the [Storefront KOReader Plugin](https://github.com/ultimatejimmy/storefront.koplugin).
 
 🌐 **[Browse the Web Gallery & Catalog Page](https://ultimatejimmy.github.io/storefront-screensavers/)**
 
-![GitHub Pages](https://img.shields.io/badge/hosted--on-GitHub%20Pages-purple.svg)
+
 
 ---
 
@@ -64,7 +65,7 @@ All open access, Public Domain, CC0, and community-shared screensavers are credi
 
 ---
 
-## ⚖️ Legal, Ownership & Community Policy
+## Legal, Ownership & Community Policy
 
 This project is a 100% free, open-source, and non-commercial community initiative:
 - **No Ownership Claimed:** The maintainers do not own or claim copyright over community-submitted wallpapers. Artwork remains the intellectual property of its original creators.
@@ -73,16 +74,6 @@ This project is a 100% free, open-source, and non-commercial community initiativ
 - **DMCA / Takedown:** We respect intellectual property rights. To request image removal, open an issue labeled `dmca-takedown` with the wallpaper title and proof of ownership. Takedown requests are reviewed and processed within 24–48 hours.
 
 For complete details, please see our [Legal Disclaimers, Submission Terms & DMCA Policy](LEGAL.md).
-
----
-
-## 🚀 GitHub Pages Setup
-
-To enable the web gallery on your fork/repo:
-1. Go to **Settings** -> **Pages**.
-2. Select **Source**: `Deploy from a branch`.
-3. Choose branch `main` and folder `/ (root)`.
-4. Click **Save**.
 
 ---
 
