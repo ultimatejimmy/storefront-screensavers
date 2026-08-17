@@ -12653,41 +12653,6 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-ereader-frame-with-stylus.png"
   },
   {
-    "id": "outchy-reading-literature-word-cloud",
-    "title": "Reading & Literature Word Cloud",
-    "author": "outchy",
-    "authorUrl": "https://www.reddit.com/user/outchy/",
-    "category": [
-      "Quotes",
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share",
-    "licenseUrl": "https://www.reddit.com/user/outchy/",
-    "sourceUrl": "https://www.reddit.com/user/outchy/",
-    "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-reading-literature-word-cloud.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-reading-literature-word-cloud.png",
-    "downloads": 0,
-    "likes": 0,
-    "tags": [
-      "library",
-      "minimalist row",
-      "open books",
-      "pages",
-      "reading",
-      "study",
-      "transparent"
-    ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-reading-literature-word-cloud.png"
-  },
-  {
     "id": "outchy-ripped-paper-hole-reveal",
     "title": "Ripped Paper Hole Reveal",
     "author": "outchy",

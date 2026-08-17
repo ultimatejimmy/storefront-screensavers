@@ -394,7 +394,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Popeye Ready for Action | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Popeye Reading a Large Book | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | E-Reader Frame with Stylus Pen | outchy | Minimalist, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Reading & Literature Word Cloud | outchy | Quotes, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Ripped Paper Hole Reveal | outchy | Abstract, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Retro Tin Toy Robot | outchy | Sci-Fi, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Crinkled Plastic Wrap Texture | outchy | Abstract, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
