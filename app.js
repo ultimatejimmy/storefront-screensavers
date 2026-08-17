@@ -42,9 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (r) {
               item.likes = Math.max(0, (r.up || 0) - (r.down || 0));
               item.wilson = r.wilson || 0;
+              item.downloads = r.downloads || 0;
             } else {
               item.likes = 0;
               item.wilson = 0;
+              item.downloads = 0;
             }
           });
           applyFilters();
@@ -55,8 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  async function trackWebDownload(itemId) {
+    try {
+      await fetch(`${RATINGS_API_URL}/download`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ repo_id: itemId, item_kind: 'screensaver' })
+      });
+    } catch (e) {
+      console.warn('Could not track download:', e);
+    }
+  }
+
   let currentOverlayMode = localStorage.getItem('overlayMode') || 'checkerboard';
-  let userDownloads = JSON.parse(localStorage.getItem('storefront_user_downloads') || '{}');
 
   function getItemLikes(item) {
     const r = liveRatings[item.id] || (item.id && liveRatings[item.id.toLowerCase()]);
@@ -67,9 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getItemDownloads(item) {
-    const baseDownloads = item.downloads || 0;
-    const addedDownloads = userDownloads[item.id] || 0;
-    return baseDownloads + addedDownloads;
+    const r = liveRatings[item.id] || (item.id && liveRatings[item.id.toLowerCase()]);
+    if (r && r.downloads !== undefined) {
+      return r.downloads;
+    }
+    return item.downloads || 0;
   }
 
   function renderGallery(items) {
@@ -201,12 +216,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const downloadBtn = card.querySelector('.card-download-btn');
       if (downloadBtn) {
         downloadBtn.addEventListener('click', () => {
-          userDownloads[item.id] = (userDownloads[item.id] || 0) + 1;
-          localStorage.setItem('storefront_user_downloads', JSON.stringify(userDownloads));
+          const key = item.id;
+          if (!liveRatings[key]) liveRatings[key] = { up: 0, down: 0, wilson: 0, downloads: 0 };
+          liveRatings[key].downloads = (liveRatings[key].downloads || 0) + 1;
           const dlSpan = card.querySelector('.download-count');
           if (dlSpan) {
             dlSpan.textContent = getItemDownloads(item);
           }
+          trackWebDownload(item.id);
         });
       }
 
@@ -1199,6 +1216,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const dmcaProofEl = document.getElementById('dmca-proof');
     if (dmcaProofEl) dmcaProofEl.value = '';
 
+    // Reset replacement file upload state
+    resetReplaceFileState();
+
     suggestDrawer.classList.add('open');
     drawerBackdrop.classList.add('open');
   }
@@ -1207,6 +1227,91 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!suggestDrawer || !drawerBackdrop) return;
     suggestDrawer.classList.remove('open');
     drawerBackdrop.classList.remove('open');
+    resetReplaceFileState();
+  }
+
+  // Replacement File Upload Handler
+  const replaceDropzone = document.getElementById('replace-dropzone');
+  const replaceFileInput = document.getElementById('replace-file-input');
+  const replacePrompt = document.getElementById('replace-dropzone-prompt');
+  const replacePreview = document.getElementById('replace-dropzone-preview');
+  const replacePreviewImg = document.getElementById('replace-preview-img');
+  const replacePreviewName = document.getElementById('replace-preview-name');
+  const replacePreviewMeta = document.getElementById('replace-preview-meta');
+  const btnRemoveReplaceFile = document.getElementById('btn-remove-replace-file');
+
+  let replaceSelectedFile = null;
+  let replaceSelectedMeta = '';
+
+  function resetReplaceFileState() {
+    replaceSelectedFile = null;
+    replaceSelectedMeta = '';
+    if (replaceFileInput) replaceFileInput.value = '';
+    if (replacePreviewImg) replacePreviewImg.src = '';
+    if (replacePrompt) replacePrompt.style.display = 'flex';
+    if (replacePreview) replacePreview.style.display = 'none';
+    const suggestUrlInput = document.getElementById('suggest-url');
+    if (suggestUrlInput) suggestUrlInput.value = '';
+  }
+
+  if (replaceDropzone && replaceFileInput) {
+    replaceDropzone.addEventListener('click', (e) => {
+      if (e.target !== btnRemoveReplaceFile && !e.target.closest('#btn-remove-replace-file')) {
+        replaceFileInput.click();
+      }
+    });
+
+    replaceFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) handleReplaceFile(file);
+    });
+
+    replaceDropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      replaceDropzone.classList.add('dragover');
+    });
+
+    replaceDropzone.addEventListener('dragleave', () => {
+      replaceDropzone.classList.remove('dragover');
+    });
+
+    replaceDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      replaceDropzone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file) handleReplaceFile(file);
+    });
+  }
+
+  if (btnRemoveReplaceFile) {
+    btnRemoveReplaceFile.addEventListener('click', (e) => {
+      e.stopPropagation();
+      resetReplaceFileState();
+    });
+  }
+
+  function handleReplaceFile(file) {
+    if (!file || !file.type.startsWith('image/')) {
+      alert('Please select a valid image file (PNG, JPG, or WebP).');
+      return;
+    }
+
+    replaceSelectedFile = file;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (replacePreviewImg) replacePreviewImg.src = e.target.result;
+      const img = new Image();
+      img.onload = () => {
+        const kb = (file.size / 1024).toFixed(0);
+        replaceSelectedMeta = `${img.width} × ${img.height} px · ${kb} KB`;
+        if (replacePreviewName) replacePreviewName.textContent = file.name;
+        if (replacePreviewMeta) replacePreviewMeta.textContent = replaceSelectedMeta;
+        if (replacePrompt) replacePrompt.style.display = 'none';
+        if (replacePreview) replacePreview.style.display = 'flex';
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
   }
 
   if (btnCloseSuggest) btnCloseSuggest.addEventListener('click', closeSuggestDrawer);
@@ -1214,12 +1319,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (suggestTypeSelect) suggestTypeSelect.addEventListener('change', updateDrawerFormState);
 
   if (suggestForm) {
-    suggestForm.addEventListener('submit', (e) => {
+    suggestForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const itemId = document.getElementById('suggest-item-id').value;
       const targetTitle = document.getElementById('suggest-target-title').textContent;
       const type = suggestTypeSelect ? suggestTypeSelect.value : 'metadata';
       const isDmca = (type === 'dmca');
+      const isReplacement = (type === 'replacement');
 
       const typeLabels = {
         metadata: 'Metadata Correction',
@@ -1230,6 +1336,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const issueTitle = encodeURIComponent(isDmca ? `DMCA Takedown Notice: [${itemId}] ${targetTitle}` : `Change Suggestion: [${itemId}] ${targetTitle}`);
       const issueLabel = isDmca ? 'dmca-takedown' : 'suggest-change';
+
+      let replacementImageUrl = '';
+      if (isReplacement) {
+        const enteredUrl = document.getElementById('suggest-url') ? document.getElementById('suggest-url').value.trim() : '';
+        if (replaceSelectedFile) {
+          if (btnSubmitSuggest) {
+            btnSubmitSuggest.disabled = true;
+            btnSubmitSuggest.textContent = 'Uploading replacement image... ⏳';
+          }
+          const uploadedUrl = await uploadImageFile(replaceSelectedFile);
+          replacementImageUrl = uploadedUrl || `[Uploaded Image: ${replaceSelectedFile.name}]`;
+          if (btnSubmitSuggest) {
+            btnSubmitSuggest.disabled = false;
+            btnSubmitSuggest.textContent = 'Submit Suggestion on GitHub →';
+          }
+        } else if (enteredUrl) {
+          replacementImageUrl = enteredUrl;
+        } else {
+          alert('Please upload an image file or enter an image URL for the replacement.');
+          return;
+        }
+      }
 
       const bodyLines = [
         isDmca ? `### DMCA / Copyright Infringement Notice` : `### Catalog Change Suggestion`,
@@ -1260,7 +1388,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const newAuthor = document.getElementById('suggest-author').value;
         const newCategory = document.getElementById('suggest-category').value;
         const newTags = document.getElementById('suggest-tags') ? document.getElementById('suggest-tags').value.trim() : '';
-        const newUrl = document.getElementById('suggest-url') ? document.getElementById('suggest-url').value.trim() : '';
         const reason = document.getElementById('suggest-reason').value;
 
         bodyLines.push(
@@ -1273,8 +1400,11 @@ document.addEventListener('DOMContentLoaded', () => {
           bodyLines.push(`**Proposed Tags:** ${newTags}`);
         }
 
-        if (type === 'replacement' && newUrl) {
-          bodyLines.push(`**Replacement Image URL:** ${newUrl}`);
+        if (isReplacement && replacementImageUrl) {
+          bodyLines.push(`**Replacement Image:** ${replacementImageUrl}`);
+          if (replaceSelectedMeta) {
+            bodyLines.push(`**Replacement Specs:** ${replaceSelectedMeta}`);
+          }
         }
 
         bodyLines.push(``, `**Reason / Details:**`, reason);

@@ -308,9 +308,29 @@
           </div>
         </div>
 
+        <!-- Replacement Image Fields (Upload + URL) -->
         <div class="form-group" id="group-suggest-url" style="display: none;">
-          <label class="form-label" for="suggest-url">Replacement Image Direct URL</label>
-          <input type="url" id="suggest-url" class="form-control" placeholder="https://...">
+          <label class="form-label">Replacement Image Source</label>
+          <input type="file" id="replace-file-input" accept="image/*" style="display: none;">
+          
+          <div id="replace-dropzone" class="replace-dropzone">
+            <div id="replace-dropzone-prompt">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <span>Click or drag image file to upload</span>
+              <small style="color: var(--text-muted); font-size: 0.75rem;">PNG, JPG, or WebP</small>
+            </div>
+            <div id="replace-dropzone-preview" style="display: none; align-items: center; gap: 0.75rem;">
+              <img id="replace-preview-img" src="" alt="Replacement Preview" style="width: 50px; height: 66px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-color);">
+              <div style="display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; text-align: left;">
+                <strong id="replace-preview-name" style="font-size: 0.82rem; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;"></strong>
+                <span id="replace-preview-meta" style="font-size: 0.72rem; color: var(--text-muted);"></span>
+                <button type="button" id="btn-remove-replace-file" style="background: none; border: none; color: #f87171; font-size: 0.75rem; cursor: pointer; text-align: left; padding: 0;">✕ Remove</button>
+              </div>
+            </div>
+          </div>
+
+          <label class="form-label" for="suggest-url" style="font-size: 0.8rem; margin-top: 0.5rem;">Or Direct Image URL (optional)</label>
+          <input type="url" id="suggest-url" class="form-control" placeholder="https://example.com/image.jpg">
         </div>
 
         <div class="form-group">
