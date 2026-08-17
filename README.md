@@ -74,9 +74,3 @@ This project is a 100% free, open-source, and non-commercial community initiativ
 - **DMCA / Takedown:** We respect intellectual property rights. To request image removal, open an issue labeled `dmca-takedown` with the wallpaper title and proof of ownership. Takedown requests are reviewed and processed within 24–48 hours.
 
 For complete details, please see our [Legal Disclaimers, Submission Terms & DMCA Policy](LEGAL.md).
-
----
-
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for details.
