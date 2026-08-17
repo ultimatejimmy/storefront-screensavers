@@ -35,14 +35,15 @@ This repository serves two main purposes:
 
 ---
 
-## ⚖️ Legal & Takedown Policy (DMCA)
+## ⚖️ Legal, Ownership & Community Policy
 
-All screensavers hosted or linked in this repository are submitted by the community. We respect intellectual property rights and handle copyright claims promptly.
+This project is a 100% free, open-source, and non-commercial community initiative:
+- **No Ownership Claimed:** The maintainers do not own or claim copyright over community-submitted wallpapers. Artwork remains the intellectual property of its original creators.
+- **Strictly Non-Profit:** No revenue, ads, or monetization are associated with this catalog.
+- **Community Commons:** All submissions are contributed freely for personal, non-commercial e-ink reader use.
+- **DMCA / Takedown:** We respect intellectual property rights. To request image removal, open an issue labeled `dmca-takedown` with the wallpaper title and proof of ownership. Takedown requests are reviewed and processed within 24–48 hours.
 
-To request removal of a copyrighted image:
-- File a GitHub Issue labeled `dmca-takedown` with the image title and proof of ownership.
-
-Takedown requests are reviewed and processed promptly.
+For complete details, please see our [Legal Disclaimers, Submission Terms & DMCA Policy](LEGAL.md).
 
 ---
 

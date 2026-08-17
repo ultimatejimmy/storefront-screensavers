@@ -141,7 +141,16 @@
             </div>
           </div>
 
-          <button type="submit" class="btn-primary" id="btn-submit-issue" style="width: 100%; padding: 0.85rem; font-size: 1rem; margin-top: 1rem;">
+          <div class="form-group" style="margin-top: 1.25rem; margin-bottom: 0.75rem;">
+            <label style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--text-secondary); cursor: pointer; line-height: 1.4;">
+              <input type="checkbox" id="sub-agree" required style="margin-top: 0.15rem; accent-color: var(--accent-purple); width: 16px; height: 16px;">
+              <span>
+                <strong>Community Agreement:</strong> I confirm this wallpaper is submitted voluntarily for community use under a non-commercial open license. I acknowledge that the maintainers do not claim ownership of this content and generate zero profit from it.
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary" id="btn-submit-issue" style="width: 100%; padding: 0.85rem; font-size: 1rem; margin-top: 0.5rem;">
             Continue to GitHub Submission →
           </button>
         </form>
@@ -151,22 +160,71 @@
     <!-- Legal Section -->
     <section id="legal-section" class="section">
       <div class="hero">
-        <h1>Legal & Copyright Policy</h1>
-        <p>We respect intellectual property rights and maintain strict community submission guidelines.</p>
+        <h1>Legal & Community Policy</h1>
+        <p>Open-source, non-commercial, and powered entirely by the e-reader community.</p>
       </div>
 
-      <div class="legal-box">
-        <h3>Copyright Disclaimer</h3>
-        <p style="margin-bottom: 1.25rem;">All screensavers uploaded to this community repository are provided by individual users. If you believe your copyrighted work has been uploaded without authorization, please follow our DMCA Takedown process below.</p>
+      <div class="legal-box" style="display: flex; flex-direction: column; gap: 1.75rem;">
+        <div>
+          <h3 style="color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>🛡️</span> 1. Non-Ownership & Content Disclaimer
+          </h3>
+          <p style="color: var(--text-secondary); line-height: 1.6;">
+            The maintainers of this website and catalog <strong>do not own, claim copyright over, or assert intellectual property rights in</strong> any submitted wallpapers or artwork. All screensavers remain the intellectual property of their respective creators and rights holders. This site functions solely as an open community index and preview directory.
+          </p>
+        </div>
 
-        <h3>DMCA Takedown Notice Procedure</h3>
-        <p style="margin-bottom: 1rem;">To file a copyright infringement notice, please provide the following details:</p>
-        <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
-          <li>Direct link to the infringing image in our catalog.</li>
-          <li>Proof of ownership or authorization from the copyright holder.</li>
-          <li>Your contact information (email address).</li>
-        </ul>
-        <p>Send notice via GitHub Issue labeled <code>dmca-takedown</code> or email the maintainers at <code>takedown@readerbackdrop-catalog.org</code>. Takedown requests are processed within 48 hours.</p>
+        <div>
+          <h3 style="color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>🌱</span> 2. Strictly Non-Commercial (Zero Profit)
+          </h3>
+          <p style="color: var(--text-secondary); line-height: 1.6;">
+            This project is 100% free, non-monetized, and open-source. There are no advertisements, paid subscriptions, affiliate links, or monetized downloads. The project generates <strong>zero profit</strong> and exists purely as an educational and hobbyist resource for e-reader customization.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>🤝</span> 3. Community Submission Terms
+          </h3>
+          <p style="color: var(--text-secondary); line-height: 1.6;">
+            All wallpapers are contributed voluntarily for the public benefit of the e-reader community. By submitting, contributors grant permission for the catalog and the Storefront KOReader plugin to format, index, and freely distribute the screensaver for personal, non-commercial e-ink display use. Contributors confirm they have the right or permissive license to share the content.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>⚖️</span> 4. DMCA & Fast-Track Takedown Policy
+          </h3>
+          <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem;">
+            We strictly respect intellectual property rights. If you are a copyright owner or authorized representative and wish to request removal of an image:
+          </p>
+          <ul style="padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.6;">
+            <li>Open a GitHub issue with the label <code>dmca-takedown</code> specifying the image title and URL.</li>
+            <li>Include evidence or statement of copyright ownership.</li>
+          </ul>
+          <p style="color: var(--text-secondary); margin-top: 0.75rem;">
+            Verified takedown requests are processed and removed within <strong>24–48 hours</strong>.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>🏷️</span> 5. Trademarks & Brand Fair Use
+          </h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+            <em>Kindle, Kobo, Boox, PocketBook, and KOReader</em> are trademarks of their respective owners. Mention of these hardware devices and software is made solely for descriptive compatibility purposes (nominative fair use) and implies no endorsement, sponsorship, or affiliation.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span>⚙️</span> 6. "As-Is" Warranty Disclaimer
+          </h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;">
+            Catalog assets and plugin integration are provided "as-is" without warranties of any kind. Maintainers assume no liability for hardware display issues or errors arising from the use of catalog downloads.
+          </p>
+        </div>
       </div>
     </section>
 

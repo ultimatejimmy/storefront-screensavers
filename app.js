@@ -634,6 +634,11 @@ document.addEventListener('DOMContentLoaded', () => {
         bodyLines.push(``, `> 💡 ${fileNotice}`);
       }
 
+      bodyLines.push(
+        ``,
+        `> ☑️ **Community Agreement:** Submitted freely for community use under open non-commercial terms. Contributor confirms catalog maintainers do not claim ownership and generate zero profit.`
+      );
+
       bodyLines.push(``, `---`, `*Submitted via Storefront Screensaver Catalog Site*`);
 
       const issueBody = encodeURIComponent(bodyLines.join('\n'));
