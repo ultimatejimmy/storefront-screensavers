@@ -294,7 +294,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Calcifer Clinging to Firewood | u/WhisperingSea4 | Anime, Transparent | Community Share | [r/koreader Community](https://reddit.com/r/koreader/comments/1kcsl0n/i_really_appreciate_the_screensavers_that/) |
 | Luffy Gear 5 vs Kaido | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | 4K Ultra HD Badge | outchy | Pop Culture, Minimalist, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Dilbert at his Desk | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Dilbert | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Doctor Strange Mystic Arts | outchy | Pop Culture, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Howl's Moving Castle & Sophie | outchy | Anime, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Inspector Gadget Salute | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -396,7 +396,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | E-Reader Frame with Stylus Pen | outchy | Minimalist, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Reading & Literature Word Cloud | outchy | Quotes, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Ripped Paper Hole Reveal | outchy | Abstract, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Torn Paper Border Frame | outchy | Art, Minimalist, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Retro Tin Toy Robot | outchy | Sci-Fi, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Crinkled Plastic Wrap Texture | outchy | Abstract, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Chemistry Flasks & Science Book | outchy | Sci-Fi, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |

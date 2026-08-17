@@ -12723,41 +12723,6 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-ripped-paper-hole-reveal.png"
   },
   {
-    "id": "outchy-torn-paper-border-frame",
-    "title": "Torn Paper Border Frame",
-    "author": "outchy",
-    "authorUrl": "https://www.reddit.com/user/outchy/",
-    "category": [
-      "Art",
-      "Minimalist",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share",
-    "licenseUrl": "https://www.reddit.com/user/outchy/",
-    "sourceUrl": "https://www.reddit.com/user/outchy/",
-    "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-torn-paper-border-frame.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-torn-paper-border-frame.png",
-    "downloads": 0,
-    "likes": 0,
-    "tags": [
-      "border",
-      "frame",
-      "paper frame",
-      "ripped edges",
-      "torn paper",
-      "transparent",
-      "vintage overlay"
-    ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-torn-paper-border-frame.png"
-  },
-  {
     "id": "outchy-retro-tin-toy-robot",
     "title": "Retro Tin Toy Robot",
     "author": "outchy",
