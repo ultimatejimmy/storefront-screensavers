@@ -1109,31 +1109,456 @@ footer {
   font-size: 0.8rem;
 }
 
-/* Responsive Media Queries */
+/* ==========================================================================
+   Responsive Media Queries & Mobile Optimizations
+   ========================================================================== */
+
+/* Tablet & Smaller Screens (<= 768px) */
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem 1rem;
   }
+
   .navbar {
-    padding: 1rem 1.25rem;
+    padding: 0.85rem 1.25rem;
+    top: 0;
   }
+
+  .nav-brand {
+    font-size: 1.18rem;
+    gap: 0.5rem;
+  }
+
+  .nav-links {
+    gap: 0.6rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.65rem;
+  }
+
+  .hero {
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Controls Bar */
+  .controls-bar {
+    top: 60px;
+    padding: 0.85rem 1rem;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+
   .controls-row-top {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
   }
+
+  .search-box {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .search-input {
+    font-size: 16px; /* Prevent iOS zoom-in */
+    padding: 0.7rem 0.75rem 0.7rem 2.6rem;
+  }
+
   .sort-box {
     width: 100%;
     justify-content: space-between;
+    padding: 0.4rem 0.75rem;
   }
+
+  .sort-select {
+    font-size: 0.85rem;
+  }
+
   .overlay-mode-toggle {
     width: 100%;
     justify-content: space-between;
+    padding: 0.3rem 0.6rem;
   }
+
+  /* Horizontal Scrollable Category Chips */
+  .category-tags {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.2rem 0.25rem 0.4rem 0.25rem;
+    margin: 0 -0.25rem;
+    gap: 0.45rem;
+  }
+
+  .category-tags::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-tags .tag-btn {
+    flex-shrink: 0;
+    padding: 0.45rem 0.9rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Grid Layout */
   .wallpaper-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
     gap: 1rem;
   }
-  .hero h1 {
-    font-size: 2.2rem;
+
+  .card-body {
+    padding: 0.85rem;
+    gap: 0.4rem;
+  }
+
+  .card-title {
+    font-size: 0.95rem;
+  }
+
+  .card-meta {
+    font-size: 0.78rem;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .card-category-badge {
+    font-size: 0.75rem;
+    max-width: 100%;
+  }
+
+  .card-stats {
+    gap: 0.4rem;
+  }
+
+  .stat-item {
+    font-size: 0.74rem;
+    padding: 0.12rem 0.35rem;
+  }
+
+  .card-tags {
+    gap: 0.3rem;
+  }
+
+  .card-tag-chip {
+    font-size: 0.7rem;
+    padding: 0.14rem 0.42rem;
+  }
+
+  .card-footer {
+    padding-top: 0.6rem;
+    gap: 0.35rem;
+  }
+
+  .card-download-btn {
+    padding: 0.5rem 0.4rem;
+    font-size: 0.8rem;
+    gap: 0.3rem;
+  }
+
+  .btn-card-icon, .btn-suggest-change, .btn-copy-link {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    flex: 0 0 32px;
+    font-size: 0.82rem;
+  }
+
+  /* Forms & Modals */
+  .form-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .legal-box {
+    padding: 1.5rem 1.25rem;
   }
 }
+
+/* Mobile Devices (<= 640px) */
+@media (max-width: 640px) {
+  .container {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .navbar {
+    padding: 0.75rem 0.85rem;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .nav-brand {
+    font-size: 1.1rem;
+  }
+
+  .nav-brand svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-links {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.35rem;
+    padding-top: 0.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.55rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  .hero {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero p {
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  /* Controls Bar on Mobile */
+  .controls-bar {
+    top: 92px;
+    padding: 0.7rem 0.75rem;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .wallpaper-grid {
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .card-body {
+    padding: 0.75rem 0.65rem;
+    gap: 0.35rem;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+  }
+
+  .card-meta {
+    font-size: 0.74rem;
+  }
+
+  .card-category-badge {
+    font-size: 0.72rem;
+  }
+
+  .card-stats {
+    gap: 0.3rem;
+  }
+
+  .stat-item {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.3rem;
+  }
+
+  .card-footer {
+    padding-top: 0.5rem;
+    gap: 0.25rem;
+  }
+
+  .card-download-btn {
+    padding: 0.45rem 0.3rem;
+    font-size: 0.76rem;
+    gap: 0.25rem;
+  }
+
+  .card-download-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .btn-card-icon, .btn-suggest-change, .btn-copy-link {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    max-width: 30px;
+    flex: 0 0 30px;
+    font-size: 0.78rem;
+  }
+
+  /* Full Screen Slide-in Drawer */
+  .suggest-drawer {
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  .drawer-header {
+    padding: 1rem 1.15rem;
+  }
+
+  .drawer-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .drawer-body {
+    padding: 1.15rem 1rem;
+    gap: 1rem;
+  }
+
+  .drawer-action-tabs {
+    gap: 0.25rem;
+    padding: 3px;
+  }
+
+  .drawer-tab-btn {
+    font-size: 0.72rem;
+    padding: 0.45rem 0.15rem;
+  }
+
+  /* Form & Cropper on Mobile */
+  .form-card {
+    padding: 1.25rem 0.85rem;
+    border-radius: var(--radius-md);
+  }
+
+  .form-control {
+    font-size: 16px; /* Prevent iOS Safari auto-zoom */
+    padding: 0.7rem 0.85rem;
+  }
+
+  .category-pills {
+    gap: 0.35rem;
+  }
+
+  .cat-pill {
+    padding: 0.42rem 0.75rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .toggle-mode-btn {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.78rem;
+  }
+
+  .dropzone {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .dropzone-prompt svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .dropzone-prompt p {
+    font-size: 0.88rem;
+  }
+
+  .cropper-canvas-wrap {
+    max-height: 340px;
+    padding: 8px;
+    touch-action: none;
+  }
+
+  #cropper-canvas {
+    max-width: 100%;
+    height: auto;
+    touch-action: none;
+  }
+
+  /* Bulk Item Cards */
+  .bulk-item-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.85rem;
+  }
+
+  .bulk-item-thumb {
+    width: 75px;
+    height: 100px;
+    align-self: center;
+  }
+
+  /* Toast notification on mobile */
+  .toast-notice {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: calc(100% - 2rem);
+    font-size: 0.82rem;
+    padding: 0.65rem 1rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Legal section links */
+  .legal-box {
+    padding: 1.25rem 0.85rem;
+    gap: 1.25rem;
+  }
+
+  .legal-box a.btn-primary {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 0.88rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Extra Small Mobile Devices (<= 360px) */
+@media (max-width: 360px) {
+  .wallpaper-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .card-body {
+    padding: 0.6rem 0.5rem;
+  }
+
+  .card-title {
+    font-size: 0.85rem;
+  }
+
+  .card-footer {
+    gap: 0.2rem;
+  }
+
+  .card-download-btn {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.25rem;
+  }
+
+  .btn-card-icon, .btn-suggest-change, .btn-copy-link {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    max-width: 28px;
+    flex: 0 0 28px;
+    font-size: 0.75rem;
+  }
+
+  .drawer-action-tabs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.35rem;
+  }
+}
+
