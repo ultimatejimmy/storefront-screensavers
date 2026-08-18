@@ -244,7 +244,7 @@
   {
     "id": "durer-rhinoceros-woodcut",
     "title": "The Rhinoceros (Woodcut)",
-    "author": "Albrecht Dürer",
+    "author": "Albrecht D\u00fcrer",
     "authorUrl": "https://www.metmuseum.org/art/collection/search/366556",
     "category": "Fine Art",
     "compatibility": [
@@ -270,7 +270,7 @@
   {
     "id": "durer-melencolia-i",
     "title": "Melencolia I",
-    "author": "Albrecht Dürer",
+    "author": "Albrecht D\u00fcrer",
     "authorUrl": "https://www.metmuseum.org/art/collection/search/366559",
     "category": "Fine Art",
     "compatibility": [
@@ -847,7 +847,7 @@
   {
     "id": "durer-melencolia-woodcut",
     "title": "Melencolia I Engraving",
-    "author": "Albrecht Dürer",
+    "author": "Albrecht D\u00fcrer",
     "authorUrl": "https://www.metmuseum.org/art/collection/search/366559",
     "category": "Fine Art",
     "compatibility": [
@@ -1294,7 +1294,7 @@
   },
   {
     "id": "nasa-jwst-deep-field-smacs0723",
-    "title": "Webb’s First Deep Field (SMACS 0723)",
+    "title": "Webb\u2019s First Deep Field (SMACS 0723)",
     "author": "NASA / ESA / CSA / STScI",
     "authorUrl": "https://www.nasa.gov",
     "category": "Sci-Fi",
@@ -1355,7 +1355,7 @@
   {
     "id": "artic-28560",
     "title": "The Bedroom",
-    "author": "Vincent van Gogh (Dutch, 1853–1890)",
+    "author": "Vincent van Gogh (Dutch, 1853\u20131890)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1380,7 +1380,7 @@
   {
     "id": "artic-20684",
     "title": "Paris Street; Rainy Day",
-    "author": "Gustave Caillebotte (French, 1848–1894)",
+    "author": "Gustave Caillebotte (French, 1848\u20131894)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1415,8 +1415,8 @@
   },
   {
     "id": "artic-27992",
-    "title": "A Sunday on La Grande Jatte — 1884",
-    "author": "Georges Seurat (French, 1859–1891)",
+    "title": "A Sunday on La Grande Jatte \u2014 1884",
+    "author": "Georges Seurat (French, 1859\u20131891)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1477,7 +1477,7 @@
   {
     "id": "artic-89503",
     "title": "Under the Wave off Kanagawa (Kanagawa oki nami ura), also known as The Great Wave, from the series \"Thirty-Six Views of Mount Fuji (Fugaku sanjurokkei)\"",
-    "author": "Katsushika Hokusai 葛飾 北斎",
+    "author": "Katsushika Hokusai \u845b\u98fe \u5317\u658e",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1522,7 +1522,7 @@
   {
     "id": "artic-87479",
     "title": "The Assumption of the Virgin",
-    "author": "El Greco (Doménikos Theotokópoulos; Greek, active in Spain, 1541–1614)",
+    "author": "El Greco (Dom\u00e9nikos Theotok\u00f3poulos; Greek, active in Spain, 1541\u20131614)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1548,7 +1548,7 @@
   {
     "id": "artic-64818",
     "title": "Stacks of Wheat (End of Summer)",
-    "author": "Claude Monet (French, 1840–1926)",
+    "author": "Claude Monet (French, 1840\u20131926)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1576,7 +1576,7 @@
   {
     "id": "artic-16568",
     "title": "Water Lilies",
-    "author": "Claude Monet (French, 1840–1926)",
+    "author": "Claude Monet (French, 1840\u20131926)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1602,7 +1602,7 @@
   {
     "id": "artic-14655",
     "title": "Two Sisters (On the Terrace)",
-    "author": "Pierre-Auguste Renoir (French, 1841–1919)",
+    "author": "Pierre-Auguste Renoir (French, 1841\u20131919)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1629,7 +1629,7 @@
   {
     "id": "artic-80607",
     "title": "Self-Portrait",
-    "author": "Vincent van Gogh (Dutch, 1853–1890)",
+    "author": "Vincent van Gogh (Dutch, 1853\u20131890)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1655,7 +1655,7 @@
   {
     "id": "artic-61128",
     "title": "At the Moulin Rouge",
-    "author": "Henri de Toulouse-Lautrec (French, 1864–1901)",
+    "author": "Henri de Toulouse-Lautrec (French, 1864\u20131901)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1681,7 +1681,7 @@
   {
     "id": "artic-16571",
     "title": "Arrival of the Normandy Train, Gare Saint-Lazare",
-    "author": "Claude Monet (French, 1840–1926)",
+    "author": "Claude Monet (French, 1840\u20131926)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1716,7 +1716,7 @@
   {
     "id": "artic-111436",
     "title": "The Basket of Apples",
-    "author": "Paul Cezanne (French, 1839–1906)",
+    "author": "Paul Cezanne (French, 1839\u20131906)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1742,7 +1742,7 @@
   {
     "id": "artic-11723",
     "title": "Woman at Her Toilette",
-    "author": "Berthe Morisot (French, 1841–1895)",
+    "author": "Berthe Morisot (French, 1841\u20131895)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1769,7 +1769,7 @@
   {
     "id": "artic-15468",
     "title": "Saint George and the Dragon",
-    "author": "Bernat Martorell (Spanish, active from 1427–died 1452)",
+    "author": "Bernat Martorell (Spanish, active from 1427\u2013died 1452)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1799,7 +1799,7 @@
   {
     "id": "artic-90048",
     "title": "Distant View of Niagara Falls",
-    "author": "Thomas Cole (American, born England, 1801–1848)",
+    "author": "Thomas Cole (American, born England, 1801\u20131848)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1827,7 +1827,7 @@
   {
     "id": "artic-14598",
     "title": "The Beach at Sainte-Adresse",
-    "author": "Claude Monet (French, 1840–1926)",
+    "author": "Claude Monet (French, 1840\u20131926)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1880,7 +1880,7 @@
   {
     "id": "artic-25865",
     "title": "The Herring Net",
-    "author": "Winslow Homer (American, 1836–1910)",
+    "author": "Winslow Homer (American, 1836\u20131910)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1906,7 +1906,7 @@
   {
     "id": "artic-154235",
     "title": "The Girl by the Window",
-    "author": "Edvard Munch (Norwegian, 1863–1944)",
+    "author": "Edvard Munch (Norwegian, 1863\u20131944)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1935,7 +1935,7 @@
   {
     "id": "artic-16487",
     "title": "The Bay of Marseille, Seen from L'Estaque",
-    "author": "Paul Cezanne (French, 1839–1906)",
+    "author": "Paul Cezanne (French, 1839\u20131906)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1963,7 +1963,7 @@
   {
     "id": "artic-869",
     "title": "The Watermill with the Great Red Roof",
-    "author": "Meindert Hobbema (Dutch, 1638–1709)",
+    "author": "Meindert Hobbema (Dutch, 1638\u20131709)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -1990,7 +1990,7 @@
   },
   {
     "id": "artic-61603",
-    "title": "Ballet at the Paris Opéra",
+    "title": "Ballet at the Paris Op\u00e9ra",
     "author": "Edgar Degas",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
@@ -2017,7 +2017,7 @@
   {
     "id": "artic-69780",
     "title": "The Fountain, Villa Torlonia, Frascati, Italy",
-    "author": "John Singer Sargent (American, 1856–1925)",
+    "author": "John Singer Sargent (American, 1856\u20131925)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2081,8 +2081,8 @@
   },
   {
     "id": "artic-56905",
-    "title": "Nocturne: Blue and Gold—Southampton Water",
-    "author": "James McNeill Whistler (American, 1834–1903)",
+    "title": "Nocturne: Blue and Gold\u2014Southampton Water",
+    "author": "James McNeill Whistler (American, 1834\u20131903)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2111,7 +2111,7 @@
   {
     "id": "artic-81558",
     "title": "Acrobats at the Cirque Fernando (Francisca and Angelina Wartenberg)",
-    "author": "Pierre-Auguste Renoir (French, 1841–1919)",
+    "author": "Pierre-Auguste Renoir (French, 1841\u20131919)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2141,7 +2141,7 @@
   {
     "id": "artic-5848",
     "title": "Landscape with Saint John on Patmos",
-    "author": "Nicolas Poussin (French, 1594–1665)",
+    "author": "Nicolas Poussin (French, 1594\u20131665)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2169,7 +2169,7 @@
   {
     "id": "artic-4796",
     "title": "Fishing Boats with Hucksters Bargaining for Fish",
-    "author": "Joseph Mallord William Turner (English, 1775–1851)",
+    "author": "Joseph Mallord William Turner (English, 1775\u20131851)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2198,7 +2198,7 @@
   {
     "id": "artic-109780",
     "title": "Love of Winter",
-    "author": "George Wesley Bellows (American, 1882–1925)",
+    "author": "George Wesley Bellows (American, 1882\u20131925)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2224,7 +2224,7 @@
   {
     "id": "artic-14572",
     "title": "The Millinery Shop",
-    "author": "Edgar Degas (French, 1834–1917)",
+    "author": "Edgar Degas (French, 1834\u20131917)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2250,7 +2250,7 @@
   {
     "id": "artic-95998",
     "title": "Old Man with a Gold Chain",
-    "author": "Rembrandt van Rijn (Dutch, 1606–1669)",
+    "author": "Rembrandt van Rijn (Dutch, 1606\u20131669)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2386,7 +2386,7 @@
   {
     "id": "artic-146701",
     "title": "Mountain Brook",
-    "author": "Albert Bierstadt (American, born Solingen, Prussia, now Germany, 1830–1902)",
+    "author": "Albert Bierstadt (American, born Solingen, Prussia, now Germany, 1830\u20131902)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2443,7 +2443,7 @@
   {
     "id": "artic-84709",
     "title": "Still Life with Game Fowl",
-    "author": "Juan Sánchez Cotán (Spanish, 1560–1627)",
+    "author": "Juan S\u00e1nchez Cot\u00e1n (Spanish, 1560\u20131627)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2470,8 +2470,8 @@
   },
   {
     "id": "artic-19339",
-    "title": "Arlésiennes (Mistral)",
-    "author": "Paul Gauguin (French, 1848–1903)",
+    "title": "Arl\u00e9siennes (Mistral)",
+    "author": "Paul Gauguin (French, 1848\u20131903)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2496,7 +2496,7 @@
   {
     "id": "artic-28849",
     "title": "A City Park",
-    "author": "William Merritt Chase (American, 1849–1916)",
+    "author": "William Merritt Chase (American, 1849\u20131916)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2526,7 +2526,7 @@
   {
     "id": "artic-15401",
     "title": "At Mouquin's",
-    "author": "William Glackens (American, 1870–1938)",
+    "author": "William Glackens (American, 1870\u20131938)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2551,7 +2551,7 @@
   {
     "id": "artic-193664",
     "title": "The Captive Slave (Ira Aldridge)",
-    "author": "John Philip Simpson (English, 1782–1847)",
+    "author": "John Philip Simpson (English, 1782\u20131847)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2579,7 +2579,7 @@
   {
     "id": "artic-64724",
     "title": "The Home of the Heron",
-    "author": "George Inness (American, 1825–1894)",
+    "author": "George Inness (American, 1825\u20131894)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2605,7 +2605,7 @@
   {
     "id": "artic-81512",
     "title": "Interrupted Reading",
-    "author": "Jean-Baptiste-Camille Corot (French, 1796–1875)",
+    "author": "Jean-Baptiste-Camille Corot (French, 1796\u20131875)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2635,7 +2635,7 @@
   {
     "id": "artic-44892",
     "title": "Fish (Still Life)",
-    "author": "Édouard Manet (French, 1832–1883)",
+    "author": "\u00c9douard Manet (French, 1832\u20131883)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2662,7 +2662,7 @@
   {
     "id": "artic-144969",
     "title": "The Interior of the Palm House on the Pfaueninsel Near Potsdam",
-    "author": "Carl Blechen (German, 1798–1840)",
+    "author": "Carl Blechen (German, 1798\u20131840)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2692,7 +2692,7 @@
   {
     "id": "artic-44018",
     "title": "Croquet Scene",
-    "author": "Winslow Homer (American, 1836–1910)",
+    "author": "Winslow Homer (American, 1836\u20131910)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2718,7 +2718,7 @@
   {
     "id": "artic-76571",
     "title": "View of Cotopaxi",
-    "author": "Frederic Edwin Church (American, 1826–1900)",
+    "author": "Frederic Edwin Church (American, 1826\u20131900)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2744,7 +2744,7 @@
   {
     "id": "artic-16551",
     "title": "Beata Beatrix",
-    "author": "Dante Gabriel Rossetti (English, 1828–1882)",
+    "author": "Dante Gabriel Rossetti (English, 1828\u20131882)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2801,7 +2801,7 @@
   {
     "id": "artic-97910",
     "title": "The Advance-Guard, or The Military Sacrifice (The Ambush)",
-    "author": "Frederic Remington (American, 1861–1909)",
+    "author": "Frederic Remington (American, 1861\u20131909)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2830,7 +2830,7 @@
   {
     "id": "artic-105466",
     "title": "The Battle between the Gods and the Giants",
-    "author": "Joachim Antonisz. Wtewael (Dutch, c. 1566–1638)",
+    "author": "Joachim Antonisz. Wtewael (Dutch, c. 1566\u20131638)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2915,7 +2915,7 @@
   {
     "id": "artic-14591",
     "title": "Woman Reading",
-    "author": "Édouard Manet (French, 1832–1883)",
+    "author": "\u00c9douard Manet (French, 1832\u20131883)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -2945,7 +2945,7 @@
   {
     "id": "artic-23972",
     "title": "Virgin and Child with the Young Saint John the Baptist",
-    "author": "Correggio (Antonio Allegri; Italian, 1489–1534)",
+    "author": "Correggio (Antonio Allegri; Italian, 1489\u20131534)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -3027,7 +3027,7 @@
   {
     "id": "artic-60812",
     "title": "Merahi metua no Tehamana (Tehamana Has Many Parents or The Ancestors of Tehamana)",
-    "author": "Paul Gauguin (French, 1848–1903)",
+    "author": "Paul Gauguin (French, 1848\u20131903)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -3058,7 +3058,7 @@
   {
     "id": "artic-100829",
     "title": "Magnolias on Light Blue Velvet Cloth",
-    "author": "Martin Johnson Heade (American, 1819–1904)",
+    "author": "Martin Johnson Heade (American, 1819\u20131904)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -3087,7 +3087,7 @@
   {
     "id": "artic-111559",
     "title": "Boy on a Ram",
-    "author": "Francisco José de Goya y Lucientes (Spanish, 1746–1828)",
+    "author": "Francisco Jos\u00e9 de Goya y Lucientes (Spanish, 1746\u20131828)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -3195,7 +3195,7 @@
   {
     "id": "artic-72801",
     "title": "Icebound",
-    "author": "John Henry Twachtman (American, 1853–1902)",
+    "author": "John Henry Twachtman (American, 1853\u20131902)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -3220,7 +3220,7 @@
   {
     "id": "artic-14574",
     "title": "Henri Degas and His Niece Lucie Degas (The Artist's Uncle and Cousin)",
-    "author": "Edgar Degas (French, 1834–1917)",
+    "author": "Edgar Degas (French, 1834\u20131917)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -3251,8 +3251,8 @@
   },
   {
     "id": "artic-120154",
-    "title": "Still Life—Strawberries, Nuts, &c.",
-    "author": "Raphaelle Peale (American, 1774–1825)",
+    "title": "Still Life\u2014Strawberries, Nuts, &c.",
+    "author": "Raphaelle Peale (American, 1774\u20131825)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -3280,7 +3280,7 @@
   {
     "id": "artic-111617",
     "title": "Cabin in the Cotton",
-    "author": "Horace Pippin (American, 1888–1946)",
+    "author": "Horace Pippin (American, 1888\u20131946)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -3306,7 +3306,7 @@
   {
     "id": "artic-16488",
     "title": "Armida Encounters the Sleeping Rinaldo",
-    "author": "Giovanni Battista Tiepolo (Italian, 1696–1770)",
+    "author": "Giovanni Battista Tiepolo (Italian, 1696\u20131770)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -3334,7 +3334,7 @@
   {
     "id": "artic-16169",
     "title": "The Beheading of Saint John the Baptist",
-    "author": "Giovanni di Paolo (Italian, 1398–1482)",
+    "author": "Giovanni di Paolo (Italian, 1398\u20131482)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -3389,7 +3389,7 @@
   {
     "id": "artic-64729",
     "title": "Early Morning, Tarpon Springs",
-    "author": "George Inness (American, 1825–1894)",
+    "author": "George Inness (American, 1825\u20131894)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -3417,7 +3417,7 @@
   {
     "id": "artic-109926",
     "title": "Landscape: Window Overlooking the Woods",
-    "author": "Édouard Vuillard (French, 1868-1940)",
+    "author": "\u00c9douard Vuillard (French, 1868-1940)",
     "authorUrl": "https://www.artic.edu",
     "category": "Fine Art",
     "compatibility": [
@@ -4104,7 +4104,7 @@
   },
   {
     "id": "wh-jedx5w",
-    "title": "Mew Pokémon Minimalism",
+    "title": "Mew Pok\u00e9mon Minimalism",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
     "category": [
@@ -4677,7 +4677,7 @@
   },
   {
     "id": "wh-po71ke",
-    "title": "Pierre (Tounis_9) Switzerland Émosson Dam",
+    "title": "Pierre (Tounis_9) Switzerland \u00c9mosson Dam",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
     "category": "Nature",
@@ -5179,7 +5179,7 @@
   },
   {
     "id": "wh-jeymlm",
-    "title": "Li Feng Norway Ålesund",
+    "title": "Li Feng Norway \u00c5lesund",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
     "category": "Architecture",
@@ -6254,7 +6254,7 @@
   },
   {
     "id": "wh-qrmykq",
-    "title": "Pixel Art Pokémon Emerald Pokémon",
+    "title": "Pixel Art Pok\u00e9mon Emerald Pok\u00e9mon",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
     "category": [
@@ -12409,7 +12409,7 @@
   },
   {
     "id": "outchy-pikachu-and-pokemon-friends",
-    "title": "Pikachu & Pokémon Starters",
+    "title": "Pikachu & Pok\u00e9mon Starters",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -13223,7 +13223,7 @@
   },
   {
     "id": "outchy-speedy-gonzales-running",
-    "title": "Speedy Gonzales '¡Ándale!'",
+    "title": "Speedy Gonzales '\u00a1\u00c1ndale!'",
     "author": "outchy",
     "authorUrl": "https://www.reddit.com/user/outchy/",
     "category": [
@@ -13783,5 +13783,21 @@
       "ziploc"
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-ziploc-sealed-bag-overlay.png"
+  },
+  {
+    "id": "kobo-wallpaper-castle-01-alpha",
+    "title": "Kobo Wallpaper Castle 01 Alpha",
+    "author": "Community",
+    "category": "Fantasy",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/kobo-wallpaper-castle-01-alpha.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/kobo-wallpaper-castle-01-alpha.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/kobo-wallpaper-castle-01-alpha.jpg",
+    "downloads": 0,
+    "likes": 0
   }
 ]
