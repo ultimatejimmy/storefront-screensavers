@@ -203,14 +203,20 @@
     await loadCatalogData();
   }
 
+  const DEFAULT_CATEGORIES = [
+    'Abstract', 'Anime', 'Architecture', 'Art', 'Fantasy',
+    'Minimalist', 'Nature', 'Pop Culture', 'Quotes', 'Religion',
+    'Sci-Fi', 'Transparent'
+  ];
+
   // API Calls
   async function loadCatalogData() {
     try {
       const res = await fetch('/api/catalog');
       if (!res.ok) throw new Error('Failed to load catalog');
       const data = await res.json();
-      state.catalog = data.items || [];
-      state.categories = data.categories || [];
+      state.catalog = (data.items || []).map((item, idx) => ({ ...item, _originalIndex: idx }));
+      state.categories = Array.from(new Set([...DEFAULT_CATEGORIES, ...(data.categories || [])])).sort();
       state.backups = data.backups || [];
       
       updateHeaderStats();
@@ -277,8 +283,8 @@
     if (!container) return;
     const selectedSet = new Set(selectedCategories.map(c => String(c).trim()));
     
-    // Combine state.categories with any custom selected categories
-    const allCats = Array.from(new Set([...state.categories, ...selectedSet])).sort();
+    // Combine DEFAULT_CATEGORIES, state.categories with any custom selected categories
+    const allCats = Array.from(new Set([...DEFAULT_CATEGORIES, ...state.categories, ...selectedSet])).sort();
 
     const pillsHtml = allCats.map(cat => {
       const isChecked = selectedSet.has(cat);
@@ -360,7 +366,17 @@
     }
 
     // Sorting
-    if (state.sortBy === 'title-asc') {
+    if (state.sortBy === 'newest') {
+      list.sort((a, b) => {
+        if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
+        return (b._originalIndex || 0) - (a._originalIndex || 0);
+      });
+    } else if (state.sortBy === 'oldest') {
+      list.sort((a, b) => {
+        if (a.dateAdded && b.dateAdded) return new Date(a.dateAdded) - new Date(b.dateAdded);
+        return (a._originalIndex || 0) - (b._originalIndex || 0);
+      });
+    } else if (state.sortBy === 'title-asc') {
       list.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
     } else if (state.sortBy === 'title-desc') {
       list.sort((a, b) => (b.title || '').localeCompare(a.title || ''));

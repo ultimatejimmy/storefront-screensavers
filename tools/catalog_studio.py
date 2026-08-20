@@ -374,7 +374,7 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
         if path == '/api/catalog':
             catalog = load_catalog()
             # Calculate categories and stats (supporting both list and string categories)
-            cat_set = set()
+            cat_set = {'Abstract', 'Anime', 'Architecture', 'Art', 'Fantasy', 'Minimalist', 'Nature', 'Pop Culture', 'Quotes', 'Religion', 'Sci-Fi', 'Transparent'}
             for item in catalog:
                 cat = item.get('category')
                 if isinstance(cat, list):
