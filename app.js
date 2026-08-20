@@ -498,9 +498,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const ALLOWED_IMAGE_MIMES = ['image/jpeg', 'image/png', 'image/webp'];
+  const ALLOWED_IMAGE_EXTS = ['.jpg', '.jpeg', '.png', '.webp'];
+  const MAX_FILE_SIZE_BYTES = 25 * 1024 * 1024; // 25 MB limit
+
+  function isValidImageFile(file) {
+    if (!file) return { valid: false, error: 'No file selected.' };
+    const ext = '.' + (file.name.split('.').pop() || '').toLowerCase();
+    if (!ALLOWED_IMAGE_MIMES.includes(file.type) || !ALLOWED_IMAGE_EXTS.includes(ext)) {
+      return {
+        valid: false,
+        error: 'Invalid file format. Only standard raster images (JPG, PNG, WebP) are compatible with KOReader screensavers. Vector/SVG, executable files, and scripts are strictly disallowed.'
+      };
+    }
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      return {
+        valid: false,
+        error: `File size exceeds 25 MB limit (${(file.size / (1024 * 1024)).toFixed(1)} MB).`
+      };
+    }
+    return { valid: true };
+  }
+
   function handleFileSelect(file) {
-    if (!file || !file.type.startsWith('image/')) {
-      alert('Please select a valid image file (PNG, JPG, or WebP).');
+    const check = isValidImageFile(file);
+    if (!check.valid) {
+      alert(check.error);
       return;
     }
 
@@ -510,6 +533,11 @@ document.addEventListener('DOMContentLoaded', () => {
       previewImg.src = e.target.result;
       const img = new Image();
       img.onload = () => {
+        if (img.width < 200 || img.height < 200) {
+          alert(`Image dimensions (${img.width}×${img.height} px) are too small for an e-reader screensaver. Minimum resolution is 200×200 px.`);
+          selectedFile = null;
+          return;
+        }
         const kb = (file.size / 1024).toFixed(0);
         selectedFileMeta = `${img.width} × ${img.height} px · ${kb} KB`;
         previewFilename.textContent = file.name;
@@ -518,18 +546,24 @@ document.addEventListener('DOMContentLoaded', () => {
         dropzonePreview.style.display = 'flex';
         initCropper(img);
       };
+      img.onerror = () => {
+        alert('Failed to decode image data. The file appears to be corrupted or invalid.');
+        selectedFile = null;
+      };
       img.src = e.target.result;
     };
     reader.readAsDataURL(file);
   }
 
   // Upload file anonymously to free image host API (CORS enabled)
-  async function uploadImageFile(file) {
+  async function uploadImageFile(file, fileName = 'screensaver.jpg') {
     // 1. Try ImgBB API
     try {
       const formData = new FormData();
       formData.append('key', '6d207e02198a847aa98d0a2a901485a5');
-      formData.append('image', file);
+      formData.append('image', file, fileName);
+      const cleanName = (fileName || 'screensaver').replace(/\.[^/.]+$/, '');
+      formData.append('name', cleanName);
       const res = await fetch('https://api.imgbb.com/1/upload', {
         method: 'POST',
         body: formData
@@ -547,7 +581,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = new FormData();
       formData.append('reqtype', 'fileupload');
       formData.append('time', '72h');
-      formData.append('fileToUpload', file);
+      formData.append('fileToUpload', file, fileName);
       const res = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
         method: 'POST',
         body: formData
@@ -839,11 +873,12 @@ document.addEventListener('DOMContentLoaded', () => {
           btnSubmitIssue.disabled = true;
         }
 
+        const fileName = selectedFile.name || 'screensaver.jpg';
         // Get 3:4 cropped image blob
         const fileToUpload = await getCroppedBlob();
 
         // Try automatic image host upload
-        const uploadedUrl = await uploadImageFile(fileToUpload);
+        const uploadedUrl = await uploadImageFile(fileToUpload, fileName);
 
         if (uploadedUrl) {
           imageUrl = uploadedUrl;
@@ -872,6 +907,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const subTags = document.getElementById('sub-tags') ? document.getElementById('sub-tags').value.trim() : '';
+      const fileName = (currentMode === 'file' && selectedFile) ? selectedFile.name : (imageUrl.split('/').pop().split('?')[0] || 'screensaver.jpg');
 
       const issueTitle = encodeURIComponent(`Screensaver Submission: ${title}`);
       const bodyLines = [
@@ -880,6 +916,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `**Title:** ${title}`,
         `**Author:** ${author}`,
         `**Category:** ${category}`,
+        `**Filename:** ${fileName}`,
       ];
 
       if (subTags) {
@@ -888,8 +925,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       bodyLines.push(`**Image:** ${imageUrl}`);
 
+      if (imageUrl && imageUrl.startsWith('http')) {
+        bodyLines.push(``, `### Image Preview`, `![${title}](${imageUrl})`);
+      }
+
       if (selectedFileMeta) {
-        bodyLines.push(`**Specs:** ${selectedFileMeta}`);
+        bodyLines.push(``, `**Specs:** ${selectedFileMeta}`);
       }
       if (fileNotice) {
         bodyLines.push(``, `> 💡 ${fileNotice}`);
@@ -966,8 +1007,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function handleBulkFiles(files) {
-    const fileArray = Array.from(files).filter(f => f.type.startsWith('image/')).slice(0, 10);
-    fileArray.forEach(file => {
+    const rawFiles = Array.from(files);
+    let rejectedCount = 0;
+    const validFiles = rawFiles.filter(f => {
+      const check = isValidImageFile(f);
+      if (!check.valid) {
+        rejectedCount++;
+        return false;
+      }
+      return true;
+    }).slice(0, 10);
+
+    if (rejectedCount > 0) {
+      alert(`${rejectedCount} file(s) were skipped because they are not valid JPG, PNG, or WebP images or exceed 25 MB.`);
+    }
+
+    validFiles.forEach(file => {
       const qId = 'item-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4);
       const cleanTitle = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
       const formattedTitle = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
@@ -1054,9 +1109,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const item = bulkQueue[i];
         btnSubmitBulkAll.textContent = `Processing image ${i + 1} of ${bulkQueue.length}... ⏳`;
 
-        let imageUrl = await uploadImageFile(item.file);
+        const fileName = item.file.name || `screensaver_${i + 1}.jpg`;
+        let imageUrl = await uploadImageFile(item.file, fileName);
         if (!imageUrl) {
-          imageUrl = `[Uploaded File: ${item.file.name}]`;
+          imageUrl = `[Uploaded File: ${fileName}]`;
         }
 
         const issueTitle = encodeURIComponent(`Screensaver Submission: ${item.title}`);
@@ -1066,12 +1122,21 @@ document.addEventListener('DOMContentLoaded', () => {
           `**Title:** ${item.title}`,
           `**Author:** ${item.author}`,
           `**Category:** ${item.category}`,
+          `**Filename:** ${fileName}`,
           `**Image:** ${imageUrl}`,
+        ];
+
+        if (imageUrl && imageUrl.startsWith('http')) {
+          bodyLines.push(``, `### Image Preview`, `![${item.title}](${imageUrl})`);
+        }
+
+        bodyLines.push(
+          ``,
           `**Specs:** Batch upload (${(item.file.size / 1024).toFixed(0)} KB)`,
           ``,
           `---`,
           `*Submitted via Storefront Screensaver Catalog Site (Batch Upload ${i + 1}/${bulkQueue.length})*`
-        ];
+        );
 
         const issueBody = encodeURIComponent(bodyLines.join('\n'));
         const repoUrl = 'https://github.com/ultimatejimmy/storefront-screensavers';
@@ -1291,8 +1356,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function handleReplaceFile(file) {
-    if (!file || !file.type.startsWith('image/')) {
-      alert('Please select a valid image file (PNG, JPG, or WebP).');
+    const check = isValidImageFile(file);
+    if (!check.valid) {
+      alert(check.error);
       return;
     }
 
@@ -1302,12 +1368,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (replacePreviewImg) replacePreviewImg.src = e.target.result;
       const img = new Image();
       img.onload = () => {
+        if (img.width < 200 || img.height < 200) {
+          alert(`Image dimensions (${img.width}×${img.height} px) are too small for an e-reader screensaver. Minimum resolution is 200×200 px.`);
+          replaceSelectedFile = null;
+          return;
+        }
         const kb = (file.size / 1024).toFixed(0);
         replaceSelectedMeta = `${img.width} × ${img.height} px · ${kb} KB`;
         if (replacePreviewName) replacePreviewName.textContent = file.name;
         if (replacePreviewMeta) replacePreviewMeta.textContent = replaceSelectedMeta;
         if (replacePrompt) replacePrompt.style.display = 'none';
         if (replacePreview) replacePreview.style.display = 'flex';
+      };
+      img.onerror = () => {
+        alert('Failed to decode replacement image data. The file appears to be corrupted or invalid.');
+        replaceSelectedFile = null;
       };
       img.src = e.target.result;
     };
@@ -1338,21 +1413,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const issueLabel = isDmca ? 'dmca-takedown' : 'suggest-change';
 
       let replacementImageUrl = '';
+      let replaceFileName = '';
       if (isReplacement) {
         const enteredUrl = document.getElementById('suggest-url') ? document.getElementById('suggest-url').value.trim() : '';
         if (replaceSelectedFile) {
+          replaceFileName = replaceSelectedFile.name || 'replacement.jpg';
           if (btnSubmitSuggest) {
             btnSubmitSuggest.disabled = true;
             btnSubmitSuggest.textContent = 'Uploading replacement image... ⏳';
           }
-          const uploadedUrl = await uploadImageFile(replaceSelectedFile);
-          replacementImageUrl = uploadedUrl || `[Uploaded Image: ${replaceSelectedFile.name}]`;
+          const uploadedUrl = await uploadImageFile(replaceSelectedFile, replaceFileName);
+          replacementImageUrl = uploadedUrl || `[Uploaded Image: ${replaceFileName}]`;
           if (btnSubmitSuggest) {
             btnSubmitSuggest.disabled = false;
             btnSubmitSuggest.textContent = 'Submit Suggestion on GitHub →';
           }
         } else if (enteredUrl) {
           replacementImageUrl = enteredUrl;
+          replaceFileName = enteredUrl.split('/').pop().split('?')[0] || 'replacement.jpg';
         } else {
           alert('Please upload an image file or enter an image URL for the replacement.');
           return;
@@ -1401,7 +1479,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (isReplacement && replacementImageUrl) {
+          if (replaceFileName) {
+            bodyLines.push(`**Replacement Filename:** ${replaceFileName}`);
+          }
           bodyLines.push(`**Replacement Image:** ${replacementImageUrl}`);
+          if (replacementImageUrl.startsWith('http')) {
+            bodyLines.push(``, `### Replacement Preview`, `![Replacement Preview](${replacementImageUrl})`, ``);
+          }
           if (replaceSelectedMeta) {
             bodyLines.push(`**Replacement Specs:** ${replaceSelectedMeta}`);
           }

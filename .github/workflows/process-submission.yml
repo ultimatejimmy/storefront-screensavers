@@ -29,24 +29,54 @@ jobs:
           pip install Pillow requests
 
       - name: Process Image, Generate Thumbnail, and Update Catalog
+        id: process
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUM: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
           python - << 'EOF'
-          import os, json, re, requests, time
+          import os, json, re, requests, time, sys
           from PIL import Image, ImageOps
           from io import BytesIO
 
           body = os.environ.get('ISSUE_BODY', '')
+          issue_num = os.environ.get('ISSUE_NUM', '')
+          github_output = os.environ.get('GITHUB_OUTPUT', '')
+
+          def set_output(valid_bool):
+              if github_output and os.path.exists(github_output):
+                  with open(github_output, 'a', encoding='utf-8') as out:
+                      out.write(f"valid={'true' if valid_bool else 'false'}\n")
+
+          def write_failure_comment(reason):
+              error_body = f"""⚠️ **Wallpaper Submission Validation Failed**
+
+We could not process this wallpaper submission because it failed KOReader format and security checks:
+> **Reason:** {reason}
+
+**Requirements for KOReader Screensaver Wallpapers:**
+- **Supported Formats:** Valid raster **JPG, PNG, or WebP** images only. Vector files (SVG), scripts, and executables are strictly rejected to prevent malware.
+- **Resolution:** Minimum **200 × 200 px**, maximum **12,000 × 12,000 px**.
+- **File Size:** Maximum **25 MB**.
+
+Please check the image and feel free to update the issue or open a new submission!
+"""
+              with open('issue_comment.md', 'w', encoding='utf-8') as f:
+                  f.write(error_body)
+              set_output(False)
+              sys.exit(0)
+
           title_match = re.search(r'\*\*Title:\*\*\s*(.*)', body)
           author_match = re.search(r'\*\*Author:\*\*\s*(.*)', body)
           category_match = re.search(r'\*\*Category:\*\*\s*(.*)', body)
+          filename_match = re.search(r'\*\*(?:Filename|Replacement Filename):\*\*\s*(.*)', body)
 
           # Match markdown image ![alt](url), direct image URL, user-attachments, or URL in Image: field
           url_match_str = None
 
           # 1. Check Image: line for direct URL
-          img_line = re.search(r'\*\*Image:\*\*\s*(.*)', body)
+          img_line = re.search(r'\*\*(?:Image|Replacement Image):\*\*\s*(.*)', body)
           if img_line:
               u = re.search(r'https?://[^\s\)\"]+', img_line.group(1))
               if u:
@@ -71,16 +101,17 @@ jobs:
                   url_match_str = any_url.group(0)
 
           if not (title_match and url_match_str):
-              print("Could not parse title or image attachment from issue body.")
-              print(f"Issue Body:\n{body}")
-              exit(1)
+              write_failure_comment("Could not extract a valid title and image URL from the issue body.")
 
           title = title_match.group(1).strip()
           author = author_match.group(1).strip() if author_match else "Community"
           category = category_match.group(1).strip() if category_match else "General"
+          original_filename = filename_match.group(1).strip() if filename_match else "N/A"
           img_url = url_match_str.strip()
 
           item_id = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
+          if not item_id:
+              item_id = f"screensaver-{int(time.time())}"
 
           # Prepare directories
           os.makedirs('images', exist_ok=True)
@@ -100,28 +131,68 @@ jobs:
               thumb_plugin_path = None  # No plugin variant needed for opaque images
 
           headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
-          r = None
           max_retries = 3
+          MAX_DOWNLOAD_BYTES = 25 * 1024 * 1024
+          raw_data = bytearray()
+          download_success = False
+
           for attempt in range(max_retries):
               try:
                   print(f"Downloading image from {img_url} (attempt {attempt + 1}/{max_retries})...")
-                  r = requests.get(img_url, headers=headers, allow_redirects=True, timeout=60)
-                  if r.status_code == 200:
+                  with requests.get(img_url, headers=headers, allow_redirects=True, timeout=30, stream=True) as resp:
+                      if resp.status_code != 200:
+                          print(f"HTTP Status {resp.status_code}, retrying...")
+                          time.sleep(2)
+                          continue
+                      
+                      c_type = resp.headers.get('Content-Type', '').lower()
+                      if any(bad in c_type for bad in ['svg', 'html', 'javascript', 'text', 'application/x-', 'application/pdf']):
+                          write_failure_comment(f"Disallowed Content-Type '{c_type}'. SVG, HTML, and binary executables are not permitted.")
+
+                      raw_data = bytearray()
+                      for chunk in resp.iter_content(chunk_size=65536):
+                          raw_data.extend(chunk)
+                          if len(raw_data) > MAX_DOWNLOAD_BYTES:
+                              write_failure_comment("Downloaded file exceeded the maximum 25 MB security limit.")
+                      
+                      download_success = True
                       break
-                  print(f"HTTP Status {r.status_code}, retrying...")
-              except (requests.exceptions.RequestException, Exception) as exc:
+              except Exception as exc:
                   print(f"Download attempt {attempt + 1} failed: {exc}")
                   if attempt < max_retries - 1:
                       time.sleep(2)
-                  else:
-                      print("All download attempts failed.")
-                      exit(1)
 
-          if not r or r.status_code != 200:
-              print(f"Failed to download image from {img_url}")
-              exit(1)
+          if not download_success or len(raw_data) == 0:
+              write_failure_comment("Failed to download image from the provided CDN / image URL after multiple attempts.")
 
-          img = Image.open(BytesIO(r.content))
+          # Pillow Security & Integrity Validations
+          Image.MAX_IMAGE_PIXELS = 50_000_000  # 50 MP max (decompression bomb protection)
+          ALLOWED_FORMATS = {'JPEG', 'PNG', 'WEBP', 'MPO'}
+
+          img_stream = BytesIO(raw_data)
+          try:
+              verify_img = Image.open(img_stream)
+              detected_format = verify_img.format
+              verify_img.verify()
+          except Exception as val_err:
+              write_failure_comment(f"Corrupted or invalid image structure: {val_err}")
+
+          if detected_format not in ALLOWED_FORMATS:
+              write_failure_comment(f"Format '{detected_format}' is not supported by KOReader. Only JPEG, PNG, and WebP are allowed.")
+
+          # Re-open stream for full pixel raster decode
+          img_stream.seek(0)
+          try:
+              img = Image.open(img_stream)
+              img.load()
+          except Exception as dec_err:
+              write_failure_comment(f"Failed to decode image raster pixels: {dec_err}")
+
+          if img.width < 200 or img.height < 200:
+              write_failure_comment(f"Image resolution ({img.width} × {img.height} px) is too small. Minimum resolution is 200 × 200 px.")
+
+          if img.width > 12000 or img.height > 12000:
+              write_failure_comment(f"Image resolution ({img.width} × {img.height} px) exceeds 12,000 px limit.")
 
           CHECKERBOARD_TILE = 12
           CB_LIGHT = (255, 255, 255, 255)
@@ -155,6 +226,7 @@ jobs:
               bg.paste(img_rgba, (x, y), img_rgba)
               return bg.convert('RGB')
 
+          # Re-rasterize onto clean fresh canvas (strips metadata, polyglots, and hidden chunks)
           if is_transparent:
               img_rgba = img.convert('RGBA')
 
@@ -218,11 +290,58 @@ jobs:
           with open('screensavers.json', 'w') as f:
               json.dump(catalog, f, indent=2)
 
+          # Generate rich PR body markdown file with visual image preview
+          pr_body = f"""Closes #{issue_num}
+
+### Screensaver Submission: {title}
+
+| Property | Value |
+|---|---|
+| **Title** | {title} |
+| **Author** | {author} |
+| **Category** | {category} |
+| **Original Filename** | `{original_filename}` |
+| **Target Item ID** | `{item_id}` |
+| **Master Image** | `{full_path}` (1860 × 2480) |
+| **Thumbnail** | `{thumb_web_path}` (600 × 800) |
+
+### Visual Preview
+![{title}]({img_url})
+
+---
+*Automated PR generated from issue #{issue_num} via Storefront Screensaver Catalog workflow.*
+"""
+          with open('pr_body.md', 'w', encoding='utf-8') as f:
+              f.write(pr_body)
+
+          # Generate rich issue comment body markdown file with visual image preview
+          comment_body = f"""🎉 **Submission Received & Verified!**
+
+An automated Pull Request containing the clean, formatted full-resolution wallpaper (1860 × 2480) and thumbnail has been created.
+
+### Submitted Wallpaper: {title}
+| Property | Value |
+|---|---|
+| **Title** | {title} |
+| **Author** | {author} |
+| **Category** | {category} |
+| **Original Filename** | `{original_filename}` |
+
+### Visual Preview
+![{title}]({img_url})
+
+**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, the wallpaper will immediately appear in the web catalog and KOReader Storefront plugin!
+"""
+          with open('issue_comment.md', 'w', encoding='utf-8') as f:
+              f.write(comment_body)
+
+          set_output(True)
           print(f"Successfully processed and generated thumbnail for: {title}")
           EOF
 
 
       - name: Create Pull Request
+        if: steps.process.outputs.valid == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUM: ${{ github.event.issue.number }}
@@ -248,17 +367,13 @@ jobs:
           # Create Pull Request using gh CLI
           gh pr create \
             --title "New Screensaver Submission: ${ISSUE_TITLE}" \
-            --body "Closes #${ISSUE_NUM}. Automated PR generated from issue #${ISSUE_NUM}. Includes downloaded full-res image and resized thumbnail." \
+            --body-file pr_body.md \
             --head "${BRANCH_NAME}" \
             --base "main" || true
 
       - name: Comment on Issue
+        if: steps.process.outputs.valid == 'true' || steps.process.outputs.valid == 'false'
         uses: peter-evans/create-or-update-comment@v3
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: |
-            🎉 **Submission Received & Pending Review!**
-            
-            An automated Pull Request containing the full-resolution wallpaper and generated thumbnail has been created.
-            
-            **Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, the wallpaper will immediately appear in the web catalog and KOReader Storefront plugin!
+          body-path: 'issue_comment.md'

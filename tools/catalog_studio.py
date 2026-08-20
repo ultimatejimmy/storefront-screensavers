@@ -189,30 +189,48 @@ def sync_all_catalog():
     # Rebuild credits markdown
     rebuild_credits_file(catalog)
 
-    # Detect orphan images (files in images/ not in catalog)
+    # Clean up orphan images if they are no longer in the catalog
     orphan_images = []
+    orphans_removed = 0
     if os.path.exists(IMAGES_DIR):
         for f in os.listdir(IMAGES_DIR):
-            if os.path.isfile(os.path.join(IMAGES_DIR, f)):
+            p = os.path.join(IMAGES_DIR, f)
+            if os.path.isfile(p):
                 base_name = os.path.splitext(f)[0]
                 if base_name not in catalog_ids:
                     orphan_images.append(f)
+                    try:
+                        os.remove(p)
+                        orphans_removed += 1
+                    except Exception:
+                        pass
+
+    if os.path.exists(THUMBS_DIR):
+        for f in os.listdir(THUMBS_DIR):
+            p = os.path.join(THUMBS_DIR, f)
+            if os.path.isfile(p):
+                base_name = os.path.splitext(f)[0]
+                if base_name not in catalog_ids:
+                    try:
+                        os.remove(p)
+                    except Exception:
+                        pass
 
     # Save cleaned catalog
     save_catalog(catalog)
 
-    # Git commit and push
+    # Git commit and push (including deletions)
     git_result = {"committed": False, "pushed": False, "message": ""}
     import subprocess
     try:
-        # Check if there are git changes
+        # Stage all catalog, credits, and image changes/deletions
+        subprocess.run(['git', 'add', '-A', 'screensavers.json', 'CREDITS.md', 'images/'], cwd=REPO_ROOT, check=True)
+
+        # Check if there are staged git changes
         status_proc = subprocess.run(['git', 'status', '--porcelain'], cwd=REPO_ROOT, capture_output=True, text=True)
         has_changes = bool(status_proc.stdout.strip())
         
         if has_changes:
-            # Stage changes
-            subprocess.run(['git', 'add', 'screensavers.json', 'CREDITS.md', 'images/'], cwd=REPO_ROOT, check=True)
-            
             # Commit
             commit_msg = f"Sync catalog, images, and credits ({len(catalog)} screensavers)"
             commit_proc = subprocess.run(['git', 'commit', '-m', commit_msg], cwd=REPO_ROOT, capture_output=True, text=True)
@@ -222,7 +240,7 @@ def sync_all_catalog():
             push_proc = subprocess.run(['git', 'push'], cwd=REPO_ROOT, capture_output=True, text=True)
             if push_proc.returncode == 0:
                 git_result["pushed"] = True
-                git_result["message"] = "Changes successfully committed and pushed to GitHub!"
+                git_result["message"] = "Changes & removals successfully committed and pushed to GitHub!"
             else:
                 git_result["message"] = f"Committed locally, but git push returned: {push_proc.stderr.strip() or push_proc.stdout.strip()}"
         else:
@@ -252,7 +270,28 @@ def process_and_save_image(image_bytes, item_id, is_png=False):
     if not PIL_AVAILABLE:
         raise RuntimeError("Pillow is required for image processing.")
 
-    img = Image.open(BytesIO(image_bytes))
+    Image.MAX_IMAGE_PIXELS = 50_000_000
+    ALLOWED_FORMATS = {'JPEG', 'PNG', 'WEBP', 'BMP', 'MPO'}
+    img_stream = BytesIO(image_bytes)
+    try:
+        verify_img = Image.open(img_stream)
+        detected_format = verify_img.format
+        verify_img.verify()
+    except Exception as exc:
+        raise ValueError(f"Invalid or corrupted image structure: {exc}")
+
+    if detected_format not in ALLOWED_FORMATS:
+        raise ValueError(f"Unsupported format '{detected_format}'. Only standard raster images (JPEG, PNG, WebP) are allowed.")
+
+    img_stream.seek(0)
+    try:
+        img = Image.open(img_stream)
+        img.load()
+    except Exception as exc:
+        raise ValueError(f"Failed to decode image raster: {exc}")
+
+    if img.width < 200 or img.height < 200:
+        raise ValueError(f"Image dimensions ({img.width}x{img.height} px) are too small. Minimum resolution is 200x200 px.")
     
     # Determine if transparency should be preserved
     has_alpha = ('A' in img.getbands()) or (img.mode == 'RGBA') or (img.info.get('transparency') is not None) or is_png
