@@ -1,0 +1,131 @@
+name: Auto-Rebase Submission PRs
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  rebase-submissions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Auto-rebase open submission branches
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python - << 'EOF'
+          import subprocess, json, os, sys, urllib.request
+
+          def run(cmd, check=True):
+              res = subprocess.run(cmd, shell=True, text=True, capture_output=True)
+              if check and res.returncode != 0:
+                  print(f"Command failed: {cmd}\nStdout: {res.stdout}\nStderr: {res.stderr}")
+                  raise RuntimeError(f"Command failed: {cmd}")
+              return res
+
+          run('git config user.name "github-actions[bot]"')
+          run('git config user.email "github-actions[bot]@users.noreply.github.com"')
+          run('git fetch origin')
+
+          token = os.environ.get('GH_TOKEN', '')
+          headers = {
+              'User-Agent': 'GitHub-Action-AutoRebase',
+              'Accept': 'application/vnd.github.v3+json'
+          }
+          if token:
+              headers['Authorization'] = f'token {token}'
+
+          repo = os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')
+          url = f"https://api.github.com/repos/{repo}/pulls?state=open"
+
+          req = urllib.request.Request(url, headers=headers)
+          try:
+              with urllib.request.urlopen(req) as resp:
+                  open_prs = json.load(resp)
+          except Exception as e:
+              print(f"Error fetching open PRs: {e}")
+              open_prs = []
+
+          main_raw = run('git show origin/main:screensavers.json').stdout
+          try:
+              main_catalog = json.loads(main_raw)
+          except Exception:
+              main_catalog = []
+          main_ids = {x.get('id') for x in main_catalog}
+
+          for pr in open_prs:
+              branch = pr.get('head', {}).get('ref', '')
+              if not branch.startswith('submission-'):
+                  continue
+
+              pr_num = pr.get('number')
+              print(f"--- Processing PR #{pr_num} ({branch}) ---")
+
+              try:
+                  b_raw = run(f'git show origin/{branch}:screensavers.json').stdout
+                  b_data = json.loads(b_raw)
+              except Exception as e:
+                  print(f"Could not read screensavers.json on {branch}: {e}")
+                  continue
+
+              new_items = [x for x in b_data if x.get('id') not in main_ids]
+              if not new_items:
+                  print(f"No new items on {branch} compared to main.")
+                  continue
+
+              print(f"Found new item(s) on {branch}: {[x.get('id') for x in new_items]}")
+
+              run(f'git checkout -B {branch} origin/main')
+
+              try:
+                  diff_files = run(f'git diff --name-only --diff-filter=A origin/main...origin/{branch}').stdout.splitlines()
+                  for f_diff in diff_files:
+                      if f_diff.startswith('images/'):
+                          run(f'git checkout origin/{branch} -- "{f_diff}"')
+              except Exception as img_err:
+                  print(f"Warning extracting images for {branch}: {img_err}")
+
+              with open('screensavers.json', 'r', encoding='utf-8') as f:
+                  curr_catalog = json.load(f)
+
+              curr_ids = {x.get('id') for x in curr_catalog}
+              for it in new_items:
+                  if it.get('id') not in curr_ids:
+                      curr_catalog.append(it)
+                      curr_ids.add(it.get('id'))
+
+              with open('screensavers.json', 'w', encoding='utf-8') as f:
+                  json.dump(curr_catalog, f, indent=2, ensure_ascii=False)
+
+              try:
+                  sys.path.insert(0, os.path.abspath('tools'))
+                  from catalog_studio import rebuild_credits_file
+                  rebuild_credits_file(curr_catalog)
+              except Exception as cred_err:
+                  print(f"Note: Could not rebuild credits ({cred_err})")
+
+              run('git add images/ screensavers.json CREDITS.md')
+              run(f'git commit -m "Auto-rebase submission on latest main [skip ci]"', check=False)
+              push_res = run(f'git push origin {branch} --force', check=False)
+              if push_res.returncode == 0:
+                  print(f"Successfully rebased and pushed {branch}!")
+              else:
+                  print(f"Push failed for {branch}: {push_res.stderr}")
+
+          print("All open submission PRs evaluated.")
+          EOF

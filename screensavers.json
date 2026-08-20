@@ -13816,5 +13816,114 @@
       "ziploc"
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-ziploc-sealed-bag-overlay.png"
+  },
+  {
+    "id": "kobo-wallpaper-castle-01-alpha",
+    "title": "Kobo Wallpaper Castle 01 Alpha",
+    "author": "Community",
+    "category": "Fantasy",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/kobo-wallpaper-castle-01-alpha.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/kobo-wallpaper-castle-01-alpha.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/kobo-wallpaper-castle-01-alpha.jpg",
+    "downloads": 0,
+    "likes": 0
+  },
+  {
+    "id": "witch-hat-atelier",
+    "title": "Witch Hat Atelier",
+    "author": "Shirahama Kamome",
+    "category": [
+      "Fantasy",
+      "Anime"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/witch-hat-atelier.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/witch-hat-atelier.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/witch-hat-atelier.jpg",
+    "downloads": 0,
+    "likes": 0
+  },
+  {
+    "id": "squiddy-reading-to-bob",
+    "title": "Squiddy Reading To Bob",
+    "author": "Jules",
+    "category": "Pop Culture",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/squiddy-reading-to-bob.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/squiddy-reading-to-bob.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/squiddy-reading-to-bob.jpg",
+    "downloads": 0,
+    "likes": 0
+  },
+  {
+    "id": "darth-vader-reading-while-drinking-a-coffee",
+    "title": "Darth Vader Reading while drinking a Coffee",
+    "author": "Dannyv180",
+    "category": [
+      "Sci-Fi",
+      "Art",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/darth-vader-reading-while-drinking-a-coffee.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/darth-vader-reading-while-drinking-a-coffee.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/darth-vader-reading-while-drinking-a-coffee.jpg",
+    "downloads": 0,
+    "likes": 0
+  },
+  {
+    "id": "knight-before-god",
+    "title": "Knight Before God",
+    "author": "Chunihs0",
+    "category": [
+      "Fantasy",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/knight-before-god.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/knight-before-god.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/knight-before-god.jpg",
+    "downloads": 0,
+    "likes": 0
+  },
+  {
+    "id": "inri-universe",
+    "title": "INRI Universe",
+    "author": "Chunihs0",
+    "category": [
+      "Fantasy",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/inri-universe.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/inri-universe.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/inri-universe.jpg",
+    "downloads": 0,
+    "likes": 0
   }
 ]
