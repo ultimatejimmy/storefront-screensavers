@@ -430,5 +430,5 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Witch Hat Atelier | Shirahama Kamome | Fantasy, Anime | Community Share | Shirahama Kamome |
 | Squiddy Reading To Bob | Jules | Pop Culture | Community Share | Jules |
 | Darth Vader Reading while drinking a Coffee | Dannyv180 | Sci-Fi, Art, Pop Culture | Community Share | Dannyv180 |
-| Knight Before God | Chunihs0 | Fantasy, Art | Community Share | Chunihs0 |
-| INRI Universe | Chunihs0 | Fantasy, Art | Community Share | Chunihs0 |
+| Knight Before God | Chunihs0 | Fantasy, Art, Religion | Community Share | Chunihs0 |
+| INRI Universe | Chunihs0 | Fantasy, Art, Religion | Community Share | Chunihs0 |
