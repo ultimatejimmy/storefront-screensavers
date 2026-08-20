@@ -13977,5 +13977,37 @@
       "fantasy",
       "art"
     ]
+  },
+  {
+    "id": "angry-space-daddy",
+    "title": "Angry Space Daddy",
+    "author": "Tefron",
+    "category": [
+      "Sci-Fi",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/angry-space-daddy.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/angry-space-daddy.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/angry-space-daddy.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "imperial",
+      "space fascist",
+      "daddy",
+      "single parent",
+      "dad",
+      "space daddy",
+      "scifi",
+      "color",
+      "transparent",
+      "tefron"
+    ]
   }
 ]
