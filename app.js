@@ -841,13 +841,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const drawW = scaledW * scaleFactor;
       const drawH = scaledH * scaleFactor;
 
-      ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, TARGET_W, TARGET_H);
+      // Determine if image is PNG or categorized as transparent
+      const isPng = (selectedFile && (selectedFile.type === 'image/png' || selectedFile.name.toLowerCase().endsWith('.png')));
+      const isTransCat = document.getElementById('sub-category') && document.getElementById('sub-category').value.toLowerCase().includes('transparent');
+
+      if (!isPng && !isTransCat) {
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, TARGET_W, TARGET_H);
+      } else {
+        ctx.clearRect(0, 0, TARGET_W, TARGET_H);
+      }
       ctx.drawImage(cropImageObj, drawX, drawY, drawW, drawH);
+
+      const exportMime = (isPng || isTransCat) ? 'image/png' : 'image/jpeg';
+      const exportQuality = (isPng || isTransCat) ? undefined : 0.92;
 
       outCanvas.toBlob((blob) => {
         resolve(blob || selectedFile);
-      }, 'image/jpeg', 0.92);
+      }, exportMime, exportQuality);
     });
   }
 

@@ -119,18 +119,6 @@ jobs:
           os.makedirs('images/thumbnails', exist_ok=True)
           os.makedirs('images/thumbnails/plugin', exist_ok=True)
 
-          # Detect transparent overlays (only when category is Transparent)
-          is_transparent = (category.lower() == 'transparent')
-
-          if is_transparent:
-              full_path = f'images/{item_id}.png'
-              thumb_web_path = f'images/thumbnails/{item_id}.png'          # Web: RGBA with alpha
-              thumb_plugin_path = f'images/thumbnails/plugin/{item_id}.png' # Plugin: checkerboard-composited RGB
-          else:
-              full_path = f'images/{item_id}.jpg'
-              thumb_web_path = f'images/thumbnails/{item_id}.jpg'
-              thumb_plugin_path = None  # No plugin variant needed for opaque images
-
           headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
           max_retries = 3
           MAX_DOWNLOAD_BYTES = 25 * 1024 * 1024
@@ -194,6 +182,30 @@ jobs:
 
           if img.width > 12000 or img.height > 12000:
               write_failure_comment(f"Image resolution ({img.width} × {img.height} px) exceeds 12,000 px limit.")
+
+          tags_match = re.search(r'\*\*Tags:\*\*\s*(.*)', body)
+          sub_tags = tags_match.group(1).strip() if tags_match else ""
+
+          # Automatic transparency detection from pixel channels, category, or tags
+          has_trans_tag = ('transparent' in category.lower()) or ('transparent' in sub_tags.lower())
+          has_alpha_channel = ('A' in img.getbands()) or (img.mode in ('RGBA', 'LA')) or ('transparency' in img.info)
+          has_real_transparency = False
+          if has_alpha_channel:
+              rgba_check = img.convert('RGBA')
+              min_a, max_a = rgba_check.split()[-1].getextrema()
+              if min_a < 250:  # Image has actual non-opaque transparent pixels
+                  has_real_transparency = True
+
+          is_transparent = has_trans_tag or has_real_transparency
+
+          if is_transparent:
+              full_path = f'images/{item_id}.png'
+              thumb_web_path = f'images/thumbnails/{item_id}.png'          # Web: RGBA with alpha
+              thumb_plugin_path = f'images/thumbnails/plugin/{item_id}.png' # Plugin: checkerboard-composited RGB
+          else:
+              full_path = f'images/{item_id}.jpg'
+              thumb_web_path = f'images/thumbnails/{item_id}.jpg'
+              thumb_plugin_path = None  # No plugin variant needed for opaque images
 
           CHECKERBOARD_TILE = 12
           CB_LIGHT = (255, 255, 255, 255)
@@ -265,17 +277,26 @@ jobs:
           with open('screensavers.json', 'r') as f:
               catalog = json.load(f)
 
+          cat_list = [c.strip() for c in category.split(',')] if isinstance(category, str) else list(category)
+          if is_transparent and 'Transparent' not in cat_list and 'transparent' not in cat_list:
+              cat_list.append('Transparent')
+
+          tag_list = [t.strip() for t in sub_tags.split(',')] if sub_tags else []
+          if is_transparent and 'transparent' not in tag_list:
+              tag_list.append('transparent')
+
           new_entry = {
               "id": item_id,
               "title": title,
               "author": author,
-              "category": category,
+              "category": cat_list if len(cat_list) > 1 else (cat_list[0] if cat_list else "General"),
               "compatibility": ["Kindle", "Kobo", "Boox"],
               "thumbnailUrl": thumb_url,
               "pluginThumbnailUrl": plugin_thumb_url,
               "fullUrl": full_url,
               "downloads": 0,
-              "likes": 0
+              "likes": 0,
+              "tags": tag_list
           }
 
           # Check if id exists and update, or append
