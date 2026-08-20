@@ -1074,6 +1074,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <option value="Art" ${item.category === 'Art' ? 'selected' : ''}>Art</option>
               <option value="Pop Culture" ${item.category === 'Pop Culture' ? 'selected' : ''}>Pop Culture</option>
               <option value="Quotes" ${item.category === 'Quotes' ? 'selected' : ''}>Quotes</option>
+              <option value="Religion" ${item.category === 'Religion' ? 'selected' : ''}>Religion</option>
             </select>
           </div>
         </div>

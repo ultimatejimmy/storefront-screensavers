@@ -20,7 +20,7 @@ This repository serves two main purposes:
 ## Features
 
 - **Optimized for E-Ink & Color E-Readers**: High contrast, minimal grayscale & vibrant color wallpapers curated specifically for e-paper screens (Kindle, Kobo, Boox Color, etc.).
-- **Categorized Browsing**: Filter wallpapers by `Nature`, `Minimalist`, `Architecture`, `Sci-Fi`, `Anime`, `Fantasy`, `Abstract`, `Art`, and `Quotes`.
+- **Categorized Browsing**: Filter wallpapers by `Nature`, `Minimalist`, `Architecture`, `Sci-Fi`, `Anime`, `Fantasy`, `Abstract`, `Art`, `Religion`, and `Quotes`.
 - **Bulk Upload Support**: Submit multiple wallpapers (up to 10) in a single batch, queueing items, setting titles/authors/categories per image, and automatically opening individual GitHub Issues for independent maintainer approval.
 - **Suggest Changes & Feedback**: Submit corrections to titles, artists, categories, or flag low-quality entries directly via the ✏️ slide-in drawer on any wallpaper card.
 - **Open Access & CC0 Sourcing**: Curated collection featuring high-resolution masterworks from The Metropolitan Museum of Art, Rijksmuseum, Old Book Illustrations, Rawpixel, and NASA. All attributed in [`CREDITS.md`](CREDITS.md).

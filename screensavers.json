@@ -1524,7 +1524,10 @@
     "title": "The Assumption of the Virgin",
     "author": "El Greco (Doménikos Theotokópoulos; Greek, active in Spain, 1541–1614)",
     "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
+    "category": [
+      "Fine Art",
+      "Religion"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -1771,7 +1774,10 @@
     "title": "Saint George and the Dragon",
     "author": "Bernat Martorell (Spanish, active from 1427–died 1452)",
     "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
+    "category": [
+      "Fine Art",
+      "Religion"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2143,7 +2149,10 @@
     "title": "Landscape with Saint John on Patmos",
     "author": "Nicolas Poussin (French, 1594–1665)",
     "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
+    "category": [
+      "Fine Art",
+      "Religion"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2307,7 +2316,10 @@
     "title": "Shiva as Lord of the Dance (Nataraja)",
     "author": "India",
     "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
+    "category": [
+      "Fine Art",
+      "Religion"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2947,7 +2959,10 @@
     "title": "Virgin and Child with the Young Saint John the Baptist",
     "author": "Correggio (Antonio Allegri; Italian, 1489–1534)",
     "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
+    "category": [
+      "Fine Art",
+      "Religion"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -2977,7 +2992,10 @@
     "title": "The Annunciation",
     "author": "Jean Hey (Master of Moulins; Netherlandish, c. 1480-c.1504)",
     "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
+    "category": [
+      "Fine Art",
+      "Religion"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -3115,7 +3133,10 @@
     "title": "The Nativity",
     "author": "Fra Bartolommeo (Baccio della Porta; Italian, 1472-1517)",
     "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
+    "category": [
+      "Fine Art",
+      "Religion"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -3168,7 +3189,10 @@
     "title": "Retable and Frontal of the Life of Christ and the Virgin",
     "author": "Spanish",
     "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
+    "category": [
+      "Fine Art",
+      "Religion"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -3336,7 +3360,10 @@
     "title": "The Beheading of Saint John the Baptist",
     "author": "Giovanni di Paolo (Italian, 1398–1482)",
     "authorUrl": "https://www.artic.edu",
-    "category": "Fine Art",
+    "category": [
+      "Fine Art",
+      "Religion"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -5009,7 +5036,10 @@
     "title": "Hisanori Rurikoin Temple Kyoto",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Architecture",
+    "category": [
+      "Architecture",
+      "Religion"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -6287,7 +6317,10 @@
     "title": "Alexandre Cabanel Angel Fallen Angel",
     "author": "Wallhaven Contributor",
     "authorUrl": "https://wallhaven.cc",
-    "category": "Abstract",
+    "category": [
+      "Abstract",
+      "Religion"
+    ],
     "compatibility": [
       "Kindle",
       "Kobo",
