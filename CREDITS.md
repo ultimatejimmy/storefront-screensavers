@@ -438,3 +438,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Stinky Girls | Jules | Minimalist, Art | Community Share | Jules |
 | Gary Reading to Bob | Jules | Pop Culture, Transparent | Community Share | Jules |
 | Play Billy play | Jules | Art, Transparent | Community Share | Jules |
+| Steel dragonfly | Jules | Art, Transparent | Community Share | Jules |
