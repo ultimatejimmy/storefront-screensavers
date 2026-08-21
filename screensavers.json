@@ -14149,5 +14149,22 @@
     "tags": [
       "transparent"
     ]
+  },
+  {
+    "id": "existential-crisis-squidward",
+    "title": "Existential Crisis Squidward",
+    "author": "Jules",
+    "category": "Pop Culture",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/existential-crisis-squidward.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/existential-crisis-squidward.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/existential-crisis-squidward.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
   }
 ]
