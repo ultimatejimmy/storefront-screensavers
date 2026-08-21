@@ -14083,5 +14083,27 @@
     "downloads": 0,
     "likes": 0,
     "tags": []
+  },
+  {
+    "id": "gary-reading-to-bob",
+    "title": "Gary Reading to Bob",
+    "author": "Jules",
+    "category": [
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/gary-reading-to-bob.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/gary-reading-to-bob.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/gary-reading-to-bob.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
   }
 ]
