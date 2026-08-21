@@ -14166,5 +14166,27 @@
     "downloads": 0,
     "likes": 0,
     "tags": []
+  },
+  {
+    "id": "scooby-strings",
+    "title": "Scooby-Strings",
+    "author": "Jules",
+    "category": [
+      "Minimalist",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/scooby-strings.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/scooby-strings.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/scooby-strings.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Scooby-doo"
+    ]
   }
 ]

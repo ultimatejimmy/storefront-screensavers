@@ -440,3 +440,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Play Billy play | Jules | Art, Transparent | Community Share | Jules |
 | Steel dragonfly | Jules | Art, Transparent | Community Share | Jules |
 | Existential Crisis Squidward | Jules | Pop Culture | Community Share | Jules |
+| Scooby-Strings | Jules | Minimalist, Pop Culture | Community Share | Jules |
