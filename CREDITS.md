@@ -434,3 +434,5 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | INRI Universe | Chunihs0 | Fantasy, Art, Religion | Community Share | Chunihs0 |
 | Angry Space Daddy | Tefron | Sci-Fi, Pop Culture, Transparent | Community Share | Tefron |
 | Space Fascist Gear Logo - Transparent | Tefron | Sci-Fi, Pop Culture, Transparent | Community Share | Tefron |
+| Perfect Blue | Ducklfy | Anime, Art | Community Share | Ducklfy |
+| Stinky Girls | Jules | Minimalist, Art | Community Share | Jules |
