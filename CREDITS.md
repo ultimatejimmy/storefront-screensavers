@@ -439,3 +439,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Gary Reading to Bob | Jules | Pop Culture, Transparent | Community Share | Jules |
 | Play Billy play | Jules | Art, Transparent | Community Share | Jules |
 | Steel dragonfly | Jules | Art, Transparent | Community Share | Jules |
+| Existential Crisis Squidward | Jules | Pop Culture | Community Share | Jules |
