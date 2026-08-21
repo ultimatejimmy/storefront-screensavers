@@ -442,3 +442,5 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Existential Crisis Squidward | Jules | Pop Culture | Community Share | Jules |
 | Scooby-Strings | Jules | Minimalist, Pop Culture | Community Share | Jules |
 | Three Worlds by MC Escher | MC Escher | Art | Community Share | MC Escher |
+| Princess Annaliese | Jules | Minimalist, Fantasy, Art, Pop Culture, Transparent | Community Share | Jules |
+| Garfield Chilling | Jules | Minimalist, Art, Pop Culture, Transparent | Community Share | Jules |
