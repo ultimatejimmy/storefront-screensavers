@@ -14188,5 +14188,22 @@
     "tags": [
       "Scooby-doo"
     ]
+  },
+  {
+    "id": "three-worlds-by-mc-escher",
+    "title": "Three Worlds by MC Escher",
+    "author": "MC Escher",
+    "category": "Art",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/three-worlds-by-mc-escher.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/three-worlds-by-mc-escher.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/three-worlds-by-mc-escher.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
   }
 ]

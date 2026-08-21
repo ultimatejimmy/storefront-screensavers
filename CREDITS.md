@@ -441,3 +441,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Steel dragonfly | Jules | Art, Transparent | Community Share | Jules |
 | Existential Crisis Squidward | Jules | Pop Culture | Community Share | Jules |
 | Scooby-Strings | Jules | Minimalist, Pop Culture | Community Share | Jules |
+| Three Worlds by MC Escher | MC Escher | Art | Community Share | MC Escher |
