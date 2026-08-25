@@ -444,3 +444,5 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Three Worlds by MC Escher | MC Escher | Art | Community Share | MC Escher |
 | Princess Annaliese | Jules | Minimalist, Fantasy, Art, Pop Culture, Transparent | Community Share | Jules |
 | Garfield Chilling | Jules | Minimalist, Art, Pop Culture, Transparent | Community Share | Jules |
+| jake-the-dog-reading-color | jakeh42 | Minimalist, Pop Culture, Transparent | Community Share | jakeh42 |
+| Byakuya | Community | Anime, Transparent | Community Share | Community |
