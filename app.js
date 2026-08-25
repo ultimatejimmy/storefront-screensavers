@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeCats = getActiveFilterCategories();
     const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
     const sortSelect = document.getElementById('sort-select');
-    const sortBy = sortSelect ? sortSelect.value : 'likes';
+    const sortBy = sortSelect ? sortSelect.value : 'downloads';
 
     let filtered = catalogData.filter(item => {
       const matchCat = itemMatchesCategories(item, activeCats);
@@ -316,13 +316,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return matchCat && matchSearch;
     });
 
-    if (sortBy === 'downloads') {
-      filtered.sort((a, b) => (getItemDownloads(b) - getItemDownloads(a)) || ((b._originalIndex || 0) - (a._originalIndex || 0)));
-    } else if (sortBy === 'newest') {
+    if (sortBy === 'newest') {
       filtered.sort((a, b) => {
         if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
         return (b._originalIndex || 0) - (a._originalIndex || 0);
       });
+    } else if (sortBy === 'likes') {
+      filtered.sort((a, b) => (getItemLikes(b) - getItemLikes(a)) || ((b._originalIndex || 0) - (a._originalIndex || 0)));
     } else if (sortBy === 'oldest') {
       filtered.sort((a, b) => {
         if (a.dateAdded && b.dateAdded) return new Date(a.dateAdded) - new Date(b.dateAdded);
@@ -335,8 +335,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (sortBy === 'author-asc') {
       filtered.sort((a, b) => (a.author || '').localeCompare(b.author || ''));
     } else {
-      // Default: Most Popular (Thumbs Up) with newest additions as tiebreaker
-      filtered.sort((a, b) => (getItemLikes(b) - getItemLikes(a)) || ((b._originalIndex || 0) - (a._originalIndex || 0)));
+      // Default: Most Downloaded with newest additions as tiebreaker
+      filtered.sort((a, b) => (getItemDownloads(b) - getItemDownloads(a)) || ((b._originalIndex || 0) - (a._originalIndex || 0)));
     }
 
     renderGallery(filtered);
@@ -632,15 +632,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cropperContainer) cropperContainer.style.display = 'block';
   }
 
-  function autoDetectFocalPoint() {
-    if (!cropImageObj || !cropperCanvas) return;
-
-    const imgW = cropImageObj.naturalWidth || cropImageObj.width;
-    const imgH = cropImageObj.naturalHeight || cropImageObj.height;
+  // --- Shared Cropper Math & Rendering Utilities ---
+  function computeFocalPointOffsets(imgObj, zoom = 1) {
+    if (!imgObj) return { offsetX: 0, offsetY: 0 };
+    const imgW = imgObj.naturalWidth || imgObj.width || 1200;
+    const imgH = imgObj.naturalHeight || imgObj.height || 1600;
 
     const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
-    const scaledW = imgW * baseScale * cropState.zoom;
-    const scaledH = imgH * baseScale * cropState.zoom;
+    const scaledW = imgW * baseScale * zoom;
+    const scaledH = imgH * baseScale * zoom;
 
     try {
       const sampleCanvas = document.createElement('canvas');
@@ -648,7 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const sW = 64, sH = 64;
       sampleCanvas.width = sW;
       sampleCanvas.height = sH;
-      ctx.drawImage(cropImageObj, 0, 0, sW, sH);
+      ctx.drawImage(imgObj, 0, 0, sW, sH);
       const imgData = ctx.getImageData(0, 0, sW, sH).data;
 
       let maxVar = -1;
@@ -686,18 +686,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const focalPctX = bestX / sW;
       const focalPctY = bestY / sH;
 
-      cropState.offsetX = (FRAME_W / 2) - (scaledW * focalPctX);
-      cropState.offsetY = (FRAME_H / 2) - (scaledH * focalPctY);
-      clampCropOffsets(scaledW, scaledH);
+      let offX = (FRAME_W / 2) - (scaledW * focalPctX);
+      let offY = (FRAME_H / 2) - (scaledH * focalPctY);
+      return clampOffsetValues(scaledW, scaledH, offX, offY);
     } catch (err) {
-      cropState.offsetX = (FRAME_W - scaledW) / 2;
-      cropState.offsetY = (FRAME_H - scaledH) / 2;
+      let offX = (FRAME_W - scaledW) / 2;
+      let offY = (FRAME_H - scaledH) / 2;
+      return clampOffsetValues(scaledW, scaledH, offX, offY);
     }
-
-    drawCropper();
   }
 
-  function clampCropOffsets(scaledW, scaledH) {
+  function clampOffsetValues(scaledW, scaledH, offX, offY) {
     const padX = Math.max(0, (FRAME_W - scaledW) / 2);
     const padY = Math.max(0, (FRAME_H - scaledH) / 2);
 
@@ -706,60 +705,158 @@ document.addEventListener('DOMContentLoaded', () => {
     const minY = Math.min(0, FRAME_H - scaledH) - padY;
     const maxY = Math.max(0, FRAME_H - scaledH) + padY;
 
-    cropState.offsetX = Math.max(minX, Math.min(maxX, cropState.offsetX));
-    cropState.offsetY = Math.max(minY, Math.min(maxY, cropState.offsetY));
+    return {
+      offsetX: Math.max(minX, Math.min(maxX, offX)),
+      offsetY: Math.max(minY, Math.min(maxY, offY))
+    };
+  }
+
+  function renderCropCanvas(canvas, imgObj, cState, showGuides = true, isTransparent = false) {
+    if (!canvas || !imgObj) return;
+    const ctx = canvas.getContext('2d');
+    const imgW = imgObj.naturalWidth || imgObj.width || 1200;
+    const imgH = imgObj.naturalHeight || imgObj.height || 1600;
+
+    const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
+    const scaledW = imgW * baseScale * (cState.zoom || 1);
+    const scaledH = imgH * baseScale * (cState.zoom || 1);
+
+    const clamped = clampOffsetValues(scaledW, scaledH, cState.offsetX, cState.offsetY);
+    cState.offsetX = clamped.offsetX;
+    cState.offsetY = clamped.offsetY;
+
+    if (isTransparent) {
+      ctx.clearRect(0, 0, FRAME_W, FRAME_H);
+    } else {
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, FRAME_W, FRAME_H);
+    }
+
+    ctx.drawImage(imgObj, cState.offsetX, cState.offsetY, scaledW, scaledH);
+
+    if (showGuides) {
+      // Rule of thirds grid overlay
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+
+      ctx.beginPath();
+      ctx.moveTo(FRAME_W / 3, 0); ctx.lineTo(FRAME_W / 3, FRAME_H);
+      ctx.moveTo((FRAME_W / 3) * 2, 0); ctx.lineTo((FRAME_W / 3) * 2, FRAME_H);
+      ctx.moveTo(0, FRAME_H / 3); ctx.lineTo(FRAME_W, FRAME_H / 3);
+      ctx.moveTo(0, (FRAME_H / 3) * 2); ctx.lineTo(FRAME_W, (FRAME_H / 3) * 2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Draw 3:4 E-Ink Screen Outline Border
+      ctx.strokeStyle = 'rgba(139, 92, 246, 0.8)';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(1, 1, FRAME_W - 2, FRAME_H - 2);
+
+      // Draw Cyan Corner Brackets
+      const cLen = 16;
+      ctx.strokeStyle = '#06b6d4';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      // Top-Left
+      ctx.moveTo(0, cLen); ctx.lineTo(0, 0); ctx.lineTo(cLen, 0);
+      // Top-Right
+      ctx.moveTo(FRAME_W - cLen, 0); ctx.lineTo(FRAME_W, 0); ctx.lineTo(FRAME_W, cLen);
+      // Bottom-Left
+      ctx.moveTo(0, FRAME_H - cLen); ctx.lineTo(0, FRAME_H); ctx.lineTo(cLen, FRAME_H);
+      // Bottom-Right
+      ctx.moveTo(FRAME_W - cLen, FRAME_H); ctx.lineTo(FRAME_W, FRAME_H); ctx.lineTo(FRAME_W, FRAME_H - cLen);
+      ctx.stroke();
+    }
+  }
+
+  function renderExportBlob(imgObj, cState, fileType = 'image/jpeg', fileName = '', isTransparent = false) {
+    return new Promise((resolve) => {
+      if (!imgObj) {
+        resolve(null);
+        return;
+      }
+      const outCanvas = document.createElement('canvas');
+      const TARGET_W = 1860;
+      const TARGET_H = 2480;
+      outCanvas.width = TARGET_W;
+      outCanvas.height = TARGET_H;
+      const ctx = outCanvas.getContext('2d');
+
+      const imgW = imgObj.naturalWidth || imgObj.width || 1200;
+      const imgH = imgObj.naturalHeight || imgObj.height || 1600;
+
+      const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
+      const scaledW = imgW * baseScale * (cState.zoom || 1);
+      const scaledH = imgH * baseScale * (cState.zoom || 1);
+
+      const scaleFactor = TARGET_W / FRAME_W;
+      const drawX = cState.offsetX * scaleFactor;
+      const drawY = cState.offsetY * scaleFactor;
+      const drawW = scaledW * scaleFactor;
+      const drawH = scaledH * scaleFactor;
+
+      const isPng = (fileType === 'image/png' || (fileName && fileName.toLowerCase().endsWith('.png')));
+
+      if (!isPng && !isTransparent) {
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, TARGET_W, TARGET_H);
+      } else {
+        ctx.clearRect(0, 0, TARGET_W, TARGET_H);
+      }
+      ctx.drawImage(imgObj, drawX, drawY, drawW, drawH);
+
+      const exportMime = (isPng || isTransparent) ? 'image/png' : 'image/jpeg';
+      const exportQuality = (isPng || isTransparent) ? undefined : 0.92;
+
+      outCanvas.toBlob((blob) => {
+        resolve(blob);
+      }, exportMime, exportQuality);
+    });
+  }
+
+  function renderThumbnailDataUrl(imgObj, cState, thumbW = 76, thumbH = 101, isTransparent = false) {
+    if (!imgObj) return '';
+    const tCanvas = document.createElement('canvas');
+    tCanvas.width = thumbW;
+    tCanvas.height = thumbH;
+    const ctx = tCanvas.getContext('2d');
+
+    const imgW = imgObj.naturalWidth || imgObj.width || 1200;
+    const imgH = imgObj.naturalHeight || imgObj.height || 1600;
+
+    const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
+    const scaledW = imgW * baseScale * (cState.zoom || 1);
+    const scaledH = imgH * baseScale * (cState.zoom || 1);
+
+    const scaleFactor = thumbW / FRAME_W;
+    const drawX = cState.offsetX * scaleFactor;
+    const drawY = cState.offsetY * scaleFactor;
+    const drawW = scaledW * scaleFactor;
+    const drawH = scaledH * scaleFactor;
+
+    if (!isTransparent) {
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, thumbW, thumbH);
+    } else {
+      ctx.clearRect(0, 0, thumbW, thumbH);
+    }
+    ctx.drawImage(imgObj, drawX, drawY, drawW, drawH);
+    return tCanvas.toDataURL('image/jpeg', 0.85);
+  }
+
+  function autoDetectFocalPoint() {
+    if (!cropImageObj || !cropperCanvas) return;
+    const offsets = computeFocalPointOffsets(cropImageObj, cropState.zoom);
+    cropState.offsetX = offsets.offsetX;
+    cropState.offsetY = offsets.offsetY;
+    drawCropper();
   }
 
   function drawCropper() {
     if (!cropImageObj || !cropperCanvas) return;
-    const ctx = cropperCanvas.getContext('2d');
-    const imgW = cropImageObj.naturalWidth || cropImageObj.width;
-    const imgH = cropImageObj.naturalHeight || cropImageObj.height;
-
-    const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
-    const scaledW = imgW * baseScale * cropState.zoom;
-    const scaledH = imgH * baseScale * cropState.zoom;
-
-    clampCropOffsets(scaledW, scaledH);
-
-    // Fill background with solid black for letterbox padding
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0, 0, FRAME_W, FRAME_H);
-
-    ctx.drawImage(cropImageObj, cropState.offsetX, cropState.offsetY, scaledW, scaledH);
-
-    // Rule of thirds grid overlay
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
-
-    ctx.beginPath();
-    ctx.moveTo(FRAME_W / 3, 0); ctx.lineTo(FRAME_W / 3, FRAME_H);
-    ctx.moveTo((FRAME_W / 3) * 2, 0); ctx.lineTo((FRAME_W / 3) * 2, FRAME_H);
-    ctx.moveTo(0, FRAME_H / 3); ctx.lineTo(FRAME_W, FRAME_H / 3);
-    ctx.moveTo(0, (FRAME_H / 3) * 2); ctx.lineTo(FRAME_W, (FRAME_H / 3) * 2);
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    // Draw 3:4 E-Ink Screen Outline Border
-    ctx.strokeStyle = 'rgba(139, 92, 246, 0.8)'; // accent purple
-    ctx.lineWidth = 2;
-    ctx.strokeRect(1, 1, FRAME_W - 2, FRAME_H - 2);
-
-    // Draw Cyan Corner Brackets
-    const cLen = 16;
-    ctx.strokeStyle = '#06b6d4'; // bright cyan
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    // Top-Left
-    ctx.moveTo(0, cLen); ctx.lineTo(0, 0); ctx.lineTo(cLen, 0);
-    // Top-Right
-    ctx.moveTo(FRAME_W - cLen, 0); ctx.lineTo(FRAME_W, 0); ctx.lineTo(FRAME_W, cLen);
-    // Bottom-Left
-    ctx.moveTo(0, FRAME_H - cLen); ctx.lineTo(0, FRAME_H); ctx.lineTo(cLen, FRAME_H);
-    // Bottom-Right
-    ctx.moveTo(FRAME_W - cLen, FRAME_H); ctx.lineTo(FRAME_W, FRAME_H); ctx.lineTo(FRAME_W, FRAME_H - cLen);
-    ctx.stroke();
+    const isTransCat = document.getElementById('sub-category') && document.getElementById('sub-category').value.toLowerCase().includes('transparent');
+    renderCropCanvas(cropperCanvas, cropImageObj, cropState, true, isTransCat);
   }
 
   if (cropperCanvas) {
@@ -816,50 +913,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getCroppedBlob() {
-    return new Promise((resolve) => {
-      if (!cropImageObj) {
-        resolve(selectedFile);
-        return;
-      }
-      const outCanvas = document.createElement('canvas');
-      const TARGET_W = 1860;
-      const TARGET_H = 2480;
-      outCanvas.width = TARGET_W;
-      outCanvas.height = TARGET_H;
-      const ctx = outCanvas.getContext('2d');
-
-      const imgW = cropImageObj.naturalWidth || cropImageObj.width;
-      const imgH = cropImageObj.naturalHeight || cropImageObj.height;
-
-      const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
-      const scaledW = imgW * baseScale * cropState.zoom;
-      const scaledH = imgH * baseScale * cropState.zoom;
-
-      const scaleFactor = TARGET_W / FRAME_W;
-      const drawX = cropState.offsetX * scaleFactor;
-      const drawY = cropState.offsetY * scaleFactor;
-      const drawW = scaledW * scaleFactor;
-      const drawH = scaledH * scaleFactor;
-
-      // Determine if image is PNG or categorized as transparent
-      const isPng = (selectedFile && (selectedFile.type === 'image/png' || selectedFile.name.toLowerCase().endsWith('.png')));
-      const isTransCat = document.getElementById('sub-category') && document.getElementById('sub-category').value.toLowerCase().includes('transparent');
-
-      if (!isPng && !isTransCat) {
-        ctx.fillStyle = '#000000';
-        ctx.fillRect(0, 0, TARGET_W, TARGET_H);
-      } else {
-        ctx.clearRect(0, 0, TARGET_W, TARGET_H);
-      }
-      ctx.drawImage(cropImageObj, drawX, drawY, drawW, drawH);
-
-      const exportMime = (isPng || isTransCat) ? 'image/png' : 'image/jpeg';
-      const exportQuality = (isPng || isTransCat) ? undefined : 0.92;
-
-      outCanvas.toBlob((blob) => {
-        resolve(blob || selectedFile);
-      }, exportMime, exportQuality);
-    });
+    if (!cropImageObj) return Promise.resolve(selectedFile);
+    const isTransCat = document.getElementById('sub-category') && document.getElementById('sub-category').value.toLowerCase().includes('transparent');
+    return renderExportBlob(cropImageObj, cropState, selectedFile ? selectedFile.type : 'image/jpeg', selectedFile ? selectedFile.name : '', isTransCat)
+      .then(blob => blob || selectedFile);
   }
 
   // Submission Form Submit Handler
@@ -979,13 +1036,55 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Bulk Queue Logic ---
+  // --- Bulk Queue & Batch Logic ---
+  const ALL_SUBMIT_CATEGORIES = [
+    'Minimalist',
+    'Nature',
+    'Architecture',
+    'Fantasy',
+    'Sci-Fi',
+    'Anime',
+    'Abstract',
+    'Art',
+    'Pop Culture',
+    'Quotes',
+    'Religion',
+    'Transparent'
+  ];
+
   const bulkDropzoneBox = document.getElementById('bulk-dropzone-box');
   const subBulkFiles = document.getElementById('sub-bulk-files');
   const bulkQueueList = document.getElementById('bulk-queue-list');
+  const bulkBatchToolbar = document.getElementById('bulk-batch-toolbar');
   const btnSubmitBulkAll = document.getElementById('btn-submit-bulk-all');
+  const subBulkAgree = document.getElementById('sub-bulk-agree');
 
-  let bulkQueue = []; // items: { id, file, title, author, category, previewUrl }
+  // Batch toolbar elements
+  const bulkBatchAuthorInput = document.getElementById('bulk-batch-author-input');
+  const btnBatchApplyAuthor = document.getElementById('btn-batch-apply-author');
+  const bulkBatchCategorySelect = document.getElementById('bulk-batch-category-select');
+  const btnBatchApplyCategory = document.getElementById('btn-batch-apply-category');
+  const bulkBatchTagsInput = document.getElementById('bulk-batch-tags-input');
+  const btnBatchApplyTags = document.getElementById('btn-batch-apply-tags');
+  const btnBatchAutofocalAll = document.getElementById('btn-batch-autofocal-all');
+  const btnBulkClearAll = document.getElementById('btn-bulk-clear-all');
+
+  // Modal Editor elements
+  const imageEditorModalBackdrop = document.getElementById('image-editor-modal-backdrop');
+  const editorModalHeading = document.getElementById('editor-modal-heading');
+  const btnCloseEditorModal = document.getElementById('btn-close-editor-modal');
+  const btnCancelEditorModal = document.getElementById('btn-cancel-editor-modal');
+  const btnSaveEditorModal = document.getElementById('btn-save-editor-modal');
+  const modalCropperCanvas = document.getElementById('modal-cropper-canvas');
+  const modalCropZoomSlider = document.getElementById('modal-crop-zoom-slider');
+  const modalZoomVal = document.getElementById('modal-zoom-val');
+  const btnModalAutoFocal = document.getElementById('btn-modal-auto-focal');
+  const btnModalCenterFit = document.getElementById('btn-modal-center-fit');
+  const modalOrigSpecs = document.getElementById('modal-orig-specs');
+
+  let bulkQueue = []; // items: { id, file, title, author, category, tags, cropState, previewUrl, imgObj }
+  let activeModalItem = null;
+  let modalCropState = { zoom: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 };
 
   if (bulkDropzoneBox && subBulkFiles) {
     bulkDropzoneBox.addEventListener('click', () => subBulkFiles.click());
@@ -1033,8 +1132,10 @@ document.addEventListener('DOMContentLoaded', () => {
       alert(`${rejectedCount} file(s) were skipped because they are not valid JPG, PNG, or WebP images or exceed 25 MB.`);
     }
 
+    if (validFiles.length === 0) return;
+
     validFiles.forEach(file => {
-      const qId = 'item-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4);
+      const qId = 'bulk-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7);
       const cleanTitle = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
       const formattedTitle = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
 
@@ -1044,10 +1145,30 @@ document.addEventListener('DOMContentLoaded', () => {
         title: formattedTitle,
         author: 'Community',
         category: 'Minimalist',
-        previewUrl: URL.createObjectURL(file)
+        tags: '',
+        cropState: { zoom: 1, offsetX: 0, offsetY: 0, isCustom: false },
+        previewUrl: URL.createObjectURL(file),
+        imgObj: null
       };
+
       bulkQueue.push(queueItem);
+
+      // Preload image for focal analysis and 3:4 crop previews
+      const img = new Image();
+      img.onload = () => {
+        queueItem.imgObj = img;
+        const offsets = computeFocalPointOffsets(img, 1);
+        queueItem.cropState.offsetX = offsets.offsetX;
+        queueItem.cropState.offsetY = offsets.offsetY;
+        const thumbUrl = renderThumbnailDataUrl(img, queueItem.cropState, 76, 101, queueItem.category.toLowerCase().includes('transparent'));
+        if (thumbUrl) {
+          queueItem.previewUrl = thumbUrl;
+        }
+        renderBulkQueue();
+      };
+      img.src = queueItem.previewUrl;
     });
+
     renderBulkQueue();
   }
 
@@ -1057,7 +1178,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (bulkQueue.length === 0) {
       if (btnSubmitBulkAll) btnSubmitBulkAll.style.display = 'none';
+      if (bulkBatchToolbar) bulkBatchToolbar.style.display = 'none';
       return;
+    }
+
+    if (bulkBatchToolbar) {
+      bulkBatchToolbar.style.display = 'block';
     }
 
     if (btnSubmitBulkAll) {
@@ -1068,39 +1194,74 @@ document.addEventListener('DOMContentLoaded', () => {
     bulkQueue.forEach((item, idx) => {
       const card = document.createElement('div');
       card.className = 'bulk-item-card';
+
+      const optionsHtml = ALL_SUBMIT_CATEGORIES.map(cat =>
+        `<option value="${cat}" ${item.category === cat ? 'selected' : ''}>${cat}</option>`
+      ).join('');
+
+      const cropStatusText = item.cropState && item.cropState.isCustom
+        ? `✓ Custom (${item.cropState.zoom.toFixed(1)}x)`
+        : `⚡ Auto-crop (3:4)`;
+      const cropBadgeClass = item.cropState && item.cropState.isCustom ? 'bulk-crop-status-badge customized' : 'bulk-crop-status-badge';
+
       card.innerHTML = `
-        <img class="bulk-item-thumb" src="${item.previewUrl}" alt="Queue Thumbnail">
+        <div class="bulk-item-thumb-wrap" title="Click to edit 3:4 crop">
+          <img class="bulk-item-thumb" src="${item.previewUrl}" alt="Queue Thumbnail">
+          <div class="bulk-thumb-edit-overlay">
+            <span>✂️</span>
+            <span>Edit</span>
+          </div>
+        </div>
         <div class="bulk-item-fields">
           <input type="text" class="form-control bulk-input-title" data-idx="${idx}" value="${item.title}" placeholder="Title" required>
           <div style="display: flex; gap: 0.5rem;">
             <input type="text" class="form-control bulk-input-author" data-idx="${idx}" value="${item.author}" placeholder="Author / Artist" required style="flex: 1;">
             <select class="form-control bulk-input-category" data-idx="${idx}" style="flex: 1;">
-              <option value="Minimalist" ${item.category === 'Minimalist' ? 'selected' : ''}>Minimalist</option>
-              <option value="Nature" ${item.category === 'Nature' ? 'selected' : ''}>Nature</option>
-              <option value="Architecture" ${item.category === 'Architecture' ? 'selected' : ''}>Architecture</option>
-              <option value="Fantasy" ${item.category === 'Fantasy' ? 'selected' : ''}>Fantasy</option>
-              <option value="Sci-Fi" ${item.category === 'Sci-Fi' ? 'selected' : ''}>Sci-Fi</option>
-              <option value="Anime" ${item.category === 'Anime' ? 'selected' : ''}>Anime</option>
-              <option value="Abstract" ${item.category === 'Abstract' ? 'selected' : ''}>Abstract</option>
-              <option value="Art" ${item.category === 'Art' ? 'selected' : ''}>Art</option>
-              <option value="Pop Culture" ${item.category === 'Pop Culture' ? 'selected' : ''}>Pop Culture</option>
-              <option value="Quotes" ${item.category === 'Quotes' ? 'selected' : ''}>Quotes</option>
-              <option value="Religion" ${item.category === 'Religion' ? 'selected' : ''}>Religion</option>
+              ${optionsHtml}
             </select>
           </div>
+          <input type="text" class="form-control bulk-input-tags" data-idx="${idx}" value="${item.tags || ''}" placeholder="Tags / keywords (e.g. anime, landscape, dark, minimal)...">
+          <div class="bulk-card-actions">
+            <button type="button" class="btn-bulk-crop-edit" data-idx="${idx}" title="Open 3:4 E-Ink screen cropper">
+              <span>✂️</span>
+              <span>Edit & Crop (3:4)</span>
+            </button>
+            <span class="${cropBadgeClass}">${cropStatusText}</span>
+          </div>
         </div>
-        <button type="button" class="btn-remove bulk-btn-remove" data-idx="${idx}">✕</button>
+        <button type="button" class="btn-remove bulk-btn-remove" data-idx="${idx}" title="Remove from queue">✕</button>
       `;
 
       card.querySelector('.bulk-input-title').addEventListener('input', (e) => {
         bulkQueue[idx].title = e.target.value;
       });
+
       card.querySelector('.bulk-input-author').addEventListener('input', (e) => {
         bulkQueue[idx].author = e.target.value;
       });
+
       card.querySelector('.bulk-input-category').addEventListener('change', (e) => {
         bulkQueue[idx].category = e.target.value;
+        if (bulkQueue[idx].imgObj) {
+          const isTrans = e.target.value.toLowerCase().includes('transparent');
+          bulkQueue[idx].previewUrl = renderThumbnailDataUrl(bulkQueue[idx].imgObj, bulkQueue[idx].cropState, 76, 101, isTrans);
+          const thumbEl = card.querySelector('.bulk-item-thumb');
+          if (thumbEl) thumbEl.src = bulkQueue[idx].previewUrl;
+        }
       });
+
+      card.querySelector('.bulk-input-tags').addEventListener('input', (e) => {
+        bulkQueue[idx].tags = e.target.value;
+      });
+
+      card.querySelector('.bulk-item-thumb-wrap').addEventListener('click', () => {
+        openImageEditorModal(bulkQueue[idx]);
+      });
+
+      card.querySelector('.btn-bulk-crop-edit').addEventListener('click', () => {
+        openImageEditorModal(bulkQueue[idx]);
+      });
+
       card.querySelector('.bulk-btn-remove').addEventListener('click', () => {
         bulkQueue.splice(idx, 1);
         renderBulkQueue();
@@ -1110,9 +1271,269 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Batch Toolbar Action Listeners ---
+  if (btnBatchApplyAuthor && bulkBatchAuthorInput) {
+    btnBatchApplyAuthor.addEventListener('click', () => {
+      const val = bulkBatchAuthorInput.value.trim();
+      if (!val) {
+        alert('Please enter an Author / Artist name to apply to all items.');
+        return;
+      }
+      bulkQueue.forEach(item => { item.author = val; });
+      renderBulkQueue();
+      showToast(`Applied author "${val}" to all ${bulkQueue.length} wallpapers!`);
+    });
+  }
+
+  if (btnBatchApplyCategory && bulkBatchCategorySelect) {
+    btnBatchApplyCategory.addEventListener('click', () => {
+      const val = bulkBatchCategorySelect.value;
+      if (!val) {
+        alert('Please select a Category to apply to all items.');
+        return;
+      }
+      bulkQueue.forEach(item => {
+        item.category = val;
+        if (item.imgObj) {
+          item.previewUrl = renderThumbnailDataUrl(item.imgObj, item.cropState, 76, 101, val.toLowerCase().includes('transparent'));
+        }
+      });
+      renderBulkQueue();
+      showToast(`Applied category "${val}" to all ${bulkQueue.length} wallpapers!`);
+    });
+  }
+
+  if (btnBatchApplyTags && bulkBatchTagsInput) {
+    btnBatchApplyTags.addEventListener('click', () => {
+      const val = bulkBatchTagsInput.value.trim();
+      if (!val) {
+        alert('Please enter tags to add to all items.');
+        return;
+      }
+      bulkQueue.forEach(item => {
+        if (!item.tags) {
+          item.tags = val;
+        } else {
+          const currentTags = item.tags.split(',').map(t => t.trim());
+          const newTags = val.split(',').map(t => t.trim());
+          const merged = Array.from(new Set([...currentTags, ...newTags])).join(', ');
+          item.tags = merged;
+        }
+      });
+      renderBulkQueue();
+      showToast(`Added tags to all ${bulkQueue.length} wallpapers!`);
+    });
+  }
+
+  if (btnBatchAutofocalAll) {
+    btnBatchAutofocalAll.addEventListener('click', () => {
+      if (bulkQueue.length === 0) return;
+      bulkQueue.forEach(item => {
+        if (item.imgObj) {
+          const offsets = computeFocalPointOffsets(item.imgObj, item.cropState.zoom || 1);
+          item.cropState.offsetX = offsets.offsetX;
+          item.cropState.offsetY = offsets.offsetY;
+          item.previewUrl = renderThumbnailDataUrl(item.imgObj, item.cropState, 76, 101, item.category.toLowerCase().includes('transparent'));
+        }
+      });
+      renderBulkQueue();
+      showToast(`Auto-detected subject crops for all ${bulkQueue.length} wallpapers!`);
+    });
+  }
+
+  if (btnBulkClearAll) {
+    btnBulkClearAll.addEventListener('click', () => {
+      if (bulkQueue.length === 0) return;
+      if (confirm('Clear all wallpapers from the bulk queue?')) {
+        bulkQueue = [];
+        renderBulkQueue();
+      }
+    });
+  }
+
+  // --- Image Editor & Cropper Modal Logic ---
+  function openImageEditorModal(item) {
+    activeModalItem = item;
+    if (!activeModalItem) return;
+
+    if (editorModalHeading) {
+      editorModalHeading.textContent = `Crop "${item.title}"`;
+    }
+
+    if (modalCropperCanvas) {
+      modalCropperCanvas.width = FRAME_W;
+      modalCropperCanvas.height = FRAME_H;
+    }
+
+    modalCropState = {
+      zoom: item.cropState.zoom || 1,
+      offsetX: item.cropState.offsetX || 0,
+      offsetY: item.cropState.offsetY || 0,
+      isDragging: false,
+      startX: 0,
+      startY: 0
+    };
+
+    if (modalCropZoomSlider) {
+      modalCropZoomSlider.value = modalCropState.zoom;
+    }
+    if (modalZoomVal) {
+      modalZoomVal.textContent = modalCropState.zoom.toFixed(1) + 'x';
+    }
+
+    if (modalOrigSpecs && item.imgObj) {
+      modalOrigSpecs.textContent = `${item.imgObj.naturalWidth || item.imgObj.width} × ${item.imgObj.naturalHeight || item.imgObj.height} px · ${(item.file.size / 1024).toFixed(0)} KB`;
+    }
+
+    if (!item.imgObj) {
+      const tempImg = new Image();
+      tempImg.onload = () => {
+        item.imgObj = tempImg;
+        if (modalOrigSpecs) {
+          modalOrigSpecs.textContent = `${tempImg.naturalWidth} × ${tempImg.naturalHeight} px · ${(item.file.size / 1024).toFixed(0)} KB`;
+        }
+        drawModalCropper();
+      };
+      tempImg.src = URL.createObjectURL(item.file);
+    } else {
+      drawModalCropper();
+    }
+
+    if (imageEditorModalBackdrop) {
+      imageEditorModalBackdrop.style.display = 'flex';
+      setTimeout(() => imageEditorModalBackdrop.classList.add('open'), 10);
+    }
+  }
+
+  function closeImageEditorModal() {
+    if (!imageEditorModalBackdrop) return;
+    imageEditorModalBackdrop.classList.remove('open');
+    setTimeout(() => {
+      imageEditorModalBackdrop.style.display = 'none';
+      activeModalItem = null;
+    }, 250);
+  }
+
+  function drawModalCropper() {
+    if (!activeModalItem || !activeModalItem.imgObj || !modalCropperCanvas) return;
+    const isTrans = activeModalItem.category && activeModalItem.category.toLowerCase().includes('transparent');
+    renderCropCanvas(modalCropperCanvas, activeModalItem.imgObj, modalCropState, true, isTrans);
+  }
+
+  if (modalCropperCanvas) {
+    modalCropperCanvas.addEventListener('mousedown', (e) => {
+      modalCropState.isDragging = true;
+      modalCropState.startX = e.clientX - modalCropState.offsetX;
+      modalCropState.startY = e.clientY - modalCropState.offsetY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!modalCropState.isDragging || !activeModalItem) return;
+      modalCropState.offsetX = e.clientX - modalCropState.startX;
+      modalCropState.offsetY = e.clientY - modalCropState.startY;
+      drawModalCropper();
+    });
+
+    window.addEventListener('mouseup', () => {
+      modalCropState.isDragging = false;
+    });
+
+    modalCropperCanvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        modalCropState.isDragging = true;
+        modalCropState.startX = e.touches[0].clientX - modalCropState.offsetX;
+        modalCropState.startY = e.touches[0].clientY - modalCropState.offsetY;
+      }
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!modalCropState.isDragging || !activeModalItem || e.touches.length !== 1) return;
+      modalCropState.offsetX = e.touches[0].clientX - modalCropState.startX;
+      modalCropState.offsetY = e.touches[0].clientY - modalCropState.startY;
+      drawModalCropper();
+    });
+
+    window.addEventListener('touchend', () => {
+      modalCropState.isDragging = false;
+    });
+  }
+
+  if (modalCropZoomSlider) {
+    modalCropZoomSlider.addEventListener('input', (e) => {
+      modalCropState.zoom = parseFloat(e.target.value);
+      if (modalZoomVal) modalZoomVal.textContent = modalCropState.zoom.toFixed(1) + 'x';
+      drawModalCropper();
+    });
+  }
+
+  if (btnModalAutoFocal) {
+    btnModalAutoFocal.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!activeModalItem || !activeModalItem.imgObj) return;
+      const offsets = computeFocalPointOffsets(activeModalItem.imgObj, modalCropState.zoom);
+      modalCropState.offsetX = offsets.offsetX;
+      modalCropState.offsetY = offsets.offsetY;
+      drawModalCropper();
+    });
+  }
+
+  if (btnModalCenterFit) {
+    btnModalCenterFit.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!activeModalItem || !activeModalItem.imgObj) return;
+      modalCropState.zoom = 1;
+      if (modalCropZoomSlider) modalCropZoomSlider.value = 1;
+      if (modalZoomVal) modalZoomVal.textContent = '1.0x';
+
+      const imgW = activeModalItem.imgObj.naturalWidth || activeModalItem.imgObj.width || 1200;
+      const imgH = activeModalItem.imgObj.naturalHeight || activeModalItem.imgObj.height || 1600;
+      const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
+      const scaledW = imgW * baseScale;
+      const scaledH = imgH * baseScale;
+
+      modalCropState.offsetX = (FRAME_W - scaledW) / 2;
+      modalCropState.offsetY = (FRAME_H - scaledH) / 2;
+      drawModalCropper();
+    });
+  }
+
+  if (btnSaveEditorModal) {
+    btnSaveEditorModal.addEventListener('click', () => {
+      if (!activeModalItem || !activeModalItem.imgObj) return;
+      activeModalItem.cropState = {
+        zoom: modalCropState.zoom,
+        offsetX: modalCropState.offsetX,
+        offsetY: modalCropState.offsetY,
+        isCustom: true
+      };
+
+      const isTrans = activeModalItem.category && activeModalItem.category.toLowerCase().includes('transparent');
+      activeModalItem.previewUrl = renderThumbnailDataUrl(activeModalItem.imgObj, activeModalItem.cropState, 76, 101, isTrans);
+
+      renderBulkQueue();
+      showToast(`Updated 3:4 crop for "${activeModalItem.title}"!`);
+      closeImageEditorModal();
+    });
+  }
+
+  if (btnCloseEditorModal) btnCloseEditorModal.addEventListener('click', closeImageEditorModal);
+  if (btnCancelEditorModal) btnCancelEditorModal.addEventListener('click', closeImageEditorModal);
+  if (imageEditorModalBackdrop) {
+    imageEditorModalBackdrop.addEventListener('click', (e) => {
+      if (e.target === imageEditorModalBackdrop) closeImageEditorModal();
+    });
+  }
+
+  // --- Bulk Submit All Handler ---
   if (btnSubmitBulkAll) {
     btnSubmitBulkAll.addEventListener('click', async () => {
       if (bulkQueue.length === 0) return;
+
+      if (subBulkAgree && !subBulkAgree.checked) {
+        alert('Please check the Community Agreement box to proceed with batch submission.');
+        subBulkAgree.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
 
       btnSubmitBulkAll.disabled = true;
       btnSubmitBulkAll.textContent = `Uploading batch (1 of ${bulkQueue.length})... ⏳`;
@@ -1122,7 +1543,18 @@ document.addEventListener('DOMContentLoaded', () => {
         btnSubmitBulkAll.textContent = `Processing image ${i + 1} of ${bulkQueue.length}... ⏳`;
 
         const fileName = item.file.name || `screensaver_${i + 1}.jpg`;
-        let imageUrl = await uploadImageFile(item.file, fileName);
+        const isTrans = item.category && item.category.toLowerCase().includes('transparent');
+
+        // Render high-res 1860x2480 3:4 cropped blob
+        let fileToUpload = item.file;
+        if (item.imgObj) {
+          const croppedBlob = await renderExportBlob(item.imgObj, item.cropState, item.file.type, fileName, isTrans);
+          if (croppedBlob) {
+            fileToUpload = croppedBlob;
+          }
+        }
+
+        let imageUrl = await uploadImageFile(fileToUpload, fileName);
         if (!imageUrl) {
           imageUrl = `[Uploaded File: ${fileName}]`;
         }
@@ -1135,8 +1567,13 @@ document.addEventListener('DOMContentLoaded', () => {
           `**Author:** ${item.author}`,
           `**Category:** ${item.category}`,
           `**Filename:** ${fileName}`,
-          `**Image:** ${imageUrl}`,
         ];
+
+        if (item.tags && item.tags.trim()) {
+          bodyLines.push(`**Tags:** ${item.tags.trim()}`);
+        }
+
+        bodyLines.push(`**Image:** ${imageUrl}`);
 
         if (imageUrl && imageUrl.startsWith('http')) {
           bodyLines.push(``, `### Image Preview`, `![${item.title}](${imageUrl})`);
@@ -1144,7 +1581,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         bodyLines.push(
           ``,
-          `**Specs:** Batch upload (${(item.file.size / 1024).toFixed(0)} KB)`,
+          `**Specs:** 3:4 E-Ink optimized batch upload (${(item.file.size / 1024).toFixed(0)} KB)`,
           ``,
           `---`,
           `*Submitted via Storefront Screensaver Catalog Site (Batch Upload ${i + 1}/${bulkQueue.length})*`
@@ -1159,7 +1596,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       btnSubmitBulkAll.disabled = false;
       btnSubmitBulkAll.textContent = `Submit All (${bulkQueue.length}) Wallpapers →`;
-      alert(`Opened ${bulkQueue.length} GitHub submission tab(s)! Click submit on each tab to finish.`);
+      showToast(`Opened ${bulkQueue.length} GitHub submission tab(s)! Click submit on each tab to finish.`);
     });
   }
 

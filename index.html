@@ -46,9 +46,9 @@
               <span>Sort:</span>
             </label>
             <select id="sort-select" class="sort-select">
-              <option value="likes" selected>Most Popular (Thumbs Up)</option>
-              <option value="downloads">Most Downloaded</option>
+              <option value="downloads" selected>Most Downloaded</option>
               <option value="newest">Submitted Date (Newest First)</option>
+              <option value="likes">Most Popular (Thumbs Up)</option>
               <option value="oldest">Submitted Date (Oldest First)</option>
               <option value="title-asc">Title (A → Z)</option>
               <option value="title-desc">Title (Z → A)</option>
@@ -123,6 +123,7 @@
               <button type="button" class="tag-btn cat-pill" data-value="Pop Culture">Pop Culture</button>
               <button type="button" class="tag-btn cat-pill" data-value="Quotes">Quotes</button>
               <button type="button" class="tag-btn cat-pill" data-value="Religion">Religion</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Transparent">Transparent</button>
             </div>
           </div>
 
@@ -207,8 +208,47 @@
             </div>
           </div>
 
+          <!-- Batch Action Toolbar (shown when files in queue) -->
+          <div id="bulk-batch-toolbar" class="bulk-batch-toolbar" style="display: none;">
+            <div class="bulk-batch-header">
+              <span>⚡ Batch Actions</span>
+              <button type="button" id="btn-bulk-clear-all" class="bulk-btn-text-danger">Clear Queue</button>
+            </div>
+            <div class="bulk-batch-grid">
+              <div class="bulk-batch-item">
+                <input type="text" id="bulk-batch-author-input" class="form-control form-control-sm" placeholder="Apply Author to all...">
+                <button type="button" id="btn-batch-apply-author" class="tag-btn tag-btn-sm">Apply Author</button>
+              </div>
+              <div class="bulk-batch-item">
+                <select id="bulk-batch-category-select" class="form-control form-control-sm">
+                  <option value="">Choose Category...</option>
+                  <option value="Minimalist">Minimalist</option>
+                  <option value="Nature">Nature</option>
+                  <option value="Architecture">Architecture</option>
+                  <option value="Fantasy">Fantasy</option>
+                  <option value="Sci-Fi">Sci-Fi</option>
+                  <option value="Anime">Anime</option>
+                  <option value="Abstract">Abstract</option>
+                  <option value="Art">Art</option>
+                  <option value="Pop Culture">Pop Culture</option>
+                  <option value="Quotes">Quotes</option>
+                  <option value="Religion">Religion</option>
+                  <option value="Transparent">Transparent</option>
+                </select>
+                <button type="button" id="btn-batch-apply-category" class="tag-btn tag-btn-sm">Apply Category</button>
+              </div>
+              <div class="bulk-batch-item">
+                <input type="text" id="bulk-batch-tags-input" class="form-control form-control-sm" placeholder="Add tags to all (comma-separated)...">
+                <button type="button" id="btn-batch-apply-tags" class="tag-btn tag-btn-sm">Apply Tags</button>
+              </div>
+              <div class="bulk-batch-item">
+                <button type="button" id="btn-batch-autofocal-all" class="tag-btn tag-btn-sm" style="width: 100%; justify-content: center;">🎯 Auto-Detect Crop for All</button>
+              </div>
+            </div>
+          </div>
+
           <!-- Queue List -->
-          <div id="bulk-queue-list" class="bulk-queue-list" style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;"></div>
+          <div id="bulk-queue-list" class="bulk-queue-list" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;"></div>
 
           <div class="form-group" style="margin-top: 1.25rem; margin-bottom: 0.75rem;">
             <label style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--text-secondary); cursor: pointer; line-height: 1.4;">
@@ -415,10 +455,67 @@
     </div>
   </div>
 
+  <!-- Image Editor & 3:4 Cropper Modal -->
+  <div id="image-editor-modal-backdrop" class="modal-backdrop" style="display: none;">
+    <div class="image-editor-modal" role="dialog" aria-labelledby="editor-modal-heading" aria-modal="true">
+      <div class="editor-modal-header">
+        <div class="editor-modal-title-wrap">
+          <span class="editor-modal-badge">✂️ 3:4 E-Ink Screen Crop</span>
+          <h3 id="editor-modal-heading">Edit Wallpaper Crop</h3>
+        </div>
+        <button type="button" id="btn-close-editor-modal" class="btn-close-modal" aria-label="Close modal">✕</button>
+      </div>
+      
+      <div class="editor-modal-body">
+        <div class="editor-canvas-container">
+          <div class="editor-canvas-wrap">
+            <canvas id="modal-cropper-canvas" width="270" height="360"></canvas>
+          </div>
+          <span class="editor-crop-hint">💡 Drag image to position your main subject inside the 3:4 e-reader frame.</span>
+        </div>
+        
+        <div class="editor-controls-pane">
+          <div class="editor-control-group">
+            <div class="control-label-row">
+              <span class="control-label">🔍 Zoom Level</span>
+              <span id="modal-zoom-val" class="control-val">1.0x</span>
+            </div>
+            <input type="range" id="modal-crop-zoom-slider" min="0.3" max="3" step="0.05" value="1" class="editor-slider">
+          </div>
+
+          <div class="editor-tools-grid">
+            <button type="button" id="btn-modal-auto-focal" class="tag-btn editor-tool-btn">
+              🎯 Auto-Detect Subject
+            </button>
+            <button type="button" id="btn-modal-center-fit" class="tag-btn editor-tool-btn">
+              📐 Reset & Center
+            </button>
+          </div>
+
+          <div class="editor-meta-info" id="editor-meta-info">
+            <div class="editor-meta-row">
+              <span>Source specs:</span>
+              <strong id="modal-orig-specs">--</strong>
+            </div>
+            <div class="editor-meta-row">
+              <span>Target resolution:</span>
+              <strong>1860 × 2480 px (3:4 E-Ink)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="editor-modal-footer">
+        <button type="button" id="btn-cancel-editor-modal" class="btn-modal-secondary">Cancel</button>
+        <button type="button" id="btn-save-editor-modal" class="btn-primary" style="padding: 0.65rem 1.5rem;">✓ Apply 3:4 Crop</button>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <p>© 2026 Storefront Screensavers Catalog · Open Source & Community Powered</p>
   </footer>
 
-  <script src="app.js?v=3"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
