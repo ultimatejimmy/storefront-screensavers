@@ -375,11 +375,34 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           BRANCH_NAME="submission-${ISSUE_NUM}"
           
-          # Remove stale remote branch if present
-          git push origin --delete "${BRANCH_NAME}" || true
+          # Fetch latest origin/main in case concurrent PRs merged during image processing
+          git fetch origin main
           
-          # Create fresh clean branch from current HEAD
-          git checkout -b "${BRANCH_NAME}"
+          # Extract newly added entry and re-apply cleanly on latest origin/main
+          python - << 'PYEOF'
+          import json, os, subprocess
+          branch = os.environ.get('BRANCH_NAME')
+          with open('screensavers.json', 'r', encoding='utf-8') as f:
+              curr = json.load(f)
+          main_raw = subprocess.check_output('git show origin/main:screensavers.json', shell=True, text=True)
+          main_cat = json.loads(main_raw)
+          main_ids = {x['id'] for x in main_cat}
+          new_items = [x for x in curr if x['id'] not in main_ids]
+          
+          # Stash newly created images temporarily
+          subprocess.run(f'git checkout -B {branch} origin/main', shell=True, check=True)
+          
+          # Load fresh main screensavers.json and append new item(s)
+          with open('screensavers.json', 'r', encoding='utf-8') as f:
+              curr_main = json.load(f)
+          curr_ids = {x['id'] for x in curr_main}
+          for it in new_items:
+              if it['id'] not in curr_ids:
+                  curr_main.append(it)
+                  curr_ids.add(it['id'])
+          with open('screensavers.json', 'w', encoding='utf-8') as f:
+              json.dump(curr_main, f, indent=2, ensure_ascii=False)
+          PYEOF
           
           # Stage exclusively image assets and catalog json
           git add images/ screensavers.json
