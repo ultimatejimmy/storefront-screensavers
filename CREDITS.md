@@ -426,9 +426,23 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Woody Woodpecker Furious | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Yosemite Sam Dual Pistols | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Ziploc Sealed Bag Overlay | outchy | Abstract, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Kobo Wallpaper Castle 01 Alpha | Community | Fantasy | Community Share | Community |
-| Witch Hat Atelier | Shirahama Kamome | Fantasy, Anime | Community Share | Shirahama Kamome |
-| Squiddy Reading To Bob | Jules | Pop Culture | Community Share | Jules |
+| Kobo Wallpaper Castle 01 Alpha | Community | Fantasy, Transparent | Community Share | Community |
+| Witch Hat Atelier | Shirahama Kamome | Fantasy, Anime, Transparent | Community Share | Shirahama Kamome |
+| Squiddy Reading To Bob | Jules | Pop Culture, Transparent | Community Share | Jules |
 | Darth Vader Reading while drinking a Coffee | Dannyv180 | Sci-Fi, Art, Pop Culture | Community Share | Dannyv180 |
 | Knight Before God | Chunihs0 | Fantasy, Art, Religion | Community Share | Chunihs0 |
 | INRI Universe | Chunihs0 | Fantasy, Art, Religion | Community Share | Chunihs0 |
+| Angry Space Daddy | Tefron | Sci-Fi, Pop Culture, Transparent | Community Share | Tefron |
+| Space Fascist Gear Logo - Transparent | Tefron | Sci-Fi, Pop Culture, Transparent | Community Share | Tefron |
+| Perfect Blue | Ducklfy | Anime, Art | Community Share | Ducklfy |
+| Stinky Girls | Jules | Minimalist, Art | Community Share | Jules |
+| Gary Reading to Bob | Jules | Pop Culture, Transparent | Community Share | Jules |
+| Play Billy play | Jules | Art, Transparent | Community Share | Jules |
+| Steel dragonfly | Jules | Art, Transparent | Community Share | Jules |
+| Existential Crisis Squidward | Jules | Pop Culture | Community Share | Jules |
+| Scooby-Strings | Jules | Minimalist, Pop Culture | Community Share | Jules |
+| Three Worlds by MC Escher | MC Escher | Art | Community Share | MC Escher |
+| Princess Annaliese | Jules | Minimalist, Fantasy, Art, Pop Culture, Transparent | Community Share | Jules |
+| Garfield Chilling | Jules | Minimalist, Art, Pop Culture, Transparent | Community Share | Jules |
+| jake-the-dog-reading-color | jakeh42 | Minimalist, Pop Culture, Transparent | Community Share | jakeh42 |
+| Byakuya | Community | Anime, Transparent | Community Share | Community |
