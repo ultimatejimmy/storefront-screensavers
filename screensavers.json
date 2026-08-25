@@ -14309,5 +14309,27 @@
     "tags": [
       "transparent"
     ]
+  },
+  {
+    "id": "ichika",
+    "title": "Ichika",
+    "author": "Community",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ichika.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/ichika.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ichika.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
   }
 ]
