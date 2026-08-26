@@ -370,10 +370,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUM: ${{ github.event.issue.number }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
+          BRANCH_NAME: submission-${{ github.event.issue.number }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          BRANCH_NAME="submission-${ISSUE_NUM}"
+          export BRANCH_NAME="submission-${ISSUE_NUM}"
           
           # Fetch latest origin/main in case concurrent PRs merged during image processing
           git fetch origin main
@@ -381,7 +382,7 @@ jobs:
           # Extract newly added entry and re-apply cleanly on latest origin/main
           python - << 'PYEOF'
           import json, os, subprocess
-          branch = os.environ.get('BRANCH_NAME')
+          branch = os.environ.get('BRANCH_NAME') or f"submission-{os.environ.get('ISSUE_NUM')}"
           with open('screensavers.json', 'r', encoding='utf-8') as f:
               curr = json.load(f)
           main_raw = subprocess.check_output('git show origin/main:screensavers.json', shell=True, text=True)
