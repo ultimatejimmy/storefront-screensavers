@@ -14419,5 +14419,31 @@
       "black & white",
       "transparent"
     ]
+  },
+  {
+    "id": "kenpachi-zaraki",
+    "title": "Kenpachi Zaraki",
+    "author": "Muyuubyuyu",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/kenpachi-zaraki.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/kenpachi-zaraki.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/kenpachi-zaraki.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Kenpachi Zarakibleach",
+      "anime",
+      "manga",
+      "black & white",
+      "transparent"
+    ]
   }
 ]
