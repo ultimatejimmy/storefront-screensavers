@@ -14390,5 +14390,34 @@
       "black & white",
       "transparent"
     ]
+  },
+  {
+    "id": "ruffy-wanted",
+    "title": "Ruffy Wanted",
+    "author": "Muyuubyuyu",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ruffy-wanted.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/ruffy-wanted.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ruffy-wanted.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Ruffy",
+      "One Piece",
+      "manga",
+      "anime",
+      "anime",
+      "manga",
+      "black & white",
+      "transparent"
+    ]
   }
 ]

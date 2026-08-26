@@ -449,3 +449,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Ichika | Community | Anime, Transparent | Community Share | Community |
 | Eikichi Onizuka | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
 | Maomao | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
+| Ruffy Wanted | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
