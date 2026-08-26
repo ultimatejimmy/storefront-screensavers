@@ -14589,5 +14589,32 @@
       "black & white",
       "transparent"
     ]
+  },
+  {
+    "id": "ky-ka-jir",
+    "title": "Kyōka Jirō",
+    "author": "Muyuubyuyu",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ky-ka-jir.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/ky-ka-jir.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ky-ka-jir.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Kyōka Jirō",
+      "Earphone Jack",
+      "Boku no Hero Academia",
+      "BNHA",
+      "black & white",
+      "transparent"
+    ]
   }
 ]
