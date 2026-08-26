@@ -447,3 +447,5 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | jake-the-dog-reading-color | jakeh42 | Minimalist, Pop Culture, Transparent | Community Share | jakeh42 |
 | Byakuya | Community | Anime, Transparent | Community Share | Community |
 | Ichika | Community | Anime, Transparent | Community Share | Community |
+| Eikichi Onizuka | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
+| Maomao | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
