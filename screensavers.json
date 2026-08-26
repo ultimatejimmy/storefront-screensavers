@@ -14361,5 +14361,34 @@
       "black & white",
       "transparent"
     ]
+  },
+  {
+    "id": "maomao",
+    "title": "Maomao",
+    "author": "Muyuubyuyu",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/maomao.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/maomao.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/maomao.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "The Apothecary Diaries",
+      "Maomao",
+      "manga",
+      "anime",
+      "anime",
+      "manga",
+      "black & white",
+      "transparent"
+    ]
   }
 ]
