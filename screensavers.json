@@ -14560,5 +14560,34 @@
       "black & white",
       "transparent"
     ]
+  },
+  {
+    "id": "bonny",
+    "title": "Bonny",
+    "author": "Muyuubyuyu",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bonny.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bonny.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bonny.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Bonny",
+      "One Piece",
+      "manga",
+      "anime",
+      "anime",
+      "manga",
+      "black & white",
+      "transparent"
+    ]
   }
 ]
