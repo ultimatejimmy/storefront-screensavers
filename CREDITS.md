@@ -450,3 +450,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Eikichi Onizuka | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
 | Maomao | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
 | Ruffy Wanted | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
+| Kenpachi Zaraki | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
