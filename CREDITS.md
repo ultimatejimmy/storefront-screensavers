@@ -453,3 +453,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Kenpachi Zaraki | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
 | Enel | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
 | Trafalgar D. Water Law | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
+| Gin Ichimaru | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |

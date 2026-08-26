@@ -14504,5 +14504,31 @@
       "Law",
       "Trafalgar Law"
     ]
+  },
+  {
+    "id": "gin-ichimaru",
+    "title": "Gin Ichimaru",
+    "author": "Muyuubyuyu",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/gin-ichimaru.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/gin-ichimaru.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/gin-ichimaru.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "bleach",
+      "anime",
+      "manga",
+      "black & white",
+      "transparent"
+    ]
   }
 ]
