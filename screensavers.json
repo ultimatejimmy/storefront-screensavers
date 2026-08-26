@@ -14445,5 +14445,34 @@
       "black & white",
       "transparent"
     ]
+  },
+  {
+    "id": "enel",
+    "title": "Enel",
+    "author": "Muyuubyuyu",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/enel.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/enel.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/enel.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Enel",
+      "One Piece",
+      "manga",
+      "anime",
+      "anime",
+      "manga",
+      "black & white",
+      "transparent"
+    ]
   }
 ]
