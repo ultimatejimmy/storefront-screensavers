@@ -14474,5 +14474,35 @@
       "black & white",
       "transparent"
     ]
+  },
+  {
+    "id": "trafalgar-d-water-law",
+    "title": "Trafalgar D. Water Law",
+    "author": "Muyuubyuyu",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/trafalgar-d-water-law.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/trafalgar-d-water-law.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/trafalgar-d-water-law.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "One Piece",
+      "manga",
+      "anime",
+      "anime",
+      "manga",
+      "black & white",
+      "transparent",
+      "Law",
+      "Trafalgar Law"
+    ]
   }
 ]
