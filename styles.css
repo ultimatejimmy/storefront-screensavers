@@ -1144,7 +1144,7 @@ footer {
   padding: 1rem;
   display: flex;
   gap: 1rem;
-  align-items: stretch;
+  align-items: flex-start;
   transition: var(--transition);
   position: relative;
 }
@@ -1156,14 +1156,20 @@ footer {
 
 .bulk-item-thumb-wrap {
   position: relative;
-  width: 76px;
-  min-width: 76px;
-  aspect-ratio: 3/4;
+  width: 84px;
+  min-width: 84px;
+  max-width: 84px;
+  height: 112px;
+  min-height: 112px;
+  max-height: 112px;
+  aspect-ratio: 3 / 4;
   border-radius: var(--radius-sm);
   overflow: hidden;
   border: 1px solid var(--border-color);
   background: #111827;
   cursor: pointer;
+  flex-shrink: 0;
+  align-self: flex-start;
 }
 
 .bulk-item-thumb {
@@ -1973,9 +1979,7 @@ footer {
     padding: 0.85rem;
   }
 
-  .bulk-item-thumb {
-    width: 75px;
-    height: 100px;
+  .bulk-item-thumb-wrap {
     align-self: center;
   }
 
