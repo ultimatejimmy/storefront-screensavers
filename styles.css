@@ -412,16 +412,61 @@ body::after {
 .card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(11, 15, 25, 0.9) 100%);
+  background: linear-gradient(180deg, transparent 40%, rgba(11, 15, 25, 0.95) 100%);
   opacity: 0;
   transition: var(--transition);
   display: flex;
   align-items: flex-end;
-  padding: 1rem;
+  padding: 0.85rem;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .card:hover .card-overlay {
   opacity: 1;
+}
+
+.card-overlay-badge {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #f3f4f6;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+.card-overlay-badge a {
+  color: var(--accent-green);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.card-overlay-badge a:hover {
+  text-decoration: underline;
+}
+
+/* High contrast overlay in Book Text mode */
+.card-image-wrap.transparent-bg.book-text-mode .card-overlay {
+  background: linear-gradient(180deg, transparent 35%, rgba(15, 23, 42, 0.82) 75%, rgba(15, 23, 42, 0.96) 100%);
+}
+
+.card-image-wrap.transparent-bg.book-text-mode .card-overlay-badge {
+  background: rgba(11, 15, 25, 0.98);
+  color: #f9fafb;
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
 }
 
 .card-body {

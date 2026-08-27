@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="${wrapClass}">
           <img class="card-img" src="${item.thumbnailUrl}" alt="${item.title}" loading="lazy">
           <div class="card-overlay">
-            <span style="font-size: 0.8rem; background: rgba(0,0,0,0.6); padding: 0.25rem 0.5rem; border-radius: 4px;">by ${authorDisplay}</span>
+            <span class="card-overlay-badge">by ${authorDisplay}</span>
           </div>
         </div>
         <div class="card-body">
