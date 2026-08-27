@@ -211,39 +211,50 @@
           <!-- Batch Action Toolbar (shown when files in queue) -->
           <div id="bulk-batch-toolbar" class="bulk-batch-toolbar" style="display: none;">
             <div class="bulk-batch-header">
-              <span>⚡ Batch Actions</span>
+              <span>⚡ Batch Actions (Apply to All Queued)</span>
               <button type="button" id="btn-bulk-clear-all" class="bulk-btn-text-danger">Clear Queue</button>
             </div>
             <div class="bulk-batch-grid">
-              <div class="bulk-batch-item">
-                <input type="text" id="bulk-batch-author-input" class="form-control form-control-sm" placeholder="Apply Author to all...">
-                <button type="button" id="btn-batch-apply-author" class="tag-btn tag-btn-sm">Apply Author</button>
+              <div class="bulk-batch-block">
+                <label class="bulk-batch-label" for="bulk-batch-author-input">Creator / Artist Name</label>
+                <div class="bulk-batch-input-row">
+                  <input type="text" id="bulk-batch-author-input" class="form-control form-control-sm" placeholder="e.g. your_username">
+                  <button type="button" id="btn-batch-apply-author" class="tag-btn tag-btn-sm">Apply to All</button>
+                </div>
               </div>
-              <div class="bulk-batch-item">
-                <select id="bulk-batch-category-select" class="form-control form-control-sm">
-                  <option value="">Choose Category...</option>
-                  <option value="Minimalist">Minimalist</option>
-                  <option value="Nature">Nature</option>
-                  <option value="Architecture">Architecture</option>
-                  <option value="Fantasy">Fantasy</option>
-                  <option value="Sci-Fi">Sci-Fi</option>
-                  <option value="Anime">Anime</option>
-                  <option value="Abstract">Abstract</option>
-                  <option value="Art">Art</option>
-                  <option value="Pop Culture">Pop Culture</option>
-                  <option value="Quotes">Quotes</option>
-                  <option value="Religion">Religion</option>
-                  <option value="Transparent">Transparent</option>
-                </select>
-                <button type="button" id="btn-batch-apply-category" class="tag-btn tag-btn-sm">Apply Category</button>
+
+              <div class="bulk-batch-block">
+                <label class="bulk-batch-label" for="bulk-batch-tags-input">Tags / Keywords</label>
+                <div class="bulk-batch-input-row">
+                  <input type="text" id="bulk-batch-tags-input" class="form-control form-control-sm" placeholder="e.g. anime, landscape, moody">
+                  <button type="button" id="btn-batch-apply-tags" class="tag-btn tag-btn-sm">Add to All</button>
+                </div>
               </div>
-              <div class="bulk-batch-item">
-                <input type="text" id="bulk-batch-tags-input" class="form-control form-control-sm" placeholder="Add tags to all (comma-separated)...">
-                <button type="button" id="btn-batch-apply-tags" class="tag-btn tag-btn-sm">Apply Tags</button>
+            </div>
+
+            <div class="bulk-batch-block" style="margin-top: 0.85rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <label class="bulk-batch-label" style="margin-bottom: 0;">Categories (select all that apply to batch)</label>
+                <button type="button" id="btn-batch-apply-category" class="tag-btn tag-btn-sm">Apply Selected to All</button>
               </div>
-              <div class="bulk-batch-item">
-                <button type="button" id="btn-batch-autofocal-all" class="tag-btn tag-btn-sm" style="width: 100%; justify-content: center;">🎯 Auto-Detect Crop for All</button>
+              <div class="category-pills bulk-category-pills" id="batch-category-pills">
+                <button type="button" class="tag-btn cat-pill" data-value="Minimalist">Minimalist</button>
+                <button type="button" class="tag-btn cat-pill" data-value="Nature">Nature</button>
+                <button type="button" class="tag-btn cat-pill" data-value="Architecture">Architecture</button>
+                <button type="button" class="tag-btn cat-pill" data-value="Fantasy">Fantasy</button>
+                <button type="button" class="tag-btn cat-pill" data-value="Sci-Fi">Sci-Fi</button>
+                <button type="button" class="tag-btn cat-pill" data-value="Anime">Anime</button>
+                <button type="button" class="tag-btn cat-pill" data-value="Abstract">Abstract</button>
+                <button type="button" class="tag-btn cat-pill" data-value="Art">Art</button>
+                <button type="button" class="tag-btn cat-pill" data-value="Pop Culture">Pop Culture</button>
+                <button type="button" class="tag-btn cat-pill" data-value="Quotes">Quotes</button>
+                <button type="button" class="tag-btn cat-pill" data-value="Religion">Religion</button>
+                <button type="button" class="tag-btn cat-pill" data-value="Transparent">Transparent</button>
               </div>
+            </div>
+
+            <div style="margin-top: 0.85rem; display: flex; justify-content: flex-end;">
+              <button type="button" id="btn-batch-autofocal-all" class="tag-btn tag-btn-sm">🎯 Auto-Detect 3:4 Crop for All</button>
             </div>
           </div>
 

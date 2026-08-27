@@ -1025,18 +1025,70 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 0.65rem;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.bulk-batch-item {
+.bulk-batch-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.bulk-batch-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.bulk-batch-input-row {
   display: flex;
   gap: 0.4rem;
   align-items: center;
 }
 
-.bulk-batch-item .form-control {
+.bulk-batch-input-row .form-control {
   flex: 1;
   min-width: 0;
+}
+
+.bulk-category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.bulk-category-pills .cat-pill {
+  padding: 0.35rem 0.8rem !important;
+  font-size: 0.78rem !important;
+  border-radius: 9999px !important;
+  cursor: pointer;
+}
+
+.bulk-item-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
+}
+
+.bulk-item-cat-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.bulk-item-category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.bulk-item-category-pills .cat-pill {
+  padding: 0.28rem 0.65rem !important;
+  font-size: 0.74rem !important;
+  border-radius: 9999px !important;
+  cursor: pointer;
+  line-height: 1.2;
 }
 
 /* Bulk Queue List & Cards */

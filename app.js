@@ -1060,12 +1060,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // Batch toolbar elements
   const bulkBatchAuthorInput = document.getElementById('bulk-batch-author-input');
   const btnBatchApplyAuthor = document.getElementById('btn-batch-apply-author');
-  const bulkBatchCategorySelect = document.getElementById('bulk-batch-category-select');
   const btnBatchApplyCategory = document.getElementById('btn-batch-apply-category');
   const bulkBatchTagsInput = document.getElementById('bulk-batch-tags-input');
   const btnBatchApplyTags = document.getElementById('btn-batch-apply-tags');
   const btnBatchAutofocalAll = document.getElementById('btn-batch-autofocal-all');
   const btnBulkClearAll = document.getElementById('btn-bulk-clear-all');
+
+  // Batch Category Pills Toggle Handler
+  const batchCategoryPills = document.querySelectorAll('#batch-category-pills .cat-pill');
+  if (batchCategoryPills) {
+    batchCategoryPills.forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        e.preventDefault();
+        pill.classList.toggle('active');
+      });
+    });
+  }
 
   // Modal Editor elements
   const imageEditorModalBackdrop = document.getElementById('image-editor-modal-backdrop');
@@ -1132,6 +1142,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (validFiles.length === 0) return;
 
+    // Check if batch category pills have selections to apply as default
+    const batchActiveCats = Array.from(document.querySelectorAll('#batch-category-pills .cat-pill.active'))
+      .map(p => p.getAttribute('data-value'));
+    const defaultCat = batchActiveCats.length > 0 ? batchActiveCats.join(', ') : 'Minimalist';
+
     validFiles.forEach(file => {
       const qId = 'bulk-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7);
       const cleanTitle = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
@@ -1142,7 +1157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         file: file,
         title: formattedTitle,
         author: 'Community',
-        category: 'Minimalist',
+        category: defaultCat,
         tags: '',
         cropState: { zoom: 1, offsetX: 0, offsetY: 0, isCustom: false },
         previewUrl: URL.createObjectURL(file),
@@ -1193,9 +1208,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'bulk-item-card';
 
-      const optionsHtml = ALL_SUBMIT_CATEGORIES.map(cat =>
-        `<option value="${cat}" ${item.category === cat ? 'selected' : ''}>${cat}</option>`
-      ).join('');
+      const currentCats = (item.category || 'Minimalist').split(',').map(c => c.trim()).filter(Boolean);
+
+      const pillsHtml = ALL_SUBMIT_CATEGORIES.map(cat => {
+        const isActive = currentCats.includes(cat);
+        return `<button type="button" class="tag-btn cat-pill ${isActive ? 'active' : ''}" data-cat="${cat}">${cat}</button>`;
+      }).join('');
 
       const cropStatusText = item.cropState && item.cropState.isCustom
         ? `✓ Custom (${item.cropState.zoom.toFixed(1)}x)`
@@ -1214,9 +1232,12 @@ document.addEventListener('DOMContentLoaded', () => {
           <input type="text" class="form-control bulk-input-title" data-idx="${idx}" value="${item.title}" placeholder="Title" required>
           <div style="display: flex; gap: 0.5rem;">
             <input type="text" class="form-control bulk-input-author" data-idx="${idx}" value="${item.author}" placeholder="Author / Artist" required style="flex: 1;">
-            <select class="form-control bulk-input-category" data-idx="${idx}" style="flex: 1;">
-              ${optionsHtml}
-            </select>
+          </div>
+          <div class="bulk-item-categories">
+            <span class="bulk-item-cat-label">Categories (select all that apply):</span>
+            <div class="category-pills bulk-item-category-pills" data-idx="${idx}">
+              ${pillsHtml}
+            </div>
           </div>
           <input type="text" class="form-control bulk-input-tags" data-idx="${idx}" value="${item.tags || ''}" placeholder="Tags / keywords (e.g. anime, landscape, dark, minimal)...">
           <div class="bulk-card-actions">
@@ -1238,14 +1259,25 @@ document.addEventListener('DOMContentLoaded', () => {
         bulkQueue[idx].author = e.target.value;
       });
 
-      card.querySelector('.bulk-input-category').addEventListener('change', (e) => {
-        bulkQueue[idx].category = e.target.value;
-        if (bulkQueue[idx].imgObj) {
-          const isTrans = e.target.value.toLowerCase().includes('transparent');
-          bulkQueue[idx].previewUrl = renderThumbnailDataUrl(bulkQueue[idx].imgObj, bulkQueue[idx].cropState, 76, 101, isTrans);
-          const thumbEl = card.querySelector('.bulk-item-thumb');
-          if (thumbEl) thumbEl.src = bulkQueue[idx].previewUrl;
-        }
+      card.querySelectorAll('.bulk-item-category-pills .cat-pill').forEach(pill => {
+        pill.addEventListener('click', (e) => {
+          e.preventDefault();
+          pill.classList.toggle('active');
+          const activePills = card.querySelectorAll('.bulk-item-category-pills .cat-pill.active');
+          if (activePills.length === 0) {
+            pill.classList.add('active'); // keep at least 1 selected
+          }
+          const selected = Array.from(card.querySelectorAll('.bulk-item-category-pills .cat-pill.active'))
+            .map(p => p.getAttribute('data-cat'));
+          bulkQueue[idx].category = selected.join(', ');
+
+          if (bulkQueue[idx].imgObj) {
+            const isTrans = bulkQueue[idx].category.toLowerCase().includes('transparent');
+            bulkQueue[idx].previewUrl = renderThumbnailDataUrl(bulkQueue[idx].imgObj, bulkQueue[idx].cropState, 76, 101, isTrans);
+            const thumbEl = card.querySelector('.bulk-item-thumb');
+            if (thumbEl) thumbEl.src = bulkQueue[idx].previewUrl;
+          }
+        });
       });
 
       card.querySelector('.bulk-input-tags').addEventListener('input', (e) => {
@@ -1283,13 +1315,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (btnBatchApplyCategory && bulkBatchCategorySelect) {
+  if (btnBatchApplyCategory) {
     btnBatchApplyCategory.addEventListener('click', () => {
-      const val = bulkBatchCategorySelect.value;
-      if (!val) {
-        alert('Please select a Category to apply to all items.');
+      const activePills = document.querySelectorAll('#batch-category-pills .cat-pill.active');
+      const selectedCats = Array.from(activePills).map(p => p.getAttribute('data-value'));
+      if (selectedCats.length === 0) {
+        alert('Please select at least one Category from the pills above to apply to all items.');
         return;
       }
+      const val = selectedCats.join(', ');
       bulkQueue.forEach(item => {
         item.category = val;
         if (item.imgObj) {
@@ -1297,7 +1331,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       renderBulkQueue();
-      showToast(`Applied category "${val}" to all ${bulkQueue.length} wallpapers!`);
+      showToast(`Applied categories "${val}" to all ${bulkQueue.length} wallpapers!`);
     });
   }
 
