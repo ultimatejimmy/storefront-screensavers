@@ -14616,5 +14616,27 @@
       "black & white",
       "transparent"
     ]
+  },
+  {
+    "id": "ichika-transparent-screensaver2",
+    "title": "Ichika transparent screensaver2",
+    "author": "test",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ichika-transparent-screensaver2.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/ichika-transparent-screensaver2.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ichika-transparent-screensaver2.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
   }
 ]
