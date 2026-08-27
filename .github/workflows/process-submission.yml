@@ -3,6 +3,8 @@ name: Process Wallpaper Submission
 on:
   issues:
     types: [opened, reopened, edited]
+  issue_comment:
+    types: [created, edited]
 
 permissions:
   contents: write
@@ -11,7 +13,7 @@ permissions:
 
 jobs:
   process-submission:
-    if: contains(github.event.issue.title, 'Screensaver Submission')
+    if: contains(github.event.issue.title, 'Screensaver Submission') && github.event.sender.type != 'Bot'
     runs-on: ubuntu-latest
 
     steps:
@@ -31,9 +33,12 @@ jobs:
       - name: Process Image, Generate Thumbnail, and Update Catalog
         id: process
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
           ISSUE_BODY: ${{ github.event.issue.body }}
           ISSUE_NUM: ${{ github.event.issue.number }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
         run: |
           python - << 'EOF'
           import os, json, re, requests, time, sys
@@ -91,15 +96,48 @@ jobs:
 
           # 3. Fallback: match any image/github URL in body
           if not url_match_str:
-              any_url = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur)[^\s\)\"]*', body, re.IGNORECASE)
+              any_url = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', body, re.IGNORECASE)
               if any_url:
                   url_match_str = any_url.group(0)
 
-          # 4. Final fallback: any URL in issue body
+          # 4. Fallback: any URL in issue body
           if not url_match_str:
               any_url = re.search(r'https?://[^\s\)\"]+', body)
               if any_url:
                   url_match_str = any_url.group(0)
+
+          # 5. Check trigger comment body if triggered by issue_comment
+          comment_body = os.environ.get('COMMENT_BODY', '')
+          if not url_match_str and comment_body:
+              c_img = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', comment_body)
+              if c_img:
+                  url_match_str = c_img.group(1)
+              else:
+                  any_c_url = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', comment_body, re.IGNORECASE)
+                  if any_c_url:
+                      url_match_str = any_c_url.group(0)
+
+          # 6. Check existing issue comments via GitHub API
+          if not url_match_str:
+              token = os.environ.get('GH_TOKEN', '')
+              repo = os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')
+              if token and issue_num:
+                  try:
+                      headers_gh = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
+                      comments_resp = requests.get(f'https://api.github.com/repos/{repo}/issues/{issue_num}/comments', headers=headers_gh, timeout=10)
+                      if comments_resp.status_code == 200:
+                          for c in comments_resp.json():
+                              c_txt = c.get('body', '')
+                              if 'Wallpaper Submission Validation Failed' in c_txt or 'Submission Received & Verified' in c_txt:
+                                  continue
+                              u_match = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', c_txt)
+                              if not u_match:
+                                  u_match = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', c_txt, re.IGNORECASE)
+                              if u_match:
+                                  url_match_str = u_match.group(1) if u_match.groups() else u_match.group(0)
+                                  break
+                  except Exception as err:
+                      print(f"Failed fetching issue comments: {err}")
 
           if not (title_match and url_match_str):
               write_failure_comment("Could not extract a valid title and image URL from the issue body.")

@@ -557,26 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Upload file anonymously to free image host API (CORS enabled)
   async function uploadImageFile(file, fileName = 'screensaver.jpg') {
-    // 1. Try ImgBB API
-    try {
-      const formData = new FormData();
-      formData.append('key', '6d207e02198a847aa98d0a2a901485a5');
-      formData.append('image', file, fileName);
-      const cleanName = (fileName || 'screensaver').replace(/\.[^/.]+$/, '');
-      formData.append('name', cleanName);
-      const res = await fetch('https://api.imgbb.com/1/upload', {
-        method: 'POST',
-        body: formData
-      });
-      const data = await res.json();
-      if (data && data.data && (data.data.url || data.data.display_url)) {
-        return data.data.url || data.data.display_url;
-      }
-    } catch (err1) {
-      console.warn('ImgBB upload attempt failed:', err1);
-    }
-
-    // 2. Try Litterbox / Catbox API
+    // 1. Try Litterbox (72h temporary hosting, CORS enabled)
     try {
       const formData = new FormData();
       formData.append('reqtype', 'fileupload');
@@ -590,8 +571,25 @@ document.addEventListener('DOMContentLoaded', () => {
       if (text && text.trim().startsWith('http')) {
         return text.trim();
       }
+    } catch (err1) {
+      console.warn('Litterbox upload attempt failed:', err1);
+    }
+
+    // 2. Try TmpFiles API (CORS enabled)
+    try {
+      const formData = new FormData();
+      formData.append('file', file, fileName);
+      const res = await fetch('https://tmpfiles.org/api/v1/upload', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if (data && data.data && data.data.url) {
+        // Direct download URL: replace tmpfiles.org/ with tmpfiles.org/dl/
+        return data.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+      }
     } catch (err2) {
-      console.warn('Catbox upload attempt failed:', err2);
+      console.warn('TmpFiles upload attempt failed:', err2);
     }
 
     return null;
