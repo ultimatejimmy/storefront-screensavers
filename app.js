@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <span>Download</span>
             </a>
             <button type="button" class="btn-copy-link" title="Copy direct link to wallpaper" data-id="${item.id}">🔗</button>
-            <button type="button" class="btn-suggest-change" title="Suggest Change / Report DMCA Takedown" data-id="${item.id}">✏️</button>
+            <button type="button" class="btn-suggest-change" title="Suggest Change/Report DMCA Takedown" data-id="${item.id}">✏️</button>
           </div>
         </div>
       `;
@@ -957,7 +957,7 @@ document.addEventListener('DOMContentLoaded', () => {
               await navigator.clipboard.write([
                 new ClipboardItem({ [selectedFile.type]: selectedFile })
               ]);
-              fileNotice = 'Image copied to clipboard! Press Ctrl+V / Cmd+V in the GitHub issue comment box to attach directly.';
+              fileNotice = 'Image copied to clipboard! Press Ctrl+V/Cmd+V in the GitHub issue comment box to attach directly.';
             }
           } catch (clipErr) {
             console.log('Clipboard write not allowed:', clipErr);
@@ -1146,6 +1146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const batchActiveCats = Array.from(document.querySelectorAll('#batch-category-pills .cat-pill.active'))
       .map(p => p.getAttribute('data-value'));
     const defaultCat = batchActiveCats.length > 0 ? batchActiveCats.join(', ') : 'Minimalist';
+    const batchAuthor = (bulkBatchAuthorInput && bulkBatchAuthorInput.value.trim()) ? bulkBatchAuthorInput.value.trim() : '';
 
     validFiles.forEach(file => {
       const qId = 'bulk-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7);
@@ -1156,7 +1157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         id: qId,
         file: file,
         title: formattedTitle,
-        author: 'Community',
+        author: batchAuthor,
         category: defaultCat,
         tags: '',
         cropState: { zoom: 1, offsetX: 0, offsetY: 0, isCustom: false },
@@ -1231,7 +1232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="bulk-item-fields">
           <input type="text" class="form-control bulk-input-title" data-idx="${idx}" value="${item.title}" placeholder="Title" required>
           <div style="display: flex; gap: 0.5rem;">
-            <input type="text" class="form-control bulk-input-author" data-idx="${idx}" value="${item.author}" placeholder="Author / Artist" required style="flex: 1;">
+            <input type="text" class="form-control bulk-input-author" data-idx="${idx}" value="${item.author}" placeholder="Creator/Artist" style="flex: 1;">
           </div>
           <div class="bulk-item-categories">
             <span class="bulk-item-cat-label">Categories (select all that apply):</span>
@@ -1239,7 +1240,7 @@ document.addEventListener('DOMContentLoaded', () => {
               ${pillsHtml}
             </div>
           </div>
-          <input type="text" class="form-control bulk-input-tags" data-idx="${idx}" value="${item.tags || ''}" placeholder="Tags / keywords (e.g. anime, landscape, dark, minimal)...">
+          <input type="text" class="form-control bulk-input-tags" data-idx="${idx}" value="${item.tags || ''}" placeholder="Tags/keywords (e.g. anime, landscape, dark, minimal)...">
           <div class="bulk-card-actions">
             <button type="button" class="btn-bulk-crop-edit" data-idx="${idx}" title="Open 3:4 E-Ink screen cropper">
               <span>✂️</span>
@@ -1306,7 +1307,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnBatchApplyAuthor.addEventListener('click', () => {
       const val = bulkBatchAuthorInput.value.trim();
       if (!val) {
-        alert('Please enter an Author / Artist name to apply to all items.');
+        alert('Please enter a Creator/Artist name to apply to all items.');
         return;
       }
       bulkQueue.forEach(item => { item.author = val; });
@@ -1596,7 +1597,7 @@ document.addEventListener('DOMContentLoaded', () => {
           `### Screensaver Submission`,
           ``,
           `**Title:** ${item.title}`,
-          `**Author:** ${item.author}`,
+          `**Author:** ${item.author && item.author.trim() ? item.author.trim() : 'Community'}`,
           `**Category:** ${item.category}`,
           `**Filename:** ${fileName}`,
         ];
@@ -1695,7 +1696,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (type === 'replacement') {
         drawerHeadingTitle.textContent = '🖼️ Suggest Replacement Image';
       } else if (type === 'issue') {
-        drawerHeadingTitle.textContent = '⚠️ Report Issue / Quality';
+        drawerHeadingTitle.textContent = '⚠️ Report Issue/Quality';
       } else {
         drawerHeadingTitle.textContent = '✏️ Suggest a Change';
       }
@@ -1729,7 +1730,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (labelSuggestReason) {
       labelSuggestReason.textContent = isDmca 
         ? 'Infringement Description & Ownership Details' 
-        : 'Reason / Additional Notes';
+        : 'Reason/Additional Notes';
     }
     if (btnSubmitSuggest) {
       btnSubmitSuggest.textContent = isDmca 
@@ -1886,8 +1887,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const typeLabels = {
         metadata: 'Metadata Correction',
         replacement: 'Replacement Image',
-        dmca: 'DMCA / Copyright Infringement Notice',
-        issue: 'Low Quality / Issue Report'
+        dmca: 'DMCA/Copyright Infringement Notice',
+        issue: 'Low Quality/Issue Report'
       };
 
       const issueTitle = encodeURIComponent(isDmca ? `DMCA Takedown Notice: [${itemId}] ${targetTitle}` : `Change Suggestion: [${itemId}] ${targetTitle}`);
@@ -1919,11 +1920,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const bodyLines = [
-        isDmca ? `### DMCA / Copyright Infringement Notice` : `### Catalog Change Suggestion`,
+        isDmca ? `### DMCA/Copyright Infringement Notice` : `### Catalog Change Suggestion`,
         ``,
         `**Target Item ID:** \`${itemId}\``,
         `**Target Title:** ${targetTitle}`,
-        `**Report / Change Type:** ${typeLabels[type] || type}`,
+        `**Report/Change Type:** ${typeLabels[type] || type}`,
         ``,
       ];
 
@@ -1933,8 +1934,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const reason = document.getElementById('suggest-reason').value;
 
         bodyLines.push(
-          `**Copyright Owner / Authorized Representative:** ${dmcaOwner || 'Not specified'}`,
-          `**Proof of Ownership / Original Source:** ${dmcaProof || 'Attached below'}`,
+          `**Copyright Owner/Authorized Representative:** ${dmcaOwner || 'Not specified'}`,
+          `**Proof of Ownership/Original Source:** ${dmcaProof || 'Attached below'}`,
           ``,
           `**Infringement Details:**`,
           reason,
@@ -1972,7 +1973,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
 
-        bodyLines.push(``, `**Reason / Details:**`, reason);
+        bodyLines.push(``, `**Reason/Details:**`, reason);
       }
 
       bodyLines.push(``, `---`, `*Submitted via Storefront Screensaver Catalog Site*`);
