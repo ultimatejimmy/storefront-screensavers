@@ -1569,11 +1569,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       btnSubmitBulkAll.disabled = true;
-      btnSubmitBulkAll.textContent = `Uploading batch (1 of ${bulkQueue.length})... ⏳`;
+      btnSubmitBulkAll.textContent = `Uploading batch (0 of ${bulkQueue.length})... ⏳`;
+
+      const processedItems = [];
 
       for (let i = 0; i < bulkQueue.length; i++) {
         const item = bulkQueue[i];
-        btnSubmitBulkAll.textContent = `Processing image ${i + 1} of ${bulkQueue.length}... ⏳`;
+        btnSubmitBulkAll.textContent = `Processing & uploading image ${i + 1} of ${bulkQueue.length}... ⏳`;
 
         const fileName = item.file.name || `screensaver_${i + 1}.jpg`;
         const isTrans = item.category && item.category.toLowerCase().includes('transparent');
@@ -1592,44 +1594,91 @@ document.addEventListener('DOMContentLoaded', () => {
           imageUrl = `[Uploaded File: ${fileName}]`;
         }
 
-        const issueTitle = encodeURIComponent(`Screensaver Submission: ${item.title}`);
-        const bodyLines = [
+        processedItems.push({
+          title: item.title,
+          author: item.author && item.author.trim() ? item.author.trim() : 'Community',
+          category: item.category || 'General',
+          tags: item.tags && item.tags.trim() ? item.tags.trim() : '',
+          fileName: fileName,
+          imageUrl: imageUrl,
+          fileSizeKb: (item.file.size / 1024).toFixed(0)
+        });
+      }
+
+      btnSubmitBulkAll.textContent = `Preparing GitHub submission... ⏳`;
+
+      // Build single unified issue body
+      let issueTitle = '';
+      const bodyLines = [];
+
+      if (processedItems.length === 1) {
+        const item = processedItems[0];
+        issueTitle = encodeURIComponent(`Screensaver Submission: ${item.title}`);
+        bodyLines.push(
           `### Screensaver Submission`,
           ``,
           `**Title:** ${item.title}`,
-          `**Author:** ${item.author && item.author.trim() ? item.author.trim() : 'Community'}`,
+          `**Author:** ${item.author}`,
           `**Category:** ${item.category}`,
-          `**Filename:** ${fileName}`,
-        ];
-
-        if (item.tags && item.tags.trim()) {
-          bodyLines.push(`**Tags:** ${item.tags.trim()}`);
+          `**Filename:** ${item.fileName}`
+        );
+        if (item.tags) bodyLines.push(`**Tags:** ${item.tags}`);
+        bodyLines.push(`**Image:** ${item.imageUrl}`);
+        if (item.imageUrl && item.imageUrl.startsWith('http')) {
+          bodyLines.push(``, `### Image Preview`, `![${item.title}](${item.imageUrl})`);
         }
-
-        bodyLines.push(`**Image:** ${imageUrl}`);
-
-        if (imageUrl && imageUrl.startsWith('http')) {
-          bodyLines.push(``, `### Image Preview`, `![${item.title}](${imageUrl})`);
-        }
-
         bodyLines.push(
           ``,
-          `**Specs:** 3:4 E-Ink optimized batch upload (${(item.file.size / 1024).toFixed(0)} KB)`,
+          `**Specs:** 3:4 E-Ink optimized (${item.fileSizeKb} KB)`,
           ``,
           `---`,
-          `*Submitted via Storefront Screensaver Catalog Site (Batch Upload ${i + 1}/${bulkQueue.length})*`
+          `*Submitted via Storefront Screensaver Catalog Site*`
+        );
+      } else {
+        const titlesSample = processedItems.map(p => p.title).slice(0, 3).join(', ');
+        const extraCount = processedItems.length > 3 ? ` +${processedItems.length - 3} more` : '';
+        issueTitle = encodeURIComponent(`Batch Screensaver Submission: ${processedItems.length} Wallpapers (${titlesSample}${extraCount})`);
+
+        bodyLines.push(
+          `### Batch Screensaver Submission (${processedItems.length} Wallpapers)`,
+          ``,
+          `The following ${processedItems.length} screensaver wallpapers are submitted as a batch. Automated PRs will be created for each image:`,
+          ``
         );
 
-        const issueBody = encodeURIComponent(bodyLines.join('\n'));
-        const repoUrl = 'https://github.com/ultimatejimmy/storefront-screensavers';
-        const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&body=${issueBody}`;
+        processedItems.forEach((item, idx) => {
+          bodyLines.push(
+            `---`,
+            ``,
+            `#### Wallpaper ${idx + 1}: ${item.title}`,
+            `- **Title:** ${item.title}`,
+            `- **Author:** ${item.author}`,
+            `- **Category:** ${item.category}`,
+            `- **Filename:** ${item.fileName}`
+          );
+          if (item.tags) bodyLines.push(`- **Tags:** ${item.tags}`);
+          bodyLines.push(`- **Image:** ${item.imageUrl}`);
+          if (item.imageUrl && item.imageUrl.startsWith('http')) {
+            bodyLines.push(``, `![${item.title}](${item.imageUrl})`);
+          }
+          bodyLines.push(``);
+        });
 
-        window.open(githubIssueUrl, '_blank');
+        bodyLines.push(
+          `---`,
+          `*Submitted via Storefront Screensaver Catalog Site (Batch Upload of ${processedItems.length} Wallpapers)*`
+        );
       }
+
+      const issueBody = encodeURIComponent(bodyLines.join('\n'));
+      const repoUrl = 'https://github.com/ultimatejimmy/storefront-screensavers';
+      const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&body=${issueBody}`;
+
+      window.open(githubIssueUrl, '_blank');
 
       btnSubmitBulkAll.disabled = false;
       btnSubmitBulkAll.textContent = `Submit All (${bulkQueue.length}) Wallpapers →`;
-      showToast(`Opened ${bulkQueue.length} GitHub submission tab(s)! Click submit on each tab to finish.`);
+      showToast(`Opened 1 GitHub issue tab with all ${bulkQueue.length} wallpapers! Click "Submit new issue" to finish.`);
     });
   }
 

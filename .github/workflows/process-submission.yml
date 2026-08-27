@@ -30,7 +30,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install Pillow requests
 
-      - name: Process Image, Generate Thumbnail, and Update Catalog
+      - name: Process Images, Generate Thumbnails, and Prepare Catalog
         id: process
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -73,84 +73,81 @@ jobs:
               set_output(False)
               sys.exit(0)
 
-          title_match = re.search(r'\*\*Title:\*\*\s*(.*)', body)
-          author_match = re.search(r'\*\*Author:\*\*\s*(.*)', body)
-          category_match = re.search(r'\*\*Category:\*\*\s*(.*)', body)
-          filename_match = re.search(r'\*\*(?:Filename|Replacement Filename):\*\*\s*(.*)', body)
+          # Parse single or batch submission blocks
+          blocks = re.split(r'(?=####\s+Wallpaper|\n---\s*\n####\s+Wallpaper|\n###\s+Screensaver\s+Submission)', body)
+          raw_entries = []
 
-          # Match markdown image ![alt](url), direct image URL, user-attachments, or URL in Image: field
-          url_match_str = None
+          for block in blocks:
+              title_match = re.search(r'\*\*Title:\*\*\s*(.*)', block)
+              if not title_match:
+                  continue
+              author_match = re.search(r'\*\*Author:\*\*\s*(.*)', block)
+              category_match = re.search(r'\*\*Category:\*\*\s*(.*)', block)
+              filename_match = re.search(r'\*\*(?:Filename|Replacement Filename):\*\*\s*(.*)', block)
+              tags_match = re.search(r'\*\*Tags:\*\*\s*(.*)', block)
 
-          # 1. Check Image: line for direct URL
-          img_line = re.search(r'\*\*(?:Image|Replacement Image):\*\*\s*(.*)', body)
-          if img_line:
-              u = re.search(r'https?://[^\s\)\"]+', img_line.group(1))
-              if u:
-                  url_match_str = u.group(0)
+              url_match_str = None
+              img_line = re.search(r'\*\*(?:Image|Replacement Image):\*\*\s*(.*)', block)
+              if img_line:
+                  u = re.search(r'https?://[^\s\)\"]+', img_line.group(1))
+                  if u: url_match_str = u.group(0)
 
-          # 2. Check markdown image tag ![...](url)
-          if not url_match_str:
-              md_img = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', body)
-              if md_img:
-                  url_match_str = md_img.group(1)
+              if not url_match_str:
+                  md_img = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', block)
+                  if md_img: url_match_str = md_img.group(1)
 
-          # 3. Fallback: match any image/github URL in body
-          if not url_match_str:
-              any_url = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', body, re.IGNORECASE)
-              if any_url:
-                  url_match_str = any_url.group(0)
+              if not url_match_str:
+                  any_url = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', block, re.IGNORECASE)
+                  if any_url: url_match_str = any_url.group(0)
 
-          # 4. Fallback: any URL in issue body
-          if not url_match_str:
-              any_url = re.search(r'https?://[^\s\)\"]+', body)
-              if any_url:
-                  url_match_str = any_url.group(0)
+              if not url_match_str:
+                  any_url = re.search(r'https?://[^\s\)\"]+', block)
+                  if any_url: url_match_str = any_url.group(0)
 
-          # 5. Check trigger comment body if triggered by issue_comment
-          comment_body = os.environ.get('COMMENT_BODY', '')
-          if not url_match_str and comment_body:
-              c_img = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', comment_body)
-              if c_img:
-                  url_match_str = c_img.group(1)
-              else:
-                  any_c_url = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', comment_body, re.IGNORECASE)
-                  if any_c_url:
-                      url_match_str = any_c_url.group(0)
+              if title_match:
+                  raw_entries.append({
+                      'title': title_match.group(1).strip(),
+                      'author': author_match.group(1).strip() if author_match else "Community",
+                      'category': category_match.group(1).strip() if category_match else "General",
+                      'original_filename': filename_match.group(1).strip() if filename_match else "N/A",
+                      'tags': tags_match.group(1).strip() if tags_match else "",
+                      'img_url': url_match_str.strip() if url_match_str else None
+                  })
 
-          # 6. Check existing issue comments via GitHub API
-          if not url_match_str:
-              token = os.environ.get('GH_TOKEN', '')
-              repo = os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')
-              if token and issue_num:
-                  try:
-                      headers_gh = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
-                      comments_resp = requests.get(f'https://api.github.com/repos/{repo}/issues/{issue_num}/comments', headers=headers_gh, timeout=10)
-                      if comments_resp.status_code == 200:
-                          for c in comments_resp.json():
-                              c_txt = c.get('body', '')
-                              if 'Wallpaper Submission Validation Failed' in c_txt or 'Submission Received & Verified' in c_txt:
-                                  continue
-                              u_match = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', c_txt)
-                              if not u_match:
-                                  u_match = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', c_txt, re.IGNORECASE)
-                              if u_match:
-                                  url_match_str = u_match.group(1) if u_match.groups() else u_match.group(0)
-                                  break
-                  except Exception as err:
-                      print(f"Failed fetching issue comments: {err}")
+          # Fallback check on issue comments if single submission lacked URL
+          if len(raw_entries) == 1 and not raw_entries[0]['img_url']:
+              comment_body = os.environ.get('COMMENT_BODY', '')
+              if comment_body:
+                  c_img = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', comment_body)
+                  if c_img:
+                      raw_entries[0]['img_url'] = c_img.group(1)
+                  else:
+                      any_c = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', comment_body, re.IGNORECASE)
+                      if any_c: raw_entries[0]['img_url'] = any_c.group(0)
 
-          if not (title_match and url_match_str):
-              write_failure_comment("Could not extract a valid title and image URL from the issue body.")
+              if not raw_entries[0]['img_url']:
+                  token = os.environ.get('GH_TOKEN', '')
+                  repo = os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')
+                  if token and issue_num:
+                      try:
+                          headers_gh = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
+                          comments_resp = requests.get(f'https://api.github.com/repos/{repo}/issues/{issue_num}/comments', headers=headers_gh, timeout=10)
+                          if comments_resp.status_code == 200:
+                              for c in comments_resp.json():
+                                  c_txt = c.get('body', '')
+                                  if 'Wallpaper Submission Validation Failed' in c_txt or 'Submission Received & Verified' in c_txt:
+                                      continue
+                                  u_match = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', c_txt)
+                                  if not u_match:
+                                      u_match = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', c_txt, re.IGNORECASE)
+                                  if u_match:
+                                      raw_entries[0]['img_url'] = u_match.group(1) if u_match.groups() else u_match.group(0)
+                                      break
+                      except Exception as err:
+                          print(f"Failed fetching issue comments: {err}")
 
-          title = title_match.group(1).strip()
-          author = author_match.group(1).strip() if author_match else "Community"
-          category = category_match.group(1).strip() if category_match else "General"
-          original_filename = filename_match.group(1).strip() if filename_match else "N/A"
-          img_url = url_match_str.strip()
-
-          item_id = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
-          if not item_id:
-              item_id = f"screensaver-{int(time.time())}"
+          if not raw_entries:
+              write_failure_comment("Could not extract any valid wallpaper titles and image URLs from the issue body.")
 
           # Prepare directories
           os.makedirs('images', exist_ok=True)
@@ -160,90 +157,8 @@ jobs:
           headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
           max_retries = 3
           MAX_DOWNLOAD_BYTES = 25 * 1024 * 1024
-          raw_data = bytearray()
-          download_success = False
-
-          for attempt in range(max_retries):
-              try:
-                  print(f"Downloading image from {img_url} (attempt {attempt + 1}/{max_retries})...")
-                  with requests.get(img_url, headers=headers, allow_redirects=True, timeout=30, stream=True) as resp:
-                      if resp.status_code != 200:
-                          print(f"HTTP Status {resp.status_code}, retrying...")
-                          time.sleep(2)
-                          continue
-                      
-                      c_type = resp.headers.get('Content-Type', '').lower()
-                      if any(bad in c_type for bad in ['svg', 'html', 'javascript', 'text', 'application/x-', 'application/pdf']):
-                          write_failure_comment(f"Disallowed Content-Type '{c_type}'. SVG, HTML, and binary executables are not permitted.")
-
-                      raw_data = bytearray()
-                      for chunk in resp.iter_content(chunk_size=65536):
-                          raw_data.extend(chunk)
-                          if len(raw_data) > MAX_DOWNLOAD_BYTES:
-                              write_failure_comment("Downloaded file exceeded the maximum 25 MB security limit.")
-                      
-                      download_success = True
-                      break
-              except Exception as exc:
-                  print(f"Download attempt {attempt + 1} failed: {exc}")
-                  if attempt < max_retries - 1:
-                      time.sleep(2)
-
-          if not download_success or len(raw_data) == 0:
-              write_failure_comment("Failed to download image from the provided CDN / image URL after multiple attempts.")
-
-          # Pillow Security & Integrity Validations
-          Image.MAX_IMAGE_PIXELS = 50_000_000  # 50 MP max (decompression bomb protection)
+          Image.MAX_IMAGE_PIXELS = 50_000_000
           ALLOWED_FORMATS = {'JPEG', 'PNG', 'WEBP', 'MPO'}
-
-          img_stream = BytesIO(raw_data)
-          try:
-              verify_img = Image.open(img_stream)
-              detected_format = verify_img.format
-              verify_img.verify()
-          except Exception as val_err:
-              write_failure_comment(f"Corrupted or invalid image structure: {val_err}")
-
-          if detected_format not in ALLOWED_FORMATS:
-              write_failure_comment(f"Format '{detected_format}' is not supported by KOReader. Only JPEG, PNG, and WebP are allowed.")
-
-          # Re-open stream for full pixel raster decode
-          img_stream.seek(0)
-          try:
-              img = Image.open(img_stream)
-              img.load()
-          except Exception as dec_err:
-              write_failure_comment(f"Failed to decode image raster pixels: {dec_err}")
-
-          if img.width < 200 or img.height < 200:
-              write_failure_comment(f"Image resolution ({img.width} × {img.height} px) is too small. Minimum resolution is 200 × 200 px.")
-
-          if img.width > 12000 or img.height > 12000:
-              write_failure_comment(f"Image resolution ({img.width} × {img.height} px) exceeds 12,000 px limit.")
-
-          tags_match = re.search(r'\*\*Tags:\*\*\s*(.*)', body)
-          sub_tags = tags_match.group(1).strip() if tags_match else ""
-
-          # Automatic transparency detection from pixel channels, category, or tags
-          has_trans_tag = ('transparent' in category.lower()) or ('transparent' in sub_tags.lower())
-          has_alpha_channel = ('A' in img.getbands()) or (img.mode in ('RGBA', 'LA')) or ('transparency' in img.info)
-          has_real_transparency = False
-          if has_alpha_channel:
-              rgba_check = img.convert('RGBA')
-              min_a, max_a = rgba_check.split()[-1].getextrema()
-              if min_a < 250:  # Image has actual non-opaque transparent pixels
-                  has_real_transparency = True
-
-          is_transparent = has_trans_tag or has_real_transparency
-
-          if is_transparent:
-              full_path = f'images/{item_id}.png'
-              thumb_web_path = f'images/thumbnails/{item_id}.png'          # Web: RGBA with alpha
-              thumb_plugin_path = f'images/thumbnails/plugin/{item_id}.png' # Plugin: checkerboard-composited RGB
-          else:
-              full_path = f'images/{item_id}.jpg'
-              thumb_web_path = f'images/thumbnails/{item_id}.jpg'
-              thumb_plugin_path = None  # No plugin variant needed for opaque images
 
           CHECKERBOARD_TILE = 12
           CB_LIGHT = (255, 255, 255, 255)
@@ -260,7 +175,6 @@ jobs:
               return bg
 
           def fit_transparent(img_rgba, target_w, target_h):
-              """Proportionally fit an RGBA image into a transparent canvas of target_w x target_h."""
               canvas = Image.new('RGBA', (target_w, target_h), (0, 0, 0, 0))
               img_rgba.thumbnail((target_w, target_h), Image.Resampling.LANCZOS)
               x = (target_w - img_rgba.width) // 2
@@ -269,7 +183,6 @@ jobs:
               return canvas
 
           def composite_over_checkerboard(img_rgba, target_w, target_h):
-              """Composite RGBA image over a checkerboard background, return RGB."""
               bg = make_checkerboard(target_w, target_h)
               img_rgba.thumbnail((target_w, target_h), Image.Resampling.LANCZOS)
               x = (target_w - img_rgba.width) // 2
@@ -277,185 +190,348 @@ jobs:
               bg.paste(img_rgba, (x, y), img_rgba)
               return bg.convert('RGB')
 
-          # Re-rasterize onto clean fresh canvas (strips metadata, polyglots, and hidden chunks)
-          if is_transparent:
-              img_rgba = img.convert('RGBA')
+          processed_items = []
+          validation_errors = []
+          used_ids = set()
 
-              # Full-res master: transparent RGBA PNG (1860x2480)
-              master_transparent = fit_transparent(img_rgba.copy(), 1860, 2480)
-              master_transparent.save(full_path, 'PNG')
+          for idx, entry in enumerate(raw_entries):
+              title = entry['title']
+              author = entry['author']
+              category = entry['category']
+              original_filename = entry['original_filename']
+              sub_tags = entry['tags']
+              img_url = entry['img_url']
 
-              # Web thumbnail: transparent RGBA PNG (600x800) — used by web catalog
-              web_thumb = fit_transparent(img_rgba.copy(), 600, 800)
-              web_thumb.save(thumb_web_path, 'PNG')
+              if not img_url:
+                  validation_errors.append(f"'{title}': Missing image URL.")
+                  continue
 
-              # Plugin thumbnail: checkerboard-composited RGB PNG (600x800) — used by KOReader plugin
-              plugin_thumb = composite_over_checkerboard(img_rgba.copy(), 600, 800)
-              plugin_thumb.save(thumb_plugin_path, 'PNG')
+              base_id = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
+              if not base_id:
+                  base_id = f"screensaver-{int(time.time())}-{idx+1}"
 
-              print(f"Transparent image processed: web thumb={thumb_web_path}, plugin thumb={thumb_plugin_path}")
-          else:
-              img_rgb = img.convert('RGB')
+              item_id = base_id
+              suffix = 2
+              while item_id in used_ids:
+                  item_id = f"{base_id}-{suffix}"
+                  suffix += 1
+              used_ids.add(item_id)
 
-              # Full-res master: JPEG (1860x2480)
-              master_img = ImageOps.fit(img_rgb, (1860, 2480), Image.Resampling.LANCZOS)
-              master_img.save(full_path, 'JPEG', quality=92)
+              raw_data = bytearray()
+              download_success = False
 
-              # Thumbnail: JPEG (600x800)
-              thumb_img = ImageOps.fit(img_rgb, (600, 800), Image.Resampling.LANCZOS)
-              thumb_img.save(thumb_web_path, 'JPEG', quality=85)
+              for attempt in range(max_retries):
+                  try:
+                      print(f"[{idx+1}/{len(raw_entries)}] Downloading '{title}' from {img_url} (attempt {attempt + 1}/{max_retries})...")
+                      with requests.get(img_url, headers=headers, allow_redirects=True, timeout=30, stream=True) as resp:
+                          if resp.status_code != 200:
+                              time.sleep(2)
+                              continue
+                          c_type = resp.headers.get('Content-Type', '').lower()
+                          if any(bad in c_type for bad in ['svg', 'html', 'javascript', 'text', 'application/x-', 'application/pdf']):
+                              validation_errors.append(f"'{title}': Disallowed Content-Type '{c_type}'.")
+                              break
+                          raw_data = bytearray()
+                          for chunk in resp.iter_content(chunk_size=65536):
+                              raw_data.extend(chunk)
+                              if len(raw_data) > MAX_DOWNLOAD_BYTES:
+                                  validation_errors.append(f"'{title}': Exceeded 25 MB limit.")
+                                  break
+                          download_success = True
+                          break
+                  except Exception as exc:
+                      print(f"Download attempt {attempt + 1} failed: {exc}")
+                      if attempt < max_retries - 1:
+                          time.sleep(2)
 
-              print(f"Opaque image processed: thumb={thumb_web_path}")
+              if not download_success or len(raw_data) == 0:
+                  validation_errors.append(f"'{title}': Failed to download image from CDN.")
+                  continue
 
-          raw_base = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
-          full_url = raw_base + full_path
-          thumb_url = raw_base + thumb_web_path
-          plugin_thumb_url = (raw_base + thumb_plugin_path) if thumb_plugin_path else thumb_url
+              img_stream = BytesIO(raw_data)
+              try:
+                  verify_img = Image.open(img_stream)
+                  detected_format = verify_img.format
+                  verify_img.verify()
+              except Exception as val_err:
+                  validation_errors.append(f"'{title}': Corrupted image structure ({val_err}).")
+                  continue
 
-          with open('screensavers.json', 'r') as f:
-              catalog = json.load(f)
+              if detected_format not in ALLOWED_FORMATS:
+                  validation_errors.append(f"'{title}': Unsupported format '{detected_format}'.")
+                  continue
 
-          cat_list = [c.strip() for c in category.split(',')] if isinstance(category, str) else list(category)
-          if is_transparent and 'Transparent' not in cat_list and 'transparent' not in cat_list:
-              cat_list.append('Transparent')
+              img_stream.seek(0)
+              try:
+                  img = Image.open(img_stream)
+                  img.load()
+              except Exception as dec_err:
+                  validation_errors.append(f"'{title}': Failed to decode raster pixels ({dec_err}).")
+                  continue
 
-          tag_list = [t.strip() for t in sub_tags.split(',')] if sub_tags else []
-          if is_transparent and 'transparent' not in tag_list:
-              tag_list.append('transparent')
+              if img.width < 200 or img.height < 200:
+                  validation_errors.append(f"'{title}': Resolution ({img.width}x{img.height}) too small (min 200x200).")
+                  continue
 
-          new_entry = {
-              "id": item_id,
-              "title": title,
-              "author": author,
-              "category": cat_list if len(cat_list) > 1 else (cat_list[0] if cat_list else "General"),
-              "compatibility": ["Kindle", "Kobo", "Boox"],
-              "thumbnailUrl": thumb_url,
-              "pluginThumbnailUrl": plugin_thumb_url,
-              "fullUrl": full_url,
-              "downloads": 0,
-              "likes": 0,
-              "tags": tag_list
-          }
+              if img.width > 12000 or img.height > 12000:
+                  validation_errors.append(f"'{title}': Resolution ({img.width}x{img.height}) exceeds 12,000 px limit.")
+                  continue
 
-          # Check if id exists and update, or append
-          updated = False
-          for idx, item in enumerate(catalog):
-              if item['id'] == item_id:
-                  catalog[idx] = new_entry
-                  updated = True
-                  break
-          if not updated:
-              catalog.append(new_entry)
+              # Transparency detection
+              has_trans_tag = ('transparent' in category.lower()) or ('transparent' in sub_tags.lower())
+              has_alpha_channel = ('A' in img.getbands()) or (img.mode in ('RGBA', 'LA')) or ('transparency' in img.info)
+              has_real_transparency = False
+              if has_alpha_channel:
+                  rgba_check = img.convert('RGBA')
+                  min_a, max_a = rgba_check.split()[-1].getextrema()
+                  if min_a < 250:
+                      has_real_transparency = True
 
-          with open('screensavers.json', 'w') as f:
-              json.dump(catalog, f, indent=2)
+              is_transparent = has_trans_tag or has_real_transparency
 
-          # Generate rich PR body markdown file with visual image preview
-          pr_lines = [
-              f"Closes #{issue_num}",
-              "",
-              f"### Screensaver Submission: {title}",
-              "",
-              "| Property | Value |",
-              "|---|---|",
-              f"| **Title** | {title} |",
-              f"| **Author** | {author} |",
-              f"| **Category** | {category} |",
-              f"| **Original Filename** | `{original_filename}` |",
-              f"| **Target Item ID** | `{item_id}` |",
-              f"| **Master Image** | `{full_path}` (1860 × 2480) |",
-              f"| **Thumbnail** | `{thumb_web_path}` (600 × 800) |",
-              "",
-              "### Visual Preview",
-              f"![{title}]({img_url})",
-              "",
-              "---",
-              f"*Automated PR generated from issue #{issue_num} via Storefront Screensaver Catalog workflow.*"
-          ]
-          with open('pr_body.md', 'w', encoding='utf-8') as f:
-              f.write('\n'.join(pr_lines))
+              if is_transparent:
+                  full_path = f'images/{item_id}.png'
+                  thumb_web_path = f'images/thumbnails/{item_id}.png'
+                  thumb_plugin_path = f'images/thumbnails/plugin/{item_id}.png'
 
-          # Generate rich issue comment body markdown file with visual image preview
-          comment_lines = [
-              "🎉 **Submission Received & Verified!**",
-              "",
-              "An automated Pull Request containing the clean, formatted full-resolution wallpaper (1860 × 2480) and thumbnail has been created.",
-              "",
-              f"### Submitted Wallpaper: {title}",
-              "| Property | Value |",
-              "|---|---|",
-              f"| **Title** | {title} |",
-              f"| **Author** | {author} |",
-              f"| **Category** | {category} |",
-              f"| **Original Filename** | `{original_filename}` |",
-              "",
-              "### Visual Preview",
-              f"![{title}]({img_url})",
-              "",
-              "**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, the wallpaper will immediately appear in the web catalog and KOReader Storefront plugin!"
-          ]
-          with open('issue_comment.md', 'w', encoding='utf-8') as f:
-              f.write('\n'.join(comment_lines))
+                  img_rgba = img.convert('RGBA')
+                  master_transparent = fit_transparent(img_rgba.copy(), 1860, 2480)
+                  master_transparent.save(full_path, 'PNG')
+
+                  web_thumb = fit_transparent(img_rgba.copy(), 600, 800)
+                  web_thumb.save(thumb_web_path, 'PNG')
+
+                  plugin_thumb = composite_over_checkerboard(img_rgba.copy(), 600, 800)
+                  plugin_thumb.save(thumb_plugin_path, 'PNG')
+              else:
+                  full_path = f'images/{item_id}.jpg'
+                  thumb_web_path = f'images/thumbnails/{item_id}.jpg'
+                  thumb_plugin_path = None
+
+                  img_rgb = img.convert('RGB')
+                  master_img = ImageOps.fit(img_rgb, (1860, 2480), Image.Resampling.LANCZOS)
+                  master_img.save(full_path, 'JPEG', quality=92)
+
+                  thumb_img = ImageOps.fit(img_rgb, (600, 800), Image.Resampling.LANCZOS)
+                  thumb_img.save(thumb_web_path, 'JPEG', quality=85)
+
+              raw_base = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
+              full_url = raw_base + full_path
+              thumb_url = raw_base + thumb_web_path
+              plugin_thumb_url = (raw_base + thumb_plugin_path) if thumb_plugin_path else thumb_url
+
+              cat_list = [c.strip() for c in category.split(',')] if isinstance(category, str) else list(category)
+              if is_transparent and 'Transparent' not in cat_list and 'transparent' not in cat_list:
+                  cat_list.append('Transparent')
+
+              tag_list = [t.strip() for t in sub_tags.split(',')] if sub_tags else []
+              if is_transparent and 'transparent' not in tag_list:
+                  tag_list.append('transparent')
+
+              cat_entry = {
+                  "id": item_id,
+                  "title": title,
+                  "author": author,
+                  "category": cat_list if len(cat_list) > 1 else (cat_list[0] if cat_list else "General"),
+                  "compatibility": ["Kindle", "Kobo", "Boox"],
+                  "thumbnailUrl": thumb_url,
+                  "pluginThumbnailUrl": plugin_thumb_url,
+                  "fullUrl": full_url,
+                  "downloads": 0,
+                  "likes": 0,
+                  "tags": tag_list
+              }
+
+              processed_items.append({
+                  'item_id': item_id,
+                  'title': title,
+                  'author': author,
+                  'category': category,
+                  'original_filename': original_filename,
+                  'tags': sub_tags,
+                  'img_url': img_url,
+                  'is_transparent': is_transparent,
+                  'full_path': full_path,
+                  'thumb_web_path': thumb_web_path,
+                  'thumb_plugin_path': thumb_plugin_path,
+                  'catalog_entry': cat_entry
+              })
+              print(f"Successfully processed image: '{title}' ({item_id})")
+
+          if not processed_items:
+              err_summary = "\n".join([f"- {e}" for e in validation_errors]) if validation_errors else "All images failed validation checks."
+              write_failure_comment(f"Validation failed for submitted images:\n{err_summary}")
+
+          with open('processed_items.json', 'w', encoding='utf-8') as pf:
+              json.dump(processed_items, pf, indent=2)
 
           set_output(True)
-          print(f"Successfully processed and generated thumbnail for: {title}")
+          print(f"Batch processing complete: {len(processed_items)} items ready for PR creation.")
           EOF
 
 
-      - name: Create Pull Request
+      - name: Create Pull Requests
         if: steps.process.outputs.valid == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUM: ${{ github.event.issue.number }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
-          BRANCH_NAME: submission-${{ github.event.issue.number }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          export BRANCH_NAME="submission-${ISSUE_NUM}"
           
-          # Fetch latest origin/main in case concurrent PRs merged during image processing
-          git fetch origin main
-          
-          # Extract newly added entry and re-apply cleanly on latest origin/main
           python - << 'PYEOF'
           import json, os, subprocess
-          branch = os.environ.get('BRANCH_NAME') or f"submission-{os.environ.get('ISSUE_NUM')}"
-          with open('screensavers.json', 'r', encoding='utf-8') as f:
-              curr = json.load(f)
-          main_raw = subprocess.check_output('git show origin/main:screensavers.json', shell=True, text=True)
-          main_cat = json.loads(main_raw)
-          main_ids = {x['id'] for x in main_cat}
-          new_items = [x for x in curr if x['id'] not in main_ids]
-          
-          # Stash newly created images temporarily
-          subprocess.run(f'git checkout -B {branch} origin/main', shell=True, check=True)
-          
-          # Load fresh main screensavers.json and append new item(s)
-          with open('screensavers.json', 'r', encoding='utf-8') as f:
-              curr_main = json.load(f)
-          curr_ids = {x['id'] for x in curr_main}
-          for it in new_items:
-              if it['id'] not in curr_ids:
-                  curr_main.append(it)
-                  curr_ids.add(it['id'])
-          with open('screensavers.json', 'w', encoding='utf-8') as f:
-              json.dump(curr_main, f, indent=2, ensure_ascii=False)
+
+          with open('processed_items.json', 'r', encoding='utf-8') as f:
+              items = json.load(f)
+
+          issue_num = os.environ.get('ISSUE_NUM', '')
+          created_prs = []
+
+          for idx, item in enumerate(items):
+              item_id = item['item_id']
+              title = item['title']
+              author = item['author']
+              category = item['category']
+              original_filename = item['original_filename']
+              img_url = item['img_url']
+              full_path = item['full_path']
+              thumb_web_path = item['thumb_web_path']
+              thumb_plugin_path = item.get('thumb_plugin_path')
+              cat_entry = item['catalog_entry']
+
+              if len(items) == 1:
+                  branch = f"submission-{issue_num}"
+              else:
+                  branch = f"submission-{issue_num}-{idx + 1}"
+
+              # Fetch latest origin/main to re-apply on top cleanly
+              subprocess.run('git fetch origin main', shell=True, check=True)
+              subprocess.run(f'git checkout -B {branch} origin/main', shell=True, check=True)
+
+              # Update screensavers.json with this item
+              with open('screensavers.json', 'r', encoding='utf-8') as sf:
+                  curr_main = json.load(sf)
+
+              updated = False
+              for i, c in enumerate(curr_main):
+                  if c['id'] == item_id:
+                      curr_main[i] = cat_entry
+                      updated = True
+                      break
+              if not updated:
+                  curr_main.append(cat_entry)
+
+              with open('screensavers.json', 'w', encoding='utf-8') as sf:
+                  json.dump(curr_main, sf, indent=2, ensure_ascii=False)
+
+              # Stage files
+              files_to_add = [full_path, thumb_web_path, 'screensavers.json']
+              if thumb_plugin_path and os.path.exists(thumb_plugin_path):
+                  files_to_add.append(thumb_plugin_path)
+
+              subprocess.run(f"git add {' '.join(files_to_add)}", shell=True, check=True)
+              subprocess.run(f"git commit -m \"Add screensaver '{title}' for issue #{issue_num}\"", shell=True, check=True)
+              subprocess.run(f"git push origin {branch} --force", shell=True, check=True)
+
+              # Write PR body
+              pr_lines = [
+                  f"Closes #{issue_num}" if len(items) == 1 or idx == len(items) - 1 else f"Related to #{issue_num}",
+                  "",
+                  f"### Screensaver Submission: {title}",
+                  "",
+                  "| Property | Value |",
+                  "|---|---|",
+                  f"| **Title** | {title} |",
+                  f"| **Author** | {author} |",
+                  f"| **Category** | {category} |",
+                  f"| **Original Filename** | `{original_filename}` |",
+                  f"| **Target Item ID** | `{item_id}` |",
+                  f"| **Master Image** | `{full_path}` (1860 × 2480) |",
+                  f"| **Thumbnail** | `{thumb_web_path}` (600 × 800) |",
+                  "",
+                  "### Visual Preview",
+                  f"![{title}]({img_url})",
+                  "",
+                  "---",
+                  f"*Automated PR generated from issue #{issue_num} via Storefront Screensaver Catalog workflow.*"
+              ]
+              with open('pr_body_tmp.md', 'w', encoding='utf-8') as pf:
+                  pf.write('\n'.join(pr_lines))
+
+              pr_cmd = [
+                  'gh', 'pr', 'create',
+                  '--title', f"New Screensaver Submission: {title}",
+                  '--body-file', 'pr_body_tmp.md',
+                  '--head', branch,
+                  '--base', 'main'
+              ]
+              try:
+                  pr_out = subprocess.check_output(pr_cmd, text=True).strip()
+                  created_prs.append({
+                      'title': title,
+                      'author': author,
+                      'category': category,
+                      'pr_url': pr_out,
+                      'img_url': img_url
+                  })
+                  print(f"Created PR for '{title}': {pr_out}")
+              except subprocess.CalledProcessError as pr_err:
+                  print(f"PR creation returned non-zero (might already exist): {pr_err}")
+                  created_prs.append({
+                      'title': title,
+                      'author': author,
+                      'category': category,
+                      'pr_url': f"https://github.com/{os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')}/pulls",
+                      'img_url': img_url
+                  })
+
+          # Generate issue comment
+          if len(created_prs) == 1:
+              p = created_prs[0]
+              comment_lines = [
+                  "🎉 **Submission Received & Verified!**",
+                  "",
+                  f"An automated Pull Request has been created: [{p['title']}]({p['pr_url']})",
+                  "",
+                  f"### Submitted Wallpaper: {p['title']}",
+                  "| Property | Value |",
+                  "|---|---|",
+                  f"| **Title** | {p['title']} |",
+                  f"| **Author** | {p['author']} |",
+                  f"| **Category** | {p['category']} |",
+                  f"| **Pull Request** | [View PR]({p['pr_url']}) |",
+                  "",
+                  "### Visual Preview",
+                  f"![{p['title']}]({p['img_url']})",
+                  "",
+                  "**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, the wallpaper will immediately appear in the web catalog and KOReader Storefront plugin!"
+              ]
+          else:
+              comment_lines = [
+                  f"🎉 **Batch Submission Received & Verified! ({len(created_prs)} Wallpapers)**",
+                  "",
+                  "Individual automated Pull Requests have been created for each wallpaper in this batch:",
+                  "",
+                  "| # | Wallpaper | Author | Category | Pull Request |",
+                  "|---|---|---|---|---|"
+              ]
+              for idx, p in enumerate(created_prs):
+                  comment_lines.append(f"| {idx + 1} | **{p['title']}** | {p['author']} | {p['category']} | [View PR]({p['pr_url']}) |")
+
+              comment_lines.append("")
+              comment_lines.append("### Wallpaper Previews")
+              for p in created_prs:
+                  comment_lines.append(f"#### {p['title']}")
+                  comment_lines.append(f"![{p['title']}]({p['img_url']})")
+                  comment_lines.append("")
+
+              comment_lines.append("**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, each wallpaper will immediately appear in the web catalog and KOReader Storefront plugin!")
+
+          with open('issue_comment.md', 'w', encoding='utf-8') as cf:
+              cf.write('\n'.join(comment_lines))
           PYEOF
-          
-          # Stage exclusively image assets and catalog json
-          git add images/ screensavers.json
-          git commit -m "Add screensaver and thumbnail for issue #${ISSUE_NUM}"
-          
-          # Push clean branch
-          git push origin "${BRANCH_NAME}" --force
-          
-          # Create Pull Request using gh CLI
-          gh pr create \
-            --title "New Screensaver Submission: ${ISSUE_TITLE}" \
-            --body-file pr_body.md \
-            --head "${BRANCH_NAME}" \
-            --base "main" || true
 
       - name: Comment on Issue
         if: steps.process.outputs.valid == 'true' || steps.process.outputs.valid == 'false'
