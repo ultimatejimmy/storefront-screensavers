@@ -14616,5 +14616,34 @@
       "black & white",
       "transparent"
     ]
+  },
+  {
+    "id": "have-you-seen-him",
+    "title": "Have you seen him?",
+    "author": "Jules",
+    "category": [
+      "Minimalist",
+      "Art",
+      "Pop Culture",
+      "Quotes",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/have-you-seen-him.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/have-you-seen-him.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/have-you-seen-him.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Billy strings",
+      "music",
+      "bluegrass",
+      "helmet",
+      "transparent"
+    ]
   }
 ]
