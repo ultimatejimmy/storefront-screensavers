@@ -457,3 +457,5 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Eikichi Onizuka - smoking | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
 | Bonny | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
 | Kyōka Jirō | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
+| Have you seen him? | Jules | Minimalist, Art, Pop Culture, Quotes, Transparent | Community Share | Jules |
+| Dolly Parton | Jules | Minimalist, Art, Pop Culture, Transparent | Community Share | Jules |
