@@ -14645,5 +14645,33 @@
       "helmet",
       "transparent"
     ]
+  },
+  {
+    "id": "dolly-parton",
+    "title": "Dolly Parton",
+    "author": "Jules",
+    "category": [
+      "Minimalist",
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/dolly-parton.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/dolly-parton.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/dolly-parton.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Dolly Parton",
+      "Books",
+      "Reading",
+      "Beautiful",
+      "transparent"
+    ]
   }
 ]
