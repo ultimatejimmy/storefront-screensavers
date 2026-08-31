@@ -14759,5 +14759,33 @@
       "Panem",
       "Poster"
     ]
+  },
+  {
+    "id": "art-thou-feeling-it-now-mr-krabs",
+    "title": "Art thou feeling it now Mr krabs?",
+    "author": "Jules",
+    "category": [
+      "Minimalist",
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/art-thou-feeling-it-now-mr-krabs.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/art-thou-feeling-it-now-mr-krabs.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/art-thou-feeling-it-now-mr-krabs.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "spongebob",
+      "patrick",
+      "mr krabs",
+      "dnd",
+      "transparent"
+    ]
   }
 ]
