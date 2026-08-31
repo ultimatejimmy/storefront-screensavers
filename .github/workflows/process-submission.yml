@@ -319,6 +319,8 @@ jobs:
               try:
                   img = Image.open(img_stream)
                   img.load()
+                  # Automatically correct camera / phone EXIF rotation
+                  img = ImageOps.exif_transpose(img)
               except Exception as dec_err:
                   validation_errors.append(f"'{title}': Failed to decode image raster pixels ({dec_err}).")
                   continue

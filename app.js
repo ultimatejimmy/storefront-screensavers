@@ -1063,6 +1063,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (imageUrl && imageUrl.startsWith('http')) {
         bodyLines.push(``, `### Image Preview`, `![${title}](${imageUrl})`);
+      } else {
+        bodyLines.push(
+          ``,
+          `### 📸 Image Attachment`,
+          `*Please paste your image here (**Ctrl+V** / **Cmd+V**) or drag and drop the image file into this box if not already uploaded.*`
+        );
       }
 
       if (selectedFileMeta) {
@@ -1749,6 +1755,11 @@ document.addEventListener('DOMContentLoaded', () => {
           bodyLines.push(`- **Image:** ${item.imageUrl}`);
           if (item.imageUrl && item.imageUrl.startsWith('http')) {
             bodyLines.push(``, `![${item.title}](${item.imageUrl})`);
+          } else {
+            bodyLines.push(
+              ``,
+              `> 📸 *Please paste or attach image for **${item.title}** below (Ctrl+V / Cmd+V)*`
+            );
           }
           bodyLines.push(``);
         });
