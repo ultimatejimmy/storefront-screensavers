@@ -14844,5 +14844,30 @@
       "Panem",
       "Poster"
     ]
+  },
+  {
+    "id": "igris-solo-leveling",
+    "title": "Igris Solo Leveling",
+    "author": "amoeba_phase",
+    "category": [
+      "Fantasy",
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/igris-solo-leveling.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/igris-solo-leveling.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/igris-solo-leveling.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "igris",
+      "solo leveling",
+      "transparent"
+    ]
   }
 ]
