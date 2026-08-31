@@ -14787,5 +14787,32 @@
       "dnd",
       "transparent"
     ]
+  },
+  {
+    "id": "essay",
+    "title": "ESSAY??",
+    "author": "Jules",
+    "category": [
+      "Minimalist",
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/essay.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/essay.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/essay.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "spongebob",
+      "The",
+      "essay",
+      "transparent"
+    ]
   }
 ]
