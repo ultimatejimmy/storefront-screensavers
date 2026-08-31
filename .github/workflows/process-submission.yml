@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   process-submission:
-    if: contains(github.event.issue.title, 'Screensaver Submission') && github.event.sender.type != 'Bot'
+    if: (contains(github.event.issue.title, 'Screensaver Submission') || contains(github.event.issue.title, 'screensaver') || contains(github.event.issue.title, 'Screensaver') || contains(github.event.issue.title, 'Wallpaper') || contains(github.event.issue.title, 'wallpaper') || contains(github.event.issue.labels.*.name, 'screensaver') || contains(github.event.issue.labels.*.name, 'submission')) && github.event.sender.type != 'Bot'
     runs-on: ubuntu-latest
 
     steps:
@@ -42,12 +42,24 @@ jobs:
         run: |
           python - << 'EOF'
           import os, json, re, requests, time, sys
-          from PIL import Image, ImageOps
           from io import BytesIO
+          from urllib.parse import urljoin
+          from PIL import Image, ImageOps
 
           body = os.environ.get('ISSUE_BODY', '')
           issue_num = os.environ.get('ISSUE_NUM', '')
           github_output = os.environ.get('GITHUB_OUTPUT', '')
+          token = os.environ.get('GH_TOKEN', '')
+          repo = os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')
+
+          headers = {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+              'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8'
+          }
+          max_retries = 3
+          MAX_DOWNLOAD_BYTES = 25 * 1024 * 1024
+          Image.MAX_IMAGE_PIXELS = 50_000_000
+          ALLOWED_FORMATS = {'JPEG', 'PNG', 'WEBP', 'MPO'}
 
           def set_output(valid_bool):
               if github_output and os.path.exists(github_output):
@@ -66,7 +78,7 @@ jobs:
                   "* **Resolution:** Minimum **200 × 200 px**, maximum **12,000 × 12,000 px**.",
                   "* **File Size:** Maximum **25 MB**.",
                   "",
-                  "Please check the image and feel free to update the issue or open a new submission!"
+                  "**How to fix:** You can edit the issue description or reply directly in the comments by attaching/pasting the image file (Ctrl+V / Cmd+V)!"
               ]
               with open('issue_comment.md', 'w', encoding='utf-8') as f:
                   f.write('\n'.join(lines))
@@ -74,7 +86,7 @@ jobs:
               sys.exit(0)
 
           # Parse single or batch submission blocks
-          blocks = re.split(r'(?=####\s+Wallpaper|\n---\s*\n####\s+Wallpaper|\n###\s+Screensaver\s+Submission)', body)
+          blocks = re.split(r'(?=####\s+Wallpaper|\n---\s*\n####\s+Wallpaper|\n###\s+Wallpaper|\n###\s+Screensaver\s+Submission)', body)
           raw_entries = []
 
           for block in blocks:
@@ -97,54 +109,52 @@ jobs:
                   if md_img: url_match_str = md_img.group(1)
 
               if not url_match_str:
-                  any_url = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', block, re.IGNORECASE)
-                  if any_url: url_match_str = any_url.group(0)
+                  html_img = re.search(r'<img[^>]+src=["\'](https?://[^"\']+)["\']', block, re.IGNORECASE)
+                  if html_img: url_match_str = html_img.group(1)
 
               if not url_match_str:
-                  any_url = re.search(r'https?://[^\s\)\"]+', block)
+                  any_url = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|catbox|tmpfiles|freeimage|imgbb|imgur|postimg)[^\s\)\"]*', block, re.IGNORECASE)
                   if any_url: url_match_str = any_url.group(0)
 
-              if title_match:
-                  raw_entries.append({
-                      'title': title_match.group(1).strip(),
-                      'author': author_match.group(1).strip() if author_match else "Community",
-                      'category': category_match.group(1).strip() if category_match else "General",
-                      'original_filename': filename_match.group(1).strip() if filename_match else "N/A",
-                      'tags': tags_match.group(1).strip() if tags_match else "",
-                      'img_url': url_match_str.strip() if url_match_str else None
-                  })
+              raw_entries.append({
+                  'title': title_match.group(1).strip(),
+                  'author': author_match.group(1).strip() if author_match else "Community",
+                  'category': category_match.group(1).strip() if category_match else "General",
+                  'original_filename': filename_match.group(1).strip() if filename_match else "N/A",
+                  'tags': tags_match.group(1).strip() if tags_match else "",
+                  'img_url': url_match_str.strip() if url_match_str else None
+              })
 
-          # Fallback check on issue comments if single submission lacked URL
-          if len(raw_entries) == 1 and not raw_entries[0]['img_url']:
+          # Fallback check on issue comments if any submission lacked URL
+          missing_entries = [e for e in raw_entries if not e['img_url']]
+          if missing_entries:
+              available_comment_urls = []
               comment_body = os.environ.get('COMMENT_BODY', '')
               if comment_body:
-                  c_img = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', comment_body)
-                  if c_img:
-                      raw_entries[0]['img_url'] = c_img.group(1)
-                  else:
-                      any_c = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', comment_body, re.IGNORECASE)
-                      if any_c: raw_entries[0]['img_url'] = any_c.group(0)
+                  for u in re.findall(r'!\[.*?\]\((https?://[^\s\)]+)\)|(https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|catbox|tmpfiles|freeimage|imgbb|imgur|postimg)[^\s\)\"]*)', comment_body, re.IGNORECASE):
+                      url_found = u[0] or u[1]
+                      if url_found and url_found not in available_comment_urls:
+                          available_comment_urls.append(url_found)
 
-              if not raw_entries[0]['img_url']:
-                  token = os.environ.get('GH_TOKEN', '')
-                  repo = os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')
-                  if token and issue_num:
-                      try:
-                          headers_gh = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
-                          comments_resp = requests.get(f'https://api.github.com/repos/{repo}/issues/{issue_num}/comments', headers=headers_gh, timeout=10)
-                          if comments_resp.status_code == 200:
-                              for c in comments_resp.json():
-                                  c_txt = c.get('body', '')
-                                  if 'Wallpaper Submission Validation Failed' in c_txt or 'Submission Received & Verified' in c_txt:
-                                      continue
-                                  u_match = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', c_txt)
-                                  if not u_match:
-                                      u_match = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|ibb\.co|freeimage|imgur|catbox|tmpfiles)[^\s\)\"]*', c_txt, re.IGNORECASE)
-                                  if u_match:
-                                      raw_entries[0]['img_url'] = u_match.group(1) if u_match.groups() else u_match.group(0)
-                                      break
-                      except Exception as err:
-                          print(f"Failed fetching issue comments: {err}")
+              if token and issue_num:
+                  try:
+                      headers_gh = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': headers['User-Agent']}
+                      comments_resp = requests.get(f'https://api.github.com/repos/{repo}/issues/{issue_num}/comments', headers=headers_gh, timeout=10)
+                      if comments_resp.status_code == 200:
+                          for c in comments_resp.json():
+                              c_txt = c.get('body', '')
+                              if 'Wallpaper Submission Validation Failed' in c_txt or 'Submission Received & Verified' in c_txt:
+                                  continue
+                              for u in re.findall(r'!\[.*?\]\((https?://[^\s\)]+)\)|(https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|catbox|tmpfiles|freeimage|imgbb|imgur|postimg)[^\s\)\"]*)', c_txt, re.IGNORECASE):
+                                  url_found = u[0] or u[1]
+                                  if url_found and url_found not in available_comment_urls:
+                                      available_comment_urls.append(url_found)
+                  except Exception as err:
+                      print(f"Failed fetching issue comments: {err}")
+
+              for e in raw_entries:
+                  if not e['img_url'] and available_comment_urls:
+                      e['img_url'] = available_comment_urls.pop(0)
 
           if not raw_entries:
               write_failure_comment("Could not extract any valid wallpaper titles and image URLs from the issue body.")
@@ -153,12 +163,6 @@ jobs:
           os.makedirs('images', exist_ok=True)
           os.makedirs('images/thumbnails', exist_ok=True)
           os.makedirs('images/thumbnails/plugin', exist_ok=True)
-
-          headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
-          max_retries = 3
-          MAX_DOWNLOAD_BYTES = 25 * 1024 * 1024
-          Image.MAX_IMAGE_PIXELS = 50_000_000
-          ALLOWED_FORMATS = {'JPEG', 'PNG', 'WEBP', 'MPO'}
 
           CHECKERBOARD_TILE = 12
           CB_LIGHT = (255, 255, 255, 255)
@@ -190,6 +194,76 @@ jobs:
               bg.paste(img_rgba, (x, y), img_rgba)
               return bg.convert('RGB')
 
+          def download_and_resolve_image(img_url, title):
+              """
+              Downloads image from direct link or resolves HTML landing pages (tmpfiles, imgbb, freeimage, catbox, etc.)
+              Returns (raw_bytes, error_message)
+              """
+              session = requests.Session()
+              session.headers.update(headers)
+              if 'github.com/user-attachments' in img_url and token:
+                  session.headers['Authorization'] = f'token {token}'
+
+              for attempt in range(max_retries):
+                  try:
+                      print(f"Downloading '{title}' from {img_url} (attempt {attempt + 1}/{max_retries})...")
+                      resp = session.get(img_url, allow_redirects=True, timeout=35)
+                      if resp.status_code == 404:
+                          return None, f"404 Not Found: Link expired or invalid on host ({img_url})"
+                      if resp.status_code != 200:
+                          time.sleep(2)
+                          continue
+
+                      c_type = resp.headers.get('Content-Type', '').lower()
+                      is_html = ('text/html' in c_type) or resp.content.strip().startswith(b'<!DOCTYPE') or resp.content.strip().startswith(b'<html')
+
+                      if is_html:
+                          print(f"URL returned HTML landing page. Parsing HTML to extract direct image stream...")
+                          html_text = resp.text
+
+                          # Regex patterns for common image hosting pages
+                          patterns = [
+                              r'<img[^>]+id=["\']img_preview["\'][^>]+src=["\']([^"\']+)["\']',
+                              r'<a[^>]+class=["\']download["\'][^>]+href=["\']([^"\']+)["\']',
+                              r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']',
+                              r'<meta[^>]+name=["\']twitter:image["\'][^>]+content=["\']([^"\']+)["\']',
+                              r'<img[^>]+src=["\'](https?://[^"\']+\.(?:png|jpg|jpeg|webp))["\']',
+                              r'["\'](https?://[^\s"\']+/dl/[^\s"\']+)["\']',
+                          ]
+                          extracted_url = None
+                          for pat in patterns:
+                              m = re.search(pat, html_text, re.IGNORECASE)
+                              if m:
+                                  found_target = m.group(1)
+                                  if not found_target.startswith('http'):
+                                      found_target = urljoin(img_url, found_target)
+                                  if found_target != img_url:
+                                      extracted_url = found_target
+                                      break
+
+                          if extracted_url:
+                              print(f"Resolved direct image URL: {extracted_url}")
+                              dl_resp = session.get(extracted_url, allow_redirects=True, timeout=35)
+                              if dl_resp.status_code == 200:
+                                  if len(dl_resp.content) > MAX_DOWNLOAD_BYTES:
+                                      return None, "File size exceeded 25 MB limit."
+                                  return dl_resp.content, None
+                              else:
+                                  return None, f"Resolved direct URL returned HTTP status {dl_resp.status_code}."
+                          else:
+                              return None, "Provided link is an HTML webpage rather than a direct image, and no image could be extracted."
+
+                      if len(resp.content) > MAX_DOWNLOAD_BYTES:
+                          return None, "File size exceeded 25 MB limit."
+
+                      return resp.content, None
+                  except Exception as exc:
+                      print(f"Download attempt {attempt + 1} error: {exc}")
+                      if attempt < max_retries - 1:
+                          time.sleep(2)
+
+              return None, "Failed to download image after multiple attempts."
+
           processed_items = []
           validation_errors = []
           used_ids = set()
@@ -203,7 +277,7 @@ jobs:
               img_url = entry['img_url']
 
               if not img_url:
-                  validation_errors.append(f"'{title}': Missing image URL.")
+                  validation_errors.append(f"'{title}': Missing image URL. Please attach or link the image file.")
                   continue
 
               base_id = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
@@ -217,35 +291,15 @@ jobs:
                   suffix += 1
               used_ids.add(item_id)
 
-              raw_data = bytearray()
-              download_success = False
+              raw_data, dl_err = download_and_resolve_image(img_url, title)
+              if dl_err or not raw_data or len(raw_data) == 0:
+                  validation_errors.append(f"'{title}': {dl_err or 'Failed to download image'}")
+                  continue
 
-              for attempt in range(max_retries):
-                  try:
-                      print(f"[{idx+1}/{len(raw_entries)}] Downloading '{title}' from {img_url} (attempt {attempt + 1}/{max_retries})...")
-                      with requests.get(img_url, headers=headers, allow_redirects=True, timeout=30, stream=True) as resp:
-                          if resp.status_code != 200:
-                              time.sleep(2)
-                              continue
-                          c_type = resp.headers.get('Content-Type', '').lower()
-                          if any(bad in c_type for bad in ['svg', 'html', 'javascript', 'text', 'application/x-', 'application/pdf']):
-                              validation_errors.append(f"'{title}': Disallowed Content-Type '{c_type}'.")
-                              break
-                          raw_data = bytearray()
-                          for chunk in resp.iter_content(chunk_size=65536):
-                              raw_data.extend(chunk)
-                              if len(raw_data) > MAX_DOWNLOAD_BYTES:
-                                  validation_errors.append(f"'{title}': Exceeded 25 MB limit.")
-                                  break
-                          download_success = True
-                          break
-                  except Exception as exc:
-                      print(f"Download attempt {attempt + 1} failed: {exc}")
-                      if attempt < max_retries - 1:
-                          time.sleep(2)
-
-              if not download_success or len(raw_data) == 0:
-                  validation_errors.append(f"'{title}': Failed to download image from CDN.")
+              # Security check: strictly reject vector SVG / XML / executable scripts
+              raw_lead = raw_data[:512].lower()
+              if raw_data.strip().startswith(b'<?xml') or b'<svg' in raw_lead or b'<script' in raw_lead:
+                  validation_errors.append(f"'{title}': Disallowed vector SVG/script file. Only raster JPG, PNG, or WebP images are permitted.")
                   continue
 
               img_stream = BytesIO(raw_data)
@@ -254,11 +308,11 @@ jobs:
                   detected_format = verify_img.format
                   verify_img.verify()
               except Exception as val_err:
-                  validation_errors.append(f"'{title}': Corrupted image structure ({val_err}).")
+                  validation_errors.append(f"'{title}': Corrupted image file structure ({val_err}).")
                   continue
 
               if detected_format not in ALLOWED_FORMATS:
-                  validation_errors.append(f"'{title}': Unsupported format '{detected_format}'.")
+                  validation_errors.append(f"'{title}': Unsupported image format '{detected_format}'. Please upload JPG, PNG, or WebP.")
                   continue
 
               img_stream.seek(0)
@@ -266,15 +320,15 @@ jobs:
                   img = Image.open(img_stream)
                   img.load()
               except Exception as dec_err:
-                  validation_errors.append(f"'{title}': Failed to decode raster pixels ({dec_err}).")
+                  validation_errors.append(f"'{title}': Failed to decode image raster pixels ({dec_err}).")
                   continue
 
               if img.width < 200 or img.height < 200:
-                  validation_errors.append(f"'{title}': Resolution ({img.width}x{img.height}) too small (min 200x200).")
+                  validation_errors.append(f"'{title}': Resolution ({img.width}×{img.height} px) is too small (minimum 200×200 px).")
                   continue
 
               if img.width > 12000 or img.height > 12000:
-                  validation_errors.append(f"'{title}': Resolution ({img.width}x{img.height}) exceeds 12,000 px limit.")
+                  validation_errors.append(f"'{title}': Resolution ({img.width}×{img.height} px) exceeds maximum limit of 12,000 px.")
                   continue
 
               # Transparency detection
@@ -356,17 +410,21 @@ jobs:
                   'thumb_plugin_path': thumb_plugin_path,
                   'catalog_entry': cat_entry
               })
-              print(f"Successfully processed image: '{title}' ({item_id})")
+              print(f"Successfully validated & prepared screensaver: '{title}' ({item_id})")
 
           if not processed_items:
-              err_summary = "\n".join([f"- {e}" for e in validation_errors]) if validation_errors else "All images failed validation checks."
+              err_summary = "\n".join([f"- {e}" for e in validation_errors]) if validation_errors else "All submitted images failed validation checks."
               write_failure_comment(f"Validation failed for submitted images:\n{err_summary}")
 
+          # Save processed items and remaining validation errors
           with open('processed_items.json', 'w', encoding='utf-8') as pf:
-              json.dump(processed_items, pf, indent=2)
+              json.dump({
+                  'processed_items': processed_items,
+                  'validation_errors': validation_errors
+              }, pf, indent=2)
 
           set_output(True)
-          print(f"Batch processing complete: {len(processed_items)} items ready for PR creation.")
+          print(f"Validation complete: {len(processed_items)} items approved for PR generation ({len(validation_errors)} items had issues).")
           EOF
 
 
@@ -384,7 +442,10 @@ jobs:
           import json, os, subprocess
 
           with open('processed_items.json', 'r', encoding='utf-8') as f:
-              items = json.load(f)
+              bundle = json.load(f)
+
+          items = bundle.get('processed_items', [])
+          validation_errors = bundle.get('validation_errors', [])
 
           issue_num = os.environ.get('ISSUE_NUM', '')
           created_prs = []
@@ -488,7 +549,7 @@ jobs:
                   })
 
           # Generate issue comment
-          if len(created_prs) == 1:
+          if len(created_prs) == 1 and not validation_errors:
               p = created_prs[0]
               comment_lines = [
                   "🎉 **Submission Received & Verified!**",
@@ -510,9 +571,9 @@ jobs:
               ]
           else:
               comment_lines = [
-                  f"🎉 **Batch Submission Received & Verified! ({len(created_prs)} Wallpapers)**",
+                  f"🎉 **Batch Submission Received & Verified! ({len(created_prs)} Wallpaper{'s' if len(created_prs) > 1 else ''})**",
                   "",
-                  "Individual automated Pull Requests have been created for each wallpaper in this batch:",
+                  "Individual automated Pull Requests have been created for each verified wallpaper in this batch:",
                   "",
                   "| # | Wallpaper | Author | Category | Pull Request |",
                   "|---|---|---|---|---|"
@@ -527,7 +588,14 @@ jobs:
                   comment_lines.append(f"![{p['title']}]({p['img_url']})")
                   comment_lines.append("")
 
-              comment_lines.append("**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, each wallpaper will immediately appear in the web catalog and KOReader Storefront plugin!")
+              if validation_errors:
+                  comment_lines.append("---")
+                  comment_lines.append("⚠️ **Notes on remaining items:**")
+                  for err in validation_errors:
+                      comment_lines.append(f"- {err}")
+                  comment_lines.append("\n*You can reply directly to this issue with any missing image attachments to process them.*")
+
+              comment_lines.append("\n**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, each wallpaper will immediately appear in the web catalog and KOReader Storefront plugin!")
 
           with open('issue_comment.md', 'w', encoding='utf-8') as cf:
               cf.write('\n'.join(comment_lines))

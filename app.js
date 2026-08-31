@@ -555,41 +555,105 @@ document.addEventListener('DOMContentLoaded', () => {
     reader.readAsDataURL(file);
   }
 
-  // Upload file anonymously to free image host API (CORS enabled)
-  async function uploadImageFile(file, fileName = 'screensaver.jpg') {
-    // 1. Try Litterbox (72h temporary hosting, CORS enabled)
+  // Helper for fetch with timeout
+  function fetchWithTimeout(url, options, timeoutMs = 35000) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+    return fetch(url, { ...options, signal: controller.signal })
+      .finally(() => clearTimeout(timeoutId));
+  }
+
+  // Upload file anonymously using a 4-tier resilient cascade with dynamic timeouts
+  async function uploadImageFile(file, fileName = 'screensaver.jpg', statusCallback = null) {
+    const cleanFileName = (fileName || 'screensaver.jpg').replace(/[^a-zA-Z0-9._-]/g, '_');
+    const fileSize = (file && file.size) ? file.size : 1024 * 1024;
+    // Dynamic timeout: generous 35s base, up to 60s for 10-25MB files
+    const timeoutMs = Math.max(35000, Math.min(60000, Math.round(fileSize / 200)));
+
+    // Tier 1: Litterbox (Catbox temporary 72h, CORS enabled)
     try {
+      if (statusCallback) statusCallback('Uploading to Catbox (Tier 1)...');
       const formData = new FormData();
       formData.append('reqtype', 'fileupload');
       formData.append('time', '72h');
-      formData.append('fileToUpload', file, fileName);
-      const res = await fetch('https://litterbox.catbox.moe/resources/internals/api.php', {
+      formData.append('fileToUpload', file, cleanFileName);
+      const res = await fetchWithTimeout('https://litterbox.catbox.moe/resources/internals/api.php', {
         method: 'POST',
         body: formData
-      });
-      const text = await res.text();
-      if (text && text.trim().startsWith('http')) {
-        return text.trim();
+      }, timeoutMs);
+      if (res.ok) {
+        const text = await res.text();
+        if (text && text.trim().startsWith('http')) {
+          console.log('Tier 1 (Litterbox) upload successful:', text.trim());
+          return text.trim();
+        }
       }
     } catch (err1) {
-      console.warn('Litterbox upload attempt failed:', err1);
+      console.warn('Tier 1 (Litterbox) upload attempt failed:', err1);
     }
 
-    // 2. Try TmpFiles API (CORS enabled)
+    // Tier 2: Catbox Permanent (CORS enabled)
     try {
+      if (statusCallback) statusCallback('Uploading to Catbox (Tier 2)...');
       const formData = new FormData();
-      formData.append('file', file, fileName);
-      const res = await fetch('https://tmpfiles.org/api/v1/upload', {
+      formData.append('reqtype', 'fileupload');
+      formData.append('fileToUpload', file, cleanFileName);
+      const res = await fetchWithTimeout('https://catbox.moe/user/api.php', {
         method: 'POST',
         body: formData
-      });
-      const data = await res.json();
-      if (data && data.data && data.data.url) {
-        // Direct download URL: replace tmpfiles.org/ with tmpfiles.org/dl/
-        return data.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+      }, timeoutMs);
+      if (res.ok) {
+        const text = await res.text();
+        if (text && text.trim().startsWith('http')) {
+          console.log('Tier 2 (Catbox) upload successful:', text.trim());
+          return text.trim();
+        }
       }
     } catch (err2) {
-      console.warn('TmpFiles upload attempt failed:', err2);
+      console.warn('Tier 2 (Catbox) upload attempt failed:', err2);
+    }
+
+    // Tier 3: TmpFiles API (CORS enabled)
+    try {
+      if (statusCallback) statusCallback('Uploading to TmpFiles (Tier 3)...');
+      const formData = new FormData();
+      formData.append('file', file, cleanFileName);
+      const res = await fetchWithTimeout('https://tmpfiles.org/api/v1/upload', {
+        method: 'POST',
+        body: formData
+      }, timeoutMs);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.data && data.data.url) {
+          console.log('Tier 3 (TmpFiles) upload successful:', data.data.url);
+          return data.data.url;
+        }
+      }
+    } catch (err3) {
+      console.warn('Tier 3 (TmpFiles) upload attempt failed:', err3);
+    }
+
+    // Tier 4: FreeImage.host API (CORS enabled)
+    try {
+      if (statusCallback) statusCallback('Uploading to FreeImage (Tier 4)...');
+      const formData = new FormData();
+      formData.append('key', '6d207e02198a847aa98d0a2a901485a5');
+      formData.append('action', 'upload');
+      formData.append('format', 'json');
+      formData.append('source', file, cleanFileName);
+      const res = await fetchWithTimeout('https://freeimage.host/api/1/upload', {
+        method: 'POST',
+        body: formData
+      }, timeoutMs);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.image && data.image.url) {
+          console.log('Tier 4 (FreeImage) upload successful:', data.image.url);
+          return data.image.url;
+        }
+      }
+    } catch (err4) {
+      console.warn('Tier 4 (FreeImage) upload attempt failed:', err4);
     }
 
     return null;
@@ -934,34 +998,40 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
+        const fileName = selectedFile.name || 'screensaver.jpg';
+        const fileMeta = selectedFileMeta || `${(selectedFile.size / 1024).toFixed(0)} KB`;
+
         if (btnSubmitIssue) {
-          btnSubmitIssue.textContent = 'Processing & uploading crop... ⏳';
+          btnSubmitIssue.textContent = 'Processing 3:4 crop... ⏳';
           btnSubmitIssue.disabled = true;
         }
 
-        const fileName = selectedFile.name || 'screensaver.jpg';
         // Get 3:4 cropped image blob
         const fileToUpload = await getCroppedBlob();
 
-        // Try automatic image host upload
-        const uploadedUrl = await uploadImageFile(fileToUpload, fileName);
+        // Copy cropped file to clipboard immediately as a universal convenience/backup
+        try {
+          if (navigator.clipboard && window.ClipboardItem && fileToUpload) {
+            await navigator.clipboard.write([
+              new ClipboardItem({ [fileToUpload.type || selectedFile.type || 'image/jpeg']: fileToUpload })
+            ]);
+          }
+        } catch (clipErr) {
+          console.log('Clipboard auto-copy:', clipErr);
+        }
+
+        // Try automatic image host upload with status updates
+        const uploadedUrl = await uploadImageFile(fileToUpload, fileName, (msg) => {
+          if (btnSubmitIssue) btnSubmitIssue.textContent = `${msg} ⏳`;
+        });
 
         if (uploadedUrl) {
           imageUrl = uploadedUrl;
-          fileNotice = 'Image automatically uploaded to CDN! A Pull Request will be generated for review.';
+          fileNotice = 'Image automatically uploaded! A Pull Request will be created for review.';
         } else {
-          imageUrl = `[Uploaded File: ${selectedFile.name} (${selectedFileMeta})]`;
-          // Copy file to clipboard fallback if upload fails
-          try {
-            if (navigator.clipboard && window.ClipboardItem) {
-              await navigator.clipboard.write([
-                new ClipboardItem({ [selectedFile.type]: selectedFile })
-              ]);
-              fileNotice = 'Image copied to clipboard! Press Ctrl+V/Cmd+V in the GitHub issue comment box to attach directly.';
-            }
-          } catch (clipErr) {
-            console.log('Clipboard write not allowed:', clipErr);
-          }
+          imageUrl = `[Uploaded File: ${fileName} (${fileMeta})]`;
+          fileNotice = 'Image copied to your clipboard! Press Ctrl+V / Cmd+V in the GitHub issue to attach directly.';
+          alert('Image host upload was blocked or timed out. Your cropped image has been copied to your clipboard—simply press Ctrl+V / Cmd+V in the GitHub issue description to attach it!');
         }
 
         if (btnSubmitIssue) {
@@ -1572,11 +1642,10 @@ document.addEventListener('DOMContentLoaded', () => {
       btnSubmitBulkAll.textContent = `Uploading batch (0 of ${bulkQueue.length})... ⏳`;
 
       const processedItems = [];
+      const failedItems = [];
 
       for (let i = 0; i < bulkQueue.length; i++) {
         const item = bulkQueue[i];
-        btnSubmitBulkAll.textContent = `Processing & uploading image ${i + 1} of ${bulkQueue.length}... ⏳`;
-
         const fileName = item.file.name || `screensaver_${i + 1}.jpg`;
         const isTrans = item.category && item.category.toLowerCase().includes('transparent');
 
@@ -1589,9 +1658,15 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
 
-        let imageUrl = await uploadImageFile(fileToUpload, fileName);
+        let imageUrl = await uploadImageFile(fileToUpload, fileName, (msg) => {
+          if (btnSubmitBulkAll) {
+            btnSubmitBulkAll.textContent = `[${i + 1}/${bulkQueue.length}] ${msg} ⏳`;
+          }
+        });
+
         if (!imageUrl) {
           imageUrl = `[Uploaded File: ${fileName}]`;
+          failedItems.push(item);
         }
 
         processedItems.push({
@@ -1603,6 +1678,20 @@ document.addEventListener('DOMContentLoaded', () => {
           imageUrl: imageUrl,
           fileSizeKb: (item.file.size / 1024).toFixed(0)
         });
+      }
+
+      if (failedItems.length > 0) {
+        // Try copying the first failed image to clipboard so the user can easily paste it
+        try {
+          if (navigator.clipboard && window.ClipboardItem && failedItems[0].file) {
+            await navigator.clipboard.write([
+              new ClipboardItem({ [failedItems[0].file.type || 'image/jpeg']: failedItems[0].file })
+            ]);
+          }
+        } catch (clipErr) {
+          console.log('Clipboard copy note:', clipErr);
+        }
+        alert(`Note: ${failedItems.length} wallpaper(s) could not be uploaded to the CDN automatically. The first one has been copied to your clipboard—you can attach/paste it directly in the GitHub issue comment box!`);
       }
 
       btnSubmitBulkAll.textContent = `Preparing GitHub submission... ⏳`;
