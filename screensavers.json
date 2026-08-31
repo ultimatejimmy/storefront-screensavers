@@ -14729,5 +14729,35 @@
       "Lady Amalthea",
       "Red Bull"
     ]
+  },
+  {
+    "id": "sunrise-on-the-reaping-butterfly-poster",
+    "title": "Sunrise on the Reaping Butterfly Poster",
+    "author": "Jules",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Sci-Fi",
+      "Abstract",
+      "Art",
+      "Pop Culture",
+      "Quotes"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/sunrise-on-the-reaping-butterfly-poster.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/sunrise-on-the-reaping-butterfly-poster.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/sunrise-on-the-reaping-butterfly-poster.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Hunger Games",
+      "SOTR",
+      "Panem",
+      "Poster"
+    ]
   }
 ]
