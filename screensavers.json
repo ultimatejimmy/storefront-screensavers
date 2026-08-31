@@ -14673,5 +14673,34 @@
       "Beautiful",
       "transparent"
     ]
+  },
+  {
+    "id": "the-last-unicorn-with-butterfly",
+    "title": "The Last Unicorn with Butterfly",
+    "author": "Jules",
+    "category": [
+      "Minimalist",
+      "Fantasy",
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-last-unicorn-with-butterfly.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/the-last-unicorn-with-butterfly.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/the-last-unicorn-with-butterfly.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "The Last Unicorn",
+      "Unicorn",
+      "Lady Amalthea",
+      "Butterfly",
+      "transparent"
+    ]
   }
 ]
