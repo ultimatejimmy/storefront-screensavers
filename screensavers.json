@@ -14702,5 +14702,32 @@
       "Butterfly",
       "transparent"
     ]
+  },
+  {
+    "id": "the-last-unicorn-vhs-cover",
+    "title": "The Last Unicorn VHS Cover",
+    "author": "Jules",
+    "category": [
+      "Minimalist",
+      "Fantasy",
+      "Art",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-last-unicorn-vhs-cover.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-last-unicorn-vhs-cover.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/the-last-unicorn-vhs-cover.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "The Last Unicorn",
+      "Unicorn",
+      "Lady Amalthea",
+      "Red Bull"
+    ]
   }
 ]

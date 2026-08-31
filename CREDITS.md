@@ -459,3 +459,5 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Kyōka Jirō | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
 | Have you seen him? | Jules | Minimalist, Art, Pop Culture, Quotes, Transparent | Community Share | Jules |
 | Dolly Parton | Jules | Minimalist, Art, Pop Culture, Transparent | Community Share | Jules |
+| The Last Unicorn with Butterfly | Jules | Minimalist, Fantasy, Art, Pop Culture, Transparent | Community Share | Jules |
+| The Last Unicorn VHS Cover | Jules | Minimalist, Fantasy, Art, Pop Culture | Community Share | Jules |
