@@ -472,3 +472,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Jake the Dog - Adventure Time | naricitrus | Minimalist, Pop Culture, Transparent | Community Share | naricitrus |
 | Snoopy Hello Kitty | Smooth_Comfortable12 | Minimalist, Pop Culture, Transparent | Community Share | Smooth_Comfortable12 |
 | Undertale - Stay Determined BW | depresso_espresso9 | Minimalist | Community Share | depresso_espresso9 |
+| Undertale - Stay Determined Color | depresso_espresso9 | Minimalist | Community Share | depresso_espresso9 |
