@@ -14949,5 +14949,31 @@
       "Dog",
       "transparent"
     ]
+  },
+  {
+    "id": "jake-the-dog-adventure-time-2",
+    "title": "Jake the Dog - Adventure Time",
+    "author": "naricitrus",
+    "category": [
+      "Minimalist",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/jake-the-dog-adventure-time-2.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/jake-the-dog-adventure-time-2.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/jake-the-dog-adventure-time-2.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Adventure Time",
+      "Dog",
+      "Cartoon",
+      "transparent"
+    ]
   }
 ]
