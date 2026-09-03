@@ -15107,5 +15107,28 @@
     "tags": [
       "transparent"
     ]
+  },
+  {
+    "id": "vocaloid-6",
+    "title": "Vocaloid 6",
+    "author": "tokenicrat",
+    "category": [
+      "Minimalist",
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/vocaloid-6.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/vocaloid-6.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/vocaloid-6.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
   }
 ]
