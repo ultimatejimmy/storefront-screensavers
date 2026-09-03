@@ -15107,5 +15107,28 @@
     "tags": [
       "transparent"
     ]
+  },
+  {
+    "id": "vocaloid-8",
+    "title": "Vocaloid 8",
+    "author": "tokenicrat",
+    "category": [
+      "Minimalist",
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/vocaloid-8.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/vocaloid-8.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/vocaloid-8.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
   }
 ]
