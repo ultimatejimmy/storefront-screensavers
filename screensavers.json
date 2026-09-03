@@ -14869,5 +14869,36 @@
       "solo leveling",
       "transparent"
     ]
+  },
+  {
+    "id": "boss-sponge",
+    "title": "Boss Sponge",
+    "author": "chunihs0",
+    "category": [
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/boss-sponge.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/boss-sponge.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/boss-sponge.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "spongebob",
+      "meme",
+      "funny",
+      "suit",
+      "sunglasses",
+      "cool",
+      "pop culture",
+      "cartoon",
+      "transparent"
+    ]
   }
 ]
