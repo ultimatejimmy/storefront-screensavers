@@ -1,0 +1,52 @@
+name: Process Catalog Change Suggestion
+
+on:
+  issues:
+    types: [opened, reopened, edited]
+  issue_comment:
+    types: [created, edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  process-change:
+    if: (contains(github.event.issue.title, 'Change Suggestion') || contains(github.event.issue.title, 'change suggestion') || contains(github.event.issue.title, 'Change Request') || contains(github.event.issue.title, 'change request') || contains(github.event.issue.labels.*.name, 'suggest-change') || contains(github.event.issue.labels.*.name, 'change-request') || contains(github.event.issue.body, 'Catalog Change Suggestion')) && github.event.sender.type != 'Bot'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install Pillow requests
+
+      - name: Process Change Suggestion & Create PR
+        id: process
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUM: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: |
+          python tools/process_change_suggestion.py
+
+      - name: Comment on Issue
+        if: steps.process.outputs.valid == 'true' || steps.process.outputs.valid == 'false'
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body-path: 'change_comment.md'
