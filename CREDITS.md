@@ -476,3 +476,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Charlie Brown & Snoopy | Smooth_Comfortable12 | Minimalist, Transparent | Community Share | Smooth_Comfortable12 |
 | Vocaloid 2 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
 | Vocaloid 3 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
+| gentleeeeeeecat 2 | gentleeeeeeecat | Minimalist, Transparent | Community Share | gentleeeeeeecat |
