@@ -465,3 +465,5 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Art thou feeling it now Mr krabs? | Jules | Minimalist, Art, Pop Culture, Transparent | Community Share | Jules |
 | ESSAY?? | Jules | Minimalist, Art, Pop Culture, Transparent | Community Share | Jules |
 | The 50th Hunger Games | Jules | Minimalist, Nature, Sci-Fi, Abstract, Art, Pop Culture, Quotes | Community Share | Jules |
+| Igris Solo Leveling | amoeba_phase | Fantasy, Anime, Transparent | Community Share | amoeba_phase |
+| Boss Sponge | chunihs0 | Art, Pop Culture, Transparent | Community Share | chunihs0 |
