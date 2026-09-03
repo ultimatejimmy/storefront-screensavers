@@ -189,7 +189,7 @@ def main():
             ""
         ])
 
-    with open('consolidated_pr_body.md', 'w', encoding='utf-8') as f:
+    with open('consolidated_pr_body.md', 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(pr_body_lines))
 
     titles_sample = ', '.join(it.get('title') for it in consolidated_items[:3])
