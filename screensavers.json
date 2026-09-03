@@ -15107,5 +15107,28 @@
     "tags": [
       "transparent"
     ]
+  },
+  {
+    "id": "gentleeeeeeecat-1",
+    "title": "gentleeeeeeecat 1",
+    "author": "gentleeeeeeecat",
+    "category": [
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/gentleeeeeeecat-1.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/gentleeeeeeecat-1.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/gentleeeeeeecat-1.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "cat",
+      "transparent"
+    ]
   }
 ]
