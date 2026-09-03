@@ -198,7 +198,7 @@ def main():
     print("Opening Consolidated Pull Request...")
     pr_create_res = run(f'gh pr create --title "{pr_title}" --body-file consolidated_pr_body.md --head {target_branch} --base main -R {repo}')
     new_pr_url = pr_create_res.stdout.strip()
-    print(f"\n🎉 Successfully created Consolidated PR: {new_pr_url}")
+    print(f"\n[SUCCESS] Successfully created Consolidated PR: {new_pr_url}")
 
     # Close individual PRs with note
     print("\nClosing fragmented individual PRs...")
