@@ -12,6 +12,10 @@ permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: auto-rebase-submissions
+  cancel-in-progress: true
+
 jobs:
   rebase-submissions:
     runs-on: ubuntu-latest

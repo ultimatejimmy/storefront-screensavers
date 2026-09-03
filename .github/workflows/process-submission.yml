@@ -450,33 +450,19 @@ jobs:
           validation_errors = bundle.get('validation_errors', [])
 
           issue_num = os.environ.get('ISSUE_NUM', '')
-          created_prs = []
+          issue_title = os.environ.get('ISSUE_TITLE', 'Screensaver Submission')
+          branch = f"submission-{issue_num}"
 
-          for idx, item in enumerate(items):
-              item_id = item['item_id']
-              title = item['title']
-              author = item['author']
-              category = item['category']
-              original_filename = item['original_filename']
-              img_url = item['img_url']
-              full_path = item['full_path']
-              thumb_web_path = item['thumb_web_path']
-              thumb_plugin_path = item.get('thumb_plugin_path')
+          subprocess.run('git fetch origin main', shell=True, check=True)
+          subprocess.run(f'git checkout -B {branch} origin/main', shell=True, check=True)
+
+          with open('screensavers.json', 'r', encoding='utf-8') as sf:
+              curr_main = json.load(sf)
+
+          files_to_add = ['screensavers.json']
+          for item in items:
               cat_entry = item['catalog_entry']
-
-              if len(items) == 1:
-                  branch = f"submission-{issue_num}"
-              else:
-                  branch = f"submission-{issue_num}-{idx + 1}"
-
-              # Fetch latest origin/main to re-apply on top cleanly
-              subprocess.run('git fetch origin main', shell=True, check=True)
-              subprocess.run(f'git checkout -B {branch} origin/main', shell=True, check=True)
-
-              # Update screensavers.json with this item
-              with open('screensavers.json', 'r', encoding='utf-8') as sf:
-                  curr_main = json.load(sf)
-
+              item_id = item['item_id']
               updated = False
               for i, c in enumerate(curr_main):
                   if c['id'] == item_id:
@@ -486,108 +472,161 @@ jobs:
               if not updated:
                   curr_main.append(cat_entry)
 
-              with open('screensavers.json', 'w', encoding='utf-8') as sf:
-                  json.dump(curr_main, sf, indent=2, ensure_ascii=False)
+              files_to_add.append(item['full_path'])
+              files_to_add.append(item['thumb_web_path'])
+              if item.get('thumb_plugin_path') and os.path.exists(item['thumb_plugin_path']):
+                  files_to_add.append(item['thumb_plugin_path'])
 
-              # Stage files
-              files_to_add = [full_path, thumb_web_path, 'screensavers.json']
-              if thumb_plugin_path and os.path.exists(thumb_plugin_path):
-                  files_to_add.append(thumb_plugin_path)
+          with open('screensavers.json', 'w', encoding='utf-8') as sf:
+              json.dump(curr_main, sf, indent=2, ensure_ascii=False)
 
-              subprocess.run(f"git add {' '.join(files_to_add)}", shell=True, check=True)
-              subprocess.run(f"git commit -m \"Add screensaver '{title}' for issue #{issue_num}\"", shell=True, check=True)
-              subprocess.run(f"git push origin {branch} --force", shell=True, check=True)
+          try:
+              import sys
+              sys.path.insert(0, os.path.abspath('tools'))
+              from catalog_studio import rebuild_credits_file
+              rebuild_credits_file(curr_main)
+              files_to_add.append('CREDITS.md')
+          except Exception as cred_err:
+              print(f"Warning rebuilding credits: {cred_err}")
 
-              # Write PR body
+          # Stage and commit
+          files_str = ' '.join(set(files_to_add))
+          subprocess.run(f"git add {files_str}", shell=True, check=True)
+          if len(items) == 1:
+              commit_msg = f"Add screensaver '{items[0]['title']}' for issue #{issue_num}"
+          else:
+              commit_msg = f"Add {len(items)} screensavers for batch issue #{issue_num}"
+          subprocess.run(f'git commit -m "{commit_msg}"', shell=True, check=True)
+          subprocess.run(f"git push origin {branch} --force", shell=True, check=True)
+
+          # Construct PR body
+          if len(items) == 1:
+              item = items[0]
+              pr_title = f"New Screensaver Submission: {item['title']}"
               pr_lines = [
-                  f"Closes #{issue_num}" if len(items) == 1 or idx == len(items) - 1 else f"Related to #{issue_num}",
+                  f"Closes #{issue_num}",
                   "",
-                  f"### Screensaver Submission: {title}",
+                  f"### Screensaver Submission: {item['title']}",
                   "",
                   "| Property | Value |",
                   "|---|---|",
-                  f"| **Title** | {title} |",
-                  f"| **Author** | {author} |",
-                  f"| **Category** | {category} |",
-                  f"| **Original Filename** | `{original_filename}` |",
-                  f"| **Target Item ID** | `{item_id}` |",
-                  f"| **Master Image** | `{full_path}` (1860 × 2480) |",
-                  f"| **Thumbnail** | `{thumb_web_path}` (600 × 800) |",
+                  f"| **Title** | {item['title']} |",
+                  f"| **Author** | {item['author']} |",
+                  f"| **Category** | {item['category']} |",
+                  f"| **Original Filename** | `{item['original_filename']}` |",
+                  f"| **Target Item ID** | `{item['item_id']}` |",
+                  f"| **Master Image** | `{item['full_path']}` (1860 × 2480) |",
+                  f"| **Thumbnail** | `{item['thumb_web_path']}` (600 × 800) |",
                   "",
                   "### Visual Preview",
-                  f"![{title}]({img_url})",
+                  f"![{item['title']}]({item['img_url']})",
                   "",
                   "---",
                   f"*Automated PR generated from issue #{issue_num} via Storefront Screensaver Catalog workflow.*"
               ]
-              with open('pr_body_tmp.md', 'w', encoding='utf-8') as pf:
-                  pf.write('\n'.join(pr_lines))
-
-              pr_cmd = [
-                  'gh', 'pr', 'create',
-                  '--title', f"New Screensaver Submission: {title}",
-                  '--body-file', 'pr_body_tmp.md',
-                  '--head', branch,
-                  '--base', 'main'
+          else:
+              titles_preview = ', '.join(it['title'] for it in items[:3])
+              extra_str = f" +{len(items)-3} more" if len(items) > 3 else ""
+              pr_title = f"Batch Screensaver Submission: {len(items)} Wallpapers ({titles_preview}{extra_str})"
+              pr_lines = [
+                  f"Closes #{issue_num}",
+                  "",
+                  f"## 📋 Batch Screensaver Submission ({len(items)} Wallpapers)",
+                  "",
+                  f"This batch pull request contains {len(items)} screensaver wallpapers submitted in issue #{issue_num}.",
+                  "",
+                  "> 💡 **Maintainer Curation Instructions:**",
+                  "> - **To reject an individual wallpaper:** Comment `/reject <#>` or `/reject <item-id> [reason]` (e.g. `/reject 3 low quality`).",
+                  "> - **To approve & merge:** When you are satisfied with the items, click **Merge pull request** once to approve the entire batch without rebase delays!",
+                  "",
+                  "---",
+                  "",
+                  "### 🖼️ Wallpapers in this Batch",
+                  "",
+                  "| # | Preview | Title | Author | Category | Target ID |",
+                  "|---|---|---|---|---|---|"
               ]
-              try:
-                  pr_out = subprocess.check_output(pr_cmd, text=True).strip()
-                  created_prs.append({
-                      'title': title,
-                      'author': author,
-                      'category': category,
-                      'pr_url': pr_out,
-                      'img_url': img_url
-                  })
-                  print(f"Created PR for '{title}': {pr_out}")
-              except subprocess.CalledProcessError as pr_err:
-                  print(f"PR creation returned non-zero (might already exist): {pr_err}")
-                  created_prs.append({
-                      'title': title,
-                      'author': author,
-                      'category': category,
-                      'pr_url': f"https://github.com/{os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')}/pulls",
-                      'img_url': img_url
-                  })
+              for idx, it in enumerate(items, 1):
+                  thumb_preview = f"<img src='{it['img_url']}' width='90' />" if it.get('img_url') else "N/A"
+                  pr_lines.append(f"| **#{idx}** | {thumb_preview} | **{it['title']}** | {it['author']} | {it['category']} | `{it['item_id']}` |")
+
+              pr_lines.extend([
+                  "",
+                  "---",
+                  "### Visual Previews",
+                  ""
+              ])
+              for idx, it in enumerate(items, 1):
+                  pr_lines.extend([
+                      f"#### #{idx}: {it['title']} (`{it['item_id']}`)",
+                      f"- **Author:** {it['author']}",
+                      f"- **Category:** {it['category']}",
+                      f"- **Tags:** {it['tags']}",
+                      f"- **Master File:** `{it['full_path']}`",
+                      f"![{it['title']}]({it['img_url']})",
+                      ""
+                  ])
+              pr_lines.extend([
+                  "---",
+                  f"*Automated batch PR generated from issue #{issue_num} via Storefront Screensaver Catalog workflow.*"
+              ])
+
+          with open('pr_body_tmp.md', 'w', encoding='utf-8') as pf:
+              pf.write('\n'.join(pr_lines))
+
+          pr_cmd = [
+              'gh', 'pr', 'create',
+              '--title', pr_title,
+              '--body-file', 'pr_body_tmp.md',
+              '--head', branch,
+              '--base', 'main'
+          ]
+          pr_url = f"https://github.com/{os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')}/pulls"
+          try:
+              pr_out = subprocess.check_output(pr_cmd, text=True).strip()
+              pr_url = pr_out
+              print(f"Created PR: {pr_url}")
+          except subprocess.CalledProcessError as pr_err:
+              print(f"PR creation returned non-zero (might already exist): {pr_err}")
 
           # Generate issue comment
-          if len(created_prs) == 1 and not validation_errors:
-              p = created_prs[0]
+          if len(items) == 1 and not validation_errors:
+              item = items[0]
               comment_lines = [
                   "🎉 **Submission Received & Verified!**",
                   "",
-                  f"An automated Pull Request has been created: [{p['title']}]({p['pr_url']})",
+                  f"An automated Pull Request has been created: [{pr_title}]({pr_url})",
                   "",
-                  f"### Submitted Wallpaper: {p['title']}",
+                  f"### Submitted Wallpaper: {item['title']}",
                   "| Property | Value |",
                   "|---|---|",
-                  f"| **Title** | {p['title']} |",
-                  f"| **Author** | {p['author']} |",
-                  f"| **Category** | {p['category']} |",
-                  f"| **Pull Request** | [View PR]({p['pr_url']}) |",
+                  f"| **Title** | {item['title']} |",
+                  f"| **Author** | {item['author']} |",
+                  f"| **Category** | {item['category']} |",
+                  f"| **Pull Request** | [View PR]({pr_url}) |",
                   "",
                   "### Visual Preview",
-                  f"![{p['title']}]({p['img_url']})",
+                  f"![{item['title']}]({item['img_url']})",
                   "",
                   "**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, the wallpaper will immediately appear in the web catalog and KOReader Storefront plugin!"
               ]
           else:
               comment_lines = [
-                  f"🎉 **Batch Submission Received & Verified! ({len(created_prs)} Wallpaper{'s' if len(created_prs) > 1 else ''})**",
+                  f"🎉 **Batch Submission Received & Verified! ({len(items)} Wallpaper{'s' if len(items) > 1 else ''})**",
                   "",
-                  "Individual automated Pull Requests have been created for each verified wallpaper in this batch:",
+                  f"An automated Pull Request has been created for all wallpapers in this batch: [{pr_title}]({pr_url})",
                   "",
-                  "| # | Wallpaper | Author | Category | Pull Request |",
-                  "|---|---|---|---|---|"
+                  "| # | Wallpaper | Author | Category |",
+                  "|---|---|---|---|"
               ]
-              for idx, p in enumerate(created_prs):
-                  comment_lines.append(f"| {idx + 1} | **{p['title']}** | {p['author']} | {p['category']} | [View PR]({p['pr_url']}) |")
+              for idx, it in enumerate(items, 1):
+                  comment_lines.append(f"| {idx} | **{it['title']}** | {it['author']} | {it['category']} |")
 
               comment_lines.append("")
               comment_lines.append("### Wallpaper Previews")
-              for p in created_prs:
-                  comment_lines.append(f"#### {p['title']}")
-                  comment_lines.append(f"![{p['title']}]({p['img_url']})")
+              for it in items:
+                  comment_lines.append(f"#### {it['title']}")
+                  comment_lines.append(f"![{it['title']}]({it['img_url']})")
                   comment_lines.append("")
 
               if validation_errors:
@@ -597,7 +636,7 @@ jobs:
                       comment_lines.append(f"- {err}")
                   comment_lines.append("\n*You can reply directly to this issue with any missing image attachments to process them.*")
 
-              comment_lines.append("\n**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, each wallpaper will immediately appear in the web catalog and KOReader Storefront plugin!")
+              comment_lines.append(f"\n**Review Status:** Pending maintainer review & approval on Pull Request: [View Pull Request]({pr_url}). Once approved and merged into `main`, all approved wallpapers will immediately appear in the web catalog and KOReader Storefront plugin!")
 
           with open('issue_comment.md', 'w', encoding='utf-8') as cf:
               cf.write('\n'.join(comment_lines))
