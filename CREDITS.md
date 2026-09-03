@@ -474,3 +474,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Undertale - Stay Determined BW | depresso_espresso9 | Minimalist | Community Share | depresso_espresso9 |
 | Undertale - Stay Determined Color | depresso_espresso9 | Minimalist | Community Share | depresso_espresso9 |
 | Charlie Brown & Snoopy | Smooth_Comfortable12 | Minimalist, Transparent | Community Share | Smooth_Comfortable12 |
+| Vocaloid 2 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
