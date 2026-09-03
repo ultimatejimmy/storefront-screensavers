@@ -14900,5 +14900,28 @@
       "cartoon",
       "transparent"
     ]
+  },
+  {
+    "id": "shark",
+    "title": "Shark",
+    "author": "nari",
+    "category": [
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/shark.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/shark.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/shark.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "shark",
+      "transparent"
+    ]
   }
 ]
