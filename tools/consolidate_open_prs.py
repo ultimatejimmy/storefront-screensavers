@@ -149,7 +149,7 @@ def main():
         author = it.get('author', 'Community')
         cats = it.get('category')
         cat_str = ', '.join(cats) if isinstance(cats, list) else str(cats)
-        thumb_url = it.get('thumbnailUrl', '')
+        thumb_url = it.get('thumbnailUrl', '').replace('/main/', f'/{target_branch}/')
         src_pr = it.get('_source_pr')
         preview_md = f"<img src='{thumb_url}' width='90' />" if thumb_url else "N/A"
         pr_body_lines.append(f"| **#{idx}** | {preview_md} | **{title}** | {author} | {cat_str} | `{item_id}` | #{src_pr} |")
@@ -163,8 +163,8 @@ def main():
 
     for idx, it in enumerate(consolidated_items, 1):
         title = it.get('title', 'Untitled')
-        thumb_url = it.get('thumbnailUrl', '')
-        full_url = it.get('fullUrl', '')
+        thumb_url = it.get('thumbnailUrl', '').replace('/main/', f'/{target_branch}/')
+        full_url = it.get('fullUrl', '').replace('/main/', f'/{target_branch}/')
         pr_body_lines.extend([
             f"#### #{idx}: {title} (`{it.get('id')}`)",
             f"- **Author:** {it.get('author')}",
