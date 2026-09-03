@@ -476,3 +476,16 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Charlie Brown & Snoopy | Smooth_Comfortable12 | Minimalist, Transparent | Community Share | Smooth_Comfortable12 |
 | Vocaloid 2 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
 | Vocaloid 3 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
+| Vocaloid 4 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
+| Vocaloid 5 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
+| Vocaloid 6 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
+| Vocaloid 7 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
+| Vocaloid 8 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
+| Vocaloid 9 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
+| Vocaloid 10 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
+| Vocaloid 11 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
+| Vocaloid 1 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
+| gentleeeeeeecat 3 | gentleeeeeeecat | Minimalist, Transparent | Community Share | gentleeeeeeecat |
+| gentleeeeeeecat 4 | gentleeeeeeecat | Minimalist, Transparent | Community Share | gentleeeeeeecat |
+| gentleeeeeeecat 1 | gentleeeeeeecat | Minimalist, Transparent | Community Share | gentleeeeeeecat |
+| gentleeeeeeecat 2 | gentleeeeeeecat | Minimalist, Transparent | Community Share | gentleeeeeeecat |
