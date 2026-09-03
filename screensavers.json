@@ -14923,5 +14923,31 @@
       "shark",
       "transparent"
     ]
+  },
+  {
+    "id": "jake-the-dog-adventure-time",
+    "title": "Jake the Dog - Adventure Time",
+    "author": "makszimus",
+    "category": [
+      "Minimalist",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/jake-the-dog-adventure-time.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/jake-the-dog-adventure-time.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/jake-the-dog-adventure-time.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Adventure Time",
+      "Cartoon",
+      "Dog",
+      "transparent"
+    ]
   }
 ]

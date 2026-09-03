@@ -467,3 +467,5 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | The 50th Hunger Games | Jules | Minimalist, Nature, Sci-Fi, Abstract, Art, Pop Culture, Quotes | Community Share | Jules |
 | Igris Solo Leveling | amoeba_phase | Fantasy, Anime, Transparent | Community Share | amoeba_phase |
 | Boss Sponge | chunihs0 | Art, Pop Culture, Transparent | Community Share | chunihs0 |
+| Shark | nari | Minimalist, Transparent | Community Share | nari |
+| Jake the Dog - Adventure Time | makszimus | Minimalist, Pop Culture, Transparent | Community Share | makszimus |
