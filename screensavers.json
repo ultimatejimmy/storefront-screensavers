@@ -14975,5 +14975,28 @@
       "Cartoon",
       "transparent"
     ]
+  },
+  {
+    "id": "snoopy-hello-kitty",
+    "title": "Snoopy Hello Kitty",
+    "author": "Smooth_Comfortable12",
+    "category": [
+      "Minimalist",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/snoopy-hello-kitty.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/snoopy-hello-kitty.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/snoopy-hello-kitty.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
   }
 ]
