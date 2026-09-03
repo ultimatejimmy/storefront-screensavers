@@ -15038,5 +15038,28 @@
       "Undertale",
       "video game"
     ]
+  },
+  {
+    "id": "charlie-brown-snoopy",
+    "title": "Charlie Brown & Snoopy",
+    "author": "Smooth_Comfortable12",
+    "category": [
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/charlie-brown-snoopy.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/charlie-brown-snoopy.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/charlie-brown-snoopy.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Cartoon",
+      "transparent"
+    ]
   }
 ]
