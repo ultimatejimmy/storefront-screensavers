@@ -15760,5 +15760,31 @@
       "film",
       "transparent"
     ]
+  },
+  {
+    "id": "the-moon",
+    "title": "The moon",
+    "author": "cactus_cowboy",
+    "category": [
+      "Minimalist",
+      "Nature"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-moon.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-moon.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/the-moon.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "moon",
+      "trees",
+      "leaves",
+      "backdrop",
+      "silhouette"
+    ]
   }
 ]
