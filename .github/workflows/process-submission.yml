@@ -499,9 +499,12 @@ jobs:
           subprocess.run(f'git commit -m "{commit_msg}"', shell=True, check=True)
           subprocess.run(f"git push origin {branch} --force", shell=True, check=True)
 
+          raw_branch_base = f"https://raw.githubusercontent.com/{os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')}/{branch}/"
+
           # Construct PR body
           if len(items) == 1:
               item = items[0]
+              thumb_url = raw_branch_base + item['thumb_web_path']
               pr_title = f"New Screensaver Submission: {item['title']}"
               pr_lines = [
                   f"Closes #{issue_num}",
@@ -519,7 +522,7 @@ jobs:
                   f"| **Thumbnail** | `{item['thumb_web_path']}` (600 × 800) |",
                   "",
                   "### Visual Preview",
-                  f"![{item['title']}]({item['img_url']})",
+                  f"![{item['title']}]({thumb_url})",
                   "",
                   "---",
                   f"*Automated PR generated from issue #{issue_num} via Storefront Screensaver Catalog workflow.*"
@@ -543,12 +546,13 @@ jobs:
                   "",
                   "### 🖼️ Wallpapers in this Batch",
                   "",
-                  "| # | Preview | Title | Author | Category | Target ID |",
+                  "| Item | Preview | Title | Author | Category | Target ID |",
                   "|---|---|---|---|---|---|"
               ]
               for idx, it in enumerate(items, 1):
-                  thumb_preview = f"<img src='{it['img_url']}' width='90' />" if it.get('img_url') else "N/A"
-                  pr_lines.append(f"| **#{idx}** | {thumb_preview} | **{it['title']}** | {it['author']} | {it['category']} | `{it['item_id']}` |")
+                  thumb_url = raw_branch_base + it['thumb_web_path']
+                  thumb_preview = f"<img src='{thumb_url}' width='90' />"
+                  pr_lines.append(f"| **{idx}** | {thumb_preview} | **{it['title']}** | {it['author']} | {it['category']} | `{it['item_id']}` |")
 
               pr_lines.extend([
                   "",
@@ -557,13 +561,14 @@ jobs:
                   ""
               ])
               for idx, it in enumerate(items, 1):
+                  thumb_url = raw_branch_base + it['thumb_web_path']
                   pr_lines.extend([
-                      f"#### #{idx}: {it['title']} (`{it['item_id']}`)",
+                      f"#### Item {idx}: {it['title']} (`{it['item_id']}`)",
                       f"- **Author:** {it['author']}",
                       f"- **Category:** {it['category']}",
                       f"- **Tags:** {it['tags']}",
                       f"- **Master File:** `{it['full_path']}`",
-                      f"![{it['title']}]({it['img_url']})",
+                      f"![{it['title']}]({thumb_url})",
                       ""
                   ])
               pr_lines.extend([

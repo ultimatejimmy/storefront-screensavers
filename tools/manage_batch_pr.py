@@ -171,12 +171,12 @@ def main():
     # Update PR body to strike through
     updated_pr_body = pr_body
     # Replace in table
-    # Pattern: | **#X** | ... | **Title** | ...
-    table_pattern = rf"(\|\s*\*\*#{matched_idx}\*\*\s*\|[^\|]*\|\s*)\*\*({re.escape(item_title)})\*\*"
+    # Pattern: | **X** | ... or | **#X** | ... or | **Item X** | ...
+    table_pattern = rf"(\|\s*\*\*(?:#|Item\s+)?{matched_idx}\*\*\s*\|[^\|]*\|\s*)\*\*({re.escape(item_title)})\*\*"
     updated_pr_body = re.sub(table_pattern, rf"\1~~**\2**~~ *(❌ Rejected: {reason})*", updated_pr_body)
 
     # Also add note under preview
-    preview_pattern = rf"(####\s+#{matched_idx}:\s+{re.escape(item_title)}[^\n]*\n)"
+    preview_pattern = rf"(####\s+(?:#|Item\s+)?{matched_idx}:\s+{re.escape(item_title)}[^\n]*\n)"
     updated_pr_body = re.sub(preview_pattern, rf"\1> ❌ **Rejected by maintainer:** {reason}\n\n", updated_pr_body)
 
     with open('updated_pr_body.md', 'w', encoding='utf-8') as pf:

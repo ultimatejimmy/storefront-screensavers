@@ -139,7 +139,7 @@ def main():
         "",
         "### 🖼️ Wallpapers in this Batch",
         "",
-        "| # | Preview | Title | Author | Category | Target ID | Original PR |",
+        "| Item | Preview | Title | Author | Category | Target ID | Original PR |",
         "|---|---|---|---|---|---|---|"
     ]
 
@@ -152,7 +152,7 @@ def main():
         thumb_url = it.get('thumbnailUrl', '').replace('/main/', f'/{target_branch}/')
         src_pr = it.get('_source_pr')
         preview_md = f"<img src='{thumb_url}' width='90' />" if thumb_url else "N/A"
-        pr_body_lines.append(f"| **#{idx}** | {preview_md} | **{title}** | {author} | {cat_str} | `{item_id}` | #{src_pr} |")
+        pr_body_lines.append(f"| **{idx}** | {preview_md} | **{title}** | {author} | {cat_str} | `{item_id}` | #{src_pr} |")
 
     pr_body_lines.extend([
         "",
@@ -166,7 +166,7 @@ def main():
         thumb_url = it.get('thumbnailUrl', '').replace('/main/', f'/{target_branch}/')
         full_url = it.get('fullUrl', '').replace('/main/', f'/{target_branch}/')
         pr_body_lines.extend([
-            f"#### #{idx}: {title} (`{it.get('id')}`)",
+            f"#### Item {idx}: {title} (`{it.get('id')}`)",
             f"- **Author:** {it.get('author')}",
             f"- **Category:** {', '.join(it.get('category')) if isinstance(it.get('category'), list) else it.get('category')}",
             f"- **Tags:** {', '.join(it.get('tags', []))}",
