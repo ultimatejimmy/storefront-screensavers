@@ -489,3 +489,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | gentleeeeeeecat 4 | gentleeeeeeecat | Minimalist, Transparent | Community Share | gentleeeeeeecat |
 | gentleeeeeeecat 1 | gentleeeeeeecat | Minimalist, Transparent | Community Share | gentleeeeeeecat |
 | gentleeeeeeecat 2 | gentleeeeeeecat | Minimalist, Transparent | Community Share | gentleeeeeeecat |
+| Wasp | dordy | Minimalist, Nature, Transparent | Community Share | dordy |
