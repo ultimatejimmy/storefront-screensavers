@@ -15537,5 +15537,36 @@
       "nature",
       "transparent"
     ]
+  },
+  {
+    "id": "brain-bulb",
+    "title": "Brain Bulb",
+    "author": "shuvashish76",
+    "category": [
+      "Abstract",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/brain-bulb.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/brain-bulb.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/brain-bulb.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "brain",
+      "bulb",
+      "glow",
+      "neon",
+      "thought",
+      "idea",
+      "light",
+      "lamp",
+      "purple",
+      "transparent"
+    ]
   }
 ]
