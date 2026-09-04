@@ -15406,5 +15406,32 @@
       "cat",
       "transparent"
     ]
+  },
+  {
+    "id": "wasp",
+    "title": "Wasp",
+    "author": "dordy",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wasp.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wasp.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wasp.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "wasp",
+      "bee",
+      "shape",
+      "minimal",
+      "transparent"
+    ]
   }
 ]
