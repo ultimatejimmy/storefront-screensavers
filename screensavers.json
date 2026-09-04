@@ -15808,5 +15808,32 @@
       "sleeping",
       "three"
     ]
+  },
+  {
+    "id": "spooky-spider",
+    "title": "Spooky spider",
+    "author": "j4p4n",
+    "category": [
+      "Nature",
+      "Abstract",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/spooky-spider.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/spooky-spider.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/spooky-spider.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "spider",
+      "spooky",
+      "web",
+      "halloween",
+      "goth"
+    ]
   }
 ]
