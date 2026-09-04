@@ -15731,5 +15731,34 @@
       "missouri",
       "transparent"
     ]
+  },
+  {
+    "id": "madhubala",
+    "title": "Madhubala",
+    "author": "shuvashish76",
+    "category": [
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/madhubala.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/madhubala.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/madhubala.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "India",
+      "actress",
+      "woman",
+      "lady",
+      "Madhubala",
+      "bollywood",
+      "film",
+      "transparent"
+    ]
   }
 ]
