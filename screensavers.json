@@ -15568,5 +15568,30 @@
       "purple",
       "transparent"
     ]
+  },
+  {
+    "id": "portrait-of-a-beauty",
+    "title": "Portrait of a Beauty",
+    "author": "shuvashish76",
+    "category": [
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/portrait-of-a-beauty.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/portrait-of-a-beauty.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/portrait-of-a-beauty.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "women",
+      "India",
+      "Mughal",
+      "transparent"
+    ]
   }
 ]
