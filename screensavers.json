@@ -15896,5 +15896,34 @@
       "glasses",
       "transparent"
     ]
+  },
+  {
+    "id": "little-miss-muffet",
+    "title": "Little Miss Muffet",
+    "author": "SeriousTux",
+    "category": [
+      "Anime",
+      "Art",
+      "Quotes",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/little-miss-muffet.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/little-miss-muffet.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/little-miss-muffet.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "reading",
+      "Miss Muffet",
+      "spider",
+      "web",
+      "quote",
+      "transparent"
+    ]
   }
 ]
