@@ -15702,5 +15702,34 @@
       "kathak",
       "transparent"
     ]
+  },
+  {
+    "id": "missouri-quote",
+    "title": "Missouri Quote",
+    "author": "shuvashish76",
+    "category": [
+      "Nature",
+      "Quotes",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/missouri-quote.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/missouri-quote.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/missouri-quote.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "nature",
+      "quote",
+      "note",
+      "sunset",
+      "river",
+      "missouri",
+      "transparent"
+    ]
   }
 ]

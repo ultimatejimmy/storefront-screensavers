@@ -500,3 +500,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Ganesha statue | shuvashish76 | Religion, Transparent | Community Share | shuvashish76 |
 | Dandiya Raas | shuvashish76 | Art, Transparent | Community Share | shuvashish76 |
 | Kathak Dance | shuvashish76 | Transparent | Community Share | shuvashish76 |
+| Missouri Quote | shuvashish76 | Nature, Quotes, Transparent | Community Share | shuvashish76 |
