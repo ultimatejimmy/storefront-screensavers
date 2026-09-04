@@ -507,3 +507,12 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Spooky spider | j4p4n | Nature, Abstract, Art | Community Share | j4p4n |
 | Radha Krishna | j4p4n | Art, Religion, Transparent | Community Share | j4p4n |
 | Nerdy bookworm | j4p4n | Anime, Art, Transparent | Community Share | j4p4n |
+| Lady reading | j4p4n | Art, Pop Culture, Transparent | Community Share | j4p4n |
+| Reading girl | Arousaland | Anime, Transparent | Community Share | Arousaland |
+| Bookworm girl | oksmith | Anime, Pop Culture, Transparent | Community Share | oksmith |
+| Schoolgirl Studying | oksmith | Anime, Transparent | Community Share | oksmith |
+| Nu à la lecture BW | AdamStanislav | Art, Pop Culture, Transparent | Community Share | AdamStanislav |
+| Boy reading in sunset | liftarn | Minimalist, Art, Pop Culture | Community Share | liftarn |
+| Woman reading in sunset | liftarn | Minimalist, Art, Pop Culture | Community Share | liftarn |
+| Little Miss Muffet | SeriousTux | Anime, Art, Quotes, Transparent | Community Share | SeriousTux |
+| Nu à la lecture | j4p4n | Art, Pop Culture | Community Share | j4p4n |
