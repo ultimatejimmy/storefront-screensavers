@@ -15896,5 +15896,32 @@
       "glasses",
       "transparent"
     ]
+  },
+  {
+    "id": "reading-girl",
+    "title": "Reading girl",
+    "author": "Arousaland",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/reading-girl.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/reading-girl.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/reading-girl.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "library",
+      "reading",
+      "shop",
+      "carpet",
+      "cute",
+      "transparent"
+    ]
   }
 ]

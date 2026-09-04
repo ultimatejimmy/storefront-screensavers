@@ -507,3 +507,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Spooky spider | j4p4n | Nature, Abstract, Art | Community Share | j4p4n |
 | Radha Krishna | j4p4n | Art, Religion, Transparent | Community Share | j4p4n |
 | Nerdy bookworm | j4p4n | Anime, Art, Transparent | Community Share | j4p4n |
+| Reading girl | Arousaland | Anime, Transparent | Community Share | Arousaland |
