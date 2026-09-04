@@ -1010,14 +1010,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const fileToUpload = await getCroppedBlob();
 
         // Copy cropped file to clipboard immediately as a universal convenience/backup
+        let copied = false;
         try {
           if (navigator.clipboard && window.ClipboardItem && fileToUpload) {
             await navigator.clipboard.write([
               new ClipboardItem({ [fileToUpload.type || selectedFile.type || 'image/jpeg']: fileToUpload })
             ]);
+            copied = true;
           }
         } catch (clipErr) {
-          console.log('Clipboard auto-copy:', clipErr);
+          console.log('Clipboard auto-copy note:', clipErr);
         }
 
         // Try automatic image host upload with status updates
@@ -1030,8 +1032,13 @@ document.addEventListener('DOMContentLoaded', () => {
           fileNotice = 'Image automatically uploaded! A Pull Request will be created for review.';
         } else {
           imageUrl = `[Uploaded File: ${fileName} (${fileMeta})]`;
-          fileNotice = 'Image copied to your clipboard! Press Ctrl+V / Cmd+V in the GitHub issue to attach directly.';
-          alert('Image host upload was blocked or timed out. Your cropped image has been copied to your clipboard—simply press Ctrl+V / Cmd+V in the GitHub issue description to attach it!');
+          if (copied) {
+            fileNotice = 'Image copied to your clipboard! Press Ctrl+V / Cmd+V in the GitHub issue to attach directly.';
+            alert('Image host upload was blocked or timed out. Your cropped image has been copied to your clipboard—simply press Ctrl+V / Cmd+V in the GitHub issue description to attach it!');
+          } else {
+            fileNotice = 'Image upload was blocked by browser/ad-blocker. Please attach the image file directly in the GitHub issue.';
+            alert('Image host upload was blocked or timed out (your browser or ad-blocker may restrict third-party uploads). Please attach or drag-and-drop the image in the GitHub issue!');
+          }
         }
 
         if (btnSubmitIssue) {
@@ -1084,7 +1091,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const repoUrl = 'https://github.com/ultimatejimmy/storefront-screensavers';
       const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&body=${issueBody}`;
 
-      window.open(githubIssueUrl, '_blank');
+      let newTab = null;
+      try {
+        newTab = window.open(githubIssueUrl, '_blank');
+      } catch (e) {
+        newTab = null;
+      }
+      if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+        window.location.href = githubIssueUrl;
+      }
     });
   }
 
@@ -1688,16 +1703,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (failedItems.length > 0) {
         // Try copying the first failed image to clipboard so the user can easily paste it
+        let copied = false;
         try {
           if (navigator.clipboard && window.ClipboardItem && failedItems[0].file) {
             await navigator.clipboard.write([
               new ClipboardItem({ [failedItems[0].file.type || 'image/jpeg']: failedItems[0].file })
             ]);
+            copied = true;
           }
         } catch (clipErr) {
           console.log('Clipboard copy note:', clipErr);
         }
-        alert(`Note: ${failedItems.length} wallpaper(s) could not be uploaded to the CDN automatically. The first one has been copied to your clipboard—you can attach/paste it directly in the GitHub issue comment box!`);
+        if (copied) {
+          alert(`Note: ${failedItems.length} wallpaper(s) could not be uploaded to the CDN automatically. The first one has been copied to your clipboard—you can attach/paste it directly in the GitHub issue comment box!`);
+        } else {
+          alert(`Note: ${failedItems.length} wallpaper(s) could not be uploaded to the CDN automatically (your browser or ad-blocker may restrict third-party image hosts). Please attach the images directly in the GitHub issue!`);
+        }
       }
 
       btnSubmitBulkAll.textContent = `Preparing GitHub submission... ⏳`;
@@ -1774,11 +1795,36 @@ document.addEventListener('DOMContentLoaded', () => {
       const repoUrl = 'https://github.com/ultimatejimmy/storefront-screensavers';
       const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&body=${issueBody}`;
 
-      window.open(githubIssueUrl, '_blank');
+      let newTab = null;
+      try {
+        newTab = window.open(githubIssueUrl, '_blank');
+      } catch (e) {
+        newTab = null;
+      }
 
       btnSubmitBulkAll.disabled = false;
       btnSubmitBulkAll.textContent = `Submit All (${bulkQueue.length}) Wallpapers →`;
-      showToast(`Opened 1 GitHub issue tab with all ${bulkQueue.length} wallpapers! Click "Submit new issue" to finish.`);
+
+      if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+        let fallbackLink = document.getElementById('bulk-popup-fallback');
+        if (!fallbackLink) {
+          fallbackLink = document.createElement('a');
+          fallbackLink.id = 'bulk-popup-fallback';
+          fallbackLink.className = 'btn-primary';
+          fallbackLink.style.display = 'block';
+          fallbackLink.style.textAlign = 'center';
+          fallbackLink.style.margin = '1rem 0';
+          fallbackLink.style.padding = '0.75rem';
+          fallbackLink.target = '_blank';
+          btnSubmitBulkAll.parentNode.insertBefore(fallbackLink, btnSubmitBulkAll.nextSibling);
+        }
+        fallbackLink.href = githubIssueUrl;
+        fallbackLink.textContent = `⚠️ Popup blocked? Click here to Open GitHub Issue (${bulkQueue.length} Wallpapers) 🚀`;
+        fallbackLink.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        showToast('Popup was blocked by your browser! Click the button below to proceed.');
+      } else {
+        showToast(`Opened 1 GitHub issue tab with all ${bulkQueue.length} wallpapers! Click "Submit new issue" to finish.`);
+      }
     });
   }
 
