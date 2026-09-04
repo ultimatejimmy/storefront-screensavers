@@ -15510,5 +15510,32 @@
       "painting",
       "sisters"
     ]
+  },
+  {
+    "id": "lotus",
+    "title": "Lotus",
+    "author": "shuvashish76",
+    "category": [
+      "Abstract",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/lotus.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/lotus.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/lotus.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "lotus",
+      "flower",
+      "symbol",
+      "nature",
+      "transparent"
+    ]
   }
 ]

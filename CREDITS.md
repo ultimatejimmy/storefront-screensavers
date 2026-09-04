@@ -493,3 +493,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Peace sticker | Hyperslower | Pop Culture, Transparent | Community Share | Hyperslower |
 | KOReader banner | shuvashish76 | Nature, Art | Community Share | shuvashish76 |
 | Interesting Story by Laura Muntz Lyall | shuvashish76 | Art | Community Share | shuvashish76 |
+| Lotus | shuvashish76 | Abstract, Art, Transparent | Community Share | shuvashish76 |
