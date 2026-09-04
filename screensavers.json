@@ -15487,5 +15487,28 @@
       "banner",
       "glow"
     ]
+  },
+  {
+    "id": "interesting-story-by-laura-muntz-lyall",
+    "title": "Interesting Story by Laura Muntz Lyall",
+    "author": "shuvashish76",
+    "category": "Art",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/interesting-story-by-laura-muntz-lyall.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/interesting-story-by-laura-muntz-lyall.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/interesting-story-by-laura-muntz-lyall.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "books",
+      "reading",
+      "Laura Muntz Lyall",
+      "painting",
+      "sisters"
+    ]
   }
 ]
