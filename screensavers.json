@@ -15679,5 +15679,28 @@
       "rajasthan",
       "transparent"
     ]
+  },
+  {
+    "id": "kathak-dance",
+    "title": "Kathak Dance",
+    "author": "shuvashish76",
+    "category": "Transparent",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/kathak-dance.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/kathak-dance.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/kathak-dance.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "India",
+      "dance",
+      "culture",
+      "kathak",
+      "transparent"
+    ]
   }
 ]
