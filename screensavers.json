@@ -15620,5 +15620,35 @@
       "family",
       "transparent"
     ]
+  },
+  {
+    "id": "ganesha-statue",
+    "title": "Ganesha statue",
+    "author": "shuvashish76",
+    "category": [
+      "Religion",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ganesha-statue.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/ganesha-statue.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ganesha-statue.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "India",
+      "culture",
+      "tradition",
+      "festival",
+      "hindu",
+      "god",
+      "statue",
+      "ganesha",
+      "transparent"
+    ]
   }
 ]
