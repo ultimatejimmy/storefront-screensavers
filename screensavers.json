@@ -15650,5 +15650,34 @@
       "ganesha",
       "transparent"
     ]
+  },
+  {
+    "id": "dandiya-raas",
+    "title": "Dandiya Raas",
+    "author": "shuvashish76",
+    "category": [
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/dandiya-raas.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/dandiya-raas.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/dandiya-raas.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "India",
+      "dance",
+      "culture",
+      "folk dance",
+      "tradition",
+      "festival",
+      "rajasthan",
+      "transparent"
+    ]
   }
 ]
