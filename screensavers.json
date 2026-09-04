@@ -15593,5 +15593,32 @@
       "Mughal",
       "transparent"
     ]
+  },
+  {
+    "id": "tiger-family",
+    "title": "Tiger Family",
+    "author": "shuvashish76",
+    "category": [
+      "Nature",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/tiger-family.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/tiger-family.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/tiger-family.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "tiger",
+      "nature",
+      "animal",
+      "family",
+      "transparent"
+    ]
   }
 ]
