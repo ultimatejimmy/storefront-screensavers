@@ -15461,5 +15461,31 @@
       "fingers",
       "transparent"
     ]
+  },
+  {
+    "id": "koreader-banner",
+    "title": "KOReader banner",
+    "author": "shuvashish76",
+    "category": [
+      "Nature",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/koreader-banner.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/koreader-banner.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/koreader-banner.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "koreader",
+      "e-ink",
+      "logo",
+      "banner",
+      "glow"
+    ]
   }
 ]
