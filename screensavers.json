@@ -15835,5 +15835,37 @@
       "halloween",
       "goth"
     ]
+  },
+  {
+    "id": "radha-krishna",
+    "title": "Radha Krishna",
+    "author": "j4p4n",
+    "category": [
+      "Art",
+      "Religion",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/radha-krishna.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/radha-krishna.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/radha-krishna.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "radha",
+      "krishna",
+      "India",
+      "hindu",
+      "temple",
+      "hinduism",
+      "god",
+      "goddess",
+      "religion",
+      "transparent"
+    ]
   }
 ]
