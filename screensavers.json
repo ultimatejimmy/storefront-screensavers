@@ -15867,5 +15867,34 @@
       "religion",
       "transparent"
     ]
+  },
+  {
+    "id": "nerdy-bookworm",
+    "title": "Nerdy bookworm",
+    "author": "j4p4n",
+    "category": [
+      "Anime",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nerdy-bookworm.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/nerdy-bookworm.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nerdy-bookworm.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "nerd",
+      "geek",
+      "bookworm",
+      "worm",
+      "reading",
+      "glasses",
+      "transparent"
+    ]
   }
 ]
