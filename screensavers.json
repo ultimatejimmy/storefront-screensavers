@@ -15896,5 +15896,32 @@
       "glasses",
       "transparent"
     ]
+  },
+  {
+    "id": "lady-reading",
+    "title": "Lady reading",
+    "author": "j4p4n",
+    "category": [
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/lady-reading.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/lady-reading.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/lady-reading.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "lady",
+      "woman",
+      "headscarf",
+      "reading",
+      "transparent"
+    ]
   }
 ]
