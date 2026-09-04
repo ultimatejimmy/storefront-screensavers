@@ -497,3 +497,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Brain Bulb | shuvashish76 | Abstract, Transparent | Community Share | shuvashish76 |
 | Portrait of a Beauty | shuvashish76 | Art, Transparent | Community Share | shuvashish76 |
 | Tiger Family | shuvashish76 | Nature, Art, Transparent | Community Share | shuvashish76 |
+| Ganesha statue | shuvashish76 | Religion, Transparent | Community Share | shuvashish76 |
