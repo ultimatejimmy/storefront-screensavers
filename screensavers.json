@@ -15896,5 +15896,34 @@
       "glasses",
       "transparent"
     ]
+  },
+  {
+    "id": "woman-reading-in-sunset",
+    "title": "Woman reading in sunset",
+    "author": "liftarn",
+    "category": [
+      "Minimalist",
+      "Art",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/woman-reading-in-sunset.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/woman-reading-in-sunset.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/woman-reading-in-sunset.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "girl",
+      "women",
+      "amazon",
+      "kindle",
+      "outside",
+      "reading",
+      "sunset"
+    ]
   }
 ]
