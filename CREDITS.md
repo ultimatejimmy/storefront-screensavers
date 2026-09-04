@@ -504,3 +504,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Madhubala | shuvashish76 | Art, Transparent | Community Share | shuvashish76 |
 | The moon | cactus_cowboy | Minimalist, Nature | Community Share | cactus_cowboy |
 | Yin Yang and Zeppo | philx | Art | Community Share | philx |
+| Spooky spider | j4p4n | Nature, Abstract, Art | Community Share | j4p4n |
