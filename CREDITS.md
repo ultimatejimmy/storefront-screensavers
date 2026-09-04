@@ -503,3 +503,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Missouri Quote | shuvashish76 | Nature, Quotes, Transparent | Community Share | shuvashish76 |
 | Madhubala | shuvashish76 | Art, Transparent | Community Share | shuvashish76 |
 | The moon | cactus_cowboy | Minimalist, Nature | Community Share | cactus_cowboy |
+| Yin Yang and Zeppo | philx | Art | Community Share | philx |

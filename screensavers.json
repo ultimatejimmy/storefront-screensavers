@@ -15786,5 +15786,27 @@
       "backdrop",
       "silhouette"
     ]
+  },
+  {
+    "id": "yin-yang-and-zeppo",
+    "title": "Yin Yang and Zeppo",
+    "author": "philx",
+    "category": "Art",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/yin-yang-and-zeppo.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/yin-yang-and-zeppo.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/yin-yang-and-zeppo.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "drawing",
+      "cats",
+      "sleeping",
+      "three"
+    ]
   }
 ]
