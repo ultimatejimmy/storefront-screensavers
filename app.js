@@ -563,97 +563,134 @@ document.addEventListener('DOMContentLoaded', () => {
       .finally(() => clearTimeout(timeoutId));
   }
 
+  let cachedWorkingTier = 'tmpfiles'; // Default to TmpFiles which has active CORS and fastest response
+
   // Upload file anonymously using a 4-tier resilient cascade with dynamic timeouts
   async function uploadImageFile(file, fileName = 'screensaver.jpg', statusCallback = null) {
     const cleanFileName = (fileName || 'screensaver.jpg').replace(/[^a-zA-Z0-9._-]/g, '_');
     const fileSize = (file && file.size) ? file.size : 1024 * 1024;
-    // Dynamic timeout: generous 35s base, up to 60s for 10-25MB files
-    const timeoutMs = Math.max(35000, Math.min(60000, Math.round(fileSize / 200)));
+    // Responsive timeout: 12s base, up to 35s for huge files
+    const timeoutMs = Math.max(12000, Math.min(35000, Math.round(fileSize / 250)));
 
-    // Tier 1: Litterbox (Catbox temporary 72h, CORS enabled)
-    try {
-      if (statusCallback) statusCallback('Uploading to Catbox (Tier 1)...');
-      const formData = new FormData();
-      formData.append('reqtype', 'fileupload');
-      formData.append('time', '72h');
-      formData.append('fileToUpload', file, cleanFileName);
-      const res = await fetchWithTimeout('https://litterbox.catbox.moe/resources/internals/api.php', {
-        method: 'POST',
-        body: formData
-      }, timeoutMs);
-      if (res.ok) {
-        const text = await res.text();
-        if (text && text.trim().startsWith('http')) {
-          console.log('Tier 1 (Litterbox) upload successful:', text.trim());
-          return text.trim();
+    const tryTmpFiles = async () => {
+      try {
+        if (statusCallback) statusCallback('Uploading to CDN (TmpFiles)...');
+        const formData = new FormData();
+        formData.append('file', file, cleanFileName);
+        const res = await fetchWithTimeout('https://tmpfiles.org/api/v1/upload', {
+          method: 'POST',
+          body: formData
+        }, timeoutMs);
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.data && data.data.url) {
+            console.log('TmpFiles upload successful:', data.data.url);
+            cachedWorkingTier = 'tmpfiles';
+            return data.data.url;
+          }
         }
+      } catch (err) {
+        console.warn('TmpFiles upload failed:', err);
       }
-    } catch (err1) {
-      console.warn('Tier 1 (Litterbox) upload attempt failed:', err1);
+      return null;
+    };
+
+    const tryFreeImage = async () => {
+      try {
+        if (statusCallback) statusCallback('Uploading to CDN (FreeImage)...');
+        const formData = new FormData();
+        formData.append('key', '6d207e02198a847aa98d0a2a901485a5');
+        formData.append('action', 'upload');
+        formData.append('format', 'json');
+        formData.append('source', file, cleanFileName);
+        const res = await fetchWithTimeout('https://freeimage.host/api/1/upload', {
+          method: 'POST',
+          body: formData
+        }, timeoutMs);
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.image && data.image.url) {
+            console.log('FreeImage upload successful:', data.image.url);
+            cachedWorkingTier = 'freeimage';
+            return data.image.url;
+          }
+        }
+      } catch (err) {
+        console.warn('FreeImage upload failed:', err);
+      }
+      return null;
+    };
+
+    const tryLitterbox = async () => {
+      try {
+        if (statusCallback) statusCallback('Uploading to Catbox (Tier 1)...');
+        const formData = new FormData();
+        formData.append('reqtype', 'fileupload');
+        formData.append('time', '72h');
+        formData.append('fileToUpload', file, cleanFileName);
+        const res = await fetchWithTimeout('https://litterbox.catbox.moe/resources/internals/api.php', {
+          method: 'POST',
+          body: formData
+        }, timeoutMs);
+        if (res.ok) {
+          const text = await res.text();
+          if (text && text.trim().startsWith('http')) {
+            console.log('Litterbox upload successful:', text.trim());
+            cachedWorkingTier = 'litterbox';
+            return text.trim();
+          }
+        }
+      } catch (err) {
+        console.warn('Litterbox upload failed:', err);
+      }
+      return null;
+    };
+
+    const tryCatbox = async () => {
+      try {
+        if (statusCallback) statusCallback('Uploading to Catbox (Tier 2)...');
+        const formData = new FormData();
+        formData.append('reqtype', 'fileupload');
+        formData.append('fileToUpload', file, cleanFileName);
+        const res = await fetchWithTimeout('https://catbox.moe/user/api.php', {
+          method: 'POST',
+          body: formData
+        }, timeoutMs);
+        if (res.ok) {
+          const text = await res.text();
+          if (text && text.trim().startsWith('http')) {
+            console.log('Catbox upload successful:', text.trim());
+            cachedWorkingTier = 'catbox';
+            return text.trim();
+          }
+        }
+      } catch (err) {
+        console.warn('Catbox upload failed:', err);
+      }
+      return null;
+    };
+
+    // Build execution order: try cached working tier first
+    const tierMap = {
+      'tmpfiles': tryTmpFiles,
+      'freeimage': tryFreeImage,
+      'litterbox': tryLitterbox,
+      'catbox': tryCatbox
+    };
+
+    const order = ['tmpfiles', 'freeimage', 'litterbox', 'catbox'];
+    if (cachedWorkingTier && tierMap[cachedWorkingTier]) {
+      const idx = order.indexOf(cachedWorkingTier);
+      if (idx > -1) {
+        order.splice(idx, 1);
+        order.unshift(cachedWorkingTier);
+      }
     }
 
-    // Tier 2: Catbox Permanent (CORS enabled)
-    try {
-      if (statusCallback) statusCallback('Uploading to Catbox (Tier 2)...');
-      const formData = new FormData();
-      formData.append('reqtype', 'fileupload');
-      formData.append('fileToUpload', file, cleanFileName);
-      const res = await fetchWithTimeout('https://catbox.moe/user/api.php', {
-        method: 'POST',
-        body: formData
-      }, timeoutMs);
-      if (res.ok) {
-        const text = await res.text();
-        if (text && text.trim().startsWith('http')) {
-          console.log('Tier 2 (Catbox) upload successful:', text.trim());
-          return text.trim();
-        }
-      }
-    } catch (err2) {
-      console.warn('Tier 2 (Catbox) upload attempt failed:', err2);
-    }
-
-    // Tier 3: TmpFiles API (CORS enabled)
-    try {
-      if (statusCallback) statusCallback('Uploading to TmpFiles (Tier 3)...');
-      const formData = new FormData();
-      formData.append('file', file, cleanFileName);
-      const res = await fetchWithTimeout('https://tmpfiles.org/api/v1/upload', {
-        method: 'POST',
-        body: formData
-      }, timeoutMs);
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.data && data.data.url) {
-          console.log('Tier 3 (TmpFiles) upload successful:', data.data.url);
-          return data.data.url;
-        }
-      }
-    } catch (err3) {
-      console.warn('Tier 3 (TmpFiles) upload attempt failed:', err3);
-    }
-
-    // Tier 4: FreeImage.host API (CORS enabled)
-    try {
-      if (statusCallback) statusCallback('Uploading to FreeImage (Tier 4)...');
-      const formData = new FormData();
-      formData.append('key', '6d207e02198a847aa98d0a2a901485a5');
-      formData.append('action', 'upload');
-      formData.append('format', 'json');
-      formData.append('source', file, cleanFileName);
-      const res = await fetchWithTimeout('https://freeimage.host/api/1/upload', {
-        method: 'POST',
-        body: formData
-      }, timeoutMs);
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.image && data.image.url) {
-          console.log('Tier 4 (FreeImage) upload successful:', data.image.url);
-          return data.image.url;
-        }
-      }
-    } catch (err4) {
-      console.warn('Tier 4 (FreeImage) upload attempt failed:', err4);
+    for (const tierName of order) {
+      const fn = tierMap[tierName];
+      const url = await fn();
+      if (url) return url;
     }
 
     return null;
@@ -1665,8 +1702,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const processedItems = [];
       const failedItems = [];
 
-      for (let i = 0; i < bulkQueue.length; i++) {
-        const item = bulkQueue[i];
+      let completedCount = 0;
+      const processSingleItem = async (item, i) => {
         const fileName = item.file.name || `screensaver_${i + 1}.jpg`;
         const isTrans = item.category && item.category.toLowerCase().includes('transparent');
 
@@ -1679,18 +1716,19 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
 
-        let imageUrl = await uploadImageFile(fileToUpload, fileName, (msg) => {
-          if (btnSubmitBulkAll) {
-            btnSubmitBulkAll.textContent = `[${i + 1}/${bulkQueue.length}] ${msg} ⏳`;
-          }
-        });
+        let imageUrl = await uploadImageFile(fileToUpload, fileName);
+        completedCount++;
+        if (btnSubmitBulkAll) {
+          btnSubmitBulkAll.textContent = `Uploaded ${completedCount} of ${bulkQueue.length} wallpapers... ⏳`;
+        }
 
         if (!imageUrl) {
           imageUrl = `[Uploaded File: ${fileName}]`;
           failedItems.push(item);
         }
 
-        processedItems.push({
+        return {
+          index: i,
           title: item.title,
           author: item.author && item.author.trim() ? item.author.trim() : 'Community',
           category: item.category || 'General',
@@ -1698,8 +1736,12 @@ document.addEventListener('DOMContentLoaded', () => {
           fileName: fileName,
           imageUrl: imageUrl,
           fileSizeKb: (item.file.size / 1024).toFixed(0)
-        });
-      }
+        };
+      };
+
+      const results = await Promise.all(bulkQueue.map((item, idx) => processSingleItem(item, idx)));
+      results.sort((a, b) => a.index - b.index);
+      processedItems.push(...results);
 
       if (failedItems.length > 0) {
         // Try copying the first failed image to clipboard so the user can easily paste it
