@@ -15867,5 +15867,190 @@
       "religion",
       "transparent"
     ]
+  },
+  {
+    "id": "chef",
+    "title": "Chef",
+    "author": "Community",
+    "category": [
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/chef.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/chef.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/chef.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
+  },
+  {
+    "id": "10000bc",
+    "title": "10000bc",
+    "author": "Community",
+    "category": [
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/10000bc.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/10000bc.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/10000bc.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
+  },
+  {
+    "id": "1923538-22735075800-2913-n",
+    "title": "1923538 22735075800 2913 n",
+    "author": "Community",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/1923538-22735075800-2913-n.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/1923538-22735075800-2913-n.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/1923538-22735075800-2913-n.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
+  },
+  {
+    "id": "322505621-1394057157793781-5588872350198072418-n",
+    "title": "322505621 1394057157793781 5588872350198072418 n",
+    "author": "Community",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/322505621-1394057157793781-5588872350198072418-n.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/322505621-1394057157793781-5588872350198072418-n.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/322505621-1394057157793781-5588872350198072418-n.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
+  },
+  {
+    "id": "1172721491",
+    "title": "1172721491",
+    "author": "Community",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/1172721491.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/1172721491.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/1172721491.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
+  },
+  {
+    "id": "1172721500",
+    "title": "1172721500",
+    "author": "Community",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/1172721500.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/1172721500.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/1172721500.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
+  },
+  {
+    "id": "amazonreview",
+    "title": "Amazonreview",
+    "author": "Community",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/amazonreview.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/amazonreview.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/amazonreview.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
+  },
+  {
+    "id": "banner-772x250",
+    "title": "Banner 772x250",
+    "author": "Community",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/banner-772x250.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/banner-772x250.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/banner-772x250.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
+  },
+  {
+    "id": "bb8flame",
+    "title": "Bb8flame",
+    "author": "Community",
+    "category": [
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bb8flame.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bb8flame.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bb8flame.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
+  },
+  {
+    "id": "bluecar",
+    "title": "Bluecar",
+    "author": "Community",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bluecar.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bluecar.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bluecar.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
   }
 ]

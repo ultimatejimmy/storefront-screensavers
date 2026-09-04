@@ -506,3 +506,13 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Yin Yang and Zeppo | philx | Art | Community Share | philx |
 | Spooky spider | j4p4n | Nature, Abstract, Art | Community Share | j4p4n |
 | Radha Krishna | j4p4n | Art, Religion, Transparent | Community Share | j4p4n |
+| Chef | Community | Minimalist, Transparent | Community Share | Community |
+| 10000bc | Community | Minimalist, Transparent | Community Share | Community |
+| 1923538 22735075800 2913 n | Community | Minimalist | Community Share | Community |
+| 322505621 1394057157793781 5588872350198072418 n | Community | Minimalist | Community Share | Community |
+| 1172721491 | Community | Minimalist | Community Share | Community |
+| 1172721500 | Community | Minimalist | Community Share | Community |
+| Amazonreview | Community | Minimalist | Community Share | Community |
+| Banner 772x250 | Community | Minimalist | Community Share | Community |
+| Bb8flame | Community | Minimalist, Transparent | Community Share | Community |
+| Bluecar | Community | Minimalist | Community Share | Community |
