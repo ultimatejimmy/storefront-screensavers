@@ -15896,5 +15896,38 @@
       "glasses",
       "transparent"
     ]
+  },
+  {
+    "id": "bookworm-girl",
+    "title": "Bookworm girl",
+    "author": "oksmith",
+    "category": [
+      "Anime",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bookworm-girl.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bookworm-girl.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bookworm-girl.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "girl",
+      "reading",
+      "books",
+      "college",
+      "school",
+      "ponytail",
+      "student",
+      "eyeglasses",
+      "young",
+      "teenager",
+      "transparent"
+    ]
   }
 ]
