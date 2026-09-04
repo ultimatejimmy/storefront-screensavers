@@ -15896,5 +15896,34 @@
       "glasses",
       "transparent"
     ]
+  },
+  {
+    "id": "boy-reading-in-sunset",
+    "title": "Boy reading in sunset",
+    "author": "liftarn",
+    "category": [
+      "Minimalist",
+      "Art",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/boy-reading-in-sunset.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/boy-reading-in-sunset.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/boy-reading-in-sunset.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "boy",
+      "child",
+      "amazon",
+      "kindle",
+      "outside",
+      "reading",
+      "sunset"
+    ]
   }
 ]
