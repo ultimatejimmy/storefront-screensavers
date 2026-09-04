@@ -196,14 +196,37 @@
 
         <!-- Bulk Submission Container (hidden by default) -->
         <div id="bulk-submit-container" style="display: none;">
-          <div class="form-group">
-            <label class="form-label">Batch Image Upload</label>
-            <div id="bulk-dropzone-box" class="dropzone">
-              <input type="file" id="sub-bulk-files" accept="image/png, image/jpeg, image/webp" multiple style="display:none;">
-              <div class="dropzone-prompt">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                <p style="margin: 0.5rem 0 0.2rem;"><strong>Click to select multiple files</strong> or drag & drop</p>
-                <span style="font-size: 0.8rem; color: var(--text-muted);">Queue up to 10 images for batch submission</span>
+          <!-- Bulk Mode Toggle: Files vs URLs -->
+          <div class="toggle-mode-bar" style="margin-bottom: 1.25rem;">
+            <button type="button" class="toggle-mode-btn active" id="btn-bulk-mode-files">📁 Upload Image Files</button>
+            <button type="button" class="toggle-mode-btn" id="btn-bulk-mode-urls">🔗 Add via Image URLs</button>
+          </div>
+
+          <!-- Files Panel -->
+          <div id="bulk-files-panel">
+            <div class="form-group">
+              <label class="form-label">Batch Image Upload</label>
+              <div id="bulk-dropzone-box" class="dropzone">
+                <input type="file" id="sub-bulk-files" accept="image/png, image/jpeg, image/webp" multiple style="display:none;">
+                <div class="dropzone-prompt">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                  <p style="margin: 0.5rem 0 0.2rem;"><strong>Click to select multiple files</strong> or drag & drop</p>
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Queue up to 10 images for batch submission</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- URLs Panel -->
+          <div id="bulk-urls-panel" style="display: none;">
+            <div class="form-group">
+              <label class="form-label" for="bulk-urls-input">Paste Image URLs (One URL per line, up to 10)</label>
+              <textarea id="bulk-urls-input" class="form-control" rows="4" placeholder="https://openclipart.org/image/800px/351445&#10;https://openclipart.org/image/800px/334336&#10;https://example.com/wallpaper.jpg"></textarea>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Supports direct HTTP/HTTPS links (JPG, PNG, WebP)</span>
+                <button type="button" id="btn-bulk-add-urls" class="tag-btn tag-btn-sm active" style="padding: 0.45rem 1rem; font-size: 0.85rem;">
+                  ➕ Add URLs to Batch Queue
+                </button>
               </div>
             </div>
           </div>

@@ -1222,6 +1222,36 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeModalItem = null;
   let modalCropState = { zoom: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 };
 
+  const btnBulkModeFiles = document.getElementById('btn-bulk-mode-files');
+  const btnBulkModeUrls = document.getElementById('btn-bulk-mode-urls');
+  const bulkFilesPanel = document.getElementById('bulk-files-panel');
+  const bulkUrlsPanel = document.getElementById('bulk-urls-panel');
+  const bulkUrlsInput = document.getElementById('bulk-urls-input');
+  const btnBulkAddUrls = document.getElementById('btn-bulk-add-urls');
+
+  if (btnBulkModeFiles && btnBulkModeUrls) {
+    btnBulkModeFiles.addEventListener('click', () => {
+      btnBulkModeFiles.classList.add('active');
+      btnBulkModeUrls.classList.remove('active');
+      if (bulkFilesPanel) bulkFilesPanel.style.display = 'block';
+      if (bulkUrlsPanel) bulkUrlsPanel.style.display = 'none';
+    });
+
+    btnBulkModeUrls.addEventListener('click', () => {
+      btnBulkModeUrls.classList.add('active');
+      btnBulkModeFiles.classList.remove('active');
+      if (bulkFilesPanel) bulkFilesPanel.style.display = 'none';
+      if (bulkUrlsPanel) bulkUrlsPanel.style.display = 'block';
+      if (bulkUrlsInput) bulkUrlsInput.focus();
+    });
+  }
+
+  if (btnBulkAddUrls && bulkUrlsInput) {
+    btnBulkAddUrls.addEventListener('click', () => {
+      handleBulkUrls(bulkUrlsInput.value);
+    });
+  }
+
   if (bulkDropzoneBox && subBulkFiles) {
     bulkDropzoneBox.addEventListener('click', () => subBulkFiles.click());
 
@@ -1250,6 +1280,102 @@ document.addEventListener('DOMContentLoaded', () => {
         handleBulkFiles(subBulkFiles.files);
       }
     });
+  }
+
+  function handleBulkUrls(urlText) {
+    if (!urlText || !urlText.trim()) {
+      alert('Please paste at least one image URL.');
+      return;
+    }
+
+    const lines = urlText.split(/[\r\n,]+/).map(s => s.trim()).filter(Boolean);
+    const validUrls = [];
+    const urlPattern = /^https?:\/\/.+/i;
+
+    lines.forEach(line => {
+      if (urlPattern.test(line)) {
+        validUrls.push(line);
+      }
+    });
+
+    if (validUrls.length === 0) {
+      alert('No valid HTTP/HTTPS URLs found. Please enter valid image links (e.g. https://example.com/wallpaper.jpg).');
+      return;
+    }
+
+    const availableSlots = Math.max(0, 10 - bulkQueue.length);
+    if (availableSlots === 0) {
+      alert('Batch queue limit reached (maximum 10 wallpapers per batch). Please submit or clear existing items first.');
+      return;
+    }
+
+    const toAdd = validUrls.slice(0, availableSlots);
+    if (validUrls.length > availableSlots) {
+      alert(`Only added ${availableSlots} URL(s) to stay within the 10 wallpaper batch limit.`);
+    }
+
+    const batchActiveCats = Array.from(document.querySelectorAll('#batch-category-pills .cat-pill.active'))
+      .map(p => p.getAttribute('data-value'));
+    const defaultCat = batchActiveCats.length > 0 ? batchActiveCats.join(', ') : 'Minimalist';
+    const batchAuthor = (bulkBatchAuthorInput && bulkBatchAuthorInput.value.trim()) ? bulkBatchAuthorInput.value.trim() : '';
+
+    toAdd.forEach(url => {
+      const qId = 'bulk-url-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7);
+
+      let cleanTitle = 'Wallpaper';
+      try {
+        const pName = new URL(url).pathname;
+        const lastPart = pName.split('/').filter(Boolean).pop() || '';
+        const nameWithoutExt = lastPart.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
+        if (nameWithoutExt) {
+          cleanTitle = decodeURIComponent(nameWithoutExt);
+        }
+      } catch (e) {}
+      const formattedTitle = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
+
+      const queueItem = {
+        id: qId,
+        file: null,
+        url: url,
+        fileName: url.split('/').pop().split('?')[0] || 'screensaver.jpg',
+        title: formattedTitle,
+        author: batchAuthor,
+        category: defaultCat,
+        tags: '',
+        cropState: { zoom: 1, offsetX: 0, offsetY: 0, isCustom: false },
+        previewUrl: url,
+        imgObj: null
+      };
+
+      bulkQueue.push(queueItem);
+
+      const img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.onload = () => {
+        queueItem.imgObj = img;
+        try {
+          const offsets = computeFocalPointOffsets(img, 1);
+          queueItem.cropState.offsetX = offsets.offsetX;
+          queueItem.cropState.offsetY = offsets.offsetY;
+          const isTrans = queueItem.category.toLowerCase().includes('transparent');
+          const thumbUrl = renderThumbnailDataUrl(img, queueItem.cropState, 76, 101, isTrans);
+          if (thumbUrl) {
+            queueItem.previewUrl = thumbUrl;
+          }
+        } catch (corsErr) {
+          console.log('Cross-origin canvas preview note:', corsErr);
+        }
+        renderBulkQueue();
+      };
+      img.onerror = () => {
+        console.warn('Could not load image preview for URL:', url);
+      };
+      img.src = url;
+    });
+
+    renderBulkQueue();
+    if (bulkUrlsInput) bulkUrlsInput.value = '';
+    showToast(`Added ${toAdd.length} wallpaper URL(s) to batch queue!`);
   }
 
   function handleBulkFiles(files) {
@@ -1543,19 +1669,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (modalOrigSpecs && item.imgObj) {
-      modalOrigSpecs.textContent = `${item.imgObj.naturalWidth || item.imgObj.width} × ${item.imgObj.naturalHeight || item.imgObj.height} px · ${(item.file.size / 1024).toFixed(0)} KB`;
+      const sizeStr = item.file ? `${(item.file.size / 1024).toFixed(0)} KB` : 'Direct Image URL';
+      modalOrigSpecs.textContent = `${item.imgObj.naturalWidth || item.imgObj.width} × ${item.imgObj.naturalHeight || item.imgObj.height} px · ${sizeStr}`;
     }
 
     if (!item.imgObj) {
       const tempImg = new Image();
+      tempImg.crossOrigin = 'Anonymous';
       tempImg.onload = () => {
         item.imgObj = tempImg;
         if (modalOrigSpecs) {
-          modalOrigSpecs.textContent = `${tempImg.naturalWidth} × ${tempImg.naturalHeight} px · ${(item.file.size / 1024).toFixed(0)} KB`;
+          const sizeStr = item.file ? `${(item.file.size / 1024).toFixed(0)} KB` : 'Direct Image URL';
+          modalOrigSpecs.textContent = `${tempImg.naturalWidth} × ${tempImg.naturalHeight} px · ${sizeStr}`;
         }
         drawModalCropper();
       };
-      tempImg.src = URL.createObjectURL(item.file);
+      tempImg.src = item.file ? URL.createObjectURL(item.file) : (item.url || item.previewUrl);
     } else {
       drawModalCropper();
     }
@@ -1704,22 +1833,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let completedCount = 0;
       const processSingleItem = async (item, i) => {
-        const fileName = item.file.name || `screensaver_${i + 1}.jpg`;
+        const fileName = item.fileName || (item.file && item.file.name) || `screensaver_${i + 1}.jpg`;
         const isTrans = item.category && item.category.toLowerCase().includes('transparent');
 
-        // Render high-res 1860x2480 3:4 cropped blob
-        let fileToUpload = item.file;
-        if (item.imgObj) {
-          const croppedBlob = await renderExportBlob(item.imgObj, item.cropState, item.file.type, fileName, isTrans);
-          if (croppedBlob) {
-            fileToUpload = croppedBlob;
+        let imageUrl = item.url || '';
+
+        // If it's a file, render high-res 1860x2480 3:4 cropped blob and upload
+        if (!imageUrl && item.file) {
+          let fileToUpload = item.file;
+          if (item.imgObj) {
+            const croppedBlob = await renderExportBlob(item.imgObj, item.cropState, item.file.type, fileName, isTrans);
+            if (croppedBlob) {
+              fileToUpload = croppedBlob;
+            }
           }
+          imageUrl = await uploadImageFile(fileToUpload, fileName);
         }
 
-        let imageUrl = await uploadImageFile(fileToUpload, fileName);
         completedCount++;
         if (btnSubmitBulkAll) {
-          btnSubmitBulkAll.textContent = `Uploaded ${completedCount} of ${bulkQueue.length} wallpapers... ⏳`;
+          btnSubmitBulkAll.textContent = `Processed ${completedCount} of ${bulkQueue.length} wallpapers... ⏳`;
         }
 
         if (!imageUrl) {
@@ -1735,7 +1868,7 @@ document.addEventListener('DOMContentLoaded', () => {
           tags: item.tags && item.tags.trim() ? item.tags.trim() : '',
           fileName: fileName,
           imageUrl: imageUrl,
-          fileSizeKb: (item.file.size / 1024).toFixed(0)
+          fileSizeKb: item.file ? (item.file.size / 1024).toFixed(0) : 'Direct URL'
         };
       };
 
