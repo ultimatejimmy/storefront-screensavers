@@ -365,7 +365,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Homer Simpson 'Kilroy' Peeking | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Girl with Glasses Reading | outchy | Art, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | King Louie (The Jungle Book) | outchy | Pop Culture, Nature, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Kirby Corner Companion | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Kirby | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Classic LEGO Minifigure | outchy | Pop Culture, Minimalist, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Grand Classical Library Hall | outchy | Architecture, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | The Lorax (Dr. Seuss) | outchy | Pop Culture, Nature, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -384,7 +384,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | No Regrets Reading Typography | outchy | Quotes, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Ancient Leather Tomes Stack | outchy | Art, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Oor Wullie on his Bucket | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| The Pink Panther Stalking | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| The Pink Panther | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Raising the Jolly Roger (Iwo Jima Parody) | outchy | Pop Culture, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Hand Holding Skull Grimoire | outchy | Fantasy, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Pikachu & Pokémon Starters | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -407,8 +407,8 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Skeleton Reading an Open Book | outchy | Fantasy, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Gothic Skull Ornamental Border | outchy | Art, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Botanical Floral Skull Art | outchy | Art, Fantasy, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Snoopy Reading on Doghouse | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Sonic the Hedgehog Running | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Snoopy on Doghouse | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
+| Sonic the Hedgehog | outchy | Anime, Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Deep Space Astronaut in Suit | outchy | Sci-Fi, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Speedy Gonzales '¡Ándale!' | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Dynamic Ink Splatter Splash | outchy | Abstract, Art, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -432,8 +432,8 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Darth Vader Reading while drinking a Coffee | Dannyv180 | Sci-Fi, Art, Pop Culture | Community Share | Dannyv180 |
 | Knight Before God | Chunihs0 | Fantasy, Art, Religion | Community Share | Chunihs0 |
 | INRI Universe | Chunihs0 | Fantasy, Art, Religion | Community Share | Chunihs0 |
-| Angry Space Daddy | Tefron | Sci-Fi, Pop Culture, Transparent | Community Share | Tefron |
-| Space Fascist Gear Logo - Transparent | Tefron | Sci-Fi, Pop Culture, Transparent | Community Share | Tefron |
+| Angry Space Daddy | Tefron | Pop Culture, Sci-Fi, Transparent | Community Share | Tefron |
+| Space Fascist Gear Logo - Transparent | Tefron | Pop Culture, Sci-Fi, Transparent | Community Share | Tefron |
 | Perfect Blue | Ducklfy | Anime, Art | Community Share | Ducklfy |
 | Stinky Girls | Jules | Minimalist, Art | Community Share | Jules |
 | Gary Reading to Bob | Jules | Pop Culture, Transparent | Community Share | Jules |
