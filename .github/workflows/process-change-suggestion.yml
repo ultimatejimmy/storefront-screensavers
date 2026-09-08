@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   process-change:
-    if: (contains(github.event.issue.title, 'Change Suggestion') || contains(github.event.issue.title, 'change suggestion') || contains(github.event.issue.title, 'Change Request') || contains(github.event.issue.title, 'change request') || contains(github.event.issue.labels.*.name, 'suggest-change') || contains(github.event.issue.labels.*.name, 'change-request') || contains(github.event.issue.body, 'Catalog Change Suggestion')) && github.event.sender.type != 'Bot'
+    if: (contains(github.event.issue.title, 'Change Suggestion') || contains(github.event.issue.title, 'change suggestion') || contains(github.event.issue.title, 'Change Request') || contains(github.event.issue.title, 'change request') || contains(github.event.issue.title, 'DMCA') || contains(github.event.issue.labels.*.name, 'suggest-change') || contains(github.event.issue.labels.*.name, 'change-request') || contains(github.event.issue.labels.*.name, 'dmca-takedown') || contains(github.event.issue.body, 'Catalog Change Suggestion') || contains(github.event.issue.body, 'DMCA/Copyright Infringement Notice')) && github.event.sender.type != 'Bot'
     runs-on: ubuntu-latest
 
     steps:

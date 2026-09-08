@@ -188,6 +188,10 @@ def parse_change_suggestion(body, comment_body=''):
     reason_m = re.search(r'\*\*Reason/Details:\*\*\s*([\s\S]*?)(?:\n---|---|\Z)', body)
     if reason_m:
         data['reason'] = reason_m.group(1).strip()
+    else:
+        dmca_m = re.search(r'\*\*Infringement Details:\*\*\s*([\s\S]*?)(?:\n---|---|\Z)', body)
+        if dmca_m:
+            data['reason'] = dmca_m.group(1).strip()
 
     # Image URL extraction
     img_url = None
@@ -211,6 +215,25 @@ def parse_change_suggestion(body, comment_body=''):
             img_url = (c_m.group(1) or c_m.group(2)).strip()
 
     data['img_url'] = img_url
+
+    # Detect deletion / takedown intent
+    change_type_lower = data.get('change_type', '').lower()
+    full_text = f"{body}\n{comment_body}".lower()
+    reason_text = (data.get('reason') or '').lower()
+
+    is_explicit_type = any(kw in change_type_lower for kw in ['delete', 'deletion', 'remove', 'removal', 'takedown', 'dmca'])
+
+    removal_patterns = [
+        r'\b(?:please\s+)?(?:remove|delete|take\s*down)\s+(?:this|the)?\s*(?:wallpaper|screensaver|image|photo|item)?\b',
+        r'\b(?:i\s+am|i\'m)\s+the\s+(?:author|creator|artist|owner)\s+and\s+(?:want|wish|ask|request)\s+(?:it|this)?\s*(?:deleted|removed|taken down)\b',
+        r'\b(?:want|wish|request)\s+(?:it|this)\s+(?:deleted|removed|taken down)\b',
+        r'\b(?:author|creator)\s+takedown\b',
+        r'\bcopyright\s+infringement\b',
+        r'\bdmca\b'
+    ]
+    has_removal_intent = any(re.search(pat, reason_text) for pat in removal_patterns) or any(re.search(pat, full_text) for pat in removal_patterns)
+
+    data['is_deletion'] = is_explicit_type or has_removal_intent
     return data
 
 
@@ -230,6 +253,8 @@ def main():
     parser = argparse.ArgumentParser(description="Process screensaver catalog change suggestion")
     parser.add_argument('--issue', type=int, help="Issue number to process locally using GitHub CLI")
     parser.add_argument('--no-push', action='store_true', help="Do not push git branch or create PR")
+    parser.add_argument('--delete', action='store_true', help="Force treat this suggestion as a deletion/removal request")
+    parser.add_argument('--direct-push', action='store_true', help="Directly commit and push to main rather than creating a PR")
     args = parser.parse_args()
 
     token = os.environ.get('GH_TOKEN') or os.environ.get('GITHUB_TOKEN')
@@ -284,350 +309,472 @@ def main():
         set_output('valid', 'false')
         sys.exit(0)
 
-    is_replacement = ('replacement' in change_type.lower()) or bool(parsed.get('img_url'))
-    img_url = parsed.get('img_url')
-
-    if is_replacement and not img_url:
-        msg = f"⚠️ Change Suggestion for `{target_id}` requested an image replacement, but no valid image URL was found in the issue description or comments."
-        print(msg)
-        write_comment_file('change_comment.md', [msg])
-        set_output('valid', 'false')
-        sys.exit(0)
-
-    # Track differences
-    changes_made = []
-    old_title = existing_item.get('title', '')
-    old_author = existing_item.get('author', '')
-    old_category = existing_item.get('category', 'General')
-    old_tags = existing_item.get('tags', [])
-
-    new_title = parsed.get('proposed_title') or old_title
-    new_author = parsed.get('proposed_author') or old_author
-
-    # Categories
-    raw_cat = parsed.get('proposed_category')
-    if raw_cat:
-        cat_list = [c.strip() for c in raw_cat.split(',')] if isinstance(raw_cat, str) else list(raw_cat)
-    else:
-        cat_list = old_category if isinstance(old_category, list) else [old_category]
-
-    # Tags
-    raw_tags = parsed.get('proposed_tags')
-    if raw_tags:
-        tag_list = [t.strip().lower() for t in raw_tags.split(',') if t.strip()]
-    else:
-        tag_list = list(old_tags)
-
-    os.makedirs(IMAGES_DIR, exist_ok=True)
-    os.makedirs(THUMBS_DIR, exist_ok=True)
-    os.makedirs(PLUGIN_THUMBS_DIR, exist_ok=True)
-
-    files_to_add = [SCREENSAVERS_JSON]
+    is_deletion = args.delete or parsed.get('is_deletion', False)
+    files_to_add = ['screensavers.json']
     files_to_remove = []
 
-    is_transparent = False
+    if is_deletion:
+        title = existing_item.get('title', target_id)
+        author = existing_item.get('author', 'Unknown')
+        reason_text = parsed.get('reason') or 'Deletion requested by author or copyright holder.'
+        print(f"Executing removal/deletion for screensaver '{target_id}' ({title})...")
 
-    if is_replacement:
-        raw_data, dl_err = download_and_resolve_image(img_url, token)
-        if dl_err or not raw_data:
-            err_msg = f"⚠️ Failed to download replacement image: {dl_err or 'Empty image stream'}"
-            print(err_msg)
-            write_comment_file('change_comment.md', [err_msg])
-            set_output('valid', 'false')
-            sys.exit(0)
+        # Locate and delete all image variants on disk
+        for folder, rel_dir in [
+            (IMAGES_DIR, "images"),
+            (THUMBS_DIR, "images/thumbnails"),
+            (PLUGIN_THUMBS_DIR, "images/thumbnails/plugin")
+        ]:
+            if os.path.exists(folder):
+                for fname in os.listdir(folder):
+                    if os.path.splitext(fname)[0] == target_id:
+                        p = os.path.join(folder, fname)
+                        rel_p = f"{rel_dir}/{fname}"
+                        if os.path.isfile(p):
+                            try:
+                                os.remove(p)
+                                files_to_remove.append(rel_p)
+                                print(f"Deleted file: {rel_p}")
+                            except Exception as e:
+                                print(f"Warning: Could not delete {p}: {e}")
 
-        # Security check: strictly reject vector SVG / XML / executable scripts
-        raw_lead = raw_data[:512].lower()
-        if raw_data.strip().startswith(b'<?xml') or b'<svg' in raw_lead or b'<script' in raw_lead:
-            err_msg = "⚠️ Disallowed vector SVG or script file. Only raster JPG, PNG, or WebP images are permitted."
-            print(err_msg)
-            write_comment_file('change_comment.md', [err_msg])
-            set_output('valid', 'false')
-            sys.exit(0)
+        # Remove item from catalog
+        catalog.pop(item_idx)
 
-        img_stream = BytesIO(raw_data)
+        # Save catalog
+        with open(SCREENSAVERS_JSON, 'w', encoding='utf-8') as f:
+            json.dump(catalog, f, indent=2, ensure_ascii=False)
+
+        # Rebuild credits
         try:
-            verify_img = Image.open(img_stream)
-            detected_format = verify_img.format
-            verify_img.verify()
-        except Exception as val_err:
-            err_msg = f"⚠️ Corrupted image file structure: {val_err}"
-            print(err_msg)
-            write_comment_file('change_comment.md', [err_msg])
+            sys.path.insert(0, os.path.join(REPO_ROOT, 'tools'))
+            from catalog_studio import rebuild_credits_file
+            rebuild_credits_file(catalog)
+            files_to_add.append('CREDITS.md')
+            print("Regenerated CREDITS.md successfully without removed item.")
+        except Exception as cred_err:
+            print(f"Warning: Could not regenerate CREDITS.md: {cred_err}")
+
+        branch = f"remove-{issue_num}"
+        pr_title = f"Remove Screensaver: {title} [{target_id}]"
+        commit_msg = f"Remove screensaver '{target_id}' per issue #{issue_num}"
+
+        pr_body = [
+            f"Closes #{issue_num}",
+            "",
+            f"### Screensaver Removal Request: {title} (`{target_id}`)",
+            "",
+            "| Property | Value |",
+            "|---|---|",
+            f"| **Target Item ID** | `{target_id}` |",
+            f"| **Title** | {title} |",
+            f"| **Author** | {author} |",
+            f"| **Action** | Complete Removal / Takedown |",
+            "",
+            "### Reason / Details from Submitter:",
+            f"> {reason_text}",
+            "",
+            "### Files Removed:",
+            '\n'.join(f"- `{f}`" for f in files_to_remove) if files_to_remove else "- Metadata and catalog entries removed",
+            "",
+            "---",
+            f"*Automated PR generated from change suggestion issue #{issue_num} via Storefront Screensaver Catalog workflow.*"
+        ]
+
+    else:
+        is_replacement = ('replacement' in change_type.lower()) or bool(parsed.get('img_url'))
+        img_url = parsed.get('img_url')
+
+        if is_replacement and not img_url:
+            msg = f"⚠️ Change Suggestion for `{target_id}` requested an image replacement, but no valid image URL was found in the issue description or comments."
+            print(msg)
+            write_comment_file('change_comment.md', [msg])
             set_output('valid', 'false')
             sys.exit(0)
 
-        if detected_format not in ALLOWED_FORMATS:
-            err_msg = f"⚠️ Unsupported image format '{detected_format}'. Please upload JPG, PNG, or WebP."
-            print(err_msg)
-            write_comment_file('change_comment.md', [err_msg])
-            set_output('valid', 'false')
-            sys.exit(0)
+        # Track differences
+        changes_made = []
+        old_title = existing_item.get('title', '')
+        old_author = existing_item.get('author', '')
+        old_category = existing_item.get('category', 'General')
+        old_tags = existing_item.get('tags', [])
 
-        img_stream.seek(0)
-        try:
-            img = Image.open(img_stream)
-            img.load()
-            img = ImageOps.exif_transpose(img)
-        except Exception as dec_err:
-            err_msg = f"⚠️ Failed to decode image pixels: {dec_err}"
-            print(err_msg)
-            write_comment_file('change_comment.md', [err_msg])
-            set_output('valid', 'false')
-            sys.exit(0)
+        new_title = parsed.get('proposed_title') or old_title
+        new_author = parsed.get('proposed_author') or old_author
 
-        if img.width < 200 or img.height < 200:
-            err_msg = f"⚠️ Image resolution ({img.width}×{img.height} px) is too small (minimum 200×200 px)."
-            print(err_msg)
-            write_comment_file('change_comment.md', [err_msg])
-            set_output('valid', 'false')
-            sys.exit(0)
-
-        if img.width > 12000 or img.height > 12000:
-            err_msg = f"⚠️ Image resolution ({img.width}×{img.height} px) exceeds maximum limit of 12,000 px."
-            print(err_msg)
-            write_comment_file('change_comment.md', [err_msg])
-            set_output('valid', 'false')
-            sys.exit(0)
-
-        # Transparency detection
-        has_trans_tag = any(c.lower() == 'transparent' for c in cat_list) or any(t.lower() == 'transparent' for t in tag_list)
-        has_alpha = ('A' in img.getbands()) or (img.mode in ('RGBA', 'LA')) or ('transparency' in img.info)
-        has_real_trans = False
-        if has_alpha:
-            rgba_check = img.convert('RGBA')
-            min_a, max_a = rgba_check.split()[-1].getextrema()
-            if min_a < 250:
-                has_real_trans = True
-
-        is_transparent = has_trans_tag or has_real_trans
-
-        # Determine target paths
-        if is_transparent:
-            full_rel = f"images/{target_id}.png"
-            thumb_web_rel = f"images/thumbnails/{target_id}.png"
-            thumb_plugin_rel = f"images/thumbnails/plugin/{target_id}.png"
-
-            img_rgba = img.convert('RGBA')
-            master_img = fit_transparent(img_rgba.copy(), 1860, 2480)
-            master_img.save(os.path.join(REPO_ROOT, full_rel), 'PNG')
-
-            web_thumb = fit_transparent(img_rgba.copy(), 600, 800)
-            web_thumb.save(os.path.join(REPO_ROOT, thumb_web_rel), 'PNG')
-
-            plugin_thumb = composite_over_checkerboard(img_rgba.copy(), 600, 800)
-            plugin_thumb.save(os.path.join(REPO_ROOT, thumb_plugin_rel), 'PNG')
-
-            files_to_add.extend([full_rel, thumb_web_rel, thumb_plugin_rel])
-
-            # Cleanup old JPG if switched from jpg to png
-            for old_f in [f"images/{target_id}.jpg", f"images/thumbnails/{target_id}.jpg"]:
-                p = os.path.join(REPO_ROOT, old_f)
-                if os.path.exists(p):
-                    try:
-                        os.remove(p)
-                        files_to_remove.append(old_f)
-                    except Exception:
-                        pass
+        # Categories
+        raw_cat = parsed.get('proposed_category')
+        if raw_cat:
+            cat_list = [c.strip() for c in raw_cat.split(',')] if isinstance(raw_cat, str) else list(raw_cat)
         else:
-            full_rel = f"images/{target_id}.jpg"
-            thumb_web_rel = f"images/thumbnails/{target_id}.jpg"
-            thumb_plugin_rel = None
+            cat_list = old_category if isinstance(old_category, list) else [old_category]
 
-            img_rgb = img.convert('RGB')
-            master_img = ImageOps.fit(img_rgb, (1860, 2480), Image.Resampling.LANCZOS)
-            master_img.save(os.path.join(REPO_ROOT, full_rel), 'JPEG', quality=92)
+        # Tags
+        raw_tags = parsed.get('proposed_tags')
+        if raw_tags:
+            tag_list = [t.strip().lower() for t in raw_tags.split(',') if t.strip()]
+        else:
+            tag_list = list(old_tags)
 
-            thumb_img = ImageOps.fit(img_rgb, (600, 800), Image.Resampling.LANCZOS)
-            thumb_img.save(os.path.join(REPO_ROOT, thumb_web_rel), 'JPEG', quality=85)
+        os.makedirs(IMAGES_DIR, exist_ok=True)
+        os.makedirs(THUMBS_DIR, exist_ok=True)
+        os.makedirs(PLUGIN_THUMBS_DIR, exist_ok=True)
 
-            files_to_add.extend([full_rel, thumb_web_rel])
+        is_transparent = False
 
-            # Cleanup old PNG / plugin thumb if switched from png to jpg
-            for old_f in [f"images/{target_id}.png", f"images/thumbnails/{target_id}.png", f"images/thumbnails/plugin/{target_id}.png"]:
-                p = os.path.join(REPO_ROOT, old_f)
-                if os.path.exists(p):
-                    try:
-                        os.remove(p)
-                        files_to_remove.append(old_f)
-                    except Exception:
-                        pass
+        if is_replacement:
+            raw_data, dl_err = download_and_resolve_image(img_url, token)
+            if dl_err or not raw_data:
+                err_msg = f"⚠️ Failed to download replacement image: {dl_err or 'Empty image stream'}"
+                print(err_msg)
+                write_comment_file('change_comment.md', [err_msg])
+                set_output('valid', 'false')
+                sys.exit(0)
 
-        raw_base = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
-        existing_item['fullUrl'] = raw_base + full_rel
-        existing_item['thumbnailUrl'] = raw_base + thumb_web_rel
-        existing_item['pluginThumbnailUrl'] = (raw_base + thumb_plugin_rel) if thumb_plugin_rel else existing_item['thumbnailUrl']
+            # Security check: strictly reject vector SVG / XML / executable scripts
+            raw_lead = raw_data[:512].lower()
+            if raw_data.strip().startswith(b'<?xml') or b'<svg' in raw_lead or b'<script' in raw_lead:
+                err_msg = "⚠️ Disallowed vector SVG or script file. Only raster JPG, PNG, or WebP images are permitted."
+                print(err_msg)
+                write_comment_file('change_comment.md', [err_msg])
+                set_output('valid', 'false')
+                sys.exit(0)
 
-        changes_made.append(f"- **Image Replacement**: Processed {img.width}×{img.height} px source image into master (1860×2480) and thumbnails (600×800) [Transparent: `{is_transparent}`]")
+            img_stream = BytesIO(raw_data)
+            try:
+                verify_img = Image.open(img_stream)
+                detected_format = verify_img.format
+                verify_img.verify()
+            except Exception as val_err:
+                err_msg = f"⚠️ Corrupted image file structure: {val_err}"
+                print(err_msg)
+                write_comment_file('change_comment.md', [err_msg])
+                set_output('valid', 'false')
+                sys.exit(0)
 
-    # Normalize categories & tags
-    if is_transparent:
-        if not any(c.lower() == 'transparent' for c in cat_list):
-            cat_list.append('Transparent')
-        if not any(t.lower() == 'transparent' for t in tag_list):
-            tag_list.append('transparent')
+            if detected_format not in ALLOWED_FORMATS:
+                err_msg = f"⚠️ Unsupported image format '{detected_format}'. Please upload JPG, PNG, or WebP."
+                print(err_msg)
+                write_comment_file('change_comment.md', [err_msg])
+                set_output('valid', 'false')
+                sys.exit(0)
 
-    final_category = cat_list if len(cat_list) > 1 else (cat_list[0] if cat_list else "General")
+            img_stream.seek(0)
+            try:
+                img = Image.open(img_stream)
+                img.load()
+                img = ImageOps.exif_transpose(img)
+            except Exception as dec_err:
+                err_msg = f"⚠️ Failed to decode image pixels: {dec_err}"
+                print(err_msg)
+                write_comment_file('change_comment.md', [err_msg])
+                set_output('valid', 'false')
+                sys.exit(0)
 
-    if new_title != old_title:
-        changes_made.append(f"- **Title**: `{old_title}` → `{new_title}`")
-    if new_author != old_author:
-        changes_made.append(f"- **Author**: `{old_author}` → `{new_author}`")
-    if final_category != old_category:
-        changes_made.append(f"- **Category**: `{old_category}` → `{final_category}`")
-    if tag_list != old_tags:
-        changes_made.append(f"- **Tags**: `{old_tags}` → `{tag_list}`")
+            if img.width < 200 or img.height < 200:
+                err_msg = f"⚠️ Image resolution ({img.width}×{img.height} px) is too small (minimum 200×200 px)."
+                print(err_msg)
+                write_comment_file('change_comment.md', [err_msg])
+                set_output('valid', 'false')
+                sys.exit(0)
 
-    # Update item in catalog
-    existing_item['title'] = new_title
-    existing_item['author'] = new_author
-    existing_item['category'] = final_category
-    existing_item['tags'] = tag_list
+            if img.width > 12000 or img.height > 12000:
+                err_msg = f"⚠️ Image resolution ({img.width}×{img.height} px) exceeds maximum limit of 12,000 px."
+                print(err_msg)
+                write_comment_file('change_comment.md', [err_msg])
+                set_output('valid', 'false')
+                sys.exit(0)
 
-    catalog[item_idx] = existing_item
+            # Transparency detection
+            has_trans_tag = any(c.lower() == 'transparent' for c in cat_list) or any(t.lower() == 'transparent' for t in tag_list)
+            has_alpha = ('A' in img.getbands()) or (img.mode in ('RGBA', 'LA')) or ('transparency' in img.info)
+            has_real_trans = False
+            if has_alpha:
+                rgba_check = img.convert('RGBA')
+                min_a, max_a = rgba_check.split()[-1].getextrema()
+                if min_a < 250:
+                    has_real_trans = True
 
-    # Save catalog
-    with open(SCREENSAVERS_JSON, 'w', encoding='utf-8') as f:
-        json.dump(catalog, f, indent=2, ensure_ascii=False)
+            is_transparent = has_trans_tag or has_real_trans
 
-    # Rebuild credits
-    try:
-        sys.path.insert(0, os.path.join(REPO_ROOT, 'tools'))
-        from catalog_studio import rebuild_credits_file
-        rebuild_credits_file(catalog)
-        files_to_add.append('CREDITS.md')
-        print("Regenerated CREDITS.md successfully.")
-    except Exception as cred_err:
-        print(f"Warning: Could not regenerate CREDITS.md: {cred_err}")
+            # Determine target paths
+            if is_transparent:
+                full_rel = f"images/{target_id}.png"
+                thumb_web_rel = f"images/thumbnails/{target_id}.png"
+                thumb_plugin_rel = f"images/thumbnails/plugin/{target_id}.png"
 
-    branch = f"change-{issue_num}"
-    pr_title = f"Catalog Change: {new_title} [{target_id}]"
+                img_rgba = img.convert('RGBA')
+                master_img = fit_transparent(img_rgba.copy(), 1860, 2480)
+                master_img.save(os.path.join(REPO_ROOT, full_rel), 'PNG')
 
-    reason_text = parsed.get('reason') or 'No details specified.'
+                web_thumb = fit_transparent(img_rgba.copy(), 600, 800)
+                web_thumb.save(os.path.join(REPO_ROOT, thumb_web_rel), 'PNG')
 
-    pr_body = [
-        f"Closes #{issue_num}",
-        "",
-        f"### Catalog Change Suggestion: {new_title} (`{target_id}`)",
-        "",
-        "| Property | Value |",
-        "|---|---|",
-        f"| **Target Item ID** | `{target_id}` |",
-        f"| **Change Type** | {change_type} |",
-        f"| **Title** | {new_title} |",
-        f"| **Author** | {new_author} |",
-        f"| **Category** | {', '.join(cat_list) if isinstance(cat_list, list) else cat_list} |",
-        f"| **Tags** | {', '.join(tag_list)} |",
-        "",
-        "### Changes Summary",
-        '\n'.join(changes_made) if changes_made else "- Metadata updated according to suggestion",
-        "",
-        f"**Reason/Details from Submitter:**",
-        f"> {reason_text}",
-        ""
-    ]
+                plugin_thumb = composite_over_checkerboard(img_rgba.copy(), 600, 800)
+                plugin_thumb.save(os.path.join(REPO_ROOT, thumb_plugin_rel), 'PNG')
 
-    if is_replacement and img_url:
-        pr_body.extend([
-            "### Replacement Visual Preview",
-            f"![{new_title}]({img_url})",
+                files_to_add.extend([full_rel, thumb_web_rel, thumb_plugin_rel])
+
+                # Cleanup old JPG if switched from jpg to png
+                for old_f in [f"images/{target_id}.jpg", f"images/thumbnails/{target_id}.jpg"]:
+                    p = os.path.join(REPO_ROOT, old_f)
+                    if os.path.exists(p):
+                        try:
+                            os.remove(p)
+                            files_to_remove.append(old_f)
+                        except Exception:
+                            pass
+            else:
+                full_rel = f"images/{target_id}.jpg"
+                thumb_web_rel = f"images/thumbnails/{target_id}.jpg"
+                thumb_plugin_rel = None
+
+                img_rgb = img.convert('RGB')
+                master_img = ImageOps.fit(img_rgb, (1860, 2480), Image.Resampling.LANCZOS)
+                master_img.save(os.path.join(REPO_ROOT, full_rel), 'JPEG', quality=92)
+
+                thumb_img = ImageOps.fit(img_rgb, (600, 800), Image.Resampling.LANCZOS)
+                thumb_img.save(os.path.join(REPO_ROOT, thumb_web_rel), 'JPEG', quality=85)
+
+                files_to_add.extend([full_rel, thumb_web_rel])
+
+                # Cleanup old PNG / plugin thumb if switched from png to jpg
+                for old_f in [f"images/{target_id}.png", f"images/thumbnails/{target_id}.png", f"images/thumbnails/plugin/{target_id}.png"]:
+                    p = os.path.join(REPO_ROOT, old_f)
+                    if os.path.exists(p):
+                        try:
+                            os.remove(p)
+                            files_to_remove.append(old_f)
+                        except Exception:
+                            pass
+
+            raw_base = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
+            existing_item['fullUrl'] = raw_base + full_rel
+            existing_item['thumbnailUrl'] = raw_base + thumb_web_rel
+            existing_item['pluginThumbnailUrl'] = (raw_base + thumb_plugin_rel) if thumb_plugin_rel else existing_item['thumbnailUrl']
+
+            changes_made.append(f"- **Image Replacement**: Processed {img.width}×{img.height} px source image into master (1860×2480) and thumbnails (600×800) [Transparent: `{is_transparent}`]")
+
+        # Normalize categories & tags
+        if is_transparent:
+            if not any(c.lower() == 'transparent' for c in cat_list):
+                cat_list.append('Transparent')
+            if not any(t.lower() == 'transparent' for t in tag_list):
+                tag_list.append('transparent')
+
+        final_category = cat_list if len(cat_list) > 1 else (cat_list[0] if cat_list else "General")
+
+        if new_title != old_title:
+            changes_made.append(f"- **Title**: `{old_title}` → `{new_title}`")
+        if new_author != old_author:
+            changes_made.append(f"- **Author**: `{old_author}` → `{new_author}`")
+        if final_category != old_category:
+            changes_made.append(f"- **Category**: `{old_category}` → `{final_category}`")
+        if tag_list != old_tags:
+            changes_made.append(f"- **Tags**: `{old_tags}` → `{tag_list}`")
+
+        # Update item in catalog
+        existing_item['title'] = new_title
+        existing_item['author'] = new_author
+        existing_item['category'] = final_category
+        existing_item['tags'] = tag_list
+
+        catalog[item_idx] = existing_item
+
+        # Save catalog
+        with open(SCREENSAVERS_JSON, 'w', encoding='utf-8') as f:
+            json.dump(catalog, f, indent=2, ensure_ascii=False)
+
+        # Rebuild credits
+        try:
+            sys.path.insert(0, os.path.join(REPO_ROOT, 'tools'))
+            from catalog_studio import rebuild_credits_file
+            rebuild_credits_file(catalog)
+            files_to_add.append('CREDITS.md')
+            print("Regenerated CREDITS.md successfully.")
+        except Exception as cred_err:
+            print(f"Warning: Could not regenerate CREDITS.md: {cred_err}")
+
+        branch = f"change-{issue_num}"
+        pr_title = f"Catalog Change: {new_title} [{target_id}]"
+        commit_msg = f"Update screensaver '{target_id}' for change suggestion #{issue_num}"
+
+        reason_text = parsed.get('reason') or 'No details specified.'
+
+        pr_body = [
+            f"Closes #{issue_num}",
+            "",
+            f"### Catalog Change Suggestion: {new_title} (`{target_id}`)",
+            "",
+            "| Property | Value |",
+            "|---|---|",
+            f"| **Target Item ID** | `{target_id}` |",
+            f"| **Change Type** | {change_type} |",
+            f"| **Title** | {new_title} |",
+            f"| **Author** | {new_author} |",
+            f"| **Category** | {', '.join(cat_list) if isinstance(cat_list, list) else cat_list} |",
+            f"| **Tags** | {', '.join(tag_list)} |",
+            "",
+            "### Changes Summary",
+            '\n'.join(changes_made) if changes_made else "- Metadata updated according to suggestion",
+            "",
+            f"**Reason/Details from Submitter:**",
+            f"> {reason_text}",
             ""
-        ])
+        ]
 
-    pr_body.extend([
-        "---",
-        f"*Automated PR generated from change suggestion issue #{issue_num} via Storefront Screensaver Catalog workflow.*"
-    ])
+        if is_replacement and img_url:
+            pr_body.extend([
+                "### Replacement Visual Preview",
+                f"![{new_title}]({img_url})",
+                ""
+            ])
+
+        pr_body.extend([
+            "---",
+            f"*Automated PR generated from change suggestion issue #{issue_num} via Storefront Screensaver Catalog workflow.*"
+        ])
 
     pr_url = f"https://github.com/{repo}/pulls"
 
     if not args.no_push:
-        # Git operations
-        subprocess.run(['git', 'config', 'user.name', 'github-actions[bot]'], cwd=REPO_ROOT, check=True)
-        subprocess.run(['git', 'config', 'user.email', 'github-actions[bot]@users.noreply.github.com'], cwd=REPO_ROOT, check=True)
+        if os.environ.get('GITHUB_ACTIONS') == 'true':
+            subprocess.run(['git', 'config', 'user.name', 'github-actions[bot]'], cwd=REPO_ROOT, check=True)
+            subprocess.run(['git', 'config', 'user.email', 'github-actions[bot]@users.noreply.github.com'], cwd=REPO_ROOT, check=True)
 
-        print(f"Checking out branch {branch} from origin/main...")
-        subprocess.run(['git', 'fetch', 'origin', 'main'], cwd=REPO_ROOT, check=True)
-        subprocess.run(['git', 'checkout', '-B', branch, 'origin/main'], cwd=REPO_ROOT, check=True)
+        if args.direct_push:
+            print("Applying changes directly to current/main branch...")
+            for f_rem in files_to_remove:
+                subprocess.run(['git', 'rm', '-f', f_rem], cwd=REPO_ROOT, check=False)
+            for f_add in files_to_add:
+                subprocess.run(['git', 'add', f_add], cwd=REPO_ROOT, check=True)
 
-        # Re-apply changes on branch
-        with open(SCREENSAVERS_JSON, 'w', encoding='utf-8') as f:
-            json.dump(catalog, f, indent=2, ensure_ascii=False)
+            status_proc = subprocess.run(['git', 'status', '--porcelain'], cwd=REPO_ROOT, capture_output=True, text=True)
+            if status_proc.stdout.strip():
+                subprocess.run(['git', 'commit', '-m', commit_msg], cwd=REPO_ROOT, check=True)
+                print("Pushing commit to origin/main...")
+                subprocess.run(['git', 'push', 'origin', 'main'], cwd=REPO_ROOT, check=True)
+            else:
+                print("No git changes to commit on main.")
 
-        try:
-            from catalog_studio import rebuild_credits_file
-            rebuild_credits_file(catalog)
-        except Exception:
-            pass
+            if is_deletion:
+                pr_url = f"https://github.com/{repo}/commits/main"
+                try:
+                    subprocess.run(['gh', 'issue', 'close', str(issue_num), '-R', repo, '--comment', f"Removed screensaver '{target_id}' per author/submitter request. Changes committed and pushed to main."], cwd=REPO_ROOT, check=False)
+                    print(f"Closed issue #{issue_num} via gh CLI.")
+                except Exception as close_err:
+                    print(f"Warning: Could not close issue via gh CLI: {close_err}")
+        else:
+            print(f"Checking out branch {branch} from origin/main...")
+            subprocess.run(['git', 'fetch', 'origin', 'main'], cwd=REPO_ROOT, check=True)
+            subprocess.run(['git', 'checkout', '-B', branch, 'origin/main'], cwd=REPO_ROOT, check=True)
 
-        for f_rem in files_to_remove:
-            subprocess.run(['git', 'rm', '-f', f_rem], cwd=REPO_ROOT, check=False)
+            # Re-apply changes on branch
+            with open(SCREENSAVERS_JSON, 'w', encoding='utf-8') as f:
+                json.dump(catalog, f, indent=2, ensure_ascii=False)
 
-        for f_add in files_to_add:
-            subprocess.run(['git', 'add', f_add], cwd=REPO_ROOT, check=True)
-
-        commit_msg = f"Update screensaver '{target_id}' for change suggestion #{issue_num}"
-        subprocess.run(['git', 'commit', '-m', commit_msg], cwd=REPO_ROOT, check=True)
-
-        print(f"Pushing branch {branch} to origin...")
-        subprocess.run(['git', 'push', 'origin', branch, '--force'], cwd=REPO_ROOT, check=True)
-
-        # Create or update PR
-        with open(os.path.join(REPO_ROOT, 'pr_body_tmp.md'), 'w', encoding='utf-8') as pf:
-            pf.write('\n'.join(pr_body))
-
-        pr_cmd = [
-            'gh', 'pr', 'create',
-            '--title', pr_title,
-            '--body-file', 'pr_body_tmp.md',
-            '--head', branch,
-            '--base', 'main',
-            '-R', repo
-        ]
-        try:
-            pr_out = subprocess.check_output(pr_cmd, cwd=REPO_ROOT, text=True).strip()
-            pr_url = pr_out
-            print(f"Created PR: {pr_url}")
-        except subprocess.CalledProcessError as err:
-            print(f"gh pr create returned non-zero (PR may already exist): {err}")
-            # Try to fetch existing PR url for this branch
             try:
-                prs_list = subprocess.check_output(['gh', 'pr', 'list', '--head', branch, '-R', repo, '--json', 'url'], cwd=REPO_ROOT, text=True)
-                prs_data = json.loads(prs_list)
-                if prs_data:
-                    pr_url = prs_data[0]['url']
+                from catalog_studio import rebuild_credits_file
+                rebuild_credits_file(catalog)
             except Exception:
                 pass
 
+            for f_rem in files_to_remove:
+                subprocess.run(['git', 'rm', '-f', f_rem], cwd=REPO_ROOT, check=False)
+
+            for f_add in files_to_add:
+                subprocess.run(['git', 'add', f_add], cwd=REPO_ROOT, check=True)
+
+            status_proc = subprocess.run(['git', 'status', '--porcelain'], cwd=REPO_ROOT, capture_output=True, text=True)
+            if status_proc.stdout.strip():
+                subprocess.run(['git', 'commit', '-m', commit_msg], cwd=REPO_ROOT, check=True)
+
+                print(f"Pushing branch {branch} to origin...")
+                subprocess.run(['git', 'push', 'origin', branch, '--force'], cwd=REPO_ROOT, check=True)
+
+                # Create or update PR
+                with open(os.path.join(REPO_ROOT, 'pr_body_tmp.md'), 'w', encoding='utf-8') as pf:
+                    pf.write('\n'.join(pr_body))
+
+                pr_cmd = [
+                    'gh', 'pr', 'create',
+                    '--title', pr_title,
+                    '--body-file', 'pr_body_tmp.md',
+                    '--head', branch,
+                    '--base', 'main',
+                    '-R', repo
+                ]
+                try:
+                    pr_out = subprocess.check_output(pr_cmd, cwd=REPO_ROOT, text=True).strip()
+                    pr_url = pr_out
+                    print(f"Created PR: {pr_url}")
+                except subprocess.CalledProcessError as err:
+                    print(f"gh pr create returned non-zero (PR may already exist): {err}")
+                    try:
+                        prs_list = subprocess.check_output(['gh', 'pr', 'list', '--head', branch, '-R', repo, '--json', 'url'], cwd=REPO_ROOT, text=True)
+                        prs_data = json.loads(prs_list)
+                        if prs_data:
+                            pr_url = prs_data[0]['url']
+                    except Exception:
+                        pass
+            else:
+                print("No git changes to commit on branch.")
+
     # Build Issue Comment
-    comment_lines = [
-        "🎉 **Change Suggestion Verified & Pull Request Created!**",
-        "",
-        f"An automated Pull Request has been prepared for review: [{pr_title}]({pr_url})",
-        "",
-        f"### Suggested Changes for `{target_id}`:",
-        '\n'.join(changes_made) if changes_made else "- Metadata update applied",
-        "",
-        f"| Property | Value |",
-        f"|---|---|",
-        f"| **Target Item ID** | `{target_id}` |",
-        f"| **Title** | {new_title} |",
-        f"| **Author** | {new_author} |",
-        f"| **Category** | {', '.join(cat_list) if isinstance(cat_list, list) else cat_list} |",
-        f"| **Pull Request** | [View Pull Request]({pr_url}) |",
-        ""
-    ]
-
-    if is_replacement and img_url:
-        comment_lines.extend([
-            "### Replacement Visual Preview",
-            f"![{new_title}]({img_url})",
+    if is_deletion:
+        if args.direct_push:
+            comment_lines = [
+                "🗑️ **Screensaver Removed**",
+                "",
+                f"The screensaver `{title}` (`{target_id}`) has been removed from the catalog and all files have been deleted per request.",
+                "",
+                f"Completed in response to #{issue_num}."
+            ]
+        else:
+            comment_lines = [
+                "🗑️ **Screensaver Removal Requested & Pull Request Created**",
+                "",
+                f"An automated Pull Request has been prepared to remove `{title}` (`{target_id}`): [{pr_title}]({pr_url})",
+                "",
+                f"| Property | Value |",
+                f"|---|---|",
+                f"| **Target Item ID** | `{target_id}` |",
+                f"| **Title** | {title} |",
+                f"| **Author** | {author} |",
+                f"| **Action** | Complete Removal / Takedown |",
+                f"| **Pull Request** | [View Pull Request]({pr_url}) |",
+                "",
+                "**Review Status:** Pending maintainer merge. Once merged into `main`, the screensaver and its files will be completely removed from the catalog and live site."
+            ]
+    else:
+        comment_lines = [
+            "🎉 **Change Suggestion Verified & Pull Request Created!**",
+            "",
+            f"An automated Pull Request has been prepared for review: [{pr_title}]({pr_url})",
+            "",
+            f"### Suggested Changes for `{target_id}`:",
+            '\n'.join(changes_made) if changes_made else "- Metadata update applied",
+            "",
+            f"| Property | Value |",
+            f"|---|---|",
+            f"| **Target Item ID** | `{target_id}` |",
+            f"| **Title** | {new_title} |",
+            f"| **Author** | {new_author} |",
+            f"| **Category** | {', '.join(cat_list) if isinstance(cat_list, list) else cat_list} |",
+            f"| **Pull Request** | [View Pull Request]({pr_url}) |",
             ""
-        ])
+        ]
 
-    comment_lines.extend([
-        "**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, the changes will immediately update in the web catalog and KOReader Storefront plugin!"
-    ])
+        if is_replacement and img_url:
+            comment_lines.extend([
+                "### Replacement Visual Preview",
+                f"![{new_title}]({img_url})",
+                ""
+            ])
+
+        comment_lines.extend([
+            "**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, the changes will immediately update in the web catalog and KOReader Storefront plugin!"
+        ])
 
     comment_path = os.path.join(REPO_ROOT, 'change_comment.md')
     write_comment_file(comment_path, comment_lines)
@@ -635,12 +782,13 @@ def main():
     print(f"Done! Comment generated at {comment_path}")
 
     if args.issue and not args.no_push:
-        try:
-            print(f"Posting comment to issue #{issue_num} via gh CLI...")
-            subprocess.run(['gh', 'issue', 'comment', str(issue_num), '-F', comment_path, '-R', repo], cwd=REPO_ROOT, check=True)
-            print("Successfully commented on issue!")
-        except Exception as c_err:
-            print(f"Warning: Could not post comment via gh CLI: {c_err}")
+        if not (is_deletion and args.direct_push):
+            try:
+                print(f"Posting comment to issue #{issue_num} via gh CLI...")
+                subprocess.run(['gh', 'issue', 'comment', str(issue_num), '-F', comment_path, '-R', repo], cwd=REPO_ROOT, check=True)
+                print("Successfully commented on issue!")
+            except Exception as c_err:
+                print(f"Warning: Could not post comment via gh CLI: {c_err}")
 
 
 if __name__ == '__main__':
