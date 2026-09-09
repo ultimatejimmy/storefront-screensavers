@@ -515,3 +515,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Woman reading in sunset | liftarn | Minimalist, Art, Pop Culture | Community Share | liftarn |
 | Little Miss Muffet | SeriousTux | Anime, Art, Quotes, Transparent | Community Share | SeriousTux |
 | Nu à la lecture | j4p4n | Art, Pop Culture | Community Share | j4p4n |
+| Bat Woman | Bat Woman | Pop Culture, Transparent | Community Share | Bat Woman |
+| Anime Face - Cyber Eyes | DG-RA | Anime, Pop Culture, Transparent | Community Share | DG-RA |
+| Halloween Landscape | j4p4n | Nature, Pop Culture, Religion | Community Share | j4p4n |
+| Water Witch | Crash | Fantasy, Anime, Pop Culture, Transparent | Community Share | Crash |
