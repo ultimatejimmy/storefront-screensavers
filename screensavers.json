@@ -16139,5 +16139,120 @@
       "reading",
       "woman"
     ]
+  },
+  {
+    "id": "bat-woman",
+    "title": "Bat Woman",
+    "author": "Bat Woman",
+    "category": [
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bat-woman.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bat-woman.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bat-woman.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "bat",
+      "woman",
+      "comic",
+      "female",
+      "pulp",
+      "transparent"
+    ]
+  },
+  {
+    "id": "anime-face-cyber-eyes",
+    "title": "Anime Face - Cyber Eyes",
+    "author": "DG-RA",
+    "category": [
+      "Anime",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/anime-face-cyber-eyes.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/anime-face-cyber-eyes.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/anime-face-cyber-eyes.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "anime",
+      "female",
+      "woman",
+      "girl",
+      "face",
+      "eyes",
+      "transparent"
+    ]
+  },
+  {
+    "id": "halloween-landscape",
+    "title": "Halloween Landscape",
+    "author": "j4p4n",
+    "category": [
+      "Nature",
+      "Pop Culture",
+      "Religion"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/halloween-landscape.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/halloween-landscape.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/halloween-landscape.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "hallowen",
+      "hunted",
+      "horror",
+      "spooky",
+      "evil",
+      "bat",
+      "house"
+    ]
+  },
+  {
+    "id": "water-witch",
+    "title": "Water Witch",
+    "author": "Crash",
+    "category": [
+      "Fantasy",
+      "Anime",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/water-witch.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/water-witch.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/water-witch.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "witch",
+      "anime",
+      "water",
+      "wizard",
+      "female",
+      "woman",
+      "transparent"
+    ]
   }
 ]
