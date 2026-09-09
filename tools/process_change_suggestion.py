@@ -104,6 +104,8 @@ def download_and_resolve_image(img_url, token=None, max_retries=3):
                     r'<a[^>]+class=["\']download["\'][^>]+href=["\']([^"\']+)["\']',
                     r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']',
                     r'<meta[^>]+name=["\']twitter:image["\'][^>]+content=["\']([^"\']+)["\']',
+                    r'["\'](/image/(?:2000px|800px|\d+px)/\d+)["\']',
+                    r'<img[^>]+class=["\'][^"\']*img-thumbnail[^"\']*["\'][^>]+src=["\']([^"\']+)["\']',
                     r'<img[^>]+src=["\'](https?://[^"\']+\.(?:png|jpg|jpeg|webp))["\']',
                     r'["\'](https?://[^\s"\']+/dl/[^\s"\']+)["\']',
                 ]
@@ -193,26 +195,58 @@ def parse_change_suggestion(body, comment_body=''):
         if dmca_m:
             data['reason'] = dmca_m.group(1).strip()
 
+    def is_candidate_image_url(u):
+        if not u:
+            return False
+        u = u.strip().rstrip(').,">\'')
+        if re.search(r'^https?://(?:www\.)?github\.com/(?!user-attachments/)', u, re.IGNORECASE):
+            return False
+        if re.search(r'github\.io/storefront-screensavers/?(?:#.*)?$', u, re.IGNORECASE):
+            return False
+        return True
+
+    def extract_candidate_urls(text):
+        found = []
+        if not text:
+            return found
+        for m in re.finditer(r'!\[.*?\]\((https?://[^\s\)]+)\)', text):
+            u = m.group(1).strip()
+            if is_candidate_image_url(u) and u not in found:
+                found.append(u)
+        for m in re.finditer(r'<img[^>]+src=["\'](https?://[^"\']+)["\']', text, re.IGNORECASE):
+            u = m.group(1).strip()
+            if is_candidate_image_url(u) and u not in found:
+                found.append(u)
+        for m in re.finditer(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|catbox|tmpfiles|freeimage|imgbb|imgur|postimg)[^\s\)\"]*', text, re.IGNORECASE):
+            u = m.group(0).strip()
+            if is_candidate_image_url(u) and u not in found:
+                found.append(u)
+        for m in re.finditer(r'https?://[^\s\)\"\'<>]+', text):
+            u = m.group(0).strip().rstrip(').,">\'')
+            if is_candidate_image_url(u) and u not in found:
+                found.append(u)
+        return found
+
     # Image URL extraction
     img_url = None
     rep_img_m = re.search(r'\*\*(?:Replacement Image|Image):\*\*\s*(https?://[^\s\)\"]+)', body)
-    if rep_img_m:
+    if rep_img_m and is_candidate_image_url(rep_img_m.group(1)):
         img_url = rep_img_m.group(1).strip()
 
     if not img_url:
         preview_m = re.search(r'###\s+Replacement Preview\s*\n!\[.*?\]\((https?://[^\s\)]+)\)', body)
-        if preview_m:
+        if preview_m and is_candidate_image_url(preview_m.group(1)):
             img_url = preview_m.group(1).strip()
 
     if not img_url:
-        any_url_m = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|catbox|tmpfiles|freeimage|imgbb|imgur|postimg)[^\s\)\"]*', body, re.IGNORECASE)
-        if any_url_m:
-            img_url = any_url_m.group(0).strip()
+        body_candidates = extract_candidate_urls(body)
+        if body_candidates:
+            img_url = body_candidates[0]
 
     if not img_url and comment_body:
-        c_m = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)|(https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|catbox|tmpfiles|freeimage|imgbb|imgur|postimg)[^\s\)\"]*)', comment_body, re.IGNORECASE)
-        if c_m:
-            img_url = (c_m.group(1) or c_m.group(2)).strip()
+        comment_candidates = extract_candidate_urls(comment_body)
+        if comment_candidates:
+            img_url = comment_candidates[0]
 
     data['img_url'] = img_url
 

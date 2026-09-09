@@ -1111,7 +1111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bodyLines.push(
           ``,
           `### 📸 Image Attachment`,
-          `*Please paste your image here (**Ctrl+V** / **Cmd+V**) or drag and drop the image file into this box if not already uploaded.*`
+          `*Please paste your image here (**Ctrl+V** / **Cmd+V**), drag and drop the image file, or paste an image URL.*`
         );
       }
 
@@ -1333,11 +1333,16 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (e) {}
       const formattedTitle = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
 
+      let extractedFileName = url.split('/').pop().split('?')[0] || 'screensaver.jpg';
+      if (!extractedFileName.includes('.')) {
+        extractedFileName += '.jpg';
+      }
+
       const queueItem = {
         id: qId,
         file: null,
         url: url,
-        fileName: url.split('/').pop().split('?')[0] || 'screensaver.jpg',
+        fileName: extractedFileName,
         title: formattedTitle,
         author: batchAuthor,
         category: defaultCat,
@@ -1954,7 +1959,7 @@ document.addEventListener('DOMContentLoaded', () => {
           } else {
             bodyLines.push(
               ``,
-              `> 📸 *Please paste or attach image for **${item.title}** below (Ctrl+V / Cmd+V)*`
+              `> 📸 *Please paste or attach image for **${item.title}** below (Ctrl+V / Cmd+V or paste image URL)*`
             );
           }
           bodyLines.push(``);

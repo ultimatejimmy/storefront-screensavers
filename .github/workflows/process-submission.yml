@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -85,6 +85,43 @@ jobs:
               set_output(False)
               sys.exit(0)
 
+          def is_candidate_image_url(u):
+              if not u:
+                  return False
+              u = u.strip().rstrip(').,">\'')
+              # Exclude GitHub issue / PR / repository navigation pages (keep user-attachments)
+              if re.search(r'^https?://(?:www\.)?github\.com/(?!user-attachments/)', u, re.IGNORECASE):
+                  return False
+              if re.search(r'github\.io/storefront-screensavers/?(?:#.*)?$', u, re.IGNORECASE):
+                  return False
+              return True
+
+          def extract_candidate_urls(text):
+              found = []
+              if not text:
+                  return found
+              # 1. Markdown image syntax ![alt](url)
+              for m in re.finditer(r'!\[.*?\]\((https?://[^\s\)]+)\)', text):
+                  u = m.group(1).strip()
+                  if is_candidate_image_url(u) and u not in found:
+                      found.append(u)
+              # 2. HTML img tags
+              for m in re.finditer(r'<img[^>]+src=["\'](https?://[^"\']+)["\']', text, re.IGNORECASE):
+                  u = m.group(1).strip()
+                  if is_candidate_image_url(u) and u not in found:
+                      found.append(u)
+              # 3. Known image upload services or file extensions
+              for m in re.finditer(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|catbox|tmpfiles|freeimage|imgbb|imgur|postimg)[^\s\)\"]*', text, re.IGNORECASE):
+                  u = m.group(0).strip()
+                  if is_candidate_image_url(u) and u not in found:
+                      found.append(u)
+              # 4. Any other candidate HTTP/HTTPS URLs
+              for m in re.finditer(r'https?://[^\s\)\"\'<>]+', text):
+                  u = m.group(0).strip().rstrip(').,">\'')
+                  if is_candidate_image_url(u) and u not in found:
+                      found.append(u)
+              return found
+
           # Parse single or batch submission blocks
           blocks = re.split(r'(?=####\s+Wallpaper|\n---\s*\n####\s+Wallpaper|\n###\s+Wallpaper|\n###\s+Screensaver\s+Submission)', body)
           raw_entries = []
@@ -102,19 +139,38 @@ jobs:
               img_line = re.search(r'\*\*(?:Image|Replacement Image):\*\*\s*(.*)', block)
               if img_line:
                   u = re.search(r'https?://[^\s\)\"]+', img_line.group(1))
-                  if u: url_match_str = u.group(0)
+                  if u and is_candidate_image_url(u.group(0)):
+                      url_match_str = u.group(0)
 
               if not url_match_str:
                   md_img = re.search(r'!\[.*?\]\((https?://[^\s\)]+)\)', block)
-                  if md_img: url_match_str = md_img.group(1)
+                  if md_img and is_candidate_image_url(md_img.group(1)):
+                      url_match_str = md_img.group(1)
 
               if not url_match_str:
                   html_img = re.search(r'<img[^>]+src=["\'](https?://[^"\']+)["\']', block, re.IGNORECASE)
-                  if html_img: url_match_str = html_img.group(1)
+                  if html_img and is_candidate_image_url(html_img.group(1)):
+                      url_match_str = html_img.group(1)
+
+              if not url_match_str:
+                  prompt_m = re.search(r'>\s*📸[^\n]*\n+([^\n]*https?://[^\s\)\"\'<>]+)', block)
+                  if prompt_m:
+                      pu = re.search(r'https?://[^\s\)\"\'<>]+', prompt_m.group(1))
+                      if pu and is_candidate_image_url(pu.group(0)):
+                          url_match_str = pu.group(0)
 
               if not url_match_str:
                   any_url = re.search(r'https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|catbox|tmpfiles|freeimage|imgbb|imgur|postimg)[^\s\)\"]*', block, re.IGNORECASE)
-                  if any_url: url_match_str = any_url.group(0)
+                  if any_url and is_candidate_image_url(any_url.group(0)):
+                      url_match_str = any_url.group(0)
+
+              if not url_match_str:
+                  all_urls = re.findall(r'https?://[^\s\)\"\'<>]+', block)
+                  for u in all_urls:
+                      u_clean = u.rstrip(').,">\'')
+                      if is_candidate_image_url(u_clean):
+                          url_match_str = u_clean
+                          break
 
               raw_entries.append({
                   'title': title_match.group(1).strip(),
@@ -131,10 +187,9 @@ jobs:
               available_comment_urls = []
               comment_body = os.environ.get('COMMENT_BODY', '')
               if comment_body:
-                  for u in re.findall(r'!\[.*?\]\((https?://[^\s\)]+)\)|(https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|catbox|tmpfiles|freeimage|imgbb|imgur|postimg)[^\s\)\"]*)', comment_body, re.IGNORECASE):
-                      url_found = u[0] or u[1]
-                      if url_found and url_found not in available_comment_urls:
-                          available_comment_urls.append(url_found)
+                  for u in extract_candidate_urls(comment_body):
+                      if u not in available_comment_urls:
+                          available_comment_urls.append(u)
 
               if token and issue_num:
                   try:
@@ -145,10 +200,9 @@ jobs:
                               c_txt = c.get('body', '')
                               if 'Wallpaper Submission Validation Failed' in c_txt or 'Submission Received & Verified' in c_txt:
                                   continue
-                              for u in re.findall(r'!\[.*?\]\((https?://[^\s\)]+)\)|(https?://[^\s\)\"]+(?:user-attachments|\.png|\.jpg|\.jpeg|\.webp|catbox|tmpfiles|freeimage|imgbb|imgur|postimg)[^\s\)\"]*)', c_txt, re.IGNORECASE):
-                                  url_found = u[0] or u[1]
-                                  if url_found and url_found not in available_comment_urls:
-                                      available_comment_urls.append(url_found)
+                              for u in extract_candidate_urls(c_txt):
+                                  if u not in available_comment_urls:
+                                      available_comment_urls.append(u)
                   except Exception as err:
                       print(f"Failed fetching issue comments: {err}")
 
@@ -207,7 +261,11 @@ jobs:
               for attempt in range(max_retries):
                   try:
                       print(f"Downloading '{title}' from {img_url} (attempt {attempt + 1}/{max_retries})...")
-                      resp = session.get(img_url, allow_redirects=True, timeout=35)
+                      try:
+                          resp = session.get(img_url, allow_redirects=True, timeout=35)
+                      except requests.exceptions.SSLError:
+                          print("SSL verification failed, retrying with verify=False...")
+                          resp = session.get(img_url, allow_redirects=True, timeout=35, verify=False)
                       if resp.status_code == 404:
                           return None, f"404 Not Found: Link expired or invalid on host ({img_url})"
                       if resp.status_code != 200:
@@ -227,6 +285,8 @@ jobs:
                               r'<a[^>]+class=["\']download["\'][^>]+href=["\']([^"\']+)["\']',
                               r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']',
                               r'<meta[^>]+name=["\']twitter:image["\'][^>]+content=["\']([^"\']+)["\']',
+                              r'["\'](/image/(?:2000px|800px|\d+px)/\d+)["\']',
+                              r'<img[^>]+class=["\'][^"\']*img-thumbnail[^"\']*["\'][^>]+src=["\']([^"\']+)["\']',
                               r'<img[^>]+src=["\'](https?://[^"\']+\.(?:png|jpg|jpeg|webp))["\']',
                               r'["\'](https?://[^\s"\']+/dl/[^\s"\']+)["\']',
                           ]
@@ -243,7 +303,10 @@ jobs:
 
                           if extracted_url:
                               print(f"Resolved direct image URL: {extracted_url}")
-                              dl_resp = session.get(extracted_url, allow_redirects=True, timeout=35)
+                              try:
+                                  dl_resp = session.get(extracted_url, allow_redirects=True, timeout=35)
+                              except requests.exceptions.SSLError:
+                                  dl_resp = session.get(extracted_url, allow_redirects=True, timeout=35, verify=False)
                               if dl_resp.status_code == 200:
                                   if len(dl_resp.content) > MAX_DOWNLOAD_BYTES:
                                       return None, "File size exceeded 25 MB limit."
