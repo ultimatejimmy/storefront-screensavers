@@ -519,3 +519,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Anime Face - Cyber Eyes | DG-RA | Anime, Pop Culture, Transparent | Community Share | DG-RA |
 | Halloween Landscape | j4p4n | Nature, Pop Culture, Religion | Community Share | j4p4n |
 | Water Witch | Crash | Fantasy, Anime, Pop Culture, Transparent | Community Share | Crash |
+| Lace | crazysnor1ax on tumblr | Pop Culture, Transparent | Community Share | crazysnor1ax on tumblr |

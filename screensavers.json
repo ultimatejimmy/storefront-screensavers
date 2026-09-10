@@ -16254,5 +16254,28 @@
       "woman",
       "transparent"
     ]
+  },
+  {
+    "id": "lace",
+    "title": "Lace",
+    "author": "crazysnor1ax on tumblr",
+    "category": [
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/lace.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/lace.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/lace.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Silksong",
+      "transparent"
+    ]
   }
 ]
