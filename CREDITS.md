@@ -530,3 +530,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Don't Panic transparent background | Community | Minimalist, Sci-Fi, Pop Culture, Transparent | Community Share | Community |
 | Ode To Spot | Community | Minimalist | Community Share | Community |
 | Spaceballs the wallpaper | Community | Minimalist | Community Share | Community |
+| Abstract butterfly | Firkin | Minimalist, Nature, Abstract, Transparent | Community Share | Firkin |
