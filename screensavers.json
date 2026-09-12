@@ -16488,5 +16488,33 @@
     "downloads": 0,
     "likes": 0,
     "tags": []
+  },
+  {
+    "id": "abstract-butterfly",
+    "title": "Abstract butterfly",
+    "author": "Firkin",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Abstract",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/abstract-butterfly.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/abstract-butterfly.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/abstract-butterfly.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "butterfly",
+      "insect",
+      "animal",
+      "wings",
+      "transparent"
+    ]
   }
 ]
