@@ -531,3 +531,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Ode To Spot | Community | Minimalist | Community Share | Community |
 | Spaceballs the wallpaper | Community | Minimalist | Community Share | Community |
 | Abstract butterfly | Firkin | Minimalist, Nature, Abstract, Transparent | Community Share | Firkin |
+| Bird Stained Glass | gustavorezende | Minimalist, Nature, Abstract, Art, Transparent | Community Share | gustavorezende |

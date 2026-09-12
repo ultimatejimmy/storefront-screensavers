@@ -16516,5 +16516,34 @@
       "wings",
       "transparent"
     ]
+  },
+  {
+    "id": "bird-stained-glass",
+    "title": "Bird Stained Glass",
+    "author": "gustavorezende",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Abstract",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bird-stained-glass.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bird-stained-glass.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bird-stained-glass.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "bird",
+      "duck",
+      "stained glass",
+      "glass",
+      "transparent"
+    ]
   }
 ]
