@@ -16516,5 +16516,33 @@
       "wings",
       "transparent"
     ]
+  },
+  {
+    "id": "woman-face",
+    "title": "Woman face",
+    "author": "gustavorezende",
+    "category": [
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/woman-face.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/woman-face.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/woman-face.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "woman",
+      "face",
+      "young",
+      "lady",
+      "girl",
+      "lipstick",
+      "transparent"
+    ]
   }
 ]
