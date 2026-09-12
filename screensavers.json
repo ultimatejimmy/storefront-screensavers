@@ -16516,5 +16516,37 @@
       "wings",
       "transparent"
     ]
+  },
+  {
+    "id": "party-in-the-intestines",
+    "title": "Party in the intestines",
+    "author": "Moini",
+    "category": [
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/party-in-the-intestines.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/party-in-the-intestines.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/party-in-the-intestines.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "anatomt",
+      "bacteria",
+      "disease",
+      "digesation",
+      "gut",
+      "germs",
+      "intestine",
+      "party",
+      "virus",
+      "transparent"
+    ]
   }
 ]
