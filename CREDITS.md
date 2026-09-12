@@ -520,3 +520,13 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Halloween Landscape | j4p4n | Nature, Pop Culture, Religion | Community Share | j4p4n |
 | Water Witch | Crash | Fantasy, Anime, Pop Culture, Transparent | Community Share | Crash |
 | Lace | crazysnor1ax on tumblr | Pop Culture, Transparent | Community Share | crazysnor1ax on tumblr |
+| Happy Crack | Community | Minimalist, Sci-Fi, Abstract, Pop Culture | Community Share | Community |
+| Cookbook | Community | Minimalist, Sci-Fi | Community Share | Community |
+| Dharma Light | Community | Minimalist, Pop Culture | Community Share | Community |
+| Dharma Dark | Community | Minimalist, Pop Culture | Community Share | Community |
+| Dharma Transparent | Community | Minimalist, Pop Culture, Transparent | Community Share | Community |
+| Don't Panic Solid | Community | Minimalist, Sci-Fi, Pop Culture | Community Share | Community |
+| Don't Panic transparent logo | Community | Minimalist, Sci-Fi, Pop Culture, Transparent | Community Share | Community |
+| Don't Panic transparent background | Community | Minimalist, Sci-Fi, Pop Culture, Transparent | Community Share | Community |
+| Ode To Spot | Community | Minimalist | Community Share | Community |
+| Spaceballs the wallpaper | Community | Minimalist | Community Share | Community |
