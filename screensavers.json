@@ -16277,5 +16277,216 @@
       "Silksong",
       "transparent"
     ]
+  },
+  {
+    "id": "happy-crack",
+    "title": "Happy Crack",
+    "author": "Community",
+    "category": [
+      "Minimalist",
+      "Sci-Fi",
+      "Abstract",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/happy-crack.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/happy-crack.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/happy-crack.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
+  },
+  {
+    "id": "cookbook",
+    "title": "Cookbook",
+    "author": "Community",
+    "category": [
+      "Minimalist",
+      "Sci-Fi"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/cookbook.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/cookbook.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/cookbook.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Carl",
+      "DCC"
+    ]
+  },
+  {
+    "id": "dharma-light",
+    "title": "Dharma Light",
+    "author": "Community",
+    "category": [
+      "Minimalist",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/dharma-light.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/dharma-light.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/dharma-light.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
+  },
+  {
+    "id": "dharma-dark",
+    "title": "Dharma Dark",
+    "author": "Community",
+    "category": [
+      "Minimalist",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/dharma-dark.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/dharma-dark.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/dharma-dark.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
+  },
+  {
+    "id": "dharma-transparent",
+    "title": "Dharma Transparent",
+    "author": "Community",
+    "category": [
+      "Minimalist",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/dharma-transparent.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/dharma-transparent.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/dharma-transparent.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
+  },
+  {
+    "id": "don-t-panic-solid",
+    "title": "Don't Panic Solid",
+    "author": "Community",
+    "category": [
+      "Minimalist",
+      "Sci-Fi",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/don-t-panic-solid.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/don-t-panic-solid.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/don-t-panic-solid.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
+  },
+  {
+    "id": "don-t-panic-transparent-logo",
+    "title": "Don't Panic transparent logo",
+    "author": "Community",
+    "category": [
+      "Minimalist",
+      "Sci-Fi",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/don-t-panic-transparent-logo.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/don-t-panic-transparent-logo.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/don-t-panic-transparent-logo.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
+  },
+  {
+    "id": "don-t-panic-transparent-background",
+    "title": "Don't Panic transparent background",
+    "author": "Community",
+    "category": [
+      "Minimalist",
+      "Sci-Fi",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/don-t-panic-transparent-background.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/don-t-panic-transparent-background.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/don-t-panic-transparent-background.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "transparent"
+    ]
+  },
+  {
+    "id": "ode-to-spot",
+    "title": "Ode To Spot",
+    "author": "Community",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ode-to-spot.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ode-to-spot.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ode-to-spot.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
+  },
+  {
+    "id": "spaceballs-the-wallpaper",
+    "title": "Spaceballs the wallpaper",
+    "author": "Community",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/spaceballs-the-wallpaper.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/spaceballs-the-wallpaper.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/spaceballs-the-wallpaper.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": []
   }
 ]
