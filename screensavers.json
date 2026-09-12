@@ -16516,5 +16516,36 @@
       "wings",
       "transparent"
     ]
+  },
+  {
+    "id": "holy-family-in-stained-glass",
+    "title": "Holy Family in Stained Glass",
+    "author": "bnsonger47",
+    "category": [
+      "Abstract",
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/holy-family-in-stained-glass.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/holy-family-in-stained-glass.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/holy-family-in-stained-glass.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "christmas",
+      "Jesus",
+      "art",
+      "glass",
+      "birth",
+      "family",
+      "religion",
+      "transparent"
+    ]
   }
 ]
