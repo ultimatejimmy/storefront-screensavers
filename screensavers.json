@@ -16516,5 +16516,36 @@
       "wings",
       "transparent"
     ]
+  },
+  {
+    "id": "school-in-fall",
+    "title": "School in fall",
+    "author": "Anonymous",
+    "category": [
+      "Nature",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/school-in-fall.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/school-in-fall.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/school-in-fall.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "anatomt",
+      "bacteria",
+      "disease",
+      "digesation",
+      "gut",
+      "germs",
+      "intestine",
+      "party",
+      "virus",
+      "transparent"
+    ]
   }
 ]
