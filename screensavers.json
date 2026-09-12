@@ -16516,5 +16516,33 @@
       "wings",
       "transparent"
     ]
+  },
+  {
+    "id": "fingerprint-search",
+    "title": "Fingerprint Search",
+    "author": "eady",
+    "category": "Transparent",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/fingerprint-search.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/fingerprint-search.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/fingerprint-search.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "anatomt",
+      "bacteria",
+      "disease",
+      "digesation",
+      "gut",
+      "germs",
+      "intestine",
+      "party",
+      "virus",
+      "transparent"
+    ]
   }
 ]
