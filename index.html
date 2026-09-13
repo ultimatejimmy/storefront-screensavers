@@ -6,7 +6,7 @@
   <title>Storefront Screensavers — E-Reader Wallpaper Catalog</title>
   <meta name="description" content="Free e-ink sleep screen & lock screen wallpapers for Kindle, Kobo, Boox, and PocketBook readers. Community-driven catalog for Storefront KOReader plugin.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
@@ -157,6 +157,12 @@
               </div>
             </div>
 
+            <!-- Direct URL Box (hidden by default) -->
+            <div id="url-box" style="display: none; margin-top: 0.5rem;">
+              <input type="url" id="sub-url" class="form-control" placeholder="https://raw.githubusercontent.com/.../wallpaper.jpg">
+              <span style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-top: 0.35rem;">🔗 Enter a direct image link (JPG, PNG, WebP) to preview and crop.</span>
+            </div>
+
             <!-- Interactive 3:4 Focal Point Cropper (Outside Dropzone) -->
             <div id="cropper-container" style="display:none; margin-top: 1rem; background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); text-align: left;">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
@@ -172,11 +178,6 @@
                 <span id="zoom-val" style="font-size:0.75rem; color:var(--text-secondary); width:32px;">1.0x</span>
               </div>
               <span style="font-size:0.75rem; color: var(--text-muted); display:block; margin-top:0.3rem;">💡 Drag image to position your main subject inside the 3:4 e-reader frame.</span>
-            </div>
-
-            <!-- Direct URL Box (hidden by default) -->
-            <div id="url-box" style="display: none; margin-top: 0.5rem;">
-              <input type="url" id="sub-url" class="form-control" placeholder="https://raw.githubusercontent.com/.../wallpaper.jpg">
             </div>
           </div>
 
@@ -550,6 +551,6 @@
     <p>© 2026 Storefront Screensavers Catalog · Open Source & Community Powered</p>
   </footer>
 
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

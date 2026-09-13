@@ -424,6 +424,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedFile = null;
   let selectedFileMeta = null;
   let currentMode = 'file'; // 'file' or 'url'
+  let singleUrlDebounce = null;
+  let singleUrlImgObj = null;
+  let singleUrlIsCorsClean = false;
 
   if (btnModeFile && btnModeUrl) {
     btnModeFile.addEventListener('click', () => {
@@ -433,6 +436,12 @@ document.addEventListener('DOMContentLoaded', () => {
       dropzoneBox.style.display = 'block';
       urlBox.style.display = 'none';
       if (subUrl) subUrl.required = false;
+      if (selectedFile && cropImageObj) {
+        if (cropperContainer) cropperContainer.style.display = 'block';
+        drawCropper();
+      } else {
+        if (cropperContainer) cropperContainer.style.display = 'none';
+      }
     });
 
     btnModeUrl.addEventListener('click', () => {
@@ -442,6 +451,45 @@ document.addEventListener('DOMContentLoaded', () => {
       dropzoneBox.style.display = 'none';
       urlBox.style.display = 'block';
       if (subUrl) subUrl.required = true;
+      if (singleUrlImgObj) {
+        initCropper(singleUrlImgObj);
+        if (cropperContainer) cropperContainer.style.display = 'block';
+      } else {
+        if (cropperContainer) cropperContainer.style.display = 'none';
+      }
+    });
+  }
+
+  // Live single URL loading & interactive crop preview
+  if (subUrl) {
+    subUrl.addEventListener('input', () => {
+      clearTimeout(singleUrlDebounce);
+      const url = subUrl.value.trim();
+      if (!url || !url.startsWith('http')) {
+        singleUrlImgObj = null;
+        if (currentMode === 'url' && cropperContainer) cropperContainer.style.display = 'none';
+        return;
+      }
+      singleUrlDebounce = setTimeout(() => {
+        if (currentMode !== 'url') return;
+        if (cropperContainer) {
+          cropperContainer.style.display = 'block';
+          drawCanvasLoading(cropperCanvas);
+        }
+        loadDirectImageUrl(url, (img, isCorsClean) => {
+          if (currentMode !== 'url') return;
+          singleUrlImgObj = img;
+          singleUrlIsCorsClean = isCorsClean;
+          initCropper(img);
+        }, (err) => {
+          if (currentMode !== 'url') return;
+          singleUrlImgObj = null;
+          if (cropperContainer) {
+            cropperContainer.style.display = 'block';
+            drawCanvasError(cropperCanvas, 'Image link could not be loaded');
+          }
+        });
+      }, 350);
     });
   }
 
@@ -869,18 +917,182 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function drawCanvasLoading(canvas, label = 'Loading image preview... ⏳') {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#0b0f19';
+    ctx.fillRect(0, 0, FRAME_W, FRAME_H);
+
+    ctx.strokeStyle = 'rgba(16, 185, 129, 0.4)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.strokeRect(8, 8, FRAME_W - 16, FRAME_H - 16);
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = '#6ee7b7';
+    ctx.font = '500 13px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(label, FRAME_W / 2, FRAME_H / 2);
+  }
+
+  function drawCanvasError(canvas, message = 'Could not load image') {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#0f172a';
+    ctx.fillRect(0, 0, FRAME_W, FRAME_H);
+
+    ctx.strokeStyle = 'rgba(239, 68, 68, 0.6)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(4, 4, FRAME_W - 8, FRAME_H - 8);
+
+    ctx.fillStyle = '#ef4444';
+    ctx.font = 'bold 14px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('⚠️ Failed to Load Image', FRAME_W / 2, FRAME_H / 2 - 24);
+
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '11px system-ui, -apple-system, sans-serif';
+    ctx.fillText('Image URL could not be retrieved or', FRAME_W / 2, FRAME_H / 2 + 6);
+    ctx.fillText('is not a direct image file.', FRAME_W / 2, FRAME_H / 2 + 24);
+    ctx.fillText('Please check URL or upload file directly.', FRAME_W / 2, FRAME_H / 2 + 42);
+  }
+
+  function loadDirectImageUrl(url, onLoaded, onError) {
+    if (!url) {
+      if (onError) onError(new Error('No URL specified'));
+      return;
+    }
+
+    // Step 1: Attempt loading with crossOrigin = 'Anonymous'
+    // If remote server provides CORS headers, the canvas remains clean for blob export
+    const corsImg = new Image();
+    corsImg.crossOrigin = 'Anonymous';
+    let settled = false;
+
+    corsImg.onload = () => {
+      if (settled) return;
+      settled = true;
+      if (onLoaded) onLoaded(corsImg, true); // true = corsClean
+    };
+
+    corsImg.onerror = () => {
+      if (settled) return;
+      // Step 2: Fallback to standard Image loading WITHOUT crossOrigin
+      // This allows the browser to display and manipulate the image on canvas (ctx.drawImage),
+      // bypassing CORS restrictions so users can see, pan, zoom, and frame their wallpaper!
+      console.log(`[Cropper] Direct CORS restricted for ${url}; falling back to standard image display mode.`);
+      const directImg = new Image();
+      directImg.onload = () => {
+        if (settled) return;
+        settled = true;
+        if (onLoaded) onLoaded(directImg, false); // false = tainted canvas
+      };
+      directImg.onerror = (err) => {
+        if (settled) return;
+        settled = true;
+        console.warn(`[Cropper] Failed to load image from URL ${url}:`, err);
+        if (onError) onError(err);
+      };
+      directImg.src = url;
+    };
+
+    corsImg.src = url;
+  }
+
+  function loadQueueItemImage(item, onLoaded, onError) {
+    if (item.imgObj && (item.imgObj.naturalWidth || item.imgObj.width)) {
+      if (onLoaded) onLoaded(item.imgObj, item.isCorsClean !== false);
+      return;
+    }
+
+    if (item.file) {
+      const localImg = new Image();
+      localImg.onload = () => {
+        item.imgObj = localImg;
+        item.isCorsClean = true;
+        item.loadStatus = 'loaded';
+        if (onLoaded) onLoaded(localImg, true);
+      };
+      localImg.onerror = (err) => {
+        item.loadStatus = 'error';
+        if (onError) onError(err);
+      };
+      localImg.src = URL.createObjectURL(item.file);
+      return;
+    }
+
+    const targetUrl = item.url || item.previewUrl;
+    item.loadStatus = 'loading';
+    loadDirectImageUrl(targetUrl, (img, isCorsClean) => {
+      item.imgObj = img;
+      item.isCorsClean = isCorsClean;
+      item.loadStatus = 'loaded';
+      if (onLoaded) onLoaded(img, isCorsClean);
+    }, (err) => {
+      item.loadStatus = 'error';
+      if (onError) onError(err);
+    });
+  }
+
   function renderExportBlob(imgObj, cState, fileType = 'image/jpeg', fileName = '', isTransparent = false) {
     return new Promise((resolve) => {
       if (!imgObj) {
         resolve(null);
         return;
       }
-      const outCanvas = document.createElement('canvas');
-      const TARGET_W = 1860;
-      const TARGET_H = 2480;
-      outCanvas.width = TARGET_W;
-      outCanvas.height = TARGET_H;
-      const ctx = outCanvas.getContext('2d');
+      try {
+        const outCanvas = document.createElement('canvas');
+        const TARGET_W = 1860;
+        const TARGET_H = 2480;
+        outCanvas.width = TARGET_W;
+        outCanvas.height = TARGET_H;
+        const ctx = outCanvas.getContext('2d');
+
+        const imgW = imgObj.naturalWidth || imgObj.width || 1200;
+        const imgH = imgObj.naturalHeight || imgObj.height || 1600;
+
+        const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
+        const scaledW = imgW * baseScale * (cState.zoom || 1);
+        const scaledH = imgH * baseScale * (cState.zoom || 1);
+
+        const scaleFactor = TARGET_W / FRAME_W;
+        const drawX = cState.offsetX * scaleFactor;
+        const drawY = cState.offsetY * scaleFactor;
+        const drawW = scaledW * scaleFactor;
+        const drawH = scaledH * scaleFactor;
+
+        const isPng = (fileType === 'image/png' || (fileName && fileName.toLowerCase().endsWith('.png')));
+
+        if (!isPng && !isTransparent) {
+          ctx.fillStyle = '#000000';
+          ctx.fillRect(0, 0, TARGET_W, TARGET_H);
+        } else {
+          ctx.clearRect(0, 0, TARGET_W, TARGET_H);
+        }
+        ctx.drawImage(imgObj, drawX, drawY, drawW, drawH);
+
+        const exportMime = (isPng || isTransparent) ? 'image/png' : 'image/jpeg';
+        const exportQuality = (isPng || isTransparent) ? undefined : 0.92;
+
+        outCanvas.toBlob((blob) => {
+          resolve(blob);
+        }, exportMime, exportQuality);
+      } catch (err) {
+        console.warn('Canvas export toBlob prevented by CORS restriction:', err);
+        resolve(null);
+      }
+    });
+  }
+
+  function renderThumbnailDataUrl(imgObj, cState, thumbW = 76, thumbH = 101, isTransparent = false) {
+    if (!imgObj) return '';
+    try {
+      const tCanvas = document.createElement('canvas');
+      tCanvas.width = thumbW;
+      tCanvas.height = thumbH;
+      const ctx = tCanvas.getContext('2d');
 
       const imgW = imgObj.naturalWidth || imgObj.width || 1200;
       const imgH = imgObj.naturalHeight || imgObj.height || 1600;
@@ -889,59 +1101,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const scaledW = imgW * baseScale * (cState.zoom || 1);
       const scaledH = imgH * baseScale * (cState.zoom || 1);
 
-      const scaleFactor = TARGET_W / FRAME_W;
+      const scaleFactor = thumbW / FRAME_W;
       const drawX = cState.offsetX * scaleFactor;
       const drawY = cState.offsetY * scaleFactor;
       const drawW = scaledW * scaleFactor;
       const drawH = scaledH * scaleFactor;
 
-      const isPng = (fileType === 'image/png' || (fileName && fileName.toLowerCase().endsWith('.png')));
-
-      if (!isPng && !isTransparent) {
+      if (!isTransparent) {
         ctx.fillStyle = '#000000';
-        ctx.fillRect(0, 0, TARGET_W, TARGET_H);
+        ctx.fillRect(0, 0, thumbW, thumbH);
       } else {
-        ctx.clearRect(0, 0, TARGET_W, TARGET_H);
+        ctx.clearRect(0, 0, thumbW, thumbH);
       }
       ctx.drawImage(imgObj, drawX, drawY, drawW, drawH);
-
-      const exportMime = (isPng || isTransparent) ? 'image/png' : 'image/jpeg';
-      const exportQuality = (isPng || isTransparent) ? undefined : 0.92;
-
-      outCanvas.toBlob((blob) => {
-        resolve(blob);
-      }, exportMime, exportQuality);
-    });
-  }
-
-  function renderThumbnailDataUrl(imgObj, cState, thumbW = 76, thumbH = 101, isTransparent = false) {
-    if (!imgObj) return '';
-    const tCanvas = document.createElement('canvas');
-    tCanvas.width = thumbW;
-    tCanvas.height = thumbH;
-    const ctx = tCanvas.getContext('2d');
-
-    const imgW = imgObj.naturalWidth || imgObj.width || 1200;
-    const imgH = imgObj.naturalHeight || imgObj.height || 1600;
-
-    const baseScale = Math.max(FRAME_W / imgW, FRAME_H / imgH);
-    const scaledW = imgW * baseScale * (cState.zoom || 1);
-    const scaledH = imgH * baseScale * (cState.zoom || 1);
-
-    const scaleFactor = thumbW / FRAME_W;
-    const drawX = cState.offsetX * scaleFactor;
-    const drawY = cState.offsetY * scaleFactor;
-    const drawW = scaledW * scaleFactor;
-    const drawH = scaledH * scaleFactor;
-
-    if (!isTransparent) {
-      ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, thumbW, thumbH);
-    } else {
-      ctx.clearRect(0, 0, thumbW, thumbH);
+      return tCanvas.toDataURL('image/jpeg', 0.85);
+    } catch (err) {
+      console.warn('Thumbnail export toDataURL prevented by CORS:', err);
+      return '';
     }
-    ctx.drawImage(imgObj, drawX, drawY, drawW, drawH);
-    return tCanvas.toDataURL('image/jpeg', 0.85);
   }
 
   function autoDetectFocalPoint() {
@@ -1083,7 +1260,43 @@ document.addEventListener('DOMContentLoaded', () => {
           btnSubmitIssue.disabled = false;
         }
       } else {
-        imageUrl = document.getElementById('sub-url').value;
+        const rawUrl = subUrl ? subUrl.value.trim() : '';
+        if (!rawUrl) {
+          alert('Please enter a valid image URL.');
+          return;
+        }
+        imageUrl = rawUrl;
+
+        // If user adjusted crop and image is loaded, try exporting cropped blob if CORS allows
+        if (cropImageObj && singleUrlImgObj) {
+          selectedFileMeta = `${singleUrlImgObj.naturalWidth || singleUrlImgObj.width} × ${singleUrlImgObj.naturalHeight || singleUrlImgObj.height} px · Direct URL`;
+          const fileName = rawUrl.split('/').pop().split('?')[0] || 'screensaver.jpg';
+          const isTransCat = category.toLowerCase().includes('transparent');
+
+          try {
+            if (btnSubmitIssue) {
+              btnSubmitIssue.textContent = 'Processing 3:4 crop... ⏳';
+              btnSubmitIssue.disabled = true;
+            }
+            const croppedBlob = await renderExportBlob(cropImageObj, cropState, 'image/jpeg', fileName, isTransCat);
+            if (croppedBlob) {
+              const uploadedUrl = await uploadImageFile(croppedBlob, fileName, (msg) => {
+                if (btnSubmitIssue) btnSubmitIssue.textContent = `${msg} ⏳`;
+              });
+              if (uploadedUrl) {
+                imageUrl = uploadedUrl;
+                fileNotice = '3:4 cropped image automatically uploaded! A Pull Request will be created for review.';
+              }
+            }
+          } catch (cropErr) {
+            console.log('Single URL cropped export note:', cropErr);
+          } finally {
+            if (btnSubmitIssue) {
+              btnSubmitIssue.textContent = 'Continue to GitHub Submission →';
+              btnSubmitIssue.disabled = false;
+            }
+          }
+        }
       }
 
       const subTags = document.getElementById('sub-tags') ? document.getElementById('sub-tags').value.trim() : '';
@@ -1117,6 +1330,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (selectedFileMeta) {
         bodyLines.push(``, `**Specs:** ${selectedFileMeta}`);
+      }
+      if (cropImageObj && cropState && (cropState.zoom !== 1 || cropState.offsetX !== 0 || cropState.offsetY !== 0)) {
+        bodyLines.push(`**Crop Settings:** 3:4 E-Ink Frame (Zoom: ${cropState.zoom.toFixed(2)}x, Offset: ${Math.round(cropState.offsetX)}, ${Math.round(cropState.offsetY)})`);
       }
       if (fileNotice) {
         bodyLines.push(``, `> 💡 ${fileNotice}`);
@@ -1349,21 +1565,19 @@ document.addEventListener('DOMContentLoaded', () => {
         tags: '',
         cropState: { zoom: 1, offsetX: 0, offsetY: 0, isCustom: false },
         previewUrl: url,
-        imgObj: null
+        imgObj: null,
+        loadStatus: 'loading'
       };
 
       bulkQueue.push(queueItem);
 
-      const img = new Image();
-      img.crossOrigin = 'Anonymous';
-      img.onload = () => {
-        queueItem.imgObj = img;
+      loadQueueItemImage(queueItem, (loadedImg, isCorsClean) => {
         try {
-          const offsets = computeFocalPointOffsets(img, 1);
+          const offsets = computeFocalPointOffsets(loadedImg, 1);
           queueItem.cropState.offsetX = offsets.offsetX;
           queueItem.cropState.offsetY = offsets.offsetY;
           const isTrans = queueItem.category.toLowerCase().includes('transparent');
-          const thumbUrl = renderThumbnailDataUrl(img, queueItem.cropState, 76, 101, isTrans);
+          const thumbUrl = renderThumbnailDataUrl(loadedImg, queueItem.cropState, 76, 101, isTrans);
           if (thumbUrl) {
             queueItem.previewUrl = thumbUrl;
           }
@@ -1371,11 +1585,10 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log('Cross-origin canvas preview note:', corsErr);
         }
         renderBulkQueue();
-      };
-      img.onerror = () => {
-        console.warn('Could not load image preview for URL:', url);
-      };
-      img.src = url;
+      }, (err) => {
+        console.warn('Could not load image preview for URL:', url, err);
+        renderBulkQueue();
+      });
     });
 
     renderBulkQueue();
@@ -1475,14 +1688,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<button type="button" class="tag-btn cat-pill ${isActive ? 'active' : ''}" data-cat="${cat}">${cat}</button>`;
       }).join('');
 
-      const cropStatusText = item.cropState && item.cropState.isCustom
+      let cropStatusText = item.cropState && item.cropState.isCustom
         ? `✓ Custom (${item.cropState.zoom.toFixed(1)}x)`
         : `⚡ Auto-crop (3:4)`;
-      const cropBadgeClass = item.cropState && item.cropState.isCustom ? 'bulk-crop-status-badge customized' : 'bulk-crop-status-badge';
+      let cropBadgeClass = item.cropState && item.cropState.isCustom ? 'bulk-crop-status-badge customized' : 'bulk-crop-status-badge';
+
+      if (item.loadStatus === 'error') {
+        cropStatusText = '⚠️ Check Link';
+        cropBadgeClass = 'bulk-crop-status-badge error';
+      } else if (item.loadStatus === 'loading') {
+        cropStatusText = '⏳ Loading...';
+        cropBadgeClass = 'bulk-crop-status-badge loading';
+      }
 
       card.innerHTML = `
         <div class="bulk-item-thumb-wrap" title="Click to edit 3:4 crop">
-          <img class="bulk-item-thumb" src="${item.previewUrl}" alt="Queue Thumbnail">
+          <img class="bulk-item-thumb" src="${item.previewUrl}" alt="Queue Thumbnail" onerror="this.style.opacity=0.35;">
           <div class="bulk-thumb-edit-overlay">
             <span>✂️</span>
             <span>Edit</span>
@@ -1533,9 +1754,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (bulkQueue[idx].imgObj) {
             const isTrans = bulkQueue[idx].category.toLowerCase().includes('transparent');
-            bulkQueue[idx].previewUrl = renderThumbnailDataUrl(bulkQueue[idx].imgObj, bulkQueue[idx].cropState, 76, 101, isTrans);
-            const thumbEl = card.querySelector('.bulk-item-thumb');
-            if (thumbEl) thumbEl.src = bulkQueue[idx].previewUrl;
+            const thumbUrl = renderThumbnailDataUrl(bulkQueue[idx].imgObj, bulkQueue[idx].cropState, 76, 101, isTrans);
+            if (thumbUrl) {
+              bulkQueue[idx].previewUrl = thumbUrl;
+              const thumbEl = card.querySelector('.bulk-item-thumb');
+              if (thumbEl) thumbEl.src = bulkQueue[idx].previewUrl;
+            }
           }
         });
       });
@@ -1587,7 +1811,8 @@ document.addEventListener('DOMContentLoaded', () => {
       bulkQueue.forEach(item => {
         item.category = val;
         if (item.imgObj) {
-          item.previewUrl = renderThumbnailDataUrl(item.imgObj, item.cropState, 76, 101, val.toLowerCase().includes('transparent'));
+          const thumbUrl = renderThumbnailDataUrl(item.imgObj, item.cropState, 76, 101, val.toLowerCase().includes('transparent'));
+          if (thumbUrl) item.previewUrl = thumbUrl;
         }
       });
       renderBulkQueue();
@@ -1625,7 +1850,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const offsets = computeFocalPointOffsets(item.imgObj, item.cropState.zoom || 1);
           item.cropState.offsetX = offsets.offsetX;
           item.cropState.offsetY = offsets.offsetY;
-          item.previewUrl = renderThumbnailDataUrl(item.imgObj, item.cropState, 76, 101, item.category.toLowerCase().includes('transparent'));
+          const thumbUrl = renderThumbnailDataUrl(item.imgObj, item.cropState, 76, 101, item.category.toLowerCase().includes('transparent'));
+          if (thumbUrl) item.previewUrl = thumbUrl;
         }
       });
       renderBulkQueue();
@@ -1658,9 +1884,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     modalCropState = {
-      zoom: item.cropState.zoom || 1,
-      offsetX: item.cropState.offsetX || 0,
-      offsetY: item.cropState.offsetY || 0,
+      zoom: (item.cropState && item.cropState.zoom) || 1,
+      offsetX: (item.cropState && item.cropState.offsetX) || 0,
+      offsetY: (item.cropState && item.cropState.offsetY) || 0,
       isDragging: false,
       startX: 0,
       startY: 0
@@ -1673,31 +1899,29 @@ document.addEventListener('DOMContentLoaded', () => {
       modalZoomVal.textContent = modalCropState.zoom.toFixed(1) + 'x';
     }
 
-    if (modalOrigSpecs && item.imgObj) {
-      const sizeStr = item.file ? `${(item.file.size / 1024).toFixed(0)} KB` : 'Direct Image URL';
-      modalOrigSpecs.textContent = `${item.imgObj.naturalWidth || item.imgObj.width} × ${item.imgObj.naturalHeight || item.imgObj.height} px · ${sizeStr}`;
-    }
-
-    if (!item.imgObj) {
-      const tempImg = new Image();
-      tempImg.crossOrigin = 'Anonymous';
-      tempImg.onload = () => {
-        item.imgObj = tempImg;
-        if (modalOrigSpecs) {
-          const sizeStr = item.file ? `${(item.file.size / 1024).toFixed(0)} KB` : 'Direct Image URL';
-          modalOrigSpecs.textContent = `${tempImg.naturalWidth} × ${tempImg.naturalHeight} px · ${sizeStr}`;
-        }
-        drawModalCropper();
-      };
-      tempImg.src = item.file ? URL.createObjectURL(item.file) : (item.url || item.previewUrl);
-    } else {
-      drawModalCropper();
+    if (modalOrigSpecs) {
+      modalOrigSpecs.textContent = 'Loading specs...';
     }
 
     if (imageEditorModalBackdrop) {
       imageEditorModalBackdrop.style.display = 'flex';
       setTimeout(() => imageEditorModalBackdrop.classList.add('open'), 10);
     }
+
+    drawCanvasLoading(modalCropperCanvas);
+
+    loadQueueItemImage(item, (loadedImg, isCorsClean) => {
+      if (activeModalItem !== item) return;
+      if (modalOrigSpecs) {
+        const sizeStr = item.file ? `${(item.file.size / 1024).toFixed(0)} KB` : (isCorsClean ? 'Direct URL' : 'Direct URL (Display Mode)');
+        modalOrigSpecs.textContent = `${loadedImg.naturalWidth || loadedImg.width} × ${loadedImg.naturalHeight || loadedImg.height} px · ${sizeStr}`;
+      }
+      drawModalCropper();
+    }, (err) => {
+      if (activeModalItem !== item) return;
+      if (modalOrigSpecs) modalOrigSpecs.textContent = 'Unavailable';
+      drawCanvasError(modalCropperCanvas);
+    });
   }
 
   function closeImageEditorModal() {
@@ -1803,7 +2027,10 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       const isTrans = activeModalItem.category && activeModalItem.category.toLowerCase().includes('transparent');
-      activeModalItem.previewUrl = renderThumbnailDataUrl(activeModalItem.imgObj, activeModalItem.cropState, 76, 101, isTrans);
+      const thumbUrl = renderThumbnailDataUrl(activeModalItem.imgObj, activeModalItem.cropState, 76, 101, isTrans);
+      if (thumbUrl) {
+        activeModalItem.previewUrl = thumbUrl;
+      }
 
       renderBulkQueue();
       showToast(`Updated 3:4 crop for "${activeModalItem.title}"!`);
@@ -1853,6 +2080,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           }
           imageUrl = await uploadImageFile(fileToUpload, fileName);
+        } else if (imageUrl && item.imgObj && item.cropState && item.cropState.isCustom) {
+          // If it's a URL with custom crop and CORS allows blob export:
+          try {
+            const croppedBlob = await renderExportBlob(item.imgObj, item.cropState, 'image/jpeg', fileName, isTrans);
+            if (croppedBlob) {
+              const uploadedUrl = await uploadImageFile(croppedBlob, fileName);
+              if (uploadedUrl) {
+                imageUrl = uploadedUrl;
+              }
+            }
+          } catch (urlCropErr) {
+            console.log('Using original image URL fallback:', urlCropErr);
+          }
         }
 
         completedCount++;
@@ -1873,6 +2113,7 @@ document.addEventListener('DOMContentLoaded', () => {
           tags: item.tags && item.tags.trim() ? item.tags.trim() : '',
           fileName: fileName,
           imageUrl: imageUrl,
+          cropState: item.cropState,
           fileSizeKb: item.file ? (item.file.size / 1024).toFixed(0) : 'Direct URL'
         };
       };
@@ -1918,6 +2159,9 @@ document.addEventListener('DOMContentLoaded', () => {
           `**Category:** ${item.category}`,
           `**Filename:** ${item.fileName}`
         );
+        if (item.cropState && item.cropState.isCustom) {
+          bodyLines.push(`**Crop:** Custom 3:4 (Zoom: ${item.cropState.zoom.toFixed(2)}x, Offset: ${Math.round(item.cropState.offsetX)}, ${Math.round(item.cropState.offsetY)})`);
+        }
         if (item.tags) bodyLines.push(`**Tags:** ${item.tags}`);
         bodyLines.push(`**Image:** ${item.imageUrl}`);
         if (item.imageUrl && item.imageUrl.startsWith('http')) {
@@ -1952,6 +2196,9 @@ document.addEventListener('DOMContentLoaded', () => {
             `- **Category:** ${item.category}`,
             `- **Filename:** ${item.fileName}`
           );
+          if (item.cropState && item.cropState.isCustom) {
+            bodyLines.push(`- **Crop:** Custom 3:4 (Zoom: ${item.cropState.zoom.toFixed(2)}x, Offset: ${Math.round(item.cropState.offsetX)}, ${Math.round(item.cropState.offsetY)})`);
+          }
           if (item.tags) bodyLines.push(`- **Tags:** ${item.tags}`);
           bodyLines.push(`- **Image:** ${item.imageUrl}`);
           if (item.imageUrl && item.imageUrl.startsWith('http')) {
