@@ -515,3 +515,25 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Woman reading in sunset | liftarn | Minimalist, Art, Pop Culture | Community Share | liftarn |
 | Little Miss Muffet | SeriousTux | Anime, Art, Quotes, Transparent | Community Share | SeriousTux |
 | Nu à la lecture | j4p4n | Art, Pop Culture | Community Share | j4p4n |
+| Bat Woman | Bat Woman | Pop Culture, Transparent | Community Share | Bat Woman |
+| Anime Face - Cyber Eyes | DG-RA | Anime, Pop Culture, Transparent | Community Share | DG-RA |
+| Halloween Landscape | j4p4n | Nature, Pop Culture, Religion | Community Share | j4p4n |
+| Water Witch | Crash | Fantasy, Anime, Pop Culture, Transparent | Community Share | Crash |
+| Lace | crazysnor1ax on tumblr | Pop Culture, Transparent | Community Share | crazysnor1ax on tumblr |
+| Happy Crack | Community | Minimalist, Sci-Fi, Abstract, Pop Culture | Community Share | Community |
+| Cookbook | Community | Minimalist, Sci-Fi | Community Share | Community |
+| Dharma Light | Community | Minimalist, Pop Culture | Community Share | Community |
+| Dharma Dark | Community | Minimalist, Pop Culture | Community Share | Community |
+| Dharma Transparent | Community | Minimalist, Pop Culture, Transparent | Community Share | Community |
+| Don't Panic Solid | Community | Minimalist, Sci-Fi, Pop Culture | Community Share | Community |
+| Don't Panic transparent logo | Community | Minimalist, Sci-Fi, Pop Culture, Transparent | Community Share | Community |
+| Don't Panic transparent background | Community | Minimalist, Sci-Fi, Pop Culture, Transparent | Community Share | Community |
+| Ode To Spot | Community | Minimalist | Community Share | Community |
+| Spaceballs the wallpaper | Community | Minimalist | Community Share | Community |
+| Abstract butterfly | Firkin | Minimalist, Nature, Abstract, Transparent | Community Share | Firkin |
+| Bird Stained Glass | gustavorezende | Minimalist, Nature, Abstract, Art, Transparent | Community Share | gustavorezende |
+| Party in the intestines | Moini | Art, Pop Culture, Transparent | Community Share | Moini |
+| Fingerprint Search | eady | Transparent | Community Share | eady |
+| School in fall | Anonymous | Nature, Transparent | Community Share | Anonymous |
+| Holy Family in Stained Glass | bnsonger47 | Abstract, Art, Pop Culture, Transparent | Community Share | bnsonger47 |
+| Woman face | gustavorezende | Art, Transparent | Community Share | gustavorezende |
