@@ -537,3 +537,5 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | School in fall | Anonymous | Nature, Transparent | Community Share | Anonymous |
 | Holy Family in Stained Glass | bnsonger47 | Abstract, Art, Pop Culture, Transparent | Community Share | bnsonger47 |
 | Woman face | gustavorezende | Art, Transparent | Community Share | gustavorezende |
+| Homer in Bush | Matt Groening | Pop Culture, Transparent | Community Share | Matt Groening |
+| Pokémon warriors: fire vs water | 12_inch_pianist | Pop Culture, Transparent | Community Share | 12_inch_pianist |

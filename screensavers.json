@@ -16712,5 +16712,54 @@
       "woman",
       "young"
     ]
+  },
+  {
+    "id": "homer-in-bush",
+    "title": "Homer in Bush",
+    "author": "Matt Groening",
+    "category": [
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/homer-in-bush.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/homer-in-bush.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/homer-in-bush.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "simpsons",
+      "homer simpson",
+      "transparent"
+    ]
+  },
+  {
+    "id": "pok-mon-warriors-fire-vs-water",
+    "title": "Pokémon warriors: fire vs water",
+    "author": "12_inch_pianist",
+    "category": [
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/pok-mon-warriors-fire-vs-water.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/pok-mon-warriors-fire-vs-water.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/pok-mon-warriors-fire-vs-water.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "charizard",
+      "blastoise",
+      "transparent",
+      "pokemon"
+    ]
   }
 ]
