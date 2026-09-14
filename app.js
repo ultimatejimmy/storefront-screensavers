@@ -21,11 +21,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const RATINGS_API_URL = 'https://storefront-vote.ultimatejimmy.workers.dev';
   let liveRatings = {};
 
+  const BASE_IMAGE_URL = 'https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images';
+
   // Fetch catalog & sync live ratings from Cloudflare worker
   fetch(`screensavers.json?t=${Date.now()}`, { cache: 'no-cache' })
     .then(res => res.json())
     .then(data => {
-      catalogData = data.map((item, idx) => ({ ...item, _originalIndex: idx }));
+      catalogData = data.map((item, idx) => {
+        const ext = item.ext || (item.fullUrl && item.fullUrl.endsWith('.png') ? 'png' : 'jpg');
+        return {
+          ...item,
+          _originalIndex: idx,
+          fullUrl: item.fullUrl || `${BASE_IMAGE_URL}/${item.id}.${ext}`,
+          thumbnailUrl: item.thumbnailUrl || `${BASE_IMAGE_URL}/thumbnails/${item.id}.${ext}`,
+          pluginThumbnailUrl: item.pluginThumbnailUrl || `${BASE_IMAGE_URL}/thumbnails/plugin/${item.id}.${ext}`,
+        };
+      });
       applyFilters();
       fetchLiveRatings();
     })

@@ -162,8 +162,15 @@ def main():
     except Exception as e:
         print(f"Warning rebuilding credits: {e}")
 
+    try:
+        from generate_catalogs import generate_catalogs
+        generate_catalogs()
+        print("Generated optimized screensavers.lite.json and screensavers.min.json.")
+    except Exception as e:
+        print(f"Warning generating optimized catalogs: {e}")
+
     # Commit and push
-    run(f'git add screensavers.json CREDITS.md')
+    run(f'git add screensavers.json screensavers.lite.json screensavers.min.json CREDITS.md')
     commit_msg = f"Drop '{item_title}' (#{matched_idx}) per maintainer reject command: {reason}"
     run(f'git commit -m "{commit_msg}"')
     run(f'git push origin {branch} --force')

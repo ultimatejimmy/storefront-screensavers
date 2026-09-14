@@ -108,6 +108,13 @@ def main():
     with open(SCREENSAVERS_JSON, 'w', encoding='utf-8') as f:
         json.dump(curr_catalog, f, indent=2, ensure_ascii=False)
 
+    try:
+        from generate_catalogs import generate_catalogs
+        generate_catalogs()
+        print("Generated optimized screensavers.lite.json and screensavers.min.json.")
+    except Exception as e:
+        print(f"Warning generating optimized catalogs: {e}")
+
     # Rebuild CREDITS.md
     try:
         sys.path.insert(0, os.path.join(REPO_ROOT, 'tools'))
@@ -118,7 +125,7 @@ def main():
         print(f"Warning rebuilding credits: {e}")
 
     # Commit all
-    run('git add images/ screensavers.json CREDITS.md')
+    run('git add images/ screensavers.json screensavers.lite.json screensavers.min.json CREDITS.md')
     commit_msg = f"Consolidate {len(consolidated_items)} pending screensavers for review ({', '.join(f'#{p}' for p in [pr['number'] for pr in submission_prs])})"
     run(f'git commit -m "{commit_msg}"')
 
