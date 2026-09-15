@@ -519,7 +519,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Anime Face - Cyber Eyes | DG-RA | Anime, Pop Culture, Transparent | Community Share | DG-RA |
 | Halloween Landscape | j4p4n | Nature, Pop Culture, Religion | Community Share | j4p4n |
 | Water Witch | Crash | Fantasy, Anime, Pop Culture, Transparent | Community Share | Crash |
-| Lace | https://openclipart.org/artist/hrum | Minimalist, Transparent | Community Share | https://openclipart.org/artist/hrum |
+| Lace | crazysnor1ax on tumblr | Pop Culture, Transparent | Community Share | crazysnor1ax on tumblr |
 | Happy Crack | Community | Minimalist, Sci-Fi, Abstract, Pop Culture | Community Share | Community |
 | Cookbook | Community | Minimalist, Sci-Fi | Community Share | Community |
 | Dharma Light | Community | Minimalist, Pop Culture | Community Share | Community |
@@ -539,35 +539,36 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Woman face | gustavorezende | Art, Transparent | Community Share | gustavorezende |
 | Homer in Bush | Matt Groening | Pop Culture, Transparent | Community Share | Matt Groening |
 | Pokémon warriors: fire vs water | 12_inch_pianist | Pop Culture, Transparent | Community Share | 12_inch_pianist |
-| Ballerina | https://openclipart.org/artist/j4p4n | Art, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
-| Colin The Chef | https://openclipart.org/artist/GDJ | Anime, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/GDJ |
-| Bun Girl | https://openclipart.org/artist/j4p4n | Minimalist, Nature, Anime, Art, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
-| Winged Dragon | https://openclipart.org/artist/GusEinstein | Fantasy, Transparent | Community Share | https://openclipart.org/artist/GusEinstein |
-| Adam and Eve | https://openclipart.org/artist/j4p4n | Art, Religion, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
-| Woman Man And The Apple | https://openclipart.org/artist/j4p4n | Art, Religion, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
-| Mask | https://openclipart.org/artist/Ulrike | Minimalist, Art, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/Ulrike |
-| Hide the pain Harold | https://openclipart.org/artist/rones | Minimalist, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/rones |
-| Mr. Bean | https://openclipart.org/artist/rones | Minimalist, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/rones |
-| Ballet Dancer | https://openclipart.org/artist/oksmith | Minimalist, Art, Transparent | Community Share | https://openclipart.org/artist/oksmith |
-| Night Descends On The Desert | https://openclipart.org/artist/GDJ | Minimalist, Nature, Transparent | Community Share | https://openclipart.org/artist/GDJ |
-| Hidden boy | https://openclipart.org/artist/culturalibre | Minimalist, Anime, Transparent | Community Share | https://openclipart.org/artist/culturalibre |
-| Natural mountains and lake | https://openclipart.org/artist/Almeidah | Nature | Community Share | https://openclipart.org/artist/Almeidah |
-| Sadhu | https://openclipart.org/artist/GDJ | Minimalist, Anime, Art, Transparent | Community Share | https://openclipart.org/artist/GDJ |
-| Dream Catcher | https://openclipart.org/artist/GDJ | Minimalist, Transparent | Community Share | https://openclipart.org/artist/GDJ |
-| Traditional Dreamcatcher | https://openclipart.org/artist/GDJ | Minimalist, Transparent | Community Share | https://openclipart.org/artist/GDJ |
-| Dream Catcher (minimal) | https://openclipart.org/artist/j4p4n | Minimalist, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
-| Taj Mahal - Isolated | https://openclipart.org/artist/j4p4n | Architecture, Religion, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
-| Burglar | https://openclipart.org/artist/j4p4n | Anime, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
-| Swimsuit | https://openclipart.org/artist/j4p4n | Minimalist, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
+| Ballerina | j4p4n | Art, Transparent | Community Share | j4p4n |
+| Colin The Chef | GDJ | Anime, Pop Culture, Transparent | Community Share | GDJ |
+| Bun Girl | j4p4n | Minimalist, Nature, Anime, Art, Transparent | Community Share | j4p4n |
+| Winged Dragon | GusEinstein | Fantasy, Transparent | Community Share | GusEinstein |
+| Adam and Eve | j4p4n | Art, Religion, Transparent | Community Share | j4p4n |
+| Woman Man And The Apple | j4p4n | Art, Religion, Transparent | Community Share | j4p4n |
+| Mask | Ulrike | Minimalist, Art, Pop Culture, Transparent | Community Share | Ulrike |
+| Hide the pain Harold | rones | Minimalist, Pop Culture, Transparent | Community Share | rones |
+| Mr. Bean | rones | Minimalist, Pop Culture, Transparent | Community Share | rones |
+| Ballet Dancer | oksmith | Minimalist, Art, Transparent | Community Share | oksmith |
+| Night Descends On The Desert | GDJ | Minimalist, Nature, Transparent | Community Share | GDJ |
+| Hidden boy | culturalibre | Minimalist, Anime, Transparent | Community Share | culturalibre |
+| Natural mountains and lake | Almeidah | Nature | Community Share | Almeidah |
+| Sadhu | GDJ | Minimalist, Anime, Art, Transparent | Community Share | GDJ |
+| Dream Catcher | GDJ | Minimalist, Transparent | Community Share | GDJ |
+| Traditional Dreamcatcher | GDJ | Minimalist, Transparent | Community Share | GDJ |
+| Dream Catcher (minimal) | j4p4n | Minimalist, Transparent | Community Share | j4p4n |
+| Taj Mahal - Isolated | j4p4n | Architecture, Religion, Transparent | Community Share | j4p4n |
+| Burglar | j4p4n | Anime, Transparent | Community Share | j4p4n |
+| Swimsuit | j4p4n | Minimalist, Pop Culture, Transparent | Community Share | j4p4n |
 | Woman in Sari | j4p4n | Transparent | Community Share | j4p4n |
 | Indian Woman Dream | j4p4n | Transparent | Community Share | j4p4n |
 | Pigeons on wires | shuvashish76 | Minimalist, Nature, Transparent | Community Share | shuvashish76 |
-| Only Love | https://openclipart.org/artist/j4p4n | Quotes, Religion, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
-| Glamorous Dancing Lady | https://openclipart.org/artist/Merlin2525 | Pop Culture, Transparent | Community Share | https://openclipart.org/artist/Merlin2525 |
-| Students and Cherry blossoms | https://openclipart.org/artist/oksmith | Nature, Transparent | Community Share | https://openclipart.org/artist/oksmith |
-| Key to Life | https://openclipart.org/artist/Arvin61r58 | Quotes, Transparent | Community Share | https://openclipart.org/artist/Arvin61r58 |
-| Couple shadow | https://openclipart.org/artist/Firkin | Minimalist, Transparent | Community Share | https://openclipart.org/artist/Firkin |
-| Bride | https://openclipart.org/artist/dear_theophilus | Anime, Transparent | Community Share | https://openclipart.org/artist/dear_theophilus |
-| Bride cartoon | https://openclipart.org/artist/oksmith | Anime, Transparent | Community Share | https://openclipart.org/artist/oksmith |
-| Wedding Bride | https://openclipart.org/artist/j4p4n | Anime, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
-| Wedding Couple | https://openclipart.org/artist/oksmith | Anime, Art, Transparent | Community Share | https://openclipart.org/artist/oksmith |
+| Only Love | j4p4n | Quotes, Religion, Transparent | Community Share | j4p4n |
+| Glamorous Dancing Lady | Merlin2525 | Pop Culture, Transparent | Community Share | Merlin2525 |
+| Students and Cherry blossoms | oksmith | Nature, Transparent | Community Share | oksmith |
+| Key to Life | Arvin61r58 | Quotes, Transparent | Community Share | Arvin61r58 |
+| Couple shadow | Firkin | Minimalist, Transparent | Community Share | Firkin |
+| Bride | dear_theophilus | Anime, Transparent | Community Share | dear_theophilus |
+| Bride cartoon | oksmith | Anime, Transparent | Community Share | oksmith |
+| Wedding Bride | j4p4n | Anime, Transparent | Community Share | j4p4n |
+| Wedding Couple | oksmith | Anime, Art, Transparent | Community Share | oksmith |
+| Lace | hrum | Minimalist, Transparent | Community Share | hrum |

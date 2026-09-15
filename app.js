@@ -98,6 +98,42 @@ document.addEventListener('DOMContentLoaded', () => {
     return item.downloads || 0;
   }
 
+  function extractAuthorFromUrl(str) {
+    if (!str) return { name: '', url: '' };
+    const trimmed = str.trim();
+    if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+      const cleanUrl = trimmed.replace(/\/+$/, '');
+      const match = cleanUrl.match(/\/(?:artist|user|u|profile)\/([^/?#]+)/i);
+      let name = '';
+      if (match) {
+        name = decodeURIComponent(match[1]);
+      } else {
+        const parts = cleanUrl.split('/').filter(p => p && !p.endsWith(':'));
+        name = parts.length > 0 ? decodeURIComponent(parts[parts.length - 1]) : cleanUrl;
+      }
+      return { name, url: trimmed };
+    }
+    return { name: trimmed, url: '' };
+  }
+
+  function formatAuthorDisplay(author, authorUrl) {
+    if (!author) return 'Community';
+    let cleanName = author.trim();
+    let url = (authorUrl && authorUrl.trim()) || '';
+
+    // If author itself is a URL
+    if (cleanName.startsWith('http://') || cleanName.startsWith('https://')) {
+      const parsed = extractAuthorFromUrl(cleanName);
+      cleanName = parsed.name;
+      if (!url) url = parsed.url;
+    }
+
+    if (url) {
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">${cleanName}</a>`;
+    }
+    return cleanName;
+  }
+
   function renderGallery(items) {
     const grid = document.getElementById('wallpaper-grid');
     grid.innerHTML = '';
@@ -112,9 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = 'card';
       card.id = `item-${item.id}`;
 
-      const authorDisplay = item.authorUrl
-        ? `<a href="${item.authorUrl}" target="_blank" style="color: inherit; text-decoration: underline;">${item.author}</a>`
-        : item.author;
+      const authorDisplay = formatAuthorDisplay(item.author, item.authorUrl);
 
       let attributionHtml = '';
       if (item.license || item.sourceUrl) {
@@ -1310,6 +1344,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      const subAuthorInput = document.getElementById('sub-author');
+      const authorVal = subAuthorInput ? subAuthorInput.value.trim() : author;
+      const parsedAuthor = extractAuthorFromUrl(authorVal);
+      const authorUrl = (subAuthorInput && subAuthorInput.dataset.authorUrl) || parsedAuthor.url;
+      const finalAuthorName = parsedAuthor.url ? parsedAuthor.name : (authorVal || 'Community');
+      const authorLine = authorUrl ? `[${finalAuthorName}](${authorUrl})` : finalAuthorName;
+
       const subTags = document.getElementById('sub-tags') ? document.getElementById('sub-tags').value.trim() : '';
       const fileName = (currentMode === 'file' && selectedFile) ? selectedFile.name : (imageUrl.split('/').pop().split('?')[0] || 'screensaver.jpg');
 
@@ -1318,7 +1359,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `### Screensaver Submission`,
         ``,
         `**Title:** ${title}`,
-        `**Author:** ${author}`,
+        `**Author:** ${authorLine}`,
         `**Category:** ${category}`,
         `**Filename:** ${fileName}`,
       ];
@@ -1751,6 +1792,17 @@ document.addEventListener('DOMContentLoaded', () => {
         bulkQueue[idx].author = e.target.value;
       });
 
+      card.querySelector('.bulk-input-author').addEventListener('change', (e) => {
+        const val = e.target.value.trim();
+        const parsed = extractAuthorFromUrl(val);
+        if (parsed.url) {
+          bulkQueue[idx].author = parsed.name;
+          bulkQueue[idx].authorUrl = parsed.url;
+          e.target.value = parsed.name;
+          showToast(`Extracted artist "${parsed.name}" from link!`);
+        }
+      });
+
       card.querySelectorAll('.bulk-item-category-pills .cat-pill').forEach(pill => {
         pill.addEventListener('click', (e) => {
           e.preventDefault();
@@ -1804,9 +1856,20 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Please enter a Creator/Artist name to apply to all items.');
         return;
       }
-      bulkQueue.forEach(item => { item.author = val; });
+      const parsed = extractAuthorFromUrl(val);
+      const applyName = parsed.url ? parsed.name : val;
+      const applyUrl = parsed.url || '';
+      bulkQueue.forEach(item => {
+        item.author = applyName;
+        if (applyUrl) item.authorUrl = applyUrl;
+      });
+      if (parsed.url) {
+        bulkBatchAuthorInput.value = applyName;
+        showToast(`Extracted artist "${applyName}" and applied to all items!`);
+      } else {
+        showToast(`Applied author "${val}" to all ${bulkQueue.length} wallpapers!`);
+      }
       renderBulkQueue();
-      showToast(`Applied author "${val}" to all ${bulkQueue.length} wallpapers!`);
     });
   }
 
@@ -2116,10 +2179,19 @@ document.addEventListener('DOMContentLoaded', () => {
           failedItems.push(item);
         }
 
+        let authorVal = item.author && item.author.trim() ? item.author.trim() : 'Community';
+        let authorUrl = item.authorUrl || '';
+        const parsedAuth = extractAuthorFromUrl(authorVal);
+        if (parsedAuth.url) {
+          authorVal = parsedAuth.name;
+          if (!authorUrl) authorUrl = parsedAuth.url;
+        }
+
         return {
           index: i,
           title: item.title,
-          author: item.author && item.author.trim() ? item.author.trim() : 'Community',
+          author: authorVal,
+          authorUrl: authorUrl,
           category: item.category || 'General',
           tags: item.tags && item.tags.trim() ? item.tags.trim() : '',
           fileName: fileName,
@@ -2161,12 +2233,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (processedItems.length === 1) {
         const item = processedItems[0];
+        const authLine = item.authorUrl ? `[${item.author}](${item.authorUrl})` : item.author;
         issueTitle = encodeURIComponent(`Screensaver Submission: ${item.title}`);
         bodyLines.push(
           `### Screensaver Submission`,
           ``,
           `**Title:** ${item.title}`,
-          `**Author:** ${item.author}`,
+          `**Author:** ${authLine}`,
           `**Category:** ${item.category}`,
           `**Filename:** ${item.fileName}`
         );
@@ -2198,12 +2271,13 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
         processedItems.forEach((item, idx) => {
+          const authLine = item.authorUrl ? `[${item.author}](${item.authorUrl})` : item.author;
           bodyLines.push(
             `---`,
             ``,
             `#### Wallpaper ${idx + 1}: ${item.title}`,
             `- **Title:** ${item.title}`,
-            `- **Author:** ${item.author}`,
+            `- **Author:** ${authLine}`,
             `- **Category:** ${item.category}`,
             `- **Filename:** ${item.fileName}`
           );
@@ -2378,12 +2452,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('suggest-item-id').value = item.id || '';
     document.getElementById('suggest-target-img').src = item.thumbnailUrl || '';
     document.getElementById('suggest-target-title').textContent = item.title || 'Wallpaper';
-    document.getElementById('suggest-target-author').textContent = `by ${item.author || 'Unknown'}`;
+    document.getElementById('suggest-target-author').innerHTML = `by ${formatAuthorDisplay(item.author, item.authorUrl)}`;
 
     setDrawerTab(defaultType);
 
     document.getElementById('suggest-title').value = item.title || '';
-    document.getElementById('suggest-author').value = item.author || '';
+    document.getElementById('suggest-author').value = (extractAuthorFromUrl(item.author || '').name || item.author || '');
     document.getElementById('suggest-category').value = item.category || '';
     const suggestTagsEl = document.getElementById('suggest-tags');
     if (suggestTagsEl) {

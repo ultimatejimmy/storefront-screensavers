@@ -15206,9 +15206,9 @@
   {
     "id": "lace",
     "title": "Lace",
-    "author": "https://openclipart.org/artist/hrum",
+    "author": "crazysnor1ax on tumblr",
     "category": [
-      "Minimalist",
+      "Pop Culture",
       "Transparent"
     ],
     "compatibility": [
@@ -15219,11 +15219,8 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/lace.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/lace.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/lace.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
-      "lace",
-      "purple",
+      "Silksong",
       "transparent"
     ]
   },
@@ -15667,7 +15664,7 @@
   {
     "id": "ballerina",
     "title": "Ballerina",
-    "author": "https://openclipart.org/artist/j4p4n",
+    "author": "j4p4n",
     "category": [
       "Art",
       "Transparent"
@@ -15680,8 +15677,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ballerina.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/ballerina.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ballerina.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "ballerina",
       "dance",
@@ -15691,12 +15686,13 @@
       "tutu",
       "female",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "colin-the-chef",
     "title": "Colin The Chef",
-    "author": "https://openclipart.org/artist/GDJ",
+    "author": "GDJ",
     "category": [
       "Anime",
       "Pop Culture",
@@ -15710,8 +15706,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/colin-the-chef.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/colin-the-chef.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/colin-the-chef.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "cheif",
       "food",
@@ -15719,12 +15713,13 @@
       "splatter",
       "cook",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/GDJ"
   },
   {
     "id": "bun-girl",
     "title": "Bun Girl",
-    "author": "https://openclipart.org/artist/j4p4n",
+    "author": "j4p4n",
     "category": [
       "Minimalist",
       "Nature",
@@ -15740,8 +15735,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bun-girl.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bun-girl.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bun-girl.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "anime",
       "female",
@@ -15753,12 +15746,13 @@
       "winter",
       "sketch",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "winged-dragon",
     "title": "Winged Dragon",
-    "author": "https://openclipart.org/artist/GusEinstein",
+    "author": "GusEinstein",
     "category": [
       "Fantasy",
       "Transparent"
@@ -15771,18 +15765,17 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/winged-dragon.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/winged-dragon.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/winged-dragon.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "dragon",
       "wing",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/GusEinstein"
   },
   {
     "id": "adam-and-eve",
     "title": "Adam and Eve",
-    "author": "https://openclipart.org/artist/j4p4n",
+    "author": "j4p4n",
     "category": [
       "Art",
       "Religion",
@@ -15796,8 +15789,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/adam-and-eve.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/adam-and-eve.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/adam-and-eve.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "apple",
       "fruit",
@@ -15810,12 +15801,13 @@
       "bible",
       "christian",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "woman-man-and-the-apple",
     "title": "Woman Man And The Apple",
-    "author": "https://openclipart.org/artist/j4p4n",
+    "author": "j4p4n",
     "category": [
       "Art",
       "Religion",
@@ -15829,8 +15821,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/woman-man-and-the-apple.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/woman-man-and-the-apple.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/woman-man-and-the-apple.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "man",
       "woman",
@@ -15840,12 +15830,13 @@
       "bible",
       "christian",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "mask",
     "title": "Mask",
-    "author": "https://openclipart.org/artist/Ulrike",
+    "author": "Ulrike",
     "category": [
       "Minimalist",
       "Art",
@@ -15860,8 +15851,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/mask.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/mask.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/mask.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "mask",
       "owl",
@@ -15870,12 +15859,13 @@
       "party",
       "carnival",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/Ulrike"
   },
   {
     "id": "hide-the-pain-harold",
     "title": "Hide the pain Harold",
-    "author": "https://openclipart.org/artist/rones",
+    "author": "rones",
     "category": [
       "Minimalist",
       "Pop Culture",
@@ -15889,8 +15879,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/hide-the-pain-harold.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/hide-the-pain-harold.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/hide-the-pain-harold.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "pain",
       "meme",
@@ -15899,12 +15887,13 @@
       "man",
       "portrait",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/rones"
   },
   {
     "id": "mr-bean",
     "title": "Mr. Bean",
-    "author": "https://openclipart.org/artist/rones",
+    "author": "rones",
     "category": [
       "Minimalist",
       "Pop Culture",
@@ -15918,8 +15907,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/mr-bean.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/mr-bean.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/mr-bean.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "bean",
       "comic",
@@ -15927,12 +15914,13 @@
       "meme",
       "atkinson",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/rones"
   },
   {
     "id": "ballet-dancer",
     "title": "Ballet Dancer",
-    "author": "https://openclipart.org/artist/oksmith",
+    "author": "oksmith",
     "category": [
       "Minimalist",
       "Art",
@@ -15946,8 +15934,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ballet-dancer.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/ballet-dancer.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ballet-dancer.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "dance",
       "girl",
@@ -15955,12 +15941,13 @@
       "female",
       "woman",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/oksmith"
   },
   {
     "id": "night-descends-on-the-desert",
     "title": "Night Descends On The Desert",
-    "author": "https://openclipart.org/artist/GDJ",
+    "author": "GDJ",
     "category": [
       "Minimalist",
       "Nature",
@@ -15974,19 +15961,18 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/night-descends-on-the-desert.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/night-descends-on-the-desert.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/night-descends-on-the-desert.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "nature",
       "desert",
       "night",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/GDJ"
   },
   {
     "id": "hidden-boy",
     "title": "Hidden boy",
-    "author": "https://openclipart.org/artist/culturalibre",
+    "author": "culturalibre",
     "category": [
       "Minimalist",
       "Anime",
@@ -16000,20 +15986,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/hidden-boy.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/hidden-boy.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/hidden-boy.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "hidden",
       "boy",
       "wall",
       "game",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/culturalibre"
   },
   {
     "id": "natural-mountains-and-lake",
     "title": "Natural mountains and lake",
-    "author": "https://openclipart.org/artist/Almeidah",
+    "author": "Almeidah",
     "category": "Nature",
     "compatibility": [
       "Kindle",
@@ -16023,8 +16008,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/natural-mountains-and-lake.jpg",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/natural-mountains-and-lake.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/natural-mountains-and-lake.jpg",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "nature",
       "lake",
@@ -16032,12 +16015,13 @@
       "sky",
       "mystic",
       "water"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/Almeidah"
   },
   {
     "id": "sadhu",
     "title": "Sadhu",
-    "author": "https://openclipart.org/artist/GDJ",
+    "author": "GDJ",
     "category": [
       "Minimalist",
       "Anime",
@@ -16052,8 +16036,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/sadhu.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/sadhu.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/sadhu.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "avatar",
       "cartoon",
@@ -16065,12 +16047,13 @@
       "Indian",
       "sadhu",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/GDJ"
   },
   {
     "id": "dream-catcher",
     "title": "Dream Catcher",
-    "author": "https://openclipart.org/artist/GDJ",
+    "author": "GDJ",
     "category": [
       "Minimalist",
       "Transparent"
@@ -16083,20 +16066,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/dream-catcher.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/dream-catcher.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/dream-catcher.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "dream catcher",
       "culture",
       "ritual",
       "feather",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/GDJ"
   },
   {
     "id": "traditional-dreamcatcher",
     "title": "Traditional Dreamcatcher",
-    "author": "https://openclipart.org/artist/GDJ",
+    "author": "GDJ",
     "category": [
       "Minimalist",
       "Transparent"
@@ -16109,20 +16091,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/traditional-dreamcatcher.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/traditional-dreamcatcher.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/traditional-dreamcatcher.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "dream catcher",
       "culture",
       "ritual",
       "feather",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/GDJ"
   },
   {
     "id": "dream-catcher-minimal",
     "title": "Dream Catcher (minimal)",
-    "author": "https://openclipart.org/artist/j4p4n",
+    "author": "j4p4n",
     "category": [
       "Minimalist",
       "Transparent"
@@ -16135,20 +16116,19 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/dream-catcher-minimal.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/dream-catcher-minimal.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/dream-catcher-minimal.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "dream catcher",
       "culture",
       "ritual",
       "feather",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "taj-mahal-isolated",
     "title": "Taj Mahal - Isolated",
-    "author": "https://openclipart.org/artist/j4p4n",
+    "author": "j4p4n",
     "category": [
       "Architecture",
       "Religion",
@@ -16162,8 +16142,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/taj-mahal-isolated.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/taj-mahal-isolated.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/taj-mahal-isolated.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "India",
       "landmark",
@@ -16171,12 +16149,13 @@
       "building",
       "heritage",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "burglar",
     "title": "Burglar",
-    "author": "https://openclipart.org/artist/j4p4n",
+    "author": "j4p4n",
     "category": [
       "Anime",
       "Transparent"
@@ -16189,8 +16168,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/burglar.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/burglar.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/burglar.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "burglar",
       "robber",
@@ -16200,12 +16177,13 @@
       "bag",
       "crook",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "swimsuit",
     "title": "Swimsuit",
-    "author": "https://openclipart.org/artist/j4p4n",
+    "author": "j4p4n",
     "category": [
       "Minimalist",
       "Pop Culture",
@@ -16219,8 +16197,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/swimsuit.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/swimsuit.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/swimsuit.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "swimsuit",
       "female",
@@ -16228,7 +16204,8 @@
       "beach",
       "swiming",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "woman-in-sari",
@@ -16243,8 +16220,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/woman-in-sari.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/woman-in-sari.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/woman-in-sari.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "Indian",
       "woman",
@@ -16252,7 +16227,8 @@
       "sari",
       "traditional",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "indian-woman-dream",
@@ -16267,8 +16243,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/indian-woman-dream.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/indian-woman-dream.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/indian-woman-dream.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "Indian",
       "woman",
@@ -16278,7 +16252,8 @@
       "face",
       "bindi",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "pigeons-on-wires",
@@ -16297,8 +16272,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/pigeons-on-wires.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/pigeons-on-wires.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/pigeons-on-wires.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "birds",
       "flock",
@@ -16309,7 +16282,7 @@
   {
     "id": "only-love",
     "title": "Only Love",
-    "author": "https://openclipart.org/artist/j4p4n",
+    "author": "j4p4n",
     "category": [
       "Quotes",
       "Religion",
@@ -16323,8 +16296,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/only-love.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/only-love.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/only-love.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "peace",
       "love",
@@ -16333,12 +16304,13 @@
       "buddha",
       "quote",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "glamorous-dancing-lady",
     "title": "Glamorous Dancing Lady",
-    "author": "https://openclipart.org/artist/Merlin2525",
+    "author": "Merlin2525",
     "category": [
       "Pop Culture",
       "Transparent"
@@ -16351,8 +16323,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/glamorous-dancing-lady.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/glamorous-dancing-lady.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/glamorous-dancing-lady.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "lady",
       "girl",
@@ -16364,12 +16334,13 @@
       "young",
       "youth",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/Merlin2525"
   },
   {
     "id": "students-and-cherry-blossoms",
     "title": "Students and Cherry blossoms",
-    "author": "https://openclipart.org/artist/oksmith",
+    "author": "oksmith",
     "category": [
       "Nature",
       "Transparent"
@@ -16382,8 +16353,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/students-and-cherry-blossoms.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/students-and-cherry-blossoms.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/students-and-cherry-blossoms.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "students",
       "blossoms",
@@ -16393,12 +16362,13 @@
       "cherry",
       "sakura",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/oksmith"
   },
   {
     "id": "key-to-life",
     "title": "Key to Life",
-    "author": "https://openclipart.org/artist/Arvin61r58",
+    "author": "Arvin61r58",
     "category": [
       "Quotes",
       "Transparent"
@@ -16411,8 +16381,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/key-to-life.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/key-to-life.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/key-to-life.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "life",
       "love",
@@ -16422,12 +16390,13 @@
       "wood",
       "heart",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/Arvin61r58"
   },
   {
     "id": "couple-shadow",
     "title": "Couple shadow",
-    "author": "https://openclipart.org/artist/Firkin",
+    "author": "Firkin",
     "category": [
       "Minimalist",
       "Transparent"
@@ -16440,8 +16409,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/couple-shadow.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/couple-shadow.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/couple-shadow.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "love",
       "couple",
@@ -16454,12 +16421,13 @@
       "pattern",
       "young",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/Firkin"
   },
   {
     "id": "bride",
     "title": "Bride",
-    "author": "https://openclipart.org/artist/dear_theophilus",
+    "author": "dear_theophilus",
     "category": [
       "Anime",
       "Transparent"
@@ -16472,8 +16440,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bride.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bride.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bride.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "bride",
       "woman",
@@ -16482,12 +16448,13 @@
       "dress",
       "beauty",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/dear_theophilus"
   },
   {
     "id": "bride-cartoon",
     "title": "Bride cartoon",
-    "author": "https://openclipart.org/artist/oksmith",
+    "author": "oksmith",
     "category": [
       "Anime",
       "Transparent"
@@ -16500,8 +16467,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bride-cartoon.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bride-cartoon.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bride-cartoon.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "bride",
       "woman",
@@ -16510,12 +16475,13 @@
       "dress",
       "beauty",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/oksmith"
   },
   {
     "id": "wedding-bride",
     "title": "Wedding Bride",
-    "author": "https://openclipart.org/artist/j4p4n",
+    "author": "j4p4n",
     "category": [
       "Anime",
       "Transparent"
@@ -16528,8 +16494,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wedding-bride.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wedding-bride.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wedding-bride.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "bride",
       "woman",
@@ -16540,12 +16504,13 @@
       "anime",
       "cartoon",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   },
   {
     "id": "wedding-couple",
     "title": "Wedding Couple",
-    "author": "https://openclipart.org/artist/oksmith",
+    "author": "oksmith",
     "category": [
       "Anime",
       "Art",
@@ -16559,8 +16524,6 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wedding-couple.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wedding-couple.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wedding-couple.png",
-    "downloads": 0,
-    "likes": 0,
     "tags": [
       "bride",
       "groom",
@@ -16573,6 +16536,30 @@
       "anime",
       "ceremony",
       "transparent"
-    ]
+    ],
+    "authorUrl": "https://openclipart.org/artist/oksmith"
+  },
+  {
+    "id": "lace-pattern",
+    "title": "Lace",
+    "author": "hrum",
+    "category": [
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/lace-pattern.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/lace-pattern.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/lace-pattern.png",
+    "tags": [
+      "lace",
+      "purple",
+      "transparent"
+    ],
+    "authorUrl": "https://openclipart.org/artist/hrum"
   }
 ]

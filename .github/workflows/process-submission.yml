@@ -122,6 +122,40 @@ jobs:
                       found.append(u)
               return found
 
+          def extract_author_info(raw_author):
+              if not raw_author:
+                  return "Community", None
+              raw_author = raw_author.strip()
+
+              # 1. Markdown link: [Name](URL)
+              md_m = re.match(r'^\[(.*?)\]\((https?://[^\s\)]+)\)$', raw_author)
+              if md_m:
+                  name = md_m.group(1).strip()
+                  url = md_m.group(2).strip()
+                  return name or "Community", url
+
+              # 2. Text with URL in parens: Name (URL)
+              paren_m = re.match(r'^(.*?)\s*\((https?://[^\s\)]+)\)$', raw_author)
+              if paren_m:
+                  name = paren_m.group(1).strip()
+                  url = paren_m.group(2).strip()
+                  return name or "Community", url
+
+              # 3. Direct URL
+              if raw_author.startswith('http://') or raw_author.startswith('https://'):
+                  author_url = raw_author.rstrip('/')
+                  m_artist = re.search(r'/(?:artist|user|u|profile)/([^/?#]+)', author_url, re.I)
+                  if m_artist:
+                      name = m_artist.group(1).strip()
+                  else:
+                      parts = [p for p in author_url.split('/') if p and not p.endswith(':')]
+                      name = parts[-1] if len(parts) > 1 else author_url
+                  from urllib.parse import unquote
+                  name = unquote(name).strip()
+                  return name or "Community", raw_author
+
+              return raw_author, None
+
           # Parse single or batch submission blocks
           blocks = re.split(r'(?=####\s+Wallpaper|\n---\s*\n####\s+Wallpaper|\n###\s+Wallpaper|\n###\s+Screensaver\s+Submission)', body)
           raw_entries = []
@@ -134,6 +168,20 @@ jobs:
               category_match = re.search(r'\*\*Category:\*\*\s*(.*)', block)
               filename_match = re.search(r'\*\*(?:Filename|Replacement Filename):\*\*\s*(.*)', block)
               tags_match = re.search(r'\*\*Tags:\*\*\s*(.*)', block)
+              crop_match = re.search(r'\*\*(?:Crop|Crop Settings):\*\*\s*(.*)', block)
+
+              crop_info = None
+              if crop_match:
+                  cm = re.search(r'Zoom:\s*([\d.]+)x,\s*Offset:\s*(-?\d+),\s*(-?\d+)', crop_match.group(1))
+                  if cm:
+                      crop_info = {
+                          'zoom': float(cm.group(1)),
+                          'offset_x': int(cm.group(2)),
+                          'offset_y': int(cm.group(3))
+                      }
+
+              raw_author = author_match.group(1).strip() if author_match else "Community"
+              author_name, author_url = extract_author_info(raw_author)
 
               url_match_str = None
               img_line = re.search(r'\*\*(?:Image|Replacement Image):\*\*\s*(.*)', block)
@@ -174,10 +222,12 @@ jobs:
 
               raw_entries.append({
                   'title': title_match.group(1).strip(),
-                  'author': author_match.group(1).strip() if author_match else "Community",
+                  'author': author_name,
+                  'author_url': author_url,
                   'category': category_match.group(1).strip() if category_match else "General",
                   'original_filename': filename_match.group(1).strip() if filename_match else "N/A",
                   'tags': tags_match.group(1).strip() if tags_match else "",
+                  'crop_info': crop_info,
                   'img_url': url_match_str.strip() if url_match_str else None
               })
 
@@ -247,6 +297,34 @@ jobs:
               y = (target_h - img_rgba.height) // 2
               bg.paste(img_rgba, (x, y), img_rgba)
               return bg.convert('RGB')
+
+          def apply_crop(img, zoom, offset_x, offset_y, is_transparent):
+              TARGET_W = 1860
+              TARGET_H = 2480
+              FRAME_W = 270
+              FRAME_H = 360
+
+              img_w, img_h = img.size
+              base_scale = max(FRAME_W / img_w, FRAME_H / img_h)
+              scaled_w = img_w * base_scale * zoom
+              scaled_h = img_h * base_scale * zoom
+
+              scale_factor = TARGET_W / FRAME_W
+              draw_x = round(offset_x * scale_factor)
+              draw_y = round(offset_y * scale_factor)
+              draw_w = round(scaled_w * scale_factor)
+              draw_h = round(scaled_h * scale_factor)
+
+              resized_img = img.resize((draw_w, draw_h), Image.Resampling.LANCZOS)
+
+              if is_transparent:
+                  canvas = Image.new('RGBA', (TARGET_W, TARGET_H), (0, 0, 0, 0))
+                  canvas.paste(resized_img, (draw_x, draw_y), resized_img if resized_img.mode == 'RGBA' else None)
+              else:
+                  canvas = Image.new('RGB', (TARGET_W, TARGET_H), (0, 0, 0))
+                  canvas.paste(resized_img.convert('RGB'), (draw_x, draw_y))
+
+              return canvas
 
           def download_and_resolve_image(img_url, title):
               """
@@ -330,13 +408,23 @@ jobs:
           processed_items = []
           validation_errors = []
           used_ids = set()
+          if os.path.exists('screensavers.json'):
+              try:
+                  with open('screensavers.json', 'r', encoding='utf-8') as sjf:
+                      for it in json.load(sjf):
+                          if 'id' in it:
+                              used_ids.add(it['id'])
+              except Exception as err_id:
+                  print(f"Warning loading existing IDs: {err_id}")
 
           for idx, entry in enumerate(raw_entries):
               title = entry['title']
               author = entry['author']
+              author_url = entry.get('author_url')
               category = entry['category']
               original_filename = entry['original_filename']
               sub_tags = entry['tags']
+              crop_info = entry.get('crop_info')
               img_url = entry['img_url']
 
               if not img_url:
@@ -414,13 +502,16 @@ jobs:
                   thumb_plugin_path = f'images/thumbnails/plugin/{item_id}.png'
 
                   img_rgba = img.convert('RGBA')
-                  master_transparent = fit_transparent(img_rgba.copy(), 1860, 2480)
+                  if crop_info:
+                      master_transparent = apply_crop(img_rgba, crop_info['zoom'], crop_info['offset_x'], crop_info['offset_y'], True)
+                  else:
+                      master_transparent = fit_transparent(img_rgba.copy(), 1860, 2480)
                   master_transparent.save(full_path, 'PNG')
 
-                  web_thumb = fit_transparent(img_rgba.copy(), 600, 800)
+                  web_thumb = master_transparent.resize((600, 800), Image.Resampling.LANCZOS)
                   web_thumb.save(thumb_web_path, 'PNG')
 
-                  plugin_thumb = composite_over_checkerboard(img_rgba.copy(), 600, 800)
+                  plugin_thumb = composite_over_checkerboard(web_thumb.copy(), 600, 800)
                   plugin_thumb.save(thumb_plugin_path, 'PNG')
               else:
                   full_path = f'images/{item_id}.jpg'
@@ -428,11 +519,16 @@ jobs:
                   thumb_plugin_path = None
 
                   img_rgb = img.convert('RGB')
-                  master_img = ImageOps.fit(img_rgb, (1860, 2480), Image.Resampling.LANCZOS)
-                  master_img.save(full_path, 'JPEG', quality=92)
-
-                  thumb_img = ImageOps.fit(img_rgb, (600, 800), Image.Resampling.LANCZOS)
-                  thumb_img.save(thumb_web_path, 'JPEG', quality=85)
+                  if crop_info:
+                      master_img = apply_crop(img_rgb, crop_info['zoom'], crop_info['offset_x'], crop_info['offset_y'], False)
+                      master_img.save(full_path, 'JPEG', quality=92)
+                      thumb_img = master_img.resize((600, 800), Image.Resampling.LANCZOS)
+                      thumb_img.save(thumb_web_path, 'JPEG', quality=85)
+                  else:
+                      master_img = ImageOps.fit(img_rgb, (1860, 2480), Image.Resampling.LANCZOS)
+                      master_img.save(full_path, 'JPEG', quality=92)
+                      thumb_img = ImageOps.fit(img_rgb, (600, 800), Image.Resampling.LANCZOS)
+                      thumb_img.save(thumb_web_path, 'JPEG', quality=85)
 
               raw_base = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
               full_url = raw_base + full_path
@@ -460,14 +556,18 @@ jobs:
                   "likes": 0,
                   "tags": tag_list
               }
+              if author_url:
+                  cat_entry["authorUrl"] = author_url
 
               processed_items.append({
                   'item_id': item_id,
                   'title': title,
                   'author': author,
+                  'author_url': author_url,
                   'category': category,
                   'original_filename': original_filename,
                   'tags': sub_tags,
+                  'crop_info': crop_info,
                   'img_url': img_url,
                   'is_transparent': is_transparent,
                   'full_path': full_path,
