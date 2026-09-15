@@ -15206,9 +15206,9 @@
   {
     "id": "lace",
     "title": "Lace",
-    "author": "crazysnor1ax on tumblr",
+    "author": "https://openclipart.org/artist/hrum",
     "category": [
-      "Pop Culture",
+      "Minimalist",
       "Transparent"
     ],
     "compatibility": [
@@ -15219,8 +15219,11 @@
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/lace.png",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/lace.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/lace.png",
+    "downloads": 0,
+    "likes": 0,
     "tags": [
-      "silksong",
+      "lace",
+      "purple",
       "transparent"
     ]
   },
@@ -16300,6 +16303,275 @@
       "birds",
       "flock",
       "pigeons",
+      "transparent"
+    ]
+  },
+  {
+    "id": "only-love",
+    "title": "Only Love",
+    "author": "https://openclipart.org/artist/j4p4n",
+    "category": [
+      "Quotes",
+      "Religion",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/only-love.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/only-love.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/only-love.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "peace",
+      "love",
+      "hate",
+      "religion",
+      "buddha",
+      "quote",
+      "transparent"
+    ]
+  },
+  {
+    "id": "glamorous-dancing-lady",
+    "title": "Glamorous Dancing Lady",
+    "author": "https://openclipart.org/artist/Merlin2525",
+    "category": [
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/glamorous-dancing-lady.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/glamorous-dancing-lady.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/glamorous-dancing-lady.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "lady",
+      "girl",
+      "female",
+      "woman",
+      "dance",
+      "party",
+      "celebration",
+      "young",
+      "youth",
+      "transparent"
+    ]
+  },
+  {
+    "id": "students-and-cherry-blossoms",
+    "title": "Students and Cherry blossoms",
+    "author": "https://openclipart.org/artist/oksmith",
+    "category": [
+      "Nature",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/students-and-cherry-blossoms.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/students-and-cherry-blossoms.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/students-and-cherry-blossoms.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "students",
+      "blossoms",
+      "uniform",
+      "school",
+      "spring",
+      "cherry",
+      "sakura",
+      "transparent"
+    ]
+  },
+  {
+    "id": "key-to-life",
+    "title": "Key to Life",
+    "author": "https://openclipart.org/artist/Arvin61r58",
+    "category": [
+      "Quotes",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/key-to-life.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/key-to-life.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/key-to-life.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "life",
+      "love",
+      "quote",
+      "key",
+      "poster",
+      "wood",
+      "heart",
+      "transparent"
+    ]
+  },
+  {
+    "id": "couple-shadow",
+    "title": "Couple shadow",
+    "author": "https://openclipart.org/artist/Firkin",
+    "category": [
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/couple-shadow.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/couple-shadow.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/couple-shadow.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "love",
+      "couple",
+      "shadow",
+      "brick",
+      "wall",
+      "romance",
+      "cute",
+      "texture",
+      "pattern",
+      "young",
+      "transparent"
+    ]
+  },
+  {
+    "id": "bride",
+    "title": "Bride",
+    "author": "https://openclipart.org/artist/dear_theophilus",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bride.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bride.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bride.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "bride",
+      "woman",
+      "flower",
+      "roses",
+      "dress",
+      "beauty",
+      "transparent"
+    ]
+  },
+  {
+    "id": "bride-cartoon",
+    "title": "Bride cartoon",
+    "author": "https://openclipart.org/artist/oksmith",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bride-cartoon.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bride-cartoon.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bride-cartoon.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "bride",
+      "woman",
+      "flower",
+      "roses",
+      "dress",
+      "beauty",
+      "transparent"
+    ]
+  },
+  {
+    "id": "wedding-bride",
+    "title": "Wedding Bride",
+    "author": "https://openclipart.org/artist/j4p4n",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wedding-bride.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wedding-bride.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wedding-bride.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "bride",
+      "woman",
+      "flower",
+      "roses",
+      "dress",
+      "beauty",
+      "anime",
+      "cartoon",
+      "transparent"
+    ]
+  },
+  {
+    "id": "wedding-couple",
+    "title": "Wedding Couple",
+    "author": "https://openclipart.org/artist/oksmith",
+    "category": [
+      "Anime",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wedding-couple.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wedding-couple.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wedding-couple.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "bride",
+      "groom",
+      "couple",
+      "wedding",
+      "marriage",
+      "husband",
+      "wife",
+      "comic",
+      "anime",
+      "ceremony",
       "transparent"
     ]
   }
