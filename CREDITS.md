@@ -519,7 +519,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Anime Face - Cyber Eyes | DG-RA | Anime, Pop Culture, Transparent | Community Share | DG-RA |
 | Halloween Landscape | j4p4n | Nature, Pop Culture, Religion | Community Share | j4p4n |
 | Water Witch | Crash | Fantasy, Anime, Pop Culture, Transparent | Community Share | Crash |
-| Lace | crazysnor1ax on tumblr | Pop Culture, Transparent | Community Share | crazysnor1ax on tumblr |
+| Lace | https://openclipart.org/artist/hrum | Minimalist, Transparent | Community Share | https://openclipart.org/artist/hrum |
 | Happy Crack | Community | Minimalist, Sci-Fi, Abstract, Pop Culture | Community Share | Community |
 | Cookbook | Community | Minimalist, Sci-Fi | Community Share | Community |
 | Dharma Light | Community | Minimalist, Pop Culture | Community Share | Community |
@@ -562,3 +562,12 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Woman in Sari | j4p4n | Transparent | Community Share | j4p4n |
 | Indian Woman Dream | j4p4n | Transparent | Community Share | j4p4n |
 | Pigeons on wires | shuvashish76 | Minimalist, Nature, Transparent | Community Share | shuvashish76 |
+| Only Love | https://openclipart.org/artist/j4p4n | Quotes, Religion, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
+| Glamorous Dancing Lady | https://openclipart.org/artist/Merlin2525 | Pop Culture, Transparent | Community Share | https://openclipart.org/artist/Merlin2525 |
+| Students and Cherry blossoms | https://openclipart.org/artist/oksmith | Nature, Transparent | Community Share | https://openclipart.org/artist/oksmith |
+| Key to Life | https://openclipart.org/artist/Arvin61r58 | Quotes, Transparent | Community Share | https://openclipart.org/artist/Arvin61r58 |
+| Couple shadow | https://openclipart.org/artist/Firkin | Minimalist, Transparent | Community Share | https://openclipart.org/artist/Firkin |
+| Bride | https://openclipart.org/artist/dear_theophilus | Anime, Transparent | Community Share | https://openclipart.org/artist/dear_theophilus |
+| Bride cartoon | https://openclipart.org/artist/oksmith | Anime, Transparent | Community Share | https://openclipart.org/artist/oksmith |
+| Wedding Bride | https://openclipart.org/artist/j4p4n | Anime, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
+| Wedding Couple | https://openclipart.org/artist/oksmith | Anime, Art, Transparent | Community Share | https://openclipart.org/artist/oksmith |
