@@ -549,3 +549,13 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Hide the pain Harold | https://openclipart.org/artist/rones | Minimalist, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/rones |
 | Mr. Bean | https://openclipart.org/artist/rones | Minimalist, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/rones |
 | Ballet Dancer | https://openclipart.org/artist/oksmith | Minimalist, Art, Transparent | Community Share | https://openclipart.org/artist/oksmith |
+| Night Descends On The Desert | https://openclipart.org/artist/GDJ | Minimalist, Nature, Transparent | Community Share | https://openclipart.org/artist/GDJ |
+| Hidden boy | https://openclipart.org/artist/culturalibre | Minimalist, Anime, Transparent | Community Share | https://openclipart.org/artist/culturalibre |
+| Natural mountains and lake | https://openclipart.org/artist/Almeidah | Nature | Community Share | https://openclipart.org/artist/Almeidah |
+| Sadhu | https://openclipart.org/artist/GDJ | Minimalist, Anime, Art, Transparent | Community Share | https://openclipart.org/artist/GDJ |
+| Dream Catcher | https://openclipart.org/artist/GDJ | Minimalist, Transparent | Community Share | https://openclipart.org/artist/GDJ |
+| Traditional Dreamcatcher | https://openclipart.org/artist/GDJ | Minimalist, Transparent | Community Share | https://openclipart.org/artist/GDJ |
+| Dream Catcher (minimal) | https://openclipart.org/artist/j4p4n | Minimalist, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
+| Taj Mahal - Isolated | https://openclipart.org/artist/j4p4n | Architecture, Religion, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
+| Burglar | https://openclipart.org/artist/j4p4n | Anime, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
+| Swimsuit | https://openclipart.org/artist/j4p4n | Minimalist, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
