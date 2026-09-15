@@ -16226,5 +16226,29 @@
       "swiming",
       "transparent"
     ]
+  },
+  {
+    "id": "woman-in-sari",
+    "title": "Woman in Sari",
+    "author": "j4p4n",
+    "category": "Transparent",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/woman-in-sari.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/woman-in-sari.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/woman-in-sari.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Indian",
+      "woman",
+      "lady",
+      "sari",
+      "traditional",
+      "transparent"
+    ]
   }
 ]

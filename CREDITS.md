@@ -559,3 +559,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Taj Mahal - Isolated | https://openclipart.org/artist/j4p4n | Architecture, Religion, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
 | Burglar | https://openclipart.org/artist/j4p4n | Anime, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
 | Swimsuit | https://openclipart.org/artist/j4p4n | Minimalist, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
+| Woman in Sari | j4p4n | Transparent | Community Share | j4p4n |
