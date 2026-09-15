@@ -539,3 +539,13 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Woman face | gustavorezende | Art, Transparent | Community Share | gustavorezende |
 | Homer in Bush | Matt Groening | Pop Culture, Transparent | Community Share | Matt Groening |
 | Pokémon warriors: fire vs water | 12_inch_pianist | Pop Culture, Transparent | Community Share | 12_inch_pianist |
+| Ballerina | https://openclipart.org/artist/j4p4n | Art, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
+| Colin The Chef | https://openclipart.org/artist/GDJ | Anime, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/GDJ |
+| Bun Girl | https://openclipart.org/artist/j4p4n | Minimalist, Nature, Anime, Art, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
+| Winged Dragon | https://openclipart.org/artist/GusEinstein | Fantasy, Transparent | Community Share | https://openclipart.org/artist/GusEinstein |
+| Adam and Eve | https://openclipart.org/artist/j4p4n | Art, Religion, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
+| Woman Man And The Apple | https://openclipart.org/artist/j4p4n | Art, Religion, Transparent | Community Share | https://openclipart.org/artist/j4p4n |
+| Mask | https://openclipart.org/artist/Ulrike | Minimalist, Art, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/Ulrike |
+| Hide the pain Harold | https://openclipart.org/artist/rones | Minimalist, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/rones |
+| Mr. Bean | https://openclipart.org/artist/rones | Minimalist, Pop Culture, Transparent | Community Share | https://openclipart.org/artist/rones |
+| Ballet Dancer | https://openclipart.org/artist/oksmith | Minimalist, Art, Transparent | Community Share | https://openclipart.org/artist/oksmith |
