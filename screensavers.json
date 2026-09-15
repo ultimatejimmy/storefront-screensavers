@@ -16276,5 +16276,31 @@
       "bindi",
       "transparent"
     ]
+  },
+  {
+    "id": "pigeons-on-wires",
+    "title": "Pigeons on wires",
+    "author": "shuvashish76",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/pigeons-on-wires.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/pigeons-on-wires.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/pigeons-on-wires.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "birds",
+      "flock",
+      "pigeons",
+      "transparent"
+    ]
   }
 ]
