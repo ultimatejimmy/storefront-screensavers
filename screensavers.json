@@ -16561,5 +16561,164 @@
       "transparent"
     ],
     "authorUrl": "https://openclipart.org/artist/hrum"
+  },
+  {
+    "id": "under-the-wave-off-kanagawa-psychedelic",
+    "title": "Under the Wave off Kanagawa - Psychedelic",
+    "author": "j4p4n",
+    "category": [
+      "Abstract",
+      "Art",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/under-the-wave-off-kanagawa-psychedelic.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/under-the-wave-off-kanagawa-psychedelic.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/under-the-wave-off-kanagawa-psychedelic.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "waves",
+      "japan",
+      "tsunami",
+      "kanagawa",
+      "psychedelic",
+      "art"
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
+  },
+  {
+    "id": "alice-and-the-cheshire-cat",
+    "title": "Alice and the Cheshire Cat",
+    "author": "frankes",
+    "category": [
+      "Fantasy",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/alice-and-the-cheshire-cat.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/alice-and-the-cheshire-cat.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/alice-and-the-cheshire-cat.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "alice",
+      "wonderland",
+      "cat",
+      "tree",
+      "fantasy",
+      "book",
+      "children",
+      "girl",
+      "transparent"
+    ],
+    "authorUrl": "https://openclipart.org/artist/frankes"
+  },
+  {
+    "id": "alice-in-wonderland-prismatic",
+    "title": "Alice in Wonderland - Prismatic",
+    "author": "GDJ",
+    "category": [
+      "Fantasy",
+      "Abstract",
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/alice-in-wonderland-prismatic.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/alice-in-wonderland-prismatic.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/alice-in-wonderland-prismatic.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "alice",
+      "wonderland",
+      "cat",
+      "tree",
+      "fantasy",
+      "book",
+      "children",
+      "girl",
+      "prismatic",
+      "transparent"
+    ],
+    "authorUrl": "https://openclipart.org/artist/GDJ"
+  },
+  {
+    "id": "small-fairy-home",
+    "title": "Small Fairy Home",
+    "author": "j4p4n",
+    "category": [
+      "Fantasy",
+      "Anime",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/small-fairy-home.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/small-fairy-home.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/small-fairy-home.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "home",
+      "hut",
+      "sun",
+      "mushroom",
+      "art",
+      "fairy",
+      "fantasy",
+      "cartoon",
+      "transparent"
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
+  },
+  {
+    "id": "girl-with-sunglasses-blowing-a-kiss",
+    "title": "Girl with Sunglasses blowing a Kiss",
+    "author": "GDJ",
+    "category": [
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/girl-with-sunglasses-blowing-a-kiss.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/girl-with-sunglasses-blowing-a-kiss.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/girl-with-sunglasses-blowing-a-kiss.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "kiss",
+      "girl",
+      "love",
+      "glass",
+      "lady",
+      "hearts",
+      "transparent"
+    ],
+    "authorUrl": "https://openclipart.org/artist/GDJ"
   }
 ]

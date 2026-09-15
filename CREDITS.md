@@ -572,3 +572,8 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Wedding Bride | j4p4n | Anime, Transparent | Community Share | j4p4n |
 | Wedding Couple | oksmith | Anime, Art, Transparent | Community Share | oksmith |
 | Lace | hrum | Minimalist, Transparent | Community Share | hrum |
+| Under the Wave off Kanagawa - Psychedelic | j4p4n | Abstract, Art, Pop Culture | Community Share | j4p4n |
+| Alice and the Cheshire Cat | frankes | Fantasy, Art, Transparent | Community Share | frankes |
+| Alice in Wonderland - Prismatic | GDJ | Fantasy, Abstract, Art, Pop Culture, Transparent | Community Share | GDJ |
+| Small Fairy Home | j4p4n | Fantasy, Anime, Art, Transparent | Community Share | j4p4n |
+| Girl with Sunglasses blowing a Kiss | GDJ | Art, Pop Culture, Transparent | Community Share | GDJ |
