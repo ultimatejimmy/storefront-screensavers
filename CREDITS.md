@@ -572,3 +572,13 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Wedding Bride | j4p4n | Anime, Transparent | Community Share | j4p4n |
 | Wedding Couple | oksmith | Anime, Art, Transparent | Community Share | oksmith |
 | Lace | hrum | Minimalist, Transparent | Community Share | hrum |
+| Only Love | j4p4n | Quotes, Religion, Transparent | Community Share | j4p4n |
+| Glamorous Dancing Lady | Merlin2525 | Pop Culture, Transparent | Community Share | Merlin2525 |
+| Students and Cherry blossoms | oksmith | Nature, Transparent | Community Share | oksmith |
+| Key to Life | Arvin61r58 | Quotes, Transparent | Community Share | Arvin61r58 |
+| Couple shadow | Firkin | Minimalist, Transparent | Community Share | Firkin |
+| Bride | dear_theophilus | Anime, Transparent | Community Share | dear_theophilus |
+| Bride cartoon | oksmith | Anime, Transparent | Community Share | oksmith |
+| Wedding Bride | j4p4n | Anime, Transparent | Community Share | j4p4n |
+| Wedding Couple | oksmith | Anime, Art, Transparent | Community Share | oksmith |
+| Lace | hrum | Minimalist, Transparent | Community Share | hrum |
