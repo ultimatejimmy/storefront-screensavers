@@ -1748,6 +1748,111 @@ footer {
   font-size: 0.8rem;
 }
 
+/* Drawer Category Pills & Custom Input */
+.drawer-category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.drawer-category-pills .cat-pill {
+  padding: 0.35rem 0.7rem !important;
+  font-size: 0.78rem !important;
+}
+
+/* Drawer Interactive Tag Chips */
+.drawer-tags-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  min-height: 28px;
+}
+
+.drawer-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.22rem 0.55rem;
+  border-radius: 9999px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.drawer-tag-chip.is-new {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #10b981;
+}
+
+[data-theme="light"] .drawer-tag-chip.is-new {
+  color: #047857;
+  border-color: rgba(5, 150, 105, 0.4);
+}
+
+.drawer-tag-chip .btn-remove-tag {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0 2px;
+  font-size: 0.72rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.drawer-tag-chip .btn-remove-tag:hover {
+  color: #ef4444;
+  transform: scale(1.2);
+}
+
+.drawer-tag-removed {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px dashed rgba(239, 68, 68, 0.3);
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+}
+
+.drawer-tag-removed .btn-restore-tag {
+  background: none;
+  border: none;
+  color: #10b981;
+  cursor: pointer;
+  font-size: 0.7rem;
+  padding: 0;
+  text-decoration: none;
+}
+
+.drawer-tag-removed .btn-restore-tag:hover {
+  text-decoration: underline;
+}
+
+#drawer-issue-type-pills .cat-pill {
+  padding: 0.35rem 0.65rem !important;
+  font-size: 0.76rem !important;
+}
+
+#drawer-issue-type-pills .cat-pill.active {
+  background: #f59e0b !important;
+  color: #0b0f19 !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4) !important;
+}
+
 /* ==========================================================================
    Responsive Media Queries & Mobile Optimizations
    ========================================================================== */

@@ -449,6 +449,33 @@
           </div>
         </div>
 
+        <!-- Issue Report Fields (Shown in Issue tab) -->
+        <div id="group-issue-fields" style="display: none; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: var(--radius-sm); padding: 1.15rem; margin-bottom: 1.25rem;">
+          <div style="display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 1rem;">
+            <span style="font-size: 1.3rem;">⚠️</span>
+            <div>
+              <strong style="color: #fbbf24; font-size: 0.92rem; display: block;">Report Wallpaper Defect or Issue</strong>
+              <p style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.2rem; line-height: 1.4;">
+                Flag visual defects, e-ink readability issues, duplicate entries, or broken assets.
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" style="font-size: 0.82rem;">Issue Category</label>
+            <div class="category-pills" id="drawer-issue-type-pills">
+              <button type="button" class="tag-btn cat-pill active" data-value="Low Resolution / Blurry">🔍 Blurry / Low Res</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Poor Contrast on E-Ink">🌓 Bad E-Ink Contrast</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Duplicate Entry">👥 Duplicate</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Broken Image / Display Error">❌ Broken Image</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Incorrect Attribution">🏷️ Wrong Attribution</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Inappropriate Content">🚫 Inappropriate</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Other Quality Issue">📝 Other Issue</button>
+            </div>
+            <input type="hidden" id="suggest-issue-type" value="Low Resolution / Blurry">
+          </div>
+        </div>
+
         <!-- Metadata Correction Fields -->
         <div id="group-metadata-fields">
           <div class="form-group">
@@ -462,13 +489,44 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="suggest-category">Suggested Category</label>
-            <input type="text" id="suggest-category" class="form-control" placeholder="e.g. Art, Nature">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <label class="form-label" style="margin-bottom: 0;">Categories (click to add/remove)</label>
+              <span id="drawer-cat-diff-badge" style="font-size: 0.75rem; color: var(--text-muted);"></span>
+            </div>
+            <div class="category-pills drawer-category-pills" id="drawer-category-pills">
+              <button type="button" class="tag-btn cat-pill" data-value="Minimalist">Minimalist</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Nature">Nature</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Architecture">Architecture</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Fantasy">Fantasy</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Sci-Fi">Sci-Fi</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Anime">Anime</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Abstract">Abstract</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Art">Art</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Pop Culture">Pop Culture</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Quotes">Quotes</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Religion">Religion</button>
+              <button type="button" class="tag-btn cat-pill" data-value="Transparent">Transparent</button>
+            </div>
+            <div style="display: flex; gap: 0.4rem; margin-top: 0.45rem;">
+              <input type="text" id="drawer-custom-cat-input" class="form-control form-control-sm" placeholder="+ Add custom category..." style="flex: 1;">
+              <button type="button" id="btn-drawer-add-custom-cat" class="tag-btn tag-btn-sm">+ Add</button>
+            </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="suggest-tags">Suggested Tags (comma-separated)</label>
-            <input type="text" id="suggest-tags" class="form-control" placeholder="e.g. ghibli, anime, fantasy, dragon">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <label class="form-label" style="margin-bottom: 0;">Tags / Keywords</label>
+              <span id="drawer-tag-diff-badge" style="font-size: 0.75rem; color: var(--text-muted);"></span>
+            </div>
+            <div class="drawer-tags-chips" id="drawer-tags-chips"></div>
+            <div class="drawer-removed-tags-container" id="drawer-removed-tags-container" style="display: none; margin-top: 0.35rem;">
+              <span style="font-size: 0.72rem; color: #f87171; font-weight: 600; margin-right: 0.3rem;">Removed:</span>
+              <div class="drawer-removed-tags-list" id="drawer-removed-tags-list" style="display: inline-flex; flex-wrap: wrap; gap: 0.3rem;"></div>
+            </div>
+            <div style="display: flex; gap: 0.4rem; margin-top: 0.5rem;">
+              <input type="text" id="drawer-add-tag-input" class="form-control form-control-sm" placeholder="Type tag and press Enter or comma..." style="flex: 1;">
+              <button type="button" id="btn-drawer-add-tag" class="tag-btn tag-btn-sm">+ Add Tag</button>
+            </div>
           </div>
         </div>
 

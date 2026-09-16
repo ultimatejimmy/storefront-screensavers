@@ -2452,9 +2452,244 @@ document.addEventListener('DOMContentLoaded', () => {
   const drawerTabBtns = document.querySelectorAll('#drawer-action-tabs .drawer-tab-btn');
   const groupSuggestUrl = document.getElementById('group-suggest-url');
   const groupDmcaFields = document.getElementById('group-dmca-fields');
+  const groupIssueFields = document.getElementById('group-issue-fields');
   const groupMetadataFields = document.getElementById('group-metadata-fields');
   const labelSuggestReason = document.getElementById('label-suggest-reason');
   const btnSubmitSuggest = document.getElementById('btn-submit-suggest');
+
+  // Category & Tag state for drawer
+  let drawerOriginalCategories = [];
+  let drawerSelectedCategories = new Set();
+  let drawerOriginalTags = [];
+  let drawerActiveTags = [];
+  let drawerRemovedTags = new Set();
+
+  const drawerCatDiffBadge = document.getElementById('drawer-cat-diff-badge');
+  const drawerTagDiffBadge = document.getElementById('drawer-tag-diff-badge');
+  const drawerCustomCatInput = document.getElementById('drawer-custom-cat-input');
+  const btnDrawerAddCustomCat = document.getElementById('btn-drawer-add-custom-cat');
+  const drawerTagsChips = document.getElementById('drawer-tags-chips');
+  const drawerRemovedTagsContainer = document.getElementById('drawer-removed-tags-container');
+  const drawerRemovedTagsList = document.getElementById('drawer-removed-tags-list');
+  const drawerAddTagInput = document.getElementById('drawer-add-tag-input');
+  const btnDrawerAddTag = document.getElementById('btn-drawer-add-tag');
+  const drawerIssueTypePills = document.querySelectorAll('#drawer-issue-type-pills .cat-pill');
+  const suggestIssueTypeInput = document.getElementById('suggest-issue-type');
+
+  function renderDrawerCategories() {
+    const pills = document.querySelectorAll('#drawer-category-pills .cat-pill');
+    pills.forEach(pill => {
+      const val = pill.getAttribute('data-value');
+      if (drawerSelectedCategories.has(val)) {
+        pill.classList.add('active');
+      } else {
+        pill.classList.remove('active');
+      }
+    });
+
+    if (drawerCatDiffBadge) {
+      const origSet = new Set(drawerOriginalCategories);
+      const added = [...drawerSelectedCategories].filter(c => !origSet.has(c));
+      const removed = drawerOriginalCategories.filter(c => !drawerSelectedCategories.has(c));
+      if (added.length > 0 || removed.length > 0) {
+        let diffs = [];
+        if (added.length > 0) diffs.push(`+${added.length} added`);
+        if (removed.length > 0) diffs.push(`-${removed.length} removed`);
+        drawerCatDiffBadge.textContent = diffs.join(', ');
+        drawerCatDiffBadge.style.color = 'var(--accent-green)';
+      } else {
+        drawerCatDiffBadge.textContent = `${drawerSelectedCategories.size} selected`;
+        drawerCatDiffBadge.style.color = 'var(--text-muted)';
+      }
+    }
+  }
+
+  function addDrawerCategory(catName) {
+    if (!catName || !catName.trim()) return;
+    const clean = catName.trim();
+    const existingPill = document.querySelector(`#drawer-category-pills .cat-pill[data-value="${clean}"]`);
+    if (existingPill) {
+      drawerSelectedCategories.add(clean);
+    } else {
+      const pillsContainer = document.getElementById('drawer-category-pills');
+      if (pillsContainer) {
+        const newPill = document.createElement('button');
+        newPill.type = 'button';
+        newPill.className = 'tag-btn cat-pill active';
+        newPill.setAttribute('data-value', clean);
+        newPill.textContent = clean;
+        newPill.addEventListener('click', () => {
+          if (drawerSelectedCategories.has(clean)) {
+            drawerSelectedCategories.delete(clean);
+          } else {
+            drawerSelectedCategories.add(clean);
+          }
+          renderDrawerCategories();
+        });
+        pillsContainer.appendChild(newPill);
+      }
+      drawerSelectedCategories.add(clean);
+    }
+    renderDrawerCategories();
+  }
+
+  // Category pill click handler
+  const initialDrawerCatPills = document.querySelectorAll('#drawer-category-pills .cat-pill');
+  initialDrawerCatPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const val = pill.getAttribute('data-value');
+      if (drawerSelectedCategories.has(val)) {
+        drawerSelectedCategories.delete(val);
+      } else {
+        drawerSelectedCategories.add(val);
+      }
+      renderDrawerCategories();
+    });
+  });
+
+  if (btnDrawerAddCustomCat && drawerCustomCatInput) {
+    const handleAddCustomCategory = () => {
+      const val = drawerCustomCatInput.value.trim();
+      if (val) {
+        addDrawerCategory(val);
+        drawerCustomCatInput.value = '';
+      }
+    };
+    btnDrawerAddCustomCat.addEventListener('click', handleAddCustomCategory);
+    drawerCustomCatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleAddCustomCategory();
+      }
+    });
+  }
+
+  function renderDrawerTags() {
+    if (!drawerTagsChips) return;
+    drawerTagsChips.innerHTML = '';
+
+    if (drawerActiveTags.length === 0) {
+      drawerTagsChips.innerHTML = '<span style="font-size: 0.75rem; color: var(--text-muted); font-style: italic;">No tags. Type below to add keywords.</span>';
+    } else {
+      const origSet = new Set(drawerOriginalTags);
+      drawerActiveTags.forEach(tag => {
+        const chip = document.createElement('span');
+        const isNew = !origSet.has(tag);
+        chip.className = 'drawer-tag-chip' + (isNew ? ' is-new' : '');
+        chip.innerHTML = `
+          <span>#${tag}</span>
+          <button type="button" class="btn-remove-tag" title="Remove tag" data-tag="${tag}">✕</button>
+        `;
+        const btnRemove = chip.querySelector('.btn-remove-tag');
+        btnRemove.addEventListener('click', (e) => {
+          e.stopPropagation();
+          removeDrawerTag(tag);
+        });
+        drawerTagsChips.appendChild(chip);
+      });
+    }
+
+    if (drawerRemovedTagsContainer && drawerRemovedTagsList) {
+      drawerRemovedTagsList.innerHTML = '';
+      if (drawerRemovedTags.size > 0) {
+        drawerRemovedTagsContainer.style.display = 'block';
+        drawerRemovedTags.forEach(tag => {
+          const removedBadge = document.createElement('span');
+          removedBadge.className = 'drawer-tag-removed';
+          removedBadge.innerHTML = `
+            <span>#${tag}</span>
+            <button type="button" class="btn-restore-tag" title="Undo removal" data-tag="${tag}">↩ Undo</button>
+          `;
+          const btnRestore = removedBadge.querySelector('.btn-restore-tag');
+          btnRestore.addEventListener('click', (e) => {
+            e.stopPropagation();
+            restoreDrawerTag(tag);
+          });
+          drawerRemovedTagsList.appendChild(removedBadge);
+        });
+      } else {
+        drawerRemovedTagsContainer.style.display = 'none';
+      }
+    }
+
+    if (drawerTagDiffBadge) {
+      const origSet = new Set(drawerOriginalTags);
+      const added = drawerActiveTags.filter(t => !origSet.has(t));
+      const removed = [...drawerRemovedTags];
+      if (added.length > 0 || removed.length > 0) {
+        let diffs = [];
+        if (added.length > 0) diffs.push(`+${added.length} added`);
+        if (removed.length > 0) diffs.push(`-${removed.length} removed`);
+        drawerTagDiffBadge.textContent = diffs.join(', ');
+        drawerTagDiffBadge.style.color = 'var(--accent-green)';
+      } else {
+        drawerTagDiffBadge.textContent = `${drawerActiveTags.length} tags`;
+        drawerTagDiffBadge.style.color = 'var(--text-muted)';
+      }
+    }
+  }
+
+  function removeDrawerTag(tag) {
+    const idx = drawerActiveTags.indexOf(tag);
+    if (idx !== -1) {
+      drawerActiveTags.splice(idx, 1);
+    }
+    if (drawerOriginalTags.includes(tag)) {
+      drawerRemovedTags.add(tag);
+    }
+    renderDrawerTags();
+  }
+
+  function restoreDrawerTag(tag) {
+    drawerRemovedTags.delete(tag);
+    if (!drawerActiveTags.includes(tag)) {
+      drawerActiveTags.push(tag);
+    }
+    renderDrawerTags();
+  }
+
+  function addDrawerTag(tag) {
+    if (!tag) return;
+    const trimmed = tag.trim().replace(/^#+/, '').toLowerCase();
+    if (!trimmed) return;
+    if (drawerRemovedTags.has(trimmed)) {
+      drawerRemovedTags.delete(trimmed);
+    }
+    if (!drawerActiveTags.includes(trimmed)) {
+      drawerActiveTags.push(trimmed);
+    }
+    renderDrawerTags();
+  }
+
+  if (btnDrawerAddTag && drawerAddTagInput) {
+    const handleAddTagsFromInput = () => {
+      const raw = drawerAddTagInput.value.trim();
+      if (!raw) return;
+      const parts = raw.split(/[,;\s]+/).filter(Boolean);
+      parts.forEach(t => addDrawerTag(t));
+      drawerAddTagInput.value = '';
+    };
+
+    btnDrawerAddTag.addEventListener('click', handleAddTagsFromInput);
+
+    drawerAddTagInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ',') {
+        e.preventDefault();
+        handleAddTagsFromInput();
+      }
+    });
+  }
+
+  // Issue Type selector
+  drawerIssueTypePills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      drawerIssueTypePills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      if (suggestIssueTypeInput) {
+        suggestIssueTypeInput.value = pill.getAttribute('data-value');
+      }
+    });
+  });
 
   function setDrawerTab(type) {
     if (suggestTypeSelect) {
@@ -2474,7 +2709,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (type === 'replacement') {
         drawerHeadingTitle.textContent = '🖼️ Suggest Replacement Image';
       } else if (type === 'issue') {
-        drawerHeadingTitle.textContent = '⚠️ Report Issue/Quality';
+        drawerHeadingTitle.textContent = '⚠️ Report Issue/Quality Problem';
       } else {
         drawerHeadingTitle.textContent = '✏️ Suggest a Change';
       }
@@ -2495,25 +2730,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const type = suggestTypeSelect.value;
     const isDmca = (type === 'dmca');
     const isReplacement = (type === 'replacement');
+    const isIssue = (type === 'issue');
 
     if (groupDmcaFields) {
       groupDmcaFields.style.display = isDmca ? 'block' : 'none';
     }
+    if (groupIssueFields) {
+      groupIssueFields.style.display = isIssue ? 'block' : 'none';
+    }
     if (groupMetadataFields) {
-      groupMetadataFields.style.display = isDmca ? 'none' : 'block';
+      groupMetadataFields.style.display = (isDmca || isIssue) ? 'none' : 'block';
     }
     if (groupSuggestUrl) {
       groupSuggestUrl.style.display = isReplacement ? 'block' : 'none';
     }
     if (labelSuggestReason) {
-      labelSuggestReason.textContent = isDmca 
-        ? 'Infringement Description & Ownership Details' 
-        : 'Reason/Additional Notes';
+      if (isDmca) {
+        labelSuggestReason.textContent = 'Infringement Description & Ownership Details';
+      } else if (isIssue) {
+        labelSuggestReason.textContent = 'Problem Details & Description';
+      } else {
+        labelSuggestReason.textContent = 'Reason / Additional Notes';
+      }
+    }
+    const suggestReasonInput = document.getElementById('suggest-reason');
+    if (suggestReasonInput) {
+      if (isIssue) {
+        suggestReasonInput.placeholder = 'Describe the visual defect, contrast problem, or error in detail...';
+      } else if (isDmca) {
+        suggestReasonInput.placeholder = 'Provide copyright ownership information and details of unauthorized use...';
+      } else {
+        suggestReasonInput.placeholder = 'Explain the proposed metadata or artwork changes...';
+      }
     }
     if (btnSubmitSuggest) {
-      btnSubmitSuggest.textContent = isDmca 
-        ? 'Submit DMCA Notice on GitHub →' 
-        : 'Submit Suggestion on GitHub →';
+      if (isDmca) {
+        btnSubmitSuggest.textContent = 'Submit DMCA Notice on GitHub →';
+      } else if (isIssue) {
+        btnSubmitSuggest.textContent = 'Report Issue on GitHub →';
+      } else {
+        btnSubmitSuggest.textContent = 'Submit Suggestion on GitHub →';
+      }
     }
   }
 
@@ -2529,11 +2786,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('suggest-title').value = item.title || '';
     document.getElementById('suggest-author').value = (extractAuthorFromUrl(item.author || '').name || item.author || '');
-    document.getElementById('suggest-category').value = item.category || '';
-    const suggestTagsEl = document.getElementById('suggest-tags');
-    if (suggestTagsEl) {
-      suggestTagsEl.value = Array.isArray(item.tags) ? item.tags.join(', ') : (item.tags || '');
+
+    // Initialize Categories
+    let rawCats = [];
+    if (Array.isArray(item.category)) {
+      rawCats = item.category.map(c => String(c).trim());
+    } else if (typeof item.category === 'string') {
+      rawCats = item.category.split(',').map(c => c.trim()).filter(Boolean);
     }
+    drawerOriginalCategories = [...rawCats];
+    drawerSelectedCategories = new Set(rawCats);
+    renderDrawerCategories();
+
+    // Initialize Tags
+    let rawTags = [];
+    if (Array.isArray(item.tags)) {
+      rawTags = item.tags.map(t => String(t).trim().toLowerCase());
+    } else if (typeof item.tags === 'string') {
+      rawTags = item.tags.split(',').map(t => t.trim().toLowerCase()).filter(Boolean);
+    }
+    drawerOriginalTags = [...rawTags];
+    drawerActiveTags = [...rawTags];
+    drawerRemovedTags = new Set();
+    renderDrawerTags();
+
+    // Reset Custom Inputs
+    if (drawerCustomCatInput) drawerCustomCatInput.value = '';
+    if (drawerAddTagInput) drawerAddTagInput.value = '';
+
     document.getElementById('suggest-reason').value = '';
 
     const dmcaOwnerEl = document.getElementById('dmca-owner');
@@ -2661,16 +2941,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const type = suggestTypeSelect ? suggestTypeSelect.value : 'metadata';
       const isDmca = (type === 'dmca');
       const isReplacement = (type === 'replacement');
+      const isIssue = (type === 'issue');
 
       const typeLabels = {
         metadata: 'Metadata Correction',
         replacement: 'Replacement Image',
         dmca: 'DMCA/Copyright Infringement Notice',
-        issue: 'Low Quality/Issue Report'
+        issue: 'Quality/Defect Report'
       };
 
-      const issueTitle = encodeURIComponent(isDmca ? `DMCA Takedown Notice: [${itemId}] ${targetTitle}` : `Change Suggestion: [${itemId}] ${targetTitle}`);
-      const issueLabel = isDmca ? 'dmca-takedown' : 'suggest-change';
+      let issueTitle;
+      let issueLabel;
+      if (isDmca) {
+        issueTitle = encodeURIComponent(`DMCA Takedown Notice: [${itemId}] ${targetTitle}`);
+        issueLabel = 'dmca-takedown';
+      } else if (isIssue) {
+        issueTitle = encodeURIComponent(`Quality/Issue Report: [${itemId}] ${targetTitle}`);
+        issueLabel = 'suggest-change';
+      } else {
+        issueTitle = encodeURIComponent(`Change Suggestion: [${itemId}] ${targetTitle}`);
+        issueLabel = 'suggest-change';
+      }
 
       let replacementImageUrl = '';
       let replaceFileName = '';
@@ -2698,7 +2989,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const bodyLines = [
-        isDmca ? `### DMCA/Copyright Infringement Notice` : `### Catalog Change Suggestion`,
+        isDmca ? `### DMCA/Copyright Infringement Notice` : (isIssue ? `### Wallpaper Quality / Defect Report` : `### Catalog Change Suggestion`),
         ``,
         `**Target Item ID:** \`${itemId}\``,
         `**Target Title:** ${targetTitle}`,
@@ -2721,21 +3012,51 @@ document.addEventListener('DOMContentLoaded', () => {
           `**Statement of Good Faith:**`,
           `I have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.`
         );
-      } else {
-        const newTitle = document.getElementById('suggest-title').value;
-        const newAuthor = document.getElementById('suggest-author').value;
-        const newCategory = document.getElementById('suggest-category').value;
-        const newTags = document.getElementById('suggest-tags') ? document.getElementById('suggest-tags').value.trim() : '';
+      } else if (isIssue) {
+        const issueCategory = suggestIssueTypeInput ? suggestIssueTypeInput.value : 'Other Quality Issue';
         const reason = document.getElementById('suggest-reason').value;
+
+        bodyLines.push(
+          `**Issue Category:** ${issueCategory}`,
+          ``,
+          `**Problem Details & Description:**`,
+          reason || 'No additional details provided.'
+        );
+      } else {
+        const newTitle = document.getElementById('suggest-title').value.trim();
+        const newAuthor = document.getElementById('suggest-author').value.trim();
+        const reason = document.getElementById('suggest-reason').value;
+
+        const currentCats = drawerOriginalCategories;
+        const proposedCats = [...drawerSelectedCategories];
+        const addedCats = proposedCats.filter(c => !currentCats.includes(c));
+        const removedCats = currentCats.filter(c => !proposedCats.includes(c));
+
+        const origTags = drawerOriginalTags;
+        const proposedTags = drawerActiveTags;
+        const addedTags = proposedTags.filter(t => !origTags.includes(t));
+        const removedTags = [...drawerRemovedTags];
 
         bodyLines.push(
           `**Proposed Title:** ${newTitle}`,
           `**Proposed Author:** ${newAuthor}`,
-          `**Proposed Category:** ${newCategory}`,
+          `**Proposed Categories:** ${proposedCats.join(', ') || 'None'}`
         );
 
-        if (newTags) {
-          bodyLines.push(`**Proposed Tags:** ${newTags}`);
+        if (addedCats.length > 0 || removedCats.length > 0) {
+          let catDiffStr = [];
+          if (addedCats.length > 0) catDiffStr.push(`+Added: ${addedCats.join(', ')}`);
+          if (removedCats.length > 0) catDiffStr.push(`-Removed: ${removedCats.join(', ')}`);
+          bodyLines.push(`**Category Changes:** ${catDiffStr.join(' | ')}`);
+        }
+
+        bodyLines.push(`**Proposed Tags:** ${proposedTags.join(', ') || 'None'}`);
+
+        if (addedTags.length > 0 || removedTags.length > 0) {
+          let tagDiffStr = [];
+          if (addedTags.length > 0) tagDiffStr.push(`+Added: ${addedTags.join(', ')}`);
+          if (removedTags.length > 0) tagDiffStr.push(`-Removed: ${removedTags.join(', ')}`);
+          bodyLines.push(`**Tag Changes:** ${tagDiffStr.join(' | ')}`);
         }
 
         if (isReplacement && replacementImageUrl) {
