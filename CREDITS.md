@@ -600,3 +600,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Synthwave background | liftarn | Sci-Fi, Pop Culture, Transparent | Community Share | liftarn |
 | Luna | Jimmy | Nature, Transparent | Community Share | Jimmy |
 | Baby Groot | Jimmy | Pop Culture | Community Share | Jimmy |
+| Baby Groot (transparent) | Jimmy | Pop Culture, Transparent | Community Share | Jimmy |
