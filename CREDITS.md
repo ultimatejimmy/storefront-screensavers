@@ -2,7 +2,7 @@
 
 All open access, Public Domain, CC0, and community-shared screensavers in this catalog are credited below.
 
-| Title | Creator/Artist | Category | License | Source & Attribution |
+| Title | Creator / Artist | Category | License | Source & Attribution |
 |---|---|---|---|---|
 | Foggy Mountain Pines | Unsplash (CC0) | Nature | Community Share | Unsplash (CC0) |
 | Minimalist Ocean Horizon | Unsplash (CC0) | Minimalist | Community Share | Unsplash (CC0) |
@@ -593,3 +593,8 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Cinnamoroll Library card | weenees | Anime, Transparent | Community Share | weenees |
 | Hapidanbui | weenees | Anime, Transparent | Community Share | weenees |
 | Stardew Valley | weenees | Anime, Transparent | Community Share | weenees |
+| Theological positions | Marekich | Quotes | Community Share | Marekich |
+| Classified Stamp | j4p4n | Minimalist, Abstract, Transparent | Community Share | j4p4n |
+| Top Secret - Stamp | j4p4n | Minimalist, Abstract, Transparent | Community Share | j4p4n |
+| Wired for Sound | rygle | Minimalist, Transparent | Community Share | rygle |
+| Synthwave background | liftarn | Sci-Fi, Pop Culture, Transparent | Community Share | liftarn |
