@@ -534,13 +534,17 @@ jobs:
 
               is_transparent = has_trans_tag or has_real_transparency
 
+              is_already_target_size = (img.width == 1860 and img.height == 2480)
+
               if is_transparent:
                   full_path = f'images/{item_id}.png'
                   thumb_web_path = f'images/thumbnails/{item_id}.png'
                   thumb_plugin_path = f'images/thumbnails/plugin/{item_id}.png'
 
                   img_rgba = img.convert('RGBA')
-                  if crop_info:
+                  if is_already_target_size:
+                      master_transparent = img_rgba
+                  elif crop_info:
                       master_transparent = apply_crop(img_rgba, crop_info['zoom'], crop_info['offset_x'], crop_info['offset_y'], True)
                   else:
                       master_transparent = fit_transparent(img_rgba.copy(), 1860, 2480)
@@ -557,7 +561,12 @@ jobs:
                   thumb_plugin_path = None
 
                   img_rgb = img.convert('RGB')
-                  if crop_info:
+                  if is_already_target_size:
+                      master_img = img_rgb
+                      master_img.save(full_path, 'JPEG', quality=92)
+                      thumb_img = master_img.resize((600, 800), Image.Resampling.LANCZOS)
+                      thumb_img.save(thumb_web_path, 'JPEG', quality=85)
+                  elif crop_info:
                       master_img = apply_crop(img_rgb, crop_info['zoom'], crop_info['offset_x'], crop_info['offset_y'], False)
                       master_img.save(full_path, 'JPEG', quality=92)
                       thumb_img = master_img.resize((600, 800), Image.Resampling.LANCZOS)
