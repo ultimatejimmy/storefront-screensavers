@@ -577,3 +577,9 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Alice in Wonderland - Prismatic | GDJ | Fantasy, Abstract, Art, Pop Culture, Transparent | Community Share | GDJ |
 | Small Fairy Home | j4p4n | Fantasy, Anime, Art, Transparent | Community Share | j4p4n |
 | Girl with Sunglasses blowing a Kiss | GDJ | Art, Pop Culture, Transparent | Community Share | GDJ |
+| What's Wrong with the World | standardebooks | Quotes | Community Share | standardebooks |
+| The small Bachelor | standardebooks | Quotes | Community Share | standardebooks |
+| Magnolia Leaves | standardebooks | Quotes | Community Share | standardebooks |
+| The Wolf-Leader | standardebooks | Quotes | Community Share | standardebooks |
+| Agatha Christie | standardebooks | Minimalist | Community Share | standardebooks |
+| The Innocents Abroad | standardebooks | Quotes | Community Share | standardebooks |

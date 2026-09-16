@@ -16720,5 +16720,137 @@
       "transparent"
     ],
     "authorUrl": "https://openclipart.org/artist/GDJ"
+  },
+  {
+    "id": "what-s-wrong-with-the-world",
+    "title": "What's Wrong with the World",
+    "author": "standardebooks",
+    "category": "Quotes",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/what-s-wrong-with-the-world.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/what-s-wrong-with-the-world.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/what-s-wrong-with-the-world.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "quote",
+      "book",
+      "standardebooks",
+      "ebook"
+    ]
+  },
+  {
+    "id": "the-small-bachelor",
+    "title": "The small Bachelor",
+    "author": "standardebooks",
+    "category": "Quotes",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-small-bachelor.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-small-bachelor.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/the-small-bachelor.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "quote",
+      "book",
+      "standardebooks",
+      "ebook"
+    ]
+  },
+  {
+    "id": "magnolia-leaves",
+    "title": "Magnolia Leaves",
+    "author": "standardebooks",
+    "category": "Quotes",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/magnolia-leaves.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/magnolia-leaves.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/magnolia-leaves.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "quote",
+      "book",
+      "standardebooks",
+      "ebook"
+    ]
+  },
+  {
+    "id": "the-wolf-leader",
+    "title": "The Wolf-Leader",
+    "author": "standardebooks",
+    "category": "Quotes",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-wolf-leader.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-wolf-leader.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/the-wolf-leader.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "quote",
+      "book",
+      "standardebooks",
+      "ebook"
+    ]
+  },
+  {
+    "id": "agatha-christie",
+    "title": "Agatha Christie",
+    "author": "standardebooks",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/agatha-christie.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/agatha-christie.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/agatha-christie.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "Agatha Christie",
+      "girl",
+      "author",
+      "photography"
+    ]
+  },
+  {
+    "id": "the-innocents-abroad",
+    "title": "The Innocents Abroad",
+    "author": "standardebooks",
+    "category": "Quotes",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-innocents-abroad.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-innocents-abroad.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/the-innocents-abroad.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "quote",
+      "book",
+      "standardebooks",
+      "ebook"
+    ]
   }
 ]
