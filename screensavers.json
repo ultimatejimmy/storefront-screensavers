@@ -17296,5 +17296,29 @@
     "tags": [
       "cat"
     ]
+  },
+  {
+    "id": "jacob-misiorowski",
+    "title": "Jacob Misiorowski",
+    "author": "Ewan Pautz",
+    "category": [
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/jacob-misiorowski.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/jacob-misiorowski.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/jacob-misiorowski.png",
+    "tags": [
+      "baseball",
+      "brewers",
+      "pitchers",
+      "",
+      "transparent"
+    ]
   }
 ]
