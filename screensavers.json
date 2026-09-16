@@ -17246,5 +17246,28 @@
       "transparent"
     ],
     "authorUrl": "https://openclipart.org/artist/liftarn"
+  },
+  {
+    "id": "luna",
+    "title": "Luna",
+    "author": "Jimmy",
+    "category": [
+      "Nature",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/luna.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/luna.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/luna.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "cat",
+      "transparent"
+    ]
   }
 ]
