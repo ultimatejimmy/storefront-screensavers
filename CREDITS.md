@@ -599,3 +599,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Wired for Sound | rygle | Minimalist, Transparent | Community Share | rygle |
 | Synthwave background | liftarn | Sci-Fi, Pop Culture, Transparent | Community Share | liftarn |
 | Luna | Jimmy | Nature, Transparent | Community Share | Jimmy |
+| Baby Groot | Jimmy | Pop Culture | Community Share | Jimmy |

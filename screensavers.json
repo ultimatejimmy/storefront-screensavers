@@ -17269,5 +17269,26 @@
       "cat",
       "transparent"
     ]
+  },
+  {
+    "id": "baby-groot",
+    "title": "Baby Groot",
+    "author": "Jimmy",
+    "category": "Pop Culture",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/baby-groot.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/baby-groot.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/baby-groot.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "guardian of the galaxy",
+      "marvel",
+      "mcu"
+    ]
   }
 ]
