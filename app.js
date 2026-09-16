@@ -988,14 +988,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cState.offsetX = clamped.offsetX;
     cState.offsetY = clamped.offsetY;
 
-    if (isTransparent) {
-      ctx.clearRect(0, 0, FRAME_W, FRAME_H);
-    } else {
-      const isLight = document.documentElement.getAttribute('data-theme') === 'light' ||
-        (!document.documentElement.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: light)').matches);
-      ctx.fillStyle = isLight ? '#e2e8f0' : '#000000';
-      ctx.fillRect(0, 0, FRAME_W, FRAME_H);
-    }
+    ctx.clearRect(0, 0, FRAME_W, FRAME_H);
 
     ctx.drawImage(imgObj, cState.offsetX, cState.offsetY, scaledW, scaledH);
 
@@ -1040,8 +1033,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     const isLight = document.documentElement.getAttribute('data-theme') === 'light' ||
       (!document.documentElement.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: light)').matches);
-    ctx.fillStyle = isLight ? '#e2e8f0' : '#0b0f19';
-    ctx.fillRect(0, 0, FRAME_W, FRAME_H);
+    ctx.clearRect(0, 0, FRAME_W, FRAME_H);
 
     ctx.strokeStyle = 'rgba(16, 185, 129, 0.4)';
     ctx.lineWidth = 1;
@@ -1059,10 +1051,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function drawCanvasError(canvas, message = 'Could not load image') {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light' ||
-      (!document.documentElement.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: light)').matches);
-    ctx.fillStyle = isLight ? '#e2e8f0' : '#0f172a';
-    ctx.fillRect(0, 0, FRAME_W, FRAME_H);
+    ctx.clearRect(0, 0, FRAME_W, FRAME_H);
 
     ctx.strokeStyle = 'rgba(239, 68, 68, 0.6)';
     ctx.lineWidth = 2;
