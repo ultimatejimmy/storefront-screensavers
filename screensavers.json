@@ -16852,5 +16852,29 @@
       "standardebooks",
       "ebook"
     ]
+  },
+  {
+    "id": "sailor-moon",
+    "title": "Sailor Moon",
+    "author": "weenees",
+    "category": [
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/sailor-moon.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/sailor-moon.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/sailor-moon.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "sailormoon",
+      "anime",
+      "transparent"
+    ]
   }
 ]

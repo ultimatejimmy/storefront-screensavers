@@ -583,3 +583,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | The Wolf-Leader | standardebooks | Quotes | Community Share | standardebooks |
 | Agatha Christie | standardebooks | Minimalist | Community Share | standardebooks |
 | The Innocents Abroad | standardebooks | Quotes | Community Share | standardebooks |
+| Sailor Moon | weenees | Anime, Transparent | Community Share | weenees |
