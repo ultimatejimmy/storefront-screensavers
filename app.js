@@ -991,7 +991,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isTransparent) {
       ctx.clearRect(0, 0, FRAME_W, FRAME_H);
     } else {
-      ctx.fillStyle = '#000000';
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light' ||
+        (!document.documentElement.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: light)').matches);
+      ctx.fillStyle = isLight ? '#e2e8f0' : '#000000';
       ctx.fillRect(0, 0, FRAME_W, FRAME_H);
     }
 
@@ -1036,7 +1038,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function drawCanvasLoading(canvas, label = 'Loading image preview... ⏳') {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#0b0f19';
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light' ||
+      (!document.documentElement.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: light)').matches);
+    ctx.fillStyle = isLight ? '#e2e8f0' : '#0b0f19';
     ctx.fillRect(0, 0, FRAME_W, FRAME_H);
 
     ctx.strokeStyle = 'rgba(16, 185, 129, 0.4)';
@@ -1045,7 +1049,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.strokeRect(8, 8, FRAME_W - 16, FRAME_H - 16);
     ctx.setLineDash([]);
 
-    ctx.fillStyle = '#6ee7b7';
+    ctx.fillStyle = isLight ? '#059669' : '#6ee7b7';
     ctx.font = '500 13px system-ui, -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -1055,7 +1059,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function drawCanvasError(canvas, message = 'Could not load image') {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#0f172a';
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light' ||
+      (!document.documentElement.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: light)').matches);
+    ctx.fillStyle = isLight ? '#e2e8f0' : '#0f172a';
     ctx.fillRect(0, 0, FRAME_W, FRAME_H);
 
     ctx.strokeStyle = 'rgba(239, 68, 68, 0.6)';

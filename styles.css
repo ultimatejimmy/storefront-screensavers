@@ -29,6 +29,9 @@
   --toast-bg: #0f172a;
   --toast-text: #f3f4f6;
   --bulk-toolbar-bg: rgba(15, 23, 42, 0.85);
+  --bulk-card-bg: rgba(15, 23, 42, 0.7);
+  --editor-canvas-bg: #0b0f19;
+  --dropzone-bg: rgba(15, 23, 42, 0.4);
   --select-dropdown-bg: #0f172a;
   --select-dropdown-text: #f3f4f6;
   --ambient-glow-1: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(0,0,0,0) 70%);
@@ -71,6 +74,9 @@
   --toast-bg: #ffffff;
   --toast-text: #0f172a;
   --bulk-toolbar-bg: rgba(241, 245, 249, 0.95);
+  --bulk-card-bg: rgba(255, 255, 255, 0.9);
+  --editor-canvas-bg: #e2e8f0;
+  --dropzone-bg: rgba(241, 245, 249, 0.6);
   --select-dropdown-bg: #ffffff;
   --select-dropdown-text: #0f172a;
   --ambient-glow-1: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(0,0,0,0) 70%);
@@ -109,6 +115,9 @@
     --toast-bg: #ffffff;
     --toast-text: #0f172a;
     --bulk-toolbar-bg: rgba(241, 245, 249, 0.95);
+    --bulk-card-bg: rgba(255, 255, 255, 0.9);
+    --editor-canvas-bg: #e2e8f0;
+    --dropzone-bg: rgba(241, 245, 249, 0.6);
     --select-dropdown-bg: #ffffff;
     --select-dropdown-text: #0f172a;
     --ambient-glow-1: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(0,0,0,0) 70%);
@@ -886,7 +895,7 @@ select.form-control option {
   border-radius: var(--radius-md);
   padding: 1.5rem;
   text-align: center;
-  background: rgba(15, 23, 42, 0.4);
+  background: var(--dropzone-bg);
   cursor: pointer;
   transition: var(--transition);
 }
@@ -1276,7 +1285,7 @@ footer {
 
 /* Bulk Queue List & Cards */
 .bulk-item-card {
-  background: rgba(15, 23, 42, 0.7);
+  background: var(--bulk-card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 1rem;
@@ -1304,7 +1313,7 @@ footer {
   border-radius: var(--radius-sm);
   overflow: hidden;
   border: 1px solid var(--border-color);
-  background: #111827;
+  background: var(--card-img-bg);
   cursor: pointer;
   flex-shrink: 0;
   align-self: flex-start;
@@ -1519,7 +1528,7 @@ footer {
 .editor-canvas-wrap {
   position: relative;
   max-height: 380px;
-  background: #0b0f19;
+  background: var(--editor-canvas-bg);
   padding: 10px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
