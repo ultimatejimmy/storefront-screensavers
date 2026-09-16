@@ -20,7 +20,7 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 
@@ -183,20 +183,20 @@
             </div>
 
             <!-- Interactive 3:4 Focal Point Cropper (Outside Dropzone) -->
-            <div id="cropper-container" style="display:none; margin-top: 1rem; background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); text-align: left;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
-                <span style="font-size: 0.85rem; font-weight: 600; color: var(--accent-green);">✂️ 3:4 E-Ink Screen Crop</span>
-                <button type="button" id="btn-auto-focal" class="tag-btn" style="font-size:0.75rem; padding: 0.25rem 0.6rem;">🎯 Auto-Detect Subject</button>
+            <div id="cropper-container" class="cropper-container" style="display:none;">
+              <div class="cropper-header">
+                <span class="cropper-badge">✂️ 3:4 E-Ink Screen Crop</span>
+                <button type="button" id="btn-auto-focal" class="tag-btn btn-auto-focal">🎯 Auto-Detect Subject</button>
               </div>
-              <div class="cropper-canvas-wrap" style="position:relative; max-height: 420px; overflow:hidden; display:flex; justify-content:center; align-items:center; background:#0b0f19; padding: 14px; border-radius:8px; border: 1px solid var(--border-color); cursor:move;">
-                <canvas id="cropper-canvas" style="border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.9);"></canvas>
+              <div class="cropper-canvas-wrap">
+                <canvas id="cropper-canvas"></canvas>
               </div>
-              <div style="display:flex; gap:0.75rem; align-items:center; margin-top: 0.75rem;">
-                <span style="font-size: 0.8rem; color: var(--text-muted);">Zoom:</span>
-                <input type="range" id="crop-zoom-slider" min="0.3" max="3" step="0.05" value="1" style="flex:1;">
-                <span id="zoom-val" style="font-size:0.75rem; color:var(--text-secondary); width:32px;">1.0x</span>
+              <div class="cropper-controls-row">
+                <span class="cropper-label">Zoom:</span>
+                <input type="range" id="crop-zoom-slider" class="editor-slider" min="0.3" max="3" step="0.05" value="1" style="flex:1;">
+                <span id="zoom-val" class="control-val" style="width:32px; font-size:0.75rem;">1.0x</span>
               </div>
-              <span style="font-size:0.75rem; color: var(--text-muted); display:block; margin-top:0.3rem;">💡 Drag image to position your main subject inside the 3:4 e-reader frame.</span>
+              <span class="cropper-hint">💡 Drag image to position your main subject inside the 3:4 e-reader frame.</span>
             </div>
           </div>
 
@@ -628,6 +628,6 @@
     <p>© 2026 Storefront Screensavers Catalog · Open Source & Community Powered</p>
   </footer>
 
-  <script src="app.js?v=9"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>

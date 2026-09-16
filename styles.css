@@ -960,6 +960,77 @@ select.form-control option {
   color: white;
 }
 
+/* Single Submission Cropper Container */
+.cropper-container {
+  margin-top: 1rem;
+  background: var(--bg-card);
+  padding: 1.15rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cropper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.cropper-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-green);
+}
+
+.btn-auto-focal {
+  font-size: 0.75rem !important;
+  padding: 0.28rem 0.65rem !important;
+}
+
+.cropper-canvas-wrap {
+  position: relative;
+  max-height: 420px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--editor-canvas-bg);
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  cursor: move;
+  user-select: none;
+  touch-action: none;
+}
+
+#cropper-canvas {
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  touch-action: none;
+}
+
+.cropper-controls-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.85rem;
+}
+
+.cropper-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.cropper-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 0.4rem;
+}
+
 .legal-box {
   background: var(--bg-glass);
   border: 1px solid var(--border-color);
@@ -2384,4 +2455,43 @@ footer {
 
 [data-theme="light"] .btn-copy-link.copied {
   color: #ffffff;
+}
+
+[data-theme="light"] .cropper-container {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .btn-auto-focal {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+[data-theme="light"] .btn-auto-focal:hover {
+  background: var(--accent-green);
+  color: #ffffff;
+  border-color: var(--accent-green);
+}
+
+[data-theme="light"] #cropper-canvas {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .cropper-container {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+  :root:not([data-theme="dark"]) .btn-auto-focal {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #334155;
+  }
+  :root:not([data-theme="dark"]) .btn-auto-focal:hover {
+    background: var(--accent-green);
+    color: #ffffff;
+    border-color: var(--accent-green);
+  }
+  :root:not([data-theme="dark"]) #cropper-canvas {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
 }
