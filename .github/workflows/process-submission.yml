@@ -708,8 +708,8 @@ jobs:
               commit_msg = f"Add {len(items)} screensavers for batch issue #{issue_num}"
           subprocess.run(f'git commit -m "{commit_msg}"', shell=True, check=True)
           subprocess.run(f"git push origin {branch} --force", shell=True, check=True)
-
-          raw_branch_base = f"https://raw.githubusercontent.com/{os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')}/{branch}/"
+          commit_sha = subprocess.check_output('git rev-parse HEAD', shell=True, text=True).strip()
+          raw_branch_base = f"https://raw.githubusercontent.com/{os.environ.get('GITHUB_REPOSITORY', 'ultimatejimmy/storefront-screensavers')}/{commit_sha}/"
 
           # Construct PR body
           if len(items) == 1:
