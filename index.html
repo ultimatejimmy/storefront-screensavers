@@ -6,7 +6,21 @@
   <title>Storefront Screensavers — E-Reader Wallpaper Catalog</title>
   <meta name="description" content="Free e-ink sleep screen & lock screen wallpapers for Kindle, Kobo, Boox, and PocketBook readers. Community-driven catalog for Storefront KOReader plugin.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="styles.css?v=5">
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 
@@ -16,11 +30,16 @@
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke: url(#brand-grad);"><defs><linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
       <span>Storefront Screensavers</span>
     </div>
-    <ul class="nav-links">
-      <li><a href="#" class="nav-link active" data-target="gallery-section">Gallery</a></li>
-      <li><a href="#" class="nav-link" data-target="submit-section">Submit Wallpaper</a></li>
-      <li><a href="#" class="nav-link" data-target="legal-section">Legal & DMCA</a></li>
-    </ul>
+    <div class="nav-menu">
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link active" data-target="gallery-section">Gallery</a></li>
+        <li><a href="#" class="nav-link" data-target="submit-section">Submit Wallpaper</a></li>
+        <li><a href="#" class="nav-link" data-target="legal-section">Legal & DMCA</a></li>
+      </ul>
+      <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme">
+        <span class="theme-toggle-icon" id="theme-toggle-icon"></span>
+      </button>
+    </div>
   </nav>
 
   <!-- Main Container -->
@@ -551,6 +570,6 @@
     <p>© 2026 Storefront Screensavers Catalog · Open Source & Community Powered</p>
   </footer>
 
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>

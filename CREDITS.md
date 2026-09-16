@@ -2,7 +2,7 @@
 
 All open access, Public Domain, CC0, and community-shared screensavers in this catalog are credited below.
 
-| Title | Creator / Artist | Category | License | Source & Attribution |
+| Title | Creator/Artist | Category | License | Source & Attribution |
 |---|---|---|---|---|
 | Foggy Mountain Pines | Unsplash (CC0) | Nature | Community Share | Unsplash (CC0) |
 | Minimalist Ocean Horizon | Unsplash (CC0) | Minimalist | Community Share | Unsplash (CC0) |
