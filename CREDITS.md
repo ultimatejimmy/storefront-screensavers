@@ -584,3 +584,12 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Agatha Christie | standardebooks | Minimalist | Community Share | standardebooks |
 | The Innocents Abroad | standardebooks | Quotes | Community Share | standardebooks |
 | Sailor Moon | weenees | Anime, Transparent | Community Share | weenees |
+| Snorlax & Psyduck | weenees | Anime, Transparent | Community Share | weenees |
+| Pikachu Squish | weenees | Anime, Transparent | Community Share | weenees |
+| Final Fantasy X | weenees | Anime, Transparent | Community Share | weenees |
+| Keyblade | weenees | Anime, Transparent | Community Share | weenees |
+| Kingdom Hearts 1 | weenees | Anime, Transparent | Community Share | weenees |
+| Kingdom Hearts | weenees | Anime, Transparent | Community Share | weenees |
+| Cinnamoroll Library card | weenees | Anime, Transparent | Community Share | weenees |
+| Hapidanbui | weenees | Anime, Transparent | Community Share | weenees |
+| Stardew Valley | weenees | Anime, Transparent | Community Share | weenees |
