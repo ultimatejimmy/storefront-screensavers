@@ -17106,5 +17106,145 @@
       "stardew valley",
       "transparent"
     ]
+  },
+  {
+    "id": "theological-positions",
+    "title": "Theological positions",
+    "author": "Marekich",
+    "category": "Quotes",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/theological-positions.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/theological-positions.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/theological-positions.jpg",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "agnostic",
+      "gnostic",
+      "theist",
+      "atheist"
+    ]
+  },
+  {
+    "id": "classified-stamp",
+    "title": "Classified Stamp",
+    "author": "j4p4n",
+    "category": [
+      "Minimalist",
+      "Abstract",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/classified-stamp.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/classified-stamp.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/classified-stamp.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "classified",
+      "stamp",
+      "ink",
+      "secrect",
+      "transparent"
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
+  },
+  {
+    "id": "top-secret-stamp",
+    "title": "Top Secret - Stamp",
+    "author": "j4p4n",
+    "category": [
+      "Minimalist",
+      "Abstract",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/top-secret-stamp.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/top-secret-stamp.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/top-secret-stamp.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "classified",
+      "stamp",
+      "ink",
+      "secrect",
+      "transparent"
+    ],
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
+  },
+  {
+    "id": "wired-for-sound",
+    "title": "Wired for Sound",
+    "author": "rygle",
+    "category": [
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wired-for-sound.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wired-for-sound.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wired-for-sound.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "wired",
+      "sound",
+      "neon",
+      "glow",
+      "speaker",
+      "plug",
+      "music",
+      "cord",
+      "wire",
+      "headphone",
+      "transparent"
+    ],
+    "authorUrl": "https://openclipart.org/artist/rygle"
+  },
+  {
+    "id": "synthwave-background",
+    "title": "Synthwave background",
+    "author": "liftarn",
+    "category": [
+      "Sci-Fi",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/synthwave-background.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/synthwave-background.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/synthwave-background.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "grid",
+      "neon",
+      "sythwave",
+      "background",
+      "sunset",
+      "transparent"
+    ],
+    "authorUrl": "https://openclipart.org/artist/liftarn"
   }
 ]
