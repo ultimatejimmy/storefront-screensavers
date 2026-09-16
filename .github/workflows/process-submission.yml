@@ -231,31 +231,46 @@ jobs:
                   'img_url': url_match_str.strip() if url_match_str else None
               })
 
-          # Fallback check on issue comments if any submission lacked URL
-          missing_entries = [e for e in raw_entries if not e['img_url']]
-          if missing_entries:
-              available_comment_urls = []
-              comment_body = os.environ.get('COMMENT_BODY', '')
-              if comment_body:
-                  for u in extract_candidate_urls(comment_body):
-                      if u not in available_comment_urls:
-                          available_comment_urls.append(u)
+          # Auto-convert OpenClipart vector download/detail endpoints to raster PNG
+          for e in raw_entries:
+              if e.get('img_url'):
+                  e['img_url'] = re.sub(r'openclipart\.org/(?:download|detail)/(\d+)', r'openclipart.org/image/2000px/\1', e['img_url'])
 
-              if token and issue_num:
-                  try:
-                      headers_gh = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': headers['User-Agent']}
-                      comments_resp = requests.get(f'https://api.github.com/repos/{repo}/issues/{issue_num}/comments', headers=headers_gh, timeout=10)
-                      if comments_resp.status_code == 200:
-                          for c in comments_resp.json():
-                              c_txt = c.get('body', '')
-                              if 'Wallpaper Submission Validation Failed' in c_txt or 'Submission Received & Verified' in c_txt:
-                                  continue
-                              for u in extract_candidate_urls(c_txt):
-                                  if u not in available_comment_urls:
-                                      available_comment_urls.append(u)
-                  except Exception as err:
-                      print(f"Failed fetching issue comments: {err}")
+          # Fetch candidate URLs from issue comments (useful when submitters reply with fixed/replacement images)
+          available_comment_urls = []
+          comment_body = os.environ.get('COMMENT_BODY', '')
+          if comment_body:
+              for u in extract_candidate_urls(comment_body):
+                  u_conv = re.sub(r'openclipart\.org/(?:download|detail)/(\d+)', r'openclipart.org/image/2000px/\1', u)
+                  if u_conv not in available_comment_urls:
+                      available_comment_urls.append(u_conv)
 
+          if token and issue_num:
+              try:
+                  headers_gh = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json', 'User-Agent': headers['User-Agent']}
+                  comments_resp = requests.get(f'https://api.github.com/repos/{repo}/issues/{issue_num}/comments', headers=headers_gh, timeout=10)
+                  if comments_resp.status_code == 200:
+                      for c in comments_resp.json():
+                          c_txt = c.get('body', '')
+                          if 'Wallpaper Submission Validation Failed' in c_txt or 'Submission Received & Verified' in c_txt:
+                              continue
+                          for u in extract_candidate_urls(c_txt):
+                              u_conv = re.sub(r'openclipart\.org/(?:download|detail)/(\d+)', r'openclipart.org/image/2000px/\1', u)
+                              if u_conv not in available_comment_urls:
+                                  available_comment_urls.append(u_conv)
+              except Exception as err:
+                  print(f"Failed fetching issue comments: {err}")
+
+          # Save available comment urls for fallback retry during validation
+          comment_urls_fallback = list(available_comment_urls)
+
+          # If comment URLs match total entries count, submitter provided replacement batch
+          if len(available_comment_urls) == len(raw_entries) and len(raw_entries) > 0:
+              print("Found replacement URLs in comments matching entry count. Overriding submission URLs with comment URLs.")
+              for i, e in enumerate(raw_entries):
+                  e['img_url'] = available_comment_urls[i]
+          else:
+              # Otherwise populate any entries that had missing URLs
               for e in raw_entries:
                   if not e['img_url'] and available_comment_urls:
                       e['img_url'] = available_comment_urls.pop(0)
@@ -443,13 +458,36 @@ jobs:
               used_ids.add(item_id)
 
               raw_data, dl_err = download_and_resolve_image(img_url, title)
+
+              # If initial download failed or was an SVG, retry with any available candidate comment URL
+              is_svg_file = False
+              if raw_data:
+                  raw_lead = raw_data[:512].lower()
+                  if raw_data.strip().startswith(b'<?xml') or b'<svg' in raw_lead or b'<script' in raw_lead:
+                      is_svg_file = True
+
+              if (dl_err or not raw_data or len(raw_data) == 0 or is_svg_file) and comment_urls_fallback:
+                  while comment_urls_fallback:
+                      fb_url = comment_urls_fallback.pop(0)
+                      if fb_url == img_url:
+                          continue
+                      print(f"Retrying '{title}' with comment replacement URL: {fb_url}")
+                      fb_data, fb_err = download_and_resolve_image(fb_url, title)
+                      if fb_data and len(fb_data) > 0:
+                          fb_lead = fb_data[:512].lower()
+                          if not (fb_data.strip().startswith(b'<?xml') or b'<svg' in fb_lead or b'<script' in fb_lead):
+                              raw_data = fb_data
+                              dl_err = None
+                              img_url = fb_url
+                              is_svg_file = False
+                              break
+
               if dl_err or not raw_data or len(raw_data) == 0:
                   validation_errors.append(f"'{title}': {dl_err or 'Failed to download image'}")
                   continue
 
               # Security check: strictly reject vector SVG / XML / executable scripts
-              raw_lead = raw_data[:512].lower()
-              if raw_data.strip().startswith(b'<?xml') or b'<svg' in raw_lead or b'<script' in raw_lead:
+              if is_svg_file:
                   validation_errors.append(f"'{title}': Disallowed vector SVG/script file. Only raster JPG, PNG, or WebP images are permitted.")
                   continue
 
