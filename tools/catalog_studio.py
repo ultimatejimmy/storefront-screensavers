@@ -219,12 +219,18 @@ def sync_all_catalog():
     # Save cleaned catalog
     save_catalog(catalog)
 
+    try:
+        from generate_catalogs import generate_catalogs
+        generate_catalogs()
+    except Exception as e:
+        print(f"Warning generating optimized catalogs: {e}")
+
     # Git commit and push (including deletions)
     git_result = {"committed": False, "pushed": False, "message": ""}
     import subprocess
     try:
         # Stage all catalog, credits, and image changes/deletions
-        subprocess.run(['git', 'add', '-A', 'screensavers.json', 'CREDITS.md', 'images/'], cwd=REPO_ROOT, check=True)
+        subprocess.run(['git', 'add', '-A', 'screensavers.json', 'screensavers.lite.json', 'screensavers.min.json', 'CREDITS.md', 'images/'], cwd=REPO_ROOT, check=True)
 
         # Check if there are staged git changes
         status_proc = subprocess.run(['git', 'status', '--porcelain'], cwd=REPO_ROOT, capture_output=True, text=True)

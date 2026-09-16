@@ -126,7 +126,13 @@ jobs:
               except Exception as cred_err:
                   print(f"Note: Could not rebuild credits ({cred_err})")
 
-              run('git add images/ screensavers.json CREDITS.md')
+              try:
+                  from generate_catalogs import generate_catalogs
+                  generate_catalogs()
+              except Exception as cat_err:
+                  print(f"Note: Could not generate optimized catalogs ({cat_err})")
+
+              run('git add images/ screensavers.json screensavers.lite.json screensavers.min.json CREDITS.md')
               run(f'git commit -m "Auto-rebase submission on latest main [skip ci]"', check=False)
               push_res = run(f'git push origin {branch} --force', check=False)
               if push_res.returncode == 0:

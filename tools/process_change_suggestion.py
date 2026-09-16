@@ -389,6 +389,14 @@ def main():
         except Exception as cred_err:
             print(f"Warning: Could not regenerate CREDITS.md: {cred_err}")
 
+        try:
+            from generate_catalogs import generate_catalogs
+            generate_catalogs()
+            files_to_add.extend(['screensavers.lite.json', 'screensavers.min.json'])
+            print("Regenerated screensavers.lite.json and screensavers.min.json.")
+        except Exception as cat_err:
+            print(f"Warning: Could not regenerate catalogs: {cat_err}")
+
         branch = f"remove-{issue_num}"
         pr_title = f"Remove Screensaver: {title} [{target_id}]"
         commit_msg = f"Remove screensaver '{target_id}' per issue #{issue_num}"
@@ -629,6 +637,14 @@ def main():
         except Exception as cred_err:
             print(f"Warning: Could not regenerate CREDITS.md: {cred_err}")
 
+        try:
+            from generate_catalogs import generate_catalogs
+            generate_catalogs()
+            files_to_add.extend(['screensavers.lite.json', 'screensavers.min.json'])
+            print("Regenerated screensavers.lite.json and screensavers.min.json.")
+        except Exception as cat_err:
+            print(f"Warning: Could not regenerate catalogs: {cat_err}")
+
         branch = f"change-{issue_num}"
         pr_title = f"Catalog Change: {new_title} [{target_id}]"
         commit_msg = f"Update screensaver '{target_id}' for change suggestion #{issue_num}"
@@ -710,6 +726,12 @@ def main():
             try:
                 from catalog_studio import rebuild_credits_file
                 rebuild_credits_file(catalog)
+            except Exception:
+                pass
+
+            try:
+                from generate_catalogs import generate_catalogs
+                generate_catalogs()
             except Exception:
                 pass
 

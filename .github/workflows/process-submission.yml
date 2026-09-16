@@ -699,6 +699,13 @@ jobs:
           except Exception as cred_err:
               print(f"Warning rebuilding credits: {cred_err}")
 
+          try:
+              from generate_catalogs import generate_catalogs
+              generate_catalogs()
+              files_to_add.extend(['screensavers.lite.json', 'screensavers.min.json'])
+          except Exception as cat_err:
+              print(f"Warning generating optimized catalogs: {cat_err}")
+
           # Stage and commit
           files_str = ' '.join(set(files_to_add))
           subprocess.run(f"git add {files_str}", shell=True, check=True)
