@@ -17290,5 +17290,30 @@
       "marvel",
       "mcu"
     ]
+  },
+  {
+    "id": "baby-groot-transparent",
+    "title": "Baby Groot (transparent)",
+    "author": "Jimmy",
+    "category": [
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/baby-groot-transparent.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/baby-groot-transparent.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/baby-groot-transparent.png",
+    "downloads": 0,
+    "likes": 0,
+    "tags": [
+      "guardian of the galaxy",
+      "marvel",
+      "mcu",
+      "transparent"
+    ]
   }
 ]
