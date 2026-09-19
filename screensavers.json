@@ -17320,5 +17320,32 @@
       "",
       "transparent"
     ]
+  },
+  {
+    "id": "christian-yelich-riding-on-a-unicorn",
+    "title": "Christian Yelich Riding on a Unicorn",
+    "author": "Ewan Pautz",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/christian-yelich-riding-on-a-unicorn.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/christian-yelich-riding-on-a-unicorn.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/christian-yelich-riding-on-a-unicorn.png",
+    "tags": [
+      "nature",
+      "unicorn",
+      "brewers",
+      "baseball",
+      "",
+      "transparent"
+    ]
   }
 ]
