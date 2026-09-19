@@ -17347,5 +17347,28 @@
       "",
       "transparent"
     ]
+  },
+  {
+    "id": "trevor-megill",
+    "title": "Trevor Megill",
+    "author": "Ewan Pautz",
+    "category": [
+      "Minimalist",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/trevor-megill.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/trevor-megill.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/trevor-megill.png",
+    "tags": [
+      "brewers",
+      "baseball",
+      "pitcher",
+      "transparent"
+    ]
   }
 ]
