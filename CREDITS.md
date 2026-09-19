@@ -604,3 +604,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | 10000bc Headphones | Jimmy | Fantasy, Pop Culture, Transparent | Community Share | Jimmy |
 | Luna 2 | Jimmy | Nature | Community Share | Jimmy |
 | Jacob Misiorowski | Ewan Pautz | Minimalist, Transparent | Community Share | Ewan Pautz |
+| Christian Yelich Riding on a Unicorn | Ewan Pautz | Minimalist, Nature, Art, Transparent | Community Share | Ewan Pautz |
