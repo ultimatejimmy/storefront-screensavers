@@ -17370,5 +17370,78 @@
       "pitcher",
       "transparent"
     ]
+  },
+  {
+    "id": "the-hooks",
+    "title": "The hooks",
+    "author": "Jules",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Art",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-hooks.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-hooks.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/the-hooks.jpg",
+    "tags": [
+      "Spongebob",
+      "hooks",
+      "bikini bottom"
+    ]
+  },
+  {
+    "id": "jar-jar",
+    "title": "Jar jar",
+    "author": "Jules",
+    "category": [
+      "Minimalist",
+      "Fantasy",
+      "Sci-Fi",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/jar-jar.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/jar-jar.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/jar-jar.png",
+    "tags": [
+      "Star Wars",
+      "jar jar",
+      "transparent"
+    ]
+  },
+  {
+    "id": "jellyfish-fields",
+    "title": "Jellyfish fields",
+    "author": "Jules",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Abstract",
+      "Art",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/jellyfish-fields.jpg",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/jellyfish-fields.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/jellyfish-fields.jpg",
+    "tags": [
+      "Spongebob",
+      "jellyfish fields"
+    ]
   }
 ]

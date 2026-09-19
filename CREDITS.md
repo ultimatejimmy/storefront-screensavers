@@ -606,3 +606,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Jacob Misiorowski | Ewan Pautz | Minimalist, Transparent | Community Share | Ewan Pautz |
 | Christian Yelich Riding on a Unicorn | Ewan Pautz | Minimalist, Nature, Art, Transparent | Community Share | Ewan Pautz |
 | Trevor Megill | Ewan Pautz | Minimalist, Transparent | Community Share | Ewan Pautz |
+| The hooks | Jules | Minimalist, Nature, Art, Pop Culture | Community Share | Jules |
+| Jar jar | Jules | Minimalist, Fantasy, Sci-Fi, Pop Culture, Transparent | Community Share | Jules |
+| Jellyfish fields | Jules | Minimalist, Nature, Abstract, Art, Pop Culture | Community Share | Jules |
