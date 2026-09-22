@@ -673,12 +673,14 @@ def main():
             ""
         ]
 
-        if is_replacement and img_url:
-            pr_body.extend([
-                "### Replacement Visual Preview",
-                f"![{new_title}]({img_url})",
-                ""
-            ])
+        if is_replacement:
+            preview_img = f"https://raw.githubusercontent.com/{repo}/{branch}/{thumb_web_rel}" if thumb_web_rel else img_url
+            if preview_img:
+                pr_body.extend([
+                    "### Replacement Visual Preview",
+                    f"![{new_title}]({preview_img})",
+                    ""
+                ])
 
         pr_body.extend([
             "---",
@@ -821,12 +823,14 @@ def main():
             ""
         ]
 
-        if is_replacement and img_url:
-            comment_lines.extend([
-                "### Replacement Visual Preview",
-                f"![{new_title}]({img_url})",
-                ""
-            ])
+        if is_replacement:
+            preview_img = f"https://raw.githubusercontent.com/{repo}/{branch}/{thumb_web_rel}" if thumb_web_rel else img_url
+            if preview_img:
+                comment_lines.extend([
+                    "### Replacement Visual Preview",
+                    f"![{new_title}]({preview_img})",
+                    ""
+                ])
 
         comment_lines.extend([
             "**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, the changes will immediately update in the web catalog and KOReader Storefront plugin!"

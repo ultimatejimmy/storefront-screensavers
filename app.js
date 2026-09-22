@@ -727,7 +727,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .finally(() => clearTimeout(timeoutId));
   }
 
-  let cachedWorkingTier = 'tmpfiles'; // Default to TmpFiles which has active CORS and fastest response
+  let cachedWorkingTier = 'freeimage'; // Default to FreeImage for direct image hosting with open CORS
 
   // Upload file anonymously using a 4-tier resilient cascade with dynamic timeouts
   async function uploadImageFile(file, fileName = 'screensaver.jpg', statusCallback = null) {
@@ -842,7 +842,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'catbox': tryCatbox
     };
 
-    const order = ['tmpfiles', 'freeimage', 'litterbox', 'catbox'];
+    const order = ['freeimage', 'litterbox', 'catbox', 'tmpfiles'];
     if (cachedWorkingTier && tierMap[cachedWorkingTier]) {
       const idx = order.indexOf(cachedWorkingTier);
       if (idx > -1) {

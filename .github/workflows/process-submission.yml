@@ -644,8 +644,10 @@ jobs:
         if: steps.process.outputs.valid == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
           ISSUE_NUM: ${{ github.event.issue.number }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -811,9 +813,28 @@ jobs:
           except subprocess.CalledProcessError as pr_err:
               print(f"PR creation returned non-zero (might already exist): {pr_err}")
 
+          # Update issue description with persistent repository thumbnail URLs
+          orig_body = os.environ.get('ISSUE_BODY', '')
+          if orig_body and issue_num:
+              updated_body = orig_body
+              for it in items:
+                  old_url = it.get('img_url')
+                  new_url = raw_branch_base + it['thumb_web_path']
+                  if old_url:
+                      updated_body = updated_body.replace(old_url, new_url)
+              if updated_body != orig_body:
+                  try:
+                      with open('updated_issue_body.md', 'w', encoding='utf-8') as ubf:
+                          ubf.write(updated_body)
+                      subprocess.run(['gh', 'issue', 'edit', str(issue_num), '--body-file', 'updated_issue_body.md'], check=False)
+                      print(f"Updated issue #{issue_num} description with working branch image URLs.")
+                  except Exception as e_edit:
+                      print(f"Note: Could not update issue body: {e_edit}")
+
           # Generate issue comment
           if len(items) == 1 and not validation_errors:
               item = items[0]
+              thumb_url = raw_branch_base + item['thumb_web_path']
               comment_lines = [
                   "🎉 **Submission Received & Verified!**",
                   "",
@@ -828,7 +849,7 @@ jobs:
                   f"| **Pull Request** | [View PR]({pr_url}) |",
                   "",
                   "### Visual Preview",
-                  f"![{item['title']}]({item['img_url']})",
+                  f"![{item['title']}]({thumb_url})",
                   "",
                   "**Review Status:** Pending maintainer review & approval. Once approved and merged into `main`, the wallpaper will immediately appear in the web catalog and KOReader Storefront plugin!"
               ]
@@ -838,17 +859,20 @@ jobs:
                   "",
                   f"An automated Pull Request has been created for all wallpapers in this batch: [{pr_title}]({pr_url})",
                   "",
-                  "| # | Wallpaper | Author | Category |",
-                  "|---|---|---|---|"
+                  "| # | Preview | Wallpaper | Author | Category |",
+                  "|---|---|---|---|---|"
               ]
               for idx, it in enumerate(items, 1):
-                  comment_lines.append(f"| {idx} | **{it['title']}** | {it['author']} | {it['category']} |")
+                  thumb_url = raw_branch_base + it['thumb_web_path']
+                  thumb_preview = f"<img src='{thumb_url}' width='90' />"
+                  comment_lines.append(f"| {idx} | {thumb_preview} | **{it['title']}** | {it['author']} | {it['category']} |")
 
               comment_lines.append("")
               comment_lines.append("### Wallpaper Previews")
               for it in items:
+                  thumb_url = raw_branch_base + it['thumb_web_path']
                   comment_lines.append(f"#### {it['title']}")
-                  comment_lines.append(f"![{it['title']}]({it['img_url']})")
+                  comment_lines.append(f"![{it['title']}]({thumb_url})")
                   comment_lines.append("")
 
               if validation_errors:
