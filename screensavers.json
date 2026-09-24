@@ -17443,5 +17443,33 @@
       "Spongebob",
       "jellyfish fields"
     ]
+  },
+  {
+    "id": "sea-slugs",
+    "title": "Sea Slugs",
+    "author": "Walnutty",
+    "category": [
+      "Minimalist",
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/sea-slugs.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/sea-slugs.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/sea-slugs.png",
+    "tags": [
+      "slugs",
+      "sea",
+      "ocean",
+      "water",
+      "gastropods",
+      "mollusks",
+      "transparent"
+    ],
+    "authorUrl": "https://openclipart.org/artist/Walnutty"
   }
 ]
