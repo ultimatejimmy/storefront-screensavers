@@ -12,6 +12,8 @@ import shutil
 import urllib.parse
 import urllib.request
 import webbrowser
+import re
+import base64
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from io import BytesIO
 
@@ -106,6 +108,46 @@ def rebuild_credits_file(catalog):
     with open(CREDITS_MD, 'w', encoding='utf-8') as f:
         f.write('\n'.join(lines))
 
+def clean_filename_to_title(filename):
+    """Convert a filename like 'foggy_mountain-pines_4k.png' into 'Foggy Mountain Pines 4k'."""
+    base = os.path.splitext(os.path.basename(filename))[0]
+    clean = re.sub(r'[-_.]+', ' ', base).strip()
+    words = [w.capitalize() for w in clean.split() if w]
+    return ' '.join(words) if words else base
+
+def generate_unique_id(title, existing_ids):
+    """Generate a unique slug identifier for a screensaver."""
+    raw_slug = "".join(c.lower() if c.isalnum() else '-' for c in (title or 'screensaver')).strip('-')
+    base_id = '-'.join(filter(None, raw_slug.split('-'))) or f"screensaver-{int(time.time())}"
+    item_id = base_id
+    counter = 1
+    while item_id in existing_ids:
+        item_id = f"{base_id}-{counter}"
+        counter += 1
+    return item_id
+
+def generate_default_tags(title, category=None):
+    """Generate meaningful default tags from category and title keywords."""
+    tags = set()
+    if category:
+        if isinstance(category, list):
+            for c in category:
+                if c and str(c).strip():
+                    tags.add(str(c).strip().lower())
+        elif isinstance(category, str) and category.strip():
+            for c in category.split(','):
+                if c.strip():
+                    tags.add(c.strip().lower())
+    if title:
+        words = re.findall(r'[a-zA-Z0-9]+', str(title).lower())
+        stop_words = {'the', 'a', 'an', 'and', 'or', 'of', 'in', 'on', 'at', 'to', 'by', 'for', 'with', 'is', 'it', 'screensaver', 'wallpaper'}
+        for w in words:
+            if len(w) > 2 and w not in stop_words:
+                tags.add(w)
+    if not tags:
+        tags.add('screensaver')
+    return sorted(list(tags))
+
 def sync_all_catalog():
     """
     Comprehensive Catalog Sync:
@@ -139,6 +181,8 @@ def sync_all_catalog():
             cur_tags = [str(t).strip().lower() for t in cur_tags if str(t).strip()]
         else:
             cur_tags = []
+        if not cur_tags:
+            cur_tags = generate_default_tags(item.get('title', ''), item.get('category'))
         item['tags'] = sorted(list(set(cur_tags)))
 
         # Detect actual file extension on disk
@@ -352,6 +396,134 @@ def process_and_save_image(image_bytes, item_id, is_png=False):
         "format": ext
     }
 
+def bulk_add_screensavers(items):
+    """
+    Bulk process and add multiple screensavers to the catalog.
+    Handles image resizing, slugification, deduplication, auto-tagging,
+    credits regeneration, and catalog persistence.
+    """
+    catalog = load_catalog()
+    existing_ids = {x.get('id') for x in catalog}
+    added = []
+    errors = []
+
+    for i, raw_item in enumerate(items):
+        title = (raw_item.get('title') or '').strip()
+        filename = raw_item.get('filename') or ''
+        local_file = raw_item.get('localFilePath') or ''
+
+        if not title:
+            if filename:
+                title = clean_filename_to_title(filename)
+            elif local_file:
+                title = clean_filename_to_title(os.path.basename(local_file))
+            else:
+                title = f"Screensaver {int(time.time())}-{i+1}"
+
+        item_id = generate_unique_id(title, existing_ids)
+        existing_ids.add(item_id)
+
+        try:
+            # Image acquisition
+            image_data = raw_item.get('imageData')
+            image_url = raw_item.get('imageUrl')
+            is_png = raw_item.get('isPng', False)
+
+            raw_bytes = None
+            if local_file:
+                local_file = local_file.strip().strip('"\'')
+                if not os.path.isabs(local_file):
+                    cand = os.path.normpath(os.path.join(REPO_ROOT, local_file))
+                    if os.path.isfile(cand):
+                        local_file = cand
+                if not os.path.isfile(local_file):
+                    raise FileNotFoundError(f"Local file does not exist: {local_file}")
+                with open(local_file, 'rb') as f:
+                    raw_bytes = f.read()
+                if local_file.lower().endswith('.png'):
+                    is_png = True
+            elif image_data:
+                if ',' in image_data:
+                    image_data = image_data.split(',', 1)[1]
+                raw_bytes = base64.b64decode(image_data)
+            elif image_url:
+                req = urllib.request.Request(image_url, headers={'User-Agent': 'Mozilla/5.0'})
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    raw_bytes = resp.read()
+                if image_url.lower().endswith('.png'):
+                    is_png = True
+
+            if not raw_bytes:
+                raise ValueError("No image data or file path provided")
+
+            img_res = process_and_save_image(raw_bytes, item_id, is_png=is_png)
+
+            # Category normalization
+            cat_input = raw_item.get('category')
+            if isinstance(cat_input, list):
+                cat_list = [str(c).strip() for c in cat_input if str(c).strip()]
+            elif isinstance(cat_input, str) and cat_input.strip():
+                cat_list = [c.strip() for c in cat_input.split(',') if c.strip()]
+            else:
+                cat_list = ['Nature']
+            category_val = cat_list if len(cat_list) > 1 else (cat_list[0] if cat_list else 'Nature')
+
+            # Tags normalization
+            tag_input = raw_item.get('tags')
+            if isinstance(tag_input, list):
+                tags_list = [str(t).strip().lower() for t in tag_input if str(t).strip()]
+            elif isinstance(tag_input, str) and tag_input.strip():
+                tags_list = [t.strip().lower() for t in tag_input.split(',') if t.strip()]
+            else:
+                tags_list = []
+            if not tags_list:
+                tags_list = generate_default_tags(title, category_val)
+            tags_list = sorted(list(set(tags_list)))
+
+            author = (raw_item.get('author') or 'Community Share').strip()
+            license_name = (raw_item.get('license') or 'Community Share').strip()
+            attribution = (raw_item.get('attribution') or author or 'Community Share').strip()
+
+            new_item = {
+                "id": item_id,
+                "title": title,
+                "author": author,
+                "category": category_val,
+                "compatibility": ["Kindle", "Kobo", "Boox", "PocketBook"],
+                "thumbnailUrl": img_res['thumbnailUrl'],
+                "fullUrl": img_res['fullUrl'],
+                "license": license_name,
+                "attribution": attribution,
+                "tags": tags_list,
+                "downloads": 0,
+                "likes": 1
+            }
+            if raw_item.get('sourceUrl'):
+                new_item['sourceUrl'] = raw_item['sourceUrl'].strip()
+
+            catalog.insert(0, new_item)
+            added.append(new_item)
+        except Exception as exc:
+            errors.append({"index": i, "title": title, "error": str(exc)})
+
+    if added:
+        save_catalog(catalog)
+        rebuild_credits_file(catalog)
+        try:
+            from generate_catalogs import generate_catalogs
+            generate_catalogs()
+        except Exception:
+            pass
+
+    return {
+        "success": True,
+        "addedCount": len(added),
+        "failedCount": len(errors),
+        "items": added,
+        "errors": errors,
+        "totalCatalog": len(catalog)
+    }
+
 
 class CatalogStudioHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -407,6 +579,38 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 "items": catalog
             }
             self.send_json(response_data)
+            return
+
+        # API: Preview local image file (used by folder scan preview)
+        if path == '/api/catalog/preview-local-image':
+            query_params = urllib.parse.parse_qs(parsed.query)
+            file_path = query_params.get('path', [''])[0].strip().strip('"\'')
+            if file_path and not os.path.isabs(file_path):
+                cand = os.path.normpath(os.path.join(REPO_ROOT, file_path))
+                if os.path.isfile(cand):
+                    file_path = cand
+            if file_path and os.path.isfile(file_path):
+                ext = os.path.splitext(file_path)[1].lower()
+                content_type_map = {
+                    '.png': 'image/png',
+                    '.jpg': 'image/jpeg',
+                    '.jpeg': 'image/jpeg',
+                    '.webp': 'image/webp',
+                    '.bmp': 'image/bmp'
+                }
+                if ext in content_type_map:
+                    try:
+                        with open(file_path, 'rb') as f:
+                            data = f.read()
+                        self.send_response(200)
+                        self.send_header('Content-Type', content_type_map[ext])
+                        self.send_header('Content-Length', str(len(data)))
+                        self.end_headers()
+                        self.wfile.write(data)
+                        return
+                    except Exception:
+                        pass
+            self.send_error(404, "File not found or not an image")
             return
 
         # Root goes to studio index.html
@@ -482,20 +686,16 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 self.send_error(400, "Item and Title are required")
                 return
 
+            existing_ids = {x.get('id') for x in catalog}
             item_id = new_item.get('id')
             if not item_id:
-                # slugify title
-                raw_slug = "".join(c.lower() if c.isalnum() else '-' for c in new_item['title']).strip('-')
-                item_id = '-'.join(filter(None, raw_slug.split('-'))) or f"screensaver-{int(time.time())}"
-                new_item['id'] = item_id
-
-            # Ensure ID is unique
-            existing_ids = {x.get('id') for x in catalog}
-            original_id = item_id
-            counter = 1
-            while item_id in existing_ids:
-                item_id = f"{original_id}-{counter}"
-                counter += 1
+                item_id = generate_unique_id(new_item['title'], existing_ids)
+            else:
+                original_id = item_id
+                counter = 1
+                while item_id in existing_ids:
+                    item_id = f"{original_id}-{counter}"
+                    counter += 1
             new_item['id'] = item_id
 
             # Handle image data if provided (base64 or remote URL)
@@ -504,8 +704,6 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
             is_png = payload.get('isPng', False)
 
             if image_data:
-                # Base64 string data:image/jpeg;base64,...
-                import base64
                 if ',' in image_data:
                     image_data = image_data.split(',', 1)[1]
                 raw_bytes = base64.b64decode(image_data)
@@ -530,10 +728,75 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
             new_item.setdefault('license', "Community Share")
             new_item.setdefault('category', "Nature")
 
+            # Ensure valid non-empty tags
+            cur_tags = new_item.get('tags') or []
+            if isinstance(cur_tags, str):
+                cur_tags = [t.strip().lower() for t in cur_tags.split(',') if t.strip()]
+            elif isinstance(cur_tags, list):
+                cur_tags = [str(t).strip().lower() for t in cur_tags if str(t).strip()]
+            else:
+                cur_tags = []
+            if not cur_tags:
+                cur_tags = generate_default_tags(new_item['title'], new_item.get('category'))
+            new_item['tags'] = sorted(list(set(cur_tags)))
+
             catalog.insert(0, new_item)
             save_catalog(catalog)
+            rebuild_credits_file(catalog)
             self.send_json({"success": True, "item": new_item})
             return
+
+        # API: Bulk add catalog items
+        if path == '/api/catalog/bulk-add':
+            items = payload.get('items', [])
+            if not isinstance(items, list) or len(items) == 0:
+                self.send_json({"success": False, "error": "No items provided in bulk-add payload"}, status=400)
+                return
+            result = bulk_add_screensavers(items)
+            self.send_json(result)
+            return
+
+        # API: Scan local directory for image files
+        if path == '/api/catalog/scan-folder':
+            folder = payload.get('folder', '').strip().strip('"\'')
+            if not folder:
+                self.send_json({"success": False, "error": "Folder path is required"}, status=400)
+                return
+            if not os.path.isabs(folder):
+                candidate = os.path.normpath(os.path.join(REPO_ROOT, folder))
+                if os.path.isdir(candidate):
+                    folder = candidate
+            if not os.path.isdir(folder):
+                self.send_json({"success": False, "error": f"Directory not found or inaccessible: '{folder}'"}, status=400)
+                return
+
+            valid_extensions = {'.png', '.jpg', '.jpeg', '.webp', '.bmp'}
+            found_files = []
+            try:
+                for entry in os.scandir(folder):
+                    if entry.is_file():
+                        ext = os.path.splitext(entry.name)[1].lower()
+                        if ext in valid_extensions:
+                            size_bytes = entry.stat().st_size
+                            title = clean_filename_to_title(entry.name)
+                            found_files.append({
+                                "filename": entry.name,
+                                "path": os.path.abspath(entry.path),
+                                "title": title,
+                                "size": size_bytes,
+                                "ext": ext.lstrip('.')
+                            })
+                found_files.sort(key=lambda x: x['filename'].lower())
+                self.send_json({
+                    "success": True,
+                    "folder": folder,
+                    "count": len(found_files),
+                    "files": found_files
+                })
+                return
+            except Exception as e:
+                self.send_json({"success": False, "error": f"Failed scanning directory: {str(e)}"}, status=500)
+                return
 
         # API: Replace image for existing item
         if path.startswith('/api/catalog/item/') and path.endswith('/replace-image'):

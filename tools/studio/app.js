@@ -21,7 +21,10 @@
     previewMode: 'device', // 'device' | 'grid' | 'book'
     newItemImageData: null,
     replaceImageData: null,
-    pendingDeleteId: null
+    pendingDeleteId: null,
+    stagedBulkItems: [],
+    bulkSourceMode: 'files',
+    isBulkImporting: false
   };
 
   // DOM Elements
@@ -122,6 +125,36 @@
     addLicense: document.getElementById('add-license'),
     addSourceUrl: document.getElementById('add-source-url'),
     addAttribution: document.getElementById('add-attribution'),
+
+    // Bulk Add Modal
+    btnBulkAdd: document.getElementById('btn-bulk-add'),
+    btnSwitchToBulk: document.getElementById('btn-switch-to-bulk'),
+    bulkModal: document.getElementById('bulk-add-modal'),
+    bulkModalCloseBtn: document.getElementById('bulk-modal-close-btn'),
+    bulkModalCancelBtn: document.getElementById('bulk-modal-cancel-btn'),
+    bulkModalSubmitBtn: document.getElementById('bulk-modal-submit-btn'),
+    bulkSubmitText: document.getElementById('bulk-submit-text'),
+    tabBulkFiles: document.getElementById('tab-bulk-files'),
+    tabBulkFolder: document.getElementById('tab-bulk-folder'),
+    bulkFilesSection: document.getElementById('bulk-files-section'),
+    bulkFolderSection: document.getElementById('bulk-folder-section'),
+    bulkDropzone: document.getElementById('bulk-dropzone'),
+    bulkFileInput: document.getElementById('bulk-file-input'),
+    bulkFolderInputPath: document.getElementById('bulk-folder-input-path'),
+    btnScanFolder: document.getElementById('btn-scan-folder'),
+    bulkDefaultAuthor: document.getElementById('bulk-default-author'),
+    bulkDefaultLicense: document.getElementById('bulk-default-license'),
+    bulkDefaultSource: document.getElementById('bulk-default-source'),
+    bulkDefaultTags: document.getElementById('bulk-default-tags'),
+    bulkCategoryPills: document.getElementById('bulk-category-pills'),
+    bulkStagedContainer: document.getElementById('bulk-staged-container'),
+    bulkStagedCount: document.getElementById('bulk-staged-count'),
+    bulkStagedList: document.getElementById('bulk-staged-list'),
+    btnClearStaged: document.getElementById('btn-clear-staged'),
+    bulkProgressContainer: document.getElementById('bulk-progress-container'),
+    bulkProgressText: document.getElementById('bulk-progress-text'),
+    bulkProgressPercent: document.getElementById('bulk-progress-percent'),
+    bulkProgressFill: document.getElementById('bulk-progress-fill'),
 
     // Sync & Backups
     btnSyncAll: document.getElementById('btn-sync-all'),
@@ -835,6 +868,342 @@
     }
   }
 
+  // ==========================================
+  // Bulk Add Modal & Operations
+  // ==========================================
+  function cleanFilenameToTitle(filename) {
+    if (!filename) return 'Screensaver';
+    const base = filename.replace(/\.[^/.]+$/, '');
+    const clean = base.replace(/[-_.]+/g, ' ').trim();
+    return clean.split(/\s+/).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') || base;
+  }
+
+  function formatFileSize(bytes) {
+    if (!bytes) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return (bytes / Math.pow(k, i)).toFixed(1) + ' ' + sizes[i];
+  }
+
+  function readFileAsBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function openBulkModal() {
+    state.stagedBulkItems = [];
+    state.bulkSourceMode = 'files';
+    state.isBulkImporting = false;
+
+    if (el.bulkFileInput) el.bulkFileInput.value = '';
+    if (el.bulkFolderInputPath) el.bulkFolderInputPath.value = '';
+    if (el.bulkDefaultAuthor) el.bulkDefaultAuthor.value = 'Community Share';
+    if (el.bulkDefaultLicense) el.bulkDefaultLicense.value = 'Community Share';
+    if (el.bulkDefaultSource) el.bulkDefaultSource.value = '';
+    if (el.bulkDefaultTags) el.bulkDefaultTags.value = '';
+
+    renderCategoryPills(el.bulkCategoryPills, ['Nature']);
+    renderBulkStagedList();
+    setBulkSourceTab('files');
+
+    if (el.bulkProgressContainer) el.bulkProgressContainer.classList.add('hidden');
+    if (el.bulkModalSubmitBtn) {
+      el.bulkModalSubmitBtn.disabled = true;
+      el.bulkSubmitText.textContent = 'Import Wallpapers';
+    }
+
+    el.bulkModal.classList.remove('hidden');
+  }
+
+  function closeBulkModal() {
+    if (state.isBulkImporting) {
+      if (!confirm('An import is currently in progress. Are you sure you want to cancel?')) {
+        return;
+      }
+    }
+    el.bulkModal.classList.add('hidden');
+    // Clean up created object URLs
+    state.stagedBulkItems.forEach(item => {
+      if (item.previewUrl && item.previewUrl.startsWith('blob:')) {
+        URL.revokeObjectURL(item.previewUrl);
+      }
+    });
+    state.stagedBulkItems = [];
+    state.isBulkImporting = false;
+  }
+
+  function setBulkSourceTab(mode) {
+    state.bulkSourceMode = mode;
+    if (mode === 'files') {
+      el.tabBulkFiles.classList.add('active');
+      el.tabBulkFolder.classList.remove('active');
+      el.bulkFilesSection.classList.remove('hidden');
+      el.bulkFolderSection.classList.add('hidden');
+    } else {
+      el.tabBulkFiles.classList.remove('active');
+      el.tabBulkFolder.classList.add('active');
+      el.bulkFilesSection.classList.add('hidden');
+      el.bulkFolderSection.classList.remove('hidden');
+    }
+  }
+
+  function addFilesToBulkStaged(files) {
+    if (!files || files.length === 0) return;
+    const validExtensions = ['png', 'jpg', 'jpeg', 'webp', 'bmp'];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const ext = file.name.split('.').pop().toLowerCase();
+      if (!validExtensions.includes(ext) && !file.type.startsWith('image/')) {
+        continue;
+      }
+
+      const id = 'staged-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7);
+      const title = cleanFilenameToTitle(file.name);
+      const previewUrl = URL.createObjectURL(file);
+
+      state.stagedBulkItems.push({
+        id: id,
+        file: file,
+        localFilePath: null,
+        previewUrl: previewUrl,
+        filename: file.name,
+        title: title,
+        size: file.size,
+        ext: ext
+      });
+    }
+
+    renderBulkStagedList();
+  }
+
+  async function scanLocalFolder() {
+    const folder = el.bulkFolderInputPath.value.trim();
+    if (!folder) {
+      showToast('Please enter a folder path to scan', 'error');
+      return;
+    }
+
+    try {
+      el.btnScanFolder.disabled = true;
+      el.btnScanFolder.textContent = 'Scanning...';
+
+      const res = await fetch('/api/catalog/scan-folder', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ folder: folder })
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Failed scanning directory');
+      }
+
+      if (data.files.length === 0) {
+        showToast('No supported images (PNG, JPG, WebP, BMP) found in folder', 'info');
+        return;
+      }
+
+      for (const f of data.files) {
+        const id = 'staged-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7);
+        const previewUrl = `/api/catalog/preview-local-image?path=${encodeURIComponent(f.path)}`;
+
+        state.stagedBulkItems.push({
+          id: id,
+          file: null,
+          localFilePath: f.path,
+          previewUrl: previewUrl,
+          filename: f.filename,
+          title: f.title,
+          size: f.size,
+          ext: f.ext
+        });
+      }
+
+      renderBulkStagedList();
+      showToast(`Added ${data.files.length} images from folder!`, 'success');
+    } catch (err) {
+      showToast('Error scanning folder: ' + err.message, 'error');
+    } finally {
+      el.btnScanFolder.disabled = false;
+      el.btnScanFolder.textContent = 'Scan Directory';
+    }
+  }
+
+  function renderBulkStagedList() {
+    const count = state.stagedBulkItems.length;
+    el.bulkStagedCount.textContent = count;
+
+    if (count === 0) {
+      el.bulkStagedContainer.classList.add('hidden');
+      el.bulkModalSubmitBtn.disabled = true;
+      el.bulkSubmitText.textContent = 'Import Wallpapers';
+      el.bulkStagedList.innerHTML = '';
+      return;
+    }
+
+    el.bulkStagedContainer.classList.remove('hidden');
+    el.bulkModalSubmitBtn.disabled = false;
+    el.bulkSubmitText.textContent = `Import ${count} ${count === 1 ? 'Wallpaper' : 'Wallpapers'}`;
+
+    el.bulkStagedList.innerHTML = '';
+
+    state.stagedBulkItems.forEach((item) => {
+      const itemEl = document.createElement('div');
+      itemEl.className = 'bulk-staged-item';
+      itemEl.innerHTML = `
+        <div class="staged-thumb-wrapper">
+          <img class="staged-thumb" src="${escapeHtml(item.previewUrl)}" alt="Preview" onerror="this.src='';">
+        </div>
+        <div class="staged-info-wrapper">
+          <input type="text" class="text-input staged-title-input" value="${escapeHtml(item.title)}" placeholder="Wallpaper title..." data-id="${item.id}">
+          <div class="staged-meta-row">
+            <span>${escapeHtml(item.filename)}</span>
+            <span>•</span>
+            <span>${formatFileSize(item.size)}</span>
+            <span class="format-badge">${escapeHtml(item.ext.toUpperCase())}</span>
+          </div>
+        </div>
+        <button type="button" class="btn-remove-staged" title="Remove from batch" data-id="${item.id}">✕</button>
+      `;
+
+      // Title change listener
+      const titleInput = itemEl.querySelector('.staged-title-input');
+      titleInput.addEventListener('input', (e) => {
+        item.title = e.target.value;
+      });
+
+      // Remove button listener
+      const removeBtn = itemEl.querySelector('.btn-remove-staged');
+      removeBtn.addEventListener('click', () => {
+        if (item.previewUrl && item.previewUrl.startsWith('blob:')) {
+          URL.revokeObjectURL(item.previewUrl);
+        }
+        state.stagedBulkItems = state.stagedBulkItems.filter(x => x.id !== item.id);
+        renderBulkStagedList();
+      });
+
+      el.bulkStagedList.appendChild(itemEl);
+    });
+  }
+
+  async function executeBulkImport() {
+    if (state.stagedBulkItems.length === 0) {
+      showToast('No images queued for import', 'error');
+      return;
+    }
+
+    const defaultAuthor = el.bulkDefaultAuthor.value.trim() || 'Community Share';
+    const defaultLicense = el.bulkDefaultLicense.value;
+    const defaultSource = el.bulkDefaultSource.value.trim();
+    const defaultTagsRaw = el.bulkDefaultTags.value.trim();
+    const defaultTags = defaultTagsRaw ? defaultTagsRaw.split(',').map(t => t.trim().toLowerCase()).filter(Boolean) : [];
+
+    const chosenCategories = getSelectedCategoriesFromPills(el.bulkCategoryPills);
+    const categoryValue = chosenCategories.length > 1
+      ? chosenCategories
+      : (chosenCategories[0] || 'Nature');
+
+    state.isBulkImporting = true;
+    el.bulkModalSubmitBtn.disabled = true;
+    el.bulkModalCancelBtn.disabled = true;
+    el.btnClearStaged.disabled = true;
+    el.bulkProgressContainer.classList.remove('hidden');
+
+    const total = state.stagedBulkItems.length;
+    let processed = 0;
+    let successCount = 0;
+    let failedCount = 0;
+    const errors = [];
+
+    // Process in chunks of 4 to keep payloads responsive and show smooth progress
+    const CHUNK_SIZE = 4;
+    const itemsToProcess = [...state.stagedBulkItems];
+
+    for (let i = 0; i < itemsToProcess.length; i += CHUNK_SIZE) {
+      const chunk = itemsToProcess.slice(i, i + CHUNK_SIZE);
+      const payloadItems = [];
+
+      for (const item of chunk) {
+        let imageData = null;
+        let isPng = item.ext.toLowerCase() === 'png';
+
+        if (item.file) {
+          try {
+            imageData = await readFileAsBase64(item.file);
+            isPng = item.file.type === 'image/png' || isPng;
+          } catch (e) {
+            failedCount++;
+            errors.push(`${item.filename}: could not read file`);
+            continue;
+          }
+        }
+
+        payloadItems.push({
+          title: item.title.trim() || cleanFilenameToTitle(item.filename),
+          filename: item.filename,
+          category: categoryValue,
+          author: defaultAuthor,
+          license: defaultLicense,
+          sourceUrl: defaultSource,
+          attribution: defaultAuthor,
+          tags: defaultTags,
+          imageData: imageData,
+          localFilePath: item.localFilePath,
+          isPng: isPng
+        });
+      }
+
+      if (payloadItems.length === 0) continue;
+
+      try {
+        const res = await fetch('/api/catalog/bulk-add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: payloadItems })
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || 'Server error during batch');
+        }
+
+        successCount += (data.addedCount || 0);
+        failedCount += (data.failedCount || 0);
+        if (data.errors && data.errors.length) {
+          data.errors.forEach(e => errors.push(e.error || e.title));
+        }
+      } catch (err) {
+        failedCount += payloadItems.length;
+        errors.push(err.message);
+      }
+
+      processed += chunk.length;
+      const pct = Math.min(100, Math.round((processed / total) * 100));
+      el.bulkProgressFill.style.width = pct + '%';
+      el.bulkProgressPercent.textContent = pct + '%';
+      el.bulkProgressText.textContent = `Imported ${Math.min(processed, total)} of ${total} wallpapers...`;
+    }
+
+    state.isBulkImporting = false;
+    el.bulkModalSubmitBtn.disabled = false;
+    el.bulkModalCancelBtn.disabled = false;
+    el.btnClearStaged.disabled = false;
+
+    if (successCount > 0) {
+      showToast(`Successfully bulk added ${successCount} screensavers!`, 'success');
+      closeBulkModal();
+      await loadCatalogData();
+    } else {
+      showToast(`Bulk add failed: ${errors.join(', ')}`, 'error');
+    }
+  }
+
   // Batch Operations
   function updateBatchBar() {
     const count = state.selectedIds.size;
@@ -1382,6 +1751,70 @@
       el.addDropzoneContent.classList.remove('hidden');
     });
 
+    // Bulk Add Modal
+    if (el.btnBulkAdd) el.btnBulkAdd.addEventListener('click', openBulkModal);
+    if (el.btnSwitchToBulk) el.btnSwitchToBulk.addEventListener('click', () => {
+      closeAddModal();
+      openBulkModal();
+    });
+    if (el.bulkModalCloseBtn) el.bulkModalCloseBtn.addEventListener('click', closeBulkModal);
+    if (el.bulkModalCancelBtn) el.bulkModalCancelBtn.addEventListener('click', closeBulkModal);
+    if (el.bulkModalSubmitBtn) el.bulkModalSubmitBtn.addEventListener('click', executeBulkImport);
+
+    if (el.tabBulkFiles) el.tabBulkFiles.addEventListener('click', () => setBulkSourceTab('files'));
+    if (el.tabBulkFolder) el.tabBulkFolder.addEventListener('click', () => setBulkSourceTab('folder'));
+
+    if (el.btnScanFolder) el.btnScanFolder.addEventListener('click', scanLocalFolder);
+    if (el.bulkFolderInputPath) {
+      el.bulkFolderInputPath.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          scanLocalFolder();
+        }
+      });
+    }
+
+    if (el.btnClearStaged) {
+      el.btnClearStaged.addEventListener('click', () => {
+        state.stagedBulkItems.forEach(item => {
+          if (item.previewUrl && item.previewUrl.startsWith('blob:')) {
+            URL.revokeObjectURL(item.previewUrl);
+          }
+        });
+        state.stagedBulkItems = [];
+        renderBulkStagedList();
+      });
+    }
+
+    if (el.bulkDropzone) {
+      el.bulkDropzone.addEventListener('click', () => {
+        el.bulkFileInput.click();
+      });
+      el.bulkDropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        el.bulkDropzone.classList.add('dragover');
+      });
+      el.bulkDropzone.addEventListener('dragleave', () => {
+        el.bulkDropzone.classList.remove('dragover');
+      });
+      el.bulkDropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        el.bulkDropzone.classList.remove('dragover');
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          addFilesToBulkStaged(e.dataTransfer.files);
+        }
+      });
+    }
+
+    if (el.bulkFileInput) {
+      el.bulkFileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+          addFilesToBulkStaged(e.target.files);
+          el.bulkFileInput.value = '';
+        }
+      });
+    }
+
     // Sync & Backups
     if (el.btnSyncAll) el.btnSyncAll.addEventListener('click', syncEverything);
     el.btnBackups.addEventListener('click', openBackupsModal);
@@ -1408,6 +1841,8 @@
           el.deleteConfirmModal.classList.add('hidden');
         } else if (!el.addModal.classList.contains('hidden')) {
           closeAddModal();
+        } else if (!el.bulkModal.classList.contains('hidden')) {
+          closeBulkModal();
         } else if (!el.backupsModal.classList.contains('hidden')) {
           el.backupsModal.classList.add('hidden');
         } else if (el.inspector.classList.contains('open')) {

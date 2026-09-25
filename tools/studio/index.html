@@ -56,6 +56,11 @@
         <span>Backups</span>
       </button>
 
+      <button class="btn btn-secondary" id="btn-bulk-add" title="Bulk import multiple wallpapers at once">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        <span>Bulk Add</span>
+      </button>
+
       <button class="btn btn-primary" id="btn-add-item">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
         <span>Add Wallpaper</span>
@@ -371,6 +376,11 @@
       </div>
 
       <div class="modal-body">
+        <div class="bulk-switch-banner">
+          <span>Adding multiple images at once?</span>
+          <button type="button" class="btn-link" id="btn-switch-to-bulk">Switch to Bulk Add →</button>
+        </div>
+
         <!-- Add Image Dropzone -->
         <div class="dropzone modal-dropzone" id="add-dropzone">
           <input type="file" id="add-file-input" accept="image/png, image/jpeg, image/webp" class="file-input-hidden">
@@ -440,6 +450,137 @@
         <button class="btn btn-primary" id="add-modal-submit-btn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           <span>Create Screensaver</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bulk Add Screensavers Modal -->
+  <div class="modal-overlay hidden" id="bulk-add-modal">
+    <div class="modal-card modal-card-extra-wide">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3>Bulk Add Screensavers</h3>
+          <p>Import multiple wallpapers in one batch. Master (1860×2480) and thumbnail (600×800) images are generated automatically.</p>
+        </div>
+        <button class="close-btn" id="bulk-modal-close-btn" title="Close modal">✕</button>
+      </div>
+
+      <div class="modal-body bulk-modal-body">
+        <!-- Input Source Tabs -->
+        <div class="bulk-source-tabs">
+          <button type="button" class="bulk-tab-btn active" id="tab-bulk-files">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span>Upload Image Files</span>
+          </button>
+          <button type="button" class="bulk-tab-btn" id="tab-bulk-folder">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            <span>Scan Computer Folder</span>
+          </button>
+        </div>
+
+        <!-- Tab 1: Upload Files Dropzone -->
+        <div id="bulk-files-section">
+          <div class="dropzone modal-dropzone bulk-dropzone" id="bulk-dropzone">
+            <input type="file" id="bulk-file-input" accept="image/png, image/jpeg, image/webp" multiple class="file-input-hidden">
+            <div class="dropzone-content">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <p><strong>Drag & drop multiple image files here</strong> or <span class="upload-link">browse files</span></p>
+              <span class="dropzone-hint">Supports PNG, JPG, JPEG, WEBP. Select as many as you want.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Scan Local Folder -->
+        <div id="bulk-folder-section" class="hidden">
+          <div class="folder-scan-box">
+            <label for="bulk-folder-input-path">Directory Path on Your Computer:</label>
+            <div class="folder-scan-row">
+              <input type="text" id="bulk-folder-input-path" class="text-input font-mono" placeholder="e.g. C:\Users\jpautz\Pictures\Screensavers">
+              <button type="button" class="btn btn-secondary" id="btn-scan-folder">Scan Directory</button>
+            </div>
+            <span class="field-hint">Reads image files directly from local storage for fast bulk loading.</span>
+          </div>
+        </div>
+
+        <!-- Default Metadata Configuration (Applies to all queued items) -->
+        <div class="bulk-defaults-panel">
+          <div class="bulk-defaults-header">
+            <h4>Batch Metadata Defaults</h4>
+            <span class="bulk-defaults-sub">These attributes apply to all items in this batch unless overridden individually</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="bulk-default-author">Creator / Artist</label>
+              <input type="text" id="bulk-default-author" class="text-input" placeholder="e.g. Unsplash (CC0) or Community Share" value="Community Share">
+            </div>
+            <div class="form-group flex-1">
+              <label for="bulk-default-license">License</label>
+              <select id="bulk-default-license" class="select-input">
+                <option value="Community Share">Community Share</option>
+                <option value="CC0">CC0 (Public Domain)</option>
+                <option value="Public Domain">Public Domain</option>
+                <option value="Unsplash License">Unsplash License</option>
+                <option value="Pexels License">Pexels License</option>
+                <option value="Creative Commons">Creative Commons</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="bulk-default-source">Source / Origin URL (Optional)</label>
+              <input type="url" id="bulk-default-source" class="text-input" placeholder="https://...">
+            </div>
+            <div class="form-group flex-1">
+              <label for="bulk-default-tags">Default Tags (Optional, comma-separated)</label>
+              <input type="text" id="bulk-default-tags" class="text-input" placeholder="e.g. nature, mountains, landscape">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Categories (Select for all items in batch)</label>
+            <div class="category-pill-selector" id="bulk-category-pills">
+              <!-- Dynamically populated category checkboxes -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Staged Items Queue List -->
+        <div class="bulk-staged-container hidden" id="bulk-staged-container">
+          <div class="bulk-staged-header">
+            <div class="bulk-staged-title">
+              <h4>Queued Screensavers (<span id="bulk-staged-count">0</span>)</h4>
+              <span class="field-hint">Titles were auto-formatted from filenames. Edit any title inline before importing.</span>
+            </div>
+            <div class="bulk-staged-actions">
+              <button type="button" class="btn btn-secondary btn-small" id="btn-clear-staged">Clear All</button>
+            </div>
+          </div>
+
+          <div class="bulk-staged-list" id="bulk-staged-list">
+            <!-- Dynamically populated items -->
+          </div>
+        </div>
+
+        <!-- Progress Bar Indicator -->
+        <div class="bulk-progress-container hidden" id="bulk-progress-container">
+          <div class="progress-info-row">
+            <span class="progress-status-text" id="bulk-progress-text">Processing wallpapers...</span>
+            <span class="progress-percent-text" id="bulk-progress-percent">0%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="bulk-progress-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="bulk-modal-cancel-btn">Cancel</button>
+        <button class="btn btn-primary" id="bulk-modal-submit-btn" disabled>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          <span id="bulk-submit-text">Import Wallpapers</span>
         </button>
       </div>
     </div>
