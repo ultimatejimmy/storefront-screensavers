@@ -18138,10 +18138,7 @@
     "id": "read-book",
     "title": "Read Book",
     "author": "haydenweal",
-    "category": [
-      "Art",
-      "Transparent"
-    ],
+    "category": "Art",
     "compatibility": [
       "Kindle",
       "Kobo",

@@ -633,7 +633,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Maze Man | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Noir Steps | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Raven | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
-| Read Book | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
+| Read Book | haydenweal | Art | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Read Print | haydenweal | Art | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Record | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Shadow In Window | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
