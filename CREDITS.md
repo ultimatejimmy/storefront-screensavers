@@ -14,13 +14,13 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Silhoutte Lady | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Shadow In Window | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Record | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
-| Read Print | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
+| Read Print | haydenweal | Art | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Read Book | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Raven | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Noir Steps | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Maze Man | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Late Night Coffe Shop | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
-| Just One More Chapter | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
+| Just One More Chapter | haydenweal | Art | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Island Window | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Hot Dogs | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Geese | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |

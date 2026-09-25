@@ -289,9 +289,7 @@
       "transparent"
     ],
     "likes": 1,
-    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
-    "authorUrl": "",
-    "downloads": 0
+    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/"
   },
   {
     "id": "read-book",
@@ -453,9 +451,7 @@
       "transparent"
     ],
     "likes": 1,
-    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
-    "authorUrl": "",
-    "downloads": 0
+    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/"
   },
   {
     "id": "island-window",
@@ -18447,13 +18443,13 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/sea-slugs.png",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/sea-slugs.png",
     "tags": [
-      "slugs",
-      "sea",
-      "ocean",
-      "water",
       "gastropods",
       "mollusks",
-      "transparent"
+      "ocean",
+      "sea",
+      "slugs",
+      "transparent",
+      "water"
     ],
     "authorUrl": "https://openclipart.org/artist/Walnutty"
   }
