@@ -271,10 +271,7 @@
     "id": "read-print",
     "title": "Read Print",
     "author": "haydenweal",
-    "category": [
-      "Art",
-      "Transparent"
-    ],
+    "category": "Art",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -292,7 +289,9 @@
       "transparent"
     ],
     "likes": 1,
-    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/"
+    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
+    "authorUrl": "",
+    "downloads": 0
   },
   {
     "id": "read-book",
@@ -434,10 +433,7 @@
     "id": "just-one-more-chapter",
     "title": "Just One More Chapter",
     "author": "haydenweal",
-    "category": [
-      "Art",
-      "Transparent"
-    ],
+    "category": "Art",
     "compatibility": [
       "Kindle",
       "Kobo",
@@ -457,7 +453,9 @@
       "transparent"
     ],
     "likes": 1,
-    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/"
+    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
+    "authorUrl": "",
+    "downloads": 0
   },
   {
     "id": "island-window",
@@ -18430,5 +18428,33 @@
       "jellyfish fields",
       "spongebob"
     ]
+  },
+  {
+    "id": "sea-slugs",
+    "title": "Sea Slugs",
+    "author": "Walnutty",
+    "category": [
+      "Minimalist",
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/sea-slugs.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/sea-slugs.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/sea-slugs.png",
+    "tags": [
+      "slugs",
+      "sea",
+      "ocean",
+      "water",
+      "gastropods",
+      "mollusks",
+      "transparent"
+    ],
+    "authorUrl": "https://openclipart.org/artist/Walnutty"
   }
 ]

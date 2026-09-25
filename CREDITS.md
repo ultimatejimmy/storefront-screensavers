@@ -644,3 +644,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | The hooks | Jules | Minimalist, Nature, Art, Pop Culture | Community Share | Jules |
 | Jar jar | Jules | Minimalist, Fantasy, Sci-Fi, Pop Culture, Transparent | Community Share | Jules |
 | Jellyfish fields | Jules | Minimalist, Nature, Abstract, Art, Pop Culture | Community Share | Jules |
+| Sea Slugs | Walnutty | Minimalist, Anime, Transparent | Community Share | Walnutty |
