@@ -501,7 +501,7 @@ def bulk_add_screensavers(items):
             if raw_item.get('sourceUrl'):
                 new_item['sourceUrl'] = raw_item['sourceUrl'].strip()
 
-            catalog.insert(0, new_item)
+            catalog.append(new_item)
             added.append(new_item)
         except Exception as exc:
             errors.append({"index": i, "title": title, "error": str(exc)})
@@ -740,7 +740,7 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 cur_tags = generate_default_tags(new_item['title'], new_item.get('category'))
             new_item['tags'] = sorted(list(set(cur_tags)))
 
-            catalog.insert(0, new_item)
+            catalog.append(new_item)
             save_catalog(catalog)
             rebuild_credits_file(catalog)
             self.send_json({"success": True, "item": new_item})

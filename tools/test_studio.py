@@ -17,6 +17,16 @@ import catalog_studio as cs
 class TestCatalogStudio(unittest.TestCase):
     def setUp(self):
         self.catalog = cs.load_catalog()
+        self.orig_create_backup = cs.create_backup
+        cs.create_backup = lambda: None
+
+    def tearDown(self):
+        cs.create_backup = self.orig_create_backup
+        try:
+            from generate_catalogs import generate_catalogs
+            generate_catalogs()
+        except Exception:
+            pass
 
     def test_load_catalog(self):
         self.assertGreater(len(self.catalog), 0)

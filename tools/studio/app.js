@@ -14,7 +14,7 @@
     activeCategory: 'all',
     searchQuery: '',
     statusFilter: 'all',
-    sortBy: 'default',
+    sortBy: 'newest',
     viewMode: 'grid', // 'grid' | 'table'
     overlayMode: 'grid', // 'grid' | 'book'
     activeItem: null,

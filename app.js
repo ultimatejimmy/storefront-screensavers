@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeCats = getActiveFilterCategories();
     const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
     const sortSelect = document.getElementById('sort-select');
-    const sortBy = sortSelect ? sortSelect.value : 'downloads';
+    const sortBy = sortSelect ? sortSelect.value : 'newest';
 
     let filtered = catalogData.filter(item => {
       const matchCat = itemMatchesCategories(item, activeCats);
@@ -450,9 +450,14 @@ document.addEventListener('DOMContentLoaded', () => {
       filtered.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
     } else if (sortBy === 'author-asc') {
       filtered.sort((a, b) => (a.author || '').localeCompare(b.author || ''));
-    } else {
-      // Default: Most Downloaded with newest additions as tiebreaker
+    } else if (sortBy === 'downloads') {
       filtered.sort((a, b) => (getItemDownloads(b) - getItemDownloads(a)) || ((b._originalIndex || 0) - (a._originalIndex || 0)));
+    } else {
+      // Default: Submitted Date (Newest First)
+      filtered.sort((a, b) => {
+        if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
+        return (b._originalIndex || 0) - (a._originalIndex || 0);
+      });
     }
 
     renderGallery(filtered);
