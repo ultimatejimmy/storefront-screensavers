@@ -608,7 +608,7 @@ def bulk_add_screensavers(items):
                 "attribution": attribution,
                 "tags": tags_list,
                 "downloads": 0,
-                "likes": 1
+                "likes": 0
             }
             if img_res.get('pluginThumbnailUrl'):
                 new_item['pluginThumbnailUrl'] = img_res['pluginThumbnailUrl']
@@ -841,7 +841,7 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 new_item.setdefault('fullUrl', f"{GITHUB_RAW_BASE}images/{item_id}.jpg")
 
             new_item.setdefault('downloads', 0)
-            new_item.setdefault('likes', 1)
+            new_item.setdefault('likes', 0)
             new_item.setdefault('compatibility', ["Kindle", "Kobo", "Boox", "PocketBook"])
             new_item.setdefault('license', "Community Share")
             new_item.setdefault('category', "Nature")
