@@ -580,7 +580,7 @@ jobs:
               raw_base = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
               full_url = raw_base + full_path
               thumb_url = raw_base + thumb_web_path
-              plugin_thumb_url = (raw_base + thumb_plugin_path) if thumb_plugin_path else thumb_url
+              plugin_thumb_url = (raw_base + thumb_plugin_path) if thumb_plugin_path else None
 
               cat_list = [c.strip() for c in category.split(',')] if isinstance(category, str) else list(category)
               if is_transparent and 'Transparent' not in cat_list and 'transparent' not in cat_list:
@@ -597,12 +597,13 @@ jobs:
                   "category": cat_list if len(cat_list) > 1 else (cat_list[0] if cat_list else "General"),
                   "compatibility": ["Kindle", "Kobo", "Boox"],
                   "thumbnailUrl": thumb_url,
-                  "pluginThumbnailUrl": plugin_thumb_url,
                   "fullUrl": full_url,
                   "downloads": 0,
                   "likes": 0,
                   "tags": tag_list
               }
+              if plugin_thumb_url:
+                  cat_entry["pluginThumbnailUrl"] = plugin_thumb_url
               if author_url:
                   cat_entry["authorUrl"] = author_url
 

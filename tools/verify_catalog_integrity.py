@@ -44,13 +44,33 @@ for item in catalog:
         missing_thumbs += 1
         errors.append(f"Missing thumbnail: {thumb_file} for {item_id}")
 
-    # Check pluginThumbUrl if present
+    # Check pluginThumbUrl and transparency
+    cat = item.get('category')
+    cat_str = ' '.join(cat) if isinstance(cat, list) else str(cat or '')
+    is_transparent = 'transparent' in cat_str.lower()
+
     plugin_thumb_url = item.get('pluginThumbnailUrl')
-    if plugin_thumb_url:
-        plugin_file = plugin_thumb_url.split('/thumbnails/plugin/')[-1]
-        if not os.path.exists(os.path.join(PLUGIN_THUMBS_DIR, plugin_file)):
+    if is_transparent:
+        if not plugin_thumb_url:
             missing_plugin_thumbs += 1
-            errors.append(f"Missing plugin thumbnail: {plugin_file} for {item_id}")
+            errors.append(f"Missing pluginThumbnailUrl property for transparent item: {item_id}")
+        elif '/thumbnails/plugin/' not in plugin_thumb_url:
+            missing_plugin_thumbs += 1
+            errors.append(f"Invalid pluginThumbnailUrl '{plugin_thumb_url}' for {item_id}")
+        else:
+            plugin_file = plugin_thumb_url.split('/thumbnails/plugin/')[-1]
+            if not os.path.exists(os.path.join(PLUGIN_THUMBS_DIR, plugin_file)):
+                missing_plugin_thumbs += 1
+                errors.append(f"Missing plugin thumbnail file: {plugin_file} for {item_id}")
+    elif plugin_thumb_url:
+        if '/thumbnails/plugin/' not in plugin_thumb_url:
+            missing_plugin_thumbs += 1
+            errors.append(f"Non-transparent item has invalid pluginThumbnailUrl: {plugin_thumb_url} for {item_id}")
+        else:
+            plugin_file = plugin_thumb_url.split('/thumbnails/plugin/')[-1]
+            if not os.path.exists(os.path.join(PLUGIN_THUMBS_DIR, plugin_file)):
+                missing_plugin_thumbs += 1
+                errors.append(f"Missing plugin thumbnail file: {plugin_file} for {item_id}")
 
     # Check categories
     cat = item.get('category')

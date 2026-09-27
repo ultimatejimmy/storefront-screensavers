@@ -32,6 +32,7 @@ STUDIO_DIR = os.path.join(BASE_DIR, 'studio')
 BACKUPS_DIR = os.path.join(BASE_DIR, 'backups')
 IMAGES_DIR = os.path.join(REPO_ROOT, 'images')
 THUMBS_DIR = os.path.join(IMAGES_DIR, 'thumbnails')
+PLUGIN_THUMBS_DIR = os.path.join(THUMBS_DIR, 'plugin')
 SCREENSAVERS_JSON = os.path.join(REPO_ROOT, 'screensavers.json')
 CREDITS_MD = os.path.join(REPO_ROOT, 'CREDITS.md')
 
@@ -39,8 +40,37 @@ os.makedirs(STUDIO_DIR, exist_ok=True)
 os.makedirs(BACKUPS_DIR, exist_ok=True)
 os.makedirs(IMAGES_DIR, exist_ok=True)
 os.makedirs(THUMBS_DIR, exist_ok=True)
+os.makedirs(PLUGIN_THUMBS_DIR, exist_ok=True)
 
 GITHUB_RAW_BASE = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
+
+CHECKERBOARD_TILE = 12
+CB_LIGHT = (255, 255, 255, 255)
+CB_DARK  = (210, 210, 210, 255)
+
+def make_checkerboard(w, h):
+    """Generate checkerboard background for transparent screensavers."""
+    tile_size = CHECKERBOARD_TILE * 2
+    tile = Image.new('RGBA', (tile_size, tile_size), CB_LIGHT)
+    dark_sq = Image.new('RGBA', (CHECKERBOARD_TILE, CHECKERBOARD_TILE), CB_DARK)
+    tile.paste(dark_sq, (0, 0))
+    tile.paste(dark_sq, (CHECKERBOARD_TILE, CHECKERBOARD_TILE))
+
+    bg = Image.new('RGBA', (w, h))
+    for x in range(0, w, tile_size):
+        for y in range(0, h, tile_size):
+            bg.paste(tile, (x, y))
+    return bg
+
+def composite_over_checkerboard(img_rgba, target_w=600, target_h=800):
+    """Composite RGBA image over a neutral checkerboard background."""
+    bg = make_checkerboard(target_w, target_h)
+    img_thumb = img_rgba.copy()
+    img_thumb.thumbnail((target_w, target_h), Image.Resampling.LANCZOS)
+    x = (target_w - img_thumb.width) // 2
+    y = (target_h - img_thumb.height) // 2
+    bg.paste(img_thumb, (x, y), img_thumb)
+    return bg.convert('RGB')
 
 def create_backup():
     """Create a timestamped backup of screensavers.json."""
@@ -227,6 +257,42 @@ def sync_all_catalog():
                         thumbnails_regenerated += 1
                 except Exception as e:
                     print(f"Error regenerating thumbnail for {item_id}: {e}")
+
+            # Check if transparent - handle plugin thumbnail
+            cat_val = item.get('category', [])
+            cat_str = ' '.join(cat_val) if isinstance(cat_val, list) else str(cat_val)
+            is_transparent = 'transparent' in cat_str.lower()
+            plugin_thumb_rel = f"images/thumbnails/plugin/{item_id}.png"
+            plugin_thumb_path = os.path.join(REPO_ROOT, plugin_thumb_rel)
+            expected_plugin_url = GITHUB_RAW_BASE + plugin_thumb_rel
+
+            if is_transparent:
+                # Ensure plugin thumbnail exists on disk
+                if (not os.path.exists(plugin_thumb_path) or os.path.getsize(plugin_thumb_path) == 0) and PIL_AVAILABLE and os.path.exists(master_path):
+                    try:
+                        with Image.open(master_path) as m_img:
+                            if m_img.mode != 'RGBA':
+                                m_img = m_img.convert('RGBA')
+                            plugin_thumb_img = composite_over_checkerboard(m_img, 600, 800)
+                            plugin_thumb_img.save(plugin_thumb_path, 'PNG', optimize=True)
+                            thumbnails_regenerated += 1
+                    except Exception as e:
+                        print(f"Error generating plugin thumbnail for {item_id}: {e}")
+
+                if os.path.exists(plugin_thumb_path):
+                    if item.get('pluginThumbnailUrl') != expected_plugin_url:
+                        item['pluginThumbnailUrl'] = expected_plugin_url
+                        urls_normalized += 1
+            else:
+                # Non-transparent item: remove any bogus pluginThumbnailUrl pointing to jpg or non-plugin files
+                if 'pluginThumbnailUrl' in item:
+                    item.pop('pluginThumbnailUrl', None)
+                    urls_normalized += 1
+                if os.path.exists(plugin_thumb_path):
+                    try:
+                        os.remove(plugin_thumb_path)
+                    except Exception:
+                        pass
         else:
             missing_images.append(item_id)
 
@@ -354,6 +420,7 @@ def process_and_save_image(image_bytes, item_id, is_png=False):
 
     # Master: 1860 x 2480 (3:4 ratio)
     # Thumbnail: 300 x 400 (3:4 ratio) optimized for fast e-ink transfers
+    plugin_thumb_rel_path = None
     if has_alpha:
         if img.mode != 'RGBA':
             img = img.convert('RGBA')
@@ -368,6 +435,15 @@ def process_and_save_image(image_bytes, item_id, is_png=False):
             thumb_quant.save(thumb_abs_path, 'PNG', optimize=True)
         except Exception:
             thumb_img.save(thumb_abs_path, 'PNG', optimize=True)
+
+        # Generate checkerboard composite plugin thumbnail (600 x 800 RGB)
+        plugin_thumb_rel_path = f"images/thumbnails/plugin/{item_id}.png"
+        plugin_thumb_abs_path = os.path.join(REPO_ROOT, plugin_thumb_rel_path)
+        try:
+            plugin_thumb_img = composite_over_checkerboard(img, 600, 800)
+            plugin_thumb_img.save(plugin_thumb_abs_path, 'PNG', optimize=True)
+        except Exception as e:
+            print(f"Warning: Failed to generate plugin thumbnail for {item_id}: {e}")
     else:
         if img.mode != 'RGB':
             img = img.convert('RGB')
@@ -377,6 +453,14 @@ def process_and_save_image(image_bytes, item_id, is_png=False):
         
         master_img.save(full_abs_path, 'JPEG', quality=92)
         thumb_img.save(thumb_abs_path, 'JPEG', quality=78, optimize=True)
+
+        # Remove old plugin thumbnail if switching from transparent to non-transparent
+        old_plugin_thumb = os.path.join(REPO_ROOT, f"images/thumbnails/plugin/{item_id}.png")
+        if os.path.exists(old_plugin_thumb):
+            try:
+                os.remove(old_plugin_thumb)
+            except Exception:
+                pass
 
     # If the extension changed (e.g. was jpg, now png or vice-versa), clean up old file if exists
     other_ext = "jpg" if ext == "png" else "png"
@@ -388,13 +472,17 @@ def process_and_save_image(image_bytes, item_id, is_png=False):
             except Exception:
                 pass
 
-    return {
+    res = {
         "fullRel": full_rel_path,
         "thumbRel": thumb_rel_path,
         "fullUrl": GITHUB_RAW_BASE + full_rel_path,
         "thumbnailUrl": GITHUB_RAW_BASE + thumb_rel_path,
         "format": ext
     }
+    if plugin_thumb_rel_path:
+        res["pluginThumbRel"] = plugin_thumb_rel_path
+        res["pluginThumbnailUrl"] = GITHUB_RAW_BASE + plugin_thumb_rel_path
+    return res
 
 def bulk_add_screensavers(items):
     """
@@ -498,6 +586,8 @@ def bulk_add_screensavers(items):
                 "downloads": 0,
                 "likes": 1
             }
+            if img_res.get('pluginThumbnailUrl'):
+                new_item['pluginThumbnailUrl'] = img_res['pluginThumbnailUrl']
             if raw_item.get('sourceUrl'):
                 new_item['sourceUrl'] = raw_item['sourceUrl'].strip()
 
@@ -710,6 +800,8 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 img_res = process_and_save_image(raw_bytes, item_id, is_png=is_png)
                 new_item['thumbnailUrl'] = img_res['thumbnailUrl']
                 new_item['fullUrl'] = img_res['fullUrl']
+                if img_res.get('pluginThumbnailUrl'):
+                    new_item['pluginThumbnailUrl'] = img_res['pluginThumbnailUrl']
             elif image_url:
                 req = urllib.request.Request(image_url, headers={'User-Agent': 'Mozilla/5.0'})
                 with urllib.request.urlopen(req, timeout=20) as resp:
@@ -717,6 +809,8 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 img_res = process_and_save_image(raw_bytes, item_id, is_png=image_url.lower().endswith('.png'))
                 new_item['thumbnailUrl'] = img_res['thumbnailUrl']
                 new_item['fullUrl'] = img_res['fullUrl']
+                if img_res.get('pluginThumbnailUrl'):
+                    new_item['pluginThumbnailUrl'] = img_res['pluginThumbnailUrl']
             else:
                 # Default URLs if images not uploaded yet
                 new_item.setdefault('thumbnailUrl', f"{GITHUB_RAW_BASE}images/thumbnails/{item_id}.jpg")
@@ -831,6 +925,10 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
 
                 item['thumbnailUrl'] = img_res['thumbnailUrl']
                 item['fullUrl'] = img_res['fullUrl']
+                if img_res.get('pluginThumbnailUrl'):
+                    item['pluginThumbnailUrl'] = img_res['pluginThumbnailUrl']
+                elif 'pluginThumbnailUrl' in item:
+                    item.pop('pluginThumbnailUrl', None)
                 save_catalog(catalog)
                 self.send_json({"success": True, "item": item, "image": img_res})
                 return
@@ -1005,9 +1103,19 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                         except Exception:
                             pass
 
+                    old_plugin_thumb = os.path.join(PLUGIN_THUMBS_DIR, f"{item_id}.{ext}")
+                    new_plugin_thumb = os.path.join(PLUGIN_THUMBS_DIR, f"{new_id}.{ext}")
+                    if os.path.exists(old_plugin_thumb):
+                        try:
+                            os.rename(old_plugin_thumb, new_plugin_thumb)
+                        except Exception:
+                            pass
+
                 # Update URL pointers
                 if 'thumbnailUrl' in existing and item_id in existing['thumbnailUrl']:
                     updates['thumbnailUrl'] = existing['thumbnailUrl'].replace(f"/{item_id}.", f"/{new_id}.")
+                if 'pluginThumbnailUrl' in existing and item_id in existing['pluginThumbnailUrl']:
+                    updates['pluginThumbnailUrl'] = existing['pluginThumbnailUrl'].replace(f"/{item_id}.", f"/{new_id}.")
                 if 'fullUrl' in existing and item_id in existing['fullUrl']:
                     updates['fullUrl'] = existing['fullUrl'].replace(f"/{item_id}.", f"/{new_id}.")
 
@@ -1041,7 +1149,8 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
             if delete_files:
                 for ext in ['jpg', 'png', 'jpeg', 'webp']:
                     for p in [os.path.join(IMAGES_DIR, f"{item_id}.{ext}"),
-                              os.path.join(THUMBS_DIR, f"{item_id}.{ext}")]:
+                              os.path.join(THUMBS_DIR, f"{item_id}.{ext}"),
+                              os.path.join(PLUGIN_THUMBS_DIR, f"{item_id}.{ext}")]:
                         if os.path.exists(p):
                             try:
                                 os.remove(p)

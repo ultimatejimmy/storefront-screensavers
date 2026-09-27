@@ -55,6 +55,12 @@ def generate_catalogs():
         if "thumbnailUrl" not in cleaned_item:
             cleaned_item["thumbnailUrl"] = f"{BASE_IMG_URL}/thumbnails/{item['id']}.{ext}"
 
+        # Clean invalid pluginThumbnailUrl (e.g. pointing to jpg or not under /thumbnails/plugin/)
+        plugin_url = cleaned_item.get("pluginThumbnailUrl")
+        if plugin_url:
+            if "/thumbnails/plugin/" not in plugin_url or plugin_url.lower().endswith(".jpg"):
+                cleaned_item.pop("pluginThumbnailUrl", None)
+
         cleaned_full.append(cleaned_item)
 
         lite_item = {

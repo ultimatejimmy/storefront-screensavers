@@ -217,5 +217,56 @@ class TestCatalogStudio(unittest.TestCase):
             cs.rebuild_credits_file(initial_catalog)
             self.assertEqual(len(cs.load_catalog()), initial_count)
 
+    def test_transparent_plugin_thumbnail_generation(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as temp_dir:
+            img = Image.new('RGBA', (400, 600), color=(200, 100, 50, 128))
+            img_path = os.path.join(temp_dir, "transparent_sample.png")
+            img.save(img_path, 'PNG')
+
+            initial_catalog = cs.load_catalog()
+            initial_count = len(initial_catalog)
+
+            items_to_add = [
+                {
+                    "title": "Transparent Sample Alpha",
+                    "localFilePath": img_path,
+                    "category": ["Transparent", "Art"],
+                    "isPng": True
+                }
+            ]
+
+            result = cs.bulk_add_screensavers(items_to_add)
+            self.assertTrue(result['success'])
+            self.assertEqual(result['addedCount'], 1)
+
+            added_item = result['items'][0]
+            self.assertIn('pluginThumbnailUrl', added_item)
+            self.assertTrue(added_item['pluginThumbnailUrl'].endswith('/images/thumbnails/plugin/transparent-sample-alpha.png'))
+
+            master_path = os.path.join(cs.REPO_ROOT, "images/transparent-sample-alpha.png")
+            thumb_path = os.path.join(cs.REPO_ROOT, "images/thumbnails/transparent-sample-alpha.png")
+            plugin_thumb_path = os.path.join(cs.REPO_ROOT, "images/thumbnails/plugin/transparent-sample-alpha.png")
+
+            self.assertTrue(os.path.exists(master_path))
+            self.assertTrue(os.path.exists(thumb_path))
+            self.assertTrue(os.path.exists(plugin_thumb_path))
+
+            # Verify plugin thumbnail is RGB composited
+            with Image.open(plugin_thumb_path) as p_img:
+                self.assertEqual(p_img.size, (600, 800))
+                self.assertEqual(p_img.mode, 'RGB')
+
+            # Cleanup
+            for p in [master_path, thumb_path, plugin_thumb_path]:
+                if os.path.exists(p):
+                    os.remove(p)
+
+            # Restore catalog
+            cs.save_catalog(initial_catalog)
+            cs.rebuild_credits_file(initial_catalog)
+            self.assertEqual(len(cs.load_catalog()), initial_count)
+
 if __name__ == '__main__':
     unittest.main()
+

@@ -593,7 +593,10 @@ def main():
             raw_base = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
             existing_item['fullUrl'] = raw_base + full_rel
             existing_item['thumbnailUrl'] = raw_base + thumb_web_rel
-            existing_item['pluginThumbnailUrl'] = (raw_base + thumb_plugin_rel) if thumb_plugin_rel else existing_item['thumbnailUrl']
+            if thumb_plugin_rel:
+                existing_item['pluginThumbnailUrl'] = raw_base + thumb_plugin_rel
+            elif 'pluginThumbnailUrl' in existing_item:
+                existing_item.pop('pluginThumbnailUrl', None)
 
             changes_made.append(f"- **Image Replacement**: Processed {img.width}×{img.height} px source image into master (1860×2480) and thumbnails (600×800) [Transparent: `{is_transparent}`]")
 
