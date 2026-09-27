@@ -58,8 +58,8 @@ class TestCatalogStudio(unittest.TestCase):
         self.assertTrue(os.path.exists(os.path.join(cs.REPO_ROOT, res['thumbRel'])))
 
         # Clean up test files
-        for p in [os.path.join(cs.REPO_ROOT, res['fullRel']), os.path.join(cs.REPO_ROOT, res['thumbRel'])]:
-            if os.path.exists(p):
+        for p in [os.path.join(cs.REPO_ROOT, res['fullRel']), os.path.join(cs.REPO_ROOT, res['thumbRel']), os.path.join(cs.REPO_ROOT, res.get('pluginThumbRel', ''))]:
+            if p and os.path.exists(p):
                 os.remove(p)
 
     def test_credits_generation(self):

@@ -61,6 +61,23 @@ def generate_catalogs():
             if "/thumbnails/plugin/" not in plugin_url or plugin_url.lower().endswith(".jpg"):
                 cleaned_item.pop("pluginThumbnailUrl", None)
 
+        # Normalize category: merge Fine Art into Art and deduplicate
+        cat = cleaned_item.get("category")
+        if cat:
+            if isinstance(cat, list):
+                new_cat = []
+                seen_cat = set()
+                for c in cat:
+                    c_str = str(c).strip()
+                    if c_str.lower() == "fine art":
+                        c_str = "Art"
+                    if c_str and c_str.lower() not in seen_cat:
+                        seen_cat.add(c_str.lower())
+                        new_cat.append(c_str)
+                cleaned_item["category"] = new_cat if len(new_cat) > 1 else (new_cat[0] if new_cat else "Art")
+            elif isinstance(cat, str):
+                cleaned_item["category"] = "Art" if cat.strip().lower() == "fine art" else cat.strip()
+
         cleaned_full.append(cleaned_item)
 
         lite_item = {
@@ -69,12 +86,16 @@ def generate_catalogs():
         }
         if item.get("author"):
             lite_item["author"] = item["author"]
-        if item.get("category"):
-            lite_item["category"] = item["category"]
+        if cleaned_item.get("category"):
+            lite_item["category"] = cleaned_item["category"]
         if item.get("tags"):
             lite_item["tags"] = item["tags"]
         if ext != "jpg":
             lite_item["ext"] = ext
+        if cleaned_item.get("downloads"):
+            lite_item["downloads"] = cleaned_item["downloads"]
+        if cleaned_item.get("likes"):
+            lite_item["likes"] = cleaned_item["likes"]
 
         lite_items.append(lite_item)
 

@@ -91,11 +91,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const RATINGS_API_URL = 'https://storefront-vote.ultimatejimmy.workers.dev';
   let liveRatings = {};
+  const RATINGS_CACHE_KEY = 'storefront_ratings_cache';
+  const RATINGS_CACHE_TS_KEY = 'storefront_ratings_cache_ts';
+
+  function loadCachedRatings() {
+    try {
+      const cached = localStorage.getItem(RATINGS_CACHE_KEY);
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
+          liveRatings = parsed;
+          return true;
+        }
+      }
+    } catch (e) {
+      console.warn('Could not read cached ratings', e);
+    }
+    return false;
+  }
+
+  function saveCachedRatings(data) {
+    try {
+      if (data && typeof data === 'object' && Object.keys(data).length > 0) {
+        localStorage.setItem(RATINGS_CACHE_KEY, JSON.stringify(data));
+        localStorage.setItem(RATINGS_CACHE_TS_KEY, String(Date.now()));
+      }
+    } catch (e) {
+      console.warn('Could not save cached ratings', e);
+    }
+  }
+
+  function applyRatingsToCatalog(ratings) {
+    if (!Array.isArray(catalogData) || !ratings) return;
+    catalogData.forEach(item => {
+      const r = ratings[item.id] || (item.id && ratings[item.id.toLowerCase()]);
+      if (r) {
+        if (r.up !== undefined || r.down !== undefined) {
+          item.likes = Math.max(0, (r.up || 0) - (r.down || 0));
+        }
+        if (r.wilson !== undefined) item.wilson = r.wilson;
+        if (r.downloads !== undefined && r.downloads > 0) {
+          item.downloads = r.downloads;
+        }
+      }
+    });
+    applyFilters();
+  }
 
   const BASE_IMAGE_URL = 'https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images';
 
   // Fetch catalog & sync live ratings from Cloudflare worker
-  fetch(`screensavers.json?t=${Date.now()}`, { cache: 'no-cache' })
+  fetch(`screensavers.json?t=${Date.now()}`)
     .then(res => res.json())
     .then(data => {
       catalogData = data.map((item, idx) => {
@@ -108,34 +154,35 @@ document.addEventListener('DOMContentLoaded', () => {
           pluginThumbnailUrl: item.pluginThumbnailUrl || `${BASE_IMAGE_URL}/thumbnails/plugin/${item.id}.${ext}`,
         };
       });
-      applyFilters();
+      if (loadCachedRatings()) {
+        applyRatingsToCatalog(liveRatings);
+      } else {
+        applyFilters();
+      }
       fetchLiveRatings();
     })
     .catch(err => console.error("Failed loading catalog", err));
 
   async function fetchLiveRatings() {
     try {
-      const res = await fetch(`${RATINGS_API_URL}/ratings`, { cache: 'no-cache' });
+      const res = await fetch(`${RATINGS_API_URL}/ratings`);
       if (res.ok) {
-        liveRatings = await res.json();
-        if (Array.isArray(catalogData)) {
-          catalogData.forEach(item => {
-            const r = liveRatings[item.id] || (item.id && liveRatings[item.id.toLowerCase()]);
-            if (r) {
-              item.likes = Math.max(0, (r.up || 0) - (r.down || 0));
-              item.wilson = r.wilson || 0;
-              item.downloads = r.downloads || 0;
-            } else {
-              item.likes = 0;
-              item.wilson = 0;
-              item.downloads = 0;
-            }
-          });
-          applyFilters();
+        const fresh = await res.json();
+        if (fresh && typeof fresh === 'object' && Object.keys(fresh).length > 0) {
+          liveRatings = fresh;
+          saveCachedRatings(fresh);
+          applyRatingsToCatalog(liveRatings);
+        }
+      } else {
+        if (Object.keys(liveRatings).length === 0 && loadCachedRatings()) {
+          applyRatingsToCatalog(liveRatings);
         }
       }
     } catch (e) {
       console.warn('Could not fetch live ratings from worker:', e);
+      if (Object.keys(liveRatings).length === 0 && loadCachedRatings()) {
+        applyRatingsToCatalog(liveRatings);
+      }
     }
   }
 
@@ -155,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getItemLikes(item) {
     const r = liveRatings[item.id] || (item.id && liveRatings[item.id.toLowerCase()]);
-    if (r) {
+    if (r && (r.up !== undefined || r.down !== undefined)) {
       return Math.max(0, (r.up || 0) - (r.down || 0));
     }
     return item.likes || 0;
@@ -163,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getItemDownloads(item) {
     const r = liveRatings[item.id] || (item.id && liveRatings[item.id.toLowerCase()]);
-    if (r && r.downloads !== undefined) {
+    if (r && r.downloads !== undefined && r.downloads > 0) {
       return r.downloads;
     }
     return item.downloads || 0;
@@ -419,7 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeCats = getActiveFilterCategories();
     const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
     const sortSelect = document.getElementById('sort-select');
-    const sortBy = sortSelect ? sortSelect.value : 'newest';
+    const sortBy = sortSelect ? sortSelect.value : 'downloads';
 
     let filtered = catalogData.filter(item => {
       const matchCat = itemMatchesCategories(item, activeCats);
@@ -438,7 +485,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return (b._originalIndex || 0) - (a._originalIndex || 0);
       });
     } else if (sortBy === 'likes') {
-      filtered.sort((a, b) => (getItemLikes(b) - getItemLikes(a)) || ((b._originalIndex || 0) - (a._originalIndex || 0)));
+      filtered.sort((a, b) => {
+        const diff = getItemLikes(b) - getItemLikes(a);
+        if (diff !== 0) return diff;
+        const dlDiff = getItemDownloads(b) - getItemDownloads(a);
+        if (dlDiff !== 0) return dlDiff;
+        return (a.title || '').localeCompare(b.title || '');
+      });
     } else if (sortBy === 'oldest') {
       filtered.sort((a, b) => {
         if (a.dateAdded && b.dateAdded) return new Date(a.dateAdded) - new Date(b.dateAdded);
@@ -451,12 +504,21 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (sortBy === 'author-asc') {
       filtered.sort((a, b) => (a.author || '').localeCompare(b.author || ''));
     } else if (sortBy === 'downloads') {
-      filtered.sort((a, b) => (getItemDownloads(b) - getItemDownloads(a)) || ((b._originalIndex || 0) - (a._originalIndex || 0)));
-    } else {
-      // Default: Submitted Date (Newest First)
       filtered.sort((a, b) => {
-        if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
-        return (b._originalIndex || 0) - (a._originalIndex || 0);
+        const diff = getItemDownloads(b) - getItemDownloads(a);
+        if (diff !== 0) return diff;
+        const likeDiff = getItemLikes(b) - getItemLikes(a);
+        if (likeDiff !== 0) return likeDiff;
+        return (a.title || '').localeCompare(b.title || '');
+      });
+    } else {
+      // Default: Most Downloaded
+      filtered.sort((a, b) => {
+        const diff = getItemDownloads(b) - getItemDownloads(a);
+        if (diff !== 0) return diff;
+        const likeDiff = getItemLikes(b) - getItemLikes(a);
+        if (likeDiff !== 0) return likeDiff;
+        return (a.title || '').localeCompare(b.title || '');
       });
     }
 

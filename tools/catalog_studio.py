@@ -203,6 +203,23 @@ def sync_all_catalog():
             continue
         catalog_ids.add(item_id)
 
+        # Normalize category: merge Fine Art into Art and deduplicate
+        cur_cat = item.get('category')
+        if cur_cat:
+            if isinstance(cur_cat, list):
+                new_cat = []
+                seen_cat = set()
+                for c in cur_cat:
+                    c_str = str(c).strip()
+                    if c_str.lower() == "fine art":
+                        c_str = "Art"
+                    if c_str and c_str.lower() not in seen_cat:
+                        seen_cat.add(c_str.lower())
+                        new_cat.append(c_str)
+                item['category'] = new_cat if len(new_cat) > 1 else (new_cat[0] if new_cat else "Art")
+            elif isinstance(cur_cat, str):
+                item['category'] = "Art" if cur_cat.strip().lower() == "fine art" else cur_cat.strip()
+
         # Normalize tags
         cur_tags = item.get('tags') or []
         if isinstance(cur_tags, str):
@@ -549,11 +566,18 @@ def bulk_add_screensavers(items):
             # Category normalization
             cat_input = raw_item.get('category')
             if isinstance(cat_input, list):
-                cat_list = [str(c).strip() for c in cat_input if str(c).strip()]
+                raw_cats = [str(c).strip() for c in cat_input if str(c).strip()]
             elif isinstance(cat_input, str) and cat_input.strip():
-                cat_list = [c.strip() for c in cat_input.split(',') if c.strip()]
+                raw_cats = [c.strip() for c in cat_input.split(',') if c.strip()]
             else:
-                cat_list = ['Nature']
+                raw_cats = ['Nature']
+            cat_list = []
+            seen_c = set()
+            for c in raw_cats:
+                c_clean = "Art" if c.lower() == "fine art" else c
+                if c_clean and c_clean.lower() not in seen_c:
+                    seen_c.add(c_clean.lower())
+                    cat_list.append(c_clean)
             category_val = cat_list if len(cat_list) > 1 else (cat_list[0] if cat_list else 'Nature')
 
             # Tags normalization
@@ -999,7 +1023,9 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                         
                         for nc in new_cats:
                             nc_clean = str(nc).strip()
-                            if nc_clean and nc_clean not in cats:
+                            if nc_clean.lower() == 'fine art':
+                                nc_clean = 'Art'
+                            if nc_clean and nc_clean not in cats and nc_clean.lower() not in [c.lower() for c in cats]:
                                 cats.append(nc_clean)
                         
                         x['category'] = cats if len(cats) > 1 else (cats[0] if cats else 'General')
@@ -1017,6 +1043,17 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                         x['category'] = cats if len(cats) > 1 else (cats[0] if cats else 'General')
             elif action == 'set_category':
                 cat = payload.get('category')
+                if isinstance(cat, str) and cat.strip().lower() == 'fine art':
+                    cat = 'Art'
+                elif isinstance(cat, list):
+                    normalized_cats = []
+                    seen = set()
+                    for c in cat:
+                        c_str = 'Art' if str(c).strip().lower() == 'fine art' else str(c).strip()
+                        if c_str and c_str.lower() not in seen:
+                            seen.add(c_str.lower())
+                            normalized_cats.append(c_str)
+                    cat = normalized_cats if len(normalized_cats) > 1 else (normalized_cats[0] if normalized_cats else 'General')
                 for x in catalog:
                     if x.get('id') in target_ids:
                         x['category'] = cat

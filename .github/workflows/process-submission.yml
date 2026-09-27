@@ -582,7 +582,14 @@ jobs:
               thumb_url = raw_base + thumb_web_path
               plugin_thumb_url = (raw_base + thumb_plugin_path) if thumb_plugin_path else None
 
-              cat_list = [c.strip() for c in category.split(',')] if isinstance(category, str) else list(category)
+              raw_cats = [c.strip() for c in category.split(',')] if isinstance(category, str) else list(category)
+              cat_list = []
+              seen_cat = set()
+              for c in raw_cats:
+                  c_clean = "Art" if str(c).strip().lower() == "fine art" else str(c).strip()
+                  if c_clean and c_clean.lower() not in seen_cat:
+                      seen_cat.add(c_clean.lower())
+                      cat_list.append(c_clean)
               if is_transparent and 'Transparent' not in cat_list and 'transparent' not in cat_list:
                   cat_list.append('Transparent')
 
