@@ -19613,10 +19613,11 @@
   },
   {
     "id": "screensaver-96",
-    "title": "Wintry Village",
+    "title": "Hogsmeade",
     "author": "ambitiouscat_7",
     "category": [
-      "Art",
+      "Fantasy",
+      "Pop Culture",
       "Transparent"
     ],
     "compatibility": [
@@ -19632,10 +19633,18 @@
     "tags": [
       "alley",
       "art",
-      "street"
+      "harry potter",
+      "hogwarts",
+      "magic",
+      "snowy",
+      "street",
+      "village",
+      "winter",
+      "wizarding world"
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-96.png",
-    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/"
+    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
+    "likes": 1
   },
   {
     "id": "screensaver-98",

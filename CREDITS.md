@@ -692,6 +692,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Shoulder Cat | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Stacks of books | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Cat on tree branch | ambitiouscat_7 | Art, Nature, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
-| Wintry Village | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
+| Hogsmeade | ambitiouscat_7 | Fantasy, Pop Culture, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Carrying Stack of Books | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Fluffy Cat | ambitiouscat_7 | Art, Nature, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
