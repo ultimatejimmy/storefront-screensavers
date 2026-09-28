@@ -17127,28 +17127,6 @@
     ]
   },
   {
-    "id": "10000bc-headphones",
-    "title": "10000bc Headphones",
-    "author": "Jimmy",
-    "category": [
-      "Fantasy",
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/10000bc-headphones.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/10000bc-headphones.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/10000bc-headphones.png",
-    "tags": [
-      "headphones",
-      "transparent"
-    ]
-  },
-  {
     "id": "luna-2",
     "title": "Luna 2",
     "author": "Jimmy",
