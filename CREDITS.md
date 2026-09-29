@@ -691,3 +691,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Fluffy Cat | ambitiouscat_7 | Art, Nature, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Moody Rain | shuvashish76 | Minimalist, Nature, Transparent | Community Share | shuvashish76 |
 | Neon Floral Heart | GDJ | Minimalist, Art, Pop Culture, Transparent | Community Share | GDJ |
+| Crazy Cool Cat | wesd440 | Art, Transparent | Community Share | wesd440 |

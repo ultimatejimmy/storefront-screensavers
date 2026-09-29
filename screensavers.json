@@ -19596,5 +19596,32 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/neon-floral-heart.png",
     "authorUrl": "https://openclipart.org/artist/GDJ"
+  },
+  {
+    "id": "crazy-cool-cat",
+    "title": "Crazy Cool Cat",
+    "author": "wesd440",
+    "category": [
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/crazy-cool-cat.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/crazy-cool-cat.png",
+    "tags": [
+      "cat",
+      "draw",
+      "sketch",
+      "claws",
+      "grin",
+      "teeth",
+      "transparent"
+    ],
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/crazy-cool-cat.png",
+    "authorUrl": "https://openclipart.org/artist/wesd440"
   }
 ]
