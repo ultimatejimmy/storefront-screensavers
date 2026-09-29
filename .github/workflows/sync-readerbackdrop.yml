@@ -1,0 +1,37 @@
+name: Sync ReaderBackdrop Catalog
+
+on:
+  schedule:
+    - cron: '0 4 * * *' # Every night at 04:00 UTC
+  workflow_dispatch:     # Allows manual trigger via Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run ReaderBackdrop sync
+        run: |
+          python tools/sync_readerbackdrop.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add readerbackdrop.json readerbackdrop.lite.json
+          if git diff --staged --quiet; then
+            echo "No changes in ReaderBackdrop catalog."
+          else
+            git commit -m "Automated sync: update readerbackdrop catalog [skip ci]"
+            git push
+          fi
