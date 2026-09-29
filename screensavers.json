@@ -19566,5 +19566,35 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/moody-rain.png",
     "authorUrl": "https://openclipart.org/artist/shuvashish76"
+  },
+  {
+    "id": "neon-floral-heart",
+    "title": "Neon Floral Heart",
+    "author": "GDJ",
+    "category": [
+      "Minimalist",
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/neon-floral-heart.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/neon-floral-heart.png",
+    "tags": [
+      "love",
+      "flowers",
+      "neon",
+      "glow",
+      "leaf",
+      "decorative",
+      "heart",
+      "transparent"
+    ],
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/neon-floral-heart.png",
+    "authorUrl": "https://openclipart.org/artist/GDJ"
   }
 ]
