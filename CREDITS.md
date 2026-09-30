@@ -426,8 +426,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Brain Bulb | shuvashish76 | Abstract, Transparent | Community Share | shuvashish76 |
 | Portrait of a Beauty | shuvashish76 | Art, Transparent | Community Share | shuvashish76 |
 | Tiger Family | shuvashish76 | Nature, Art, Transparent | Community Share | shuvashish76 |
-| Ganesha statue | shuvashish76 | Religion, Transparent | Community Share | shuvashish76 |
-| Dandiya Raas | shuvashish76 | Art, Transparent | Community Share | shuvashish76 |
 | Kathak Dance | shuvashish76 | Transparent | Community Share | shuvashish76 |
 | Missouri Quote | shuvashish76 | Nature, Quotes, Transparent | Community Share | shuvashish76 |
 | Madhubala | shuvashish76 | Art, Transparent | Community Share | shuvashish76 |
@@ -437,7 +435,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Radha Krishna | j4p4n | Art, Religion, Transparent | Community Share | j4p4n |
 | Nerdy bookworm | j4p4n | Anime, Art, Transparent | Community Share | j4p4n |
 | Lady reading | j4p4n | Art, Pop Culture, Transparent | Community Share | j4p4n |
-| Reading girl | Arousaland | Anime, Transparent | Community Share | Arousaland |
 | Bookworm girl | oksmith | Anime, Pop Culture, Transparent | Community Share | oksmith |
 | Schoolgirl Studying | oksmith | Anime, Transparent | Community Share | oksmith |
 | Nu à la lecture BW | AdamStanislav | Art, Pop Culture, Transparent | Community Share | AdamStanislav |
