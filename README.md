@@ -24,6 +24,7 @@ This repository serves two main purposes:
 - **Bulk Upload Support**: Submit multiple wallpapers (up to 10) in a single batch, queueing items, setting titles/authors/categories per image, and automatically opening individual GitHub Issues for independent maintainer approval.
 - **Suggest Changes & Feedback**: Submit corrections to titles, artists, categories, or flag low-quality entries directly via the ✏️ slide-in drawer on any wallpaper card.
 - **Open Access & CC0 Sourcing**: Curated collection featuring high-resolution masterworks from The Metropolitan Museum of Art, Rijksmuseum, Old Book Illustrations, Rawpixel, and NASA. All attributed in [`CREDITS.md`](CREDITS.md).
+- **Curated & Actively Maintained**: Hand-curated for e-paper contrast and device performance. Inactive or low-download items are pruned periodically to keep catalog sync fast.
 
 ---
 
@@ -50,6 +51,7 @@ This project is a 100% free, open-source, and non-commercial community initiativ
 - **No Ownership Claimed:** The maintainers do not own or claim copyright over community-submitted wallpapers. Artwork remains the intellectual property of its original creators.
 - **Strictly Non-Profit:** No revenue, ads, or monetization are associated with this catalog.
 - **Community Commons:** All submissions are contributed freely for personal, non-commercial e-ink reader use.
+- **Curated Collection & Pruning:** To maintain lightweight catalog sync and high visual quality, screensavers with persistently low downloads or community engagement may be pruned from time to time.
 - **DMCA / Takedown:** We respect intellectual property rights. To request image removal, open an issue labeled `dmca-takedown` with the wallpaper title and proof of ownership. Takedown requests are reviewed and processed within 24–48 hours.
 
 For complete details, please see our [Legal Disclaimers, Submission Terms & DMCA Policy](LEGAL.md).

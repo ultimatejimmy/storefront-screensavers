@@ -24,7 +24,9 @@
     pendingDeleteId: null,
     stagedBulkItems: [],
     bulkSourceMode: 'files',
-    isBulkImporting: false
+    isBulkImporting: false,
+    totalDownloads: 0,
+    lowPerformingCount: 0
   };
 
   // DOM Elements
@@ -42,6 +44,8 @@
     catalogTableWrapper: document.getElementById('catalog-table-wrapper'),
     catalogTableBody: document.getElementById('catalog-table-body'),
     tableSelectAll: document.getElementById('table-select-all'),
+    thSortDownloads: document.getElementById('th-sort-downloads'),
+    thSortDate: document.getElementById('th-sort-date'),
     emptyState: document.getElementById('empty-state'),
     emptyResetBtn: document.getElementById('empty-reset-btn'),
 
@@ -49,11 +53,17 @@
     statTotal: document.getElementById('stat-total'),
     statCategories: document.getElementById('stat-categories'),
     statTransparent: document.getElementById('stat-transparent'),
+    statDownloads: document.getElementById('stat-downloads'),
+    statLowPerforming: document.getElementById('stat-low-performing'),
+    statLowPerformingBtn: document.getElementById('stat-low-performing-btn'),
     countAll: document.getElementById('count-all'),
+    btnSyncDownloads: document.getElementById('btn-sync-downloads'),
 
     // Batch Bar
     batchBar: document.getElementById('batch-bar'),
     batchCount: document.getElementById('batch-count'),
+    batchSelectVisibleBtn: document.getElementById('batch-select-visible-btn'),
+    visibleCount: document.getElementById('visible-count'),
     batchClearBtn: document.getElementById('batch-clear-btn'),
     batchCategorySelect: document.getElementById('batch-category-select'),
     batchApplyCategory: document.getElementById('batch-apply-category'),
@@ -68,6 +78,8 @@
     deviceScreenContainer: document.getElementById('device-screen-container'),
     bookTextSim: document.getElementById('book-text-sim'),
     inspectorFileExtBadge: document.getElementById('inspector-file-ext-badge'),
+    inspectorDateBadge: document.getElementById('inspector-date-badge'),
+    inspectorDownloadsBadge: document.getElementById('inspector-downloads-badge'),
     previewModeFrame: document.getElementById('preview-mode-frame'),
     previewModeGrid: document.getElementById('preview-mode-grid'),
     previewModeBook: document.getElementById('preview-mode-book'),
@@ -97,6 +109,7 @@
     editSourceUrl: document.getElementById('edit-source-url'),
     editSourceUrlTest: document.getElementById('edit-source-url-test'),
     editAttribution: document.getElementById('edit-attribution'),
+    editDateAdded: document.getElementById('edit-date-added'),
     editLikes: document.getElementById('edit-likes'),
     editDownloads: document.getElementById('edit-downloads'),
 
@@ -242,21 +255,79 @@
     'Sci-Fi', 'Transparent'
   ];
 
-  // API Calls
-  async function loadCatalogData() {
+  const RATINGS_API_URL = 'https://storefront-vote.ultimatejimmy.workers.dev';
+
+  function applyRatingsToCatalog(ratings) {
+    if (!ratings || !Array.isArray(state.catalog)) return false;
+    let anyUpdated = false;
+    for (const item of state.catalog) {
+      const r = ratings[item.id] || (item.id && ratings[item.id.toLowerCase()]);
+      if (r) {
+        if (r.downloads !== undefined) {
+          item.downloads = r.downloads;
+          anyUpdated = true;
+        }
+        if (r.up !== undefined || r.down !== undefined) {
+          item.likes = Math.max(0, (r.up || 0) - (r.down || 0));
+        }
+        if (r.wilson !== undefined) item.wilson = r.wilson;
+      } else if (item.downloads === undefined) {
+        item.downloads = 0;
+      }
+    }
+    state.totalDownloads = state.catalog.reduce((acc, x) => acc + (x.downloads || 0), 0);
+    state.lowPerformingCount = state.catalog.filter(x => (x.downloads || 0) <= 5).length;
+    return anyUpdated;
+  }
+
+  async function fetchLiveRatingsDirect() {
     try {
-      const res = await fetch('/api/catalog');
+      const res = await fetch(`${RATINGS_API_URL}/ratings`);
+      if (res.ok) {
+        const fresh = await res.json();
+        if (fresh && typeof fresh === 'object' && Object.keys(fresh).length > 0) {
+          if (applyRatingsToCatalog(fresh)) {
+            updateHeaderStats();
+            renderCatalog();
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('Direct ratings fetch fallback failed:', e);
+    }
+  }
+
+  // API Calls
+  async function loadCatalogData(forceRefreshDownloads = false) {
+    try {
+      const url = forceRefreshDownloads ? '/api/catalog?refresh_downloads=1' : '/api/catalog';
+      const res = await fetch(url);
       if (!res.ok) throw new Error('Failed to load catalog');
       const data = await res.json();
-      state.catalog = (data.items || []).map((item, idx) => ({ ...item, _originalIndex: idx }));
+      state.catalog = (data.items || []).map((item, idx) => ({
+        ...item,
+        _originalIndex: idx,
+        dateAdded: item.dateAdded || '',
+        downloads: item.downloads !== undefined ? item.downloads : 0,
+        likes: item.likes !== undefined ? item.likes : 0
+      }));
       state.categories = Array.from(new Set([...DEFAULT_CATEGORIES, ...(data.categories || [])])).sort();
       state.backups = data.backups || [];
+      state.totalDownloads = data.totalDownloads !== undefined
+        ? data.totalDownloads
+        : state.catalog.reduce((acc, x) => acc + (x.downloads || 0), 0);
+      state.lowPerformingCount = data.lowPerformingCount !== undefined
+        ? data.lowPerformingCount
+        : state.catalog.filter(x => (x.downloads || 0) <= 5).length;
       
       updateHeaderStats();
       renderCategoryChips();
       populateCategoryDropdowns();
       renderCategoryPills(el.addCategoryPills, ['Nature']);
       renderCatalog();
+
+      // Ensure fresh live ratings from Cloudflare worker
+      fetchLiveRatingsDirect();
     } catch (err) {
       showToast('Error loading catalog: ' + err.message, 'error');
     }
@@ -270,6 +341,12 @@
 
     const transparentCount = state.catalog.filter(isTransparentItem).length;
     el.statTransparent.textContent = transparentCount;
+
+    const totalDl = state.totalDownloads || state.catalog.reduce((acc, x) => acc + (x.downloads || 0), 0);
+    if (el.statDownloads) el.statDownloads.textContent = totalDl.toLocaleString();
+
+    const lowCount = state.catalog.filter(x => (x.downloads || 0) <= 5).length;
+    if (el.statLowPerforming) el.statLowPerforming.textContent = lowCount.toLocaleString();
   }
 
   function isTransparentItem(item) {
@@ -392,6 +469,14 @@
     // Status filter
     if (state.statusFilter === 'transparent') {
       list = list.filter(isTransparentItem);
+    } else if (state.statusFilter === 'zero-downloads') {
+      list = list.filter(item => (item.downloads || 0) === 0);
+    } else if (state.statusFilter === 'low-downloads-5') {
+      list = list.filter(item => (item.downloads || 0) <= 5);
+    } else if (state.statusFilter === 'low-downloads-10') {
+      list = list.filter(item => (item.downloads || 0) <= 10);
+    } else if (state.statusFilter === 'low-downloads-25') {
+      list = list.filter(item => (item.downloads || 0) <= 25);
     } else if (state.statusFilter === 'missing-source') {
       list = list.filter(item => !item.sourceUrl);
     } else if (state.statusFilter === 'missing-attribution') {
@@ -423,6 +508,8 @@
       });
     } else if (state.sortBy === 'likes-desc') {
       list.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+    } else if (state.sortBy === 'downloads-asc') {
+      list.sort((a, b) => (a.downloads || 0) - (b.downloads || 0));
     } else if (state.sortBy === 'downloads-desc') {
       list.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
     }
@@ -433,6 +520,10 @@
   // Render Catalog
   function renderCatalog() {
     const items = getFilteredItems();
+
+    if (el.visibleCount) {
+      el.visibleCount.textContent = items.length;
+    }
 
     if (items.length === 0) {
       el.catalogGrid.innerHTML = '';
@@ -467,6 +558,10 @@
       const isPng = (item.thumbnailUrl || '').endsWith('.png') || (item.fullUrl || '').endsWith('.png');
       const formatBadge = isPng ? '<span class="card-badge-format png">PNG</span>' : '<span class="card-badge-format">JPG</span>';
 
+      const dlCount = item.downloads !== undefined ? item.downloads : 0;
+      const isLow = dlCount <= 5;
+      const dlBadge = `<span class="card-badge-downloads ${isLow ? 'is-low' : ''}" title="${dlCount.toLocaleString()} total downloads">⬇ ${dlCount.toLocaleString()}</span>`;
+
       const categories = getItemCategories(item);
       const catBadges = categories.length > 0
         ? categories.map(c => `<span class="card-category-tag">${escapeHtml(c)}</span>`).join('')
@@ -479,16 +574,26 @@
         ? `<div class="card-tags-row">${tags.slice(0, 3).map(t => `<span class="card-tag-badge">#${escapeHtml(t)}</span>`).join('')}${tags.length > 3 ? `<span class="card-tag-badge" title="${escapeHtml(tags.slice(3).join(', '))}">+${tags.length - 3}</span>` : ''}</div>`
         : '';
 
+      const dateAddedStr = item.dateAdded || '-';
+
       return `
-        <div class="catalog-card ${isSelected ? 'selected' : ''}" data-id="${escapeHtml(item.id)}">
+        <div class="catalog-card ${isSelected ? 'selected' : ''} ${isLow ? 'is-low-performing' : ''}" data-id="${escapeHtml(item.id)}">
           <div class="card-thumb-wrapper ${transparentClasses}">
+            <img class="card-thumb-img" src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'400\\'><rect fill=\\'%23161b22\\' width=\\'300\\' height=\\'400\\'/><text fill=\\'%236e7681\\' x=\\'50%\\' y=\\'50%\\' text-anchor=\\'middle\\' font-family=\\'sans-serif\\'>No Preview</text></svg>'">
             <input type="checkbox" class="card-checkbox" data-id="${escapeHtml(item.id)}" ${isSelected ? 'checked' : ''}>
             ${formatBadge}
-            <img class="card-thumb-img" src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'400\\'><rect fill=\\'%23161b22\\' width=\\'300\\' height=\\'400\\'/><text fill=\\'%236e7681\\' x=\\'50%\\' y=\\'50%\\' text-anchor=\\'middle\\' font-family=\\'sans-serif\\'>No Preview</text></svg>'">
+            ${dlBadge}
           </div>
           <div class="card-details">
             <div class="card-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
-            <div class="card-author" title="${escapeHtml(item.author || '')}">by ${escapeHtml(item.author || 'Unknown')}</div>
+            <div class="card-meta-row">
+              <span class="card-author" title="${escapeHtml(item.author || '')}">by ${escapeHtml(item.author || 'Unknown')}</span>
+              <span class="card-date" title="Submitted: ${escapeHtml(dateAddedStr)}">📅 ${escapeHtml(dateAddedStr)}</span>
+            </div>
+            <div class="card-downloads-info">
+              <span class="dl-count ${isLow ? 'is-low' : ''}"><strong>${dlCount.toLocaleString()}</strong> downloads</span>
+              ${item.likes ? `<span class="dl-likes">• ❤️ ${item.likes}</span>` : ''}
+            </div>
             <div class="card-categories-row">${catBadges}</div>
             ${tagBadges}
             <div class="card-actions">
@@ -496,7 +601,7 @@
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                 Edit
               </button>
-              <button class="card-btn btn-delete-card text-danger" data-id="${escapeHtml(item.id)}" title="Delete item">
+              <button class="card-btn btn-delete-card text-danger" data-id="${escapeHtml(item.id)}" title="Prune / Delete item">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
               </button>
             </div>
@@ -525,11 +630,25 @@
         ? `<div class="table-tags-cell">${tags.slice(0, 3).map(t => `<span class="card-tag-badge">#${escapeHtml(t)}</span>`).join(' ')}</div>`
         : '<span class="text-tertiary">-</span>';
 
+      const dlCount = item.downloads !== undefined ? item.downloads : 0;
+      const isLow = dlCount <= 5;
+      const dateAddedStr = item.dateAdded || '-';
+
       return `
-        <tr class="${isSelected ? 'selected' : ''}" data-id="${escapeHtml(item.id)}">
+        <tr class="${isSelected ? 'selected' : ''} ${isLow ? 'row-low-dl' : ''}" data-id="${escapeHtml(item.id)}">
           <td><input type="checkbox" class="table-row-checkbox" data-id="${escapeHtml(item.id)}" ${isSelected ? 'checked' : ''}></td>
           <td><img class="table-thumb" src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(item.title)}" loading="lazy"></td>
           <td><strong>${escapeHtml(item.title)}</strong><br><small class="text-tertiary">${escapeHtml(item.id)}</small></td>
+          <td>
+            <span class="table-dl-badge ${isLow ? 'is-low' : ''}" title="${dlCount.toLocaleString()} downloads">
+              ⬇ ${dlCount.toLocaleString()}
+            </span>
+          </td>
+          <td>
+            <span class="table-date" title="Submitted: ${escapeHtml(dateAddedStr)}">
+              ${escapeHtml(dateAddedStr)}
+            </span>
+          </td>
           <td><div class="card-categories-row">${catBadges}</div></td>
           <td>${tagCells}</td>
           <td>${escapeHtml(item.author || 'Unknown')}</td>
@@ -537,7 +656,7 @@
           <td>
             <div style="display: flex; gap: 4px;">
               <button class="card-btn btn-edit-card" data-id="${escapeHtml(item.id)}">Edit</button>
-              <button class="card-btn btn-delete-card text-danger" data-id="${escapeHtml(item.id)}">✕</button>
+              <button class="card-btn btn-delete-card text-danger" data-id="${escapeHtml(item.id)}" title="Prune / Delete">✕</button>
             </div>
           </td>
         </tr>
@@ -602,8 +721,29 @@
     }
 
     el.editAttribution.value = item.attribution || '';
+    if (el.editDateAdded) el.editDateAdded.value = item.dateAdded || '';
     el.editLikes.value = item.likes !== undefined ? item.likes : 1;
     el.editDownloads.value = item.downloads !== undefined ? item.downloads : 0;
+
+    if (el.inspectorDateBadge) {
+      el.inspectorDateBadge.textContent = item.dateAdded ? `📅 ${item.dateAdded}` : '📅 No date';
+      el.inspectorDateBadge.title = item.dateAdded ? `Submitted on ${item.dateAdded}` : 'No date recorded';
+    }
+
+    const inspectorDl = item.downloads !== undefined ? item.downloads : 0;
+    if (el.inspectorDownloadsBadge) {
+      el.inspectorDownloadsBadge.textContent = `⬇ ${inspectorDl.toLocaleString()} dl`;
+      el.inspectorDownloadsBadge.title = `${inspectorDl.toLocaleString()} total downloads`;
+      if (inspectorDl <= 5) {
+        el.inspectorDownloadsBadge.style.background = 'rgba(245, 158, 11, 0.2)';
+        el.inspectorDownloadsBadge.style.color = '#f59e0b';
+        el.inspectorDownloadsBadge.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+      } else {
+        el.inspectorDownloadsBadge.style.background = 'rgba(56, 189, 248, 0.2)';
+        el.inspectorDownloadsBadge.style.color = '#38bdf8';
+        el.inspectorDownloadsBadge.style.borderColor = 'rgba(56, 189, 248, 0.35)';
+      }
+    }
 
     // Reset preview mode
     setPreviewMode('device');
@@ -670,7 +810,8 @@
       sourceUrl: el.editSourceUrl.value.trim(),
       attribution: el.editAttribution.value.trim(),
       likes: parseInt(el.editLikes.value) || 0,
-      downloads: parseInt(el.editDownloads.value) || 0
+      downloads: parseInt(el.editDownloads.value) || 0,
+      dateAdded: el.editDateAdded ? el.editDateAdded.value.trim() : (state.activeItem.dateAdded || '')
     };
 
     try {
@@ -1244,7 +1385,12 @@
     const count = state.selectedIds.size;
     if (count === 0) return;
 
-    if (!confirm(`Are you sure you want to delete ${count} selected screensavers from the catalog?`)) {
+    const isPruning = state.statusFilter.startsWith('low-downloads') || state.statusFilter === 'zero-downloads';
+    const confirmMsg = isPruning
+      ? `Prune Confirmation:\n\nAre you sure you want to permanently prune and delete ${count} low-performing screensaver(s)?\n\nAll associated image files (master 1860×2480, 600×800 thumbnail, plugin thumbnail) and catalog entries will be removed.`
+      : `Are you sure you want to delete ${count} selected screensaver(s) and their image files from the catalog?`;
+
+    if (!confirm(confirmMsg)) {
       return;
     }
 
@@ -1262,7 +1408,7 @@
       const data = await res.json();
       if (!res.ok || !data.success) throw new Error(data.error || 'Batch delete failed');
 
-      showToast(`Deleted ${count} screensavers`, 'success');
+      showToast(`Successfully pruned and deleted ${count} screensavers`, 'success');
       state.selectedIds.clear();
       updateBatchBar();
       await loadCatalogData();
@@ -1424,6 +1570,38 @@
       renderCatalog();
     });
 
+    // Clickable Low Performing Stat in Header
+    if (el.statLowPerformingBtn) {
+      el.statLowPerformingBtn.addEventListener('click', () => {
+        state.statusFilter = 'low-downloads-5';
+        if (el.filterStatus) el.filterStatus.value = 'low-downloads-5';
+        state.sortBy = 'downloads-asc';
+        if (el.sortBy) el.sortBy.value = 'downloads-asc';
+        renderCatalog();
+        showToast('Filtered to low-performing screensavers (≤ 5 downloads) for pruning', 'info');
+      });
+    }
+
+    // Sort by Downloads Table Header Click
+    if (el.thSortDownloads) {
+      el.thSortDownloads.addEventListener('click', () => {
+        state.sortBy = state.sortBy === 'downloads-asc' ? 'downloads-desc' : 'downloads-asc';
+        if (el.sortBy) el.sortBy.value = state.sortBy;
+        renderCatalog();
+        showToast(`Sorted by downloads (${state.sortBy === 'downloads-asc' ? 'least' : 'most'} first)`, 'info');
+      });
+    }
+
+    // Sort by Date Table Header Click
+    if (el.thSortDate) {
+      el.thSortDate.addEventListener('click', () => {
+        state.sortBy = state.sortBy === 'newest' ? 'oldest' : 'newest';
+        if (el.sortBy) el.sortBy.value = state.sortBy;
+        renderCatalog();
+        showToast(`Sorted by date (${state.sortBy === 'newest' ? 'newest' : 'oldest'} first)`, 'info');
+      });
+    }
+
     // Transparency preview mode toggles (Grid vs Book Text)
     if (el.btnModeGrid && el.btnModeBook) {
       el.btnModeGrid.addEventListener('click', () => {
@@ -1539,6 +1717,16 @@
     });
 
     // Batch Bar Actions
+    if (el.batchSelectVisibleBtn) {
+      el.batchSelectVisibleBtn.addEventListener('click', () => {
+        const visibleItems = getFilteredItems();
+        visibleItems.forEach(item => state.selectedIds.add(item.id));
+        updateBatchBar();
+        renderCatalog();
+        showToast(`Selected all ${visibleItems.length} visible screensavers`, 'info');
+      });
+    }
+
     el.batchClearBtn.addEventListener('click', () => {
       state.selectedIds.clear();
       updateBatchBar();
@@ -1816,6 +2004,28 @@
     }
 
     // Sync & Backups
+    if (el.btnSyncDownloads) {
+      el.btnSyncDownloads.addEventListener('click', async () => {
+        try {
+          el.btnSyncDownloads.disabled = true;
+          el.btnSyncDownloads.innerHTML = `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <span>Syncing...</span>
+          `;
+          await loadCatalogData(true);
+          showToast(`Successfully refreshed live downloads from Cloudflare!`, 'success');
+        } catch (err) {
+          showToast(`Error syncing downloads: ${err.message}`, 'error');
+        } finally {
+          el.btnSyncDownloads.disabled = false;
+          el.btnSyncDownloads.innerHTML = `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Sync Downloads</span>
+          `;
+        }
+      });
+    }
+
     if (el.btnSyncAll) el.btnSyncAll.addEventListener('click', syncEverything);
     el.btnBackups.addEventListener('click', openBackupsModal);
     el.backupsModalCloseBtn.addEventListener('click', () => el.backupsModal.classList.add('hidden'));

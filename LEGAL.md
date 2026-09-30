@@ -69,3 +69,13 @@ All software, catalog data, and images are provided on an **"AS IS"** and **"AS 
 *Kindle* (Amazon.com, Inc.), *Kobo* (Rakuten Kobo Inc.), *Boox* (Onyx International Inc.), *PocketBook*, and *KOReader* are registered trademarks of their respective owners.
 
 Reference to these brand names, devices, and products is made strictly for **descriptive compatibility purposes (nominative fair use)** and does not imply any affiliation, sponsorship, endorsement, or commercial association with this project.
+
+---
+
+## 7. Catalog Curation & Pruning Policy
+
+The Storefront Screensavers catalog is actively curated to ensure fast sync times, lightweight download payloads, and crisp visual standards on e-ink devices.
+
+- **Periodic Pruning:** Screensavers with persistently low downloads, minimal community interest, or display defects may be pruned from the active catalog from time to time during catalog maintenance sweeps.
+- **Historical Preservation:** Pruning removes an item from active plugin downloads and the web gallery, but historical submissions remain preserved in repository git commit history.
+

@@ -16,6 +16,7 @@ import re
 import base64
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from io import BytesIO
+from datetime import datetime
 
 # PIL for image processing
 try:
@@ -43,6 +44,68 @@ os.makedirs(THUMBS_DIR, exist_ok=True)
 os.makedirs(PLUGIN_THUMBS_DIR, exist_ok=True)
 
 GITHUB_RAW_BASE = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
+RATINGS_API_URL = "https://storefront-vote.ultimatejimmy.workers.dev/ratings"
+
+_ratings_cache = {
+    "data": None,
+    "timestamp": 0
+}
+
+def fetch_live_ratings(force_refresh=False):
+    """Fetch aggregated ratings and download counts from Cloudflare worker."""
+    now = time.time()
+    if not force_refresh and _ratings_cache["data"] is not None and (now - _ratings_cache["timestamp"] < 300):
+        return _ratings_cache["data"]
+    
+    try:
+        req = urllib.request.Request(
+            RATINGS_API_URL,
+            headers={"User-Agent": "Mozilla/5.0 (CatalogStudio/1.0)"}
+        )
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            if resp.status == 200:
+                data = json.loads(resp.read().decode('utf-8'))
+                if isinstance(data, dict):
+                    _ratings_cache["data"] = data
+                    _ratings_cache["timestamp"] = now
+                    return data
+    except Exception as e:
+        print(f"Notice: Could not fetch live ratings from worker: {e}")
+        if _ratings_cache["data"] is not None:
+            return _ratings_cache["data"]
+    return {}
+
+def merge_ratings_into_catalog(catalog, ratings=None):
+    """Merge download counts and likes from live ratings into catalog items."""
+    if ratings is None:
+        ratings = fetch_live_ratings()
+    
+    ratings_map = ratings or {}
+    total_downloads = 0
+    low_performing_count = 0
+
+    for item in catalog:
+        item_id = item.get('id', '')
+        r = ratings_map.get(item_id) or (ratings_map.get(item_id.lower()) if item_id else None)
+        dl = 0
+        if r and isinstance(r, dict):
+            dl = r.get('downloads', 0)
+            if 'up' in r or 'down' in r:
+                item['likes'] = max(0, (r.get('up') or 0) - (r.get('down') or 0))
+            if 'wilson' in r:
+                item['wilson'] = r['wilson']
+        elif 'downloads' in item and item['downloads'] is not None:
+            dl = item['downloads']
+
+        item['downloads'] = int(dl or 0)
+        total_downloads += item['downloads']
+        if item['downloads'] <= 5:
+            low_performing_count += 1
+
+    return {
+        "totalDownloads": total_downloads,
+        "lowPerformingCount": low_performing_count
+    }
 
 CHECKERBOARD_TILE = 12
 CB_LIGHT = (255, 255, 255, 255)
@@ -607,6 +670,7 @@ def bulk_add_screensavers(items):
                 "license": license_name,
                 "attribution": attribution,
                 "tags": tags_list,
+                "dateAdded": raw_item.get('dateAdded') or datetime.now().strftime('%Y-%m-%d'),
                 "downloads": 0,
                 "likes": 0
             }
@@ -664,7 +728,13 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
 
         # API: Catalog Data
         if path == '/api/catalog':
+            query_params = urllib.parse.parse_qs(parsed.query)
+            refresh_downloads = query_params.get('refresh_downloads', ['0'])[0] in ['1', 'true', 'yes']
+
             catalog = load_catalog()
+            ratings = fetch_live_ratings(force_refresh=refresh_downloads)
+            stats_meta = merge_ratings_into_catalog(catalog, ratings)
+
             # Calculate categories and stats (supporting both list and string categories)
             cat_set = {'Abstract', 'Anime', 'Architecture', 'Art', 'Fantasy', 'Minimalist', 'Nature', 'Pop Culture', 'Quotes', 'Religion', 'Sci-Fi', 'Transparent'}
             for item in catalog:
@@ -688,11 +758,19 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
 
             response_data = {
                 "total": len(catalog),
+                "totalDownloads": stats_meta["totalDownloads"],
+                "lowPerformingCount": stats_meta["lowPerformingCount"],
                 "categories": categories,
                 "backups": backups,
                 "items": catalog
             }
             self.send_json(response_data)
+            return
+
+        # API: Live ratings and download metrics
+        if path == '/api/catalog/ratings':
+            ratings = fetch_live_ratings(force_refresh=True)
+            self.send_json(ratings)
             return
 
         # API: Preview local image file (used by folder scan preview)
@@ -840,6 +918,7 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 new_item.setdefault('thumbnailUrl', f"{GITHUB_RAW_BASE}images/thumbnails/{item_id}.jpg")
                 new_item.setdefault('fullUrl', f"{GITHUB_RAW_BASE}images/{item_id}.jpg")
 
+            new_item.setdefault('dateAdded', datetime.now().strftime('%Y-%m-%d'))
             new_item.setdefault('downloads', 0)
             new_item.setdefault('likes', 0)
             new_item.setdefault('compatibility', ["Kindle", "Kobo", "Boox", "PocketBook"])
@@ -960,6 +1039,28 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 self.send_json({"success": False, "error": str(e)}, status=500)
                 return
 
+        # API: Sync Downloads from live metrics
+        if path == '/api/catalog/sync-downloads':
+            ratings = fetch_live_ratings(force_refresh=True)
+            catalog = load_catalog()
+            stats_meta = merge_ratings_into_catalog(catalog, ratings)
+            persist = payload.get('persist', False)
+            if persist:
+                save_catalog(catalog)
+                try:
+                    from generate_catalogs import generate_catalogs
+                    generate_catalogs()
+                except Exception:
+                    pass
+            self.send_json({
+                "success": True,
+                "total": len(catalog),
+                "totalDownloads": stats_meta["totalDownloads"],
+                "lowPerformingCount": stats_meta["lowPerformingCount"],
+                "items": catalog
+            })
+            return
+
         # API: Sync Everything
         if path == '/api/catalog/sync-all':
             result = sync_all_catalog()
@@ -1001,13 +1102,23 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                     for item_id in target_ids:
                         for ext in ['jpg', 'png', 'jpeg', 'webp']:
                             for p in [os.path.join(IMAGES_DIR, f"{item_id}.{ext}"),
-                                      os.path.join(THUMBS_DIR, f"{item_id}.{ext}")]:
+                                      os.path.join(THUMBS_DIR, f"{item_id}.{ext}"),
+                                      os.path.join(PLUGIN_THUMBS_DIR, f"{item_id}.{ext}")]:
                                 if os.path.exists(p):
                                     try:
                                         os.remove(p)
                                     except Exception:
                                         pass
                 catalog = [x for x in catalog if x.get('id') not in target_ids]
+                save_catalog(catalog)
+                rebuild_credits_file(catalog)
+                try:
+                    from generate_catalogs import generate_catalogs
+                    generate_catalogs()
+                except Exception:
+                    pass
+                self.send_json({"success": True, "deleted": len(target_ids), "remaining": len(catalog)})
+                return
             elif action == 'add_category' or action == 'add_categories':
                 new_cats = payload.get('categories') or []
                 if isinstance(new_cats, str):

@@ -267,6 +267,74 @@ class TestCatalogStudio(unittest.TestCase):
             cs.rebuild_credits_file(initial_catalog)
             self.assertEqual(len(cs.load_catalog()), initial_count)
 
+    def test_ratings_fetching_and_merging(self):
+        # Test merging simulated and real ratings into catalog
+        sample_catalog = [
+            {"id": "test-item-high", "title": "High Performer"},
+            {"id": "test-item-low", "title": "Low Performer"},
+            {"id": "test-item-zero", "title": "Zero Performer"},
+        ]
+        sample_ratings = {
+            "test-item-high": {"downloads": 150, "up": 10, "down": 1, "wilson": 0.8},
+            "test-item-low": {"downloads": 3, "up": 1, "down": 0, "wilson": 0.2},
+            # test-item-zero has no entry in database
+        }
+
+        meta = cs.merge_ratings_into_catalog(sample_catalog, sample_ratings)
+        self.assertEqual(meta["totalDownloads"], 153)
+        self.assertEqual(meta["lowPerformingCount"], 2)  # low (3) and zero (0)
+
+        self.assertEqual(sample_catalog[0]["downloads"], 150)
+        self.assertEqual(sample_catalog[0]["likes"], 9)
+        self.assertEqual(sample_catalog[1]["downloads"], 3)
+        self.assertEqual(sample_catalog[2]["downloads"], 0)
+
+    def test_prune_filters_identification(self):
+        # Ensure low-performing screensavers can be filtered accurately
+        test_items = [
+            {"id": "item-0", "downloads": 0},
+            {"id": "item-3", "downloads": 3},
+            {"id": "item-5", "downloads": 5},
+            {"id": "item-10", "downloads": 10},
+            {"id": "item-50", "downloads": 50},
+        ]
+        zero_dl = [x for x in test_items if x.get("downloads", 0) == 0]
+        self.assertEqual(len(zero_dl), 1)
+        self.assertEqual(zero_dl[0]["id"], "item-0")
+
+        low_5 = [x for x in test_items if x.get("downloads", 0) <= 5]
+        self.assertEqual(len(low_5), 3)
+
+        low_10 = [x for x in test_items if x.get("downloads", 0) <= 10]
+        self.assertEqual(len(low_10), 4)
+
+        # Sort ascending by downloads (least downloads first for pruning)
+        sorted_asc = sorted(test_items, key=lambda x: x.get("downloads", 0))
+        self.assertEqual([x["id"] for x in sorted_asc], ["item-0", "item-3", "item-5", "item-10", "item-50"])
+
+    def test_submission_dates_and_sorting(self):
+        # Verify dateAdded exists on catalog items
+        catalog = cs.load_catalog()
+        with_dates = [x for x in catalog if x.get('dateAdded')]
+        self.assertGreater(len(with_dates), 0)
+        import re
+        date_pattern = re.compile(r'^\d{4}-\d{2}-\d{2}$')
+        for x in with_dates[:20]:
+            self.assertTrue(date_pattern.match(x['dateAdded']), f"Invalid date format: {x['dateAdded']}")
+
+        # Verify sorting by newest and oldest
+        test_items = [
+            {"id": "old", "dateAdded": "2026-08-01"},
+            {"id": "mid", "dateAdded": "2026-08-15"},
+            {"id": "new", "dateAdded": "2026-09-29"},
+        ]
+        sorted_newest = sorted(test_items, key=lambda x: x['dateAdded'], reverse=True)
+        self.assertEqual([x['id'] for x in sorted_newest], ["new", "mid", "old"])
+
+        sorted_oldest = sorted(test_items, key=lambda x: x['dateAdded'])
+        self.assertEqual([x['id'] for x in sorted_oldest], ["old", "mid", "new"])
+
 if __name__ == '__main__':
     unittest.main()
+
 
