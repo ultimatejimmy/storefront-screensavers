@@ -151,7 +151,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Space Deep Space Simple Background | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/6l/wallhaven-6lpzx7.jpg) |
 | Planet Stars Space | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/9o/wallhaven-9o93mx.jpg) |
 | Paolo Cagol Spacescapes Spaceship | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/5y/wallhaven-5y3l75.jpg) |
-| Arc Raiders Embark Studios Abstract | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/ly/wallhaven-lyd8xl.png) |
 | Space Digital Art Dark Background | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/w5/wallhaven-w5drp6.jpg) |
 | Dune (Movie) Dune: Part Two | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/e8/wallhaven-e86ggr.png) |
 | Digital Art Cgi Spacesuit | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/po/wallhaven-po7rdj.jpg) |
@@ -409,7 +408,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Vocaloid 5 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
 | Vocaloid 6 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
 | Vocaloid 7 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
-| Vocaloid 8 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
 | Vocaloid 9 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
 | Vocaloid 10 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
 | Vocaloid 11 | tokenicrat | Minimalist, Anime, Transparent | Community Share | tokenicrat |
@@ -424,9 +422,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Interesting Story by Laura Muntz Lyall | shuvashish76 | Art | Community Share | shuvashish76 |
 | Lotus | shuvashish76 | Abstract, Art, Transparent | Community Share | shuvashish76 |
 | Brain Bulb | shuvashish76 | Abstract, Transparent | Community Share | shuvashish76 |
-| Portrait of a Beauty | shuvashish76 | Art, Transparent | Community Share | shuvashish76 |
 | Tiger Family | shuvashish76 | Nature, Art, Transparent | Community Share | shuvashish76 |
-| Kathak Dance | shuvashish76 | Transparent | Community Share | shuvashish76 |
 | Missouri Quote | shuvashish76 | Nature, Quotes, Transparent | Community Share | shuvashish76 |
 | Madhubala | shuvashish76 | Art, Transparent | Community Share | shuvashish76 |
 | The moon | cactus_cowboy | Minimalist, Nature | Community Share | cactus_cowboy |
@@ -435,9 +431,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Radha Krishna | j4p4n | Art, Religion, Transparent | Community Share | j4p4n |
 | Nerdy bookworm | j4p4n | Anime, Art, Transparent | Community Share | j4p4n |
 | Lady reading | j4p4n | Art, Pop Culture, Transparent | Community Share | j4p4n |
-| Bookworm girl | oksmith | Anime, Pop Culture, Transparent | Community Share | oksmith |
 | Schoolgirl Studying | oksmith | Anime, Transparent | Community Share | oksmith |
-| Nu à la lecture BW | AdamStanislav | Art, Pop Culture, Transparent | Community Share | AdamStanislav |
 | Boy reading in sunset | liftarn | Minimalist, Art, Pop Culture | Community Share | liftarn |
 | Woman reading in sunset | liftarn | Minimalist, Art, Pop Culture | Community Share | liftarn |
 | Little Miss Muffet | SeriousTux | Anime, Art, Quotes, Transparent | Community Share | SeriousTux |
