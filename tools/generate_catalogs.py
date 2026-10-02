@@ -96,6 +96,8 @@ def generate_catalogs():
             lite_item["downloads"] = cleaned_item["downloads"]
         if cleaned_item.get("likes"):
             lite_item["likes"] = cleaned_item["likes"]
+        if cleaned_item.get("dateAdded"):
+            lite_item["dateAdded"] = cleaned_item["dateAdded"]
 
         lite_items.append(lite_item)
 

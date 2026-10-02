@@ -42,6 +42,7 @@ jobs:
         run: |
           python - << 'EOF'
           import os, json, re, requests, time, sys
+          from datetime import datetime
           from io import BytesIO
           from urllib.parse import urljoin
           from PIL import Image, ImageOps
@@ -607,7 +608,8 @@ jobs:
                   "fullUrl": full_url,
                   "downloads": 0,
                   "likes": 0,
-                  "tags": tag_list
+                  "tags": tag_list,
+                  "dateAdded": datetime.now().strftime('%Y-%m-%d')
               }
               if plugin_thumb_url:
                   cat_entry["pluginThumbnailUrl"] = plugin_thumb_url
