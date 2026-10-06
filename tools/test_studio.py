@@ -334,7 +334,59 @@ class TestCatalogStudio(unittest.TestCase):
         sorted_oldest = sorted(test_items, key=lambda x: x['dateAdded'])
         self.assertEqual([x['id'] for x in sorted_oldest], ["old", "mid", "new"])
 
+    def test_featured_expiration_logic(self):
+        # Verify clean_expired_featured correctly cleans up overdue items
+        items = [
+            {"id": "feat-active", "title": "Active", "featured": True, "featuredUntil": "2099-12-31"},
+            {"id": "feat-indefinite", "title": "Indefinite", "featured": True},
+            {"id": "feat-expired", "title": "Expired", "featured": True, "featuredUntil": "2020-01-01"},
+            {"id": "unfeatured", "title": "Normal", "featured": False}
+        ]
+        modified = cs.clean_expired_featured(items)
+        self.assertTrue(modified)
+
+        # feat-active and feat-indefinite should still be featured
+        self.assertTrue(items[0].get("featured"))
+        self.assertEqual(items[0].get("featuredUntil"), "2099-12-31")
+        self.assertTrue(items[1].get("featured"))
+
+        # feat-expired should no longer be featured
+        self.assertFalse(items[2].get("featured"))
+        self.assertNotIn("featuredUntil", items[2])
+
+    def test_generate_catalogs_featured_in_lite(self):
+        from generate_catalogs import generate_catalogs
+        catalog = cs.load_catalog()
+        if len(catalog) > 0:
+            orig_feat = catalog[0].get("featured")
+            orig_until = catalog[0].get("featuredUntil")
+            try:
+                # Mark first item as featured until future
+                catalog[0]["featured"] = True
+                catalog[0]["featuredUntil"] = "2099-12-31"
+                cs.save_catalog(catalog)
+                generate_catalogs()
+
+                with open(cs.REPO_ROOT + "/screensavers.lite.json", "r", encoding="utf-8") as f:
+                    lite_data = json.load(f)
+                first_lite = next((x for x in lite_data if x["id"] == catalog[0]["id"]), None)
+                self.assertIsNotNone(first_lite)
+                self.assertEqual(first_lite.get("featured"), 1)
+            finally:
+                # Restore original status
+                if orig_feat is not None:
+                    catalog[0]["featured"] = orig_feat
+                else:
+                    catalog[0].pop("featured", None)
+                if orig_until is not None:
+                    catalog[0]["featuredUntil"] = orig_until
+                else:
+                    catalog[0].pop("featuredUntil", None)
+                cs.save_catalog(catalog)
+                generate_catalogs()
+
 if __name__ == '__main__':
     unittest.main()
+
 
 

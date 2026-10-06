@@ -156,11 +156,31 @@ def create_backup():
         print(f"Error creating backup: {e}")
         return None
 
+def clean_expired_featured(catalog):
+    """Auto-clears expired featured flags from catalog items."""
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    modified = False
+    for item in catalog:
+        if item.get("featured"):
+            feat_until = item.get("featuredUntil")
+            if feat_until and str(feat_until).strip() < today_str:
+                item["featured"] = False
+                item.pop("featuredUntil", None)
+                item.pop("featuredPriority", None)
+                modified = True
+    return modified
+
 def load_catalog():
     if not os.path.exists(SCREENSAVERS_JSON):
         return []
     with open(SCREENSAVERS_JSON, 'r', encoding='utf-8') as f:
-        return json.load(f)
+        catalog = json.load(f)
+    if clean_expired_featured(catalog):
+        try:
+            save_catalog(catalog)
+        except Exception:
+            pass
+    return catalog
 
 def save_catalog(catalog_data):
     create_backup()
@@ -678,6 +698,12 @@ def bulk_add_screensavers(items):
                 new_item['pluginThumbnailUrl'] = img_res['pluginThumbnailUrl']
             if raw_item.get('sourceUrl'):
                 new_item['sourceUrl'] = raw_item['sourceUrl'].strip()
+            if raw_item.get('featured'):
+                new_item['featured'] = True
+                if raw_item.get('featuredUntil'):
+                    new_item['featuredUntil'] = str(raw_item['featuredUntil']).strip()
+                if raw_item.get('featuredPriority'):
+                    new_item['featuredPriority'] = int(raw_item['featuredPriority'])
 
             catalog.append(new_item)
             added.append(new_item)
@@ -756,8 +782,11 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                     if f.startswith("screensavers_") and f.endswith(".json"):
                         backups.append(f)
 
+            featured_count = sum(1 for item in catalog if item.get('featured'))
+
             response_data = {
                 "total": len(catalog),
+                "featuredCount": featured_count,
                 "totalDownloads": stats_meta["totalDownloads"],
                 "lowPerformingCount": stats_meta["lowPerformingCount"],
                 "categories": categories,
@@ -937,9 +966,25 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 cur_tags = generate_default_tags(new_item['title'], new_item.get('category'))
             new_item['tags'] = sorted(list(set(cur_tags)))
 
+            if new_item.get('featured'):
+                new_item['featured'] = True
+                if new_item.get('featuredUntil'):
+                    new_item['featuredUntil'] = str(new_item['featuredUntil']).strip()
+                if new_item.get('featuredPriority'):
+                    new_item['featuredPriority'] = int(new_item['featuredPriority'])
+            else:
+                new_item.pop('featured', None)
+                new_item.pop('featuredUntil', None)
+                new_item.pop('featuredPriority', None)
+
             catalog.append(new_item)
             save_catalog(catalog)
             rebuild_credits_file(catalog)
+            try:
+                from generate_catalogs import generate_catalogs
+                generate_catalogs()
+            except Exception:
+                pass
             self.send_json({"success": True, "item": new_item})
             return
 
@@ -1196,9 +1241,66 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 for x in catalog:
                     if x.get('id') in target_ids:
                         x['license'] = license_val
+            elif action == 'feature':
+                until = payload.get('featuredUntil')
+                prio = payload.get('featuredPriority')
+                for x in catalog:
+                    if x.get('id') in target_ids:
+                        x['featured'] = True
+                        if until:
+                            x['featuredUntil'] = str(until).strip()
+                        elif 'featuredUntil' in x:
+                            x.pop('featuredUntil', None)
+                        if prio is not None:
+                            x['featuredPriority'] = int(prio)
+            elif action == 'unfeature':
+                for x in catalog:
+                    if x.get('id') in target_ids:
+                        x['featured'] = False
+                        x.pop('featuredUntil', None)
+                        x.pop('featuredPriority', None)
 
             save_catalog(catalog)
+            try:
+                from generate_catalogs import generate_catalogs
+                generate_catalogs()
+            except Exception:
+                pass
             self.send_json({"success": True, "updated": len(target_ids), "total": len(catalog)})
+            return
+
+        # API: Quick toggle / schedule featured for specific item
+        if path.startswith('/api/catalog/item/') and path.endswith('/feature'):
+            item_id = urllib.parse.unquote(path[len('/api/catalog/item/'):-len('/feature')])
+            catalog = load_catalog()
+            target_item = next((x for x in catalog if x.get('id') == item_id), None)
+            if not target_item:
+                self.send_error(404, f"Item '{item_id}' not found")
+                return
+
+            is_feat = payload.get('featured', True)
+            until = payload.get('featuredUntil')
+            prio = payload.get('featuredPriority')
+            if is_feat:
+                target_item['featured'] = True
+                if until:
+                    target_item['featuredUntil'] = str(until).strip()
+                elif 'featuredUntil' in target_item:
+                    target_item.pop('featuredUntil', None)
+                if prio is not None:
+                    target_item['featuredPriority'] = int(prio)
+            else:
+                target_item['featured'] = False
+                target_item.pop('featuredUntil', None)
+                target_item.pop('featuredPriority', None)
+
+            save_catalog(catalog)
+            try:
+                from generate_catalogs import generate_catalogs
+                generate_catalogs()
+            except Exception:
+                pass
+            self.send_json({"success": True, "item": target_item})
             return
 
         self.send_error(404, "Endpoint not found")
@@ -1268,9 +1370,25 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                     updates['fullUrl'] = existing['fullUrl'].replace(f"/{item_id}.", f"/{new_id}.")
 
             # Apply updates
+            if updates.get('featured'):
+                updates['featured'] = True
+                if updates.get('featuredUntil'):
+                    updates['featuredUntil'] = str(updates['featuredUntil']).strip()
+                if updates.get('featuredPriority'):
+                    updates['featuredPriority'] = int(updates['featuredPriority'])
+            elif 'featured' in updates and not updates.get('featured'):
+                updates['featured'] = False
+                existing.pop('featuredUntil', None)
+                existing.pop('featuredPriority', None)
+
             existing.update(updates)
             catalog[idx] = existing
             save_catalog(catalog)
+            try:
+                from generate_catalogs import generate_catalogs
+                generate_catalogs()
+            except Exception:
+                pass
             self.send_json({"success": True, "item": existing})
             return
 

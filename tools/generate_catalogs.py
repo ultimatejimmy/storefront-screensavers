@@ -15,6 +15,7 @@ import os
 import json
 import gzip
 import sys
+from datetime import datetime
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_JSON = os.path.join(REPO_ROOT, "screensavers.json")
@@ -78,6 +79,22 @@ def generate_catalogs():
             elif isinstance(cat, str):
                 cleaned_item["category"] = "Art" if cat.strip().lower() == "fine art" else cat.strip()
 
+        # Handle featured and scheduled expiration
+        today_str = datetime.now().strftime("%Y-%m-%d")
+        is_featured = bool(cleaned_item.get("featured"))
+        feat_until = cleaned_item.get("featuredUntil")
+        if is_featured and feat_until:
+            if str(feat_until).strip() < today_str:
+                is_featured = False
+                cleaned_item.pop("featured", None)
+                cleaned_item.pop("featuredUntil", None)
+                cleaned_item.pop("featuredPriority", None)
+
+        if not is_featured:
+            cleaned_item.pop("featured", None)
+            cleaned_item.pop("featuredUntil", None)
+            cleaned_item.pop("featuredPriority", None)
+
         cleaned_full.append(cleaned_item)
 
         lite_item = {
@@ -98,6 +115,10 @@ def generate_catalogs():
             lite_item["likes"] = cleaned_item["likes"]
         if cleaned_item.get("dateAdded"):
             lite_item["dateAdded"] = cleaned_item["dateAdded"]
+        if is_featured:
+            lite_item["featured"] = 1
+            if cleaned_item.get("featuredPriority"):
+                lite_item["featuredPriority"] = cleaned_item["featuredPriority"]
 
         lite_items.append(lite_item)
 

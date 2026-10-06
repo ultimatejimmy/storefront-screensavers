@@ -304,9 +304,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const likesCount = getItemLikes(item);
       const downloadsCount = getItemDownloads(item);
+      const isFeatured = !!(item.featured === 1 || item.featured === true);
 
       card.innerHTML = `
         <div class="${wrapClass}">
+          ${isFeatured ? '<span class="card-badge-featured">⭐ Featured</span>' : ''}
           <img class="card-img" src="${item.thumbnailUrl}" alt="${item.title}" loading="lazy">
           <div class="card-overlay">
             <span class="card-overlay-badge">by ${authorDisplay}</span>
@@ -466,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeCats = getActiveFilterCategories();
     const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
     const sortSelect = document.getElementById('sort-select');
-    const sortBy = sortSelect ? sortSelect.value : 'downloads';
+    const sortBy = sortSelect ? sortSelect.value : 'featured';
 
     let filtered = catalogData.filter(item => {
       const matchCat = itemMatchesCategories(item, activeCats);
@@ -479,7 +481,23 @@ document.addEventListener('DOMContentLoaded', () => {
       return matchCat && matchSearch;
     });
 
-    if (sortBy === 'newest') {
+    if (sortBy === 'featured') {
+      filtered.sort((a, b) => {
+        const aFeat = (a.featured === 1 || a.featured === true) ? 1 : 0;
+        const bFeat = (b.featured === 1 || b.featured === true) ? 1 : 0;
+        if (aFeat !== bFeat) return bFeat - aFeat;
+        if (aFeat && bFeat) {
+          const pDiff = (b.featuredPriority || 0) - (a.featuredPriority || 0);
+          if (pDiff !== 0) return pDiff;
+          if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
+        }
+        const diff = getItemDownloads(b) - getItemDownloads(a);
+        if (diff !== 0) return diff;
+        const likeDiff = getItemLikes(b) - getItemLikes(a);
+        if (likeDiff !== 0) return likeDiff;
+        return (a.title || '').localeCompare(b.title || '');
+      });
+    } else if (sortBy === 'newest') {
       filtered.sort((a, b) => {
         if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
         return (b._originalIndex || 0) - (a._originalIndex || 0);
@@ -497,10 +515,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (a.dateAdded && b.dateAdded) return new Date(a.dateAdded) - new Date(b.dateAdded);
         return (a._originalIndex || 0) - (b._originalIndex || 0);
       });
-    } else if (sortBy === 'title-asc') {
-      filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
-    } else if (sortBy === 'title-desc') {
-      filtered.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
     } else if (sortBy === 'author-asc') {
       filtered.sort((a, b) => (a.author || '').localeCompare(b.author || ''));
     } else if (sortBy === 'downloads') {
@@ -512,8 +526,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return (a.title || '').localeCompare(b.title || '');
       });
     } else {
-      // Default: Most Downloaded
+      // Default: Featured First
       filtered.sort((a, b) => {
+        const aFeat = (a.featured === 1 || a.featured === true) ? 1 : 0;
+        const bFeat = (b.featured === 1 || b.featured === true) ? 1 : 0;
+        if (aFeat !== bFeat) return bFeat - aFeat;
         const diff = getItemDownloads(b) - getItemDownloads(a);
         if (diff !== 0) return diff;
         const likeDiff = getItemLikes(b) - getItemLikes(a);

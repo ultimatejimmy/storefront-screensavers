@@ -57,6 +57,7 @@
     statLowPerforming: document.getElementById('stat-low-performing'),
     statLowPerformingBtn: document.getElementById('stat-low-performing-btn'),
     countAll: document.getElementById('count-all'),
+    countFeatured: document.getElementById('count-featured'),
     btnSyncDownloads: document.getElementById('btn-sync-downloads'),
 
     // Batch Bar
@@ -67,6 +68,8 @@
     batchClearBtn: document.getElementById('batch-clear-btn'),
     batchCategorySelect: document.getElementById('batch-category-select'),
     batchApplyCategory: document.getElementById('batch-apply-category'),
+    batchFeatureBtn: document.getElementById('batch-feature-btn'),
+    batchUnfeatureBtn: document.getElementById('batch-unfeature-btn'),
     batchDeleteBtn: document.getElementById('batch-delete-btn'),
 
     // Inspector
@@ -112,6 +115,10 @@
     editDateAdded: document.getElementById('edit-date-added'),
     editLikes: document.getElementById('edit-likes'),
     editDownloads: document.getElementById('edit-downloads'),
+    editFeaturedToggle: document.getElementById('edit-featured-toggle'),
+    editFeaturedDetails: document.getElementById('edit-featured-details'),
+    editFeaturedUntil: document.getElementById('edit-featured-until'),
+    editFeaturedStatusText: document.getElementById('edit-featured-status-text'),
 
     btnSaveEdit: document.getElementById('btn-save-edit'),
     btnCancelEdit: document.getElementById('btn-cancel-edit'),
@@ -138,6 +145,9 @@
     addLicense: document.getElementById('add-license'),
     addSourceUrl: document.getElementById('add-source-url'),
     addAttribution: document.getElementById('add-attribution'),
+    addFeaturedToggle: document.getElementById('add-featured-toggle'),
+    addFeaturedDetails: document.getElementById('add-featured-details'),
+    addFeaturedUntil: document.getElementById('add-featured-until'),
 
     // Bulk Add Modal
     btnBulkAdd: document.getElementById('btn-bulk-add'),
@@ -147,6 +157,7 @@
     bulkModalCancelBtn: document.getElementById('bulk-modal-cancel-btn'),
     bulkModalSubmitBtn: document.getElementById('bulk-modal-submit-btn'),
     bulkSubmitText: document.getElementById('bulk-submit-text'),
+    bulkAutoFeatureToggle: document.getElementById('bulk-auto-feature-toggle'),
     tabBulkFiles: document.getElementById('tab-bulk-files'),
     tabBulkFolder: document.getElementById('tab-bulk-folder'),
     bulkFilesSection: document.getElementById('bulk-files-section'),
@@ -168,6 +179,15 @@
     bulkProgressText: document.getElementById('bulk-progress-text'),
     bulkProgressPercent: document.getElementById('bulk-progress-percent'),
     bulkProgressFill: document.getElementById('bulk-progress-fill'),
+
+    // Feature Schedule Modal
+    featureScheduleModal: document.getElementById('feature-schedule-modal'),
+    featureScheduleTitle: document.getElementById('feature-schedule-item-title'),
+    featureScheduleCloseBtn: document.getElementById('feature-schedule-close-btn'),
+    featureScheduleCancelBtn: document.getElementById('feature-schedule-cancel-btn'),
+    featureScheduleSaveBtn: document.getElementById('feature-schedule-save-btn'),
+    featureScheduleUnfeatureBtn: document.getElementById('feature-schedule-unfeature-btn'),
+    featureScheduleDateInput: document.getElementById('feature-schedule-date-input'),
 
     // Sync & Backups
     btnSyncAll: document.getElementById('btn-sync-all'),
@@ -370,7 +390,14 @@
       }
     }
 
-    const html = ['<button class="chip ' + (state.activeCategory === 'all' ? 'active' : '') + '" data-category="all">All <span class="chip-count">' + state.catalog.length + '</span></button>'];
+    const featuredCount = state.catalog.filter(x => Boolean(x.featured)).length;
+    if (el.countFeatured) el.countFeatured.textContent = featuredCount;
+    const isFeaturedActive = state.activeCategory === 'featured' ? 'active' : '';
+
+    const html = [
+      '<button class="chip ' + (state.activeCategory === 'all' ? 'active' : '') + '" data-category="all">All <span class="chip-count">' + state.catalog.length + '</span></button>',
+      `<button class="chip chip-featured ${isFeaturedActive}" data-category="featured">⭐ Featured <span class="chip-count">${featuredCount}</span></button>`
+    ];
     for (const cat of state.categories) {
       const count = catCounts[cat] || 0;
       const isActive = state.activeCategory === cat ? 'active' : '';
@@ -458,8 +485,10 @@
       });
     }
 
-    // Category filter (item matches if it includes activeCategory)
-    if (state.activeCategory !== 'all') {
+    // Category filter (item matches if it includes activeCategory or featured)
+    if (state.activeCategory === 'featured') {
+      list = list.filter(item => Boolean(item.featured));
+    } else if (state.activeCategory !== 'all') {
       list = list.filter(item => {
         const cats = getItemCategories(item);
         return cats.includes(state.activeCategory);
@@ -484,7 +513,14 @@
     }
 
     // Sorting
-    if (state.sortBy === 'newest') {
+    if (state.sortBy === 'featured') {
+      list.sort((a, b) => {
+        const fa = a.featured ? 1 : 0;
+        const fb = b.featured ? 1 : 0;
+        if (fa !== fb) return fb - fa;
+        return (b.downloads || 0) - (a.downloads || 0);
+      });
+    } else if (state.sortBy === 'newest') {
       list.sort((a, b) => {
         if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
         return (b._originalIndex || 0) - (a._originalIndex || 0);
@@ -494,10 +530,6 @@
         if (a.dateAdded && b.dateAdded) return new Date(a.dateAdded) - new Date(b.dateAdded);
         return (a._originalIndex || 0) - (b._originalIndex || 0);
       });
-    } else if (state.sortBy === 'title-asc') {
-      list.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
-    } else if (state.sortBy === 'title-desc') {
-      list.sort((a, b) => (b.title || '').localeCompare(a.title || ''));
     } else if (state.sortBy === 'author-asc') {
       list.sort((a, b) => (a.author || '').localeCompare(b.author || ''));
     } else if (state.sortBy === 'category') {
@@ -562,6 +594,11 @@
       const isLow = dlCount <= 5;
       const dlBadge = `<span class="card-badge-downloads ${isLow ? 'is-low' : ''}" title="${dlCount.toLocaleString()} total downloads">⬇ ${dlCount.toLocaleString()}</span>`;
 
+      const isFeatured = Boolean(item.featured);
+      const featBadge = isFeatured
+        ? `<span class="card-badge-featured" title="${item.featuredUntil ? 'Featured until ' + escapeHtml(item.featuredUntil) : 'Featured indefinitely'}">⭐ Featured</span>`
+        : '';
+
       const categories = getItemCategories(item);
       const catBadges = categories.length > 0
         ? categories.map(c => `<span class="card-category-tag">${escapeHtml(c)}</span>`).join('')
@@ -583,6 +620,7 @@
             <input type="checkbox" class="card-checkbox" data-id="${escapeHtml(item.id)}" ${isSelected ? 'checked' : ''}>
             ${formatBadge}
             ${dlBadge}
+            ${featBadge}
           </div>
           <div class="card-details">
             <div class="card-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
@@ -597,6 +635,9 @@
             <div class="card-categories-row">${catBadges}</div>
             ${tagBadges}
             <div class="card-actions">
+              <button class="card-btn btn-feature-card ${isFeatured ? 'is-featured' : ''}" data-id="${escapeHtml(item.id)}" title="${isFeatured ? '⭐ Featured (Click to reschedule/remove)' : 'Feature this screensaver'}">
+                ${isFeatured ? '⭐' : '☆'}
+              </button>
               <button class="card-btn btn-edit-card" data-id="${escapeHtml(item.id)}" title="Edit metadata & images">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                 Edit
@@ -619,6 +660,7 @@
 
     const rowsHtml = items.map(item => {
       const isSelected = state.selectedIds.has(item.id);
+      const isFeatured = Boolean(item.featured);
       const thumbUrl = getLocalImageUrl(item.thumbnailUrl || item.fullUrl);
       const categories = getItemCategories(item);
       const catBadges = categories.length > 0
@@ -638,7 +680,14 @@
         <tr class="${isSelected ? 'selected' : ''} ${isLow ? 'row-low-dl' : ''}" data-id="${escapeHtml(item.id)}">
           <td><input type="checkbox" class="table-row-checkbox" data-id="${escapeHtml(item.id)}" ${isSelected ? 'checked' : ''}></td>
           <td><img class="table-thumb" src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(item.title)}" loading="lazy"></td>
-          <td><strong>${escapeHtml(item.title)}</strong><br><small class="text-tertiary">${escapeHtml(item.id)}</small></td>
+          <td>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="table-featured-star ${isFeatured ? 'text-warning' : 'text-tertiary'}" data-id="${escapeHtml(item.id)}" title="${isFeatured ? '⭐ Featured (Click to reschedule/remove)' : 'Click to feature'}">${isFeatured ? '⭐' : '☆'}</span>
+              <div>
+                <strong>${escapeHtml(item.title)}</strong><br><small class="text-tertiary">${escapeHtml(item.id)}</small>
+              </div>
+            </div>
+          </td>
           <td>
             <span class="table-dl-badge ${isLow ? 'is-low' : ''}" title="${dlCount.toLocaleString()} downloads">
               ⬇ ${dlCount.toLocaleString()}
@@ -724,6 +773,21 @@
     if (el.editDateAdded) el.editDateAdded.value = item.dateAdded || '';
     el.editLikes.value = item.likes !== undefined ? item.likes : 1;
     el.editDownloads.value = item.downloads !== undefined ? item.downloads : 0;
+
+    if (el.editFeaturedToggle) {
+      el.editFeaturedToggle.checked = Boolean(item.featured);
+      if (el.editFeaturedDetails) {
+        el.editFeaturedDetails.classList.toggle('hidden', !item.featured);
+      }
+      if (el.editFeaturedUntil) {
+        el.editFeaturedUntil.value = item.featuredUntil || '';
+      }
+      if (el.editFeaturedStatusText) {
+        el.editFeaturedStatusText.textContent = item.featured
+          ? (item.featuredUntil ? `Featured until ${item.featuredUntil}` : 'Featured indefinitely')
+          : 'Spots at top of catalog';
+      }
+    }
 
     if (el.inspectorDateBadge) {
       el.inspectorDateBadge.textContent = item.dateAdded ? `📅 ${item.dateAdded}` : '📅 No date';
@@ -813,6 +877,15 @@
       downloads: parseInt(el.editDownloads.value) || 0,
       dateAdded: el.editDateAdded ? el.editDateAdded.value.trim() : (state.activeItem.dateAdded || '')
     };
+
+    if (el.editFeaturedToggle) {
+      updates.featured = el.editFeaturedToggle.checked;
+      if (el.editFeaturedToggle.checked && el.editFeaturedUntil && el.editFeaturedUntil.value) {
+        updates.featuredUntil = el.editFeaturedUntil.value.trim();
+      } else {
+        updates.featuredUntil = null;
+      }
+    }
 
     try {
       el.btnSaveEdit.disabled = true;
@@ -940,6 +1013,11 @@
     el.addAttribution.value = '';
     renderCategoryPills(el.addCategoryPills, ['Nature']);
     if (el.addCategoryCustomInput) el.addCategoryCustomInput.value = '';
+    if (el.addFeaturedToggle) {
+      el.addFeaturedToggle.checked = false;
+      if (el.addFeaturedDetails) el.addFeaturedDetails.classList.add('hidden');
+      if (el.addFeaturedUntil) el.addFeaturedUntil.value = getDatePreset(14);
+    }
     el.addPreviewContainer.classList.add('hidden');
     el.addDropzoneContent.classList.remove('hidden');
     el.addModal.classList.remove('hidden');
@@ -975,6 +1053,13 @@
       imageUrl: el.addImageUrl.value.trim(),
       isPng: state.newItemImageData ? state.newItemImageData.startsWith('data:image/png') : false
     };
+
+    if (el.addFeaturedToggle && el.addFeaturedToggle.checked) {
+      payload.item.featured = true;
+      if (el.addFeaturedUntil && el.addFeaturedUntil.value) {
+        payload.item.featuredUntil = el.addFeaturedUntil.value.trim();
+      }
+    }
 
     try {
       el.addModalSubmitBtn.disabled = true;
@@ -1285,7 +1370,10 @@
           }
         }
 
-        payloadItems.push({
+        const autoFeature = Boolean(el.bulkAutoFeatureToggle && el.bulkAutoFeatureToggle.checked);
+        const autoFeatureUntil = autoFeature ? getDatePreset(14) : null;
+
+        const entry = {
           title: item.title.trim() || cleanFilenameToTitle(item.filename),
           filename: item.filename,
           category: categoryValue,
@@ -1297,7 +1385,12 @@
           imageData: imageData,
           localFilePath: item.localFilePath,
           isPng: isPng
-        });
+        };
+        if (autoFeature) {
+          entry.featured = true;
+          entry.featuredUntil = autoFeatureUntil;
+        }
+        payloadItems.push(entry);
       }
 
       if (payloadItems.length === 0) continue;
@@ -1414,6 +1507,131 @@
       await loadCatalogData();
     } catch (err) {
       showToast('Batch delete error: ' + err.message, 'error');
+    }
+  }
+
+  async function executeBatchFeature(isFeatured = true) {
+    const count = state.selectedIds.size;
+    if (count === 0) return;
+    const until = isFeatured ? getDatePreset(14) : null;
+    try {
+      const res = await fetch('/api/catalog/batch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: isFeatured ? 'feature' : 'unfeature',
+          ids: Array.from(state.selectedIds),
+          featuredUntil: until
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Batch operation failed');
+
+      showToast(isFeatured ? `⭐ Featured ${count} screensavers for 14 days` : `Removed featured status from ${count} screensavers`, 'success');
+      state.selectedIds.clear();
+      updateBatchBar();
+      await loadCatalogData();
+    } catch (err) {
+      showToast('Batch feature error: ' + err.message, 'error');
+    }
+  }
+
+  // Feature Scheduling Modal & Date Helpers
+  function getDatePreset(days) {
+    const d = new Date();
+    if (days === 'month') {
+      const endOfMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+      return endOfMonth.toISOString().split('T')[0];
+    }
+    const numDays = parseInt(days, 10);
+    if (!numDays || numDays <= 0) return '';
+    d.setDate(d.getDate() + numDays);
+    return d.toISOString().split('T')[0];
+  }
+
+  let activeFeatureItemId = null;
+
+  function openFeatureScheduleModal(itemId) {
+    const item = state.catalog.find(x => x.id === itemId);
+    if (!item) return;
+    activeFeatureItemId = itemId;
+    if (el.featureScheduleTitle) {
+      el.featureScheduleTitle.textContent = item.title ? `Schedule: ${item.title}` : `Schedule item: ${itemId}`;
+    }
+
+    const isFeat = Boolean(item.featured);
+    if (el.featureScheduleUnfeatureBtn) {
+      el.featureScheduleUnfeatureBtn.classList.toggle('hidden', !isFeat);
+    }
+
+    if (item.featuredUntil) {
+      el.featureScheduleDateInput.value = item.featuredUntil;
+    } else if (isFeat) {
+      el.featureScheduleDateInput.value = '';
+    } else {
+      el.featureScheduleDateInput.value = getDatePreset(14);
+    }
+
+    document.querySelectorAll('.feat-quick-btn').forEach(btn => {
+      const days = btn.getAttribute('data-days');
+      if (item.featuredUntil && getDatePreset(days) === item.featuredUntil) {
+        btn.classList.add('active');
+      } else if (!item.featuredUntil && !isFeat && days === '14') {
+        btn.classList.add('active');
+      } else if (!item.featuredUntil && isFeat && days === '0') {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    el.featureScheduleModal.classList.remove('hidden');
+  }
+
+  function closeFeatureScheduleModal() {
+    el.featureScheduleModal.classList.add('hidden');
+    activeFeatureItemId = null;
+  }
+
+  async function applyFeatureSchedule() {
+    if (!activeFeatureItemId) return;
+    const dateVal = el.featureScheduleDateInput.value ? el.featureScheduleDateInput.value.trim() : null;
+    try {
+      const res = await fetch(`/api/catalog/item/${encodeURIComponent(activeFeatureItemId)}/feature`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          featured: true,
+          featuredUntil: dateVal || null
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to feature screensaver');
+
+      showToast(dateVal ? `⭐ Featured until ${dateVal}` : '⭐ Featured indefinitely', 'success');
+      closeFeatureScheduleModal();
+      await loadCatalogData();
+    } catch (err) {
+      showToast(`Error: ${err.message}`, 'error');
+    }
+  }
+
+  async function removeFeatureSchedule() {
+    if (!activeFeatureItemId) return;
+    try {
+      const res = await fetch(`/api/catalog/item/${encodeURIComponent(activeFeatureItemId)}/feature`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ featured: false })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to remove featured status');
+
+      showToast('Featured status removed', 'info');
+      closeFeatureScheduleModal();
+      await loadCatalogData();
+    } catch (err) {
+      showToast(`Error: ${err.message}`, 'error');
     }
   }
 
@@ -1651,10 +1869,17 @@
 
     // Grid Card clicks & delegations
     el.catalogGrid.addEventListener('click', (e) => {
+      const featBtn = e.target.closest('.btn-feature-card');
       const editBtn = e.target.closest('.btn-edit-card');
       const delBtn = e.target.closest('.btn-delete-card');
       const checkbox = e.target.closest('.card-checkbox');
       const card = e.target.closest('.catalog-card');
+
+      if (featBtn) {
+        e.stopPropagation();
+        openFeatureScheduleModal(featBtn.getAttribute('data-id'));
+        return;
+      }
 
       if (checkbox) {
         const id = checkbox.getAttribute('data-id');
@@ -1679,10 +1904,17 @@
 
     // Table Row clicks
     el.catalogTableBody.addEventListener('click', (e) => {
+      const featStar = e.target.closest('.table-featured-star');
       const editBtn = e.target.closest('.btn-edit-card');
       const delBtn = e.target.closest('.btn-delete-card');
       const checkbox = e.target.closest('.table-row-checkbox');
       const row = e.target.closest('tr');
+
+      if (featStar) {
+        e.stopPropagation();
+        openFeatureScheduleModal(featStar.getAttribute('data-id'));
+        return;
+      }
 
       if (checkbox) {
         const id = checkbox.getAttribute('data-id');
@@ -1777,6 +2009,85 @@
 
     el.batchDeleteBtn.addEventListener('click', () => {
       executeBatchDelete();
+    });
+
+    if (el.batchFeatureBtn) {
+      el.batchFeatureBtn.addEventListener('click', () => executeBatchFeature(true));
+    }
+    if (el.batchUnfeatureBtn) {
+      el.batchUnfeatureBtn.addEventListener('click', () => executeBatchFeature(false));
+    }
+
+    // Feature Schedule Modal Event Listeners
+    if (el.featureScheduleCloseBtn) {
+      el.featureScheduleCloseBtn.addEventListener('click', closeFeatureScheduleModal);
+    }
+    if (el.featureScheduleCancelBtn) {
+      el.featureScheduleCancelBtn.addEventListener('click', closeFeatureScheduleModal);
+    }
+    if (el.featureScheduleSaveBtn) {
+      el.featureScheduleSaveBtn.addEventListener('click', applyFeatureSchedule);
+    }
+    if (el.featureScheduleUnfeatureBtn) {
+      el.featureScheduleUnfeatureBtn.addEventListener('click', removeFeatureSchedule);
+    }
+
+    // Quick presets inside feature schedule modal
+    document.querySelectorAll('.feat-quick-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.feat-quick-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const days = btn.getAttribute('data-days');
+        if (el.featureScheduleDateInput) {
+          el.featureScheduleDateInput.value = getDatePreset(days);
+        }
+      });
+    });
+
+    // Quick presets inside inspector edit form
+    if (el.editFeaturedToggle) {
+      el.editFeaturedToggle.addEventListener('change', () => {
+        if (el.editFeaturedDetails) {
+          el.editFeaturedDetails.classList.toggle('hidden', !el.editFeaturedToggle.checked);
+        }
+        if (el.editFeaturedToggle.checked && el.editFeaturedUntil && !el.editFeaturedUntil.value) {
+          el.editFeaturedUntil.value = getDatePreset(14);
+        }
+      });
+    }
+
+    document.querySelectorAll('.edit-feat-preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.edit-feat-preset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const days = btn.getAttribute('data-days');
+        if (el.editFeaturedUntil) {
+          el.editFeaturedUntil.value = getDatePreset(days);
+        }
+      });
+    });
+
+    // Quick presets inside add modal
+    if (el.addFeaturedToggle) {
+      el.addFeaturedToggle.addEventListener('change', () => {
+        if (el.addFeaturedDetails) {
+          el.addFeaturedDetails.classList.toggle('hidden', !el.addFeaturedToggle.checked);
+        }
+        if (el.addFeaturedToggle.checked && el.addFeaturedUntil && !el.addFeaturedUntil.value) {
+          el.addFeaturedUntil.value = getDatePreset(14);
+        }
+      });
+    }
+
+    document.querySelectorAll('.add-feat-preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.add-feat-preset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const days = btn.getAttribute('data-days');
+        if (el.addFeaturedUntil) {
+          el.addFeaturedUntil.value = getDatePreset(days);
+        }
+      });
     });
 
     // Inspector Tag Editor
