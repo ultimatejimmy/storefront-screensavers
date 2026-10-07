@@ -5051,7 +5051,8 @@
     "downloads": 6,
     "dateAdded": "2026-08-15",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 70
   },
   {
     "id": "wh-212k56",
@@ -5368,7 +5369,8 @@
     "downloads": 188,
     "dateAdded": "2026-08-15",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 60
   },
   {
     "id": "whisperingsea4-mountain-lake-reflection",
@@ -5406,7 +5408,8 @@
     "downloads": 57,
     "dateAdded": "2026-08-15",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 40
   },
   {
     "id": "whisperingsea4-cozy-library-nook",
@@ -5663,7 +5666,8 @@
     "downloads": 28,
     "dateAdded": "2026-08-15",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 30
   },
   {
     "id": "whisperingsea4-ink-wash-pine-woods",
@@ -5997,7 +6001,8 @@
     "downloads": 83,
     "dateAdded": "2026-08-15",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 240
   },
   {
     "id": "whisperingsea4-highres-landscape-2b",
@@ -6652,7 +6657,8 @@
     "downloads": 49,
     "dateAdded": "2026-08-15",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 20
   },
   {
     "id": "whisperingsea4-quiet-woodland-path",
@@ -7200,7 +7206,8 @@
     "downloads": 14,
     "dateAdded": "2026-08-15",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 260
   },
   {
     "id": "whisperingsea4-starry-sky-valley",
@@ -7237,7 +7244,8 @@
     "downloads": 26,
     "dateAdded": "2026-08-15",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 10
   },
   {
     "id": "whisperingsea4-serene-bamboo-grove",
@@ -7748,7 +7756,8 @@
     "downloads": 123,
     "dateAdded": "2026-08-15",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 50
   },
   {
     "id": "whisperingsea4-atmospheric-mist-valley",
@@ -8410,7 +8419,8 @@
     "downloads": 31,
     "dateAdded": "2026-08-16",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 150
   },
   {
     "id": "outchy-reaching-hands-behind-glass",
@@ -8446,7 +8456,8 @@
     "downloads": 27,
     "dateAdded": "2026-08-16",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 110
   },
   {
     "id": "outchy-surfer-on-torn-paper-wave",
@@ -9356,7 +9367,8 @@
     "downloads": 2,
     "dateAdded": "2026-08-16",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 140
   },
   {
     "id": "outchy-dick-tracy-yellow-fedora",
@@ -9971,7 +9983,8 @@
     "downloads": 73,
     "dateAdded": "2026-08-16",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 90
   },
   {
     "id": "outchy-homer-simpson-woo-hoo",
@@ -10843,7 +10856,8 @@
     "downloads": 93,
     "dateAdded": "2026-08-16",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 130
   },
   {
     "id": "outchy-pikachu-and-pokemon-friends",
@@ -11319,7 +11333,8 @@
     "downloads": 54,
     "dateAdded": "2026-08-16",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 120
   },
   {
     "id": "outchy-gothic-skull-ornamental-border",
@@ -11358,7 +11373,8 @@
     "downloads": 164,
     "dateAdded": "2026-08-16",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 100
   },
   {
     "id": "outchy-botanical-floral-skull",
@@ -11397,7 +11413,8 @@
     "downloads": 343,
     "dateAdded": "2026-08-16",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 80
   },
   {
     "id": "outchy-snoopy-reading-on-doghouse",
@@ -13950,7 +13967,8 @@
     "downloads": 16,
     "dateAdded": "2026-09-04",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 180
   },
   {
     "id": "yin-yang-and-zeppo",
@@ -14001,7 +14019,8 @@
     "downloads": 6,
     "dateAdded": "2026-09-04",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 220
   },
   {
     "id": "radha-krishna",
@@ -14329,7 +14348,8 @@
     "downloads": 7,
     "dateAdded": "2026-09-09",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 270
   },
   {
     "id": "water-witch",
@@ -16976,8 +16996,8 @@
     "dateAdded": "2026-09-25"
   },
   {
-    "id": "car-portal",
-    "title": "Car Portal",
+    "id": "cat-portal",
+    "title": "Cat Portal",
     "author": "haydenweal",
     "category": [
       "Art",
@@ -16989,23 +17009,24 @@
       "Boox",
       "PocketBook"
     ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/car-portal.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/car-portal.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/cat-portal.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/cat-portal.png",
     "license": "Community Share",
     "attribution": "haydenweal",
     "tags": [
       "art",
-      "car",
+      "cat",
       "portal",
       "transparent"
     ],
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/car-portal.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/cat-portal.png",
     "wilson": 0,
     "downloads": 2,
     "dateAdded": "2026-09-25",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 170
   },
   {
     "id": "cats-looking-down",
@@ -17543,7 +17564,8 @@
     "downloads": 5,
     "dateAdded": "2026-09-25",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 200
   },
   {
     "id": "read-book",
@@ -17895,7 +17917,8 @@
     "downloads": 7,
     "dateAdded": "2026-09-25",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 230
   },
   {
     "id": "screensaver-10",
@@ -18205,7 +18228,8 @@
     "downloads": 4,
     "dateAdded": "2026-09-27",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 250
   },
   {
     "id": "screensaver-17",
@@ -18489,7 +18513,8 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "dateAdded": "2026-09-27",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 190
   },
   {
     "id": "screensaver-42",
@@ -18726,7 +18751,8 @@
     "downloads": 3,
     "dateAdded": "2026-09-27",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 210
   },
   {
     "id": "screensaver-56",
@@ -18953,7 +18979,8 @@
     "downloads": 4,
     "dateAdded": "2026-09-27",
     "featured": true,
-    "featuredUntil": "2026-10-31"
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 160
   },
   {
     "id": "screensaver-71",
