@@ -5049,7 +5049,9 @@
     ],
     "wilson": 0,
     "downloads": 6,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "wh-212k56",
@@ -5364,7 +5366,9 @@
     "likes": 2,
     "wilson": 0.3423719528896193,
     "downloads": 188,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "whisperingsea4-mountain-lake-reflection",
@@ -5400,7 +5404,9 @@
     ],
     "wilson": 0,
     "downloads": 57,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "whisperingsea4-cozy-library-nook",
@@ -5655,7 +5661,9 @@
     ],
     "wilson": 0,
     "downloads": 28,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "whisperingsea4-ink-wash-pine-woods",
@@ -5987,7 +5995,9 @@
     "likes": 1,
     "wilson": 0.20654329147389294,
     "downloads": 83,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "whisperingsea4-highres-landscape-2b",
@@ -6640,7 +6650,9 @@
     ],
     "wilson": 0,
     "downloads": 49,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "whisperingsea4-quiet-woodland-path",
@@ -7186,7 +7198,9 @@
     ],
     "wilson": 0,
     "downloads": 14,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "whisperingsea4-starry-sky-valley",
@@ -7221,7 +7235,9 @@
     ],
     "wilson": 0,
     "downloads": 26,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "whisperingsea4-serene-bamboo-grove",
@@ -7730,7 +7746,9 @@
     "likes": 1,
     "wilson": 0.20654329147389294,
     "downloads": 123,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "whisperingsea4-atmospheric-mist-valley",
@@ -8390,7 +8408,9 @@
     ],
     "wilson": 0,
     "downloads": 31,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "outchy-reaching-hands-behind-glass",
@@ -8424,7 +8444,9 @@
     ],
     "wilson": 0,
     "downloads": 27,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "outchy-surfer-on-torn-paper-wave",
@@ -9332,7 +9354,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-creepy-grinning-shadow.png",
     "wilson": 0,
     "downloads": 2,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "outchy-dick-tracy-yellow-fedora",
@@ -9945,7 +9969,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-reading-is-my-happy-place.png",
     "wilson": 0,
     "downloads": 73,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "outchy-homer-simpson-woo-hoo",
@@ -10815,7 +10841,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-hand-holding-skull-grimoire.png",
     "wilson": 0,
     "downloads": 93,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "outchy-pikachu-and-pokemon-friends",
@@ -11289,7 +11317,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-skeleton-reading-open-book.png",
     "wilson": 0,
     "downloads": 54,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "outchy-gothic-skull-ornamental-border",
@@ -11326,7 +11356,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-gothic-skull-ornamental-border.png",
     "wilson": 0,
     "downloads": 164,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "outchy-botanical-floral-skull",
@@ -11363,7 +11395,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-botanical-floral-skull.png",
     "wilson": 0,
     "downloads": 343,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "outchy-snoopy-reading-on-doghouse",
@@ -13914,7 +13948,9 @@
     ],
     "wilson": 0,
     "downloads": 16,
-    "dateAdded": "2026-09-04"
+    "dateAdded": "2026-09-04",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "yin-yang-and-zeppo",
@@ -13963,7 +13999,9 @@
     ],
     "wilson": 0,
     "downloads": 6,
-    "dateAdded": "2026-09-04"
+    "dateAdded": "2026-09-04",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "radha-krishna",
@@ -14289,7 +14327,9 @@
     ],
     "wilson": 0,
     "downloads": 7,
-    "dateAdded": "2026-09-09"
+    "dateAdded": "2026-09-09",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "water-witch",
@@ -16963,7 +17003,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/car-portal.png",
     "wilson": 0,
     "downloads": 2,
-    "dateAdded": "2026-09-25"
+    "dateAdded": "2026-09-25",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "cats-looking-down",
@@ -17499,7 +17541,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/raven.png",
     "wilson": 0,
     "downloads": 5,
-    "dateAdded": "2026-09-25"
+    "dateAdded": "2026-09-25",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "read-book",
@@ -17849,7 +17893,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/woman-scream.png",
     "wilson": 0,
     "downloads": 7,
-    "dateAdded": "2026-09-25"
+    "dateAdded": "2026-09-25",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "screensaver-10",
@@ -18157,7 +18203,9 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
     "downloads": 4,
-    "dateAdded": "2026-09-27"
+    "dateAdded": "2026-09-27",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "screensaver-17",
@@ -18439,7 +18487,9 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-41.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
-    "dateAdded": "2026-09-27"
+    "dateAdded": "2026-09-27",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "screensaver-42",
@@ -18674,7 +18724,9 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
     "downloads": 3,
-    "dateAdded": "2026-09-27"
+    "dateAdded": "2026-09-27",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "screensaver-56",
@@ -18899,7 +18951,9 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
     "downloads": 4,
-    "dateAdded": "2026-09-27"
+    "dateAdded": "2026-09-27",
+    "featured": true,
+    "featuredUntil": "2026-10-31"
   },
   {
     "id": "screensaver-71",
