@@ -157,6 +157,14 @@
         <button class="btn btn-secondary btn-small" id="batch-apply-tag">🏷️ + Add Tag</button>
       </div>
       <div class="batch-action-item">
+        <select id="batch-feature-duration-select" class="select-input select-small" title="Featured duration preset or custom date" style="height: 32px; padding: 4px 8px; font-size: 0.8rem;">
+          <option value="14" selected>14 Days (Default)</option>
+          <option value="7">7 Days</option>
+          <option value="30">30 Days</option>
+          <option value="month">End of Month</option>
+          <option value="0">Indefinite</option>
+          <option value="custom">📅 Custom Date...</option>
+        </select>
         <button class="btn btn-secondary btn-small" id="batch-feature-btn" title="Feature selected wallpapers">⭐ Feature Selected</button>
         <button class="btn btn-secondary btn-small" id="batch-unfeature-btn" title="Remove featured status from selected">☆ Unfeature</button>
       </div>
@@ -641,9 +649,18 @@
           </div>
         </div>
 
-        <div style="margin-top: 12px; padding: 10px 14px; background: rgba(234, 179, 8, 0.08); border: 1px solid rgba(234, 179, 8, 0.25); border-radius: 6px; display: flex; align-items: center; gap: 8px;">
+        <div style="margin-top: 12px; padding: 10px 14px; background: rgba(234, 179, 8, 0.08); border: 1px solid rgba(234, 179, 8, 0.25); border-radius: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
           <input type="checkbox" id="bulk-auto-feature-toggle" style="width: 16px; height: 16px; cursor: pointer;">
-          <label for="bulk-auto-feature-toggle" style="margin: 0; cursor: pointer; font-size: 0.85rem; font-weight: 500; color: var(--color-warning, #eab308);">⭐ Auto-feature all imported wallpapers for 14 days</label>
+          <label for="bulk-auto-feature-toggle" style="margin: 0; cursor: pointer; font-size: 0.85rem; font-weight: 500; color: var(--color-warning, #eab308);">⭐ Auto-feature all imported wallpapers</label>
+          <select id="bulk-auto-feature-duration" class="select-input select-small" style="height: 28px; padding: 2px 6px; font-size: 0.8rem;">
+            <option value="14" selected>for 14 Days (Default)</option>
+            <option value="7">for 7 Days</option>
+            <option value="30">for 30 Days</option>
+            <option value="month">until End of Month</option>
+            <option value="0">Indefinitely</option>
+            <option value="custom">📅 Custom Date...</option>
+          </select>
+          <input type="date" id="bulk-auto-feature-date" class="text-input text-small hidden" style="height: 28px; padding: 2px 6px; font-size: 0.8rem; width: 135px;">
         </div>
 
         <!-- Progress Bar Indicator -->
@@ -719,7 +736,7 @@
     <div class="modal-card modal-card-small">
       <div class="modal-header">
         <div class="modal-title-group">
-          <h3 class="modal-title" style="margin: 0; display: flex; align-items: center; gap: 6px;">⭐ Feature Screensaver</h3>
+          <h3 class="modal-title" id="feature-schedule-modal-title" style="margin: 0; display: flex; align-items: center; gap: 6px;">⭐ Feature Screensaver</h3>
           <p class="modal-subtitle" id="feature-schedule-item-title" style="margin: 4px 0 0 0; font-size: 0.85rem; opacity: 0.8;">Schedule spotlight duration</p>
         </div>
         <button class="close-btn" id="feature-schedule-close-btn">✕</button>

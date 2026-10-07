@@ -68,6 +68,7 @@
     batchClearBtn: document.getElementById('batch-clear-btn'),
     batchCategorySelect: document.getElementById('batch-category-select'),
     batchApplyCategory: document.getElementById('batch-apply-category'),
+    batchFeatureDurationSelect: document.getElementById('batch-feature-duration-select'),
     batchFeatureBtn: document.getElementById('batch-feature-btn'),
     batchUnfeatureBtn: document.getElementById('batch-unfeature-btn'),
     batchDeleteBtn: document.getElementById('batch-delete-btn'),
@@ -158,6 +159,8 @@
     bulkModalSubmitBtn: document.getElementById('bulk-modal-submit-btn'),
     bulkSubmitText: document.getElementById('bulk-submit-text'),
     bulkAutoFeatureToggle: document.getElementById('bulk-auto-feature-toggle'),
+    bulkAutoFeatureDuration: document.getElementById('bulk-auto-feature-duration'),
+    bulkAutoFeatureDate: document.getElementById('bulk-auto-feature-date'),
     tabBulkFiles: document.getElementById('tab-bulk-files'),
     tabBulkFolder: document.getElementById('tab-bulk-folder'),
     bulkFilesSection: document.getElementById('bulk-files-section'),
@@ -182,6 +185,7 @@
 
     // Feature Schedule Modal
     featureScheduleModal: document.getElementById('feature-schedule-modal'),
+    featureScheduleModalTitle: document.getElementById('feature-schedule-modal-title'),
     featureScheduleTitle: document.getElementById('feature-schedule-item-title'),
     featureScheduleCloseBtn: document.getElementById('feature-schedule-close-btn'),
     featureScheduleCancelBtn: document.getElementById('feature-schedule-cancel-btn'),
@@ -1132,6 +1136,13 @@
     if (el.bulkDefaultLicense) el.bulkDefaultLicense.value = 'Community Share';
     if (el.bulkDefaultSource) el.bulkDefaultSource.value = '';
     if (el.bulkDefaultTags) el.bulkDefaultTags.value = '';
+    if (el.bulkAutoFeatureToggle) el.bulkAutoFeatureToggle.checked = false;
+    if (el.bulkAutoFeatureDuration) el.bulkAutoFeatureDuration.value = '14';
+    if (el.bulkAutoFeatureDate) {
+      el.bulkAutoFeatureDate.value = '';
+      el.bulkAutoFeatureDate.classList.add('hidden');
+    }
+    updateBulkAutoFeatureState();
 
     renderCategoryPills(el.bulkCategoryPills, ['Nature']);
     renderBulkStagedList();
@@ -1144,6 +1155,18 @@
     }
 
     el.bulkModal.classList.remove('hidden');
+  }
+
+  function updateBulkAutoFeatureState() {
+    const isChecked = Boolean(el.bulkAutoFeatureToggle && el.bulkAutoFeatureToggle.checked);
+    if (el.bulkAutoFeatureDuration) {
+      el.bulkAutoFeatureDuration.disabled = !isChecked;
+      el.bulkAutoFeatureDuration.style.opacity = isChecked ? '1' : '0.5';
+    }
+    if (el.bulkAutoFeatureDate) {
+      el.bulkAutoFeatureDate.disabled = !isChecked;
+      el.bulkAutoFeatureDate.style.opacity = isChecked ? '1' : '0.5';
+    }
   }
 
   function closeBulkModal() {
@@ -1371,7 +1394,15 @@
         }
 
         const autoFeature = Boolean(el.bulkAutoFeatureToggle && el.bulkAutoFeatureToggle.checked);
-        const autoFeatureUntil = autoFeature ? getDatePreset(14) : null;
+        let autoFeatureUntil = null;
+        if (autoFeature) {
+          const durationVal = el.bulkAutoFeatureDuration ? el.bulkAutoFeatureDuration.value : '14';
+          if (durationVal === 'custom' && el.bulkAutoFeatureDate && el.bulkAutoFeatureDate.value) {
+            autoFeatureUntil = el.bulkAutoFeatureDate.value.trim();
+          } else if (durationVal !== '0') {
+            autoFeatureUntil = getDatePreset(durationVal) || null;
+          }
+        }
 
         const entry = {
           title: item.title.trim() || cleanFilenameToTitle(item.filename),
@@ -1446,6 +1477,7 @@
       el.batchBar.classList.remove('hidden');
     } else {
       el.batchBar.classList.add('hidden');
+      if (el.batchFeatureDurationSelect) el.batchFeatureDurationSelect.value = '14';
     }
   }
 
@@ -1513,13 +1545,43 @@
   async function executeBatchFeature(isFeatured = true) {
     const count = state.selectedIds.size;
     if (count === 0) return;
-    const until = isFeatured ? getDatePreset(14) : null;
+
+    if (!isFeatured) {
+      try {
+        const res = await fetch('/api/catalog/batch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'unfeature',
+            ids: Array.from(state.selectedIds)
+          })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.error || 'Batch operation failed');
+
+        showToast(`Removed featured status from ${count} screensavers`, 'info');
+        state.selectedIds.clear();
+        updateBatchBar();
+        await loadCatalogData();
+      } catch (err) {
+        showToast('Batch feature error: ' + err.message, 'error');
+      }
+      return;
+    }
+
+    const durationVal = el.batchFeatureDurationSelect ? el.batchFeatureDurationSelect.value : '14';
+    if (durationVal === 'custom') {
+      openFeatureScheduleModal(null, true);
+      return;
+    }
+
+    const until = durationVal === '0' ? null : getDatePreset(durationVal);
     try {
       const res = await fetch('/api/catalog/batch', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          action: isFeatured ? 'feature' : 'unfeature',
+          action: 'feature',
           ids: Array.from(state.selectedIds),
           featuredUntil: until
         })
@@ -1527,7 +1589,13 @@
       const data = await res.json();
       if (!res.ok || !data.success) throw new Error(data.error || 'Batch operation failed');
 
-      showToast(isFeatured ? `⭐ Featured ${count} screensavers for 14 days` : `Removed featured status from ${count} screensavers`, 'success');
+      let label = 'for 14 days';
+      if (durationVal === '7') label = 'for 7 days';
+      else if (durationVal === '30') label = 'for 30 days';
+      else if (durationVal === 'month') label = `until ${until}`;
+      else if (durationVal === '0') label = 'indefinitely';
+
+      showToast(`⭐ Featured ${count} screensavers ${label}`, 'success');
       state.selectedIds.clear();
       updateBatchBar();
       await loadCatalogData();
@@ -1537,30 +1605,89 @@
   }
 
   // Feature Scheduling Modal & Date Helpers
+  function formatDateLocal(d) {
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
   function getDatePreset(days) {
     const d = new Date();
     if (days === 'month') {
       const endOfMonth = new Date(d.getFullYear(), d.getMonth() + 1, 0);
-      return endOfMonth.toISOString().split('T')[0];
+      return formatDateLocal(endOfMonth);
     }
     const numDays = parseInt(days, 10);
     if (!numDays || numDays <= 0) return '';
-    d.setDate(d.getDate() + numDays);
-    return d.toISOString().split('T')[0];
+    const target = new Date(d.getFullYear(), d.getMonth(), d.getDate() + numDays);
+    return formatDateLocal(target);
   }
 
   let activeFeatureItemId = null;
+  let isBatchFeatureMode = false;
 
-  function openFeatureScheduleModal(itemId) {
+  function openFeatureScheduleModal(itemId, isBatch = false) {
+    isBatchFeatureMode = Boolean(isBatch);
+    if (isBatchFeatureMode) {
+      const count = state.selectedIds.size;
+      if (count === 0) {
+        showToast('No screensavers selected', 'info');
+        return;
+      }
+      activeFeatureItemId = null;
+      if (el.featureScheduleModalTitle) {
+        el.featureScheduleModalTitle.textContent = '⭐ Bulk Feature Screensavers';
+      }
+      if (el.featureScheduleTitle) {
+        el.featureScheduleTitle.textContent = `Schedule spotlight duration for ${count} selected wallpapers`;
+      }
+      if (el.featureScheduleSaveBtn) {
+        el.featureScheduleSaveBtn.textContent = `⭐ Feature (${count})`;
+      }
+      if (el.featureScheduleUnfeatureBtn) {
+        el.featureScheduleUnfeatureBtn.textContent = '☆ Unfeature Selected';
+        el.featureScheduleUnfeatureBtn.classList.remove('hidden');
+      }
+
+      const curPreset = el.batchFeatureDurationSelect ? el.batchFeatureDurationSelect.value : '14';
+      if (curPreset && curPreset !== 'custom') {
+        el.featureScheduleDateInput.value = curPreset === '0' ? '' : getDatePreset(curPreset);
+      } else {
+        el.featureScheduleDateInput.value = getDatePreset(14);
+      }
+
+      document.querySelectorAll('.feat-quick-btn').forEach(btn => {
+        const days = btn.getAttribute('data-days');
+        if (curPreset !== 'custom' && days === curPreset) {
+          btn.classList.add('active');
+        } else if (curPreset === 'custom' && days === '14') {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      el.featureScheduleModal.classList.remove('hidden');
+      return;
+    }
+
     const item = state.catalog.find(x => x.id === itemId);
     if (!item) return;
     activeFeatureItemId = itemId;
+    if (el.featureScheduleModalTitle) {
+      el.featureScheduleModalTitle.textContent = '⭐ Feature Screensaver';
+    }
     if (el.featureScheduleTitle) {
       el.featureScheduleTitle.textContent = item.title ? `Schedule: ${item.title}` : `Schedule item: ${itemId}`;
+    }
+    if (el.featureScheduleSaveBtn) {
+      el.featureScheduleSaveBtn.textContent = '⭐ Apply Feature';
     }
 
     const isFeat = Boolean(item.featured);
     if (el.featureScheduleUnfeatureBtn) {
+      el.featureScheduleUnfeatureBtn.textContent = '☆ Remove Featured';
       el.featureScheduleUnfeatureBtn.classList.toggle('hidden', !isFeat);
     }
 
@@ -1591,11 +1718,46 @@
   function closeFeatureScheduleModal() {
     el.featureScheduleModal.classList.add('hidden');
     activeFeatureItemId = null;
+    isBatchFeatureMode = false;
+    if (el.batchFeatureDurationSelect && el.batchFeatureDurationSelect.value === 'custom') {
+      el.batchFeatureDurationSelect.value = '14';
+    }
   }
 
   async function applyFeatureSchedule() {
-    if (!activeFeatureItemId) return;
     const dateVal = el.featureScheduleDateInput.value ? el.featureScheduleDateInput.value.trim() : null;
+
+    if (isBatchFeatureMode) {
+      const count = state.selectedIds.size;
+      if (count === 0) {
+        closeFeatureScheduleModal();
+        return;
+      }
+      try {
+        const res = await fetch('/api/catalog/batch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'feature',
+            ids: Array.from(state.selectedIds),
+            featuredUntil: dateVal || null
+          })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.error || 'Failed to bulk feature screensavers');
+
+        showToast(dateVal ? `⭐ Featured ${count} screensavers until ${dateVal}` : `⭐ Featured ${count} screensavers indefinitely`, 'success');
+        state.selectedIds.clear();
+        updateBatchBar();
+        closeFeatureScheduleModal();
+        await loadCatalogData();
+      } catch (err) {
+        showToast(`Error: ${err.message}`, 'error');
+      }
+      return;
+    }
+
+    if (!activeFeatureItemId) return;
     try {
       const res = await fetch(`/api/catalog/item/${encodeURIComponent(activeFeatureItemId)}/feature`, {
         method: 'POST',
@@ -1617,6 +1779,35 @@
   }
 
   async function removeFeatureSchedule() {
+    if (isBatchFeatureMode) {
+      const count = state.selectedIds.size;
+      if (count === 0) {
+        closeFeatureScheduleModal();
+        return;
+      }
+      try {
+        const res = await fetch('/api/catalog/batch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'unfeature',
+            ids: Array.from(state.selectedIds)
+          })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.error || 'Failed to unfeature screensavers');
+
+        showToast(`Removed featured status from ${count} screensavers`, 'info');
+        state.selectedIds.clear();
+        updateBatchBar();
+        closeFeatureScheduleModal();
+        await loadCatalogData();
+      } catch (err) {
+        showToast(`Error: ${err.message}`, 'error');
+      }
+      return;
+    }
+
     if (!activeFeatureItemId) return;
     try {
       const res = await fetch(`/api/catalog/item/${encodeURIComponent(activeFeatureItemId)}/feature`, {
@@ -2011,6 +2202,19 @@
       executeBatchDelete();
     });
 
+    if (el.batchFeatureDurationSelect) {
+      el.batchFeatureDurationSelect.addEventListener('change', (e) => {
+        if (e.target.value === 'custom') {
+          if (state.selectedIds.size === 0) {
+            showToast('Select one or more screensavers first', 'info');
+            e.target.value = '14';
+            return;
+          }
+          openFeatureScheduleModal(null, true);
+        }
+      });
+    }
+
     if (el.batchFeatureBtn) {
       el.batchFeatureBtn.addEventListener('click', () => executeBatchFeature(true));
     }
@@ -2030,6 +2234,16 @@
     }
     if (el.featureScheduleUnfeatureBtn) {
       el.featureScheduleUnfeatureBtn.addEventListener('click', removeFeatureSchedule);
+    }
+
+    if (el.featureScheduleDateInput) {
+      el.featureScheduleDateInput.addEventListener('input', () => {
+        const val = el.featureScheduleDateInput.value;
+        document.querySelectorAll('.feat-quick-btn').forEach(b => {
+          const days = b.getAttribute('data-days');
+          b.classList.toggle('active', getDatePreset(days) === val || (!val && days === '0'));
+        });
+      });
     }
 
     // Quick presets inside feature schedule modal
@@ -2314,6 +2528,21 @@
       });
     }
 
+    if (el.bulkAutoFeatureToggle) {
+      el.bulkAutoFeatureToggle.addEventListener('change', updateBulkAutoFeatureState);
+    }
+    if (el.bulkAutoFeatureDuration) {
+      el.bulkAutoFeatureDuration.addEventListener('change', (e) => {
+        if (el.bulkAutoFeatureDate) {
+          const isCustom = e.target.value === 'custom';
+          el.bulkAutoFeatureDate.classList.toggle('hidden', !isCustom);
+          if (isCustom && !el.bulkAutoFeatureDate.value) {
+            el.bulkAutoFeatureDate.value = getDatePreset(14);
+          }
+        }
+      });
+    }
+
     // Sync & Backups
     if (el.btnSyncDownloads) {
       el.btnSyncDownloads.addEventListener('click', async () => {
@@ -2360,6 +2589,8 @@
       if (e.key === 'Escape') {
         if (!el.deleteConfirmModal.classList.contains('hidden')) {
           el.deleteConfirmModal.classList.add('hidden');
+        } else if (el.featureScheduleModal && !el.featureScheduleModal.classList.contains('hidden')) {
+          closeFeatureScheduleModal();
         } else if (!el.addModal.classList.contains('hidden')) {
           closeAddModal();
         } else if (!el.bulkModal.classList.contains('hidden')) {
