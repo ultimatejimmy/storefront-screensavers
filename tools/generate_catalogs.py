@@ -119,6 +119,7 @@ def generate_catalogs():
             lite_item["featured"] = 1
             if cleaned_item.get("featuredPriority"):
                 lite_item["featuredPriority"] = cleaned_item["featuredPriority"]
+        lite_item["source"] = "Storefront"
 
         lite_items.append(lite_item)
 
@@ -129,21 +130,75 @@ def generate_catalogs():
     with open(MIN_JSON, "w", encoding="utf-8", newline="\n") as f:
         json.dump(cleaned_full, f, separators=(",", ":"), ensure_ascii=False)
 
+    # 4. Generate Unified Catalog if ReaderBackdrop is available
+    rb_path = os.path.join(REPO_ROOT, "readerbackdrop.lite.json")
+    if not os.path.exists(rb_path):
+        rb_path = os.path.join(REPO_ROOT, "readerbackdrop.json")
+
+    unified_items = list(lite_items)
+    if os.path.exists(rb_path):
+        try:
+            with open(rb_path, "r", encoding="utf-8") as f_rb:
+                rb_data = json.load(f_rb)
+            if isinstance(rb_data, list) and len(rb_data) > 0:
+                rb_items = []
+                for rb_it in rb_data:
+                    it_copy = dict(rb_it)
+                    if not it_copy.get("source"):
+                        it_copy["source"] = "ReaderBackdrop"
+                    rb_items.append(it_copy)
+
+                sf_featured = [x for x in lite_items if x.get("featured") in (1, True)]
+                sf_regular = [x for x in lite_items if x.get("featured") not in (1, True)]
+
+                sf_featured.sort(
+                    key=lambda x: (x.get("featuredPriority", 0), str(x.get("dateAdded", ""))),
+                    reverse=True
+                )
+                sf_regular.sort(
+                    key=lambda x: (x.get("downloads", 0), x.get("likes", 0)),
+                    reverse=True
+                )
+                rb_items.sort(
+                    key=lambda x: (x.get("downloads", 0), x.get("likes", 0)),
+                    reverse=True
+                )
+
+                interleaved = []
+                max_len = max(len(sf_regular), len(rb_items))
+                for i in range(max_len):
+                    if i < len(sf_regular):
+                        interleaved.append(sf_regular[i])
+                    if i < len(rb_items):
+                        interleaved.append(rb_items[i])
+
+                unified_items = sf_featured + interleaved
+                print(f"Unified catalog generated: {len(unified_items)} total ({len(sf_featured)} featured, {len(sf_regular)} SF regular, {len(rb_items)} ReaderBackdrop)")
+        except Exception as e:
+            print(f"Warning: Failed to merge ReaderBackdrop: {e}", file=sys.stderr)
+
+    UNIFIED_LITE_JSON = os.path.join(REPO_ROOT, "screensavers.unified.lite.json")
+    with open(UNIFIED_LITE_JSON, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(unified_items, f, separators=(",", ":"), ensure_ascii=False)
+
+    # screensavers.lite.json provides the unified pre-sorted catalog
     with open(LITE_JSON, "w", encoding="utf-8", newline="\n") as f:
-        json.dump(lite_items, f, separators=(",", ":"), ensure_ascii=False)
+        json.dump(unified_items, f, separators=(",", ":"), ensure_ascii=False)
 
     raw_size = os.path.getsize(SRC_JSON)
     min_size = os.path.getsize(MIN_JSON)
     lite_size = os.path.getsize(LITE_JSON)
+    unified_size = os.path.getsize(UNIFIED_LITE_JSON)
 
     with open(LITE_JSON, "rb") as f_in:
         gz_lite = gzip.compress(f_in.read(), 9)
 
     print("\n--- Catalog Generation Summary ---")
-    print(f"screensavers.json      : {raw_size:,} bytes ({raw_size/1024:.1f} KB)")
-    print(f"screensavers.min.json  : {min_size:,} bytes ({min_size/1024:.1f} KB) - Savings: {(1 - min_size/raw_size)*100:.1f}%")
-    print(f"screensavers.lite.json : {lite_size:,} bytes ({lite_size/1024:.1f} KB) - Savings: {(1 - lite_size/raw_size)*100:.1f}%")
-    print(f"screensavers.lite.json (gzipped): {len(gz_lite):,} bytes ({len(gz_lite)/1024:.1f} KB) - Savings: {(1 - len(gz_lite)/raw_size)*100:.1f}%\n")
+    print(f"screensavers.json              : {raw_size:,} bytes ({raw_size/1024:.1f} KB)")
+    print(f"screensavers.min.json          : {min_size:,} bytes ({min_size/1024:.1f} KB) - Savings: {(1 - min_size/raw_size)*100:.1f}%")
+    print(f"screensavers.lite.json         : {lite_size:,} bytes ({lite_size/1024:.1f} KB)")
+    print(f"screensavers.unified.lite.json : {unified_size:,} bytes ({unified_size/1024:.1f} KB)")
+    print(f"screensavers.lite.json (gz)    : {len(gz_lite):,} bytes ({len(gz_lite)/1024:.1f} KB)\n")
 
     return True
 
