@@ -90,6 +90,10 @@
     </div>
 
     <div class="toolbar-actions">
+      <button class="btn btn-secondary btn-small" id="btn-open-reorder-modal" title="Drag and drop to reorder featured spotlight screensavers" style="display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; white-space: nowrap; height: 32px; border-color: rgba(234, 179, 8, 0.35); color: #facc15;">
+        <span>↕ Reorder Featured</span>
+      </button>
+
       <div class="filter-dropdown-group">
         <label for="filter-status" class="toolbar-label">Status:</label>
         <select id="filter-status" class="select-input">
@@ -166,6 +170,7 @@
           <option value="custom">📅 Custom Date...</option>
         </select>
         <button class="btn btn-secondary btn-small" id="batch-feature-btn" title="Feature selected wallpapers">⭐ Feature Selected</button>
+        <button class="btn btn-secondary btn-small" id="batch-prioritize-btn" title="Open drag and drop spotlight manager to reorder featured wallpapers">↕ Reorder Spotlight</button>
         <button class="btn btn-secondary btn-small" id="batch-unfeature-btn" title="Remove featured status from selected">☆ Unfeature</button>
       </div>
       <div class="batch-action-item">
@@ -398,6 +403,11 @@
                 <div style="display: flex; gap: 10px; align-items: center; margin-top: 4px;">
                   <label for="edit-featured-until" style="font-size: 0.8rem; margin: 0;">Featured Until:</label>
                   <input type="date" id="edit-featured-until" class="text-input" style="width: 160px; padding: 4px 8px; height: 32px; font-size: 0.85rem;">
+                </div>
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                  <span id="edit-featured-rank-badge" class="reorder-rank rank-1" style="width: auto; padding: 2px 8px; font-size: 0.78rem;" title="Current spotlight rank">Rank #1</span>
+                  <button type="button" class="btn btn-secondary btn-small" id="edit-open-reorder-btn" title="Open drag and drop spotlight manager">↕ Drag & Drop Reorder</button>
+                  <button type="button" class="btn btn-secondary btn-small" id="edit-featured-top-btn" title="Move to top (#1 spot)">⬆ Move to #1</button>
                 </div>
               </div>
             </div>
@@ -757,6 +767,18 @@
             <label for="feature-schedule-date-input" style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 6px;">Featured Until Date:</label>
             <input type="date" id="feature-schedule-date-input" class="text-input" style="width: 100%;">
           </div>
+          <div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <label style="font-size: 0.85rem; font-weight: 600; margin: 0;">Spotlight Priority & Order:</label>
+              <button type="button" class="btn btn-secondary btn-small" id="feature-schedule-open-reorder-btn" title="Open drag and drop spotlight manager">↕ Drag & Drop Reorder</button>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span id="feature-schedule-rank-badge" class="reorder-rank rank-1" style="width: auto; padding: 2px 10px; font-size: 0.8rem;">Rank #1</span>
+              <button type="button" class="btn btn-secondary btn-small" id="feature-schedule-top-btn">⬆ Move to #1 Spot</button>
+              <input type="hidden" id="feature-schedule-priority-input" value="0">
+            </div>
+            <span id="feature-schedule-priority-hint" class="field-hint" style="display: block; margin-top: 4px;">Items ranked at the top appear first in KOReader Storefront.</span>
+          </div>
         </div>
       </div>
       <div class="modal-footer" style="display: flex; justify-content: space-between;">
@@ -769,9 +791,52 @@
     </div>
   </div>
 
+  <!-- Reorder Featured Screensavers Drag & Drop Modal -->
+  <div class="modal-overlay hidden" id="reorder-featured-modal">
+    <div class="modal-card modal-card-reorder">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 class="modal-title" style="margin: 0; display: flex; align-items: center; gap: 8px;">
+            <span>⭐ Reorder Featured Screensavers</span>
+          </h3>
+          <p class="modal-subtitle" style="margin: 4px 0 0 0; font-size: 0.85rem; opacity: 0.8;">
+            Drag and drop rows using the <strong>⠿</strong> handle to prioritize your spotlight order. Rank #1 appears first in KOReader.
+          </p>
+        </div>
+        <button class="close-btn" id="reorder-modal-close-btn">✕</button>
+      </div>
+
+      <div class="reorder-toolbar">
+        <div class="reorder-stats">
+          <span>Featured Count: <strong id="reorder-count">0</strong></span>
+          <span style="opacity: 0.5;">•</span>
+          <span style="font-size: 0.8rem; color: #facc15;">⠿ Drag items to swap position</span>
+        </div>
+        <div class="reorder-quick-actions">
+          <input type="text" id="reorder-search-input" class="text-input text-small" placeholder="Filter list..." style="width: 140px; height: 28px; padding: 2px 8px; font-size: 0.8rem;">
+          <button type="button" class="btn btn-secondary btn-small" id="reorder-sort-newest-btn" title="Sort featured items with newest submitted date at top">Newest Top</button>
+          <button type="button" class="btn btn-secondary btn-small" id="reorder-sort-downloads-btn" title="Sort featured items with most downloads at top">Popular Top</button>
+        </div>
+      </div>
+
+      <div class="reorder-list-container" id="reorder-list">
+        <!-- Dynamically rendered draggable items -->
+      </div>
+
+      <div class="modal-footer" style="display: flex; align-items: center; justify-content: space-between;">
+        <span id="reorder-status-indicator" style="font-size: 0.8rem; color: var(--text-secondary);">Changes will update storefront catalogs immediately</span>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-secondary btn-small" id="reorder-cancel-btn">Close</button>
+          <button type="button" class="btn btn-primary btn-small" id="reorder-save-btn">⭐ Save Spotlight Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification Container -->
   <div class="toast-container" id="toast-container"></div>
 
+  <script src="vendor/Sortable.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

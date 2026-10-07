@@ -119,6 +119,14 @@
     editFeaturedToggle: document.getElementById('edit-featured-toggle'),
     editFeaturedDetails: document.getElementById('edit-featured-details'),
     editFeaturedUntil: document.getElementById('edit-featured-until'),
+    editFeaturedRankBadge: document.getElementById('edit-featured-rank-badge'),
+    editOpenReorderBtn: document.getElementById('edit-open-reorder-btn'),
+    editFeaturedTopBtn: document.getElementById('edit-featured-top-btn'),
+    featureScheduleRankBadge: document.getElementById('feature-schedule-rank-badge'),
+    featureScheduleOpenReorderBtn: document.getElementById('feature-schedule-open-reorder-btn'),
+    featureSchedulePriorityInput: document.getElementById('feature-schedule-priority-input'),
+    featureScheduleTopBtn: document.getElementById('feature-schedule-top-btn'),
+    featureSchedulePriorityHint: document.getElementById('feature-schedule-priority-hint'),
     editFeaturedStatusText: document.getElementById('edit-featured-status-text'),
 
     btnSaveEdit: document.getElementById('btn-save-edit'),
@@ -192,6 +200,20 @@
     featureScheduleSaveBtn: document.getElementById('feature-schedule-save-btn'),
     featureScheduleUnfeatureBtn: document.getElementById('feature-schedule-unfeature-btn'),
     featureScheduleDateInput: document.getElementById('feature-schedule-date-input'),
+
+    // Reorder Featured Modal
+    btnOpenReorderModal: document.getElementById('btn-open-reorder-modal'),
+    batchPrioritizeBtn: document.getElementById('batch-prioritize-btn'),
+    reorderModal: document.getElementById('reorder-featured-modal'),
+    reorderModalCloseBtn: document.getElementById('reorder-modal-close-btn'),
+    reorderCancelBtn: document.getElementById('reorder-cancel-btn'),
+    reorderSaveBtn: document.getElementById('reorder-save-btn'),
+    reorderList: document.getElementById('reorder-list'),
+    reorderCount: document.getElementById('reorder-count'),
+    reorderSearchInput: document.getElementById('reorder-search-input'),
+    reorderSortNewestBtn: document.getElementById('reorder-sort-newest-btn'),
+    reorderSortDownloadsBtn: document.getElementById('reorder-sort-downloads-btn'),
+    reorderStatusIndicator: document.getElementById('reorder-status-indicator'),
 
     // Sync & Backups
     btnSyncAll: document.getElementById('btn-sync-all'),
@@ -522,6 +544,14 @@
         const fa = a.featured ? 1 : 0;
         const fb = b.featured ? 1 : 0;
         if (fa !== fb) return fb - fa;
+        if (fa && fb) {
+          const pa = Number(a.featuredPriority) || 0;
+          const pb = Number(b.featuredPriority) || 0;
+          if (pa !== pb) return pb - pa;
+          const da = String(a.dateAdded || '');
+          const db = String(b.dateAdded || '');
+          if (da !== db) return db.localeCompare(da);
+        }
         return (b.downloads || 0) - (a.downloads || 0);
       });
     } else if (state.sortBy === 'newest') {
@@ -599,9 +629,19 @@
       const dlBadge = `<span class="card-badge-downloads ${isLow ? 'is-low' : ''}" title="${dlCount.toLocaleString()} total downloads">⬇ ${dlCount.toLocaleString()}</span>`;
 
       const isFeatured = Boolean(item.featured);
+      const isFeaturedView = state.activeCategory === 'featured';
+      const rank = isFeatured ? getItemFeaturedRank(item.id) : null;
       const featBadge = isFeatured
-        ? `<span class="card-badge-featured" title="${item.featuredUntil ? 'Featured until ' + escapeHtml(item.featuredUntil) : 'Featured indefinitely'}">⭐ Featured</span>`
+        ? `<span class="card-badge-featured" title="${item.featuredUntil ? 'Featured until ' + escapeHtml(item.featuredUntil) : 'Featured indefinitely'} · Spotlight Rank #${rank || 1}">⭐ Featured${rank ? ' #' + rank : ''}</span>`
         : '';
+      const rankBadge = (isFeaturedView && rank)
+        ? `<span class="card-rank-badge ${rank === 1 ? 'rank-1' : (rank === 2 ? 'rank-2' : (rank === 3 ? 'rank-3' : ''))}">#${rank}</span>`
+        : '';
+      const dragIndicator = isFeaturedView
+        ? `<span class="card-drag-indicator" title="Drag to reorder spotlight order">⠿</span>`
+        : '';
+      const draggableAttr = '';
+      const draggableClass = isFeaturedView ? 'is-draggable' : '';
 
       const categories = getItemCategories(item);
       const catBadges = categories.length > 0
@@ -618,10 +658,12 @@
       const dateAddedStr = item.dateAdded || '-';
 
       return `
-        <div class="catalog-card ${isSelected ? 'selected' : ''} ${isLow ? 'is-low-performing' : ''}" data-id="${escapeHtml(item.id)}">
+        <div class="catalog-card ${isSelected ? 'selected' : ''} ${isLow ? 'is-low-performing' : ''} ${draggableClass}" ${draggableAttr} data-id="${escapeHtml(item.id)}">
           <div class="card-thumb-wrapper ${transparentClasses}">
             <img class="card-thumb-img" src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'400\\'><rect fill=\\'%23161b22\\' width=\\'300\\' height=\\'400\\'/><text fill=\\'%236e7681\\' x=\\'50%\\' y=\\'50%\\' text-anchor=\\'middle\\' font-family=\\'sans-serif\\'>No Preview</text></svg>'">
             <input type="checkbox" class="card-checkbox" data-id="${escapeHtml(item.id)}" ${isSelected ? 'checked' : ''}>
+            ${rankBadge}
+            ${dragIndicator}
             ${formatBadge}
             ${dlBadge}
             ${featBadge}
@@ -656,6 +698,7 @@
     }).join('');
 
     el.catalogGrid.innerHTML = cardsHtml;
+    syncGridSortableState();
   }
 
   function renderTable(items) {
@@ -786,6 +829,19 @@
       if (el.editFeaturedUntil) {
         el.editFeaturedUntil.value = item.featuredUntil || '';
       }
+      const rank = getItemFeaturedRank(item.id);
+      const totalFeat = getFeaturedItemsSorted().length;
+      if (el.editFeaturedRankBadge) {
+        if (item.featured && rank) {
+          el.editFeaturedRankBadge.textContent = `Spotlight Rank: #${rank} of ${totalFeat}`;
+          el.editFeaturedRankBadge.className = `reorder-rank ${rank === 1 ? 'rank-1' : (rank === 2 ? 'rank-2' : (rank === 3 ? 'rank-3' : ''))}`;
+          el.editFeaturedRankBadge.style.width = 'auto';
+          el.editFeaturedRankBadge.style.padding = '2px 8px';
+          el.editFeaturedRankBadge.classList.remove('hidden');
+        } else {
+          el.editFeaturedRankBadge.classList.add('hidden');
+        }
+      }
       if (el.editFeaturedStatusText) {
         el.editFeaturedStatusText.textContent = item.featured
           ? (item.featuredUntil ? `Featured until ${item.featuredUntil}` : 'Featured indefinitely')
@@ -884,6 +940,11 @@
 
     if (el.editFeaturedToggle) {
       updates.featured = el.editFeaturedToggle.checked;
+      if (el.editFeaturedToggle.checked) {
+        updates.featuredPriority = (state.activeItem && state.activeItem.featuredPriority !== undefined)
+          ? state.activeItem.featuredPriority
+          : getTopFeaturedPriority() + 10;
+      }
       if (el.editFeaturedToggle.checked && el.editFeaturedUntil && el.editFeaturedUntil.value) {
         updates.featuredUntil = el.editFeaturedUntil.value.trim();
       } else {
@@ -1627,6 +1688,248 @@
   let activeFeatureItemId = null;
   let isBatchFeatureMode = false;
 
+  function getFeaturedItemsSorted() {
+    const featured = state.catalog.filter(x => Boolean(x.featured));
+    featured.sort((a, b) => {
+      const pa = Number(a.featuredPriority) || 0;
+      const pb = Number(b.featuredPriority) || 0;
+      if (pa !== pb) return pb - pa;
+      const da = String(a.dateAdded || '');
+      const db = String(b.dateAdded || '');
+      if (da !== db) return db.localeCompare(da);
+      return (a._originalIndex || 0) - (b._originalIndex || 0);
+    });
+    return featured;
+  }
+
+  function getItemFeaturedRank(itemId) {
+    const sorted = getFeaturedItemsSorted();
+    const idx = sorted.findIndex(x => x.id === itemId);
+    return idx >= 0 ? idx + 1 : null;
+  }
+
+  function getTopFeaturedPriority() {
+    return state.catalog.reduce((max, x) => (
+      x.featured ? Math.max(max, Number(x.featuredPriority) || 0) : max
+    ), 0);
+  }
+
+  let currentReorderItems = [];
+  let unfeaturedInModal = new Set();
+
+  function openReorderFeaturedModal() {
+    currentReorderItems = getFeaturedItemsSorted().slice();
+    unfeaturedInModal.clear();
+    if (el.reorderSearchInput) el.reorderSearchInput.value = '';
+    renderReorderList();
+    if (el.reorderStatusIndicator) {
+      el.reorderStatusIndicator.textContent = 'Drag rows using ⠿ to swap spotlight positions';
+      el.reorderStatusIndicator.style.color = 'var(--text-secondary)';
+    }
+    if (el.reorderModal) el.reorderModal.classList.remove('hidden');
+  }
+
+  function closeReorderFeaturedModal() {
+    if (el.reorderModal) el.reorderModal.classList.add('hidden');
+    currentReorderItems = [];
+    unfeaturedInModal.clear();
+  }
+
+  function renderReorderList() {
+    if (!el.reorderList) return;
+    const filterQuery = (el.reorderSearchInput ? el.reorderSearchInput.value : '').toLowerCase().trim();
+
+    if (el.reorderCount) {
+      el.reorderCount.textContent = currentReorderItems.length;
+    }
+
+    if (currentReorderItems.length === 0) {
+      el.reorderList.innerHTML = `
+        <div style="text-align: center; padding: 40px 20px; color: var(--text-secondary);">
+          <div style="font-size: 2rem; margin-bottom: 8px;">⭐</div>
+          <h4>No featured screensavers</h4>
+          <p style="font-size: 0.85rem; opacity: 0.8;">Feature some wallpapers first to reorder them here.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const rowsHtml = currentReorderItems.map((item, idx) => {
+      const isVisible = !filterQuery ||
+        (item.title && item.title.toLowerCase().includes(filterQuery)) ||
+        (item.author && item.author.toLowerCase().includes(filterQuery)) ||
+        (item.id && item.id.toLowerCase().includes(filterQuery));
+
+      const rankClass = idx === 0 ? 'rank-1' : (idx === 1 ? 'rank-2' : (idx === 2 ? 'rank-3' : ''));
+      const thumbUrl = getLocalImageUrl(item.thumbnailUrl || item.fullUrl);
+      const expiry = item.featuredUntil ? `📅 Until ${escapeHtml(item.featuredUntil)}` : '⭐ Indefinite';
+      const dlCount = (item.downloads || 0).toLocaleString();
+
+      return `
+        <div class="reorder-item ${isVisible ? '' : 'hidden'}" draggable="true" data-id="${escapeHtml(item.id)}" data-index="${idx}">
+          <div class="reorder-handle" title="Drag to reorder">⠿</div>
+          <div class="reorder-rank ${rankClass}">#${idx + 1}</div>
+          <div class="reorder-thumb-wrap ${isTransparentItem(item) ? (state.overlayMode === 'book' ? 'is-transparent booktext-mode' : 'is-transparent') : ''}">
+            <img class="reorder-thumb" src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(item.title)}" loading="lazy">
+          </div>
+          <div class="reorder-info">
+            <div class="reorder-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
+            <div class="reorder-meta">
+              <span>by ${escapeHtml(item.author || 'Unknown')}</span>
+              <span>•</span>
+              <span class="reorder-duration-badge">${expiry}</span>
+              <span>•</span>
+              <span>⬇ ${dlCount} dl</span>
+            </div>
+          </div>
+          <div class="reorder-controls">
+            <button type="button" class="btn btn-secondary reorder-btn btn-reorder-top" data-id="${escapeHtml(item.id)}" title="Move to Top (#1)">⬆ Top</button>
+            <button type="button" class="btn btn-secondary reorder-btn btn-reorder-up" data-id="${escapeHtml(item.id)}" title="Move Up (▲)" ${idx === 0 ? 'disabled' : ''}>▲</button>
+            <button type="button" class="btn btn-secondary reorder-btn btn-reorder-down" data-id="${escapeHtml(item.id)}" title="Move Down (▼)" ${idx === currentReorderItems.length - 1 ? 'disabled' : ''}>▼</button>
+            <button type="button" class="btn btn-secondary reorder-btn btn-reorder-bottom" data-id="${escapeHtml(item.id)}" title="Move to Bottom (⬇)">⬇</button>
+            <button type="button" class="btn btn-danger reorder-btn btn-reorder-remove" data-id="${escapeHtml(item.id)}" title="Remove from Featured">☆</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    el.reorderList.innerHTML = rowsHtml;
+    initReorderSortable();
+  }
+
+  // Re-slot a reordered subset of items back into the full ordered list.
+  // Items not in `visibleIds` (e.g. hidden by a search filter) keep their slots.
+  function mergeVisibleOrder(fullItems, visibleIds) {
+    const visibleSet = new Set(visibleIds);
+    const byId = new Map(fullItems.map(x => [x.id, x]));
+    const queue = visibleIds.filter(id => byId.has(id));
+    return fullItems.map(item => visibleSet.has(item.id) ? byId.get(queue.shift()) : item);
+  }
+
+  let reorderSortable = null;
+  function initReorderSortable() {
+    if (reorderSortable || typeof Sortable === 'undefined' || !el.reorderList) return;
+    reorderSortable = Sortable.create(el.reorderList, {
+      animation: 150,
+      handle: '.reorder-handle',
+      draggable: '.reorder-item',
+      ghostClass: 'sortable-ghost',
+      chosenClass: 'sortable-chosen',
+      dragClass: 'sortable-drag',
+      scroll: true,
+      scrollSensitivity: 80,
+      scrollSpeed: 14,
+      onEnd: (evt) => {
+        if (evt.oldIndex === evt.newIndex) return;
+        const movedId = evt.item.getAttribute('data-id');
+        const visibleIds = Array.from(el.reorderList.querySelectorAll('.reorder-item'))
+          .filter(r => !r.classList.contains('hidden'))
+          .map(r => r.getAttribute('data-id'));
+        currentReorderItems = mergeVisibleOrder(currentReorderItems, visibleIds);
+        const newPos = currentReorderItems.findIndex(x => x.id === movedId);
+        const moved = currentReorderItems[newPos];
+        if (el.reorderStatusIndicator && moved) {
+          el.reorderStatusIndicator.textContent = `✨ Moved "${moved.title}" to #${newPos + 1} (Click Save to apply)`;
+          el.reorderStatusIndicator.style.color = '#facc15';
+        }
+        setTimeout(renderReorderList, 0);
+      }
+    });
+  }
+
+  let gridSortable = null;
+  function initGridSortable() {
+    if (gridSortable || typeof Sortable === 'undefined' || !el.catalogGrid) return;
+    gridSortable = Sortable.create(el.catalogGrid, {
+      animation: 150,
+      draggable: '.catalog-card',
+      filter: '.card-actions, .card-checkbox',
+      preventOnFilter: false,
+      delay: 150,
+      delayOnTouchOnly: true,
+      ghostClass: 'sortable-ghost',
+      chosenClass: 'sortable-chosen',
+      dragClass: 'sortable-drag',
+      scroll: true,
+      disabled: state.activeCategory !== 'featured',
+      onEnd: async (evt) => {
+        if (evt.oldIndex === evt.newIndex || state.activeCategory !== 'featured') return;
+        const movedId = evt.item.getAttribute('data-id');
+        const visibleIds = Array.from(el.catalogGrid.querySelectorAll('.catalog-card'))
+          .map(c => c.getAttribute('data-id'));
+        const merged = mergeVisibleOrder(getFeaturedItemsSorted(), visibleIds);
+        const newPos = merged.findIndex(x => x.id === movedId);
+        const moved = merged[newPos];
+
+        try {
+          const res = await fetch('/api/catalog/batch', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'reorder_featured',
+              orderedIds: merged.map(x => x.id)
+            })
+          });
+          const data = await res.json();
+          if (!res.ok || !data.success) throw new Error(data.error || 'Failed to reorder');
+          showToast(`⭐ Moved "${moved ? moved.title : movedId}" to spotlight #${newPos + 1}!`, 'success');
+        } catch (err) {
+          showToast('Error reordering: ' + err.message, 'error');
+        }
+        await loadCatalogData();
+      }
+    });
+  }
+
+  function syncGridSortableState() {
+    if (gridSortable) gridSortable.option('disabled', state.activeCategory !== 'featured');
+  }
+
+  async function saveFeaturedOrder() {
+    if (!currentReorderItems) return;
+    try {
+      if (el.reorderSaveBtn) {
+        el.reorderSaveBtn.disabled = true;
+        el.reorderSaveBtn.textContent = 'Saving...';
+      }
+
+      const orderedIds = currentReorderItems.map(x => x.id);
+      const unfeaturedIds = Array.from(unfeaturedInModal);
+
+      const res = await fetch('/api/catalog/batch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'reorder_featured',
+          orderedIds: orderedIds,
+          unfeaturedIds: unfeaturedIds
+        })
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to save order');
+
+      showToast(`⭐ Saved spotlight order for ${orderedIds.length} featured screensavers!`, 'success');
+      closeReorderFeaturedModal();
+      await loadCatalogData();
+    } catch (err) {
+      showToast('Error saving order: ' + err.message, 'error');
+    } finally {
+      if (el.reorderSaveBtn) {
+        el.reorderSaveBtn.disabled = false;
+        el.reorderSaveBtn.textContent = '⭐ Save Spotlight Order';
+      }
+    }
+  }
+
+  function updatePriorityHint() {
+    if (!el.featureSchedulePriorityHint) return;
+    const top = getTopFeaturedPriority();
+    el.featureSchedulePriorityHint.textContent = isBatchFeatureMode
+      ? `Leave blank to keep each item's current priority. Current top: ${top}.`
+      : `Current top priority: ${top}. Ties are ordered newest first.`;
+  }
+
   function openFeatureScheduleModal(itemId, isBatch = false) {
     isBatchFeatureMode = Boolean(isBatch);
     if (isBatchFeatureMode) {
@@ -1656,6 +1959,9 @@
       } else {
         el.featureScheduleDateInput.value = getDatePreset(14);
       }
+
+      if (el.featureSchedulePriorityInput) el.featureSchedulePriorityInput.value = '';
+      updatePriorityHint();
 
       document.querySelectorAll('.feat-quick-btn').forEach(btn => {
         const days = btn.getAttribute('data-days');
@@ -1699,6 +2005,27 @@
       el.featureScheduleDateInput.value = getDatePreset(14);
     }
 
+    const rank = getItemFeaturedRank(item.id);
+    const totalFeat = getFeaturedItemsSorted().length;
+    if (el.featureScheduleRankBadge) {
+      if (item.featured && rank) {
+        el.featureScheduleRankBadge.textContent = `Spotlight Rank: #${rank} of ${totalFeat}`;
+        el.featureScheduleRankBadge.className = `reorder-rank ${rank === 1 ? 'rank-1' : (rank === 2 ? 'rank-2' : (rank === 3 ? 'rank-3' : ''))}`;
+        el.featureScheduleRankBadge.style.width = 'auto';
+        el.featureScheduleRankBadge.style.padding = '2px 10px';
+      } else {
+        el.featureScheduleRankBadge.textContent = 'Will be added to Spotlight';
+        el.featureScheduleRankBadge.className = 'reorder-rank';
+        el.featureScheduleRankBadge.style.width = 'auto';
+        el.featureScheduleRankBadge.style.padding = '2px 10px';
+      }
+    }
+
+    if (el.featureSchedulePriorityInput) {
+      el.featureSchedulePriorityInput.value = item.featuredPriority ? String(item.featuredPriority) : '';
+    }
+    updatePriorityHint();
+
     document.querySelectorAll('.feat-quick-btn').forEach(btn => {
       const days = btn.getAttribute('data-days');
       if (item.featuredUntil && getDatePreset(days) === item.featuredUntil) {
@@ -1724,6 +2051,14 @@
     }
   }
 
+  function readPriorityInput() {
+    if (!el.featureSchedulePriorityInput) return null;
+    const raw = el.featureSchedulePriorityInput.value.trim();
+    if (raw === '') return null;
+    const n = parseInt(raw, 10);
+    return Number.isFinite(n) ? Math.max(0, n) : null;
+  }
+
   async function applyFeatureSchedule() {
     const dateVal = el.featureScheduleDateInput.value ? el.featureScheduleDateInput.value.trim() : null;
 
@@ -1740,7 +2075,8 @@
           body: JSON.stringify({
             action: 'feature',
             ids: Array.from(state.selectedIds),
-            featuredUntil: dateVal || null
+            featuredUntil: dateVal || null,
+            featuredPriority: readPriorityInput()
           })
         });
         const data = await res.json();
@@ -1764,7 +2100,8 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           featured: true,
-          featuredUntil: dateVal || null
+          featuredUntil: dateVal || null,
+          featuredPriority: readPriorityInput() ?? 0
         })
       });
       const data = await res.json();
@@ -2215,6 +2552,134 @@
       });
     }
 
+    if (el.btnOpenReorderModal) {
+      el.btnOpenReorderModal.addEventListener('click', openReorderFeaturedModal);
+    }
+    if (el.batchPrioritizeBtn) {
+      el.batchPrioritizeBtn.addEventListener('click', openReorderFeaturedModal);
+    }
+    if (el.editOpenReorderBtn) {
+      el.editOpenReorderBtn.addEventListener('click', () => {
+        closeInspector();
+        openReorderFeaturedModal();
+      });
+    }
+    if (el.featureScheduleOpenReorderBtn) {
+      el.featureScheduleOpenReorderBtn.addEventListener('click', () => {
+        closeFeatureScheduleModal();
+        openReorderFeaturedModal();
+      });
+    }
+    if (el.reorderModalCloseBtn) {
+      el.reorderModalCloseBtn.addEventListener('click', closeReorderFeaturedModal);
+    }
+    if (el.reorderCancelBtn) {
+      el.reorderCancelBtn.addEventListener('click', closeReorderFeaturedModal);
+    }
+    if (el.reorderSaveBtn) {
+      el.reorderSaveBtn.addEventListener('click', saveFeaturedOrder);
+    }
+    if (el.reorderSearchInput) {
+      el.reorderSearchInput.addEventListener('input', renderReorderList);
+    }
+    if (el.reorderSortNewestBtn) {
+      el.reorderSortNewestBtn.addEventListener('click', () => {
+        currentReorderItems.sort((a, b) => String(b.dateAdded || '').localeCompare(String(a.dateAdded || '')));
+        if (el.reorderStatusIndicator) {
+          el.reorderStatusIndicator.textContent = '✨ Sorted by newest date (Click Save to apply)';
+          el.reorderStatusIndicator.style.color = '#facc15';
+        }
+        renderReorderList();
+      });
+    }
+    if (el.reorderSortDownloadsBtn) {
+      el.reorderSortDownloadsBtn.addEventListener('click', () => {
+        currentReorderItems.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
+        if (el.reorderStatusIndicator) {
+          el.reorderStatusIndicator.textContent = '✨ Sorted by most downloads (Click Save to apply)';
+          el.reorderStatusIndicator.style.color = '#facc15';
+        }
+        renderReorderList();
+      });
+    }
+
+    if (el.reorderList) {
+      el.reorderList.addEventListener('click', (e) => {
+        const topBtn = e.target.closest('.btn-reorder-top');
+        const upBtn = e.target.closest('.btn-reorder-up');
+        const downBtn = e.target.closest('.btn-reorder-down');
+        const bottomBtn = e.target.closest('.btn-reorder-bottom');
+        const removeBtn = e.target.closest('.btn-reorder-remove');
+
+        if (topBtn) {
+          const id = topBtn.getAttribute('data-id');
+          const idx = currentReorderItems.findIndex(x => x.id === id);
+          if (idx > 0) {
+            const [item] = currentReorderItems.splice(idx, 1);
+            currentReorderItems.unshift(item);
+            if (el.reorderStatusIndicator) {
+              el.reorderStatusIndicator.textContent = `✨ Moved "${item.title}" to #1 (Click Save to apply)`;
+              el.reorderStatusIndicator.style.color = '#facc15';
+            }
+            renderReorderList();
+          }
+        } else if (upBtn) {
+          const id = upBtn.getAttribute('data-id');
+          const idx = currentReorderItems.findIndex(x => x.id === id);
+          if (idx > 0) {
+            const temp = currentReorderItems[idx - 1];
+            currentReorderItems[idx - 1] = currentReorderItems[idx];
+            currentReorderItems[idx] = temp;
+            if (el.reorderStatusIndicator) {
+              el.reorderStatusIndicator.textContent = `✨ Moved "${currentReorderItems[idx - 1].title}" up to #${idx} (Click Save to apply)`;
+              el.reorderStatusIndicator.style.color = '#facc15';
+            }
+            renderReorderList();
+          }
+        } else if (downBtn) {
+          const id = downBtn.getAttribute('data-id');
+          const idx = currentReorderItems.findIndex(x => x.id === id);
+          if (idx >= 0 && idx < currentReorderItems.length - 1) {
+            const temp = currentReorderItems[idx + 1];
+            currentReorderItems[idx + 1] = currentReorderItems[idx];
+            currentReorderItems[idx] = temp;
+            if (el.reorderStatusIndicator) {
+              el.reorderStatusIndicator.textContent = `✨ Moved "${currentReorderItems[idx + 1].title}" down to #${idx + 2} (Click Save to apply)`;
+              el.reorderStatusIndicator.style.color = '#facc15';
+            }
+            renderReorderList();
+          }
+        } else if (bottomBtn) {
+          const id = bottomBtn.getAttribute('data-id');
+          const idx = currentReorderItems.findIndex(x => x.id === id);
+          if (idx >= 0 && idx < currentReorderItems.length - 1) {
+            const [item] = currentReorderItems.splice(idx, 1);
+            currentReorderItems.push(item);
+            if (el.reorderStatusIndicator) {
+              el.reorderStatusIndicator.textContent = `✨ Moved "${item.title}" to bottom (Click Save to apply)`;
+              el.reorderStatusIndicator.style.color = '#facc15';
+            }
+            renderReorderList();
+          }
+        } else if (removeBtn) {
+          const id = removeBtn.getAttribute('data-id');
+          const idx = currentReorderItems.findIndex(x => x.id === id);
+          if (idx >= 0) {
+            const [removed] = currentReorderItems.splice(idx, 1);
+            unfeaturedInModal.add(id);
+            if (el.reorderStatusIndicator) {
+              el.reorderStatusIndicator.textContent = `✨ Removed "${removed.title}" from spotlight (Click Save to apply)`;
+              el.reorderStatusIndicator.style.color = '#f87171';
+            }
+            renderReorderList();
+          }
+        }
+      });
+    }
+
+    // Direct Drag & Drop in Catalog Grid (SortableJS)
+    initGridSortable();
+
     if (el.batchFeatureBtn) {
       el.batchFeatureBtn.addEventListener('click', () => executeBatchFeature(true));
     }
@@ -2258,7 +2723,45 @@
       });
     });
 
-    // Quick presets inside inspector edit form
+    if (el.featureScheduleTopBtn) {
+      el.featureScheduleTopBtn.addEventListener('click', () => {
+        if (el.featureSchedulePriorityInput) {
+          el.featureSchedulePriorityInput.value = String(getTopFeaturedPriority() + 10);
+        }
+        if (el.featureScheduleRankBadge) {
+          el.featureScheduleRankBadge.textContent = 'Rank #1 (Pending Apply)';
+          el.featureScheduleRankBadge.className = 'reorder-rank rank-1';
+        }
+        showToast('Will be moved to #1 spotlight on apply', 'info');
+      });
+    }
+
+    if (el.editFeaturedTopBtn) {
+      el.editFeaturedTopBtn.addEventListener('click', async () => {
+        if (!state.activeItem) return;
+        const current = getFeaturedItemsSorted();
+        const otherIds = current.filter(x => x.id !== state.activeItem.id).map(x => x.id);
+        const newOrder = [state.activeItem.id, ...otherIds];
+        try {
+          const res = await fetch('/api/catalog/batch', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'reorder_featured',
+              orderedIds: newOrder
+            })
+          });
+          const data = await res.json();
+          if (!res.ok || !data.success) throw new Error(data.error || 'Failed to move to top');
+          showToast(`⭐ Moved "${state.activeItem.title}" to #1 spotlight!`, 'success');
+          await loadCatalogData();
+          openInspector(state.activeItem.id);
+        } catch (err) {
+          showToast('Error moving to top: ' + err.message, 'error');
+        }
+      });
+    }
+
     if (el.editFeaturedToggle) {
       el.editFeaturedToggle.addEventListener('change', () => {
         if (el.editFeaturedDetails) {
@@ -2589,6 +3092,8 @@
       if (e.key === 'Escape') {
         if (!el.deleteConfirmModal.classList.contains('hidden')) {
           el.deleteConfirmModal.classList.add('hidden');
+        } else if (el.reorderModal && !el.reorderModal.classList.contains('hidden')) {
+          closeReorderFeaturedModal();
         } else if (el.featureScheduleModal && !el.featureScheduleModal.classList.contains('hidden')) {
           closeFeatureScheduleModal();
         } else if (!el.addModal.classList.contains('hidden')) {

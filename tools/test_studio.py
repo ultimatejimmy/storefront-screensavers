@@ -385,6 +385,41 @@ class TestCatalogStudio(unittest.TestCase):
                 cs.save_catalog(catalog)
                 generate_catalogs()
 
+    def test_reorder_featured_batch_action(self):
+        catalog = cs.load_catalog()
+        orig_catalog = [dict(x) for x in catalog]
+        try:
+            # Pick first 3 items and set featured
+            item1 = catalog[0]['id']
+            item2 = catalog[1]['id']
+            item3 = catalog[2]['id']
+
+            # Simulate batch reorder: item3 as rank #1, item1 as rank #2, item2 as rank #3
+            ordered_ids = [item3, item1, item2]
+            
+            # Map items
+            item_map = {item['id']: item for item in catalog}
+            total = len(ordered_ids)
+            for idx, item_id in enumerate(ordered_ids):
+                if item_id in item_map:
+                    it = item_map[item_id]
+                    it['featured'] = True
+                    it['featuredPriority'] = (total - idx) * 10
+            cs.save_catalog(catalog)
+
+            # Reload and verify priorities
+            reloaded = cs.load_catalog()
+            reloaded_map = {item['id']: item for item in reloaded}
+            self.assertEqual(reloaded_map[item3]['featuredPriority'], 30)
+            self.assertEqual(reloaded_map[item1]['featuredPriority'], 20)
+            self.assertEqual(reloaded_map[item2]['featuredPriority'], 10)
+
+            # Ensure item3 > item1 > item2 priority order
+            self.assertGreater(reloaded_map[item3]['featuredPriority'], reloaded_map[item1]['featuredPriority'])
+            self.assertGreater(reloaded_map[item1]['featuredPriority'], reloaded_map[item2]['featuredPriority'])
+        finally:
+            cs.save_catalog(orig_catalog)
+
 if __name__ == '__main__':
     unittest.main()
 

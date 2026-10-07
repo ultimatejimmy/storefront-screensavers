@@ -1259,6 +1259,21 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                         x['featured'] = False
                         x.pop('featuredUntil', None)
                         x.pop('featuredPriority', None)
+            elif action == 'reorder_featured':
+                ordered_ids = payload.get('orderedIds') or payload.get('ids') or []
+                total = len(ordered_ids)
+                for idx, item_id in enumerate(ordered_ids):
+                    for x in catalog:
+                        if x.get('id') == item_id:
+                            x['featured'] = True
+                            x['featuredPriority'] = (total - idx) * 10
+                            break
+                if payload.get('unfeaturedIds'):
+                    for x in catalog:
+                        if x.get('id') in payload['unfeaturedIds']:
+                            x['featured'] = False
+                            x.pop('featuredUntil', None)
+                            x.pop('featuredPriority', None)
 
             save_catalog(catalog)
             try:
