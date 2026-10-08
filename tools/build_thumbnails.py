@@ -59,8 +59,9 @@ def has_alpha_channel(im):
 
 
 def render_thumbnail(im, is_transparent=False):
-    """Resizes and composites an image to standard 180x240 for e-ink."""
-    if is_transparent or has_alpha_channel(im):
+    """Resizes and composites an image to standard 180x240 preserving full RGB color."""
+    actual_trans = is_transparent or has_alpha_channel(im)
+    if actual_trans and has_alpha_channel(im):
         im_rgba = im.convert("RGBA")
         # Fit inside 180x240 with aspect ratio preserved
         im_rgba.thumbnail((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
@@ -126,8 +127,9 @@ def process_native_screensavers(force=False, limit=None):
             continue
 
         item_id = os.path.splitext(f)[0]
-        is_transparent = item_id in transparent_ids or ext == ".png"
-        target_thumb = os.path.join(THUMBS_DIR, f"{item_id}.jpg" if not is_transparent else f"{item_id}.png")
+        is_transparent = item_id in transparent_ids
+        target_ext = ".png" if ext == ".png" else ".jpg"
+        target_thumb = os.path.join(THUMBS_DIR, f"{item_id}{target_ext}")
 
         if force or not os.path.exists(target_thumb) or os.path.getmtime(src_path) > os.path.getmtime(target_thumb):
             candidates.append((src_path, target_thumb, is_transparent, item_id))
@@ -142,7 +144,7 @@ def process_native_screensavers(force=False, limit=None):
         ok, err = process_single_image(src_path, target_thumb, is_trans)
         if ok:
             success += 1
-            if is_trans:
+            if is_trans or target_thumb.endswith(".png"):
                 # Also generate plugin checkerboard thumbnail
                 plugin_dest = os.path.join(PLUGIN_THUMBS_DIR, f"{item_id}.png")
                 process_single_image(src_path, plugin_dest, is_transparent=True)
