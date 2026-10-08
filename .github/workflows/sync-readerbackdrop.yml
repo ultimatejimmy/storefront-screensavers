@@ -20,19 +20,24 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run ReaderBackdrop sync
+      - name: Install dependencies
+        run: |
+          pip install pillow
+
+      - name: Run ReaderBackdrop sync and build thumbnails
         run: |
           python tools/sync_readerbackdrop.py
+          python tools/build_thumbnails.py --readerbackdrop
           python tools/generate_catalogs.py
 
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add readerbackdrop.json readerbackdrop.lite.json screensavers.lite.json screensavers.unified.lite.json screensavers.min.json screensavers.json
+          git add readerbackdrop.json readerbackdrop.lite.json screensavers.lite.json screensavers.unified.lite.json screensavers.min.json screensavers.json images/thumbnails/rb
           if git diff --staged --quiet; then
-            echo "No changes in ReaderBackdrop catalog."
+            echo "No changes in ReaderBackdrop catalog or thumbnails."
           else
-            git commit -m "Automated sync: update readerbackdrop and unified screensaver catalogs [skip ci]"
+            git commit -m "Automated sync: update readerbackdrop catalog and pre-generated thumbnails [skip ci]"
             git push
           fi

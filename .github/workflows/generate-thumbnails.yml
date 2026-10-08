@@ -1,0 +1,71 @@
+name: Generate Screensaver Thumbnails
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Which thumbnails to generate'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - native
+          - readerbackdrop
+      force:
+        description: 'Force regenerate existing thumbnails'
+        required: false
+        default: false
+        type: boolean
+  push:
+    paths:
+      - 'images/*.jpg'
+      - 'images/*.png'
+      - 'images/*.jpeg'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pillow
+
+      - name: Build Thumbnails
+        run: |
+          TARGET="${{ inputs.target || 'native' }}"
+          FORCE_FLAG="${{ inputs.force == true && '--force' || '' }}"
+          if [ "$TARGET" = "all" ]; then
+            python tools/build_thumbnails.py --all $FORCE_FLAG
+          elif [ "$TARGET" = "readerbackdrop" ]; then
+            python tools/build_thumbnails.py --readerbackdrop $FORCE_FLAG
+          else
+            python tools/build_thumbnails.py --native $FORCE_FLAG
+          fi
+
+      - name: Regenerate Catalogs
+        run: |
+          python tools/generate_catalogs.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add images/thumbnails screensavers.json screensavers.lite.json screensavers.min.json screensavers.unified.lite.json
+          if git diff --staged --quiet; then
+            echo "No thumbnail changes to commit."
+          else
+            git commit -m "Automated build: update e-ink optimized screensaver thumbnails [skip ci]"
+            git push
+          fi

@@ -146,6 +146,9 @@ def generate_catalogs():
                     it_copy = dict(rb_it)
                     if not it_copy.get("source"):
                         it_copy["source"] = "ReaderBackdrop"
+                    it_id = it_copy.get("id")
+                    if it_id and (not it_copy.get("thumbnailUrl") or it_copy.get("thumbnailUrl") == it_copy.get("fullUrl")):
+                        it_copy["thumbnailUrl"] = f"{BASE_IMG_URL}/thumbnails/rb/{it_id}.jpg"
                     rb_items.append(it_copy)
 
                 sf_featured = [x for x in lite_items if x.get("featured") in (1, True)]

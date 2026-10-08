@@ -22,6 +22,7 @@ OUT_LITE_JSON = os.path.join(REPO_ROOT, "readerbackdrop.lite.json")
 
 API_BASE_URL = "https://www.readerbackdrop.com/api/images"
 USER_AGENT = "Storefront-Screensaver-Sync/1.0 (+https://github.com/ultimatejimmy/storefront-screensavers)"
+CDN_THUMB_URL = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/rb"
 
 
 def map_category(tags: List[str], device: str) -> str:
@@ -171,15 +172,12 @@ def sync_all(max_pages: int = None) -> bool:
             if not image_url:
                 image_url = f"https://www.readerbackdrop.com/api/images/{img_id}/download"
 
-            thumb_url = str(img.get("thumbnailUrl", "")).strip()
-            if not thumb_url:
-                thumb_url = image_url
+            item_id = f"rb-{img_id}"
+            thumb_url = f"{CDN_THUMB_URL}/{item_id}.jpg"
 
             ext = "png" if (image_url.lower().endswith(".png") or category == "Transparent") else "jpg"
             downloads = int(img.get("downloads") or 0)
             views = int(img.get("views") or 0)
-
-            item_id = f"rb-{img_id}"
 
             full_entry = {
                 "id": item_id,
@@ -207,13 +205,12 @@ def sync_all(max_pages: int = None) -> bool:
                 "author": author,
                 "category": category,
                 "tags": tag_names,
+                "thumbnailUrl": thumb_url,
                 "fullUrl": image_url,
                 "downloads": downloads,
                 "ext": ext,
                 "source": "ReaderBackdrop",
             }
-            if thumb_url and thumb_url != image_url:
-                lite_entry["thumbnailUrl"] = thumb_url
             lite_items.append(lite_entry)
             total_images_processed += 1
 
