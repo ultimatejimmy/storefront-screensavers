@@ -72,8 +72,18 @@ def render_thumbnail(im, is_transparent=False):
         return bg, True
     else:
         im_rgb = im.convert("RGB")
-        fitted = ImageOps.fit(im_rgb, (TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
-        return fitted, False
+        # Direct resize if aspect ratio already matches 3:4 portrait (within 2%)
+        if abs((im_rgb.width / im_rgb.height) - (TARGET_W / TARGET_H)) < 0.02:
+            resized = im_rgb.resize((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
+            return resized, False
+        else:
+            # Aspect-preserving downscale without cropping away artwork
+            im_rgb.thumbnail((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
+            bg = Image.new("RGB", (TARGET_W, TARGET_H), (255, 255, 255))
+            x = (TARGET_W - im_rgb.width) // 2
+            y = (TARGET_H - im_rgb.height) // 2
+            bg.paste(im_rgb, (x, y))
+            return bg, False
 
 
 def save_thumbnail(thumb_img, dest_path):
