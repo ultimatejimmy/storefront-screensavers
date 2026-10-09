@@ -58,18 +58,33 @@ def has_alpha_channel(im):
     return False
 
 
-def render_thumbnail(im, is_transparent=False):
-    """Resizes and composites an image to standard 180x240 preserving full RGB color."""
+def render_thumbnail(im, is_transparent=False, bake_checkerboard=False):
+    """Resizes an image to standard 180x240 preserving full RGB/RGBA color.
+    If bake_checkerboard=True, alpha is composited over an e-ink checkerboard (for plugin).
+    If bake_checkerboard=False, alpha channel is preserved intact (for web catalog).
+    """
     actual_trans = is_transparent or has_alpha_channel(im)
     if actual_trans and has_alpha_channel(im):
         im_rgba = im.convert("RGBA")
-        # Fit inside 180x240 with aspect ratio preserved
-        im_rgba.thumbnail((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
-        bg = make_checkerboard(TARGET_W, TARGET_H)
-        x = (TARGET_W - im_rgba.width) // 2
-        y = (TARGET_H - im_rgba.height) // 2
-        bg.paste(im_rgba, (x, y), im_rgba)
-        return bg, True
+        if bake_checkerboard:
+            im_rgba.thumbnail((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
+            bg = make_checkerboard(TARGET_W, TARGET_H)
+            x = (TARGET_W - im_rgba.width) // 2
+            y = (TARGET_H - im_rgba.height) // 2
+            bg.paste(im_rgba, (x, y), im_rgba)
+            return bg, True
+        else:
+            # Preserve transparent alpha channel for web catalog
+            if abs((im_rgba.width / im_rgba.height) - (TARGET_W / TARGET_H)) < 0.02:
+                resized = im_rgba.resize((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
+                return resized, True
+            else:
+                im_rgba.thumbnail((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
+                canvas = Image.new("RGBA", (TARGET_W, TARGET_H), (0, 0, 0, 0))
+                x = (TARGET_W - im_rgba.width) // 2
+                y = (TARGET_H - im_rgba.height) // 2
+                canvas.paste(im_rgba, (x, y))
+                return canvas, True
     else:
         im_rgb = im.convert("RGB")
         # Direct resize if aspect ratio already matches 3:4 portrait (within 2%)
@@ -98,10 +113,10 @@ def save_thumbnail(thumb_img, dest_path):
     os.rename(tmp_path, dest_path)
 
 
-def process_single_image(src_path, dest_path, is_transparent=False):
+def process_single_image(src_path, dest_path, is_transparent=False, bake_checkerboard=False):
     try:
         with Image.open(src_path) as im:
-            thumb_img, _ = render_thumbnail(im, is_transparent)
+            thumb_img, _ = render_thumbnail(im, is_transparent, bake_checkerboard=bake_checkerboard)
             save_thumbnail(thumb_img, dest_path)
         return True, None
     except Exception as e:
@@ -151,13 +166,13 @@ def process_native_screensavers(force=False, limit=None):
     success = 0
     errors = 0
     for src_path, target_thumb, is_trans, item_id in candidates:
-        ok, err = process_single_image(src_path, target_thumb, is_trans)
+        ok, err = process_single_image(src_path, target_thumb, is_trans, bake_checkerboard=False)
         if ok:
             success += 1
             if is_trans or target_thumb.endswith(".png"):
                 # Also generate plugin checkerboard thumbnail
                 plugin_dest = os.path.join(PLUGIN_THUMBS_DIR, f"{item_id}.png")
-                process_single_image(src_path, plugin_dest, is_transparent=True)
+                process_single_image(src_path, plugin_dest, is_transparent=True, bake_checkerboard=True)
         else:
             errors += 1
             print(f"[-] Error processing {src_path}: {err}")
