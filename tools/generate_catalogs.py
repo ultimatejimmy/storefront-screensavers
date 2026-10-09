@@ -119,7 +119,6 @@ def generate_catalogs():
             lite_item["featured"] = 1
             if cleaned_item.get("featuredPriority"):
                 lite_item["featuredPriority"] = cleaned_item["featuredPriority"]
-        lite_item["source"] = "Storefront"
 
         lite_items.append(lite_item)
 
@@ -144,11 +143,14 @@ def generate_catalogs():
                 rb_items = []
                 for rb_it in rb_data:
                     it_copy = dict(rb_it)
-                    if not it_copy.get("source"):
-                        it_copy["source"] = "ReaderBackdrop"
+                    it_copy.pop("source", None)
                     it_id = it_copy.get("id")
-                    if it_id and (not it_copy.get("thumbnailUrl") or it_copy.get("thumbnailUrl") == it_copy.get("fullUrl")):
-                        it_copy["thumbnailUrl"] = f"{BASE_IMG_URL}/thumbnails/rb/{it_id}.jpg"
+                    # If thumbnailUrl is missing, identical to fullUrl, or matches the standard template,
+                    # omit it from the lite feed because Storefront infers it automatically from id.
+                    std_thumb = f"{BASE_IMG_URL}/thumbnails/rb/{it_id}.jpg" if it_id else ""
+                    curr_thumb = it_copy.get("thumbnailUrl") or ""
+                    if curr_thumb == std_thumb or curr_thumb == it_copy.get("fullUrl", ""):
+                        it_copy.pop("thumbnailUrl", None)
                     rb_items.append(it_copy)
 
                 sf_featured = [x for x in lite_items if x.get("featured") in (1, True)]
