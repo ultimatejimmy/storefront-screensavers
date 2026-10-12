@@ -19412,5 +19412,23 @@
     "wilson": 0,
     "downloads": 1,
     "dateAdded": "2026-09-29"
+  },
+  {
+    "id": "sbr-gyjo",
+    "title": "SBR gyjo",
+    "author": "kova",
+    "category": [
+      "Minimalist",
+      "Anime"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/sbr-gyjo.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/sbr-gyjo.jpg",
+    "tags": [],
+    "dateAdded": "2026-10-12"
   }
 ]
