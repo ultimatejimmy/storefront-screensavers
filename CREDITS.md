@@ -568,3 +568,15 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Moody Rain | shuvashish76 | Minimalist, Nature, Transparent | Community Share | shuvashish76 |
 | Neon Floral Heart | GDJ | Minimalist, Art, Pop Culture, Transparent | Community Share | GDJ |
 | Crazy Cool Cat | wesd440 | Art, Transparent | Community Share | wesd440 |
+| SBR gyjo | kova | Minimalist, Anime | Community Share | kova |
+| Scarface 1983 | 4kvikii | Minimalist | Community Share | 4kvikii |
+| Black and White Cheetah | 4kv | Minimalist, Nature | Community Share | 4kv |
+| White & Black Swan | 4kv | Minimalist, Nature, Abstract | Community Share | 4kv |
+| Monaco Grand Prix | 4kv | Minimalist, Abstract | Community Share | 4kv |
+| Vintage Car | 4kv | Minimalist, Abstract, Art | Community Share | 4kv |
+| Portuguese Boat | 4kv | Minimalist, Nature, Art | Community Share | 4kv |
+| Fruit Yogurt Bowl | 4kv | Minimalist, Art | Community Share | 4kv |
+| Carlos Alcaraz | 4kv | Minimalist, Nature, Art | Community Share | 4kv |
+| Red Pomegranates | 4kv | Minimalist, Art | Community Share | 4kv |
+| Carlos Alcaraz | 4kv | Minimalist, Nature, Abstract, Art | Community Share | 4kv |
+| Real Madrid | 4kv | Minimalist, Abstract, Art | Community Share | 4kv |
