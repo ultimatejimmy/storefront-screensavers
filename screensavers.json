@@ -5052,7 +5052,7 @@
     "dateAdded": "2026-08-15",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 70
+    "featuredPriority": 210
   },
   {
     "id": "wh-212k56",
@@ -5370,7 +5370,7 @@
     "dateAdded": "2026-08-15",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 60
+    "featuredPriority": 40
   },
   {
     "id": "whisperingsea4-mountain-lake-reflection",
@@ -5409,7 +5409,7 @@
     "dateAdded": "2026-08-15",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 40
+    "featuredPriority": 20
   },
   {
     "id": "whisperingsea4-cozy-library-nook",
@@ -5667,7 +5667,7 @@
     "dateAdded": "2026-08-15",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 30
+    "featuredPriority": 230
   },
   {
     "id": "whisperingsea4-ink-wash-pine-woods",
@@ -6003,7 +6003,7 @@
     "dateAdded": "2026-08-15",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 240
+    "featuredPriority": 130
   },
   {
     "id": "whisperingsea4-highres-landscape-2b",
@@ -6659,7 +6659,7 @@
     "dateAdded": "2026-08-15",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 20
+    "featuredPriority": 10
   },
   {
     "id": "whisperingsea4-quiet-woodland-path",
@@ -7209,7 +7209,7 @@
     "dateAdded": "2026-08-15",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 260,
+    "featuredPriority": 160,
     "likes": 1
   },
   {
@@ -7248,7 +7248,7 @@
     "dateAdded": "2026-08-15",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 10
+    "featuredPriority": 180
   },
   {
     "id": "whisperingsea4-serene-bamboo-grove",
@@ -7760,7 +7760,7 @@
     "dateAdded": "2026-08-15",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 50
+    "featuredPriority": 30
   },
   {
     "id": "whisperingsea4-atmospheric-mist-valley",
@@ -8423,7 +8423,7 @@
     "dateAdded": "2026-08-16",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 150
+    "featuredPriority": 100
   },
   {
     "id": "outchy-reaching-hands-behind-glass",
@@ -8460,7 +8460,7 @@
     "dateAdded": "2026-08-16",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 110
+    "featuredPriority": 190
   },
   {
     "id": "outchy-surfer-on-torn-paper-wave",
@@ -9875,7 +9875,7 @@
     "dateAdded": "2026-08-16",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 90,
+    "featuredPriority": 60,
     "likes": 1
   },
   {
@@ -10750,7 +10750,7 @@
     "dateAdded": "2026-08-16",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 130
+    "featuredPriority": 90
   },
   {
     "id": "outchy-pikachu-and-pokemon-friends",
@@ -11227,7 +11227,7 @@
     "dateAdded": "2026-08-16",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 120
+    "featuredPriority": 80
   },
   {
     "id": "outchy-gothic-skull-ornamental-border",
@@ -11267,7 +11267,7 @@
     "dateAdded": "2026-08-16",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 100
+    "featuredPriority": 70
   },
   {
     "id": "outchy-botanical-floral-skull",
@@ -11307,7 +11307,7 @@
     "dateAdded": "2026-08-16",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 80
+    "featuredPriority": 50
   },
   {
     "id": "outchy-snoopy-reading-on-doghouse",
@@ -13581,7 +13581,7 @@
     "dateAdded": "2026-09-04",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 180
+    "featuredPriority": 170
   },
   {
     "id": "spooky-spider",
@@ -13611,7 +13611,7 @@
     "dateAdded": "2026-09-04",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 220
+    "featuredPriority": 250
   },
   {
     "id": "radha-krishna",
@@ -13790,7 +13790,7 @@
     "dateAdded": "2026-09-09",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 270
+    "featuredPriority": 220
   },
   {
     "id": "lace",
@@ -15705,7 +15705,7 @@
     "dateAdded": "2026-09-25",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 170
+    "featuredPriority": 240
   },
   {
     "id": "cats-looking-down",
@@ -16246,7 +16246,7 @@
     "dateAdded": "2026-09-25",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 200
+    "featuredPriority": 120
   },
   {
     "id": "read-book",
@@ -16600,7 +16600,7 @@
     "dateAdded": "2026-09-25",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 230
+    "featuredPriority": 140
   },
   {
     "id": "screensaver-10",
@@ -16920,7 +16920,7 @@
     "dateAdded": "2026-09-27",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 250
+    "featuredPriority": 150
   },
   {
     "id": "screensaver-17",
@@ -17183,7 +17183,7 @@
     "dateAdded": "2026-09-27",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 190,
+    "featuredPriority": 200,
     "downloads": 10,
     "wilson": 0
   },
@@ -17425,7 +17425,7 @@
     "dateAdded": "2026-09-27",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 210
+    "featuredPriority": 260
   },
   {
     "id": "screensaver-56",
@@ -17657,7 +17657,7 @@
     "dateAdded": "2026-09-27",
     "featured": true,
     "featuredUntil": "2026-10-31",
-    "featuredPriority": 160
+    "featuredPriority": 110
   },
   {
     "id": "screensaver-71",
