@@ -15,6 +15,8 @@ import os
 import json
 import gzip
 import sys
+import urllib.request
+import urllib.error
 from datetime import datetime
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,8 +25,28 @@ LITE_JSON = os.path.join(REPO_ROOT, "screensavers.lite.json")
 MIN_JSON = os.path.join(REPO_ROOT, "screensavers.min.json")
 
 BASE_IMG_URL = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images"
+RATINGS_API_URL = "https://storefront-vote.ultimatejimmy.workers.dev/ratings?fresh=1"
 
-def generate_catalogs():
+def fetch_live_ratings(timeout=10):
+    try:
+        req = urllib.request.Request(
+            RATINGS_API_URL,
+            headers={
+                "User-Agent": "Storefront-Catalog-Generator/1.0",
+                "Accept": "application/json"
+            }
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            if resp.status == 200:
+                data = json.loads(resp.read().decode("utf-8"))
+                if isinstance(data, dict):
+                    print(f"Fetched live ratings from worker ({len(data)} entries)")
+                    return data
+    except Exception as e:
+        print(f"Warning: Could not fetch live ratings from worker ({e})", file=sys.stderr)
+    return {}
+
+def generate_catalogs(fetch_remote=True):
     if not os.path.exists(SRC_JSON):
         print(f"Error: {SRC_JSON} not found.", file=sys.stderr)
         return False
@@ -38,10 +60,29 @@ def generate_catalogs():
 
     print(f"Loaded {len(catalog)} screensavers from {SRC_JSON}")
 
+    ratings_map = {}
+    if fetch_remote:
+        ratings_map = fetch_live_ratings()
+
     cleaned_full = []
     lite_items = []
 
     for item in catalog:
+        item_id = item.get("id", "")
+        # Merge live download and rating metrics for Storefront screensavers
+        r = ratings_map.get(item_id) or (ratings_map.get(item_id.lower()) if item_id else None)
+        if r and isinstance(r, dict):
+            live_dl = int(r.get("downloads") or 0)
+            existing_dl = int(item.get("downloads") or 0)
+            if live_dl > existing_dl:
+                item["downloads"] = live_dl
+            if "up" in r or "down" in r:
+                up = int(r.get("up") or 0)
+                down = int(r.get("down") or 0)
+                item["likes"] = max(0, up - down)
+            if "wilson" in r:
+                item["wilson"] = r["wilson"]
+
         cleaned_item = {}
         for k, v in item.items():
             if v == "" or (k in ("downloads", "likes") and v == 0):
@@ -208,5 +249,6 @@ def generate_catalogs():
     return True
 
 if __name__ == "__main__":
-    success = generate_catalogs()
+    fetch_rem = "--no-remote" not in sys.argv
+    success = generate_catalogs(fetch_remote=fetch_rem)
     sys.exit(0 if success else 1)

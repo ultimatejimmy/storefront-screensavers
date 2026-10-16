@@ -87,15 +87,15 @@ def merge_ratings_into_catalog(catalog, ratings=None):
     for item in catalog:
         item_id = item.get('id', '')
         r = ratings_map.get(item_id) or (ratings_map.get(item_id.lower()) if item_id else None)
-        dl = 0
+        existing_dl = int(item.get('downloads') or 0)
+        dl = existing_dl
         if r and isinstance(r, dict):
-            dl = r.get('downloads', 0)
+            live_dl = int(r.get('downloads') or 0)
+            dl = max(live_dl, existing_dl)
             if 'up' in r or 'down' in r:
                 item['likes'] = max(0, (r.get('up') or 0) - (r.get('down') or 0))
             if 'wilson' in r:
                 item['wilson'] = r['wilson']
-        elif 'downloads' in item and item['downloads'] is not None:
-            dl = item['downloads']
 
         item['downloads'] = int(dl or 0)
         total_downloads += item['downloads']
@@ -426,6 +426,12 @@ def sync_all_catalog():
                     except Exception:
                         pass
 
+    # Merge live ratings before saving
+    try:
+        merge_ratings_into_catalog(catalog, fetch_live_ratings(force_refresh=True))
+    except Exception as e:
+        print(f"Warning merging ratings: {e}")
+
     # Save cleaned catalog
     save_catalog(catalog)
 
@@ -440,7 +446,7 @@ def sync_all_catalog():
     import subprocess
     try:
         # Stage all catalog, credits, and image changes/deletions
-        subprocess.run(['git', 'add', '-A', 'screensavers.json', 'screensavers.lite.json', 'screensavers.min.json', 'CREDITS.md', 'images/'], cwd=REPO_ROOT, check=True)
+        subprocess.run(['git', 'add', '-A', 'screensavers.json', 'screensavers.lite.json', 'screensavers.min.json', 'screensavers.unified.lite.json', 'CREDITS.md', 'images/'], cwd=REPO_ROOT, check=True)
 
         # Check if there are staged git changes
         status_proc = subprocess.run(['git', 'status', '--porcelain'], cwd=REPO_ROOT, capture_output=True, text=True)
