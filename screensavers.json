@@ -18379,9 +18379,13 @@
     ],
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/flower-pattern.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/flower-pattern.jpg",
-    "tags": [],
+    "tags": [
+      "flower",
+      "minimalist",
+      "pattern"
+    ],
     "dateAdded": "2026-10-18",
-    "downloads": 2,
+    "downloads": 3,
     "wilson": 0
   },
   {
@@ -18400,7 +18404,14 @@
     ],
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/mediterranean-inspired-drawing.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/mediterranean-inspired-drawing.jpg",
-    "tags": [],
+    "tags": [
+      "abstract",
+      "drawing",
+      "inspired",
+      "mediterranean",
+      "minimalist",
+      "nature"
+    ],
     "dateAdded": "2026-10-18",
     "downloads": 1,
     "wilson": 0
@@ -18417,7 +18428,11 @@
     ],
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/sting-ray.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/sting-ray.jpg",
-    "tags": [],
+    "tags": [
+      "minimalist",
+      "ray",
+      "sting"
+    ],
     "dateAdded": "2026-10-18",
     "downloads": 3,
     "wilson": 0
@@ -18438,7 +18453,13 @@
     ],
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/tennis-court-art.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/tennis-court-art.jpg",
-    "tags": [],
+    "tags": [
+      "abstract",
+      "art",
+      "court",
+      "minimalist",
+      "tennis"
+    ],
     "dateAdded": "2026-10-18",
     "downloads": 1,
     "wilson": 0
@@ -18455,7 +18476,12 @@
     ],
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/world-cup-photo.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/world-cup-photo.jpg",
-    "tags": [],
+    "tags": [
+      "cup",
+      "minimalist",
+      "photo",
+      "world"
+    ],
     "dateAdded": "2026-10-18"
   },
   {
@@ -18470,7 +18496,11 @@
     ],
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/boats-in-the-sea.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/boats-in-the-sea.jpg",
-    "tags": [],
+    "tags": [
+      "boats",
+      "minimalist",
+      "sea"
+    ],
     "dateAdded": "2026-10-18"
   },
   {
@@ -18489,7 +18519,12 @@
     ],
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/tomatoes.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/tomatoes.jpg",
-    "tags": [],
+    "tags": [
+      "abstract",
+      "art",
+      "minimalist",
+      "tomatoes"
+    ],
     "dateAdded": "2026-10-18",
     "downloads": 1,
     "wilson": 0
@@ -18506,7 +18541,11 @@
     ],
     "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/polka-dots.jpg",
     "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/polka-dots.jpg",
-    "tags": [],
+    "tags": [
+      "dots",
+      "minimalist",
+      "polka"
+    ],
     "dateAdded": "2026-10-18"
   }
 ]
