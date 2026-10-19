@@ -163,7 +163,7 @@
     ],
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 656,
+    "downloads": 657,
     "dateAdded": "2026-08-10"
   },
   {
@@ -18366,5 +18366,147 @@
     "dateAdded": "2026-10-14",
     "downloads": 1,
     "wilson": 0
+  },
+  {
+    "id": "flower-pattern",
+    "title": "Flower pattern",
+    "author": "4kvikii",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/flower-pattern.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/flower-pattern.jpg",
+    "tags": [],
+    "dateAdded": "2026-10-18",
+    "downloads": 2,
+    "wilson": 0
+  },
+  {
+    "id": "mediterranean-inspired-drawing",
+    "title": "Mediterranean inspired drawing",
+    "author": "4kvikii",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Abstract"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/mediterranean-inspired-drawing.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/mediterranean-inspired-drawing.jpg",
+    "tags": [],
+    "dateAdded": "2026-10-18",
+    "downloads": 1,
+    "wilson": 0
+  },
+  {
+    "id": "sting-ray",
+    "title": "Sting Ray",
+    "author": "4kvikii",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/sting-ray.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/sting-ray.jpg",
+    "tags": [],
+    "dateAdded": "2026-10-18",
+    "downloads": 3,
+    "wilson": 0
+  },
+  {
+    "id": "tennis-court-art",
+    "title": "Tennis court art",
+    "author": "4kvikii",
+    "category": [
+      "Minimalist",
+      "Abstract",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/tennis-court-art.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/tennis-court-art.jpg",
+    "tags": [],
+    "dateAdded": "2026-10-18",
+    "downloads": 1,
+    "wilson": 0
+  },
+  {
+    "id": "world-cup-photo",
+    "title": "World Cup photo",
+    "author": "4kvikii",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/world-cup-photo.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/world-cup-photo.jpg",
+    "tags": [],
+    "dateAdded": "2026-10-18"
+  },
+  {
+    "id": "boats-in-the-sea",
+    "title": "Boats in the Sea",
+    "author": "4kvikii",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/boats-in-the-sea.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/boats-in-the-sea.jpg",
+    "tags": [],
+    "dateAdded": "2026-10-18"
+  },
+  {
+    "id": "tomatoes",
+    "title": "Tomatoes",
+    "author": "4kvikii",
+    "category": [
+      "Minimalist",
+      "Abstract",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/tomatoes.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/tomatoes.jpg",
+    "tags": [],
+    "dateAdded": "2026-10-18",
+    "downloads": 1,
+    "wilson": 0
+  },
+  {
+    "id": "polka-dots",
+    "title": "Polka Dots",
+    "author": "4kvikii",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/polka-dots.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/polka-dots.jpg",
+    "tags": [],
+    "dateAdded": "2026-10-18"
   }
 ]

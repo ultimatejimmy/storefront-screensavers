@@ -580,3 +580,11 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Red Pomegranates | 4kv | Minimalist, Art | Community Share | 4kv |
 | Carlos Alcaraz | 4kv | Minimalist, Nature, Abstract, Art | Community Share | 4kv |
 | Real Madrid | 4kv | Minimalist, Abstract, Art | Community Share | 4kv |
+| Flower pattern | 4kvikii | Minimalist | Community Share | 4kvikii |
+| Mediterranean inspired drawing | 4kvikii | Minimalist, Nature, Abstract | Community Share | 4kvikii |
+| Sting Ray | 4kvikii | Minimalist | Community Share | 4kvikii |
+| Tennis court art | 4kvikii | Minimalist, Abstract, Art | Community Share | 4kvikii |
+| World Cup photo | 4kvikii | Minimalist | Community Share | 4kvikii |
+| Boats in the Sea | 4kvikii | Minimalist | Community Share | 4kvikii |
+| Tomatoes | 4kvikii | Minimalist, Abstract, Art | Community Share | 4kvikii |
+| Polka Dots | 4kvikii | Minimalist | Community Share | 4kvikii |
