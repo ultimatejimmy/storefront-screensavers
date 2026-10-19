@@ -452,9 +452,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Under the Wave off Kanagawa - Psychedelic | j4p4n | Abstract, Art, Pop Culture | Community Share | j4p4n |
 | Alice and the Cheshire Cat | frankes | Fantasy, Art, Transparent | Community Share | frankes |
 | Alice in Wonderland - Prismatic | GDJ | Fantasy, Abstract, Art, Pop Culture, Transparent | Community Share | GDJ |
-| What's Wrong with the World | standardebooks | Quotes | Community Share | standardebooks |
-| The small Bachelor | standardebooks | Quotes | Community Share | standardebooks |
-| Magnolia Leaves | standardebooks | Quotes | Community Share | standardebooks |
 | The Wolf-Leader | standardebooks | Quotes | Community Share | standardebooks |
 | Agatha Christie | standardebooks | Minimalist | Community Share | standardebooks |
 | The Innocents Abroad | standardebooks | Quotes | Community Share | standardebooks |

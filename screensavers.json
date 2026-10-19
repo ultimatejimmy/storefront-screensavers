@@ -163,7 +163,7 @@
     ],
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 657,
+    "downloads": 658,
     "dateAdded": "2026-08-10"
   },
   {
@@ -14734,72 +14734,6 @@
     "wilson": 0,
     "downloads": 6,
     "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "what-s-wrong-with-the-world",
-    "title": "What's Wrong with the World",
-    "author": "standardebooks",
-    "category": "Quotes",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/what-s-wrong-with-the-world.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/what-s-wrong-with-the-world.jpg",
-    "tags": [
-      "book",
-      "ebook",
-      "quote",
-      "standardebooks"
-    ],
-    "wilson": 0,
-    "downloads": 1,
-    "dateAdded": "2026-09-16"
-  },
-  {
-    "id": "the-small-bachelor",
-    "title": "The small Bachelor",
-    "author": "standardebooks",
-    "category": "Quotes",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-small-bachelor.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/the-small-bachelor.jpg",
-    "tags": [
-      "book",
-      "ebook",
-      "quote",
-      "standardebooks"
-    ],
-    "wilson": 0,
-    "downloads": 1,
-    "dateAdded": "2026-09-16"
-  },
-  {
-    "id": "magnolia-leaves",
-    "title": "Magnolia Leaves",
-    "author": "standardebooks",
-    "category": "Quotes",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/magnolia-leaves.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/magnolia-leaves.jpg",
-    "tags": [
-      "book",
-      "ebook",
-      "quote",
-      "standardebooks"
-    ],
-    "wilson": 0,
-    "downloads": 1,
-    "dateAdded": "2026-09-16"
   },
   {
     "id": "the-wolf-leader",
