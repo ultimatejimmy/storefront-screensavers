@@ -5049,7 +5049,10 @@
     ],
     "wilson": 0,
     "downloads": 6,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 70
   },
   {
     "id": "wh-212k56",
@@ -5364,7 +5367,10 @@
     "likes": 2,
     "wilson": 0.3423719528896193,
     "downloads": 188,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 60
   },
   {
     "id": "whisperingsea4-mountain-lake-reflection",
@@ -5400,7 +5406,10 @@
     ],
     "wilson": 0,
     "downloads": 57,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 40
   },
   {
     "id": "whisperingsea4-cozy-library-nook",
@@ -5655,7 +5664,10 @@
     ],
     "wilson": 0,
     "downloads": 28,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 30
   },
   {
     "id": "whisperingsea4-ink-wash-pine-woods",
@@ -5987,7 +5999,10 @@
     "likes": 1,
     "wilson": 0.20654329147389294,
     "downloads": 83,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 240
   },
   {
     "id": "whisperingsea4-highres-landscape-2b",
@@ -6640,7 +6655,10 @@
     ],
     "wilson": 0,
     "downloads": 49,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 20
   },
   {
     "id": "whisperingsea4-quiet-woodland-path",
@@ -7186,7 +7204,10 @@
     ],
     "wilson": 0,
     "downloads": 14,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 260
   },
   {
     "id": "whisperingsea4-starry-sky-valley",
@@ -7221,7 +7242,10 @@
     ],
     "wilson": 0,
     "downloads": 26,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 10
   },
   {
     "id": "whisperingsea4-serene-bamboo-grove",
@@ -7730,7 +7754,10 @@
     "likes": 1,
     "wilson": 0.20654329147389294,
     "downloads": 123,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 50
   },
   {
     "id": "whisperingsea4-atmospheric-mist-valley",
@@ -8390,7 +8417,10 @@
     ],
     "wilson": 0,
     "downloads": 31,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 150
   },
   {
     "id": "outchy-reaching-hands-behind-glass",
@@ -8424,7 +8454,10 @@
     ],
     "wilson": 0,
     "downloads": 27,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 110
   },
   {
     "id": "outchy-surfer-on-torn-paper-wave",
@@ -8720,43 +8753,6 @@
     "dateAdded": "2026-08-16"
   },
   {
-    "id": "outchy-tall-stack-of-books",
-    "title": "Tall Stack of Books",
-    "author": "outchy",
-    "authorUrl": "https://www.reddit.com/user/outchy/",
-    "category": [
-      "Art",
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share",
-    "licenseUrl": "https://www.reddit.com/user/outchy/",
-    "sourceUrl": "https://www.reddit.com/user/outchy/",
-    "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-tall-stack-of-books.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-tall-stack-of-books.png",
-    "tags": [
-      "antique",
-      "books",
-      "leatherbound",
-      "library",
-      "literature",
-      "pile",
-      "reading",
-      "transparent"
-    ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-tall-stack-of-books.png",
-    "wilson": 0,
-    "downloads": 4,
-    "dateAdded": "2026-08-16"
-  },
-  {
     "id": "outchy-towering-book-stack",
     "title": "Towering Book Stack",
     "author": "outchy",
@@ -8828,42 +8824,6 @@
     "likes": 1,
     "wilson": 0.20654329147389294,
     "downloads": 129,
-    "dateAdded": "2026-08-16"
-  },
-  {
-    "id": "outchy-happy-book-character-waving",
-    "title": "Happy Book Character Waving",
-    "author": "outchy",
-    "authorUrl": "https://www.reddit.com/user/outchy/",
-    "category": [
-      "Pop Culture",
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share",
-    "licenseUrl": "https://www.reddit.com/user/outchy/",
-    "sourceUrl": "https://www.reddit.com/user/outchy/",
-    "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-happy-book-character-waving.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-happy-book-character-waving.png",
-    "tags": [
-      "books",
-      "fantasy",
-      "flying pages",
-      "ocean of knowledge",
-      "surreal",
-      "transparent",
-      "wave"
-    ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-happy-book-character-waving.png",
-    "wilson": 0,
-    "downloads": 1,
     "dateAdded": "2026-08-16"
   },
   {
@@ -9295,43 +9255,6 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-heavy-spiderweb-screen-shatter.png",
     "wilson": 0,
     "downloads": 29,
-    "dateAdded": "2026-08-16"
-  },
-  {
-    "id": "outchy-creepy-grinning-shadow",
-    "title": "Creepy Grinning Shadow",
-    "author": "outchy",
-    "authorUrl": "https://www.reddit.com/user/outchy/",
-    "category": [
-      "Fantasy",
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "license": "Community Share",
-    "licenseUrl": "https://www.reddit.com/user/outchy/",
-    "sourceUrl": "https://www.reddit.com/user/outchy/",
-    "attribution": "outchy on /r/koreader",
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/outchy-creepy-grinning-shadow.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/outchy-creepy-grinning-shadow.png",
-    "tags": [
-      "creature",
-      "demon",
-      "fantasy",
-      "gargoyle",
-      "gothic",
-      "horns",
-      "transparent",
-      "wings"
-    ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-creepy-grinning-shadow.png",
-    "wilson": 0,
-    "downloads": 2,
     "dateAdded": "2026-08-16"
   },
   {
@@ -9945,7 +9868,10 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-reading-is-my-happy-place.png",
     "wilson": 0,
     "downloads": 73,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 90
   },
   {
     "id": "outchy-homer-simpson-woo-hoo",
@@ -10815,7 +10741,10 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-hand-holding-skull-grimoire.png",
     "wilson": 0,
     "downloads": 93,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 130
   },
   {
     "id": "outchy-pikachu-and-pokemon-friends",
@@ -11289,7 +11218,10 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-skeleton-reading-open-book.png",
     "wilson": 0,
     "downloads": 54,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 120
   },
   {
     "id": "outchy-gothic-skull-ornamental-border",
@@ -11326,7 +11258,10 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-gothic-skull-ornamental-border.png",
     "wilson": 0,
     "downloads": 164,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 100
   },
   {
     "id": "outchy-botanical-floral-skull",
@@ -11363,7 +11298,10 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-botanical-floral-skull.png",
     "wilson": 0,
     "downloads": 343,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 80
   },
   {
     "id": "outchy-snoopy-reading-on-doghouse",
@@ -13233,26 +13171,6 @@
     "dateAdded": "2026-09-03"
   },
   {
-    "id": "undertale-stay-determined-bw",
-    "title": "Undertale - Stay Determined BW",
-    "author": "depresso_espresso9",
-    "category": "Minimalist",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/undertale-stay-determined-bw.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/undertale-stay-determined-bw.jpg",
-    "tags": [
-      "undertale",
-      "video game"
-    ],
-    "wilson": 0,
-    "downloads": 4,
-    "dateAdded": "2026-09-03"
-  },
-  {
     "id": "undertale-stay-determined-color",
     "title": "Undertale - Stay Determined Color",
     "author": "depresso_espresso9",
@@ -13296,54 +13214,6 @@
     "license": "Community Share",
     "wilson": 0,
     "downloads": 111,
-    "dateAdded": "2026-09-03"
-  },
-  {
-    "id": "vocaloid-2",
-    "title": "Vocaloid 2",
-    "author": "tokenicrat",
-    "category": [
-      "Minimalist",
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/vocaloid-2.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/vocaloid-2.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/vocaloid-2.png",
-    "tags": [
-      "transparent"
-    ],
-    "wilson": 0,
-    "downloads": 3,
-    "dateAdded": "2026-09-03"
-  },
-  {
-    "id": "vocaloid-3",
-    "title": "Vocaloid 3",
-    "author": "tokenicrat",
-    "category": [
-      "Minimalist",
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/vocaloid-3.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/vocaloid-3.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/vocaloid-3.png",
-    "tags": [
-      "transparent"
-    ],
-    "wilson": 0,
-    "downloads": 2,
     "dateAdded": "2026-09-03"
   },
   {
@@ -13392,102 +13262,6 @@
     ],
     "wilson": 0,
     "downloads": 8,
-    "dateAdded": "2026-09-03"
-  },
-  {
-    "id": "vocaloid-6",
-    "title": "Vocaloid 6",
-    "author": "tokenicrat",
-    "category": [
-      "Minimalist",
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/vocaloid-6.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/vocaloid-6.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/vocaloid-6.png",
-    "tags": [
-      "transparent"
-    ],
-    "wilson": 0,
-    "downloads": 3,
-    "dateAdded": "2026-09-03"
-  },
-  {
-    "id": "vocaloid-7",
-    "title": "Vocaloid 7",
-    "author": "tokenicrat",
-    "category": [
-      "Minimalist",
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/vocaloid-7.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/vocaloid-7.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/vocaloid-7.png",
-    "tags": [
-      "transparent"
-    ],
-    "wilson": 0,
-    "downloads": 3,
-    "dateAdded": "2026-09-03"
-  },
-  {
-    "id": "vocaloid-9",
-    "title": "Vocaloid 9",
-    "author": "tokenicrat",
-    "category": [
-      "Minimalist",
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/vocaloid-9.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/vocaloid-9.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/vocaloid-9.png",
-    "tags": [
-      "transparent"
-    ],
-    "wilson": 0,
-    "downloads": 3,
-    "dateAdded": "2026-09-03"
-  },
-  {
-    "id": "vocaloid-10",
-    "title": "Vocaloid 10",
-    "author": "tokenicrat",
-    "category": [
-      "Minimalist",
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/vocaloid-10.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/vocaloid-10.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/vocaloid-10.png",
-    "tags": [
-      "transparent"
-    ],
-    "wilson": 0,
-    "downloads": 4,
     "dateAdded": "2026-09-03"
   },
   {
@@ -13636,63 +13410,6 @@
     "dateAdded": "2026-09-03"
   },
   {
-    "id": "wasp",
-    "title": "Wasp",
-    "author": "dordy",
-    "category": [
-      "Minimalist",
-      "Nature",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wasp.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wasp.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wasp.png",
-    "tags": [
-      "bee",
-      "minimal",
-      "shape",
-      "transparent",
-      "wasp"
-    ],
-    "wilson": 0,
-    "downloads": 2,
-    "dateAdded": "2026-09-04"
-  },
-  {
-    "id": "peace-sticker",
-    "title": "Peace sticker",
-    "author": "Hyperslower",
-    "category": [
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/peace-sticker.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/peace-sticker.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/peace-sticker.png",
-    "tags": [
-      "arm",
-      "bracelet",
-      "fingers",
-      "hand",
-      "peace",
-      "sticker",
-      "transparent"
-    ],
-    "wilson": 0,
-    "downloads": 4,
-    "dateAdded": "2026-09-04"
-  },
-  {
     "id": "koreader-banner",
     "title": "KOReader banner",
     "author": "shuvashish76",
@@ -13831,66 +13548,6 @@
     "dateAdded": "2026-09-04"
   },
   {
-    "id": "missouri-quote",
-    "title": "Missouri Quote",
-    "author": "shuvashish76",
-    "category": [
-      "Nature",
-      "Quotes",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/missouri-quote.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/missouri-quote.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/missouri-quote.png",
-    "tags": [
-      "missouri",
-      "nature",
-      "note",
-      "quote",
-      "river",
-      "sunset",
-      "transparent"
-    ],
-    "wilson": 0,
-    "downloads": 5,
-    "dateAdded": "2026-09-04"
-  },
-  {
-    "id": "madhubala",
-    "title": "Madhubala",
-    "author": "shuvashish76",
-    "category": [
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/madhubala.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/madhubala.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/madhubala.png",
-    "tags": [
-      "actress",
-      "bollywood",
-      "film",
-      "india",
-      "lady",
-      "madhubala",
-      "transparent",
-      "woman"
-    ],
-    "wilson": 0,
-    "downloads": 5,
-    "dateAdded": "2026-09-04"
-  },
-  {
     "id": "the-moon",
     "title": "The moon",
     "author": "cactus_cowboy",
@@ -13914,29 +13571,10 @@
     ],
     "wilson": 0,
     "downloads": 16,
-    "dateAdded": "2026-09-04"
-  },
-  {
-    "id": "yin-yang-and-zeppo",
-    "title": "Yin Yang and Zeppo",
-    "author": "philx",
-    "category": "Art",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/yin-yang-and-zeppo.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/yin-yang-and-zeppo.jpg",
-    "tags": [
-      "cats",
-      "drawing",
-      "sleeping",
-      "three"
-    ],
-    "wilson": 0,
-    "downloads": 1,
-    "dateAdded": "2026-09-04"
+    "dateAdded": "2026-09-04",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 180
   },
   {
     "id": "spooky-spider",
@@ -13963,7 +13601,10 @@
     ],
     "wilson": 0,
     "downloads": 6,
-    "dateAdded": "2026-09-04"
+    "dateAdded": "2026-09-04",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 220
   },
   {
     "id": "radha-krishna",
@@ -13999,36 +13640,6 @@
     "dateAdded": "2026-09-04"
   },
   {
-    "id": "nerdy-bookworm",
-    "title": "Nerdy bookworm",
-    "author": "j4p4n",
-    "category": [
-      "Anime",
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/nerdy-bookworm.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/nerdy-bookworm.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/nerdy-bookworm.png",
-    "tags": [
-      "bookworm",
-      "geek",
-      "glasses",
-      "nerd",
-      "reading",
-      "transparent",
-      "worm"
-    ],
-    "wilson": 0,
-    "downloads": 4,
-    "dateAdded": "2026-09-04"
-  },
-  {
     "id": "lady-reading",
     "title": "Lady reading",
     "author": "j4p4n",
@@ -14055,40 +13666,6 @@
     "likes": 1,
     "wilson": 0.20654329147389294,
     "downloads": 28,
-    "dateAdded": "2026-09-04"
-  },
-  {
-    "id": "schoolgirl-studying",
-    "title": "Schoolgirl Studying",
-    "author": "oksmith",
-    "category": [
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/schoolgirl-studying.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/schoolgirl-studying.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/schoolgirl-studying.png",
-    "tags": [
-      "book",
-      "college",
-      "desk",
-      "girl",
-      "reading",
-      "school",
-      "study",
-      "transparent",
-      "uniform",
-      "women",
-      "writing",
-      "young"
-    ],
-    "wilson": 0,
-    "downloads": 3,
     "dateAdded": "2026-09-04"
   },
   {
@@ -14150,36 +13727,6 @@
     "dateAdded": "2026-09-04"
   },
   {
-    "id": "little-miss-muffet",
-    "title": "Little Miss Muffet",
-    "author": "SeriousTux",
-    "category": [
-      "Anime",
-      "Art",
-      "Quotes",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/little-miss-muffet.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/little-miss-muffet.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/little-miss-muffet.png",
-    "tags": [
-      "miss muffet",
-      "quote",
-      "reading",
-      "spider",
-      "transparent",
-      "web"
-    ],
-    "wilson": 0,
-    "downloads": 5,
-    "dateAdded": "2026-09-04"
-  },
-  {
     "id": "nu-la-lecture",
     "title": "Nu à la lecture",
     "author": "j4p4n",
@@ -14205,62 +13752,6 @@
     "wilson": 0,
     "downloads": 5,
     "dateAdded": "2026-09-04"
-  },
-  {
-    "id": "bat-woman",
-    "title": "Bat Woman",
-    "author": "Bat Woman",
-    "category": [
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bat-woman.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bat-woman.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bat-woman.png",
-    "tags": [
-      "bat",
-      "comic",
-      "female",
-      "pulp",
-      "transparent",
-      "woman"
-    ],
-    "wilson": 0,
-    "downloads": 2,
-    "dateAdded": "2026-09-09"
-  },
-  {
-    "id": "anime-face-cyber-eyes",
-    "title": "Anime Face - Cyber Eyes",
-    "author": "DG-RA",
-    "category": [
-      "Anime",
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/anime-face-cyber-eyes.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/anime-face-cyber-eyes.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/anime-face-cyber-eyes.png",
-    "tags": [
-      "anime",
-      "eyes",
-      "face",
-      "female",
-      "girl",
-      "transparent",
-      "woman"
-    ],
-    "dateAdded": "2026-09-09"
   },
   {
     "id": "halloween-landscape",
@@ -14289,38 +13780,10 @@
     ],
     "wilson": 0,
     "downloads": 7,
-    "dateAdded": "2026-09-09"
-  },
-  {
-    "id": "water-witch",
-    "title": "Water Witch",
-    "author": "Crash",
-    "category": [
-      "Fantasy",
-      "Anime",
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/water-witch.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/water-witch.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/water-witch.png",
-    "tags": [
-      "anime",
-      "female",
-      "transparent",
-      "water",
-      "witch",
-      "wizard",
-      "woman"
-    ],
-    "wilson": 0,
-    "downloads": 2,
-    "dateAdded": "2026-09-09"
+    "dateAdded": "2026-09-09",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 270
   },
   {
     "id": "lace",
@@ -14395,52 +13858,6 @@
     ],
     "wilson": 0,
     "downloads": 5,
-    "dateAdded": "2026-09-12"
-  },
-  {
-    "id": "dharma-light",
-    "title": "Dharma Light",
-    "author": "Community",
-    "category": [
-      "Minimalist",
-      "Pop Culture"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/dharma-light.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/dharma-light.jpg",
-    "tags": [
-      "lost"
-    ],
-    "license": "Community Share",
-    "wilson": 0,
-    "downloads": 2,
-    "dateAdded": "2026-09-12"
-  },
-  {
-    "id": "dharma-dark",
-    "title": "Dharma Dark",
-    "author": "Community",
-    "category": [
-      "Minimalist",
-      "Pop Culture"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/dharma-dark.jpg",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/dharma-dark.jpg",
-    "tags": [
-      "lost"
-    ],
-    "license": "Community Share",
-    "wilson": 0,
-    "downloads": 1,
     "dateAdded": "2026-09-12"
   },
   {
@@ -14593,35 +14010,6 @@
     "dateAdded": "2026-09-12"
   },
   {
-    "id": "abstract-butterfly",
-    "title": "Abstract butterfly",
-    "author": "Firkin",
-    "category": [
-      "Minimalist",
-      "Nature",
-      "Abstract",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/abstract-butterfly.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/abstract-butterfly.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/abstract-butterfly.png",
-    "tags": [
-      "animal",
-      "butterfly",
-      "insect",
-      "transparent",
-      "wings"
-    ],
-    "wilson": 0,
-    "downloads": 2,
-    "dateAdded": "2026-09-12"
-  },
-  {
     "id": "bird-stained-glass",
     "title": "Bird Stained Glass",
     "author": "gustavorezende",
@@ -14652,39 +14040,6 @@
     "dateAdded": "2026-09-12"
   },
   {
-    "id": "party-in-the-intestines",
-    "title": "Party in the intestines",
-    "author": "Moini",
-    "category": [
-      "Art",
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/party-in-the-intestines.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/party-in-the-intestines.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/party-in-the-intestines.png",
-    "tags": [
-      "anatomt",
-      "bacteria",
-      "digesation",
-      "disease",
-      "germs",
-      "gut",
-      "intestine",
-      "party",
-      "transparent",
-      "virus"
-    ],
-    "wilson": 0,
-    "downloads": 3,
-    "dateAdded": "2026-09-12"
-  },
-  {
     "id": "fingerprint-search",
     "title": "Fingerprint Search",
     "author": "eady",
@@ -14711,38 +14066,6 @@
     ],
     "wilson": 0,
     "downloads": 6,
-    "dateAdded": "2026-09-12"
-  },
-  {
-    "id": "school-in-fall",
-    "title": "School in fall",
-    "author": "Anonymous",
-    "category": [
-      "Nature",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/school-in-fall.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/school-in-fall.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/school-in-fall.png",
-    "tags": [
-      "anatomt",
-      "bacteria",
-      "digesation",
-      "disease",
-      "germs",
-      "gut",
-      "intestine",
-      "party",
-      "transparent",
-      "virus"
-    ],
-    "wilson": 0,
-    "downloads": 1,
     "dateAdded": "2026-09-12"
   },
   {
@@ -14858,65 +14181,6 @@
     "dateAdded": "2026-09-14"
   },
   {
-    "id": "ballerina",
-    "title": "Ballerina",
-    "author": "j4p4n",
-    "category": [
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ballerina.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/ballerina.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ballerina.png",
-    "tags": [
-      "ballerina",
-      "dance",
-      "dancer",
-      "female",
-      "girl",
-      "transparent",
-      "tutu",
-      "woman"
-    ],
-    "authorUrl": "https://openclipart.org/artist/j4p4n",
-    "wilson": 0,
-    "downloads": 1,
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "colin-the-chef",
-    "title": "Colin The Chef",
-    "author": "GDJ",
-    "category": [
-      "Anime",
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/colin-the-chef.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/colin-the-chef.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/colin-the-chef.png",
-    "tags": [
-      "cheif",
-      "cook",
-      "food",
-      "kitchen",
-      "splatter",
-      "transparent"
-    ],
-    "authorUrl": "https://openclipart.org/artist/GDJ",
-    "dateAdded": "2026-09-15"
-  },
-  {
     "id": "bun-girl",
     "title": "Bun Girl",
     "author": "j4p4n",
@@ -14950,30 +14214,6 @@
     "authorUrl": "https://openclipart.org/artist/j4p4n",
     "wilson": 0,
     "downloads": 3,
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "winged-dragon",
-    "title": "Winged Dragon",
-    "author": "GusEinstein",
-    "category": [
-      "Fantasy",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/winged-dragon.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/winged-dragon.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/winged-dragon.png",
-    "tags": [
-      "dragon",
-      "transparent",
-      "wing"
-    ],
-    "authorUrl": "https://openclipart.org/artist/GusEinstein",
     "dateAdded": "2026-09-15"
   },
   {
@@ -15012,99 +14252,6 @@
     "dateAdded": "2026-09-15"
   },
   {
-    "id": "woman-man-and-the-apple",
-    "title": "Woman Man And The Apple",
-    "author": "j4p4n",
-    "category": [
-      "Art",
-      "Religion",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/woman-man-and-the-apple.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/woman-man-and-the-apple.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/woman-man-and-the-apple.png",
-    "tags": [
-      "apple",
-      "bible",
-      "christian",
-      "fruit",
-      "human",
-      "man",
-      "transparent",
-      "woman"
-    ],
-    "authorUrl": "https://openclipart.org/artist/j4p4n",
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "mask",
-    "title": "Mask",
-    "author": "Ulrike",
-    "category": [
-      "Minimalist",
-      "Art",
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/mask.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/mask.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/mask.png",
-    "tags": [
-      "bird",
-      "carnival",
-      "custume",
-      "mask",
-      "owl",
-      "party",
-      "transparent"
-    ],
-    "authorUrl": "https://openclipart.org/artist/Ulrike",
-    "wilson": 0,
-    "downloads": 1,
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "hide-the-pain-harold",
-    "title": "Hide the pain Harold",
-    "author": "rones",
-    "category": [
-      "Minimalist",
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/hide-the-pain-harold.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/hide-the-pain-harold.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/hide-the-pain-harold.png",
-    "tags": [
-      "beard",
-      "face",
-      "man",
-      "meme",
-      "pain",
-      "portrait",
-      "transparent"
-    ],
-    "authorUrl": "https://openclipart.org/artist/rones",
-    "wilson": 0,
-    "downloads": 1,
-    "dateAdded": "2026-09-15"
-  },
-  {
     "id": "mr-bean",
     "title": "Mr. Bean",
     "author": "rones",
@@ -15132,36 +14279,6 @@
     "authorUrl": "https://openclipart.org/artist/rones",
     "wilson": 0,
     "downloads": 3,
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "ballet-dancer",
-    "title": "Ballet Dancer",
-    "author": "oksmith",
-    "category": [
-      "Minimalist",
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ballet-dancer.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/ballet-dancer.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ballet-dancer.png",
-    "tags": [
-      "ballet",
-      "dance",
-      "female",
-      "girl",
-      "transparent",
-      "woman"
-    ],
-    "authorUrl": "https://openclipart.org/artist/oksmith",
-    "wilson": 0,
-    "downloads": 1,
     "dateAdded": "2026-09-15"
   },
   {
@@ -15244,39 +14361,6 @@
     "authorUrl": "https://openclipart.org/artist/Almeidah",
     "wilson": 0,
     "downloads": 8,
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "sadhu",
-    "title": "Sadhu",
-    "author": "GDJ",
-    "category": [
-      "Minimalist",
-      "Anime",
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/sadhu.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/sadhu.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/sadhu.png",
-    "tags": [
-      "anime",
-      "avatar",
-      "cartoon",
-      "comic",
-      "face",
-      "indian",
-      "male",
-      "man",
-      "sadhu",
-      "transparent"
-    ],
-    "authorUrl": "https://openclipart.org/artist/GDJ",
     "dateAdded": "2026-09-15"
   },
   {
@@ -15364,117 +14448,6 @@
     "dateAdded": "2026-09-15"
   },
   {
-    "id": "taj-mahal-isolated",
-    "title": "Taj Mahal - Isolated",
-    "author": "j4p4n",
-    "category": [
-      "Architecture",
-      "Religion",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/taj-mahal-isolated.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/taj-mahal-isolated.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/taj-mahal-isolated.png",
-    "tags": [
-      "building",
-      "heritage",
-      "india",
-      "landmark",
-      "location",
-      "transparent"
-    ],
-    "authorUrl": "https://openclipart.org/artist/j4p4n",
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "burglar",
-    "title": "Burglar",
-    "author": "j4p4n",
-    "category": [
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/burglar.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/burglar.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/burglar.png",
-    "tags": [
-      "bag",
-      "burglar",
-      "crime",
-      "crook",
-      "mask",
-      "robber",
-      "steal",
-      "transparent"
-    ],
-    "authorUrl": "https://openclipart.org/artist/j4p4n",
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "swimsuit",
-    "title": "Swimsuit",
-    "author": "j4p4n",
-    "category": [
-      "Minimalist",
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/swimsuit.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/swimsuit.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/swimsuit.png",
-    "tags": [
-      "beach",
-      "female",
-      "summer",
-      "swiming",
-      "swimsuit",
-      "transparent"
-    ],
-    "authorUrl": "https://openclipart.org/artist/j4p4n",
-    "wilson": 0,
-    "downloads": 2,
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "woman-in-sari",
-    "title": "Woman in Sari",
-    "author": "j4p4n",
-    "category": "Transparent",
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/woman-in-sari.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/woman-in-sari.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/woman-in-sari.png",
-    "tags": [
-      "indian",
-      "lady",
-      "sari",
-      "traditional",
-      "transparent",
-      "woman"
-    ],
-    "authorUrl": "https://openclipart.org/artist/j4p4n",
-    "dateAdded": "2026-09-15"
-  },
-  {
     "id": "indian-woman-dream",
     "title": "Indian Woman Dream",
     "author": "j4p4n",
@@ -15558,39 +14531,6 @@
     "authorUrl": "https://openclipart.org/artist/j4p4n",
     "wilson": 0,
     "downloads": 5,
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "glamorous-dancing-lady",
-    "title": "Glamorous Dancing Lady",
-    "author": "Merlin2525",
-    "category": [
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/glamorous-dancing-lady.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/glamorous-dancing-lady.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/glamorous-dancing-lady.png",
-    "tags": [
-      "celebration",
-      "dance",
-      "female",
-      "girl",
-      "lady",
-      "party",
-      "transparent",
-      "woman",
-      "young",
-      "youth"
-    ],
-    "authorUrl": "https://openclipart.org/artist/Merlin2525",
-    "wilson": 0,
-    "downloads": 1,
     "dateAdded": "2026-09-15"
   },
   {
@@ -15690,155 +14630,6 @@
     "dateAdded": "2026-09-15"
   },
   {
-    "id": "bride",
-    "title": "Bride",
-    "author": "dear_theophilus",
-    "category": [
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bride.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bride.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bride.png",
-    "tags": [
-      "beauty",
-      "bride",
-      "dress",
-      "flower",
-      "roses",
-      "transparent",
-      "woman"
-    ],
-    "authorUrl": "https://openclipart.org/artist/dear_theophilus",
-    "wilson": 0,
-    "downloads": 2,
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "bride-cartoon",
-    "title": "Bride cartoon",
-    "author": "oksmith",
-    "category": [
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/bride-cartoon.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bride-cartoon.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/bride-cartoon.png",
-    "tags": [
-      "beauty",
-      "bride",
-      "dress",
-      "flower",
-      "roses",
-      "transparent",
-      "woman"
-    ],
-    "authorUrl": "https://openclipart.org/artist/oksmith",
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "wedding-bride",
-    "title": "Wedding Bride",
-    "author": "j4p4n",
-    "category": [
-      "Anime",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wedding-bride.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wedding-bride.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wedding-bride.png",
-    "tags": [
-      "anime",
-      "beauty",
-      "bride",
-      "cartoon",
-      "dress",
-      "flower",
-      "roses",
-      "transparent",
-      "woman"
-    ],
-    "authorUrl": "https://openclipart.org/artist/j4p4n",
-    "wilson": 0,
-    "downloads": 1,
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "wedding-couple",
-    "title": "Wedding Couple",
-    "author": "oksmith",
-    "category": [
-      "Anime",
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/wedding-couple.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wedding-couple.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/wedding-couple.png",
-    "tags": [
-      "anime",
-      "bride",
-      "ceremony",
-      "comic",
-      "couple",
-      "groom",
-      "husband",
-      "marriage",
-      "transparent",
-      "wedding",
-      "wife"
-    ],
-    "authorUrl": "https://openclipart.org/artist/oksmith",
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "lace-pattern",
-    "title": "Lace",
-    "author": "hrum",
-    "category": [
-      "Minimalist",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/lace-pattern.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/lace-pattern.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/lace-pattern.png",
-    "tags": [
-      "lace",
-      "purple",
-      "transparent"
-    ],
-    "authorUrl": "https://openclipart.org/artist/hrum",
-    "wilson": 0,
-    "downloads": 1,
-    "dateAdded": "2026-09-15"
-  },
-  {
     "id": "under-the-wave-off-kanagawa-psychedelic",
     "title": "Under the Wave off Kanagawa - Psychedelic",
     "author": "j4p4n",
@@ -15934,69 +14725,6 @@
     "authorUrl": "https://openclipart.org/artist/GDJ",
     "wilson": 0,
     "downloads": 5,
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "small-fairy-home",
-    "title": "Small Fairy Home",
-    "author": "j4p4n",
-    "category": [
-      "Fantasy",
-      "Anime",
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/small-fairy-home.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/small-fairy-home.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/small-fairy-home.png",
-    "tags": [
-      "art",
-      "cartoon",
-      "fairy",
-      "fantasy",
-      "home",
-      "hut",
-      "mushroom",
-      "sun",
-      "transparent"
-    ],
-    "authorUrl": "https://openclipart.org/artist/j4p4n",
-    "dateAdded": "2026-09-15"
-  },
-  {
-    "id": "girl-with-sunglasses-blowing-a-kiss",
-    "title": "Girl with Sunglasses blowing a Kiss",
-    "author": "GDJ",
-    "category": [
-      "Art",
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/girl-with-sunglasses-blowing-a-kiss.png",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/girl-with-sunglasses-blowing-a-kiss.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/girl-with-sunglasses-blowing-a-kiss.png",
-    "tags": [
-      "girl",
-      "glass",
-      "hearts",
-      "kiss",
-      "lady",
-      "love",
-      "transparent"
-    ],
-    "authorUrl": "https://openclipart.org/artist/GDJ",
-    "wilson": 0,
-    "downloads": 1,
     "dateAdded": "2026-09-15"
   },
   {
@@ -16936,8 +15664,8 @@
     "dateAdded": "2026-09-25"
   },
   {
-    "id": "car-portal",
-    "title": "Car Portal",
+    "id": "cat-portal",
+    "title": "Cat Portal",
     "author": "haydenweal",
     "category": [
       "Art",
@@ -16949,21 +15677,24 @@
       "Boox",
       "PocketBook"
     ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/car-portal.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/car-portal.png",
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/cat-portal.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/cat-portal.png",
     "license": "Community Share",
     "attribution": "haydenweal",
     "tags": [
       "art",
-      "car",
+      "cat",
       "portal",
       "transparent"
     ],
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/car-portal.png",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/cat-portal.png",
     "wilson": 0,
     "downloads": 2,
-    "dateAdded": "2026-09-25"
+    "dateAdded": "2026-09-25",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 170
   },
   {
     "id": "cats-looking-down",
@@ -17499,7 +16230,10 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/raven.png",
     "wilson": 0,
     "downloads": 5,
-    "dateAdded": "2026-09-25"
+    "dateAdded": "2026-09-25",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 200
   },
   {
     "id": "read-book",
@@ -17849,7 +16583,10 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/woman-scream.png",
     "wilson": 0,
     "downloads": 7,
-    "dateAdded": "2026-09-25"
+    "dateAdded": "2026-09-25",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 230
   },
   {
     "id": "screensaver-10",
@@ -18157,7 +16894,10 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
     "downloads": 4,
-    "dateAdded": "2026-09-27"
+    "dateAdded": "2026-09-27",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 250
   },
   {
     "id": "screensaver-17",
@@ -18209,32 +16949,6 @@
       "art"
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-2.png",
-    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
-    "dateAdded": "2026-09-27"
-  },
-  {
-    "id": "screensaver-23",
-    "title": "Intervention",
-    "author": "ambitiouscat_7",
-    "category": [
-      "Art",
-      "Pop Culture",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/screensaver-23.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/screensaver-23.png",
-    "license": "Community Share",
-    "attribution": "ambitiouscat_7",
-    "tags": [
-      "art"
-    ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-23.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "dateAdded": "2026-09-27"
   },
@@ -18439,7 +17153,10 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-41.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
-    "dateAdded": "2026-09-27"
+    "dateAdded": "2026-09-27",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 190
   },
   {
     "id": "screensaver-42",
@@ -18674,7 +17391,10 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
     "downloads": 3,
-    "dateAdded": "2026-09-27"
+    "dateAdded": "2026-09-27",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 210
   },
   {
     "id": "screensaver-56",
@@ -18899,7 +17619,10 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
     "downloads": 4,
-    "dateAdded": "2026-09-27"
+    "dateAdded": "2026-09-27",
+    "featured": true,
+    "featuredUntil": "2026-10-31",
+    "featuredPriority": 160
   },
   {
     "id": "screensaver-71",
@@ -19013,33 +17736,6 @@
     "dateAdded": "2026-09-27"
   },
   {
-    "id": "screensaver-86",
-    "title": "Troy",
-    "author": "ambitiouscat_7",
-    "category": [
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/screensaver-86.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/screensaver-86.png",
-    "license": "Community Share",
-    "attribution": "ambitiouscat_7",
-    "tags": [
-      "art",
-      "helen",
-      "trojan"
-    ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-86.png",
-    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
-    "dateAdded": "2026-09-27"
-  },
-  {
     "id": "screensaver-87",
     "title": "Cat Creation",
     "author": "ambitiouscat_7",
@@ -19091,33 +17787,6 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
     "downloads": 1,
-    "dateAdded": "2026-09-27"
-  },
-  {
-    "id": "screensaver-9",
-    "title": "Stacks of books",
-    "author": "ambitiouscat_7",
-    "category": [
-      "Art",
-      "Transparent"
-    ],
-    "compatibility": [
-      "Kindle",
-      "Kobo",
-      "Boox",
-      "PocketBook"
-    ],
-    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/screensaver-9.png",
-    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/screensaver-9.png",
-    "license": "Community Share",
-    "attribution": "ambitiouscat_7",
-    "tags": [
-      "art"
-    ],
-    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-9.png",
-    "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
-    "wilson": 0,
-    "downloads": 2,
     "dateAdded": "2026-09-27"
   },
   {
@@ -19331,5 +18000,295 @@
     "wilson": 0,
     "downloads": 1,
     "dateAdded": "2026-09-29"
+  },
+  {
+    "id": "sbr-gyjo",
+    "title": "SBR gyjo",
+    "author": "kova",
+    "category": [
+      "Minimalist",
+      "Anime"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/sbr-gyjo.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/sbr-gyjo.jpg",
+    "tags": [
+      "anime",
+      "gyjo",
+      "minimalist",
+      "sbr"
+    ],
+    "dateAdded": "2026-10-12"
+  },
+  {
+    "id": "scarface-1983",
+    "title": "Scarface 1983",
+    "author": "4kvikii",
+    "category": "Minimalist",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/scarface-1983.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/scarface-1983.jpg",
+    "tags": [
+      "1983",
+      "minimalist",
+      "scarface"
+    ],
+    "dateAdded": "2026-10-14"
+  },
+  {
+    "id": "black-and-white-cheetah",
+    "title": "Black and White Cheetah",
+    "author": "4kv",
+    "category": [
+      "Minimalist",
+      "Nature"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/black-and-white-cheetah.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/black-and-white-cheetah.jpg",
+    "tags": [
+      "black",
+      "cheetah",
+      "minimalist",
+      "nature",
+      "white"
+    ],
+    "dateAdded": "2026-10-14"
+  },
+  {
+    "id": "white-black-swan",
+    "title": "White & Black Swan",
+    "author": "4kv",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Abstract"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/white-black-swan.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/white-black-swan.jpg",
+    "tags": [
+      "abstract",
+      "black",
+      "minimalist",
+      "nature",
+      "swan",
+      "white"
+    ],
+    "dateAdded": "2026-10-14"
+  },
+  {
+    "id": "monaco-grand-prix",
+    "title": "Monaco Grand Prix",
+    "author": "4kv",
+    "category": [
+      "Minimalist",
+      "Abstract"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/monaco-grand-prix.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/monaco-grand-prix.jpg",
+    "tags": [
+      "abstract",
+      "grand",
+      "minimalist",
+      "monaco",
+      "prix"
+    ],
+    "dateAdded": "2026-10-14"
+  },
+  {
+    "id": "vintage-car",
+    "title": "Vintage Car",
+    "author": "4kv",
+    "category": [
+      "Minimalist",
+      "Abstract",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/vintage-car.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/vintage-car.jpg",
+    "tags": [
+      "abstract",
+      "art",
+      "car",
+      "minimalist",
+      "vintage"
+    ],
+    "dateAdded": "2026-10-14"
+  },
+  {
+    "id": "portuguese-boat",
+    "title": "Portuguese Boat",
+    "author": "4kv",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/portuguese-boat.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/portuguese-boat.jpg",
+    "tags": [
+      "art",
+      "boat",
+      "minimalist",
+      "nature",
+      "portuguese"
+    ],
+    "dateAdded": "2026-10-14"
+  },
+  {
+    "id": "fruit-yogurt-bowl",
+    "title": "Fruit Yogurt Bowl",
+    "author": "4kv",
+    "category": [
+      "Minimalist",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/fruit-yogurt-bowl.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/fruit-yogurt-bowl.jpg",
+    "tags": [
+      "art",
+      "bowl",
+      "fruit",
+      "minimalist",
+      "yogurt"
+    ],
+    "dateAdded": "2026-10-14"
+  },
+  {
+    "id": "carlos-alcaraz",
+    "title": "Carlos Alcaraz",
+    "author": "4kv",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/carlos-alcaraz.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/carlos-alcaraz.jpg",
+    "tags": [
+      "alcaraz",
+      "art",
+      "carlos",
+      "minimalist",
+      "nature"
+    ],
+    "dateAdded": "2026-10-14"
+  },
+  {
+    "id": "red-pomegranates",
+    "title": "Red Pomegranates",
+    "author": "4kv",
+    "category": [
+      "Minimalist",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/red-pomegranates.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/red-pomegranates.jpg",
+    "tags": [
+      "art",
+      "minimalist",
+      "pomegranates",
+      "red"
+    ],
+    "dateAdded": "2026-10-14"
+  },
+  {
+    "id": "carlos-alcaraz-2",
+    "title": "Carlos Alcaraz",
+    "author": "4kv",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Abstract",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/carlos-alcaraz-2.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/carlos-alcaraz-2.jpg",
+    "tags": [
+      "abstract",
+      "alcaraz",
+      "art",
+      "carlos",
+      "minimalist",
+      "nature"
+    ],
+    "dateAdded": "2026-10-14"
+  },
+  {
+    "id": "real-madrid",
+    "title": "Real Madrid",
+    "author": "4kv",
+    "category": [
+      "Minimalist",
+      "Abstract",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/real-madrid.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/real-madrid.jpg",
+    "tags": [
+      "abstract",
+      "art",
+      "madrid",
+      "minimalist",
+      "real"
+    ],
+    "dateAdded": "2026-10-14"
   }
 ]
