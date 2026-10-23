@@ -319,6 +319,11 @@ def main():
 
     if args.native or args.all:
         process_native_screensavers(force=args.force, limit=args.limit)
+        try:
+            from build_collection_covers import build_all_collection_covers
+            build_all_collection_covers(force=args.force)
+        except Exception as e:
+            print(f"Warning: Failed to build collection covers: {e}")
 
     if args.readerbackdrop or args.all:
         process_readerbackdrop(workers=args.workers, limit=args.limit, force=args.force)

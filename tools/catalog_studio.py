@@ -35,13 +35,18 @@ IMAGES_DIR = os.path.join(REPO_ROOT, 'images')
 THUMBS_DIR = os.path.join(IMAGES_DIR, 'thumbnails')
 PLUGIN_THUMBS_DIR = os.path.join(THUMBS_DIR, 'plugin')
 SCREENSAVERS_JSON = os.path.join(REPO_ROOT, 'screensavers.json')
+COLLECTIONS_JSON = os.path.join(REPO_ROOT, 'collections.json')
 CREDITS_MD = os.path.join(REPO_ROOT, 'CREDITS.md')
+COLLECTIONS_IMAGES_DIR = os.path.join(IMAGES_DIR, 'collections')
+COLLECTIONS_THUMBS_DIR = os.path.join(COLLECTIONS_IMAGES_DIR, 'thumbnails')
 
 os.makedirs(STUDIO_DIR, exist_ok=True)
 os.makedirs(BACKUPS_DIR, exist_ok=True)
 os.makedirs(IMAGES_DIR, exist_ok=True)
 os.makedirs(THUMBS_DIR, exist_ok=True)
 os.makedirs(PLUGIN_THUMBS_DIR, exist_ok=True)
+os.makedirs(COLLECTIONS_IMAGES_DIR, exist_ok=True)
+os.makedirs(COLLECTIONS_THUMBS_DIR, exist_ok=True)
 
 GITHUB_RAW_BASE = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
 RATINGS_API_URL = "https://storefront-vote.ultimatejimmy.workers.dev/ratings"
@@ -136,7 +141,7 @@ def composite_over_checkerboard(img_rgba, target_w=600, target_h=800):
     return bg.convert('RGB')
 
 def create_backup():
-    """Create a timestamped backup of screensavers.json."""
+    """Create a timestamped backup of screensavers.json and collections.json."""
     if not os.path.exists(SCREENSAVERS_JSON):
         return None
     timestamp = time.strftime("%Y%m%d_%H%M%S")
@@ -151,6 +156,19 @@ def create_backup():
                 os.remove(oldest)
             except Exception:
                 pass
+
+        # Also backup collections.json if present
+        if os.path.exists(COLLECTIONS_JSON):
+            col_backup_path = os.path.join(BACKUPS_DIR, f"collections_{timestamp}.json")
+            shutil.copy2(COLLECTIONS_JSON, col_backup_path)
+            col_backups = sorted([f for f in os.listdir(BACKUPS_DIR) if f.startswith("collections_") and f.endswith(".json")])
+            while len(col_backups) > 30:
+                oldest_col = os.path.join(BACKUPS_DIR, col_backups.pop(0))
+                try:
+                    os.remove(oldest_col)
+                except Exception:
+                    pass
+
         return os.path.basename(backup_path)
     except Exception as e:
         print(f"Error creating backup: {e}")
@@ -186,6 +204,70 @@ def save_catalog(catalog_data):
     create_backup()
     with open(SCREENSAVERS_JSON, 'w', encoding='utf-8') as f:
         json.dump(catalog_data, f, indent=2, ensure_ascii=False)
+
+def load_collections():
+    """Load collections from collections.json."""
+    if not os.path.exists(COLLECTIONS_JSON):
+        return []
+    try:
+        with open(COLLECTIONS_JSON, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            return data if isinstance(data, list) else []
+    except Exception as e:
+        print(f"Error loading collections: {e}")
+        return []
+
+def save_collections(collections_data):
+    """Save collections to collections.json with timestamped backup."""
+    create_backup()
+    with open(COLLECTIONS_JSON, 'w', encoding='utf-8', newline='\n') as f:
+        json.dump(collections_data, f, indent=2, ensure_ascii=False)
+        f.write('\n')
+
+def sync_collection_cover(col, force=False):
+    """Regenerate collection cover if applicable and update coverHash."""
+    try:
+        from build_collection_covers import generate_cover_for_collection
+        if col.get('coverMode') == 'upload':
+            return False
+        did_build, new_hash = generate_cover_for_collection(col, force=force)
+        if did_build and new_hash:
+            col['coverHash'] = new_hash
+            return True
+        elif new_hash and not col.get('coverHash'):
+            col['coverHash'] = new_hash
+    except Exception as e:
+        print(f"Error syncing collection cover for {col.get('id')}: {e}")
+    return False
+
+def remove_items_from_collections(target_ids):
+    """Remove target item IDs from all collections."""
+    target_set = set(target_ids) if isinstance(target_ids, (list, set)) else {target_ids}
+    collections = load_collections()
+    modified = False
+    for col in collections:
+        items = col.get('items') or []
+        new_items = [i for i in items if i not in target_set]
+        if len(new_items) != len(items):
+            col['items'] = new_items
+            modified = True
+    if modified:
+        save_collections(collections)
+
+def rename_item_in_collections(old_id, new_id):
+    """Update item ID references across all collections."""
+    collections = load_collections()
+    modified = False
+    for col in collections:
+        items = col.get('items') or []
+        if old_id in items:
+            col['items'] = [new_id if i == old_id else i for i in items]
+            modified = True
+        if col.get('coverItemId') == old_id:
+            col['coverItemId'] = new_id
+            modified = True
+    if modified:
+        save_collections(collections)
 
 def rebuild_credits_file(catalog):
     """Regenerate CREDITS.md from catalog data."""
@@ -808,6 +890,36 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
             self.send_json(ratings)
             return
 
+        # API: Collections
+        if path == '/api/collections':
+            collections = load_collections()
+            self.send_json({"success": True, "collections": collections})
+            return
+
+        # API: Get AI prompt for a collection
+        if path.startswith('/api/collections/') and path.endswith('/ai-prompt'):
+            col_id = urllib.parse.unquote(path[len('/api/collections/'):-len('/ai-prompt')])
+            collections = load_collections()
+            col = next((c for c in collections if c.get('id') == col_id), None)
+            if not col:
+                self.send_error(404, f"Collection '{col_id}' not found")
+                return
+            catalog = load_catalog()
+            catalog_map = {x['id']: x for x in catalog if x.get('id')}
+            try:
+                from build_collection_covers import build_ai_prompt_for_collection
+                prompt = build_ai_prompt_for_collection(col, catalog_map)
+                self.send_json({"success": True, "prompt": prompt})
+            except Exception as e:
+                self.send_json({"success": False, "error": str(e)}, status=500)
+            return
+
+        # API: Check Gemini AI configuration for cover generation
+        if path == '/api/collections/ai-status':
+            has_gemini = bool(os.environ.get("GEMINI_API_KEY", "").strip())
+            self.send_json({"success": True, "configured": has_gemini})
+            return
+
         # API: Preview local image file (used by folder scan preview)
         if path == '/api/catalog/preview-local-image':
             query_params = urllib.parse.parse_qs(parsed.query)
@@ -1162,6 +1274,7 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                                         pass
                 catalog = [x for x in catalog if x.get('id') not in target_ids]
                 save_catalog(catalog)
+                remove_items_from_collections(target_ids)
                 rebuild_credits_file(catalog)
                 try:
                     from generate_catalogs import generate_catalogs
@@ -1280,6 +1393,51 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                             x['featured'] = False
                             x.pop('featuredUntil', None)
                             x.pop('featuredPriority', None)
+            elif action == 'add_to_collection':
+                col_id = payload.get('collectionId')
+                collections = load_collections()
+                col = next((c for c in collections if c.get('id') == col_id), None)
+                if not col:
+                    self.send_error(404, f"Collection '{col_id}' not found")
+                    return
+                cur_items = list(col.get('items') or [])
+                for tid in payload.get('ids', []):
+                    tid_clean = str(tid).strip()
+                    if tid_clean and tid_clean not in cur_items:
+                        cur_items.append(tid_clean)
+                if len(cur_items) > 50:
+                    self.send_json({"success": False, "error": f"Cannot add items: collection would exceed the hard cap of 50 items (current: {len(col.get('items') or [])}, after adding: {len(cur_items)})."}, status=400)
+                    return
+                col['items'] = cur_items
+                col['updatedAt'] = datetime.now().strftime("%Y-%m-%d")
+                sync_collection_cover(col, force=False)
+                save_collections(collections)
+                try:
+                    from generate_catalogs import generate_catalogs
+                    generate_catalogs(fetch_remote=False)
+                except Exception:
+                    pass
+                self.send_json({"success": True, "collection": col, "added": len(target_ids)})
+                return
+            elif action == 'remove_from_collection':
+                col_id = payload.get('collectionId')
+                collections = load_collections()
+                col = next((c for c in collections if c.get('id') == col_id), None)
+                if not col:
+                    self.send_error(404, f"Collection '{col_id}' not found")
+                    return
+                rem_set = set(payload.get('ids', []))
+                col['items'] = [i for i in (col.get('items') or []) if i not in rem_set]
+                col['updatedAt'] = datetime.now().strftime("%Y-%m-%d")
+                sync_collection_cover(col, force=False)
+                save_collections(collections)
+                try:
+                    from generate_catalogs import generate_catalogs
+                    generate_catalogs(fetch_remote=False)
+                except Exception:
+                    pass
+                self.send_json({"success": True, "collection": col, "removed": len(target_ids)})
+                return
 
             save_catalog(catalog)
             try:
@@ -1323,6 +1481,198 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                 pass
             self.send_json({"success": True, "item": target_item})
             return
+
+        # API: Create new collection
+        if path == '/api/collections':
+            title = (payload.get('title') or '').strip()
+            if not title:
+                self.send_json({"success": False, "error": "Title is required"}, status=400)
+                return
+
+            collections = load_collections()
+            existing_ids = {c.get('id') for c in collections if c.get('id')}
+            raw_id = (payload.get('id') or '').strip()
+            col_id = raw_id if raw_id else generate_unique_id(title, existing_ids)
+            if raw_id and raw_id in existing_ids:
+                self.send_json({"success": False, "error": f"Collection with id '{raw_id}' already exists"}, status=400)
+                return
+
+            items = payload.get('items') or []
+            if not isinstance(items, list):
+                items = []
+            if len(items) > 50:
+                self.send_json({"success": False, "error": "Collection cannot have more than 50 items (hard cap)."}, status=400)
+                return
+
+            today_str = datetime.now().strftime("%Y-%m-%d")
+            new_col = {
+                "id": col_id,
+                "title": title,
+                "description": (payload.get('description') or '').strip(),
+                "curator": (payload.get('curator') or 'Maintainer').strip(),
+                "status": payload.get('status') if payload.get('status') in ['published', 'draft'] else 'draft',
+                "items": items,
+                "coverMode": payload.get('coverMode') or 'auto',
+                "coverItemId": payload.get('coverItemId'),
+                "coverLayout": payload.get('coverLayout') or 'fan',
+                "coverHash": "",
+                "dateAdded": today_str,
+                "updatedAt": today_str,
+                "priority": int(payload.get('priority') or 0),
+                "pinned": bool(payload.get('pinned')),
+                "from": payload.get('from') or None,
+                "until": payload.get('until') or None
+            }
+            sync_collection_cover(new_col, force=True)
+            collections.append(new_col)
+            save_collections(collections)
+            try:
+                from generate_catalogs import generate_catalogs
+                generate_catalogs(fetch_remote=False)
+            except Exception:
+                pass
+            self.send_json({"success": True, "collection": new_col})
+            return
+
+        # API: Manage items inside a collection (add, remove, reorder)
+        if path.startswith('/api/collections/') and path.endswith('/items'):
+            col_id = urllib.parse.unquote(path[len('/api/collections/'):-len('/items')])
+            collections = load_collections()
+            col = next((c for c in collections if c.get('id') == col_id), None)
+            if not col:
+                self.send_error(404, f"Collection '{col_id}' not found")
+                return
+
+            action = payload.get('action')
+            if action == 'add':
+                new_ids = payload.get('items') or payload.get('ids') or []
+                cur_items = list(col.get('items') or [])
+                for nid in new_ids:
+                    nid_str = str(nid).strip()
+                    if nid_str and nid_str not in cur_items:
+                        cur_items.append(nid_str)
+                if len(cur_items) > 50:
+                    self.send_json({"success": False, "error": f"Cannot add items: collection would exceed the hard cap of 50 items (current: {len(col.get('items') or [])}, after adding: {len(cur_items)})."}, status=400)
+                    return
+                col['items'] = cur_items
+                col['updatedAt'] = datetime.now().strftime("%Y-%m-%d")
+            elif action == 'remove':
+                rem_ids = set(payload.get('items') or payload.get('ids') or [])
+                col['items'] = [i for i in (col.get('items') or []) if i not in rem_ids]
+                col['updatedAt'] = datetime.now().strftime("%Y-%m-%d")
+            elif action == 'reorder':
+                ordered_ids = payload.get('orderedIds') or []
+                cur_set = set(col.get('items') or [])
+                valid_ordered = [i for i in ordered_ids if i in cur_set]
+                for i in (col.get('items') or []):
+                    if i not in valid_ordered:
+                        valid_ordered.append(i)
+                if len(valid_ordered) > 50:
+                    valid_ordered = valid_ordered[:50]
+                col['items'] = valid_ordered
+                col['updatedAt'] = datetime.now().strftime("%Y-%m-%d")
+            else:
+                self.send_json({"success": False, "error": f"Unknown action '{action}'"}, status=400)
+                return
+
+            sync_collection_cover(col, force=False)
+            save_collections(collections)
+            try:
+                from generate_catalogs import generate_catalogs
+                generate_catalogs(fetch_remote=False)
+            except Exception:
+                pass
+            self.send_json({"success": True, "collection": col})
+            return
+
+        # API: Reorder collections themselves
+        if path == '/api/collections/reorder':
+            ordered_ids = payload.get('orderedIds') or []
+            collections = load_collections()
+            total = len(ordered_ids)
+            col_map = {c.get('id'): c for c in collections}
+            for idx, cid in enumerate(ordered_ids):
+                if cid in col_map:
+                    col_map[cid]['priority'] = (total - idx) * 10
+                    col_map[cid]['updatedAt'] = datetime.now().strftime("%Y-%m-%d")
+            save_collections(collections)
+            try:
+                from generate_catalogs import generate_catalogs
+                generate_catalogs(fetch_remote=False)
+            except Exception:
+                pass
+            self.send_json({"success": True, "collections": collections})
+            return
+
+        # API: Collection Cover Generation & Upload
+        if path.startswith('/api/collections/') and path.endswith('/cover'):
+            col_id = urllib.parse.unquote(path[len('/api/collections/'):-len('/cover')])
+            collections = load_collections()
+            col = next((c for c in collections if c.get('id') == col_id), None)
+            if not col:
+                self.send_error(404, f"Collection '{col_id}' not found")
+                return
+
+            mode = payload.get('mode') or 'auto'
+            layout = payload.get('layout') or col.get('coverLayout', 'fan')
+            cover_item_id = payload.get('coverItemId') or col.get('coverItemId')
+            image_b64 = payload.get('imageBase64')
+
+            col['coverMode'] = mode
+            col['coverLayout'] = layout
+            if cover_item_id:
+                col['coverItemId'] = cover_item_id
+
+            try:
+                from build_collection_covers import (
+                    generate_cover_for_collection,
+                    generate_ai_cover,
+                    COL_IMAGES_DIR,
+                    COL_THUMBS_DIR,
+                    TARGET_W,
+                    TARGET_H,
+                    THUMB_W,
+                    THUMB_H
+                )
+                if mode == 'upload' and image_b64:
+                    if ',' in image_b64:
+                        image_b64 = image_b64.split(',', 1)[1]
+                    raw_bytes = base64.b64decode(image_b64)
+                    from PIL import Image, ImageOps
+                    img = Image.open(BytesIO(raw_bytes)).convert('RGB')
+                    full = ImageOps.fit(img, (TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
+                    out_full = os.path.join(COL_IMAGES_DIR, f"{col_id}.jpg")
+                    out_thumb = os.path.join(COL_THUMBS_DIR, f"{col_id}.jpg")
+                    full.save(out_full, "JPEG", quality=85, optimize=True)
+                    thumb = full.resize((THUMB_W, THUMB_H), Image.Resampling.LANCZOS)
+                    thumb.save(out_thumb, "JPEG", quality=82, optimize=True)
+                    col['coverHash'] = f"upload_{int(time.time())}"
+                    col['updatedAt'] = datetime.now().strftime("%Y-%m-%d")
+                    save_collections(collections)
+                    self.send_json({"success": True, "mode": mode, "collection": col})
+                    return
+                elif mode == 'ai':
+                    catalog = load_catalog()
+                    catalog_map = {x['id']: x for x in catalog if x.get('id')}
+                    ok, res, prompt = generate_ai_cover(col, catalog_map=catalog_map)
+                    if ok:
+                        col['coverHash'] = res
+                        col['updatedAt'] = datetime.now().strftime("%Y-%m-%d")
+                        save_collections(collections)
+                        self.send_json({"success": True, "mode": mode, "collection": col, "prompt": prompt})
+                    else:
+                        self.send_json({"success": False, "error": res, "prompt": prompt}, status=400)
+                    return
+                else:
+                    did_build, new_hash = generate_cover_for_collection(col, force=True)
+                    col['coverHash'] = new_hash
+                    col['updatedAt'] = datetime.now().strftime("%Y-%m-%d")
+                    save_collections(collections)
+                    self.send_json({"success": True, "mode": mode, "collection": col})
+                    return
+            except Exception as e:
+                self.send_json({"success": False, "error": f"Failed to build cover: {e}"}, status=500)
+                return
 
         self.send_error(404, "Endpoint not found")
 
@@ -1382,6 +1732,9 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                         except Exception:
                             pass
 
+                # Update collections referencing renamed item
+                rename_item_in_collections(item_id, new_id)
+
                 # Update URL pointers
                 if 'thumbnailUrl' in existing and item_id in existing['thumbnailUrl']:
                     updates['thumbnailUrl'] = existing['thumbnailUrl'].replace(f"/{item_id}.", f"/{new_id}.")
@@ -1411,6 +1764,47 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
             except Exception:
                 pass
             self.send_json({"success": True, "item": existing})
+            return
+
+        # API: Update collection /api/collections/<id>
+        if path.startswith('/api/collections/'):
+            col_id = urllib.parse.unquote(path[len('/api/collections/'):])
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            try:
+                updates = json.loads(body.decode('utf-8'))
+            except Exception:
+                self.send_error(400, "Invalid JSON")
+                return
+
+            collections = load_collections()
+            col = next((c for c in collections if c.get('id') == col_id), None)
+            if not col:
+                self.send_error(404, f"Collection '{col_id}' not found")
+                return
+
+            for key in ['title', 'description', 'curator', 'status', 'coverMode', 'coverItemId', 'coverLayout', 'from', 'until']:
+                if key in updates:
+                    col[key] = updates[key]
+            if 'pinned' in updates:
+                col['pinned'] = bool(updates['pinned'])
+            if 'priority' in updates:
+                col['priority'] = int(updates['priority'] or 0)
+            if 'items' in updates and isinstance(updates['items'], list):
+                if len(updates['items']) > 50:
+                    self.send_json({"success": False, "error": "Collection cannot have more than 50 items (hard cap)."}, status=400)
+                    return
+                col['items'] = updates['items']
+
+            col['updatedAt'] = datetime.now().strftime("%Y-%m-%d")
+            sync_collection_cover(col, force=True)
+            save_collections(collections)
+            try:
+                from generate_catalogs import generate_catalogs
+                generate_catalogs(fetch_remote=False)
+            except Exception:
+                pass
+            self.send_json({"success": True, "collection": col})
             return
 
         self.send_error(404, "Endpoint not found")
@@ -1445,7 +1839,45 @@ class CatalogStudioHandler(SimpleHTTPRequestHandler):
                                 pass
 
             save_catalog(catalog)
+            remove_items_from_collections(item_id)
+            rebuild_credits_file(catalog)
+            try:
+                from generate_catalogs import generate_catalogs
+                generate_catalogs(fetch_remote=False)
+            except Exception:
+                pass
             self.send_json({"success": True, "deletedId": item_id, "remaining": len(catalog)})
+            return
+
+        # API: Delete collection /api/collections/<id>?deleteFiles=1
+        if path.startswith('/api/collections/'):
+            col_id = urllib.parse.unquote(path[len('/api/collections/'):])
+            collections = load_collections()
+            before_len = len(collections)
+            collections = [c for c in collections if c.get('id') != col_id]
+
+            if len(collections) == before_len:
+                self.send_error(404, f"Collection '{col_id}' not found")
+                return
+
+            query_params = urllib.parse.parse_qs(parsed.query)
+            delete_files = query_params.get('deleteFiles', ['0'])[0] in ['1', 'true', 'yes']
+            if delete_files:
+                for p in [os.path.join(COLLECTIONS_IMAGES_DIR, f"{col_id}.jpg"),
+                          os.path.join(COLLECTIONS_THUMBS_DIR, f"{col_id}.jpg")]:
+                    if os.path.exists(p):
+                        try:
+                            os.remove(p)
+                        except Exception:
+                            pass
+
+            save_collections(collections)
+            try:
+                from generate_catalogs import generate_catalogs
+                generate_catalogs(fetch_remote=False)
+            except Exception:
+                pass
+            self.send_json({"success": True, "deletedId": col_id, "remaining": len(collections)})
             return
 
         self.send_error(404, "Endpoint not found")

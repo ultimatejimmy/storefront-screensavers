@@ -24,7 +24,7 @@ class TestCatalogStudio(unittest.TestCase):
         cs.create_backup = self.orig_create_backup
         try:
             from generate_catalogs import generate_catalogs
-            generate_catalogs()
+            generate_catalogs(fetch_remote=False)
         except Exception:
             pass
 
@@ -419,6 +419,117 @@ class TestCatalogStudio(unittest.TestCase):
             self.assertGreater(reloaded_map[item1]['featuredPriority'], reloaded_map[item2]['featuredPriority'])
         finally:
             cs.save_catalog(orig_catalog)
+
+    def test_collections_crud_and_integrity(self):
+        orig_cols = cs.load_collections()
+        try:
+            # 1. Test save & load
+            test_col = {
+                "id": "test-cats",
+                "title": "Test Cats",
+                "description": "Lovely cats",
+                "curator": "Tester",
+                "status": "published",
+                "items": ["foggy-forest-pines"],
+                "coverMode": "auto",
+                "coverLayout": "fan",
+                "coverHash": "",
+                "dateAdded": "2026-10-20",
+                "updatedAt": "2026-10-20",
+                "priority": 50,
+                "pinned": False,
+                "from": None,
+                "until": None
+            }
+            cs.save_collections([test_col])
+            loaded = cs.load_collections()
+            self.assertEqual(len(loaded), 1)
+            self.assertEqual(loaded[0]["id"], "test-cats")
+
+            # 2. Test remove_items_from_collections
+            cs.remove_items_from_collections(["foggy-forest-pines"])
+            loaded2 = cs.load_collections()
+            self.assertEqual(len(loaded2[0]["items"]), 0)
+
+            # 3. Test rename_item_in_collections
+            loaded2[0]["items"] = ["old-id-item"]
+            loaded2[0]["coverItemId"] = "old-id-item"
+            cs.save_collections(loaded2)
+            cs.rename_item_in_collections("old-id-item", "new-id-item")
+            loaded3 = cs.load_collections()
+            self.assertEqual(loaded3[0]["items"], ["new-id-item"])
+            self.assertEqual(loaded3[0]["coverItemId"], "new-id-item")
+        finally:
+            cs.save_collections(orig_cols)
+
+    def test_collections_catalog_generation(self):
+        orig_cols = cs.load_collections()
+        try:
+            from generate_catalogs import generate_catalogs, COLLECTIONS_LITE_JSON
+            cat = cs.load_catalog()
+            valid_ids = [cat[0]["id"], cat[1]["id"], cat[2]["id"]]
+
+            # Col 1: Published with >= 3 items -> should be in feed
+            col1 = {
+                "id": "valid-col",
+                "title": "Valid Collection",
+                "description": "Good",
+                "curator": "Tester",
+                "status": "published",
+                "items": valid_ids,
+                "coverLayout": "fan",
+                "pinned": True,
+                "priority": 10
+            }
+            # Col 2: Draft -> should NOT be in feed
+            col2 = {
+                "id": "draft-col",
+                "title": "Draft Collection",
+                "status": "draft",
+                "items": valid_ids
+            }
+            # Col 3: Fewer than 3 items -> should NOT be in feed
+            col3 = {
+                "id": "small-col",
+                "title": "Small Collection",
+                "status": "published",
+                "items": [valid_ids[0]]
+            }
+            # Col 4: Expired until date -> should NOT be in feed
+            col4 = {
+                "id": "expired-col",
+                "title": "Expired Collection",
+                "status": "published",
+                "items": valid_ids,
+                "until": "2020-01-01"
+            }
+            # Col 5: Future start date -> should NOT be in feed
+            col5 = {
+                "id": "future-col",
+                "title": "Future Collection",
+                "status": "published",
+                "items": valid_ids,
+                "from": "2099-01-01"
+            }
+
+            cs.save_collections([col1, col2, col3, col4, col5])
+            generate_catalogs(fetch_remote=False)
+
+            self.assertTrue(os.path.exists(COLLECTIONS_LITE_JSON))
+            with open(COLLECTIONS_LITE_JSON, "r", encoding="utf-8") as f:
+                feed = json.load(f)
+
+            self.assertEqual(feed["v"], 1)
+            feed_cols = feed["collections"]
+            # Only col1 should have made it into the feed
+            self.assertEqual(len(feed_cols), 1)
+            self.assertEqual(feed_cols[0]["id"], "valid-col")
+            self.assertEqual(feed_cols[0]["n"], 3)
+            self.assertTrue(feed_cols[0]["pinned"])
+        finally:
+            cs.save_collections(orig_cols)
+            from generate_catalogs import generate_catalogs
+            generate_catalogs(fetch_remote=False)
 
 if __name__ == '__main__':
     unittest.main()

@@ -160,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFilters();
       }
       fetchLiveRatings();
+      fetchCollections();
     })
     .catch(err => console.error("Failed loading catalog", err));
 
@@ -481,22 +482,42 @@ document.addEventListener('DOMContentLoaded', () => {
       return matchCat && matchSearch;
     });
 
+    let colItemOrder = null;
+    if (activeCollectionId) {
+      const col = collectionsData.find(c => c.id === activeCollectionId);
+      const colItems = col ? (col.items || col.ids) : null;
+      if (col && Array.isArray(colItems)) {
+        colItemOrder = {};
+        colItems.forEach((id, idx) => { colItemOrder[id] = idx; });
+        filtered = filtered.filter(item => colItemOrder[item.id] !== undefined);
+      }
+    }
+
     if (sortBy === 'featured') {
-      filtered.sort((a, b) => {
-        const aFeat = (a.featured === 1 || a.featured === true) ? 1 : 0;
-        const bFeat = (b.featured === 1 || b.featured === true) ? 1 : 0;
-        if (aFeat !== bFeat) return bFeat - aFeat;
-        if (aFeat && bFeat) {
-          const pDiff = (b.featuredPriority || 0) - (a.featuredPriority || 0);
-          if (pDiff !== 0) return pDiff;
-          if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
-        }
-        const diff = getItemDownloads(b) - getItemDownloads(a);
-        if (diff !== 0) return diff;
-        const likeDiff = getItemLikes(b) - getItemLikes(a);
-        if (likeDiff !== 0) return likeDiff;
-        return (a.title || '').localeCompare(b.title || '');
-      });
+      if (colItemOrder) {
+        filtered.sort((a, b) => {
+          const oa = colItemOrder[a.id] !== undefined ? colItemOrder[a.id] : 999;
+          const ob = colItemOrder[b.id] !== undefined ? colItemOrder[b.id] : 999;
+          if (oa !== ob) return oa - ob;
+          return (a._originalIndex || 0) - (b._originalIndex || 0);
+        });
+      } else {
+        filtered.sort((a, b) => {
+          const aFeat = (a.featured === 1 || a.featured === true) ? 1 : 0;
+          const bFeat = (b.featured === 1 || b.featured === true) ? 1 : 0;
+          if (aFeat !== bFeat) return bFeat - aFeat;
+          if (aFeat && bFeat) {
+            const pDiff = (b.featuredPriority || 0) - (a.featuredPriority || 0);
+            if (pDiff !== 0) return pDiff;
+            if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
+          }
+          const diff = getItemDownloads(b) - getItemDownloads(a);
+          if (diff !== 0) return diff;
+          const likeDiff = getItemLikes(b) - getItemLikes(a);
+          if (likeDiff !== 0) return likeDiff;
+          return (a.title || '').localeCompare(b.title || '');
+        });
+      }
     } else if (sortBy === 'newest') {
       filtered.sort((a, b) => {
         if (a.dateAdded && b.dateAdded) return new Date(b.dateAdded) - new Date(a.dateAdded);
@@ -542,6 +563,162 @@ document.addEventListener('DOMContentLoaded', () => {
     renderGallery(filtered);
   }
 
+  // ---- Curated Collections Shelf ----
+  let collectionsData = [];
+  let activeCollectionId = null;
+
+  const collectionsShelf = document.getElementById('collections-shelf');
+  const collectionsShelfTrack = document.getElementById('collections-shelf-track');
+  const activeCollectionBanner = document.getElementById('active-collection-banner');
+  const activeCollectionTitle = document.getElementById('active-collection-title');
+  const activeCollectionDesc = document.getElementById('active-collection-desc');
+  const btnClearCollection = document.getElementById('btn-clear-collection');
+  const shelfPrevBtn = document.getElementById('shelf-prev-btn');
+  const shelfNextBtn = document.getElementById('shelf-next-btn');
+
+  if (shelfPrevBtn && collectionsShelfTrack) {
+    shelfPrevBtn.addEventListener('click', () => {
+      collectionsShelfTrack.scrollBy({ left: -340, behavior: 'smooth' });
+    });
+  }
+  if (shelfNextBtn && collectionsShelfTrack) {
+    shelfNextBtn.addEventListener('click', () => {
+      collectionsShelfTrack.scrollBy({ left: 340, behavior: 'smooth' });
+    });
+  }
+
+  if (btnClearCollection) {
+    btnClearCollection.addEventListener('click', () => {
+      selectCollection(null);
+    });
+  }
+
+  function fetchCollections() {
+    fetch(`collections.lite.json?t=${Date.now()}`)
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .catch(() => {
+        return fetch(`collections.json?t=${Date.now()}`).then(r => r.json());
+      })
+      .then(cols => {
+        let list = Array.isArray(cols) ? cols : (cols && cols.collections ? cols.collections : []);
+        collectionsData = list.map(c => ({
+          ...c,
+          items: c.items || c.ids || [],
+          description: c.description || c.desc || ''
+        }));
+        renderCollectionsShelf();
+
+        const params = new URLSearchParams(window.location.search);
+        const colParam = params.get('collection');
+        if (colParam) {
+          selectCollection(colParam, false);
+        }
+      })
+      .catch(err => {
+        console.warn('Could not load collections:', err);
+      });
+  }
+
+  function renderCollectionsShelf() {
+    if (!collectionsShelf || !collectionsShelfTrack) return;
+    if (!collectionsData || collectionsData.length === 0) {
+      collectionsShelf.style.display = 'none';
+      return;
+    }
+
+    collectionsShelf.style.display = '';
+    collectionsShelfTrack.innerHTML = '';
+
+    collectionsData.forEach(col => {
+      const card = document.createElement('div');
+      card.className = `collection-shelf-card${activeCollectionId === col.id ? ' active' : ''}`;
+      card.setAttribute('data-id', col.id);
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+
+      const count = Array.isArray(col.items) ? col.items.length : 0;
+      const countLabel = count === 1 ? '1 item' : `${count} items`;
+      const curatorLabel = col.curator ? `@${col.curator.replace(/^@/, '')}` : '';
+
+      const coverUrl = `images/collections/${encodeURIComponent(col.id)}.jpg${col.coverHash ? `?t=${encodeURIComponent(col.coverHash)}` : ''}`;
+      const thumbFallback = `images/collections/thumbnails/${encodeURIComponent(col.id)}.jpg`;
+
+      card.innerHTML = `
+        <img class="collection-shelf-thumb" src="${coverUrl}" alt="${col.title || 'Collection'}" loading="lazy" onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='${thumbFallback}';}else{this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'180\\' height=\\'240\\' fill=\\'%23161c2d\\'%3E%3Ctext x=\\'50%25\\' y=\\'50%25\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' fill=\\'%239ca3af\\' font-size=\\'12\\'%3ENo Cover%3C/text%3E%3C/svg%3E';}">
+        <div class="collection-shelf-meta">
+          <div class="collection-shelf-card-title" title="${col.title || ''}">${col.title || 'Untitled'}</div>
+          <div class="collection-shelf-card-sub">
+            <span>${countLabel}</span>
+            <span>${curatorLabel}</span>
+          </div>
+        </div>
+      `;
+
+      card.addEventListener('click', () => {
+        if (activeCollectionId === col.id) {
+          selectCollection(null);
+        } else {
+          selectCollection(col.id);
+        }
+      });
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
+
+      collectionsShelfTrack.appendChild(card);
+    });
+  }
+
+  function selectCollection(colId, updateUrl = true) {
+    activeCollectionId = colId;
+
+    const cards = document.querySelectorAll('.collection-shelf-card');
+    cards.forEach(c => {
+      if (c.getAttribute('data-id') === colId) {
+        c.classList.add('active');
+        c.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } else {
+        c.classList.remove('active');
+      }
+    });
+
+    const col = collectionsData.find(c => c.id === colId);
+    if (col && activeCollectionBanner && activeCollectionTitle && activeCollectionDesc) {
+      activeCollectionTitle.textContent = col.title || 'Collection';
+      activeCollectionDesc.textContent = col.description || (col.curator ? `Curated by ${col.curator}` : 'Curated set of wallpapers');
+      activeCollectionBanner.style.display = 'flex';
+      activeCollectionBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else if (activeCollectionBanner) {
+      activeCollectionBanner.style.display = 'none';
+    }
+
+    if (updateUrl) {
+      const url = new URL(window.location.href);
+      if (colId) {
+        url.searchParams.set('collection', colId);
+      } else {
+        url.searchParams.delete('collection');
+      }
+      window.history.replaceState({}, '', url.toString());
+    }
+
+    applyFilters();
+  }
+
+  window.addEventListener('popstate', () => {
+    const params = new URLSearchParams(window.location.search);
+    const colParam = params.get('collection');
+    if (colParam !== activeCollectionId) {
+      selectCollection(colParam, false);
+    }
+  });
+
   // Gallery Multi-Select Filter Buttons
   const tagBtns = document.querySelectorAll('.category-tags .tag-btn');
   const allTagBtn = document.querySelector('.category-tags .tag-btn[data-category="all"]');
@@ -553,6 +730,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (cat === 'all') {
         tagBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        if (activeCollectionId) {
+          selectCollection(null);
+          return;
+        }
       } else {
         if (allTagBtn) allTagBtn.classList.remove('active');
         btn.classList.toggle('active');

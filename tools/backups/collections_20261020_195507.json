@@ -1,0 +1,19 @@
+[
+  {
+    "id": "e-ink-essentials",
+    "title": "E-Ink Essentials",
+    "status": "published",
+    "description": "Hand-picked high-contrast wallpapers optimized for crisp readability and zero ghosting.",
+    "curator": "Jimmy",
+    "pinned": true,
+    "layout": "fan",
+    "cover_source": "composite",
+    "items": [
+      "foggy-forest-pines",
+      "minimalist-ocean-waves",
+      "cosmic-nebula-monochrome",
+      "cozy-window-cat"
+    ],
+    "coverHash": "b438df0d5272"
+  }
+]

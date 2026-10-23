@@ -95,6 +95,40 @@ with open(CREDITS_MD, 'r', encoding='utf-8') as f:
 credits_lines = [l for l in credits_content.splitlines() if l.startswith('| ') and not l.startswith('| Title') and not l.startswith('|---')]
 print(f"Total entries in CREDITS.md: {len(credits_lines)}")
 
+# Verify collections.json if present
+COLLECTIONS_JSON = os.path.join(REPO_ROOT, 'collections.json')
+total_collections = 0
+collection_errors = []
+if os.path.exists(COLLECTIONS_JSON):
+    with open(COLLECTIONS_JSON, 'r', encoding='utf-8') as f_col:
+        cols = json.load(f_col)
+    if isinstance(cols, list):
+        total_collections = len(cols)
+        seen_col_ids = set()
+        catalog_ids = {x.get('id') for x in catalog if x.get('id')}
+        for col in cols:
+            cid = col.get('id')
+            if not cid:
+                collection_errors.append("Collection missing ID")
+            elif cid in seen_col_ids:
+                collection_errors.append(f"Duplicate collection ID: {cid}")
+            else:
+                seen_col_ids.add(cid)
+
+            if not col.get('title'):
+                collection_errors.append(f"Collection {cid} missing title")
+
+            items = col.get('items') or []
+            if len(items) > 50:
+                collection_errors.append(f"Collection {cid} exceeds hard cap of 50 items ({len(items)})")
+
+            for item_id in items:
+                if item_id not in catalog_ids:
+                    collection_errors.append(f"Collection {cid} references non-existent item: {item_id}")
+
+print(f"Total collections: {total_collections} (errors: {len(collection_errors)})")
+errors.extend(collection_errors)
+
 if len(errors) == 0 and len(credits_lines) == len(catalog):
     print("\n[SUCCESS] Catalog integrity 100% verified!")
 else:

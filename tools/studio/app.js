@@ -10,6 +10,14 @@
     catalog: [],
     categories: [],
     backups: [],
+    collections: [],
+    currentView: 'screensavers', // 'screensavers' | 'collections'
+    activeCollectionId: null,
+    reorderMode: 'featured', // 'featured' | 'collection' | 'collections'
+    activeSortCollectionId: null,
+    reorderViewLayout: 'list', // 'list' | 'grid'
+    editingCollection: null,
+    editingCollectionItems: [],
     selectedIds: new Set(),
     activeCategory: 'all',
     searchQuery: '',
@@ -48,6 +56,76 @@
     thSortDate: document.getElementById('th-sort-date'),
     emptyState: document.getElementById('empty-state'),
     emptyResetBtn: document.getElementById('empty-reset-btn'),
+
+    // Header Nav Mode & Collections Controls
+    navMode: document.getElementById('studio-nav-mode'),
+    navCollectionsCount: document.getElementById('nav-collections-count'),
+    btnReorderCollections: document.getElementById('btn-reorder-collections'),
+    btnAddCollection: document.getElementById('btn-add-collection'),
+    collectionsContainer: document.getElementById('collections-container'),
+    collectionsGrid: document.getElementById('collections-grid'),
+    collectionsTotalCount: document.getElementById('collections-total-count'),
+    collectionsSearch: document.getElementById('collections-search'),
+    collectionsStatusFilter: document.getElementById('collections-status-filter'),
+    collectionsEmptyState: document.getElementById('collections-empty-state'),
+    btnColReorderToolbar: document.getElementById('btn-col-reorder-toolbar'),
+    btnColAddToolbar: document.getElementById('btn-col-add-toolbar'),
+    collectionsEmptyCreateBtn: document.getElementById('collections-empty-create-btn'),
+
+    // Collection Modal Elements
+    colModal: document.getElementById('collection-edit-modal'),
+    colModalCloseBtn: document.getElementById('col-modal-close-btn'),
+    colModalCancelBtn: document.getElementById('col-modal-cancel-btn'),
+    colModalSaveBtn: document.getElementById('col-modal-save-btn'),
+    colModalTitle: document.getElementById('col-modal-title'),
+    colModalSubtitle: document.getElementById('col-modal-subtitle'),
+    colInputTitle: document.getElementById('col-input-title'),
+    colInputId: document.getElementById('col-input-id'),
+    colInputDesc: document.getElementById('col-input-desc'),
+    colInputCurator: document.getElementById('col-input-curator'),
+    colInputStatus: document.getElementById('col-input-status'),
+    colInputPinned: document.getElementById('col-input-pinned'),
+    colInputFrom: document.getElementById('col-input-from'),
+    colInputUntil: document.getElementById('col-input-until'),
+    colInputPriority: document.getElementById('col-input-priority'),
+    colCoverPreviewImg: document.getElementById('col-cover-preview-img'),
+    colCoverPreviewPlaceholder: document.getElementById('col-cover-preview-placeholder'),
+    colCoverModeSelect: document.getElementById('col-cover-mode-select'),
+    colCoverLayoutSelect: document.getElementById('col-cover-layout-select'),
+    colCoverLayoutGroup: document.getElementById('col-cover-layout-group'),
+    colBtnRegenCover: document.getElementById('col-btn-regen-cover'),
+    colBtnUploadCoverTrigger: document.getElementById('col-btn-upload-cover-trigger'),
+    colCoverFileInput: document.getElementById('col-cover-file-input'),
+    colBtnAiGenerateCover: document.getElementById('col-btn-ai-generate-cover'),
+    colBtnCopyAiPrompt: document.getElementById('col-btn-copy-ai-prompt'),
+    colCoverStatusBadge: document.getElementById('col-cover-status-badge'),
+    colCoverHint: document.getElementById('col-cover-hint'),
+    colMembersCapBadge: document.getElementById('col-members-cap-badge'),
+    colSearchAddInput: document.getElementById('col-search-add-input'),
+    colSearchAddResults: document.getElementById('col-search-add-results'),
+    colMembersList: document.getElementById('col-members-list'),
+    colModalOpenSortBtn: document.getElementById('col-modal-open-sort-btn'),
+    colModalStatus: document.getElementById('col-modal-status'),
+
+    // Batch Bar Collections Controls
+    batchCollectionSelect: document.getElementById('batch-collection-select'),
+    batchAddCollectionBtn: document.getElementById('batch-add-collection-btn'),
+    batchRemoveCollectionBtn: document.getElementById('batch-remove-collection-btn'),
+
+    // Item Inspector Collections Section
+    editColCountText: document.getElementById('edit-col-count-text'),
+    editCollectionsPills: document.getElementById('edit-collections-pills'),
+
+    // Generalized Sort Modal Controls
+    reorderModalTitle: document.getElementById('reorder-modal-title'),
+    reorderModalSubtitle: document.getElementById('reorder-modal-subtitle'),
+    reorderCountLabel: document.getElementById('reorder-count-label'),
+    reorderToggleListBtn: document.getElementById('reorder-toggle-list-btn'),
+    reorderToggleGridBtn: document.getElementById('reorder-toggle-grid-btn'),
+    reorderSortAzBtn: document.getElementById('reorder-sort-az-btn'),
+    reorderSortAuthorBtn: document.getElementById('reorder-sort-author-btn'),
+    reorderSortReverseBtn: document.getElementById('reorder-sort-reverse-btn'),
+    reorderSortShuffleBtn: document.getElementById('reorder-sort-shuffle-btn'),
 
     // Stats
     statTotal: document.getElementById('stat-total'),
@@ -372,11 +450,182 @@
       renderCategoryPills(el.addCategoryPills, ['Nature']);
       renderCatalog();
 
+      // Load collections data and populate collections UI
+      await loadCollectionsData();
+
       // Ensure fresh live ratings from Cloudflare worker
       fetchLiveRatingsDirect();
     } catch (err) {
       showToast('Error loading catalog: ' + err.message, 'error');
     }
+  }
+
+  // Collections Data & View Management
+  async function loadCollectionsData() {
+    try {
+      const res = await fetch('/api/collections');
+      if (!res.ok) return;
+      const data = await res.json();
+      state.collections = data.collections || [];
+      updateCollectionsUI();
+    } catch (e) {
+      console.warn('Error loading collections:', e);
+    }
+  }
+
+  function updateCollectionsUI() {
+    if (el.navCollectionsCount) el.navCollectionsCount.textContent = state.collections.length;
+    if (el.collectionsTotalCount) el.collectionsTotalCount.textContent = state.collections.length;
+
+    // Populate batch collection dropdown
+    if (el.batchCollectionSelect) {
+      const curVal = el.batchCollectionSelect.value;
+      el.batchCollectionSelect.innerHTML = '<option value="">Add to Collection...</option>' +
+        '<option value="__new__">⊕ New Collection...</option>' +
+        state.collections.map(c => `<option value="${escapeHtml(c.id)}">${escapeHtml(c.title)} (${(c.items || []).length}/50)</option>`).join('');
+      if (curVal) el.batchCollectionSelect.value = curVal;
+    }
+
+    if (state.currentView === 'collections') {
+      renderCollectionsGrid();
+    }
+
+    if (state.activeItem) {
+      renderInspectorCollectionsPills();
+    }
+  }
+
+  function switchStudioView(view) {
+    state.currentView = view;
+
+    // Toggle header nav segment buttons
+    if (el.navMode) {
+      el.navMode.querySelectorAll('.nav-segment-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-view') === view);
+      });
+    }
+
+    const isCollections = view === 'collections';
+
+    // Show/hide main containers
+    if (el.collectionsContainer) el.collectionsContainer.classList.toggle('hidden', !isCollections);
+    if (el.catalogGrid) el.catalogGrid.classList.toggle('hidden', isCollections || state.viewMode !== 'grid');
+    if (el.catalogTableWrapper) el.catalogTableWrapper.classList.toggle('hidden', isCollections || state.viewMode !== 'table');
+    if (el.emptyState && isCollections) el.emptyState.classList.add('hidden');
+
+    // Show/hide relevant header & toolbar buttons
+    if (el.btnReorderCollections) el.btnReorderCollections.classList.toggle('hidden', !isCollections);
+    if (el.btnBulkAdd) el.btnBulkAdd.classList.toggle('hidden', isCollections);
+    if (el.btnAddItem) el.btnAddItem.classList.toggle('hidden', isCollections);
+    if (el.btnAddCollection) {
+      if (isCollections) {
+        el.btnAddCollection.className = 'btn btn-primary';
+        el.btnAddCollection.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>New Collection</span>`;
+      } else {
+        el.btnAddCollection.className = 'btn btn-secondary';
+        el.btnAddCollection.innerHTML = `<span>📚 + New Collection</span>`;
+      }
+    }
+
+    const toolbar = document.querySelector('.toolbar');
+    if (toolbar) {
+      toolbar.style.display = isCollections ? 'none' : 'flex';
+    }
+
+    if (isCollections) {
+      renderCollectionsGrid();
+    } else {
+      renderCatalog();
+    }
+  }
+
+  function getCollectionStatus(col) {
+    const today = new Date().toISOString().slice(0, 10);
+    if (col.status === 'draft') return { key: 'draft', label: 'Draft' };
+    if (col.from && today < col.from) return { key: 'scheduled', label: `Starts ${col.from}` };
+    if (col.until && today > col.until) return { key: 'expired', label: `Expired ${col.until}` };
+    return { key: 'published', label: 'Published' };
+  }
+
+  function renderCollectionsGrid() {
+    if (!el.collectionsGrid) return;
+    const q = (el.collectionsSearch ? el.collectionsSearch.value : '').toLowerCase().trim();
+    const statusFilter = el.collectionsStatusFilter ? el.collectionsStatusFilter.value : 'all';
+
+    let list = state.collections.slice();
+
+    if (q) {
+      list = list.filter(c =>
+        (c.title && c.title.toLowerCase().includes(q)) ||
+        (c.id && c.id.toLowerCase().includes(q)) ||
+        (c.description && c.description.toLowerCase().includes(q)) ||
+        (c.curator && c.curator.toLowerCase().includes(q))
+      );
+    }
+
+    if (statusFilter !== 'all') {
+      list = list.filter(c => c.status === statusFilter);
+    }
+
+    // Sort: Pinned first, then priority desc, then date
+    list.sort((a, b) => {
+      const pa = a.pinned ? 1 : 0;
+      const pb = b.pinned ? 1 : 0;
+      if (pa !== pb) return pb - pa;
+      const prioDiff = (b.priority || 0) - (a.priority || 0);
+      if (prioDiff !== 0) return prioDiff;
+      return (b.updatedAt || '').localeCompare(a.updatedAt || '');
+    });
+
+    if (list.length === 0) {
+      el.collectionsGrid.innerHTML = '';
+      if (el.collectionsEmptyState) el.collectionsEmptyState.classList.remove('hidden');
+      return;
+    }
+
+    if (el.collectionsEmptyState) el.collectionsEmptyState.classList.add('hidden');
+
+    const html = list.map(col => {
+      const itemCount = (col.items || []).length;
+      const status = getCollectionStatus(col);
+      const coverUrl = `/images/collections/${encodeURIComponent(col.id)}.jpg?t=${encodeURIComponent(col.coverHash || col.updatedAt || '1')}`;
+      const thumbFallback = `/images/collections/thumbnails/${encodeURIComponent(col.id)}.jpg`;
+      const layoutLabel = (col.coverLayout || 'fan').charAt(0).toUpperCase() + (col.coverLayout || 'fan').slice(1);
+      const isPinned = Boolean(col.pinned);
+      const dateWindow = (col.from || col.until) ? `📅 ${col.from || 'Start'} → ${col.until || 'End'}` : '';
+
+      return `
+        <div class="collection-card" data-id="${escapeHtml(col.id)}">
+          <div class="collection-cover-wrapper">
+            <img class="collection-cover-thumb" src="${escapeHtml(coverUrl)}" alt="${escapeHtml(col.title)}" loading="lazy" onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='${escapeHtml(thumbFallback)}';}else{this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'400\\'><rect fill=\\'%23161b22\\' width=\\'300\\' height=\\'400\\'/><text fill=\\'%236e7681\\' x=\\'50%\\' y=\\'50%\\' text-anchor=\\'middle\\' font-family=\\'sans-serif\\'>${escapeHtml(col.title)}</text></svg>';}">
+            <span class="collection-status-badge ${status.key}">${escapeHtml(status.label)}</span>
+            <span class="collection-count-badge" title="Hard cap: 50 wallpapers">${itemCount}/50</span>
+            ${isPinned ? '<span class="collection-pinned-pill">📌 Pinned</span>' : ''}
+          </div>
+          <div class="collection-card-body">
+            <div class="collection-card-header">
+              <h3 class="collection-card-title">${escapeHtml(col.title)}</h3>
+            </div>
+            <p class="collection-card-desc">${escapeHtml(col.description || 'No description provided.')}</p>
+            <div class="collection-card-meta">
+              <span>Curator: ${escapeHtml(col.curator || 'Maintainer')}</span>
+              <span>•</span>
+              <span>Layout: ${escapeHtml(layoutLabel)}</span>
+              ${col.priority ? `<span>• Prio: ${col.priority}</span>` : ''}
+              ${dateWindow ? `<span>• ${escapeHtml(dateWindow)}</span>` : ''}
+            </div>
+            <div class="collection-card-actions">
+              <button type="button" class="btn btn-secondary btn-small btn-col-sort" data-id="${escapeHtml(col.id)}" title="Reorder wallpapers inside collection">↕ Sort (${itemCount})</button>
+              <button type="button" class="btn btn-secondary btn-small btn-col-edit" data-id="${escapeHtml(col.id)}" title="Edit metadata & cover">✎ Edit</button>
+              <button type="button" class="btn btn-secondary btn-small btn-col-browse" data-id="${escapeHtml(col.id)}" title="View wallpapers in catalog">👁 View</button>
+              <button type="button" class="btn btn-danger btn-small btn-col-delete" data-id="${escapeHtml(col.id)}" title="Delete collection">🗑</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    el.collectionsGrid.innerHTML = html;
   }
 
   // Stats & Category chips
@@ -421,12 +670,20 @@
     const isFeaturedActive = state.activeCategory === 'featured' ? 'active' : '';
 
     const html = [
-      '<button class="chip ' + (state.activeCategory === 'all' ? 'active' : '') + '" data-category="all">All <span class="chip-count">' + state.catalog.length + '</span></button>',
-      `<button class="chip chip-featured ${isFeaturedActive}" data-category="featured">⭐ Featured <span class="chip-count">${featuredCount}</span></button>`
+      '<button class="chip ' + (state.activeCategory === 'all' && !state.activeCollectionId ? 'active' : '') + '" data-category="all">All <span class="chip-count">' + state.catalog.length + '</span></button>',
+      `<button class="chip chip-featured ${isFeaturedActive && !state.activeCollectionId ? 'active' : ''}" data-category="featured">⭐ Featured <span class="chip-count">${featuredCount}</span></button>`
     ];
+
+    if (state.activeCollectionId) {
+      const col = state.collections.find(c => c.id === state.activeCollectionId);
+      const title = col ? col.title : state.activeCollectionId;
+      const count = col ? (col.items || []).length : 0;
+      html.push(`<button class="chip active chip-collection-active" data-collection-filter="${escapeHtml(state.activeCollectionId)}" style="background: var(--accent-color, #0284c7); border-color: #38bdf8; color: #fff; font-weight: 600;" title="Filtered by collection. Click to clear.">📚 ${escapeHtml(title)} <span class="chip-count" style="background: rgba(255,255,255,0.25); color: #fff;">${count}</span> <span class="chip-clear-col" style="margin-left: 6px; font-weight: bold; opacity: 0.9;">✕</span></button>`);
+    }
+
     for (const cat of state.categories) {
       const count = catCounts[cat] || 0;
-      const isActive = state.activeCategory === cat ? 'active' : '';
+      const isActive = (state.activeCategory === cat && !state.activeCollectionId) ? 'active' : '';
       html.push(`<button class="chip ${isActive}" data-category="${escapeHtml(cat)}">${escapeHtml(cat)} <span class="chip-count">${count}</span></button>`);
     }
     el.categoryChips.innerHTML = html.join('');
@@ -511,14 +768,25 @@
       });
     }
 
-    // Category filter (item matches if it includes activeCategory or featured)
-    if (state.activeCategory === 'featured') {
-      list = list.filter(item => Boolean(item.featured));
-    } else if (state.activeCategory !== 'all') {
-      list = list.filter(item => {
-        const cats = getItemCategories(item);
-        return cats.includes(state.activeCategory);
-      });
+    // Collection filter
+    if (state.activeCollectionId) {
+      const col = state.collections.find(c => c.id === state.activeCollectionId);
+      const colItems = col ? (col.items || []) : [];
+      const colItemMap = new Map(colItems.map((id, idx) => [id, idx]));
+      list = list.filter(item => colItemMap.has(item.id));
+      if (state.sortBy === 'featured') {
+        list.sort((a, b) => colItemMap.get(a.id) - colItemMap.get(b.id));
+      }
+    } else {
+      // Category filter (item matches if it includes activeCategory or featured)
+      if (state.activeCategory === 'featured') {
+        list = list.filter(item => Boolean(item.featured));
+      } else if (state.activeCategory !== 'all') {
+        list = list.filter(item => {
+          const cats = getItemCategories(item);
+          return cats.includes(state.activeCategory);
+        });
+      }
     }
 
     // Status filter
@@ -871,6 +1139,9 @@
 
     // Reset preview mode
     setPreviewMode('device');
+
+    // Populate Collections membership pills
+    renderInspectorCollectionsPills();
 
     // Open drawer
     el.inspector.classList.add('open');
@@ -1717,22 +1988,96 @@
   let currentReorderItems = [];
   let unfeaturedInModal = new Set();
 
-  function openReorderFeaturedModal() {
-    currentReorderItems = getFeaturedItemsSorted().slice();
+  function openReorderModal(mode = 'featured', colId = null) {
+    state.reorderMode = mode;
+    state.activeSortCollectionId = colId;
     unfeaturedInModal.clear();
+
     if (el.reorderSearchInput) el.reorderSearchInput.value = '';
+
+    if (mode === 'featured') {
+      currentReorderItems = getFeaturedItemsSorted().slice();
+      if (el.reorderModalTitle) el.reorderModalTitle.innerHTML = '<span>⭐ Reorder Featured Screensavers</span>';
+      if (el.reorderModalSubtitle) el.reorderModalSubtitle.textContent = 'Drag and drop rows using the ⠿ handle to prioritize your spotlight order. Rank #1 appears first in KOReader.';
+      if (el.reorderCountLabel) el.reorderCountLabel.textContent = 'Featured Count';
+      if (el.reorderSaveBtn) el.reorderSaveBtn.textContent = '⭐ Save Spotlight Order';
+    } else if (mode === 'collection') {
+      const col = state.collections.find(c => c.id === colId);
+      if (!col) return;
+      const itemMap = new Map(state.catalog.map(x => [x.id, x]));
+      currentReorderItems = (col.items || []).map(id => itemMap.get(id)).filter(Boolean);
+      if (el.reorderModalTitle) el.reorderModalTitle.innerHTML = `<span>📚 Sort Collection: ${escapeHtml(col.title)}</span>`;
+      if (el.reorderModalSubtitle) el.reorderModalSubtitle.textContent = 'Drag wallpapers using ⠿ or use Quick Sort buttons to arrange the collection order. Hard cap 50 wallpapers.';
+      if (el.reorderCountLabel) el.reorderCountLabel.textContent = 'Wallpapers';
+      if (el.reorderSaveBtn) el.reorderSaveBtn.textContent = '💾 Save Collection Order';
+    } else if (mode === 'collections') {
+      currentReorderItems = state.collections.slice().sort((a, b) => {
+        const pa = a.pinned ? 1 : 0;
+        const pb = b.pinned ? 1 : 0;
+        if (pa !== pb) return pb - pa;
+        return (b.priority || 0) - (a.priority || 0);
+      });
+      if (el.reorderModalTitle) el.reorderModalTitle.innerHTML = '<span>↕ Reorder Collections Priority</span>';
+      if (el.reorderModalSubtitle) el.reorderModalSubtitle.textContent = 'Drag collections using ⠿ to prioritize their shelf order in KOReader and web gallery.';
+      if (el.reorderCountLabel) el.reorderCountLabel.textContent = 'Collections';
+      if (el.reorderSaveBtn) el.reorderSaveBtn.textContent = '💾 Save Collections Order';
+    }
+
     renderReorderList();
     if (el.reorderStatusIndicator) {
-      el.reorderStatusIndicator.textContent = 'Drag rows using ⠿ to swap spotlight positions';
+      el.reorderStatusIndicator.textContent = 'Drag items using ⠿ to swap positions, or click Quick Sort buttons';
       el.reorderStatusIndicator.style.color = 'var(--text-secondary)';
     }
     if (el.reorderModal) el.reorderModal.classList.remove('hidden');
+  }
+
+  function openReorderFeaturedModal() {
+    openReorderModal('featured');
   }
 
   function closeReorderFeaturedModal() {
     if (el.reorderModal) el.reorderModal.classList.add('hidden');
     currentReorderItems = [];
     unfeaturedInModal.clear();
+    state.activeSortCollectionId = null;
+  }
+
+  function sortReorderItems(criteria) {
+    if (!currentReorderItems || currentReorderItems.length <= 1) return;
+
+    if (criteria === 'newest') {
+      currentReorderItems.sort((a, b) => {
+        const da = String(a.dateAdded || a.updatedAt || '');
+        const db = String(b.dateAdded || b.updatedAt || '');
+        return db.localeCompare(da);
+      });
+    } else if (criteria === 'downloads') {
+      currentReorderItems.sort((a, b) => (Number(b.downloads) || 0) - (Number(a.downloads) || 0));
+    } else if (criteria === 'az') {
+      currentReorderItems.sort((a, b) => String(a.title || '').localeCompare(String(b.title || '')));
+    } else if (criteria === 'author') {
+      currentReorderItems.sort((a, b) => String(a.author || a.curator || '').localeCompare(String(b.author || b.curator || '')));
+    } else if (criteria === 'reverse') {
+      currentReorderItems.reverse();
+    } else if (criteria === 'shuffle') {
+      for (let i = currentReorderItems.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [currentReorderItems[i], currentReorderItems[j]] = [currentReorderItems[j], currentReorderItems[i]];
+      }
+    }
+
+    renderReorderList();
+    if (el.reorderStatusIndicator) {
+      el.reorderStatusIndicator.textContent = `✨ Sorted by ${criteria} (Click Save to apply)`;
+      el.reorderStatusIndicator.style.color = '#facc15';
+    }
+  }
+
+  function setReorderViewLayout(layout) {
+    state.reorderViewLayout = layout;
+    if (el.reorderToggleListBtn) el.reorderToggleListBtn.classList.toggle('active', layout === 'list');
+    if (el.reorderToggleGridBtn) el.reorderToggleGridBtn.classList.toggle('active', layout === 'grid');
+    renderReorderList();
   }
 
   function renderReorderList() {
@@ -1743,43 +2088,55 @@
       el.reorderCount.textContent = currentReorderItems.length;
     }
 
+    const isGrid = state.reorderViewLayout === 'grid';
+    el.reorderList.classList.toggle('is-grid-mode', isGrid);
+
     if (currentReorderItems.length === 0) {
       el.reorderList.innerHTML = `
-        <div style="text-align: center; padding: 40px 20px; color: var(--text-secondary);">
-          <div style="font-size: 2rem; margin-bottom: 8px;">⭐</div>
-          <h4>No featured screensavers</h4>
-          <p style="font-size: 0.85rem; opacity: 0.8;">Feature some wallpapers first to reorder them here.</p>
+        <div style="text-align: center; padding: 40px 20px; color: var(--text-secondary); width: 100%;">
+          <div style="font-size: 2rem; margin-bottom: 8px;">📂</div>
+          <h4>No items to reorder</h4>
+          <p style="font-size: 0.85rem; opacity: 0.8;">Add some items first to prioritize their order here.</p>
         </div>
       `;
       return;
     }
 
+    const isCollectionsMode = state.reorderMode === 'collections';
+
     const rowsHtml = currentReorderItems.map((item, idx) => {
       const isVisible = !filterQuery ||
         (item.title && item.title.toLowerCase().includes(filterQuery)) ||
         (item.author && item.author.toLowerCase().includes(filterQuery)) ||
+        (item.curator && item.curator.toLowerCase().includes(filterQuery)) ||
         (item.id && item.id.toLowerCase().includes(filterQuery));
 
       const rankClass = idx === 0 ? 'rank-1' : (idx === 1 ? 'rank-2' : (idx === 2 ? 'rank-3' : ''));
-      const thumbUrl = getLocalImageUrl(item.thumbnailUrl || item.fullUrl);
-      const expiry = item.featuredUntil ? `📅 Until ${escapeHtml(item.featuredUntil)}` : '⭐ Indefinite';
-      const dlCount = (item.downloads || 0).toLocaleString();
+      
+      const thumbUrl = isCollectionsMode
+        ? `/images/collections/thumbnails/${encodeURIComponent(item.id)}.jpg?t=${encodeURIComponent(item.updatedAt || '1')}`
+        : getLocalImageUrl(item.thumbnailUrl || item.fullUrl);
+
+      const metaSub = isCollectionsMode
+        ? `<span>${(item.items || []).length}/50 items</span> • <span>${escapeHtml(item.status || 'draft')}</span>`
+        : `<span>by ${escapeHtml(item.author || 'Unknown')}</span> • <span>⬇ ${(item.downloads || 0).toLocaleString()} dl</span>`;
+
+      const removeBtnTitle = state.reorderMode === 'featured' ? 'Remove from Featured' : 'Remove from Collection';
+      const showRemove = state.reorderMode !== 'collections';
 
       return `
-        <div class="reorder-item ${isVisible ? '' : 'hidden'}" draggable="true" data-id="${escapeHtml(item.id)}" data-index="${idx}">
-          <div class="reorder-handle" title="Drag to reorder">⠿</div>
-          <div class="reorder-rank ${rankClass}">#${idx + 1}</div>
-          <div class="reorder-thumb-wrap ${isTransparentItem(item) ? (state.overlayMode === 'book' ? 'is-transparent booktext-mode' : 'is-transparent') : ''}">
-            <img class="reorder-thumb" src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(item.title)}" loading="lazy">
+        <div class="reorder-item ${isGrid ? 'is-grid-card' : ''} ${isVisible ? '' : 'hidden'}" draggable="true" data-id="${escapeHtml(item.id)}" data-index="${idx}">
+          <div style="display: flex; align-items: center; gap: 8px; width: ${isGrid ? '100%' : 'auto'};">
+            <div class="reorder-handle" title="Drag to reorder">⠿</div>
+            <div class="reorder-rank ${rankClass}">#${idx + 1}</div>
+          </div>
+          <div class="reorder-thumb-wrap ${(!isCollectionsMode && isTransparentItem(item)) ? (state.overlayMode === 'book' ? 'is-transparent booktext-mode' : 'is-transparent') : ''}">
+            <img class="reorder-thumb" src="${escapeHtml(thumbUrl)}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'180\\' height=\\'240\\'><rect fill=\\'%23161b22\\' width=\\'180\\' height=\\'240\\'/><text fill=\\'%236e7681\\' x=\\'50%\\' y=\\'50%\\' text-anchor=\\'middle\\' font-family=\\'sans-serif\\'>Preview</text></svg>'">
           </div>
           <div class="reorder-info">
             <div class="reorder-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
             <div class="reorder-meta">
-              <span>by ${escapeHtml(item.author || 'Unknown')}</span>
-              <span>•</span>
-              <span class="reorder-duration-badge">${expiry}</span>
-              <span>•</span>
-              <span>⬇ ${dlCount} dl</span>
+              ${metaSub}
             </div>
           </div>
           <div class="reorder-controls">
@@ -1787,7 +2144,7 @@
             <button type="button" class="btn btn-secondary reorder-btn btn-reorder-up" data-id="${escapeHtml(item.id)}" title="Move Up (▲)" ${idx === 0 ? 'disabled' : ''}>▲</button>
             <button type="button" class="btn btn-secondary reorder-btn btn-reorder-down" data-id="${escapeHtml(item.id)}" title="Move Down (▼)" ${idx === currentReorderItems.length - 1 ? 'disabled' : ''}>▼</button>
             <button type="button" class="btn btn-secondary reorder-btn btn-reorder-bottom" data-id="${escapeHtml(item.id)}" title="Move to Bottom (⬇)">⬇</button>
-            <button type="button" class="btn btn-danger reorder-btn btn-reorder-remove" data-id="${escapeHtml(item.id)}" title="Remove from Featured">☆</button>
+            ${showRemove ? `<button type="button" class="btn btn-danger reorder-btn btn-reorder-remove" data-id="${escapeHtml(item.id)}" title="${removeBtnTitle}">☆</button>` : ''}
           </div>
         </div>
       `;
@@ -1797,8 +2154,6 @@
     initReorderSortable();
   }
 
-  // Re-slot a reordered subset of items back into the full ordered list.
-  // Items not in `visibleIds` (e.g. hidden by a search filter) keep their slots.
   function mergeVisibleOrder(fullItems, visibleIds) {
     const visibleSet = new Set(visibleIds);
     const byId = new Map(fullItems.map(x => [x.id, x]));
@@ -1808,7 +2163,11 @@
 
   let reorderSortable = null;
   function initReorderSortable() {
-    if (reorderSortable || typeof Sortable === 'undefined' || !el.reorderList) return;
+    if (reorderSortable) {
+      reorderSortable.destroy();
+      reorderSortable = null;
+    }
+    if (typeof Sortable === 'undefined' || !el.reorderList) return;
     reorderSortable = Sortable.create(el.reorderList, {
       animation: 150,
       handle: '.reorder-handle',
@@ -1851,38 +2210,66 @@
       chosenClass: 'sortable-chosen',
       dragClass: 'sortable-drag',
       scroll: true,
-      disabled: state.activeCategory !== 'featured',
+      disabled: state.activeCategory !== 'featured' && !state.activeCollectionId,
       onEnd: async (evt) => {
-        if (evt.oldIndex === evt.newIndex || state.activeCategory !== 'featured') return;
+        if (evt.oldIndex === evt.newIndex) return;
         const movedId = evt.item.getAttribute('data-id');
         const visibleIds = Array.from(el.catalogGrid.querySelectorAll('.catalog-card'))
           .map(c => c.getAttribute('data-id'));
-        const merged = mergeVisibleOrder(getFeaturedItemsSorted(), visibleIds);
-        const newPos = merged.findIndex(x => x.id === movedId);
-        const moved = merged[newPos];
 
-        try {
-          const res = await fetch('/api/catalog/batch', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              action: 'reorder_featured',
-              orderedIds: merged.map(x => x.id)
-            })
-          });
-          const data = await res.json();
-          if (!res.ok || !data.success) throw new Error(data.error || 'Failed to reorder');
-          showToast(`⭐ Moved "${moved ? moved.title : movedId}" to spotlight #${newPos + 1}!`, 'success');
-        } catch (err) {
-          showToast('Error reordering: ' + err.message, 'error');
+        if (state.activeCollectionId) {
+          const col = state.collections.find(c => c.id === state.activeCollectionId);
+          if (!col) return;
+          const curFull = (col.items || []).map(id => state.catalog.find(x => x.id === id)).filter(Boolean);
+          const merged = mergeVisibleOrder(curFull, visibleIds);
+          const newPos = merged.findIndex(x => x.id === movedId);
+          const moved = merged[newPos];
+
+          try {
+            const res = await fetch(`/api/collections/${encodeURIComponent(col.id)}/items`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                action: 'reorder',
+                orderedIds: merged.map(x => x.id)
+              })
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success) throw new Error(data.error || 'Failed to reorder');
+            showToast(`📚 Moved "${moved ? moved.title : movedId}" to #${newPos + 1} in collection!`, 'success');
+          } catch (err) {
+            showToast('Error reordering collection: ' + err.message, 'error');
+          }
+          await loadCollectionsData();
+          renderCatalog();
+        } else if (state.activeCategory === 'featured') {
+          const merged = mergeVisibleOrder(getFeaturedItemsSorted(), visibleIds);
+          const newPos = merged.findIndex(x => x.id === movedId);
+          const moved = merged[newPos];
+
+          try {
+            const res = await fetch('/api/catalog/batch', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                action: 'reorder_featured',
+                orderedIds: merged.map(x => x.id)
+              })
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success) throw new Error(data.error || 'Failed to reorder');
+            showToast(`⭐ Moved "${moved ? moved.title : movedId}" to spotlight #${newPos + 1}!`, 'success');
+          } catch (err) {
+            showToast('Error reordering: ' + err.message, 'error');
+          }
+          await loadCatalogData();
         }
-        await loadCatalogData();
       }
     });
   }
 
   function syncGridSortableState() {
-    if (gridSortable) gridSortable.option('disabled', state.activeCategory !== 'featured');
+    if (gridSortable) gridSortable.option('disabled', state.activeCategory !== 'featured' && !state.activeCollectionId);
   }
 
   async function saveFeaturedOrder() {
@@ -1893,32 +2280,507 @@
         el.reorderSaveBtn.textContent = 'Saving...';
       }
 
-      const orderedIds = currentReorderItems.map(x => x.id);
-      const unfeaturedIds = Array.from(unfeaturedInModal);
+      if (state.reorderMode === 'collection') {
+        const colId = state.activeSortCollectionId;
+        const orderedIds = currentReorderItems.map(x => x.id);
 
-      const res = await fetch('/api/catalog/batch', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'reorder_featured',
-          orderedIds: orderedIds,
-          unfeaturedIds: unfeaturedIds
-        })
-      });
+        const res = await fetch(`/api/collections/${encodeURIComponent(colId)}/items`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'reorder',
+            orderedIds: orderedIds
+          })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.error || 'Failed to save order');
 
-      const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to save order');
+        showToast(`📚 Saved order for ${orderedIds.length} wallpapers in collection!`, 'success');
+        closeReorderFeaturedModal();
+        await loadCollectionsData();
+        if (state.currentView === 'screensavers' && state.activeCollectionId === colId) {
+          renderCatalog();
+        }
+      } else if (state.reorderMode === 'collections') {
+        const orderedIds = currentReorderItems.map(x => x.id);
+        const res = await fetch('/api/collections/reorder', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            orderedIds: orderedIds
+          })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.error || 'Failed to save order');
 
-      showToast(`⭐ Saved spotlight order for ${orderedIds.length} featured screensavers!`, 'success');
-      closeReorderFeaturedModal();
-      await loadCatalogData();
+        showToast(`↕ Saved priority order for ${orderedIds.length} collections!`, 'success');
+        closeReorderFeaturedModal();
+        await loadCollectionsData();
+      } else {
+        // Featured spotlight mode
+        const orderedIds = currentReorderItems.map(x => x.id);
+        const unfeaturedIds = Array.from(unfeaturedInModal);
+
+        const res = await fetch('/api/catalog/batch', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'reorder_featured',
+            orderedIds: orderedIds,
+            unfeaturedIds: unfeaturedIds
+          })
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.error || 'Failed to save order');
+
+        showToast(`⭐ Saved spotlight order for ${orderedIds.length} featured screensavers!`, 'success');
+        closeReorderFeaturedModal();
+        await loadCatalogData();
+      }
     } catch (err) {
       showToast('Error saving order: ' + err.message, 'error');
     } finally {
       if (el.reorderSaveBtn) {
         el.reorderSaveBtn.disabled = false;
-        el.reorderSaveBtn.textContent = '⭐ Save Spotlight Order';
+        el.reorderSaveBtn.textContent = state.reorderMode === 'collection'
+          ? '💾 Save Collection Order'
+          : (state.reorderMode === 'collections' ? '💾 Save Collections Order' : '⭐ Save Spotlight Order');
       }
+    }
+  }
+
+  // ==========================================================================
+  // Collection Create / Edit Modal & Item Membership Logic
+  // ==========================================================================
+
+  function openCollectionEditModal(colId = null, initialItems = []) {
+    state.editingCollection = colId ? state.collections.find(c => c.id === colId) : null;
+    state.editingCollectionItems = state.editingCollection ? [...(state.editingCollection.items || [])] : [...(initialItems || [])];
+
+    if (el.colModalTitle) {
+      el.colModalTitle.innerHTML = state.editingCollection
+        ? `<span>📚 Edit Collection: ${escapeHtml(state.editingCollection.title)}</span>`
+        : `<span>📚 New Curated Collection</span>`;
+    }
+
+    if (el.colInputTitle) el.colInputTitle.value = state.editingCollection ? state.editingCollection.title : '';
+    if (el.colInputId) {
+      el.colInputId.value = state.editingCollection ? state.editingCollection.id : '';
+      el.colInputId.disabled = Boolean(state.editingCollection);
+    }
+    if (el.colInputDesc) el.colInputDesc.value = state.editingCollection ? (state.editingCollection.description || '') : '';
+    if (el.colInputCurator) el.colInputCurator.value = state.editingCollection ? (state.editingCollection.curator || '') : 'Maintainer';
+    if (el.colInputStatus) el.colInputStatus.value = state.editingCollection ? (state.editingCollection.status || 'draft') : 'draft';
+    if (el.colInputPinned) el.colInputPinned.checked = Boolean(state.editingCollection && state.editingCollection.pinned);
+    if (el.colInputFrom) el.colInputFrom.value = state.editingCollection ? (state.editingCollection.from || '') : '';
+    if (el.colInputUntil) el.colInputUntil.value = state.editingCollection ? (state.editingCollection.until || '') : '';
+    if (el.colInputPriority) el.colInputPriority.value = state.editingCollection ? (state.editingCollection.priority || 0) : 0;
+
+    if (el.colCoverModeSelect) el.colCoverModeSelect.value = state.editingCollection ? (state.editingCollection.coverMode || 'auto') : 'auto';
+    if (el.colCoverLayoutSelect) el.colCoverLayoutSelect.value = state.editingCollection ? (state.editingCollection.coverLayout || 'fan') : 'fan';
+
+    if (el.colSearchAddInput) el.colSearchAddInput.value = '';
+    if (el.colSearchAddResults) el.colSearchAddResults.classList.add('hidden');
+
+    updateCoverPreviewInModal();
+    renderCollectionMembers();
+
+    if (el.colModal) el.colModal.classList.remove('hidden');
+  }
+
+  function closeCollectionEditModal() {
+    if (el.colModal) el.colModal.classList.add('hidden');
+    state.editingCollection = null;
+    state.editingCollectionItems = [];
+    if (el.colSearchAddResults) el.colSearchAddResults.classList.add('hidden');
+  }
+
+  function updateCoverPreviewInModal() {
+    if (!el.colCoverPreviewImg) return;
+    if (state.editingCollection && state.editingCollection.id) {
+      const coverUrl = `/images/collections/${encodeURIComponent(state.editingCollection.id)}.jpg?t=${Date.now()}`;
+      el.colCoverPreviewImg.src = coverUrl;
+      el.colCoverPreviewImg.style.display = 'block';
+      if (el.colCoverPreviewPlaceholder) el.colCoverPreviewPlaceholder.style.display = 'none';
+      if (el.colCoverStatusBadge) {
+        el.colCoverStatusBadge.textContent = `${state.editingCollection.coverMode || 'auto'} (${state.editingCollection.coverLayout || 'fan'})`;
+      }
+    } else {
+      el.colCoverPreviewImg.style.display = 'none';
+      if (el.colCoverPreviewPlaceholder) el.colCoverPreviewPlaceholder.style.display = 'block';
+      if (el.colCoverStatusBadge) el.colCoverStatusBadge.textContent = 'Auto (Fan)';
+    }
+  }
+
+  function renderCollectionMembers() {
+    if (!el.colMembersList) return;
+    const count = state.editingCollectionItems.length;
+    if (el.colMembersCapBadge) {
+      el.colMembersCapBadge.textContent = `${count} / 50`;
+      el.colMembersCapBadge.style.color = count >= 50 ? 'var(--danger)' : (count >= 40 ? 'var(--warning)' : '#38bdf8');
+    }
+
+    const itemMap = new Map(state.catalog.map(x => [x.id, x]));
+
+    if (count === 0) {
+      el.colMembersList.innerHTML = '<span style="font-size: 0.8rem; color: var(--text-tertiary); padding: 8px;">No wallpapers added yet. Use the search box above to add up to 50 wallpapers.</span>';
+      return;
+    }
+
+    const html = state.editingCollectionItems.map((id, idx) => {
+      const item = itemMap.get(id);
+      const title = item ? item.title : id;
+      const thumbUrl = item ? getLocalImageUrl(item.thumbnailUrl || item.fullUrl) : '';
+      return `
+        <span class="member-pill" data-id="${escapeHtml(id)}">
+          <span style="font-size: 0.72rem; color: var(--text-tertiary); font-family: var(--font-mono);">#${idx + 1}</span>
+          ${thumbUrl ? `<img class="member-pill-thumb" src="${escapeHtml(thumbUrl)}" alt="" onerror="this.style.display='none'">` : ''}
+          <span style="font-weight: 500; max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(title)}">${escapeHtml(title)}</span>
+          <button type="button" class="member-pill-remove" data-id="${escapeHtml(id)}" title="Remove from collection">✕</button>
+        </span>
+      `;
+    }).join('');
+
+    el.colMembersList.innerHTML = html;
+  }
+
+  async function saveCollectionFromModal() {
+    const title = (el.colInputTitle ? el.colInputTitle.value : '').trim();
+    if (!title) {
+      showToast('Collection title is required', 'error');
+      return;
+    }
+
+    if (state.editingCollectionItems.length > 50) {
+      showToast('Collection exceeds the hard cap of 50 items', 'error');
+      return;
+    }
+
+    const payload = {
+      title: title,
+      description: (el.colInputDesc ? el.colInputDesc.value : '').trim(),
+      curator: (el.colInputCurator ? el.colInputCurator.value : '').trim(),
+      status: el.colInputStatus ? el.colInputStatus.value : 'draft',
+      pinned: el.colInputPinned ? el.colInputPinned.checked : false,
+      from: (el.colInputFrom && el.colInputFrom.value) ? el.colInputFrom.value : null,
+      until: (el.colInputUntil && el.colInputUntil.value) ? el.colInputUntil.value : null,
+      priority: el.colInputPriority ? Number(el.colInputPriority.value) || 0 : 0,
+      coverMode: el.colCoverModeSelect ? el.colCoverModeSelect.value : 'auto',
+      coverLayout: el.colCoverLayoutSelect ? el.colCoverLayoutSelect.value : 'fan',
+      items: state.editingCollectionItems
+    };
+
+    try {
+      if (el.colModalSaveBtn) el.colModalSaveBtn.disabled = true;
+
+      let res, data;
+      if (state.editingCollection) {
+        res = await fetch(`/api/collections/${encodeURIComponent(state.editingCollection.id)}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } else {
+        const customId = (el.colInputId ? el.colInputId.value : '').trim();
+        if (customId) payload.id = customId;
+        res = await fetch('/api/collections', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      }
+
+      data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to save collection');
+
+      showToast(`📚 Saved collection "${payload.title}" successfully!`, 'success');
+      closeCollectionEditModal();
+      await loadCollectionsData();
+    } catch (err) {
+      showToast('Error saving collection: ' + err.message, 'error');
+    } finally {
+      if (el.colModalSaveBtn) el.colModalSaveBtn.disabled = false;
+    }
+  }
+
+  async function deleteCollection(colId) {
+    const col = state.collections.find(c => c.id === colId);
+    const title = col ? col.title : colId;
+    if (!confirm(`Are you sure you want to delete the collection "${title}"? Wallpapers inside will remain in the catalog.`)) {
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/collections/${encodeURIComponent(colId)}?deleteFiles=1`, {
+        method: 'DELETE'
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to delete');
+      showToast(`Deleted collection "${title}"`, 'info');
+      if (state.activeCollectionId === colId) {
+        state.activeCollectionId = null;
+      }
+      await loadCollectionsData();
+    } catch (err) {
+      showToast('Error deleting collection: ' + err.message, 'error');
+    }
+  }
+
+  function renderInspectorCollectionsPills() {
+    if (!el.editCollectionsPills || !state.activeItem) return;
+    const itemId = state.activeItem.id;
+    const inCols = state.collections.filter(c => (c.items || []).includes(itemId));
+
+    if (el.editColCountText) {
+      el.editColCountText.textContent = `In ${inCols.length} collection${inCols.length === 1 ? '' : 's'}`;
+    }
+
+    if (state.collections.length === 0) {
+      el.editCollectionsPills.innerHTML = '<span style="font-size: 0.78rem; color: var(--text-tertiary);">No collections created yet.</span>';
+      return;
+    }
+
+    const html = state.collections.map(col => {
+      const isMember = (col.items || []).includes(itemId);
+      const isFull = !isMember && (col.items || []).length >= 50;
+      return `
+        <button type="button" class="cat-pill ${isMember ? 'active' : ''} ${isFull ? 'disabled' : ''}" data-col-id="${escapeHtml(col.id)}" style="${isMember ? 'background: #0284c7; color: #fff; border-color: #38bdf8;' : ''}" title="${isFull ? 'Collection is at hard cap of 50' : (isMember ? 'Click to remove from collection' : 'Click to add to collection')}">
+          <span>📚 ${escapeHtml(col.title)}</span>
+          <span style="font-size: 0.72rem; opacity: 0.75; margin-left: 4px;">(${(col.items || []).length}/50)</span>
+        </button>
+      `;
+    }).join('');
+
+    el.editCollectionsPills.innerHTML = html;
+  }
+
+  async function toggleItemInCollection(colId, itemId) {
+    const col = state.collections.find(c => c.id === colId);
+    if (!col) return;
+    const isMember = (col.items || []).includes(itemId);
+    const action = isMember ? 'remove' : 'add';
+
+    if (action === 'add' && (col.items || []).length >= 50) {
+      showToast(`Cannot add: collection "${col.title}" is already at the hard cap of 50 wallpapers.`, 'warning');
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/collections/${encodeURIComponent(colId)}/items`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: action, ids: [itemId] })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to update');
+      showToast(action === 'add' ? `Added to "${col.title}"` : `Removed from "${col.title}"`, 'success');
+      await loadCollectionsData();
+    } catch (err) {
+      showToast('Error updating collection: ' + err.message, 'error');
+    }
+  }
+
+  async function handleBatchAddToCollection() {
+    if (!el.batchCollectionSelect) return;
+    const colId = el.batchCollectionSelect.value;
+    if (!colId) {
+      showToast('Please choose a collection from the dropdown', 'info');
+      return;
+    }
+    const count = state.selectedIds.size;
+    if (count === 0) {
+      showToast('No wallpapers selected', 'info');
+      return;
+    }
+
+    if (colId === '__new__') {
+      const selected = Array.from(state.selectedIds);
+      openCollectionEditModal(null, selected);
+      el.batchCollectionSelect.value = '';
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/catalog/batch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'add_to_collection',
+          collectionId: colId,
+          ids: Array.from(state.selectedIds)
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to add to collection');
+
+      const col = state.collections.find(c => c.id === colId);
+      const colName = col ? col.title : colId;
+      showToast(`📚 Added ${count} wallpaper(s) to "${colName}"!`, 'success');
+      state.selectedIds.clear();
+      updateBatchBar();
+      await loadCollectionsData();
+    } catch (err) {
+      showToast('Error adding to collection: ' + err.message, 'error');
+    }
+  }
+
+  async function handleBatchRemoveFromCollection() {
+    if (!state.activeCollectionId) return;
+    const count = state.selectedIds.size;
+    if (count === 0) return;
+
+    try {
+      const res = await fetch('/api/catalog/batch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'remove_from_collection',
+          collectionId: state.activeCollectionId,
+          ids: Array.from(state.selectedIds)
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to remove from collection');
+
+      showToast(`Removed ${count} wallpaper(s) from collection`, 'info');
+      state.selectedIds.clear();
+      updateBatchBar();
+      await loadCollectionsData();
+      renderCatalog();
+    } catch (err) {
+      showToast('Error removing from collection: ' + err.message, 'error');
+    }
+  }
+
+  async function regenerateCollectionCover() {
+    if (!state.editingCollection || !state.editingCollection.id) {
+      showToast('Please save the collection first before generating a cover', 'info');
+      return;
+    }
+    const colId = state.editingCollection.id;
+    const mode = el.colCoverModeSelect ? el.colCoverModeSelect.value : 'auto';
+    const layout = el.colCoverLayoutSelect ? el.colCoverLayoutSelect.value : 'fan';
+
+    try {
+      if (el.colBtnRegenCover) {
+        el.colBtnRegenCover.disabled = true;
+        el.colBtnRegenCover.innerHTML = '<span class="spin">⏳</span> Building...';
+      }
+      const res = await fetch(`/api/collections/${encodeURIComponent(colId)}/cover`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mode, layout })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to rebuild cover');
+      showToast('🎨 Rebuilt collection cover successfully!', 'success');
+      await loadCollectionsData();
+      state.editingCollection = state.collections.find(c => c.id === colId) || state.editingCollection;
+      updateCoverPreviewInModal();
+    } catch (err) {
+      showToast('Error generating cover: ' + err.message, 'error');
+    } finally {
+      if (el.colBtnRegenCover) {
+        el.colBtnRegenCover.disabled = false;
+        el.colBtnRegenCover.innerHTML = '🎨 Rebuild Cover';
+      }
+    }
+  }
+
+  async function uploadCollectionCoverFile(file) {
+    if (!state.editingCollection || !state.editingCollection.id) {
+      showToast('Please save the collection first before uploading a cover', 'info');
+      return;
+    }
+    const colId = state.editingCollection.id;
+    const reader = new FileReader();
+    reader.onload = async () => {
+      try {
+        if (el.colBtnUploadCoverTrigger) el.colBtnUploadCoverTrigger.disabled = true;
+        const res = await fetch(`/api/collections/${encodeURIComponent(colId)}/cover`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ mode: 'upload', imageBase64: reader.result })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.error || 'Failed to upload cover');
+        showToast('📷 Uploaded collection cover successfully!', 'success');
+        await loadCollectionsData();
+        state.editingCollection = state.collections.find(c => c.id === colId) || state.editingCollection;
+        if (el.colCoverModeSelect) el.colCoverModeSelect.value = 'upload';
+        updateCoverPreviewInModal();
+      } catch (err) {
+        showToast('Error uploading cover: ' + err.message, 'error');
+      } finally {
+        if (el.colBtnUploadCoverTrigger) el.colBtnUploadCoverTrigger.disabled = false;
+        if (el.colCoverFileInput) el.colCoverFileInput.value = '';
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  async function generateCollectionAiCover() {
+    if (!state.editingCollection || !state.editingCollection.id) {
+      showToast('Please save the collection first before generating an AI cover', 'info');
+      return;
+    }
+    const colId = state.editingCollection.id;
+    try {
+      if (el.colBtnAiGenerateCover) {
+        el.colBtnAiGenerateCover.disabled = true;
+        el.colBtnAiGenerateCover.innerHTML = '<span class="spin">⏳</span> Generating AI Cover...';
+      }
+      showToast('✨ Generating AI cover via Gemini (this may take 5-10s)...', 'info');
+
+      const res = await fetch(`/api/collections/${encodeURIComponent(colId)}/cover`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mode: 'ai' })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        if (data.prompt) {
+          try {
+            await navigator.clipboard.writeText(data.prompt);
+            showToast(`${data.error} (Prompt copied to clipboard!)`, 'warning');
+          } catch (_) {
+            showToast(data.error, 'warning');
+          }
+        } else {
+          showToast(data.error || 'Failed to generate AI cover', 'warning');
+        }
+        return;
+      }
+      showToast('✨ AI Cover generated and applied!', 'success');
+      await loadCollectionsData();
+      state.editingCollection = state.collections.find(c => c.id === colId) || state.editingCollection;
+      if (el.colCoverModeSelect) el.colCoverModeSelect.value = 'ai';
+      updateCoverPreviewInModal();
+    } catch (err) {
+      showToast('AI Generation: ' + err.message, 'warning');
+    } finally {
+      if (el.colBtnAiGenerateCover) {
+        el.colBtnAiGenerateCover.disabled = false;
+        el.colBtnAiGenerateCover.innerHTML = '✨ Generate AI Cover';
+      }
+    }
+  }
+
+  async function copyCollectionAiPrompt() {
+    if (!state.editingCollection || !state.editingCollection.id) {
+      showToast('Save the collection first to generate an AI prompt', 'info');
+      return;
+    }
+    const colId = state.editingCollection.id;
+    try {
+      const res = await fetch(`/api/collections/${encodeURIComponent(colId)}/ai-prompt`);
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to get prompt');
+      await navigator.clipboard.writeText(data.prompt);
+      showToast('📋 AI Cover prompt copied to clipboard!', 'success');
+    } catch (err) {
+      showToast('Error copying prompt: ' + err.message, 'error');
     }
   }
 
@@ -2297,13 +3159,88 @@
 
     // Category chips
     el.categoryChips.addEventListener('click', (e) => {
+      const clearBtn = e.target.closest('.chip-clear-col');
+      if (clearBtn) {
+        state.activeCollectionId = null;
+        renderCategoryChips();
+        renderCatalog();
+        return;
+      }
       const chip = e.target.closest('.chip');
       if (!chip) return;
+      if (chip.classList.contains('chip-collection-active')) {
+        state.activeCollectionId = null;
+        renderCategoryChips();
+        renderCatalog();
+        return;
+      }
       const category = chip.getAttribute('data-category');
-      state.activeCategory = category;
-      renderCategoryChips();
-      renderCatalog();
+      if (category) {
+        state.activeCategory = category;
+        state.activeCollectionId = null;
+        renderCategoryChips();
+        renderCatalog();
+      }
     });
+
+    // Header Nav Mode & Collections Toolbar
+    if (el.navMode) {
+      el.navMode.addEventListener('click', (e) => {
+        const btn = e.target.closest('.nav-segment-btn');
+        if (btn) {
+          const view = btn.getAttribute('data-view');
+          if (view) switchStudioView(view);
+        }
+      });
+    }
+
+    if (el.btnReorderCollections) {
+      el.btnReorderCollections.addEventListener('click', () => openReorderModal('collections'));
+    }
+    if (el.btnColReorderToolbar) {
+      el.btnColReorderToolbar.addEventListener('click', () => openReorderModal('collections'));
+    }
+    if (el.btnAddCollection) {
+      el.btnAddCollection.addEventListener('click', () => openCollectionEditModal(null));
+    }
+    if (el.btnColAddToolbar) {
+      el.btnColAddToolbar.addEventListener('click', () => openCollectionEditModal(null));
+    }
+    if (el.collectionsEmptyCreateBtn) {
+      el.collectionsEmptyCreateBtn.addEventListener('click', () => openCollectionEditModal(null));
+    }
+    if (el.collectionsSearch) {
+      el.collectionsSearch.addEventListener('input', () => renderCollectionsGrid());
+    }
+    if (el.collectionsStatusFilter) {
+      el.collectionsStatusFilter.addEventListener('change', () => renderCollectionsGrid());
+    }
+
+    if (el.collectionsGrid) {
+      el.collectionsGrid.addEventListener('click', (e) => {
+        const sortBtn = e.target.closest('.btn-col-sort');
+        const editBtn = e.target.closest('.btn-col-edit');
+        const browseBtn = e.target.closest('.btn-col-browse');
+        const deleteBtn = e.target.closest('.btn-col-delete');
+
+        if (sortBtn) {
+          const colId = sortBtn.getAttribute('data-id');
+          openReorderModal('collection', colId);
+        } else if (editBtn) {
+          const colId = editBtn.getAttribute('data-id');
+          openCollectionEditModal(colId);
+        } else if (browseBtn) {
+          const colId = browseBtn.getAttribute('data-id');
+          state.activeCollectionId = colId;
+          switchStudioView('screensavers');
+          renderCategoryChips();
+          renderCatalog();
+        } else if (deleteBtn) {
+          const colId = deleteBtn.getAttribute('data-id');
+          deleteCollection(colId);
+        }
+      });
+    }
 
     // Status & Sort
     el.filterStatus.addEventListener('change', (e) => {
@@ -2539,6 +3476,20 @@
       executeBatchDelete();
     });
 
+    if (el.batchAddCollectionBtn) {
+      el.batchAddCollectionBtn.addEventListener('click', handleBatchAddToCollection);
+    }
+    if (el.batchCollectionSelect) {
+      el.batchCollectionSelect.addEventListener('change', (e) => {
+        if (e.target.value === '__new__') {
+          handleBatchAddToCollection();
+        }
+      });
+    }
+    if (el.batchRemoveCollectionBtn) {
+      el.batchRemoveCollectionBtn.addEventListener('click', handleBatchRemoveFromCollection);
+    }
+
     if (el.batchFeatureDurationSelect) {
       el.batchFeatureDurationSelect.addEventListener('change', (e) => {
         if (e.target.value === 'custom') {
@@ -2582,25 +3533,33 @@
     if (el.reorderSearchInput) {
       el.reorderSearchInput.addEventListener('input', renderReorderList);
     }
+
+    // Generalized Sort modal layout toggles
+    if (el.reorderToggleListBtn) {
+      el.reorderToggleListBtn.addEventListener('click', () => setReorderViewLayout('list'));
+    }
+    if (el.reorderToggleGridBtn) {
+      el.reorderToggleGridBtn.addEventListener('click', () => setReorderViewLayout('grid'));
+    }
+
+    // Generalized Sort modal quick sorts
     if (el.reorderSortNewestBtn) {
-      el.reorderSortNewestBtn.addEventListener('click', () => {
-        currentReorderItems.sort((a, b) => String(b.dateAdded || '').localeCompare(String(a.dateAdded || '')));
-        if (el.reorderStatusIndicator) {
-          el.reorderStatusIndicator.textContent = '✨ Sorted by newest date (Click Save to apply)';
-          el.reorderStatusIndicator.style.color = '#facc15';
-        }
-        renderReorderList();
-      });
+      el.reorderSortNewestBtn.addEventListener('click', () => sortReorderItems('newest'));
     }
     if (el.reorderSortDownloadsBtn) {
-      el.reorderSortDownloadsBtn.addEventListener('click', () => {
-        currentReorderItems.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
-        if (el.reorderStatusIndicator) {
-          el.reorderStatusIndicator.textContent = '✨ Sorted by most downloads (Click Save to apply)';
-          el.reorderStatusIndicator.style.color = '#facc15';
-        }
-        renderReorderList();
-      });
+      el.reorderSortDownloadsBtn.addEventListener('click', () => sortReorderItems('downloads'));
+    }
+    if (el.reorderSortAzBtn) {
+      el.reorderSortAzBtn.addEventListener('click', () => sortReorderItems('az'));
+    }
+    if (el.reorderSortAuthorBtn) {
+      el.reorderSortAuthorBtn.addEventListener('click', () => sortReorderItems('author'));
+    }
+    if (el.reorderSortReverseBtn) {
+      el.reorderSortReverseBtn.addEventListener('click', () => sortReorderItems('reverse'));
+    }
+    if (el.reorderSortShuffleBtn) {
+      el.reorderSortShuffleBtn.addEventListener('click', () => sortReorderItems('shuffle'));
     }
 
     if (el.reorderList) {
@@ -2666,13 +3625,142 @@
           const idx = currentReorderItems.findIndex(x => x.id === id);
           if (idx >= 0) {
             const [removed] = currentReorderItems.splice(idx, 1);
-            unfeaturedInModal.add(id);
+            if (state.reorderMode === 'featured') {
+              unfeaturedInModal.add(id);
+            }
             if (el.reorderStatusIndicator) {
-              el.reorderStatusIndicator.textContent = `✨ Removed "${removed.title}" from spotlight (Click Save to apply)`;
+              const label = state.reorderMode === 'collection' ? 'from collection' : 'from spotlight';
+              el.reorderStatusIndicator.textContent = `✨ Removed "${removed.title}" ${label} (Click Save to apply)`;
               el.reorderStatusIndicator.style.color = '#f87171';
             }
             renderReorderList();
           }
+        }
+      });
+    }
+
+    // Collection Edit Modal listeners
+    if (el.colModalCloseBtn) el.colModalCloseBtn.addEventListener('click', closeCollectionEditModal);
+    if (el.colModalCancelBtn) el.colModalCancelBtn.addEventListener('click', closeCollectionEditModal);
+    if (el.colModalSaveBtn) el.colModalSaveBtn.addEventListener('click', saveCollectionFromModal);
+
+    if (el.colModalOpenSortBtn) {
+      el.colModalOpenSortBtn.addEventListener('click', () => {
+        if (!state.editingCollection) {
+          showToast('Save the collection first before sorting', 'info');
+          return;
+        }
+        const colId = state.editingCollection.id;
+        closeCollectionEditModal();
+        openReorderModal('collection', colId);
+      });
+    }
+
+    if (el.colInputTitle && el.colInputId) {
+      el.colInputTitle.addEventListener('input', () => {
+        if (!state.editingCollection) {
+          el.colInputId.value = el.colInputTitle.value
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, '');
+        }
+      });
+    }
+
+    if (el.colCoverModeSelect && el.colCoverLayoutGroup) {
+      el.colCoverModeSelect.addEventListener('change', () => {
+        el.colCoverLayoutGroup.style.display = el.colCoverModeSelect.value === 'auto' ? 'block' : 'none';
+      });
+    }
+
+    if (el.colBtnRegenCover) el.colBtnRegenCover.addEventListener('click', regenerateCollectionCover);
+
+    if (el.colBtnUploadCoverTrigger && el.colCoverFileInput) {
+      el.colBtnUploadCoverTrigger.addEventListener('click', () => el.colCoverFileInput.click());
+      el.colCoverFileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          uploadCollectionCoverFile(e.target.files[0]);
+        }
+      });
+    }
+
+    if (el.colBtnAiGenerateCover) el.colBtnAiGenerateCover.addEventListener('click', generateCollectionAiCover);
+    if (el.colBtnCopyAiPrompt) el.colBtnCopyAiPrompt.addEventListener('click', copyCollectionAiPrompt);
+
+    // Member search and add in collection edit modal
+    if (el.colSearchAddInput) {
+      el.colSearchAddInput.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        if (!q || !el.colSearchAddResults) {
+          if (el.colSearchAddResults) el.colSearchAddResults.classList.add('hidden');
+          return;
+        }
+        const existing = new Set(state.editingCollectionItems);
+        const matches = state.catalog.filter(item => {
+          if (existing.has(item.id)) return false;
+          return (item.title && item.title.toLowerCase().includes(q)) ||
+                 (item.id && item.id.toLowerCase().includes(q)) ||
+                 (item.author && item.author.toLowerCase().includes(q));
+        }).slice(0, 8);
+
+        if (matches.length === 0) {
+          el.colSearchAddResults.innerHTML = '<div style="padding: 10px; font-size: 0.82rem; color: var(--text-tertiary);">No matching wallpapers found</div>';
+        } else {
+          el.colSearchAddResults.innerHTML = matches.map(item => {
+            const thumb = getLocalImageUrl(item.thumbnailUrl || item.fullUrl);
+            return `
+              <div class="col-search-result-item" data-id="${escapeHtml(item.id)}" style="display: flex; align-items: center; gap: 8px; padding: 6px 10px; cursor: pointer; border-bottom: 1px solid var(--border-color);">
+                <img src="${escapeHtml(thumb)}" style="width: 24px; height: 32px; object-fit: cover; border-radius: 2px;" alt="" onerror="this.style.display='none'">
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-weight: 500; font-size: 0.82rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(item.title)}</div>
+                  <div style="font-size: 0.7rem; color: var(--text-tertiary);">${escapeHtml(item.author || '')}</div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm" style="padding: 2px 8px; font-size: 0.72rem;">+ Add</button>
+              </div>
+            `;
+          }).join('');
+        }
+        el.colSearchAddResults.classList.remove('hidden');
+      });
+    }
+
+    if (el.colSearchAddResults) {
+      el.colSearchAddResults.addEventListener('click', (e) => {
+        const row = e.target.closest('.col-search-result-item');
+        if (!row) return;
+        const id = row.getAttribute('data-id');
+        if (!id) return;
+        if (state.editingCollectionItems.length >= 50) {
+          showToast('Collection has reached the maximum of 50 wallpapers', 'warning');
+          return;
+        }
+        if (!state.editingCollectionItems.includes(id)) {
+          state.editingCollectionItems.push(id);
+          renderCollectionMembers();
+        }
+        if (el.colSearchAddInput) el.colSearchAddInput.value = '';
+        el.colSearchAddResults.classList.add('hidden');
+      });
+    }
+
+    if (el.colMembersList) {
+      el.colMembersList.addEventListener('click', (e) => {
+        const removeBtn = e.target.closest('.member-pill-remove');
+        if (!removeBtn) return;
+        const id = removeBtn.getAttribute('data-id');
+        state.editingCollectionItems = state.editingCollectionItems.filter(x => x !== id);
+        renderCollectionMembers();
+      });
+    }
+
+    // Item inspector collections pills click
+    if (el.editCollectionsPills) {
+      el.editCollectionsPills.addEventListener('click', (e) => {
+        const pill = e.target.closest('.cat-pill');
+        if (!pill || !state.activeItem) return;
+        const colId = pill.getAttribute('data-col-id');
+        if (colId) {
+          toggleItemInCollection(colId, state.activeItem.id);
         }
       });
     }
@@ -3090,7 +4178,9 @@
         el.search.focus();
       }
       if (e.key === 'Escape') {
-        if (!el.deleteConfirmModal.classList.contains('hidden')) {
+        if (el.colModal && !el.colModal.classList.contains('hidden')) {
+          closeCollectionEditModal();
+        } else if (!el.deleteConfirmModal.classList.contains('hidden')) {
           el.deleteConfirmModal.classList.add('hidden');
         } else if (el.reorderModal && !el.reorderModal.classList.contains('hidden')) {
           closeReorderFeaturedModal();

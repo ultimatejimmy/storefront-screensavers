@@ -96,6 +96,31 @@
         </div>
       </div>
 
+      <!-- Collections Shelf -->
+      <div id="collections-shelf" class="collections-shelf" style="display: none;">
+        <div class="collections-shelf-header">
+          <div class="collections-shelf-title-wrap">
+            <h2 class="collections-shelf-title">Curated Collections</h2>
+            <span class="collections-shelf-badge">Featured Sets</span>
+          </div>
+          <div class="collections-shelf-nav-arrows">
+            <button type="button" class="shelf-arrow-btn" id="shelf-prev-btn" aria-label="Scroll collections left">‹</button>
+            <button type="button" class="shelf-arrow-btn" id="shelf-next-btn" aria-label="Scroll collections right">›</button>
+          </div>
+        </div>
+        <div class="collections-shelf-track" id="collections-shelf-track"></div>
+      </div>
+
+      <!-- Active Collection Banner -->
+      <div id="active-collection-banner" class="active-collection-banner" style="display: none;">
+        <div class="active-collection-info">
+          <span class="active-collection-pill">Collection</span>
+          <h3 id="active-collection-title"></h3>
+          <p id="active-collection-desc"></p>
+        </div>
+        <button type="button" class="btn-clear-collection" id="btn-clear-collection">✕ View All Wallpapers</button>
+      </div>
+
       <!-- Wallpaper Grid -->
       <div id="wallpaper-grid" class="wallpaper-grid"></div>
     </section>

@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    Storefront Catalog Studio - Modern Dark Slate Design System
    ========================================================================== */
 
@@ -2288,4 +2288,341 @@ body.studio-body {
   white-space: pre-wrap;
   user-select: none;
   z-index: 0;
+}
+
+/* ==========================================================================
+   Header Nav Segmented Control
+   ========================================================================== */
+
+.nav-segment-control {
+  display: flex;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  gap: 4px;
+}
+
+.nav-segment-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 0;
+  border-radius: var(--radius-full);
+  padding: 4px 14px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.nav-segment-btn:hover {
+  color: var(--text-main);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-segment-btn.active {
+  background-color: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.nav-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.3);
+  color: inherit;
+}
+
+/* ==========================================================================
+   Collections Grid & Card System
+   ========================================================================== */
+
+.collections-container {
+  padding: 20px 24px 60px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.collections-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.collections-stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.collections-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.collection-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+}
+
+.collection-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: var(--shadow-md), 0 0 16px rgba(56, 189, 248, 0.15);
+}
+
+.collection-cover-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-color: #0c1017;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection-cover-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.collection-status-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(4px);
+}
+
+.collection-status-badge.published {
+  background-color: rgba(16, 185, 129, 0.88);
+  color: #fff;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.collection-status-badge.draft {
+  background-color: rgba(100, 116, 139, 0.85);
+  color: #f1f5f9;
+  border: 1px solid rgba(100, 116, 139, 0.4);
+}
+
+.collection-status-badge.scheduled {
+  background-color: rgba(234, 179, 8, 0.88);
+  color: #1a1a1a;
+  border: 1px solid rgba(234, 179, 8, 0.4);
+}
+
+.collection-status-badge.expired {
+  background-color: rgba(239, 68, 68, 0.88);
+  color: #fff;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.collection-count-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  background-color: rgba(15, 20, 28, 0.88);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(4px);
+}
+
+.collection-pinned-pill {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 3px 9px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  background-color: rgba(234, 179, 8, 0.95);
+  color: #111;
+}
+
+.collection-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+}
+
+.collection-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.collection-card-title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.collection-card-desc {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+.collection-card-meta {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.collection-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.collection-card-actions .btn {
+  flex: 1;
+}
+
+/* ==========================================================================
+   Sort Modal Grid Mode & Multi-Select Enhancements
+   ========================================================================== */
+
+.reorder-list-container.is-grid-mode {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 12px;
+}
+
+.reorder-item.is-grid-card {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 10px;
+  position: relative;
+}
+
+.reorder-item.is-grid-card .reorder-thumb-wrap {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-sm);
+}
+
+.reorder-item.is-grid-card .reorder-controls {
+  margin-top: 6px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.member-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+  font-size: 0.78rem;
+  color: var(--text-main);
+  max-width: 100%;
+}
+
+.member-pill-thumb {
+  width: 22px;
+  height: 28px;
+  border-radius: 3px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.member-pill-remove {
+  cursor: pointer;
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0 2px;
+  border: 0;
+  background: transparent;
+}
+
+.member-pill-remove:hover {
+  color: var(--danger);
+}
+
+.search-match-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-fast);
+}
+
+.search-match-item:hover {
+  background-color: var(--bg-surface-hover);
+}
+
+.search-match-thumb {
+  width: 28px;
+  height: 38px;
+  border-radius: 3px;
+  object-fit: cover;
+  flex-shrink: 0;
 }

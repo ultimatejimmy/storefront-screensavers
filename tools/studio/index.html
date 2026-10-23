@@ -25,6 +25,10 @@
           <span class="brand-badge">Storefront</span>
         </div>
       </div>
+      <div class="nav-segment-control" id="studio-nav-mode">
+        <button type="button" class="nav-segment-btn active" data-view="screensavers">Screensavers</button>
+        <button type="button" class="nav-segment-btn" data-view="collections">Collections <span class="nav-badge" id="nav-collections-count">0</span></button>
+      </div>
       <div class="header-stats" id="header-stats">
         <span class="stat-item"><strong id="stat-total">0</strong> Screensavers</span>
         <span class="stat-divider">•</span>
@@ -75,6 +79,14 @@
       <button class="btn btn-primary" id="btn-add-item">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
         <span>Add Wallpaper</span>
+      </button>
+
+      <button class="btn btn-secondary hidden" id="btn-reorder-collections" title="Drag and drop to prioritize collections order">
+        <span>↕ Reorder Collections</span>
+      </button>
+
+      <button class="btn btn-secondary" id="btn-add-collection" title="Create a new curated screensaver collection">
+        <span>📚 + New Collection</span>
       </button>
     </div>
   </header>
@@ -174,6 +186,13 @@
         <button class="btn btn-secondary btn-small" id="batch-unfeature-btn" title="Remove featured status from selected">☆ Unfeature</button>
       </div>
       <div class="batch-action-item">
+        <select id="batch-collection-select" class="select-input select-small" title="Choose collection to add wallpapers into" style="height: 32px; padding: 4px 8px; font-size: 0.8rem; max-width: 170px;">
+          <option value="">Add to Collection...</option>
+        </select>
+        <button class="btn btn-secondary btn-small" id="batch-add-collection-btn" title="Add selected wallpapers to chosen collection">📚 + Add</button>
+        <button class="btn btn-secondary btn-small hidden" id="batch-remove-collection-btn" title="Remove selected wallpapers from currently viewed collection">Remove from Collection</button>
+      </div>
+      <div class="batch-action-item">
         <button class="btn btn-danger btn-small" id="batch-delete-btn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
           Delete Selected
@@ -217,6 +236,36 @@
         <h3>No screensavers found</h3>
         <p>Try adjusting your search query or category filters.</p>
         <button class="btn btn-secondary" id="empty-reset-btn">Reset Filters</button>
+      </div>
+    </div>
+
+    <!-- Collections Content (Visible when in Collections view) -->
+    <div class="collections-container hidden" id="collections-container">
+      <div class="collections-toolbar">
+        <div class="collections-stats">
+          <span>Curated Collections: <strong id="collections-total-count">0</strong></span>
+          <span style="opacity: 0.4;">•</span>
+          <span style="font-size: 0.85rem; color: var(--text-secondary);">Hard cap of 50 wallpapers per collection</span>
+        </div>
+        <div class="collections-filter-group">
+          <input type="text" id="collections-search" class="text-input text-small" placeholder="Filter collections..." style="width: 180px; height: 32px; font-size: 0.85rem;">
+          <select id="collections-status-filter" class="select-input select-small" style="height: 32px; font-size: 0.85rem;">
+            <option value="all">All Statuses</option>
+            <option value="published">Published</option>
+            <option value="draft">Drafts</option>
+          </select>
+          <button class="btn btn-secondary btn-small" id="btn-col-reorder-toolbar" title="Reorder collections priority">↕ Sort Collections</button>
+          <button class="btn btn-primary btn-small" id="btn-col-add-toolbar" title="Create a new collection">⊕ New Collection</button>
+        </div>
+      </div>
+      <div class="collections-grid" id="collections-grid">
+        <!-- Collection cards will be dynamically rendered here -->
+      </div>
+      <div class="empty-state hidden" id="collections-empty-state">
+        <div class="empty-icon">📚</div>
+        <h3>No collections yet</h3>
+        <p>Create your first curated collection to group and feature themed wallpapers.</p>
+        <button class="btn btn-primary" id="collections-empty-create-btn">⊕ Create Collection</button>
       </div>
     </div>
 
@@ -409,6 +458,18 @@
                   <button type="button" class="btn btn-secondary btn-small" id="edit-open-reorder-btn" title="Open drag and drop spotlight manager">↕ Drag & Drop Reorder</button>
                   <button type="button" class="btn btn-secondary btn-small" id="edit-featured-top-btn" title="Move to top (#1 spot)">⬆ Move to #1</button>
                 </div>
+              </div>
+            </div>
+
+            <div class="form-group collections-field-group" style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 8px; padding: 12px; margin-top: 10px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                <span style="font-weight: 600; font-size: 0.85rem; color: #38bdf8; display: flex; align-items: center; gap: 6px;">
+                  <span>📚 Collections</span>
+                </span>
+                <span id="edit-col-count-text" style="font-size: 0.78rem; opacity: 0.8;">In 0 collections</span>
+              </div>
+              <div id="edit-collections-pills" style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px;">
+                <!-- Collection toggle pills injected dynamically -->
               </div>
             </div>
           </form>
@@ -791,15 +852,177 @@
     </div>
   </div>
 
-  <!-- Reorder Featured Screensavers Drag & Drop Modal -->
+  <!-- Collection Create / Edit Modal -->
+  <div class="modal-overlay hidden" id="collection-edit-modal">
+    <div class="modal-card modal-card-large" style="max-width: 860px; max-height: 90vh;">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 class="modal-title" id="col-modal-title" style="margin: 0; display: flex; align-items: center; gap: 8px;">
+            <span>📚 Edit Collection</span>
+          </h3>
+          <p class="modal-subtitle" id="col-modal-subtitle" style="margin: 4px 0 0 0; font-size: 0.85rem; opacity: 0.8;">
+            Curate and customize collection metadata, cover art, and member screensavers.
+          </p>
+        </div>
+        <button class="close-btn" id="col-modal-close-btn">✕</button>
+      </div>
+
+      <div class="modal-body" style="overflow-y: auto; padding: 18px 24px; display: flex; flex-direction: column; gap: 18px;">
+        <!-- Top Row: Title, ID Slug, Status -->
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <div class="form-group" style="flex: 2; min-width: 220px;">
+            <label for="col-input-title" style="font-weight: 600; font-size: 0.85rem;">Collection Title *</label>
+            <input type="text" id="col-input-title" class="text-input" placeholder="e.g. Cozy Cats, Cyberpunk Neon..." required>
+          </div>
+          <div class="form-group" style="flex: 1.5; min-width: 180px;">
+            <label for="col-input-id" style="font-weight: 600; font-size: 0.85rem;">Slug ID (URL-safe) *</label>
+            <input type="text" id="col-input-id" class="text-input" placeholder="e.g. cozy-cats" style="font-family: var(--font-mono); font-size: 0.85rem;">
+          </div>
+          <div class="form-group" style="flex: 1; min-width: 130px;">
+            <label for="col-input-status" style="font-weight: 600; font-size: 0.85rem;">Status</label>
+            <select id="col-input-status" class="select-input">
+              <option value="draft">Draft (Private)</option>
+              <option value="published">Published</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Description & Curator -->
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <div class="form-group" style="flex: 2; min-width: 220px;">
+            <label for="col-input-desc" style="font-weight: 600; font-size: 0.85rem;">Description</label>
+            <input type="text" id="col-input-desc" class="text-input" placeholder="Brief summary of what wallpapers are in this collection...">
+          </div>
+          <div class="form-group" style="flex: 1; min-width: 160px;">
+            <label for="col-input-curator" style="font-weight: 600; font-size: 0.85rem;">Curator Credit</label>
+            <input type="text" id="col-input-curator" class="text-input" placeholder="Maintainer / Your Name">
+          </div>
+        </div>
+
+        <!-- Scheduling & Pinning Row -->
+        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 12px 16px;">
+          <div style="font-weight: 600; font-size: 0.85rem; color: #f1f5f9; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+            <span>🗓️ Visibility & Scheduling</span>
+            <label style="display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.82rem; color: #facc15;">
+              <input type="checkbox" id="col-input-pinned" style="width: 16px; height: 16px; cursor: pointer;">
+              <span>📌 Pin to top of Collections list</span>
+            </label>
+          </div>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center;">
+            <div class="form-group" style="flex: 1; min-width: 140px;">
+              <label for="col-input-from" style="font-size: 0.78rem; margin-bottom: 2px;">Start Date (From):</label>
+              <input type="date" id="col-input-from" class="text-input" style="height: 32px; font-size: 0.82rem;">
+            </div>
+            <div class="form-group" style="flex: 1; min-width: 140px;">
+              <label for="col-input-until" style="font-size: 0.78rem; margin-bottom: 2px;">End Date (Until):</label>
+              <input type="date" id="col-input-until" class="text-input" style="height: 32px; font-size: 0.82rem;">
+            </div>
+            <div class="form-group" style="flex: 1; min-width: 110px;">
+              <label for="col-input-priority" style="font-size: 0.78rem; margin-bottom: 2px;">Priority Rank:</label>
+              <input type="number" id="col-input-priority" class="text-input" value="0" style="height: 32px; font-size: 0.82rem;">
+            </div>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-tertiary); display: block; margin-top: 6px;">
+            Visibility dates are evaluated at catalog build time. Outside dates, the collection is hidden from the client feed.
+          </span>
+        </div>
+
+        <!-- Cover Design Section -->
+        <div style="background: rgba(56, 189, 248, 0.04); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: var(--radius-md); padding: 14px 16px;">
+          <div style="font-weight: 600; font-size: 0.85rem; color: #38bdf8; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
+            <span>🎨 Cover Art Design</span>
+            <span id="col-cover-status-badge" class="reorder-duration-badge" style="background: rgba(56, 189, 248, 0.12); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">Auto (Fan)</span>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;">
+            <!-- Cover Preview Box -->
+            <div style="width: 100px; height: 133px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); overflow: hidden; background: #0c1017; position: relative; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+              <img id="col-cover-preview-img" src="" alt="Cover preview" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'">
+              <span id="col-cover-preview-placeholder" style="font-size: 0.75rem; color: var(--text-tertiary); text-align: center; padding: 6px;">No Cover Yet</span>
+            </div>
+            <!-- Cover Settings -->
+            <div style="flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <div class="form-group" style="flex: 1; min-width: 140px;">
+                  <label for="col-cover-mode-select" style="font-size: 0.8rem; margin-bottom: 2px;">Cover Strategy:</label>
+                  <select id="col-cover-mode-select" class="select-input" style="height: 32px; font-size: 0.82rem;">
+                    <option value="auto">Auto Composite (Recommended)</option>
+                    <option value="item">Use Chosen Wallpaper</option>
+                    <option value="upload">Upload Custom Image</option>
+                    <option value="ai">AI Generated Artwork</option>
+                  </select>
+                </div>
+                <div class="form-group" id="col-cover-layout-group" style="flex: 1; min-width: 140px;">
+                  <label for="col-cover-layout-select" style="font-size: 0.8rem; margin-bottom: 2px;">Auto Layout:</label>
+                  <select id="col-cover-layout-select" class="select-input" style="height: 32px; font-size: 0.82rem;">
+                    <option value="fan">Fan (3 Tilted Cards)</option>
+                    <option value="grid">Grid (2x2 Mosaic)</option>
+                    <option value="hero">Hero (Large Lead + Strip)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Upload / AI / Item Pick Row -->
+              <div id="col-cover-custom-controls" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                <button type="button" class="btn btn-secondary btn-small" id="col-btn-regen-cover" title="Rebuild cover now using current member wallpapers">🔄 Rebuild Cover</button>
+                <button type="button" class="btn btn-secondary btn-small" id="col-btn-upload-cover-trigger">📁 Upload Image...</button>
+                <input type="file" id="col-cover-file-input" accept="image/jpeg,image/png,image/webp" style="display: none;">
+                <button type="button" class="btn btn-secondary btn-small" id="col-btn-ai-generate-cover" title="Generate text-free poster art with Gemini and composite title banner" style="color: #a855f7; border-color: rgba(168, 85, 247, 0.4);">✨ Generate AI Cover</button>
+                <button type="button" class="btn btn-secondary btn-small" id="col-btn-copy-ai-prompt" title="Copy prompt optimized for generating cover in other AI tools">📋 Copy AI Prompt</button>
+              </div>
+              <span id="col-cover-hint" style="font-size: 0.75rem; color: var(--text-secondary);">
+                Auto layout composites the first 3-4 wallpapers with a crisp solid title banner designed for e-ink legibility.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collection Members Manager -->
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <label style="font-weight: 600; font-size: 0.85rem; margin: 0;">Wallpapers in Collection:</label>
+              <span id="col-members-cap-badge" class="reorder-duration-badge" style="font-family: var(--font-mono); font-weight: 600;">0 / 50</span>
+              <span style="font-size: 0.75rem; color: var(--text-tertiary);">(Hard cap 50)</span>
+            </div>
+            <button type="button" class="btn btn-secondary btn-small" id="col-modal-open-sort-btn" title="Open drag and drop sort screen for this collection" style="color: #facc15; border-color: rgba(234, 179, 8, 0.35);">
+              <span>↕ Sort Wallpapers Order</span>
+            </button>
+          </div>
+
+          <!-- Quick Add Search Box -->
+          <div style="position: relative; margin-bottom: 10px;">
+            <input type="text" id="col-search-add-input" class="text-input" placeholder="Type to search and add wallpapers from catalog... (e.g. cat, mountain, author)" style="height: 34px; font-size: 0.85rem;">
+            <div id="col-search-add-results" class="hidden" style="position: absolute; top: 38px; left: 0; right: 0; background: var(--bg-elevated); border: 1px solid var(--border-strong); border-radius: var(--radius-md); max-height: 200px; overflow-y: auto; z-index: 50; box-shadow: var(--shadow-lg);">
+              <!-- Search match dropdown items -->
+            </div>
+          </div>
+
+          <!-- Members Grid List -->
+          <div id="col-members-list" style="display: flex; flex-wrap: wrap; gap: 8px; max-height: 220px; overflow-y: auto; padding: 6px; background: rgba(0, 0, 0, 0.2); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <!-- Pill cards for member wallpapers -->
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="display: flex; align-items: center; justify-content: space-between;">
+        <span id="col-modal-status" style="font-size: 0.8rem; color: var(--text-secondary);">Changes saved to collections.json</span>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-secondary btn-small" id="col-modal-cancel-btn">Cancel</button>
+          <button type="button" class="btn btn-primary btn-small" id="col-modal-save-btn">💾 Save Collection</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reorder & Sort Screensavers / Collections Drag & Drop Modal -->
   <div class="modal-overlay hidden" id="reorder-featured-modal">
     <div class="modal-card modal-card-reorder">
       <div class="modal-header">
         <div class="modal-title-group">
-          <h3 class="modal-title" style="margin: 0; display: flex; align-items: center; gap: 8px;">
+          <h3 class="modal-title" id="reorder-modal-title" style="margin: 0; display: flex; align-items: center; gap: 8px;">
             <span>⭐ Reorder Featured Screensavers</span>
           </h3>
-          <p class="modal-subtitle" style="margin: 4px 0 0 0; font-size: 0.85rem; opacity: 0.8;">
+          <p class="modal-subtitle" id="reorder-modal-subtitle" style="margin: 4px 0 0 0; font-size: 0.85rem; opacity: 0.8;">
             Drag and drop rows using the <strong>⠿</strong> handle to prioritize your spotlight order. Rank #1 appears first in KOReader.
           </p>
         </div>
@@ -808,14 +1031,22 @@
 
       <div class="reorder-toolbar">
         <div class="reorder-stats">
-          <span>Featured Count: <strong id="reorder-count">0</strong></span>
+          <span><span id="reorder-count-label">Count</span>: <strong id="reorder-count">0</strong></span>
           <span style="opacity: 0.5;">•</span>
           <span style="font-size: 0.8rem; color: #facc15;">⠿ Drag items to swap position</span>
         </div>
         <div class="reorder-quick-actions">
-          <input type="text" id="reorder-search-input" class="text-input text-small" placeholder="Filter list..." style="width: 140px; height: 28px; padding: 2px 8px; font-size: 0.8rem;">
-          <button type="button" class="btn btn-secondary btn-small" id="reorder-sort-newest-btn" title="Sort featured items with newest submitted date at top">Newest Top</button>
-          <button type="button" class="btn btn-secondary btn-small" id="reorder-sort-downloads-btn" title="Sort featured items with most downloads at top">Popular Top</button>
+          <input type="text" id="reorder-search-input" class="text-input text-small" placeholder="Filter list..." style="width: 130px; height: 28px; padding: 2px 8px; font-size: 0.8rem;">
+          <div class="view-toggles" style="margin-right: 4px;">
+            <button type="button" class="view-btn active" id="reorder-toggle-list-btn" title="Compact List View">☰</button>
+            <button type="button" class="view-btn" id="reorder-toggle-grid-btn" title="3-Up Grid View">⊞</button>
+          </div>
+          <button type="button" class="btn btn-secondary btn-small" id="reorder-sort-newest-btn" title="Sort items with newest date at top">Newest</button>
+          <button type="button" class="btn btn-secondary btn-small" id="reorder-sort-downloads-btn" title="Sort items with most downloads at top">Popular</button>
+          <button type="button" class="btn btn-secondary btn-small" id="reorder-sort-az-btn" title="Sort alphabetically by title (A-Z)">A-Z</button>
+          <button type="button" class="btn btn-secondary btn-small" id="reorder-sort-author-btn" title="Sort by author name">Author</button>
+          <button type="button" class="btn btn-secondary btn-small" id="reorder-sort-reverse-btn" title="Reverse current order">⇄ Reverse</button>
+          <button type="button" class="btn btn-secondary btn-small" id="reorder-sort-shuffle-btn" title="Random shuffle order">🎲</button>
         </div>
       </div>
 

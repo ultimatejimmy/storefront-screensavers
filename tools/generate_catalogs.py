@@ -23,6 +23,8 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_JSON = os.path.join(REPO_ROOT, "screensavers.json")
 LITE_JSON = os.path.join(REPO_ROOT, "screensavers.lite.json")
 MIN_JSON = os.path.join(REPO_ROOT, "screensavers.min.json")
+COLLECTIONS_JSON = os.path.join(REPO_ROOT, "collections.json")
+COLLECTIONS_LITE_JSON = os.path.join(REPO_ROOT, "collections.lite.json")
 
 BASE_IMG_URL = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images"
 RATINGS_API_URL = "https://storefront-vote.ultimatejimmy.workers.dev/ratings?fresh=1"
@@ -230,6 +232,76 @@ def generate_catalogs(fetch_remote=True):
     # screensavers.lite.json provides the unified pre-sorted catalog
     with open(LITE_JSON, "w", encoding="utf-8", newline="\n") as f:
         json.dump(unified_items, f, separators=(",", ":"), ensure_ascii=False)
+
+    # 5. Generate Collections Feed if collections.json is available
+    if os.path.exists(COLLECTIONS_JSON):
+        try:
+            with open(COLLECTIONS_JSON, "r", encoding="utf-8") as f_col:
+                collections_data = json.load(f_col)
+            if isinstance(collections_data, list):
+                valid_catalog_ids = {x["id"] for x in cleaned_full if x.get("id")}
+                published_collections = []
+                cleaned_collections = []
+
+                for col in collections_data:
+                    raw_items = col.get("items") or []
+                    filtered_items = [item_id for item_id in raw_items if item_id in valid_catalog_ids]
+                    # Enforce hard cap of 50 items
+                    filtered_items = filtered_items[:50]
+                    col_copy = dict(col)
+                    col_copy["items"] = filtered_items
+                    cleaned_collections.append(col_copy)
+
+                    # Check status
+                    if col.get("status") != "published":
+                        continue
+
+                    # Check visibility window (build time check)
+                    from_date = str(col.get("from") or "").strip()
+                    until_date = str(col.get("until") or "").strip()
+                    if from_date and today_str < from_date:
+                        continue
+                    if until_date and today_str > until_date:
+                        continue
+
+                    # Published collection needs at least 3 live items
+                    if len(filtered_items) < 3:
+                        continue
+
+                    feed_col = {
+                        "id": col["id"],
+                        "title": col.get("title") or col["id"],
+                        "desc": col.get("description", ""),
+                        "curator": col.get("curator", ""),
+                        "ids": filtered_items,
+                        "n": len(filtered_items),
+                        "coverLayout": col.get("coverLayout", "fan"),
+                        "coverHash": col.get("coverHash", ""),
+                        "pinned": bool(col.get("pinned")),
+                        "priority": int(col.get("priority") or 0)
+                    }
+                    published_collections.append(feed_col)
+
+                if cleaned_collections != collections_data:
+                    with open(COLLECTIONS_JSON, "w", encoding="utf-8", newline="\n") as f_col_out:
+                        json.dump(cleaned_collections, f_col_out, indent=2, ensure_ascii=False)
+                        f_col_out.write("\n")
+
+                published_collections.sort(
+                    key=lambda c: (1 if c.get("pinned") else 0, c.get("priority", 0)),
+                    reverse=True
+                )
+
+                feed_output = {
+                    "v": 1,
+                    "updated": today_str,
+                    "collections": published_collections
+                }
+                with open(COLLECTIONS_LITE_JSON, "w", encoding="utf-8", newline="\n") as f_clite:
+                    json.dump(feed_output, f_clite, separators=(",", ":"), ensure_ascii=False)
+                print(f"Collections feed generated: {len(published_collections)} published collections ({len(collections_data)} total)")
+        except Exception as e:
+            print(f"Warning: Failed to generate collections feed: {e}", file=sys.stderr)
 
     raw_size = os.path.getsize(SRC_JSON)
     min_size = os.path.getsize(MIN_JSON)
