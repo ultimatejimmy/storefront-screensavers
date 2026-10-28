@@ -427,7 +427,7 @@ def sync_all_catalog():
                             m_img = m_img.convert('RGBA')
                         elif ext != 'png' and m_img.mode != 'RGB':
                             m_img = m_img.convert('RGB')
-                        thumb_img = ImageOps.fit(m_img, (300, 400), Image.Resampling.LANCZOS)
+                        thumb_img = ImageOps.fit(m_img, (180, 240), Image.Resampling.LANCZOS)
                         if ext == 'png':
                             try:
                                 thumb_quant = thumb_img.quantize(colors=256, method=Image.Quantize.FASTOCTREE)
@@ -443,7 +443,7 @@ def sync_all_catalog():
             # Check if transparent - handle plugin thumbnail
             cat_val = item.get('category', [])
             cat_str = ' '.join(cat_val) if isinstance(cat_val, list) else str(cat_val)
-            is_transparent = 'transparent' in cat_str.lower()
+            is_transparent = 'transparent' in cat_str.lower() or ext == 'png' or item.get('ext') == 'png'
             plugin_thumb_rel = f"images/thumbnails/plugin/{item_id}.png"
             plugin_thumb_path = os.path.join(REPO_ROOT, plugin_thumb_rel)
             expected_plugin_url = GITHUB_RAW_BASE + plugin_thumb_rel
@@ -523,12 +523,18 @@ def sync_all_catalog():
     except Exception as e:
         print(f"Warning generating optimized catalogs: {e}")
 
+    try:
+        from build_collection_covers import build_all_collection_covers
+        build_all_collection_covers()
+    except Exception as e:
+        print(f"Warning generating collection covers: {e}")
+
     # Git commit and push (including deletions)
     git_result = {"committed": False, "pushed": False, "message": ""}
     import subprocess
     try:
-        # Stage all catalog, credits, and image changes/deletions
-        subprocess.run(['git', 'add', '-A', 'screensavers.json', 'screensavers.lite.json', 'screensavers.min.json', 'screensavers.unified.lite.json', 'CREDITS.md', 'images/'], cwd=REPO_ROOT, check=True)
+        # Stage all catalog, collections, credits, and image changes/deletions
+        subprocess.run(['git', 'add', '-A', 'screensavers.json', 'screensavers.lite.json', 'screensavers.min.json', 'screensavers.unified.lite.json', 'collections.json', 'collections.lite.json', 'CREDITS.md', 'images/'], cwd=REPO_ROOT, check=True)
 
         # Check if there are staged git changes
         status_proc = subprocess.run(['git', 'status', '--porcelain'], cwd=REPO_ROOT, capture_output=True, text=True)
