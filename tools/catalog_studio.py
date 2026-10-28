@@ -455,7 +455,7 @@ def sync_all_catalog():
                         with Image.open(master_path) as m_img:
                             if m_img.mode != 'RGBA':
                                 m_img = m_img.convert('RGBA')
-                            plugin_thumb_img = composite_over_checkerboard(m_img, 600, 800)
+                            plugin_thumb_img = composite_over_checkerboard(m_img, 180, 240)
                             plugin_thumb_img.save(plugin_thumb_path, 'PNG', optimize=True)
                             thumbnails_regenerated += 1
                     except Exception as e:
@@ -607,14 +607,14 @@ def process_and_save_image(image_bytes, item_id, is_png=False):
     thumb_abs_path = os.path.join(REPO_ROOT, thumb_rel_path)
 
     # Master: 1860 x 2480 (3:4 ratio)
-    # Thumbnail: 300 x 400 (3:4 ratio) optimized for fast e-ink transfers
+    # Thumbnail: 180 x 240 (3:4 ratio) optimized for fast e-ink transfers
     plugin_thumb_rel_path = None
     if has_alpha:
         if img.mode != 'RGBA':
             img = img.convert('RGBA')
         
         master_img = ImageOps.fit(img, (1860, 2480), Image.Resampling.LANCZOS)
-        thumb_img = ImageOps.fit(img, (300, 400), Image.Resampling.LANCZOS)
+        thumb_img = ImageOps.fit(img, (180, 240), Image.Resampling.LANCZOS)
         
         master_img.save(full_abs_path, 'PNG', optimize=True)
         # Quantize thumbnail to 8-bit palette with alpha for 85%+ smaller file size
@@ -624,11 +624,11 @@ def process_and_save_image(image_bytes, item_id, is_png=False):
         except Exception:
             thumb_img.save(thumb_abs_path, 'PNG', optimize=True)
 
-        # Generate checkerboard composite plugin thumbnail (600 x 800 RGB)
+        # Generate checkerboard composite plugin thumbnail (180 x 240 RGB)
         plugin_thumb_rel_path = f"images/thumbnails/plugin/{item_id}.png"
         plugin_thumb_abs_path = os.path.join(REPO_ROOT, plugin_thumb_rel_path)
         try:
-            plugin_thumb_img = composite_over_checkerboard(img, 600, 800)
+            plugin_thumb_img = composite_over_checkerboard(img, 180, 240)
             plugin_thumb_img.save(plugin_thumb_abs_path, 'PNG', optimize=True)
         except Exception as e:
             print(f"Warning: Failed to generate plugin thumbnail for {item_id}: {e}")
@@ -637,7 +637,7 @@ def process_and_save_image(image_bytes, item_id, is_png=False):
             img = img.convert('RGB')
             
         master_img = ImageOps.fit(img, (1860, 2480), Image.Resampling.LANCZOS)
-        thumb_img = ImageOps.fit(img, (300, 400), Image.Resampling.LANCZOS)
+        thumb_img = ImageOps.fit(img, (180, 240), Image.Resampling.LANCZOS)
         
         master_img.save(full_abs_path, 'JPEG', quality=92)
         thumb_img.save(thumb_abs_path, 'JPEG', quality=78, optimize=True)

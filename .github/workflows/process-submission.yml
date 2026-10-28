@@ -551,11 +551,11 @@ jobs:
                       master_transparent = fit_transparent(img_rgba.copy(), 1860, 2480)
                   master_transparent.save(full_path, 'PNG')
 
-                  web_thumb = master_transparent.resize((600, 800), Image.Resampling.LANCZOS)
-                  web_thumb.save(thumb_web_path, 'PNG')
+                  web_thumb = fit_transparent(master_transparent.copy(), 180, 240)
+                  web_thumb.save(thumb_web_path, 'PNG', optimize=True)
 
-                  plugin_thumb = composite_over_checkerboard(web_thumb.copy(), 600, 800)
-                  plugin_thumb.save(thumb_plugin_path, 'PNG')
+                  plugin_thumb = composite_over_checkerboard(master_transparent.copy(), 180, 240)
+                  plugin_thumb.save(thumb_plugin_path, 'PNG', optimize=True)
               else:
                   full_path = f'images/{item_id}.jpg'
                   thumb_web_path = f'images/thumbnails/{item_id}.jpg'
@@ -565,18 +565,15 @@ jobs:
                   if is_already_target_size:
                       master_img = img_rgb
                       master_img.save(full_path, 'JPEG', quality=92)
-                      thumb_img = master_img.resize((600, 800), Image.Resampling.LANCZOS)
-                      thumb_img.save(thumb_web_path, 'JPEG', quality=85)
                   elif crop_info:
                       master_img = apply_crop(img_rgb, crop_info['zoom'], crop_info['offset_x'], crop_info['offset_y'], False)
                       master_img.save(full_path, 'JPEG', quality=92)
-                      thumb_img = master_img.resize((600, 800), Image.Resampling.LANCZOS)
-                      thumb_img.save(thumb_web_path, 'JPEG', quality=85)
                   else:
                       master_img = ImageOps.fit(img_rgb, (1860, 2480), Image.Resampling.LANCZOS)
                       master_img.save(full_path, 'JPEG', quality=92)
-                      thumb_img = ImageOps.fit(img_rgb, (600, 800), Image.Resampling.LANCZOS)
-                      thumb_img.save(thumb_web_path, 'JPEG', quality=85)
+
+                  thumb_img = ImageOps.fit(master_img, (180, 240), Image.Resampling.LANCZOS)
+                  thumb_img.save(thumb_web_path, 'JPEG', quality=82, optimize=True)
 
               raw_base = "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/"
               full_url = raw_base + full_path
@@ -748,7 +745,7 @@ jobs:
                   f"| **Original Filename** | `{item['original_filename']}` |",
                   f"| **Target Item ID** | `{item['item_id']}` |",
                   f"| **Master Image** | `{item['full_path']}` (1860 × 2480) |",
-                  f"| **Thumbnail** | `{item['thumb_web_path']}` (600 × 800) |",
+                  f"| **Thumbnail** | `{item['thumb_web_path']}` (180 × 240) |",
                   "",
                   "### Visual Preview",
                   f"![{item['title']}]({thumb_url})",

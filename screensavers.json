@@ -18498,5 +18498,33 @@
     "dateAdded": "2026-10-18",
     "downloads": 6,
     "wilson": 0
+  },
+  {
+    "id": "eye-of-the-world",
+    "title": "Eye of the World",
+    "author": "NonstickRon",
+    "category": [
+      "Fantasy",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/eye-of-the-world.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/eye-of-the-world.png",
+    "tags": [
+      "EyeOfTheWorld",
+      "Eye of the World",
+      "Wheel of Time",
+      "WheelOfTime",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-26",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/eye-of-the-world.png",
+    "downloads": 1,
+    "likes": 1,
+    "wilson": 0.20654329147389294
   }
 ]

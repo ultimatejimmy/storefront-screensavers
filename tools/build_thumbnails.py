@@ -156,7 +156,24 @@ def process_native_screensavers(force=False, limit=None):
         target_ext = ".png" if ext == ".png" else ".jpg"
         target_thumb = os.path.join(THUMBS_DIR, f"{item_id}{target_ext}")
 
-        if force or not os.path.exists(target_thumb) or os.path.getmtime(src_path) > os.path.getmtime(target_thumb):
+        needs_rebuild = force or not os.path.exists(target_thumb) or os.path.getmtime(src_path) > os.path.getmtime(target_thumb)
+        if not needs_rebuild and (is_transparent or target_ext == ".png"):
+            plugin_dest = os.path.join(PLUGIN_THUMBS_DIR, f"{item_id}.png")
+            if not os.path.exists(plugin_dest) or os.path.getsize(plugin_dest) > 240 * 1024:
+                needs_rebuild = True
+
+        if not needs_rebuild and os.path.exists(target_thumb):
+            try:
+                if os.path.getsize(target_thumb) > 240 * 1024:
+                    needs_rebuild = True
+                else:
+                    with Image.open(target_thumb) as t_im:
+                        if t_im.size != (TARGET_W, TARGET_H):
+                            needs_rebuild = True
+            except Exception:
+                needs_rebuild = True
+
+        if needs_rebuild:
             candidates.append((src_path, target_thumb, is_transparent, item_id))
 
     if limit:

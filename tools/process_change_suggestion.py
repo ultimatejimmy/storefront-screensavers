@@ -549,11 +549,11 @@ def main():
                 master_img = fit_transparent(img_rgba.copy(), 1860, 2480)
                 master_img.save(os.path.join(REPO_ROOT, full_rel), 'PNG')
 
-                web_thumb = fit_transparent(img_rgba.copy(), 600, 800)
-                web_thumb.save(os.path.join(REPO_ROOT, thumb_web_rel), 'PNG')
+                web_thumb = fit_transparent(img_rgba.copy(), 180, 240)
+                web_thumb.save(os.path.join(REPO_ROOT, thumb_web_rel), 'PNG', optimize=True)
 
-                plugin_thumb = composite_over_checkerboard(img_rgba.copy(), 600, 800)
-                plugin_thumb.save(os.path.join(REPO_ROOT, thumb_plugin_rel), 'PNG')
+                plugin_thumb = composite_over_checkerboard(img_rgba.copy(), 180, 240)
+                plugin_thumb.save(os.path.join(REPO_ROOT, thumb_plugin_rel), 'PNG', optimize=True)
 
                 files_to_add.extend([full_rel, thumb_web_rel, thumb_plugin_rel])
 
@@ -575,8 +575,8 @@ def main():
                 master_img = ImageOps.fit(img_rgb, (1860, 2480), Image.Resampling.LANCZOS)
                 master_img.save(os.path.join(REPO_ROOT, full_rel), 'JPEG', quality=92)
 
-                thumb_img = ImageOps.fit(img_rgb, (600, 800), Image.Resampling.LANCZOS)
-                thumb_img.save(os.path.join(REPO_ROOT, thumb_web_rel), 'JPEG', quality=85)
+                thumb_img = ImageOps.fit(img_rgb, (180, 240), Image.Resampling.LANCZOS)
+                thumb_img.save(os.path.join(REPO_ROOT, thumb_web_rel), 'JPEG', quality=82, optimize=True)
 
                 files_to_add.extend([full_rel, thumb_web_rel])
 

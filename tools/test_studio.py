@@ -254,7 +254,7 @@ class TestCatalogStudio(unittest.TestCase):
 
             # Verify plugin thumbnail is RGB composited
             with Image.open(plugin_thumb_path) as p_img:
-                self.assertEqual(p_img.size, (600, 800))
+                self.assertEqual(p_img.size, (180, 240))
                 self.assertEqual(p_img.mode, 'RGB')
 
             # Cleanup
