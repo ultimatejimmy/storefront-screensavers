@@ -91,12 +91,15 @@ def main():
             print(f"No new items on {branch} compared to main.")
             continue
 
+        added_from_branch = False
         for it in new_on_branch:
             if it.get('id') not in [c['id'] for c in consolidated_items]:
                 it['_source_pr'] = pr_num
                 it['_source_branch'] = branch
                 consolidated_items.append(it)
-                branches_to_process.append((branch, pr_num))
+                added_from_branch = True
+        if added_from_branch:
+            branches_to_process.append((branch, pr_num))
 
     if not consolidated_items:
         print("No new unique items found across open PRs.")
@@ -114,10 +117,11 @@ def main():
     files_added = set()
     for branch, pr_num in branches_to_process:
         diff_out = run(f'git diff --name-only --diff-filter=A origin/main...origin/{branch}').stdout.splitlines()
-        for f in diff_out:
-            if f.startswith('images/'):
-                run(f'git checkout origin/{branch} -- "{f}"')
-                files_added.add(f)
+        img_files = [f for f in diff_out if f.startswith('images/')]
+        if img_files:
+            quoted = ' '.join(f'"{f}"' for f in img_files)
+            run(f'git checkout origin/{branch} -- {quoted}')
+            files_added.update(img_files)
 
     # Append new items to screensavers.json
     curr_catalog = list(main_catalog)
