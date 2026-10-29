@@ -18553,5 +18553,277 @@
     "dateAdded": "2026-10-29",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/peace-flowers.png",
     "authorUrl": "https://openclipart.org/artist/j4p4n"
+  },
+  {
+    "id": "skateboarder",
+    "title": "skateboarder",
+    "author": "cactus_cowboy",
+    "category": [
+      "Minimalist",
+      "Art",
+      "Pop Culture",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/skateboarder.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/skateboarder.png",
+    "tags": [
+      "skateboarder",
+      "skater",
+      "exercise",
+      "silhouette",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/skateboarder.png",
+    "authorUrl": "https://openclipart.org/artist/cactus_cowboy"
+  },
+  {
+    "id": "octopus",
+    "title": "octopus",
+    "author": "cactus_cowboy",
+    "category": [
+      "Minimalist",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/octopus.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/octopus.png",
+    "tags": [
+      "animal",
+      "octopus",
+      "ocean",
+      "sea",
+      "creature",
+      "cephalopod",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/octopus.png",
+    "authorUrl": "https://openclipart.org/artist/cactus_cowboy"
+  },
+  {
+    "id": "ink-splash",
+    "title": "Ink Splash",
+    "author": "oksmith",
+    "category": [
+      "Abstract",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ink-splash.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ink-splash.png",
+    "tags": [
+      "ink",
+      "splash",
+      "octopus",
+      "liquid",
+      "splat",
+      "drop",
+      "blob",
+      "splotch",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/ink-splash.png",
+    "authorUrl": "https://openclipart.org/artist/oksmith"
+  },
+  {
+    "id": "blood",
+    "title": "Blood",
+    "author": "scro2003",
+    "category": "Abstract",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/blood.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/blood.jpg",
+    "tags": [
+      "blood",
+      "splat"
+    ],
+    "dateAdded": "2026-10-29",
+    "authorUrl": "https://openclipart.org/artist/scro2003"
+  },
+  {
+    "id": "blood2",
+    "title": "Blood2",
+    "author": "scro2003",
+    "category": "Abstract",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/blood2.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/blood2.jpg",
+    "tags": [
+      "blood",
+      "splat"
+    ],
+    "dateAdded": "2026-10-29",
+    "authorUrl": "https://openclipart.org/artist/scro2003"
+  },
+  {
+    "id": "ink-boy",
+    "title": "ink boy",
+    "author": "nefigcas",
+    "category": [
+      "Minimalist",
+      "Abstract",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/ink-boy.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/ink-boy.png",
+    "tags": [
+      "ink",
+      "boy",
+      "male",
+      "black",
+      "tribal",
+      "hippie",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/ink-boy.png",
+    "authorUrl": "https://openclipart.org/artist/nefigcas"
+  },
+  {
+    "id": "japanese-woman",
+    "title": "Japanese Woman",
+    "author": "martinaledermann",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Quotes",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/japanese-woman.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/japanese-woman.png",
+    "tags": [
+      "japanese",
+      "flowers",
+      "ink",
+      "woman",
+      "wisdom",
+      "painting",
+      "japan",
+      "photocopy",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/japanese-woman.png",
+    "authorUrl": "https://openclipart.org/artist/martinaledermann"
+  },
+  {
+    "id": "chinese-hills",
+    "title": "Chinese Hills",
+    "author": "martinaledermann",
+    "category": [
+      "Nature",
+      "Art"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/chinese-hills.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/chinese-hills.jpg",
+    "tags": [
+      "print",
+      "art",
+      "china",
+      "culture",
+      "nature",
+      "peace",
+      "hills",
+      "ink",
+      "monastery",
+      "temple"
+    ],
+    "dateAdded": "2026-10-29",
+    "authorUrl": "https://openclipart.org/artist/martinaledermann"
+  },
+  {
+    "id": "abstract-ink-blend",
+    "title": "Abstract Ink Blend",
+    "author": "GDJ",
+    "category": [
+      "Abstract",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/abstract-ink-blend.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/abstract-ink-blend.png",
+    "tags": [
+      "abstract",
+      "ink",
+      "geometric",
+      "art",
+      "mix",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/abstract-ink-blend.png",
+    "authorUrl": "https://openclipart.org/artist/GDJ"
+  },
+  {
+    "id": "the-tailor-and-the-raven",
+    "title": "The Tailor and the Raven",
+    "author": "sinnervip",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/the-tailor-and-the-raven.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/the-tailor-and-the-raven.png",
+    "tags": [
+      "tailor",
+      "raven",
+      "tree",
+      "sewing",
+      "crow",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/the-tailor-and-the-raven.png",
+    "authorUrl": "https://openclipart.org/artist/sinnervip"
   }
 ]
