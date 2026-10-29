@@ -156,8 +156,8 @@ def process_native_screensavers(force=False, limit=None):
         target_ext = ".png" if ext == ".png" else ".jpg"
         target_thumb = os.path.join(THUMBS_DIR, f"{item_id}{target_ext}")
 
-        needs_rebuild = force or not os.path.exists(target_thumb) or os.path.getmtime(src_path) > os.path.getmtime(target_thumb)
-        if not needs_rebuild and (is_transparent or target_ext == ".png"):
+        needs_rebuild = force or not os.path.exists(target_thumb) or (os.path.getmtime(src_path) - os.path.getmtime(target_thumb) > 60)
+        if not needs_rebuild and is_transparent:
             plugin_dest = os.path.join(PLUGIN_THUMBS_DIR, f"{item_id}.png")
             if not os.path.exists(plugin_dest) or os.path.getsize(plugin_dest) > 240 * 1024:
                 needs_rebuild = True
@@ -186,7 +186,7 @@ def process_native_screensavers(force=False, limit=None):
         ok, err = process_single_image(src_path, target_thumb, is_trans, bake_checkerboard=False)
         if ok:
             success += 1
-            if is_trans or target_thumb.endswith(".png"):
+            if is_trans:
                 # Also generate plugin checkerboard thumbnail
                 plugin_dest = os.path.join(PLUGIN_THUMBS_DIR, f"{item_id}.png")
                 process_single_image(src_path, plugin_dest, is_transparent=True, bake_checkerboard=True)

@@ -146,7 +146,7 @@ def main():
 
     # Commit all
     run('git add images/ screensavers.json screensavers.lite.json screensavers.min.json screensavers.unified.lite.json CREDITS.md')
-    commit_msg = f"Consolidate {len(consolidated_items)} pending screensavers for review ({', '.join(f'#{p}' for p in [pr['number'] for pr in submission_prs])})"
+    commit_msg = f"Consolidate {len(consolidated_items)} pending screensavers for review ({', '.join(f'#{p}' for p in [pr['number'] for pr in submission_prs])}) [skip ci]"
     run(f'git commit -m "{commit_msg}"')
 
     print(f"Pushing {target_branch} to origin...")

@@ -18,6 +18,8 @@ on:
         default: false
         type: boolean
   push:
+    branches:
+      - main
     paths:
       - 'images/*.jpg'
       - 'images/*.png'
