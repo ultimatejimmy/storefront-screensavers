@@ -33,8 +33,28 @@ def main():
     run('git checkout main')
     run('git pull origin main')
 
-    prs_out = run(f'gh pr list -R {repo} --state open --limit 100 --json number,title,headRefName,url,body').stdout
-    open_prs = json.loads(prs_out)
+    open_prs = []
+    try:
+        prs_out = run(f'gh pr list -R {repo} --state open --limit 100 --json number,title,headRefName,url,body').stdout
+        open_prs = json.loads(prs_out)
+    except Exception as gh_err:
+        print(f"Notice: gh CLI not available ({gh_err}), querying GitHub API directly...")
+        import urllib.request
+        headers = {'User-Agent': 'Mozilla/5.0', 'Accept': 'application/vnd.github.v3+json'}
+        token = os.environ.get('GH_TOKEN') or os.environ.get('GITHUB_TOKEN')
+        if token:
+            headers['Authorization'] = f'token {token}'
+        api_url = f'https://api.github.com/repos/{repo}/pulls?state=open&per_page=100'
+        req = urllib.request.Request(api_url, headers=headers)
+        with urllib.request.urlopen(req) as resp:
+            gh_data = json.load(resp)
+        open_prs = [{
+            'number': p['number'],
+            'title': p['title'],
+            'headRefName': p['head']['ref'],
+            'url': p['html_url'],
+            'body': p.get('body') or ''
+        } for p in gh_data]
 
     submission_prs = [p for p in open_prs if p.get('headRefName', '').startswith('submission-')]
     # Sort by PR number ascending
@@ -125,7 +145,7 @@ def main():
         print(f"Warning rebuilding credits: {e}")
 
     # Commit all
-    run('git add images/ screensavers.json screensavers.lite.json screensavers.min.json CREDITS.md')
+    run('git add images/ screensavers.json screensavers.lite.json screensavers.min.json screensavers.unified.lite.json CREDITS.md')
     commit_msg = f"Consolidate {len(consolidated_items)} pending screensavers for review ({', '.join(f'#{p}' for p in [pr['number'] for pr in submission_prs])})"
     run(f'git commit -m "{commit_msg}"')
 
@@ -203,21 +223,28 @@ def main():
     pr_title = f"Batch Screensaver Review: {len(consolidated_items)} Wallpapers ({titles_sample} +{len(consolidated_items)-3} more)"
 
     print("Opening Consolidated Pull Request...")
-    pr_create_res = run(f'gh pr create --title "{pr_title}" --body-file consolidated_pr_body.md --head {target_branch} --base main -R {repo}')
-    new_pr_url = pr_create_res.stdout.strip()
-    print(f"\n[SUCCESS] Successfully created Consolidated PR: {new_pr_url}")
+    new_pr_url = None
+    try:
+        pr_create_res = run(f'gh pr create --title "{pr_title}" --body-file consolidated_pr_body.md --head {target_branch} --base main -R {repo}')
+        new_pr_url = pr_create_res.stdout.strip()
+        print(f"\n[SUCCESS] Successfully created Consolidated PR: {new_pr_url}")
+    except Exception as e:
+        print(f"\nNote: Could not create PR via gh CLI: {e}")
+        compare_url = f"https://github.com/{repo}/compare/main...{target_branch}?expand=1"
+        print(f"Direct link to create / view Consolidated PR in 1 click:\n  {compare_url}\n")
 
-    # Close individual PRs with note
-    print("\nClosing fragmented individual PRs...")
-    for pr in submission_prs:
-        pr_num = pr['number']
-        close_msg = f"This submission has been consolidated into {new_pr_url} for unified review and 1-click approval."
-        try:
-            run(f'gh pr comment {pr_num} --body "{close_msg}" -R {repo}')
-            run(f'gh pr close {pr_num} -R {repo}')
-            print(f"Closed PR #{pr_num}")
-        except Exception as e:
-            print(f"Warning closing PR #{pr_num}: {e}")
+    # Close individual PRs with note if gh is available and consolidated PR was created
+    if new_pr_url:
+        print("\nClosing fragmented individual PRs...")
+        for pr in submission_prs:
+            pr_num = pr['number']
+            close_msg = f"This submission has been consolidated into {new_pr_url} for unified review and 1-click approval."
+            try:
+                run(f'gh pr comment {pr_num} --body "{close_msg}" -R {repo}')
+                run(f'gh pr close {pr_num} -R {repo}')
+                print(f"Closed PR #{pr_num}")
+            except Exception as e:
+                print(f"Warning closing PR #{pr_num}: {e}")
 
     # Return to main
     run('git checkout main')

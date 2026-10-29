@@ -300,7 +300,7 @@ def rebuild_credits_file(catalog):
         lines.append(f"| {title} | {author} | {category} | {license_name} | {source_md} |")
 
     lines.append("")
-    with open(CREDITS_MD, 'w', encoding='utf-8') as f:
+    with open(CREDITS_MD, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(lines))
 
 def clean_filename_to_title(filename):
