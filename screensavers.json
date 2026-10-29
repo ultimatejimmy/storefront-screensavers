@@ -18825,5 +18825,149 @@
     "dateAdded": "2026-10-29",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/the-tailor-and-the-raven.png",
     "authorUrl": "https://openclipart.org/artist/sinnervip"
+  },
+  {
+    "id": "raven-2",
+    "title": "raven",
+    "author": "Lazur",
+    "category": [
+      "Minimalist",
+      "Nature"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/raven-2.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/raven-2.jpg",
+    "tags": [
+      "raven",
+      "animal",
+      "bird",
+      "ink",
+      "black"
+    ],
+    "dateAdded": "2026-10-29",
+    "authorUrl": "https://openclipart.org/artist/Lazur"
+  },
+  {
+    "id": "lingerie-model",
+    "title": "Lingerie model",
+    "author": "Firkin",
+    "category": "Transparent",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/lingerie-model.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/lingerie-model.png",
+    "tags": [
+      "model",
+      "sexy",
+      "girl",
+      "lingerie",
+      "abstract",
+      "woman",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/lingerie-model.png",
+    "authorUrl": "https://openclipart.org/artist/Firkin"
+  },
+  {
+    "id": "mermaid",
+    "title": "mermaid",
+    "author": "cactus_cowboy",
+    "category": [
+      "Minimalist",
+      "Anime",
+      "Abstract",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/mermaid.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/mermaid.png",
+    "tags": [
+      "head",
+      "mermaid",
+      "cartoon",
+      "caricature",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/mermaid.png",
+    "authorUrl": "https://openclipart.org/artist/cactus_cowboy"
+  },
+  {
+    "id": "blonde-mermaid",
+    "title": "Blonde Mermaid",
+    "author": "GDJ",
+    "category": [
+      "Fantasy",
+      "Anime",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/blonde-mermaid.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/blonde-mermaid.png",
+    "tags": [
+      "mermaid",
+      "cartoon",
+      "comic",
+      "mythical",
+      "marine",
+      "hybrid",
+      "happy",
+      "swim",
+      "sea",
+      "water",
+      "blonde",
+      "ocean",
+      "girl",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/blonde-mermaid.png",
+    "authorUrl": "https://openclipart.org/artist/GDJ"
+  },
+  {
+    "id": "lady-with-umbrella",
+    "title": "Lady with umbrella",
+    "author": "Firkin",
+    "category": [
+      "Minimalist",
+      "Anime",
+      "Abstract",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/lady-with-umbrella.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/lady-with-umbrella.png",
+    "tags": [
+      "feamle",
+      "lady",
+      "rain",
+      "umbrella",
+      "comic",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/lady-with-umbrella.png",
+    "authorUrl": "https://openclipart.org/artist/Firkin"
   }
 ]
