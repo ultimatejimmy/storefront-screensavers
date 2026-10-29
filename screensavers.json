@@ -18526,5 +18526,32 @@
     "downloads": 3,
     "likes": 1,
     "wilson": 0.20654329147389294
+  },
+  {
+    "id": "peace-flowers",
+    "title": "Peace Flowers",
+    "author": "j4p4n",
+    "category": [
+      "Minimalist",
+      "Art",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/peace-flowers.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/peace-flowers.png",
+    "tags": [
+      "peace",
+      "flowers",
+      "symbol",
+      "love",
+      "transparent"
+    ],
+    "dateAdded": "2026-10-29",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/peace-flowers.png",
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   }
 ]
