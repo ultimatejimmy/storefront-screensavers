@@ -64,10 +64,23 @@ def main():
     print(f"Processing reject command on PR #{pr_num}: target='{target}', reason='{reason}'")
 
     # Fetch PR details
-    pr_info_raw = run(f'gh pr view {pr_num} -R {repo} --json headRefName,body,title').stdout
-    pr_info = json.loads(pr_info_raw)
-    branch = pr_info['headRefName']
-    pr_body = pr_info['body']
+    try:
+        pr_info_raw = run(f'gh pr view {pr_num} -R {repo} --json headRefName,body,title').stdout
+        pr_info = json.loads(pr_info_raw)
+        branch = pr_info['headRefName']
+        pr_body = pr_info['body']
+    except Exception as gh_err:
+        print(f"Notice: gh CLI not available ({gh_err}), querying GitHub API directly...")
+        import urllib.request
+        headers = {'User-Agent': 'Mozilla/5.0', 'Accept': 'application/vnd.github.v3+json'}
+        token = os.environ.get('GH_TOKEN') or os.environ.get('GITHUB_TOKEN')
+        if token:
+            headers['Authorization'] = f'token {token}'
+        req = urllib.request.Request(f'https://api.github.com/repos/{repo}/pulls/{pr_num}', headers=headers)
+        with urllib.request.urlopen(req) as resp:
+            gh_pr = json.load(resp)
+        branch = gh_pr['head']['ref']
+        pr_body = gh_pr.get('body') or ''
 
     print(f"PR branch is '{branch}'")
 
@@ -164,13 +177,13 @@ def main():
 
     try:
         from generate_catalogs import generate_catalogs
-        generate_catalogs()
+        generate_catalogs(fetch_remote=False)
         print("Generated optimized screensavers.lite.json and screensavers.min.json.")
     except Exception as e:
         print(f"Warning generating optimized catalogs: {e}")
 
     # Commit and push
-    run(f'git add screensavers.json screensavers.lite.json screensavers.min.json CREDITS.md')
+    run(f'git add screensavers.json screensavers.lite.json screensavers.min.json screensavers.unified.lite.json CREDITS.md')
     commit_msg = f"Drop '{item_title}' (#{matched_idx}) per maintainer reject command: {reason}"
     run(f'git commit -m "{commit_msg}"')
     run(f'git push origin {branch} --force')
@@ -205,8 +218,11 @@ def main():
         f"**Status:** {remaining_count} wallpaper{'s' if remaining_count != 1 else ''} remaining in this PR are ready to merge!"
     ]
     confirm_msg = '\n'.join(confirm_lines)
-    run(f'gh pr comment {pr_num} --body "{confirm_msg}" -R {repo}')
-    print("Posted confirmation comment on PR.")
+    try:
+        run(f'gh pr comment {pr_num} --body "{confirm_msg}" -R {repo}')
+        print("Posted confirmation comment on PR.")
+    except Exception as e:
+        print(f"Warning posting comment on PR: {e}")
 
     # Return to main
     run('git checkout main')

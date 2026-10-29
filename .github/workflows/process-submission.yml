@@ -710,8 +710,8 @@ jobs:
 
           try:
               from generate_catalogs import generate_catalogs
-              generate_catalogs()
-              files_to_add.extend(['screensavers.lite.json', 'screensavers.min.json'])
+              generate_catalogs(fetch_remote=False)
+              files_to_add.extend(['screensavers.lite.json', 'screensavers.min.json', 'screensavers.unified.lite.json'])
           except Exception as cat_err:
               print(f"Warning generating optimized catalogs: {cat_err}")
 

@@ -130,7 +130,7 @@ def main():
 
     try:
         from generate_catalogs import generate_catalogs
-        generate_catalogs()
+        generate_catalogs(fetch_remote=False)
         print("Generated optimized screensavers.lite.json and screensavers.min.json.")
     except Exception as e:
         print(f"Warning generating optimized catalogs: {e}")
