@@ -597,3 +597,8 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Chinese Hills | martinaledermann | Nature, Art | Community Share | martinaledermann |
 | Abstract Ink Blend | GDJ | Abstract, Art, Transparent | Community Share | GDJ |
 | The Tailor and the Raven | sinnervip | Minimalist, Nature, Transparent | Community Share | sinnervip |
+| raven | Lazur | Minimalist, Nature | Community Share | Lazur |
+| Lingerie model | Firkin | Transparent | Community Share | Firkin |
+| mermaid | cactus_cowboy | Minimalist, Anime, Abstract, Art, Transparent | Community Share | cactus_cowboy |
+| Blonde Mermaid | GDJ | Fantasy, Anime, Transparent | Community Share | GDJ |
+| Lady with umbrella | Firkin | Minimalist, Anime, Abstract, Transparent | Community Share | Firkin |
