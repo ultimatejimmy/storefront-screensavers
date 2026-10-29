@@ -586,3 +586,19 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Tomatoes | 4kvikii | Minimalist, Abstract, Art | Community Share | 4kvikii |
 | Polka Dots | 4kvikii | Minimalist | Community Share | 4kvikii |
 | Eye of the World | NonstickRon | Fantasy, Transparent | Community Share | NonstickRon |
+| Peace Flowers | j4p4n | Minimalist, Art, Transparent | Community Share | j4p4n |
+| skateboarder | cactus_cowboy | Minimalist, Art, Pop Culture, Transparent | Community Share | cactus_cowboy |
+| octopus | cactus_cowboy | Minimalist, Art, Transparent | Community Share | cactus_cowboy |
+| Ink Splash | oksmith | Abstract, Transparent | Community Share | oksmith |
+| Blood | scro2003 | Abstract | Community Share | scro2003 |
+| Blood2 | scro2003 | Abstract | Community Share | scro2003 |
+| ink boy | nefigcas | Minimalist, Abstract, Transparent | Community Share | nefigcas |
+| Japanese Woman | martinaledermann | Minimalist, Nature, Quotes, Transparent | Community Share | martinaledermann |
+| Chinese Hills | martinaledermann | Nature, Art | Community Share | martinaledermann |
+| Abstract Ink Blend | GDJ | Abstract, Art, Transparent | Community Share | GDJ |
+| The Tailor and the Raven | sinnervip | Minimalist, Nature, Transparent | Community Share | sinnervip |
+| raven | Lazur | Minimalist, Nature | Community Share | Lazur |
+| Lingerie model | Firkin | Transparent | Community Share | Firkin |
+| mermaid | cactus_cowboy | Minimalist, Anime, Abstract, Art, Transparent | Community Share | cactus_cowboy |
+| Blonde Mermaid | GDJ | Fantasy, Anime, Transparent | Community Share | GDJ |
+| Lady with umbrella | Firkin | Minimalist, Anime, Abstract, Transparent | Community Share | Firkin |
