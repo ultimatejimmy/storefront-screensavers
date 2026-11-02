@@ -602,3 +602,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | mermaid | cactus_cowboy | Minimalist, Anime, Abstract, Art, Transparent | Community Share | cactus_cowboy |
 | Blonde Mermaid | GDJ | Fantasy, Anime, Transparent | Community Share | GDJ |
 | Lady with umbrella | Firkin | Minimalist, Anime, Abstract, Transparent | Community Share | Firkin |
+| Taylor's version | dul | Pop Culture | Community Share | dul |
+| Karma is a cat | dul | Pop Culture | Community Share | dul |
+| Cat chess | dul | Pop Culture | Community Share | dul |
+| Taylor Swift | dul | Pop Culture | Community Share | dul |

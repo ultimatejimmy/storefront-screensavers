@@ -18898,5 +18898,73 @@
     "authorUrl": "https://openclipart.org/artist/Firkin",
     "downloads": 2,
     "wilson": 0
+  },
+  {
+    "id": "taylor-s-version",
+    "title": "Taylor's version",
+    "author": "dul",
+    "category": "Pop Culture",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/taylor-s-version.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/taylor-s-version.jpg",
+    "tags": [
+      "Taylor Swift"
+    ],
+    "dateAdded": "2026-11-02"
+  },
+  {
+    "id": "karma-is-a-cat",
+    "title": "Karma is a cat",
+    "author": "dul",
+    "category": "Pop Culture",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/karma-is-a-cat.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/karma-is-a-cat.jpg",
+    "tags": [
+      "Taylor Swift"
+    ],
+    "dateAdded": "2026-11-02"
+  },
+  {
+    "id": "cat-chess",
+    "title": "Cat chess",
+    "author": "dul",
+    "category": "Pop Culture",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/cat-chess.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/cat-chess.jpg",
+    "tags": [
+      "Taylor Swift"
+    ],
+    "dateAdded": "2026-11-02"
+  },
+  {
+    "id": "taylor-swift",
+    "title": "Taylor Swift",
+    "author": "dul",
+    "category": "Pop Culture",
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/taylor-swift.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/taylor-swift.jpg",
+    "tags": [
+      "Taylor Swift"
+    ],
+    "dateAdded": "2026-11-02"
   }
 ]
