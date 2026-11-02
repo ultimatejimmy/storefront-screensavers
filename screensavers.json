@@ -163,7 +163,7 @@
     ],
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 756,
+    "downloads": 757,
     "dateAdded": "2026-08-10"
   },
   {
@@ -3733,7 +3733,7 @@
       "urlich"
     ],
     "wilson": 0,
-    "downloads": 99,
+    "downloads": 100,
     "dateAdded": "2026-08-14"
   },
   {
@@ -7298,7 +7298,7 @@
     ],
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 189,
+    "downloads": 190,
     "dateAdded": "2026-08-15"
   },
   {
@@ -7405,7 +7405,7 @@
       "urban giants"
     ],
     "wilson": 0,
-    "downloads": 468,
+    "downloads": 469,
     "dateAdded": "2026-08-15"
   },
   {
@@ -8796,7 +8796,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-classic-wooden-bookshelf-corner.png",
     "likes": 1,
     "wilson": 0.20654329147389294,
-    "downloads": 169,
+    "downloads": 170,
     "dateAdded": "2026-08-16"
   },
   {
@@ -10095,7 +10095,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-grand-classical-library-hall.png",
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 426,
+    "downloads": 427,
     "dateAdded": "2026-08-16"
   },
   {
@@ -13177,7 +13177,7 @@
     ],
     "license": "Community Share",
     "wilson": 0.20654329147389294,
-    "downloads": 213,
+    "downloads": 214,
     "dateAdded": "2026-09-03",
     "likes": 1
   },
@@ -13371,7 +13371,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 241,
+    "downloads": 242,
     "dateAdded": "2026-09-03"
   },
   {
@@ -18914,7 +18914,9 @@
     "tags": [
       "Taylor Swift"
     ],
-    "dateAdded": "2026-11-02"
+    "dateAdded": "2026-11-02",
+    "downloads": 2,
+    "wilson": 0
   },
   {
     "id": "karma-is-a-cat",
@@ -18931,7 +18933,9 @@
     "tags": [
       "Taylor Swift"
     ],
-    "dateAdded": "2026-11-02"
+    "dateAdded": "2026-11-02",
+    "downloads": 1,
+    "wilson": 0
   },
   {
     "id": "cat-chess",
@@ -18948,7 +18952,9 @@
     "tags": [
       "Taylor Swift"
     ],
-    "dateAdded": "2026-11-02"
+    "dateAdded": "2026-11-02",
+    "downloads": 1,
+    "wilson": 0
   },
   {
     "id": "taylor-swift",
@@ -18965,7 +18971,9 @@
     "tags": [
       "Taylor Swift"
     ],
-    "dateAdded": "2026-11-02"
+    "dateAdded": "2026-11-02",
+    "downloads": 1,
+    "wilson": 0
   },
   {
     "id": "bang-chan-for-dazed-korea-x-fendi",
