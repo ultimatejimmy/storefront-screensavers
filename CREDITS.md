@@ -606,3 +606,4 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Karma is a cat | dul | Pop Culture | Community Share | dul |
 | Cat chess | dul | Pop Culture | Community Share | dul |
 | Taylor Swift | dul | Pop Culture | Community Share | dul |
+| BANG CHAN FOR DAZED KOREA X FENDI | ot8biaswrecker | Minimalist | Community Share | ot8biaswrecker |
