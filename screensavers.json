@@ -5237,7 +5237,9 @@
     ],
     "wilson": 0,
     "downloads": 8,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "whisperingsea4-starry-forest-night",
@@ -5530,7 +5532,9 @@
     ],
     "wilson": 0,
     "downloads": 5,
-    "dateAdded": "2026-08-15"
+    "dateAdded": "2026-08-15",
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "whisperingsea4-atmospheric-cloud-horizons",
@@ -7941,7 +7945,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-dilbert-reading.png",
     "wilson": 0,
     "downloads": 5,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "outchy-doctor-strange-mystic-arts",
@@ -8054,7 +8060,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-inspector-gadget-salute.png",
     "wilson": 0,
     "downloads": 2,
-    "dateAdded": "2026-08-16"
+    "dateAdded": "2026-08-16",
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "outchy-babar-elephant-king",
@@ -14916,7 +14924,9 @@
     ],
     "wilson": 0,
     "downloads": 5,
-    "dateAdded": "2026-09-19"
+    "dateAdded": "2026-09-19",
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "jellyfish-fields",
@@ -15032,7 +15042,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bauhaus-egg.png",
     "dateAdded": "2026-09-25",
     "downloads": 2,
-    "wilson": 0
+    "wilson": 0,
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "bauhaus-radiate",
@@ -15454,7 +15466,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/hot-dogs.png",
     "dateAdded": "2026-09-25",
     "downloads": 2,
-    "wilson": 0
+    "wilson": 0,
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "island-window",
@@ -15838,7 +15852,9 @@
     "wilson": 0.20654329147389294,
     "downloads": 7,
     "dateAdded": "2026-09-25",
-    "likes": 1
+    "likes": 1,
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "table-wine-ocean",
@@ -15928,7 +15944,9 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/vhs.png",
     "wilson": 0,
     "downloads": 2,
-    "dateAdded": "2026-09-25"
+    "dateAdded": "2026-09-25",
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "waves",
@@ -16193,7 +16211,9 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "dateAdded": "2026-09-27",
     "downloads": 5,
-    "wilson": 0
+    "wilson": 0,
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "screensaver-11",
@@ -16540,7 +16560,9 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
     "downloads": 5,
-    "dateAdded": "2026-09-27"
+    "dateAdded": "2026-09-27",
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "screensaver-44",
@@ -16688,7 +16710,9 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
     "downloads": 4,
-    "dateAdded": "2026-09-27"
+    "dateAdded": "2026-09-27",
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "screensaver-51",
@@ -16718,7 +16742,9 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
     "downloads": 3,
-    "dateAdded": "2026-09-27"
+    "dateAdded": "2026-09-27",
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "screensaver-52",
@@ -17453,7 +17479,9 @@
     ],
     "dateAdded": "2026-10-14",
     "downloads": 6,
-    "wilson": 0
+    "wilson": 0,
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "portuguese-boat",
@@ -17754,7 +17782,9 @@
     ],
     "dateAdded": "2026-10-18",
     "wilson": 0,
-    "downloads": 2
+    "downloads": 2,
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "tomatoes",
@@ -18163,7 +18193,9 @@
     "dateAdded": "2026-10-29",
     "authorUrl": "https://openclipart.org/artist/Lazur",
     "downloads": 2,
-    "wilson": 0
+    "wilson": 0,
+    "featured": true,
+    "featuredUntil": "2026-11-17"
   },
   {
     "id": "mermaid",

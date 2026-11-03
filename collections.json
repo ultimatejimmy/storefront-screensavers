@@ -32,14 +32,16 @@
       "whisperingsea4-geometric-lunar-cycles",
       "whisperingsea4-high-contrast-cloudscape",
       "whisperingsea4-mountain-lake-reflection",
-      "whisperingsea4-forest-river-reflections"
+      "whisperingsea4-forest-river-reflections",
+      "raven-2",
+      "blood2"
     ],
     "coverMode": "auto",
     "coverItemId": null,
     "coverLayout": "grid",
     "coverHash": "3a2960433dc2",
     "dateAdded": "2026-10-20",
-    "updatedAt": "2026-10-21",
+    "updatedAt": "2026-11-03",
     "priority": 0,
     "pinned": false,
     "from": null,
