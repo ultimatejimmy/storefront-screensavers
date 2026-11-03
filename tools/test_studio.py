@@ -531,8 +531,70 @@ class TestCatalogStudio(unittest.TestCase):
             from generate_catalogs import generate_catalogs
             generate_catalogs(fetch_remote=False)
 
+
+class TestManageBatchPR(unittest.TestCase):
+    def test_parse_command_single_index(self):
+        import manage_batch_pr
+        targets, reason = manage_batch_pr.parse_command("/reject 2")
+        self.assertEqual(targets, ["2"])
+        self.assertEqual(reason, "Not specified")
+
+    def test_parse_command_multiple_indices(self):
+        import manage_batch_pr
+        targets, reason = manage_batch_pr.parse_command("/reject 2 4")
+        self.assertEqual(targets, ["2", "4"])
+        self.assertEqual(reason, "Not specified")
+
+        targets, reason = manage_batch_pr.parse_command("/reject 2, 4")
+        self.assertEqual(targets, ["2", "4"])
+        self.assertEqual(reason, "Not specified")
+
+        targets, reason = manage_batch_pr.parse_command("/reject #2, #4 not suitable")
+        self.assertEqual(targets, ["2", "4"])
+        self.assertEqual(reason, "not suitable")
+
+    def test_parse_command_ids_and_aliases(self):
+        import manage_batch_pr
+        targets, reason = manage_batch_pr.parse_command("/drop lingerie-model")
+        self.assertEqual(targets, ["lingerie-model"])
+        self.assertEqual(reason, "Not specified")
+
+        targets, reason = manage_batch_pr.parse_command("/remove lingerie-model blonde-mermaid inappropriate")
+        self.assertEqual(targets, ["lingerie-model", "blonde-mermaid"])
+        self.assertEqual(reason, "inappropriate")
+
+        targets, reason = manage_batch_pr.parse_command("/reject 3 blurry image")
+        self.assertEqual(targets, ["3"])
+        self.assertEqual(reason, "blurry image")
+
+    def test_parse_pr_table(self):
+        import manage_batch_pr
+        mock_body = """
+## Batch Screensaver Submission
+| Item | Preview | Title | Author | Category | Target ID |
+|---|---|---|---|---|---|
+| **1** | <img src='t1.jpg' /> | **Raven** | Author1 | Nature | `raven-2` |
+| **2** | <img src='t2.png' /> | ~~**Lingerie model**~~ *(❌ Rejected: test)* | Author2 | Model | `lingerie-model` |
+| **3** | <img src='t3.png' /> | **Mermaid** | Author3 | Fantasy | `mermaid` |
+"""
+        table = manage_batch_pr.parse_pr_table(mock_body)
+        self.assertEqual(len(table), 3)
+        self.assertEqual(table[1]["title"], "Raven")
+        self.assertEqual(table[1]["id"], "raven-2")
+        self.assertFalse(table[1]["is_rejected"])
+
+        self.assertEqual(table[2]["title"], "Lingerie model")
+        self.assertEqual(table[2]["id"], "lingerie-model")
+        self.assertTrue(table[2]["is_rejected"])
+
+        self.assertEqual(table[3]["title"], "Mermaid")
+        self.assertEqual(table[3]["id"], "mermaid")
+        self.assertFalse(table[3]["is_rejected"])
+
+
 if __name__ == '__main__':
     unittest.main()
+
 
 
 

@@ -13,7 +13,9 @@ permissions:
 
 jobs:
   process-submission:
-    if: (contains(github.event.issue.title, 'Screensaver Submission') || contains(github.event.issue.title, 'screensaver') || contains(github.event.issue.title, 'Screensaver') || contains(github.event.issue.title, 'Wallpaper') || contains(github.event.issue.title, 'wallpaper') || contains(github.event.issue.labels.*.name, 'screensaver') || contains(github.event.issue.labels.*.name, 'submission')) && github.event.sender.type != 'Bot'
+    if: |
+      !github.event.issue.pull_request &&
+      (contains(github.event.issue.title, 'Screensaver Submission') || contains(github.event.issue.title, 'screensaver') || contains(github.event.issue.title, 'Screensaver') || contains(github.event.issue.title, 'Wallpaper') || contains(github.event.issue.title, 'wallpaper') || contains(github.event.issue.labels.*.name, 'screensaver') || contains(github.event.issue.labels.*.name, 'submission')) && github.event.sender.type != 'Bot'
     runs-on: ubuntu-latest
 
     steps:
@@ -765,8 +767,9 @@ jobs:
                   f"This batch pull request contains {len(items)} screensaver wallpapers submitted in issue #{issue_num}.",
                   "",
                   "> 💡 **Maintainer Curation Instructions:**",
-                  "> - **To reject an individual wallpaper:** Comment `/reject <#>` or `/reject <item-id> [reason]` (e.g. `/reject 3 low quality`).",
-                  "> - **To approve & merge:** When you are satisfied with the items, click **Merge pull request** once to approve the entire batch without rebase delays!",
+                  "> - **To reject individual wallpaper(s):** Comment `/reject <#>` (e.g. `/reject 2` or `/reject 2 4`) or `/reject <item-id> [reason]`.",
+                  "> - ⚠️ **Important:** If rejecting items, wait ~30 seconds for the bot to confirm deletion with 🗑️ and update the PR before clicking **Merge pull request**.",
+                  "> - **To approve & merge:** When you are satisfied with the items, click **Merge pull request** once to approve the entire batch!",
                   "",
                   "---",
                   "",

@@ -598,9 +598,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Abstract Ink Blend | GDJ | Abstract, Art, Transparent | Community Share | GDJ |
 | The Tailor and the Raven | sinnervip | Minimalist, Nature, Transparent | Community Share | sinnervip |
 | raven | Lazur | Minimalist, Nature | Community Share | Lazur |
-| Lingerie model | Firkin | Transparent | Community Share | Firkin |
 | mermaid | cactus_cowboy | Minimalist, Anime, Abstract, Art, Transparent | Community Share | cactus_cowboy |
-| Blonde Mermaid | GDJ | Fantasy, Anime, Transparent | Community Share | GDJ |
 | Lady with umbrella | Firkin | Minimalist, Anime, Abstract, Transparent | Community Share | Firkin |
 | Taylor's version | dul | Pop Culture | Community Share | dul |
 | Karma is a cat | dul | Pop Culture | Community Share | dul |
