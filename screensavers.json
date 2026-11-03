@@ -19014,5 +19014,24 @@
     "dateAdded": "2026-11-02",
     "downloads": 2,
     "wilson": 0
+  },
+  {
+    "id": "felix-by-lazypunch",
+    "title": "FELIX by @LAZYPUNCH",
+    "author": "@lazyp",
+    "category": [
+      "Abstract",
+      "Art",
+      "Pop Culture"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/felix-by-lazypunch.jpg",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/felix-by-lazypunch.jpg",
+    "tags": [],
+    "dateAdded": "2026-11-03"
   }
 ]
