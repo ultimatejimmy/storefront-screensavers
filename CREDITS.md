@@ -307,7 +307,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Marvin the Martian | outchy | Pop Culture, Sci-Fi, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Mickey Mouse Classic Pose | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Mighty Mouse Flying Superhero | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
-| Cartoon Gloved Hands (Mickey Style) | outchy | Pop Culture, Minimalist, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Mind Control Cat | outchy | Pop Culture, Sci-Fi, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Minion Running (Despicable Me) | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
 | Two Minions | outchy | Pop Culture, Transparent | Community Share | [outchy on /r/koreader](https://www.reddit.com/user/outchy/) |
@@ -383,7 +382,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Eikichi Onizuka - smoking | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
 | Bonny | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
 | Kyōka Jirō | Muyuubyuyu | Anime, Transparent | Community Share | Muyuubyuyu |
-| Have you seen him? | Jules | Minimalist, Art, Pop Culture, Quotes, Transparent | Community Share | Jules |
 | Dolly Parton | Jules | Minimalist, Art, Pop Culture, Transparent | Community Share | Jules |
 | The Last Unicorn with Butterfly | Jules | Minimalist, Fantasy, Art, Pop Culture, Transparent | Community Share | Jules |
 | The Last Unicorn VHS Cover | Jules | Minimalist, Fantasy, Art, Pop Culture | Community Share | Jules |
@@ -419,7 +417,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Woman reading in sunset | liftarn | Minimalist, Art, Pop Culture | Community Share | liftarn |
 | Nu à la lecture | j4p4n | Art, Pop Culture | Community Share | j4p4n |
 | Halloween Landscape | j4p4n | Nature, Pop Culture, Religion | Community Share | j4p4n |
-| Lace | crazysnor1ax on tumblr | Pop Culture, Transparent | Community Share | crazysnor1ax on tumblr |
 | Happy Crack | Community | Minimalist, Sci-Fi, Abstract, Pop Culture | Community Share | Community |
 | Cookbook | Community | Minimalist, Sci-Fi | Community Share | Community |
 | Dharma Transparent | Community | Minimalist, Pop Culture, Transparent | Community Share | Community |
@@ -427,34 +424,23 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Don't Panic transparent logo | Community | Minimalist, Sci-Fi, Pop Culture, Transparent | Community Share | Community |
 | Don't Panic transparent background | Community | Minimalist, Sci-Fi, Pop Culture, Transparent | Community Share | Community |
 | Ode To Spot | Community | Minimalist | Community Share | Community |
-| Spaceballs the wallpaper | Community | Minimalist | Community Share | Community |
 | Bird Stained Glass | gustavorezende | Minimalist, Nature, Abstract, Art, Transparent | Community Share | gustavorezende |
 | Fingerprint Search | eady | Transparent | Community Share | eady |
 | Holy Family in Stained Glass | bnsonger47 | Abstract, Art, Pop Culture, Transparent | Community Share | bnsonger47 |
 | Woman face | gustavorezende | Art, Transparent | Community Share | gustavorezende |
 | Homer in Bush | Matt Groening | Pop Culture, Transparent | Community Share | Matt Groening |
 | Pokémon warriors: fire vs water | 12_inch_pianist | Pop Culture, Transparent | Community Share | 12_inch_pianist |
-| Bun Girl | j4p4n | Minimalist, Nature, Anime, Art, Transparent | Community Share | j4p4n |
-| Adam and Eve | j4p4n | Art, Religion, Transparent | Community Share | j4p4n |
 | Mr. Bean | rones | Minimalist, Pop Culture, Transparent | Community Share | rones |
 | Night Descends On The Desert | GDJ | Minimalist, Nature, Transparent | Community Share | GDJ |
 | Hidden boy | culturalibre | Minimalist, Anime, Transparent | Community Share | culturalibre |
 | Natural mountains and lake | Almeidah | Nature | Community Share | Almeidah |
-| Dream Catcher | GDJ | Minimalist, Transparent | Community Share | GDJ |
-| Traditional Dreamcatcher | GDJ | Minimalist, Transparent | Community Share | GDJ |
-| Dream Catcher (minimal) | j4p4n | Minimalist, Transparent | Community Share | j4p4n |
 | Indian Woman Dream | j4p4n | Transparent | Community Share | j4p4n |
 | Pigeons on wires | shuvashish76 | Minimalist, Nature, Transparent | Community Share | shuvashish76 |
 | Only Love | j4p4n | Quotes, Religion, Transparent | Community Share | j4p4n |
-| Students and Cherry blossoms | oksmith | Nature, Transparent | Community Share | oksmith |
-| Key to Life | Arvin61r58 | Quotes, Transparent | Community Share | Arvin61r58 |
-| Couple shadow | Firkin | Minimalist, Transparent | Community Share | Firkin |
 | Under the Wave off Kanagawa - Psychedelic | j4p4n | Abstract, Art, Pop Culture | Community Share | j4p4n |
 | Alice and the Cheshire Cat | frankes | Fantasy, Art, Transparent | Community Share | frankes |
 | Alice in Wonderland - Prismatic | GDJ | Fantasy, Abstract, Art, Pop Culture, Transparent | Community Share | GDJ |
-| The Wolf-Leader | standardebooks | Quotes | Community Share | standardebooks |
 | Agatha Christie | standardebooks | Minimalist | Community Share | standardebooks |
-| The Innocents Abroad | standardebooks | Quotes | Community Share | standardebooks |
 | Sailor Moon | weenees | Anime, Transparent | Community Share | weenees |
 | Snorlax & Psyduck | weenees | Anime, Transparent | Community Share | weenees |
 | Pikachu Squish | weenees | Anime, Transparent | Community Share | weenees |
@@ -468,19 +454,15 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Theological positions | Marekich | Quotes | Community Share | Marekich |
 | Classified Stamp | j4p4n | Minimalist, Abstract, Transparent | Community Share | j4p4n |
 | Top Secret - Stamp | j4p4n | Minimalist, Abstract, Transparent | Community Share | j4p4n |
-| Wired for Sound | rygle | Minimalist, Transparent | Community Share | rygle |
 | Synthwave background | liftarn | Sci-Fi, Pop Culture, Transparent | Community Share | liftarn |
 | Luna | Jimmy | Nature, Transparent | Community Share | Jimmy |
-| Baby Groot | Jimmy | Pop Culture | Community Share | Jimmy |
 | Baby Groot (transparent) | Jimmy | Pop Culture, Transparent | Community Share | Jimmy |
 | Luna 2 | Jimmy | Nature | Community Share | Jimmy |
 | Jacob Misiorowski | Ewan Pautz | Minimalist, Transparent | Community Share | Ewan Pautz |
 | Christian Yelich Riding on a Unicorn | Ewan Pautz | Minimalist, Nature, Art, Transparent | Community Share | Ewan Pautz |
 | Trevor Megill | Ewan Pautz | Minimalist, Transparent | Community Share | Ewan Pautz |
-| The hooks | Jules | Minimalist, Nature, Art, Pop Culture | Community Share | Jules |
 | Jar jar | Jules | Minimalist, Fantasy, Sci-Fi, Pop Culture, Transparent | Community Share | Jules |
 | Jellyfish fields | Jules | Minimalist, Nature, Abstract, Art, Pop Culture | Community Share | Jules |
-| Sea Slugs | Walnutty | Minimalist, Anime, Transparent | Community Share | Walnutty |
 | Bauhaus 1923 | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Bauhaus Ausstellung | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Bauhaus Egg | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
@@ -522,14 +504,12 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Cat with flowers | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Pizza Cats | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Cat Portrait | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
-| Sushi | ambitiouscat_7 | Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Book Fix | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Have a seat | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Just One More Chapter | ambitiouscat_7 | Art, Quotes, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Halloween Portraits | ambitiouscat_7 | Pop Culture, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | French Cat | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Book Stack | ambitiouscat_7 | Art, Minimalist, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
-| Agamemnon | ambitiouscat_7 | Art, Fantasy, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Window Buddies | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Coastal city | ambitiouscat_7 | Architecture, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Hanging Out | ambitiouscat_7 | Nature, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
@@ -562,9 +542,7 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Hogsmeade | ambitiouscat_7 | Fantasy, Pop Culture, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Carrying Stack of Books | ambitiouscat_7 | Art, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
 | Fluffy Cat | ambitiouscat_7 | Art, Nature, Transparent | Community Share | [ambitiouscat_7](https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/) |
-| Moody Rain | shuvashish76 | Minimalist, Nature, Transparent | Community Share | shuvashish76 |
 | Neon Floral Heart | GDJ | Minimalist, Art, Pop Culture, Transparent | Community Share | GDJ |
-| Crazy Cool Cat | wesd440 | Art, Transparent | Community Share | wesd440 |
 | SBR gyjo | kova | Minimalist, Anime | Community Share | kova |
 | Scarface 1983 | 4kvikii | Minimalist | Community Share | 4kvikii |
 | Black and White Cheetah | 4kv | Minimalist, Nature | Community Share | 4kv |
