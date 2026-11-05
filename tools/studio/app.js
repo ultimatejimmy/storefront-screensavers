@@ -39,8 +39,13 @@
 
   // DOM Elements
   const el = {
+    catalogContainer: document.getElementById('catalog-container'),
     search: document.getElementById('catalog-search'),
+    searchKbdHint: document.getElementById('search-kbd-hint'),
     clearSearchBtn: document.getElementById('clear-search-btn'),
+    catScrollContainer: document.getElementById('category-scroll-container'),
+    catScrollLeft: document.getElementById('cat-scroll-left'),
+    catScrollRight: document.getElementById('cat-scroll-right'),
     categoryChips: document.getElementById('category-chips'),
     filterStatus: document.getElementById('filter-status'),
     sortBy: document.getElementById('sort-by'),
@@ -48,6 +53,10 @@
     btnModeBook: document.getElementById('btn-mode-book'),
     viewGridBtn: document.getElementById('view-grid-btn'),
     viewTableBtn: document.getElementById('view-table-btn'),
+    btnViewPopover: document.getElementById('btn-view-popover'),
+    viewPopoverMenu: document.getElementById('view-popover-menu'),
+    viewTriggerIcon: document.getElementById('view-trigger-icon'),
+    menuReorderFeatured: document.getElementById('menu-reorder-featured'),
     catalogGrid: document.getElementById('catalog-grid'),
     catalogTableWrapper: document.getElementById('catalog-table-wrapper'),
     catalogTableBody: document.getElementById('catalog-table-body'),
@@ -57,9 +66,21 @@
     emptyState: document.getElementById('empty-state'),
     emptyResetBtn: document.getElementById('empty-reset-btn'),
 
-    // Header Nav Mode & Collections Controls
+    // Header Nav Mode, Popovers & Collections Controls
     navMode: document.getElementById('studio-nav-mode'),
+    navScreensaversCount: document.getElementById('nav-screensavers-count'),
     navCollectionsCount: document.getElementById('nav-collections-count'),
+    btnStatsPopover: document.getElementById('btn-stats-popover'),
+    statsPopoverMenu: document.getElementById('stats-popover-menu'),
+    statLowPerformingPill: document.getElementById('stat-low-performing-pill'),
+    btnSyncMenuToggle: document.getElementById('btn-sync-menu-toggle'),
+    syncPopoverMenu: document.getElementById('sync-popover-menu'),
+    menuSyncEverything: document.getElementById('menu-sync-everything'),
+    addDropdownWrap: document.getElementById('add-dropdown-wrap'),
+    btnAddMenuToggle: document.getElementById('btn-add-menu-toggle'),
+    addPopoverMenu: document.getElementById('add-popover-menu'),
+    menuAddSingle: document.getElementById('menu-add-single'),
+    menuNewCollection: document.getElementById('menu-new-collection'),
     btnReorderCollections: document.getElementById('btn-reorder-collections'),
     btnAddCollection: document.getElementById('btn-add-collection'),
     collectionsContainer: document.getElementById('collections-container'),
@@ -495,8 +516,54 @@
     }
   }
 
+  function getOpenPopover() {
+    const menus = [el.statsPopoverMenu, el.syncPopoverMenu, el.addPopoverMenu, el.viewPopoverMenu];
+    return menus.find(m => m && !m.classList.contains('hidden')) || null;
+  }
+
+  function closeAllPopovers() {
+    [el.statsPopoverMenu, el.syncPopoverMenu, el.addPopoverMenu, el.viewPopoverMenu].forEach(m => {
+      if (m) m.classList.add('hidden');
+    });
+  }
+
+  function togglePopover(targetMenu) {
+    if (!targetMenu) return;
+    const isAlreadyOpen = !targetMenu.classList.contains('hidden');
+    closeAllPopovers();
+    if (!isAlreadyOpen) {
+      targetMenu.classList.remove('hidden');
+    }
+  }
+
+  function updateContextualToolbarButtons() {
+    if (el.btnOpenReorderModal) {
+      const showReorder = state.activeCategory === 'featured' || state.sortBy === 'featured';
+      el.btnOpenReorderModal.classList.toggle('hidden', !showReorder);
+    }
+  }
+
+  function updateCategoryScrollArrows() {
+    const sc = el.catScrollContainer;
+    if (!sc) return;
+    const maxScroll = sc.scrollWidth - sc.clientWidth;
+    if (el.catScrollLeft) {
+      el.catScrollLeft.classList.toggle('hidden', sc.scrollLeft <= 4);
+    }
+    if (el.catScrollRight) {
+      el.catScrollRight.classList.toggle('hidden', maxScroll <= 4 || sc.scrollLeft >= maxScroll - 4);
+    }
+  }
+
+  function syncSearchUiState() {
+    const hasVal = Boolean(el.search && el.search.value);
+    if (el.clearSearchBtn) el.clearSearchBtn.style.display = hasVal ? 'block' : 'none';
+    if (el.searchKbdHint) el.searchKbdHint.classList.toggle('hidden', hasVal);
+  }
+
   function switchStudioView(view) {
     state.currentView = view;
+    closeAllPopovers();
 
     // Toggle header nav segment buttons
     if (el.navMode) {
@@ -507,24 +574,28 @@
 
     const isCollections = view === 'collections';
 
-    // Show/hide main containers
+    // Show/hide main scroll containers cleanly (single active flex pane)
+    if (el.catalogContainer) el.catalogContainer.classList.toggle('hidden', isCollections);
     if (el.collectionsContainer) el.collectionsContainer.classList.toggle('hidden', !isCollections);
     if (el.catalogGrid) el.catalogGrid.classList.toggle('hidden', isCollections || state.viewMode !== 'grid');
     if (el.catalogTableWrapper) el.catalogTableWrapper.classList.toggle('hidden', isCollections || state.viewMode !== 'table');
     if (el.emptyState && isCollections) el.emptyState.classList.add('hidden');
 
-    // Show/hide relevant header & toolbar buttons
+    // Show/hide relevant header action groups
+    if (el.addDropdownWrap) el.addDropdownWrap.classList.toggle('hidden', isCollections);
     if (el.btnReorderCollections) el.btnReorderCollections.classList.toggle('hidden', !isCollections);
-    if (el.btnBulkAdd) el.btnBulkAdd.classList.toggle('hidden', isCollections);
-    if (el.btnAddItem) el.btnAddItem.classList.toggle('hidden', isCollections);
-    if (el.btnAddCollection) {
+    if (el.btnAddCollection) el.btnAddCollection.classList.toggle('hidden', !isCollections);
+
+    // Sync unified search bar context
+    if (el.search) {
       if (isCollections) {
-        el.btnAddCollection.className = 'btn btn-primary';
-        el.btnAddCollection.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>New Collection</span>`;
+        el.search.placeholder = 'Search collections...';
+        el.search.value = el.collectionsSearch ? el.collectionsSearch.value : '';
       } else {
-        el.btnAddCollection.className = 'btn btn-secondary';
-        el.btnAddCollection.innerHTML = `<span>📚 + New Collection</span>`;
+        el.search.placeholder = 'Search title, author, category, ID...';
+        el.search.value = state.searchQuery || '';
       }
+      syncSearchUiState();
     }
 
     const toolbar = document.querySelector('.toolbar');
@@ -536,6 +607,7 @@
       renderCollectionsGrid();
     } else {
       renderCatalog();
+      requestAnimationFrame(updateCategoryScrollArrows);
     }
   }
 
@@ -630,18 +702,21 @@
 
   // Stats & Category chips
   function updateHeaderStats() {
-    el.statTotal.textContent = state.catalog.length;
-    el.countAll.textContent = state.catalog.length;
-    el.statCategories.textContent = state.categories.length;
+    const total = state.catalog.length;
+    if (el.statTotal) el.statTotal.textContent = total.toLocaleString();
+    if (el.navScreensaversCount) el.navScreensaversCount.textContent = total.toLocaleString();
+    if (el.countAll) el.countAll.textContent = total;
+    if (el.statCategories) el.statCategories.textContent = state.categories.length;
 
     const transparentCount = state.catalog.filter(isTransparentItem).length;
-    el.statTransparent.textContent = transparentCount;
+    if (el.statTransparent) el.statTransparent.textContent = transparentCount.toLocaleString();
 
     const totalDl = state.totalDownloads || state.catalog.reduce((acc, x) => acc + (x.downloads || 0), 0);
     if (el.statDownloads) el.statDownloads.textContent = totalDl.toLocaleString();
 
     const lowCount = state.catalog.filter(x => (x.downloads || 0) <= 5).length;
     if (el.statLowPerforming) el.statLowPerforming.textContent = lowCount.toLocaleString();
+    if (el.statLowPerformingPill) el.statLowPerformingPill.textContent = lowCount.toLocaleString();
   }
 
   function isTransparentItem(item) {
@@ -687,6 +762,7 @@
       html.push(`<button class="chip ${isActive}" data-category="${escapeHtml(cat)}">${escapeHtml(cat)} <span class="chip-count">${count}</span></button>`);
     }
     el.categoryChips.innerHTML = html.join('');
+    requestAnimationFrame(updateCategoryScrollArrows);
   }
 
   function populateCategoryDropdowns() {
@@ -853,6 +929,7 @@
 
   // Render Catalog
   function renderCatalog() {
+    updateContextualToolbarButtons();
     const items = getFilteredItems();
 
     if (el.visibleCount) {
@@ -3030,7 +3107,7 @@
     try {
       el.btnSyncAll.disabled = true;
       el.btnSyncAll.innerHTML = `
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
         <span>Syncing...</span>
       `;
 
@@ -3059,8 +3136,8 @@
     } finally {
       el.btnSyncAll.disabled = false;
       el.btnSyncAll.innerHTML = `
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-        <span>Sync Everything</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        <span>Sync</span>
       `;
     }
   }
@@ -3139,23 +3216,114 @@
 
   // Event Listeners Setup
   function setupEventListeners() {
-    // Search
+    // Unified Search (Screensavers & Collections)
     let searchDebounce;
     el.search.addEventListener('input', (e) => {
+      syncSearchUiState();
       clearTimeout(searchDebounce);
       searchDebounce = setTimeout(() => {
-        state.searchQuery = e.target.value;
-        el.clearSearchBtn.style.display = state.searchQuery ? 'block' : 'none';
-        renderCatalog();
+        const val = e.target.value;
+        if (state.currentView === 'collections') {
+          if (el.collectionsSearch) el.collectionsSearch.value = val;
+          renderCollectionsGrid();
+        } else {
+          state.searchQuery = val;
+          renderCatalog();
+        }
       }, 150);
     });
 
     el.clearSearchBtn.addEventListener('click', () => {
       el.search.value = '';
-      state.searchQuery = '';
-      el.clearSearchBtn.style.display = 'none';
-      renderCatalog();
+      syncSearchUiState();
+      if (state.currentView === 'collections') {
+        if (el.collectionsSearch) el.collectionsSearch.value = '';
+        renderCollectionsGrid();
+      } else {
+        state.searchQuery = '';
+        renderCatalog();
+      }
+      el.search.focus();
     });
+
+    // Header & Toolbar Popovers
+    if (el.btnStatsPopover) {
+      el.btnStatsPopover.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePopover(el.statsPopoverMenu);
+      });
+    }
+    if (el.btnSyncMenuToggle) {
+      el.btnSyncMenuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePopover(el.syncPopoverMenu);
+      });
+    }
+    if (el.btnAddMenuToggle) {
+      el.btnAddMenuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePopover(el.addPopoverMenu);
+      });
+    }
+    if (el.btnViewPopover) {
+      el.btnViewPopover.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePopover(el.viewPopoverMenu);
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.popover-anchor')) {
+        closeAllPopovers();
+      }
+    });
+
+    if (el.menuSyncEverything) {
+      el.menuSyncEverything.addEventListener('click', () => {
+        closeAllPopovers();
+        syncEverything();
+      });
+    }
+    if (el.menuAddSingle) {
+      el.menuAddSingle.addEventListener('click', () => {
+        closeAllPopovers();
+        openAddModal();
+      });
+    }
+    if (el.menuNewCollection) {
+      el.menuNewCollection.addEventListener('click', () => {
+        closeAllPopovers();
+        openCollectionEditModal(null);
+      });
+    }
+    if (el.menuReorderFeatured) {
+      el.menuReorderFeatured.addEventListener('click', () => {
+        closeAllPopovers();
+        openReorderModal('featured');
+      });
+    }
+
+    // Category Strip Scroll Arrows & Mouse Wheel
+    if (el.catScrollContainer) {
+      el.catScrollContainer.addEventListener('scroll', updateCategoryScrollArrows, { passive: true });
+      el.catScrollContainer.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && el.catScrollContainer.scrollWidth > el.catScrollContainer.clientWidth) {
+          e.preventDefault();
+          el.catScrollContainer.scrollLeft += e.deltaY;
+        }
+      }, { passive: false });
+      window.addEventListener('resize', updateCategoryScrollArrows, { passive: true });
+    }
+    if (el.catScrollLeft) {
+      el.catScrollLeft.addEventListener('click', () => {
+        if (el.catScrollContainer) el.catScrollContainer.scrollBy({ left: -220, behavior: 'smooth' });
+      });
+    }
+    if (el.catScrollRight) {
+      el.catScrollRight.addEventListener('click', () => {
+        if (el.catScrollContainer) el.catScrollContainer.scrollBy({ left: 220, behavior: 'smooth' });
+      });
+    }
 
     // Category chips
     el.categoryChips.addEventListener('click', (e) => {
@@ -3253,9 +3421,13 @@
       renderCatalog();
     });
 
-    // Clickable Low Performing Stat in Header
+    // Clickable Low Performing Stat in Telemetry Popover
     if (el.statLowPerformingBtn) {
       el.statLowPerformingBtn.addEventListener('click', () => {
+        closeAllPopovers();
+        if (state.currentView !== 'screensavers') {
+          switchStudioView('screensavers');
+        }
         state.statusFilter = 'low-downloads-5';
         if (el.filterStatus) el.filterStatus.value = 'low-downloads-5';
         state.sortBy = 'downloads-asc';
@@ -3309,6 +3481,9 @@
       el.viewTableBtn.classList.remove('active');
       el.catalogGrid.classList.remove('hidden');
       el.catalogTableWrapper.classList.add('hidden');
+      if (el.viewTriggerIcon) {
+        el.viewTriggerIcon.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>`;
+      }
       renderCatalog();
     });
 
@@ -3318,6 +3493,9 @@
       el.viewGridBtn.classList.remove('active');
       el.catalogGrid.classList.add('hidden');
       el.catalogTableWrapper.classList.remove('hidden');
+      if (el.viewTriggerIcon) {
+        el.viewTriggerIcon.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>`;
+      }
       renderCatalog();
     });
 
@@ -3325,6 +3503,7 @@
     el.emptyResetBtn.addEventListener('click', () => {
       el.search.value = '';
       state.searchQuery = '';
+      syncSearchUiState();
       state.activeCategory = 'all';
       state.statusFilter = 'all';
       el.filterStatus.value = 'all';
@@ -4056,7 +4235,10 @@
     });
 
     // Bulk Add Modal
-    if (el.btnBulkAdd) el.btnBulkAdd.addEventListener('click', openBulkModal);
+    if (el.btnBulkAdd) el.btnBulkAdd.addEventListener('click', () => {
+      closeAllPopovers();
+      openBulkModal();
+    });
     if (el.btnSwitchToBulk) el.btnSwitchToBulk.addEventListener('click', () => {
       closeAddModal();
       openBulkModal();
@@ -4140,25 +4322,35 @@
         try {
           el.btnSyncDownloads.disabled = true;
           el.btnSyncDownloads.innerHTML = `
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-            <span>Syncing...</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <div class="popover-item-text">
+              <span class="popover-item-title">Syncing Downloads...</span>
+              <span class="popover-item-sub">Querying Cloudflare worker</span>
+            </div>
           `;
           await loadCatalogData(true);
+          closeAllPopovers();
           showToast(`Successfully refreshed live downloads from Cloudflare!`, 'success');
         } catch (err) {
           showToast(`Error syncing downloads: ${err.message}`, 'error');
         } finally {
           el.btnSyncDownloads.disabled = false;
           el.btnSyncDownloads.innerHTML = `
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            <span>Sync Downloads</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <div class="popover-item-text">
+              <span class="popover-item-title">Sync Downloads</span>
+              <span class="popover-item-sub">Refresh Cloudflare metrics</span>
+            </div>
           `;
         }
       });
     }
 
     if (el.btnSyncAll) el.btnSyncAll.addEventListener('click', syncEverything);
-    el.btnBackups.addEventListener('click', openBackupsModal);
+    el.btnBackups.addEventListener('click', () => {
+      closeAllPopovers();
+      openBackupsModal();
+    });
     el.backupsModalCloseBtn.addEventListener('click', () => el.backupsModal.classList.add('hidden'));
     el.backupsModalCloseBtn2.addEventListener('click', () => el.backupsModal.classList.add('hidden'));
     el.backupsList.addEventListener('click', (e) => {
@@ -4178,7 +4370,9 @@
         el.search.focus();
       }
       if (e.key === 'Escape') {
-        if (el.colModal && !el.colModal.classList.contains('hidden')) {
+        if (getOpenPopover()) {
+          closeAllPopovers();
+        } else if (el.colModal && !el.colModal.classList.contains('hidden')) {
           closeCollectionEditModal();
         } else if (!el.deleteConfirmModal.classList.contains('hidden')) {
           el.deleteConfirmModal.classList.add('hidden');

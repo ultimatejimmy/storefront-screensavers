@@ -16,140 +16,245 @@
     <div class="header-left">
       <div class="brand">
         <div class="brand-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
           </svg>
         </div>
         <div class="brand-text">
           <h1>Catalog Studio</h1>
-          <span class="brand-badge">Storefront</span>
         </div>
       </div>
+
       <div class="nav-segment-control" id="studio-nav-mode">
-        <button type="button" class="nav-segment-btn active" data-view="screensavers">Screensavers</button>
-        <button type="button" class="nav-segment-btn" data-view="collections">Collections <span class="nav-badge" id="nav-collections-count">0</span></button>
-      </div>
-      <div class="header-stats" id="header-stats">
-        <span class="stat-item"><strong id="stat-total">0</strong> Screensavers</span>
-        <span class="stat-divider">•</span>
-        <span class="stat-item"><strong id="stat-categories">0</strong> Categories</span>
-        <span class="stat-divider">•</span>
-        <span class="stat-item"><strong id="stat-transparent">0</strong> Transparent</span>
-        <span class="stat-divider">•</span>
-        <span class="stat-item"><strong id="stat-downloads">0</strong> Downloads</span>
-        <span class="stat-divider">•</span>
-        <span class="stat-item stat-item-clickable" id="stat-low-performing-btn" title="Click to view & prune low performing screensavers (≤ 5 dl)">
-          <strong id="stat-low-performing" class="text-warning">0</strong> Low Performing
-        </span>
+        <button type="button" class="nav-segment-btn active" data-view="screensavers">
+          <span>Screensavers</span>
+          <span class="nav-badge" id="nav-screensavers-count">0</span>
+        </button>
+        <button type="button" class="nav-segment-btn" data-view="collections">
+          <span>Collections</span>
+          <span class="nav-badge" id="nav-collections-count">0</span>
+        </button>
       </div>
     </div>
 
     <div class="header-center">
       <div class="search-wrapper">
-        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="catalog-search" class="search-input" placeholder="Search by title, author, category, ID... (Press '/' to focus)" autocomplete="off">
+        <input type="text" id="catalog-search" class="search-input" placeholder="Search title, author, category, ID..." autocomplete="off">
+        <kbd class="search-kbd" id="search-kbd-hint" title="Press '/' to focus">/</kbd>
         <button id="clear-search-btn" class="clear-search-btn" title="Clear search">✕</button>
       </div>
     </div>
 
     <div class="header-right">
-      <button class="btn btn-secondary" id="btn-sync-downloads" title="Refresh live download metrics from Cloudflare">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        <span>Sync Downloads</span>
-      </button>
+      <!-- 1. Telemetry & Pruning Popover -->
+      <div class="popover-anchor" id="stats-dropdown-wrap">
+        <button type="button" class="btn btn-secondary btn-header-pill" id="btn-stats-popover" title="Catalog stats & low-performing filter">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          <span class="stats-pill-warning"><strong id="stat-low-performing-pill">0</strong> Low</span>
+          <svg class="caret-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
 
-      <button class="btn btn-secondary" id="btn-sync-all" title="Sync CREDITS.md, verify images & thumbnails, and normalize catalog URLs">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-        <span>Sync Everything</span>
-      </button>
+        <div class="studio-popover studio-popover-stats hidden" id="stats-popover-menu">
+          <div class="popover-section-header">Catalog Telemetry</div>
+          <div class="stats-popover-grid" id="header-stats">
+            <div class="stats-popover-row">
+              <span>Total Wallpapers</span>
+              <strong id="stat-total">0</strong>
+            </div>
+            <div class="stats-popover-row">
+              <span>Categories</span>
+              <strong id="stat-categories">0</strong>
+            </div>
+            <div class="stats-popover-row">
+              <span>Transparent PNGs</span>
+              <strong id="stat-transparent">0</strong>
+            </div>
+            <div class="stats-popover-row">
+              <span>Total Downloads</span>
+              <strong id="stat-downloads">0</strong>
+            </div>
+          </div>
+          <div class="popover-divider"></div>
+          <button type="button" class="popover-item popover-item-warning" id="stat-low-performing-btn" title="Filter & sort low performing screensavers (≤ 5 dl)">
+            <span>⚠️ Filter Low Performing (<strong id="stat-low-performing">0</strong>)</span>
+            <span class="popover-shortcut">→</span>
+          </button>
+        </div>
+      </div>
 
-      <button class="btn btn-secondary" id="btn-backups" title="View catalog snapshots & backups">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-        <span>Backups</span>
-      </button>
+      <!-- 2. Sync & Backups Split-Button -->
+      <div class="popover-anchor" id="sync-dropdown-wrap">
+        <div class="split-btn-group">
+          <button type="button" class="btn btn-secondary split-btn-main" id="btn-sync-all" title="Sync CREDITS.md, verify images & thumbnails, build catalogs, and push">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <span>Sync</span>
+          </button>
+          <button type="button" class="btn btn-secondary split-btn-caret" id="btn-sync-menu-toggle" title="More sync & backup options" aria-label="More sync options">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
 
-      <button class="btn btn-secondary" id="btn-bulk-add" title="Bulk import multiple wallpapers at once">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-        <span>Bulk Add</span>
-      </button>
+        <div class="studio-popover hidden" id="sync-popover-menu">
+          <button type="button" class="popover-item" id="menu-sync-everything">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <div class="popover-item-text">
+              <span class="popover-item-title">Sync Everything</span>
+              <span class="popover-item-sub">Verify thumbs, build catalogs & push</span>
+            </div>
+          </button>
+          <button type="button" class="popover-item" id="btn-sync-downloads" title="Refresh live download metrics from Cloudflare">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <div class="popover-item-text">
+              <span class="popover-item-title">Sync Downloads</span>
+              <span class="popover-item-sub">Refresh Cloudflare metrics</span>
+            </div>
+          </button>
+          <div class="popover-divider"></div>
+          <button type="button" class="popover-item" id="btn-backups" title="View catalog snapshots & backups">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+            <div class="popover-item-text">
+              <span class="popover-item-title">Backups & Snapshots</span>
+              <span class="popover-item-sub">Restore previous catalog states</span>
+            </div>
+          </button>
+        </div>
+      </div>
 
-      <button class="btn btn-primary" id="btn-add-item">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-        <span>Add Wallpaper</span>
-      </button>
+      <!-- 3A. Screensavers Mode: Add Split-Button -->
+      <div class="popover-anchor" id="add-dropdown-wrap">
+        <div class="split-btn-group">
+          <button type="button" class="btn btn-primary split-btn-main" id="btn-add-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add Wallpaper</span>
+          </button>
+          <button type="button" class="btn btn-primary split-btn-caret" id="btn-add-menu-toggle" title="Bulk add or create collection" aria-label="More add options">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
 
+        <div class="studio-popover hidden" id="add-popover-menu">
+          <button type="button" class="popover-item" id="menu-add-single">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <div class="popover-item-text">
+              <span class="popover-item-title">Add Single Wallpaper</span>
+              <span class="popover-item-sub">Upload file or fetch from URL</span>
+            </div>
+          </button>
+          <button type="button" class="popover-item" id="btn-bulk-add" title="Bulk import multiple wallpapers at once">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <div class="popover-item-text">
+              <span class="popover-item-title">Bulk Add Wallpapers</span>
+              <span class="popover-item-sub">Batch import multiple images or folder</span>
+            </div>
+          </button>
+          <div class="popover-divider"></div>
+          <button type="button" class="popover-item" id="menu-new-collection">
+            <span style="font-size: 0.9rem; line-height: 1;">📚</span>
+            <div class="popover-item-text">
+              <span class="popover-item-title">New Collection</span>
+              <span class="popover-item-sub">Create a curated themed pack</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3B. Collections Mode Contextual Actions -->
       <button class="btn btn-secondary hidden" id="btn-reorder-collections" title="Drag and drop to prioritize collections order">
-        <span>↕ Reorder Collections</span>
+        <span>↕ Reorder</span>
       </button>
 
-      <button class="btn btn-secondary" id="btn-add-collection" title="Create a new curated screensaver collection">
-        <span>📚 + New Collection</span>
+      <button class="btn btn-primary hidden" id="btn-add-collection" title="Create a new curated screensaver collection">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        <span>New Collection</span>
       </button>
     </div>
   </header>
 
   <!-- Filter & Controls Toolbar -->
   <div class="toolbar">
-    <div class="category-scroll-container">
-      <div class="category-chips" id="category-chips">
-        <button class="chip active" data-category="all">All <span class="chip-count" id="count-all">0</span></button>
-        <button class="chip chip-featured" data-category="featured">⭐ Featured <span class="chip-count" id="count-featured">0</span></button>
-        <!-- Dynamic category chips will be injected here -->
+    <div class="category-strip-wrapper">
+      <button type="button" class="cat-scroll-arrow hidden" id="cat-scroll-left" title="Scroll categories left" aria-label="Scroll categories left">‹</button>
+      <div class="category-scroll-container" id="category-scroll-container">
+        <div class="category-chips" id="category-chips">
+          <button class="chip active" data-category="all">All <span class="chip-count" id="count-all">0</span></button>
+          <button class="chip chip-featured" data-category="featured">⭐ Featured <span class="chip-count" id="count-featured">0</span></button>
+          <!-- Dynamic category chips will be injected here -->
+        </div>
       </div>
+      <button type="button" class="cat-scroll-arrow hidden" id="cat-scroll-right" title="Scroll categories right" aria-label="Scroll categories right">›</button>
     </div>
 
     <div class="toolbar-actions">
-      <button class="btn btn-secondary btn-small" id="btn-open-reorder-modal" title="Drag and drop to reorder featured spotlight screensavers" style="display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; white-space: nowrap; height: 32px; border-color: rgba(234, 179, 8, 0.35); color: #facc15;">
+      <button class="btn btn-secondary btn-small btn-reorder-featured hidden" id="btn-open-reorder-modal" title="Drag and drop to reorder featured spotlight screensavers">
         <span>↕ Reorder Featured</span>
       </button>
 
-      <div class="filter-dropdown-group">
-        <label for="filter-status" class="toolbar-label">Status:</label>
-        <select id="filter-status" class="select-input">
-          <option value="all">All Items</option>
-          <option value="zero-downloads">Zero Downloads (0 dl)</option>
-          <option value="low-downloads-5">Very Low Downloads (≤ 5 dl)</option>
-          <option value="low-downloads-10">Low Downloads (≤ 10 dl)</option>
-          <option value="low-downloads-25">Low Downloads (≤ 25 dl)</option>
-          <option value="transparent">Transparent PNGs</option>
-          <option value="missing-source">Missing Source URL</option>
-          <option value="missing-attribution">Missing Attribution</option>
-        </select>
-      </div>
+      <select id="filter-status" class="select-input select-compact" title="Filter items by status">
+        <option value="all">Filter: All Items</option>
+        <option value="zero-downloads">Filter: Zero Downloads (0 dl)</option>
+        <option value="low-downloads-5">Filter: Very Low (≤ 5 dl)</option>
+        <option value="low-downloads-10">Filter: Low (≤ 10 dl)</option>
+        <option value="low-downloads-25">Filter: Low (≤ 25 dl)</option>
+        <option value="transparent">Filter: Transparent PNGs</option>
+        <option value="missing-source">Filter: Missing Source URL</option>
+        <option value="missing-attribution">Filter: Missing Attribution</option>
+      </select>
 
-      <div class="filter-dropdown-group">
-        <label for="sort-by" class="toolbar-label">Sort:</label>
-        <select id="sort-by" class="select-input">
-          <option value="featured">Featured First</option>
-          <option value="newest" selected>Submitted Date (Newest First)</option>
-          <option value="default">Catalog Order</option>
-          <option value="oldest">Submitted Date (Oldest First)</option>
-          <option value="downloads-asc">Least Downloads (Prune Candidates)</option>
-          <option value="downloads-desc">Most Downloads</option>
-          <option value="likes-desc">Most Likes</option>
-          <option value="author-asc">Author (A-Z)</option>
-          <option value="category">Category</option>
-        </select>
-      </div>
+      <select id="sort-by" class="select-input select-compact" title="Sort catalog order">
+        <option value="featured">Sort: Featured First</option>
+        <option value="newest" selected>Sort: Newest First</option>
+        <option value="default">Sort: Catalog Order</option>
+        <option value="oldest">Sort: Oldest First</option>
+        <option value="downloads-asc">Sort: Least Downloads</option>
+        <option value="downloads-desc">Sort: Most Downloads</option>
+        <option value="likes-desc">Sort: Most Likes</option>
+        <option value="author-asc">Sort: Author (A–Z)</option>
+        <option value="category">Sort: Category</option>
+      </select>
 
-      <div class="filter-dropdown-group">
-        <label class="toolbar-label">Transparency:</label>
-        <div class="view-toggles" id="overlay-mode-toggles">
-          <button type="button" class="view-btn active" id="btn-mode-grid" title="Light Checkerboard Grid">🏁 Grid</button>
-          <button type="button" class="view-btn" id="btn-mode-book" title="Book Text Background">📖 Book</button>
+      <!-- Unified View & Backdrop Popover -->
+      <div class="popover-anchor" id="view-dropdown-wrap">
+        <button type="button" class="btn btn-secondary btn-small btn-view-trigger" id="btn-view-popover" title="Display layout & transparency backdrop">
+          <span id="view-trigger-icon" class="view-trigger-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          </span>
+          <span>View</span>
+          <svg class="caret-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+
+        <div class="studio-popover studio-popover-view hidden" id="view-popover-menu">
+          <div class="popover-control-group">
+            <span class="popover-control-label">Layout</span>
+            <div class="view-toggles view-toggles-full">
+              <button type="button" class="view-btn active" id="view-grid-btn" title="Grid View">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <span>Grid</span>
+              </button>
+              <button type="button" class="view-btn" id="view-table-btn" title="Table View">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                <span>Table</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="popover-control-group">
+            <span class="popover-control-label">Transparent PNG Backdrop</span>
+            <div class="view-toggles view-toggles-full" id="overlay-mode-toggles">
+              <button type="button" class="view-btn active" id="btn-mode-grid" title="Light Checkerboard Grid">🏁 Grid</button>
+              <button type="button" class="view-btn" id="btn-mode-book" title="Book Text Background">📖 Book</button>
+            </div>
+          </div>
+
+          <div class="popover-divider"></div>
+          <button type="button" class="popover-item" id="menu-reorder-featured">
+            <span>⭐</span>
+            <span>Reorder Featured Spotlight...</span>
+          </button>
         </div>
-      </div>
-
-      <div class="view-toggles">
-        <button class="view-btn active" id="view-grid-btn" title="Grid View">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-        </button>
-        <button class="view-btn" id="view-table-btn" title="Table View">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-        </button>
       </div>
     </div>
   </div>
@@ -248,14 +353,14 @@
           <span style="font-size: 0.85rem; color: var(--text-secondary);">Hard cap of 50 wallpapers per collection</span>
         </div>
         <div class="collections-filter-group">
-          <input type="text" id="collections-search" class="text-input text-small" placeholder="Filter collections..." style="width: 180px; height: 32px; font-size: 0.85rem;">
-          <select id="collections-status-filter" class="select-input select-small" style="height: 32px; font-size: 0.85rem;">
-            <option value="all">All Statuses</option>
-            <option value="published">Published</option>
-            <option value="draft">Drafts</option>
+          <input type="text" id="collections-search" class="text-input text-small hidden" placeholder="Filter collections...">
+          <select id="collections-status-filter" class="select-input select-compact" title="Filter collections by publication status">
+            <option value="all">Status: All</option>
+            <option value="published">Status: Published</option>
+            <option value="draft">Status: Drafts</option>
           </select>
-          <button class="btn btn-secondary btn-small" id="btn-col-reorder-toolbar" title="Reorder collections priority">↕ Sort Collections</button>
-          <button class="btn btn-primary btn-small" id="btn-col-add-toolbar" title="Create a new collection">⊕ New Collection</button>
+          <button class="btn btn-secondary btn-small hidden" id="btn-col-reorder-toolbar" title="Reorder collections priority">↕ Sort Collections</button>
+          <button class="btn btn-primary btn-small hidden" id="btn-col-add-toolbar" title="Create a new collection">⊕ New Collection</button>
         </div>
       </div>
       <div class="collections-grid" id="collections-grid">
