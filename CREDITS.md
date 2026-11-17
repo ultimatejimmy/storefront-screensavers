@@ -50,7 +50,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Under the Wave off Kanagawa (Kanagawa oki nami ura), also known as The Great Wave, from the series "Thirty-Six Views of Mount Fuji (Fugaku sanjurokkei)" | Katsushika Hokusai 葛飾 北斎 | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/2fa24f36-cc26-41b6-4b49-12bba2a6c1c8/full/843,/0/default.jpg) |
 | The Assumption of the Virgin | El Greco (Doménikos Theotokópoulos; Greek, active in Spain, 1541–1614) | Art, Religion | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/47fd1564-93f5-f30b-7786-013421133b4a/full/843,/0/default.jpg) |
 | Water Lilies | Claude Monet (French, 1840–1926) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/3c27b499-af56-f0d5-93b5-a7f2f1ad5813/full/843,/0/default.jpg) |
-| Two Sisters (On the Terrace) | Pierre-Auguste Renoir (French, 1841–1919) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/3a608f55-d76e-fa96-d0b1-0789fbc48f1e/full/843,/0/default.jpg) |
 | Self-Portrait | Vincent van Gogh (Dutch, 1853–1890) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/47c5bcb8-62ef-e5d7-55e7-f5121f409a30/full/843,/0/default.jpg) |
 | At the Moulin Rouge | Henri de Toulouse-Lautrec (French, 1864–1901) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/defb4004-b500-218d-3d9b-9a02423f097d/full/843,/0/default.jpg) |
 | Arrival of the Normandy Train, Gare Saint-Lazare | Claude Monet (French, 1840–1926) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/0f1cc0e0-e42e-be16-3f71-2022da38cb93/full/843,/0/default.jpg) |
@@ -58,15 +57,12 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Distant View of Niagara Falls | Thomas Cole (American, born England, 1801–1848) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/18092196-50ae-3ff1-9205-1b3110e966c3/full/843,/0/default.jpg) |
 | The Beach at Sainte-Adresse | Claude Monet (French, 1840–1926) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/95be2572-b53d-8e7b-abc9-10eb48d4fa5d/full/843,/0/default.jpg) |
 | Improvisation No. 30 (Cannons) | Vasily Kandinsky | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/b5bc6b66-9e6e-fe57-dcec-fc49e820e904/full/843,/0/default.jpg) |
-| Ballet at the Paris Opéra | Edgar Degas | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/cb34b0a8-bc51-d063-aab1-47c7debf3a7b/full/843,/0/default.jpg) |
-| Lozenge Composition with Yellow, Black, Blue, Red, and Gray | Piet Mondrian | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/25f660ee-f1db-d13b-42a5-56df97c98ba7/full/843,/0/default.jpg) |
 | Landscape with Saint John on Patmos | Nicolas Poussin (French, 1594–1665) | Art, Religion | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/aa870b0d-5a1b-660a-6dc6-56c12109cf6e/full/843,/0/default.jpg) |
 | Hercules and the Lernaean Hydra | Gustave Moreau (French, 1826-1898) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/2ae64c8a-266d-470a-a25a-c83127564636/full/843,/0/default.jpg) |
 | Shiva as Lord of the Dance (Nataraja) | India | Art, Religion | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/cf50f037-5fb2-e197-0e56-3ae701edb3e2/full/843,/0/default.jpg) |
 | Mountain Brook | Albert Bierstadt (American, born Solingen, Prussia, now Germany, 1830–1902) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/d55b0cfc-0716-d6cd-3b38-5742903ce046/full/843,/0/default.jpg) |
 | After the Hurricane, Bahamas | Winslow Homer | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/b34de958-1cbe-065f-4941-c34f64d2b366/full/843,/0/default.jpg) |
 | A City Park | William Merritt Chase (American, 1849–1916) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/72a76270-d6f4-e744-d47b-307873a8e8ff/full/843,/0/default.jpg) |
-| The Captive Slave (Ira Aldridge) | John Philip Simpson (English, 1782–1847) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/5490fd49-dd52-4fd7-7d41-d871dcffae55/full/843,/0/default.jpg) |
 | Interrupted Reading | Jean-Baptiste-Camille Corot (French, 1796–1875) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/1c2d32a7-790c-501a-e124-00f28cf5052d/full/843,/0/default.jpg) |
 | Fish (Still Life) | Édouard Manet (French, 1832–1883) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/0cbe27e8-2fec-3445-bc48-ce40a8f2dc25/full/843,/0/default.jpg) |
 | The Interior of the Palm House on the Pfaueninsel Near Potsdam | Carl Blechen (German, 1798–1840) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/38bb6be4-223e-af7a-7e18-f9ad0c388d3c/full/843,/0/default.jpg) |
@@ -77,7 +73,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Virgin and Child with the Young Saint John the Baptist | Correggio (Antonio Allegri; Italian, 1489–1534) | Art, Religion | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/d63b9402-c42b-cce3-aa63-6d213ad621cd/full/843,/0/default.jpg) |
 | The Annunciation | Jean Hey (Master of Moulins; Netherlandish, c. 1480-c.1504) | Art, Religion | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/77951d0c-d781-eac6-f4ff-f13cc5cfc0cf/full/843,/0/default.jpg) |
 | Magnolias on Light Blue Velvet Cloth | Martin Johnson Heade (American, 1819–1904) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/0729fbba-51e3-a2d7-6d4d-61c2be62af3f/full/843,/0/default.jpg) |
-| The Nativity | Fra Bartolommeo (Baccio della Porta; Italian, 1472-1517) | Art, Religion | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/40fdb1d6-93fe-2916-78fb-f56a1ac261f1/full/843,/0/default.jpg) |
 | Autumn Maples with Poem Slips | Tosa Mitsuoki | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/86e919b9-d366-b3ca-d26f-4c16880474a3/full/843,/0/default.jpg) |
 | Retable and Frontal of the Life of Christ and the Virgin | Spanish | Art, Religion | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/97908967-4d35-cde9-6d90-7e90d3fa1dd6/full/843,/0/default.jpg) |
 | Still Life—Strawberries, Nuts, &c. | Raphaelle Peale (American, 1774–1825) | Art | CC0 / Public Domain | [Art Institute of Chicago](https://www.artic.edu/iiif/2/1cddae1c-99d5-462f-4aa6-128c0732ac11/full/843,/0/default.jpg) |
@@ -94,7 +89,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Knight Digital Art Dark | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/3q/wallhaven-3q6mry.jpg) |
 | Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk | Wallhaven Contributor | Minimalist, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrmqp5.png) |
 | Shotaro Kaneda Akira Manga | Wallhaven Contributor | Minimalist, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/gw/wallhaven-gwd5ee.png) |
-| Miyamoto Musashi (Vagabond) Guts (Berserk) Berserk | Wallhaven Contributor | Minimalist, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/21/wallhaven-21oqwm.png) |
 | Pulsars Science Black Background | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrozvd.png) |
 | Artem Demura Dark Robes | Wallhaven Contributor | Minimalist | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jedwzp.jpg) |
 | Mew Pokémon Minimalism | Wallhaven Contributor | Anime, Minimalist, Pop Culture | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/je/wallhaven-jedx5w.png) |
@@ -157,7 +151,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Space Deep Space Space Art | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/k8/wallhaven-k8l6ym.jpg) |
 | Space Deep Space Planet | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/8g/wallhaven-8g91zy.jpg) |
 | Aemeath (Wuthering Waves) Wuthering Waves Stars | Wallhaven Contributor | Sci-Fi, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/w5/wallhaven-w5d2l6.png) |
-| Starkiteckt Neptune Planet | Wallhaven Contributor | Sci-Fi | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/k8/wallhaven-k8d8xq.jpg) |
 | Abstract Blue Purple | Wallhaven Contributor | Abstract | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/ml/wallhaven-mlg7qm.png) |
 | Pixel Art Pokémon Emerald Pokémon | Wallhaven Contributor | Abstract, Anime | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/qr/wallhaven-qrmykq.png) |
 | Alexandre Cabanel Angel Fallen Angel | Wallhaven Contributor | Abstract, Religion | Personal Use (Community Upload) | [Wallhaven.cc](https://w.wallhaven.cc/full/yq/wallhaven-yq2z7x.png) |
@@ -356,7 +349,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Squiddy Reading To Bob | Jules | Pop Culture, Transparent | Community Share | Jules |
 | Darth Vader Reading while drinking a Coffee | Dannyv180 | Sci-Fi, Art, Pop Culture | Community Share | Dannyv180 |
 | Knight Before God | Chunihs0 | Fantasy, Art, Religion | Community Share | Chunihs0 |
-| INRI Universe | Chunihs0 | Fantasy, Art, Religion | Community Share | Chunihs0 |
 | Angry Space Daddy | Tefron | Pop Culture, Sci-Fi, Transparent | Community Share | Tefron |
 | Space Fascist Gear Logo - Transparent | Tefron | Pop Culture, Sci-Fi, Transparent | Community Share | Tefron |
 | Perfect Blue | Ducklfy | Anime, Art | Community Share | Ducklfy |
@@ -411,7 +403,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Tiger Family | shuvashish76 | Nature, Art, Transparent | Community Share | shuvashish76 |
 | The moon | cactus_cowboy | Minimalist, Nature | Community Share | cactus_cowboy |
 | Spooky spider | j4p4n | Nature, Abstract, Art | Community Share | j4p4n |
-| Radha Krishna | j4p4n | Art, Religion, Transparent | Community Share | j4p4n |
 | Lady reading | j4p4n | Art, Pop Culture, Transparent | Community Share | j4p4n |
 | Boy reading in sunset | liftarn | Minimalist, Art, Pop Culture | Community Share | liftarn |
 | Woman reading in sunset | liftarn | Minimalist, Art, Pop Culture | Community Share | liftarn |
@@ -469,7 +460,6 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | Bauhaus Radiate | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Cat Portal | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Cats Looking Down | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
-| Cigarette Boy | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Cigarette Girl | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | City Ant View | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
 | Cliff Face | haydenweal | Art, Transparent | Community Share | [haydenweal](https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/) |
