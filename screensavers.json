@@ -35,7 +35,7 @@
       "woods"
     ],
     "wilson": 0,
-    "downloads": 281,
+    "downloads": 282,
     "dateAdded": "2026-08-10"
   },
   {
@@ -163,7 +163,7 @@
     ],
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 866,
+    "downloads": 875,
     "dateAdded": "2026-08-10"
   },
   {
@@ -187,7 +187,7 @@
     ],
     "likes": 1,
     "wilson": 0.20654329147389294,
-    "downloads": 318,
+    "downloads": 321,
     "dateAdded": "2026-08-10"
   },
   {
@@ -267,7 +267,7 @@
       "melencolia"
     ],
     "wilson": 0,
-    "downloads": 140,
+    "downloads": 141,
     "dateAdded": "2026-08-14"
   },
   {
@@ -1058,7 +1058,7 @@
       "nature"
     ],
     "wilson": 0,
-    "downloads": 104,
+    "downloads": 105,
     "dateAdded": "2026-08-14"
   },
   {
@@ -1173,7 +1173,7 @@
     ],
     "likes": 3,
     "wilson": 0.4384939195509822,
-    "downloads": 452,
+    "downloads": 453,
     "dateAdded": "2026-08-14"
   },
   {
@@ -2853,7 +2853,7 @@
       "vagabond"
     ],
     "wilson": 0,
-    "downloads": 28,
+    "downloads": 29,
     "dateAdded": "2026-08-15",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wh-qrmqp5.png"
   },
@@ -2964,7 +2964,7 @@
       "simple"
     ],
     "wilson": 0.20654329147389294,
-    "downloads": 85,
+    "downloads": 86,
     "dateAdded": "2026-08-15",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wh-qrozvd.png",
     "likes": 1
@@ -3037,7 +3037,7 @@
       "simple"
     ],
     "wilson": 0.20654329147389294,
-    "downloads": 116,
+    "downloads": 118,
     "dateAdded": "2026-08-15",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wh-jedx5w.png",
     "likes": 1
@@ -3805,7 +3805,7 @@
       "torre"
     ],
     "wilson": 0,
-    "downloads": 43,
+    "downloads": 44,
     "dateAdded": "2026-08-14"
   },
   {
@@ -4486,7 +4486,7 @@
       "universe"
     ],
     "wilson": 0,
-    "downloads": 101,
+    "downloads": 102,
     "dateAdded": "2026-08-15",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wh-7jl2lv.png"
   },
@@ -4822,7 +4822,7 @@
       "universe"
     ],
     "wilson": 0,
-    "downloads": 216,
+    "downloads": 219,
     "dateAdded": "2026-08-14"
   },
   {
@@ -4979,7 +4979,7 @@
       "pixel"
     ],
     "wilson": 0,
-    "downloads": 59,
+    "downloads": 60,
     "dateAdded": "2026-08-15",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/wh-qrmykq.png"
   },
@@ -5239,10 +5239,8 @@
       "tree roots"
     ],
     "wilson": 0,
-    "downloads": 31,
-    "dateAdded": "2026-08-15",
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "downloads": 32,
+    "dateAdded": "2026-08-15"
   },
   {
     "id": "whisperingsea4-starry-forest-night",
@@ -5316,7 +5314,7 @@
     ],
     "likes": 1,
     "wilson": 0.20654329147389294,
-    "downloads": 530,
+    "downloads": 533,
     "dateAdded": "2026-08-15"
   },
   {
@@ -5352,7 +5350,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 232,
+    "downloads": 233,
     "dateAdded": "2026-08-15"
   },
   {
@@ -5461,7 +5459,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 24,
+    "downloads": 25,
     "dateAdded": "2026-08-15"
   },
   {
@@ -5498,7 +5496,7 @@
       "whale"
     ],
     "wilson": 0.20654329147389294,
-    "downloads": 775,
+    "downloads": 782,
     "dateAdded": "2026-08-15",
     "likes": 1
   },
@@ -5535,10 +5533,8 @@
       "whimsical"
     ],
     "wilson": 0,
-    "downloads": 17,
-    "dateAdded": "2026-08-15",
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "downloads": 19,
+    "dateAdded": "2026-08-15"
   },
   {
     "id": "whisperingsea4-atmospheric-cloud-horizons",
@@ -5647,7 +5643,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 428,
+    "downloads": 430,
     "dateAdded": "2026-08-15"
   },
   {
@@ -5720,7 +5716,7 @@
       "trolley bus"
     ],
     "wilson": 0,
-    "downloads": 344,
+    "downloads": 347,
     "dateAdded": "2026-08-15"
   },
   {
@@ -5867,7 +5863,7 @@
       "transparent"
     ],
     "wilson": 0.20654329147389294,
-    "downloads": 76,
+    "downloads": 77,
     "dateAdded": "2026-08-15",
     "likes": 1
   },
@@ -5943,7 +5939,7 @@
     ],
     "likes": 3,
     "wilson": 0.4384939195509822,
-    "downloads": 196,
+    "downloads": 197,
     "dateAdded": "2026-08-15"
   },
   {
@@ -6054,7 +6050,7 @@
       "whimsical"
     ],
     "wilson": 0.20654329147389294,
-    "downloads": 37,
+    "downloads": 39,
     "dateAdded": "2026-08-15",
     "likes": 1
   },
@@ -6091,7 +6087,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 42,
+    "downloads": 43,
     "dateAdded": "2026-08-15"
   },
   {
@@ -6202,7 +6198,7 @@
     ],
     "likes": 1,
     "wilson": 0.20654329147389294,
-    "downloads": 86,
+    "downloads": 87,
     "dateAdded": "2026-08-15"
   },
   {
@@ -6239,7 +6235,7 @@
     ],
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 319,
+    "downloads": 322,
     "dateAdded": "2026-08-15"
   },
   {
@@ -6277,7 +6273,7 @@
     ],
     "likes": 1,
     "wilson": 0.20654329147389294,
-    "downloads": 36,
+    "downloads": 37,
     "dateAdded": "2026-08-15"
   },
   {
@@ -6491,7 +6487,7 @@
       "water reflection"
     ],
     "wilson": 0,
-    "downloads": 93,
+    "downloads": 94,
     "dateAdded": "2026-08-15"
   },
   {
@@ -6527,7 +6523,7 @@
     ],
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 440,
+    "downloads": 441,
     "dateAdded": "2026-08-15"
   },
   {
@@ -6708,7 +6704,7 @@
     ],
     "likes": 1,
     "wilson": 0.20654329147389294,
-    "downloads": 43,
+    "downloads": 44,
     "dateAdded": "2026-08-15"
   },
   {
@@ -6743,7 +6739,7 @@
       "underwater monster"
     ],
     "wilson": 0,
-    "downloads": 33,
+    "downloads": 34,
     "dateAdded": "2026-08-15"
   },
   {
@@ -6778,7 +6774,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 119,
+    "downloads": 120,
     "dateAdded": "2026-08-15"
   },
   {
@@ -6851,7 +6847,7 @@
     ],
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 362,
+    "downloads": 366,
     "dateAdded": "2026-08-15"
   },
   {
@@ -7001,7 +6997,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 142,
+    "downloads": 143,
     "dateAdded": "2026-08-15"
   },
   {
@@ -7291,7 +7287,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 120,
+    "downloads": 121,
     "dateAdded": "2026-08-15"
   },
   {
@@ -7436,7 +7432,7 @@
       "urban giants"
     ],
     "wilson": 0,
-    "downloads": 527,
+    "downloads": 531,
     "dateAdded": "2026-08-15"
   },
   {
@@ -7616,7 +7612,7 @@
     ],
     "likes": 3,
     "wilson": 0.4384939195509822,
-    "downloads": 778,
+    "downloads": 782,
     "dateAdded": "2026-08-15"
   },
   {
@@ -7652,7 +7648,7 @@
       "woodland archway"
     ],
     "wilson": 0,
-    "downloads": 237,
+    "downloads": 238,
     "dateAdded": "2026-08-15"
   },
   {
@@ -7688,7 +7684,7 @@
       "transparent"
     ],
     "wilson": 0.20654329147389294,
-    "downloads": 188,
+    "downloads": 190,
     "dateAdded": "2026-08-15",
     "likes": 1
   },
@@ -7727,7 +7723,7 @@
     ],
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 565,
+    "downloads": 566,
     "dateAdded": "2026-08-15"
   },
   {
@@ -7839,7 +7835,7 @@
     ],
     "likes": 1,
     "wilson": 0.20654329147389294,
-    "downloads": 246,
+    "downloads": 247,
     "dateAdded": "2026-08-15"
   },
   {
@@ -7877,7 +7873,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-luffy-gear-5-vs-kaido.png",
     "wilson": 0,
-    "downloads": 149,
+    "downloads": 150,
     "dateAdded": "2026-08-16"
   },
   {
@@ -7951,9 +7947,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-dilbert-reading.png",
     "wilson": 0,
     "downloads": 11,
-    "dateAdded": "2026-08-16",
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "dateAdded": "2026-08-16"
   },
   {
     "id": "outchy-doctor-strange-mystic-arts",
@@ -8028,7 +8022,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-howls-moving-castle-color.png",
     "wilson": 0.20654329147389294,
-    "downloads": 667,
+    "downloads": 673,
     "dateAdded": "2026-08-16",
     "likes": 1
   },
@@ -8066,9 +8060,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-inspector-gadget-salute.png",
     "wilson": 0,
     "downloads": 5,
-    "dateAdded": "2026-08-16",
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "dateAdded": "2026-08-16"
   },
   {
     "id": "outchy-babar-elephant-king",
@@ -8505,7 +8497,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-surfer-on-torn-paper-wave.png",
     "wilson": 0,
-    "downloads": 119,
+    "downloads": 120,
     "dateAdded": "2026-08-16"
   },
   {
@@ -8579,7 +8571,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-great-wave-crest-hokusai-ink.png",
     "likes": 5,
     "wilson": 0.565508505247919,
-    "downloads": 1666,
+    "downloads": 1676,
     "dateAdded": "2026-08-16"
   },
   {
@@ -8983,7 +8975,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-bulbasaur-peeking-corner.png",
     "likes": 1,
     "wilson": 0.20654329147389294,
-    "downloads": 293,
+    "downloads": 295,
     "dateAdded": "2026-08-16"
   },
   {
@@ -9089,7 +9081,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-charlie-brown-and-snoopy.png",
     "wilson": 0.20654329147389294,
-    "downloads": 241,
+    "downloads": 245,
     "dateAdded": "2026-08-16",
     "likes": 1
   },
@@ -9199,7 +9191,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-coffee-splatter-stain-grunge.png",
     "wilson": 0.20654329147389294,
-    "downloads": 96,
+    "downloads": 98,
     "dateAdded": "2026-08-16",
     "likes": 1
   },
@@ -9235,7 +9227,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-cracked-screen-glass-fracture.png",
     "wilson": 0,
-    "downloads": 148,
+    "downloads": 150,
     "dateAdded": "2026-08-16"
   },
   {
@@ -9883,7 +9875,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-reading-is-my-happy-place.png",
     "wilson": 0.3423719528896193,
-    "downloads": 148,
+    "downloads": 149,
     "dateAdded": "2026-08-16",
     "likes": 2
   },
@@ -10065,7 +10057,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-kirby-corner-companion.png",
     "wilson": 0,
-    "downloads": 149,
+    "downloads": 150,
     "dateAdded": "2026-08-16"
   },
   {
@@ -10137,7 +10129,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-grand-classical-library-hall.png",
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 492,
+    "downloads": 497,
     "dateAdded": "2026-08-16"
   },
   {
@@ -10646,7 +10638,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-the-pink-panther-stalking.png",
     "wilson": 0,
-    "downloads": 50,
+    "downloads": 51,
     "dateAdded": "2026-08-16"
   },
   {
@@ -10720,7 +10712,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-hand-holding-skull-grimoire.png",
     "wilson": 0,
-    "downloads": 160,
+    "downloads": 162,
     "dateAdded": "2026-08-16"
   },
   {
@@ -10863,7 +10855,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-popeye-reading-large-book.png",
     "wilson": 0,
-    "downloads": 7,
+    "downloads": 8,
     "dateAdded": "2026-08-16"
   },
   {
@@ -10937,7 +10929,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-ripped-paper-hole-reveal.png",
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 550,
+    "downloads": 557,
     "dateAdded": "2026-08-16"
   },
   {
@@ -10973,7 +10965,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-crinkled-plastic-wrap-texture.png",
     "likes": 3,
     "wilson": 0.4384939195509822,
-    "downloads": 302,
+    "downloads": 304,
     "dateAdded": "2026-08-16"
   },
   {
@@ -11158,7 +11150,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-heres-johnny-the-shining.png",
     "wilson": 0,
-    "downloads": 248,
+    "downloads": 249,
     "dateAdded": "2026-08-16"
   },
   {
@@ -11232,7 +11224,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-gothic-skull-ornamental-border.png",
     "wilson": 0,
-    "downloads": 250,
+    "downloads": 251,
     "dateAdded": "2026-08-16"
   },
   {
@@ -11269,7 +11261,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-botanical-floral-skull.png",
     "wilson": 0,
-    "downloads": 537,
+    "downloads": 539,
     "dateAdded": "2026-08-16"
   },
   {
@@ -11306,7 +11298,7 @@
     ],
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-snoopy-reading-on-doghouse.png",
     "wilson": 0,
-    "downloads": 492,
+    "downloads": 494,
     "dateAdded": "2026-08-16"
   },
   {
@@ -11523,7 +11515,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-celestial-vintage-sun-face.png",
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 263,
+    "downloads": 264,
     "dateAdded": "2026-08-16"
   },
   {
@@ -11705,7 +11697,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/outchy-simons-cat-sleeping-ledge.png",
     "likes": 1,
     "wilson": 0.20654329147389294,
-    "downloads": 402,
+    "downloads": 403,
     "dateAdded": "2026-08-16"
   },
   {
@@ -11982,7 +11974,7 @@
     ],
     "likes": 2,
     "wilson": 0.3423719528896193,
-    "downloads": 352,
+    "downloads": 353,
     "dateAdded": "2026-08-19"
   },
   {
@@ -12039,7 +12031,7 @@
       "star wars"
     ],
     "wilson": 0,
-    "downloads": 257,
+    "downloads": 258,
     "dateAdded": "2026-08-19"
   },
   {
@@ -12189,7 +12181,7 @@
       "girl"
     ],
     "wilson": 0,
-    "downloads": 60,
+    "downloads": 61,
     "dateAdded": "2026-08-21"
   },
   {
@@ -12242,7 +12234,7 @@
     "license": "Community Share",
     "likes": 4,
     "wilson": 0.5100999795960008,
-    "downloads": 176,
+    "downloads": 177,
     "dateAdded": "2026-08-21"
   },
   {
@@ -12392,7 +12384,7 @@
     ],
     "likes": 3,
     "wilson": 0.4384939195509822,
-    "downloads": 80,
+    "downloads": 81,
     "dateAdded": "2026-08-21"
   },
   {
@@ -12552,7 +12544,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 84,
+    "downloads": 86,
     "dateAdded": "2026-08-26"
   },
   {
@@ -12580,7 +12572,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 120,
+    "downloads": 122,
     "dateAdded": "2026-08-26"
   },
   {
@@ -12922,7 +12914,7 @@
       "transparent"
     ],
     "wilson": 0.20654329147389294,
-    "downloads": 89,
+    "downloads": 90,
     "dateAdded": "2026-08-31",
     "likes": 1
   },
@@ -13156,7 +13148,7 @@
     ],
     "license": "Community Share",
     "wilson": 0.20654329147389294,
-    "downloads": 269,
+    "downloads": 271,
     "dateAdded": "2026-09-03",
     "likes": 1
   },
@@ -13278,7 +13270,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 55,
+    "downloads": 56,
     "dateAdded": "2026-09-03"
   },
   {
@@ -13302,7 +13294,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 112,
+    "downloads": 113,
     "dateAdded": "2026-09-03"
   },
   {
@@ -13350,7 +13342,7 @@
       "transparent"
     ],
     "wilson": 0.20654329147389294,
-    "downloads": 262,
+    "downloads": 263,
     "dateAdded": "2026-09-03",
     "likes": 1
   },
@@ -13772,7 +13764,7 @@
       "dcc"
     ],
     "wilson": 0,
-    "downloads": 10,
+    "downloads": 11,
     "dateAdded": "2026-09-12"
   },
   {
@@ -14044,7 +14036,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 90,
+    "downloads": 91,
     "dateAdded": "2026-09-14"
   },
   {
@@ -14237,7 +14229,7 @@
       "transparent"
     ],
     "wilson": 0.20654329147389294,
-    "downloads": 45,
+    "downloads": 46,
     "dateAdded": "2026-09-15",
     "likes": 1
   },
@@ -14441,7 +14433,7 @@
       "videogame"
     ],
     "wilson": 0,
-    "downloads": 143,
+    "downloads": 147,
     "dateAdded": "2026-09-16"
   },
   {
@@ -14467,7 +14459,7 @@
       "videogame"
     ],
     "wilson": 0,
-    "downloads": 127,
+    "downloads": 129,
     "dateAdded": "2026-09-16"
   },
   {
@@ -14597,7 +14589,7 @@
       "transparent"
     ],
     "wilson": 0,
-    "downloads": 56,
+    "downloads": 57,
     "dateAdded": "2026-09-16"
   },
   {
@@ -14945,8 +14937,6 @@
     "wilson": 0.20654329147389294,
     "downloads": 29,
     "dateAdded": "2026-09-19",
-    "featured": true,
-    "featuredUntil": "2026-11-17",
     "likes": 1
   },
   {
@@ -15062,10 +15052,8 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/bauhaus-egg.png",
     "dateAdded": "2026-09-25",
-    "downloads": 28,
-    "wilson": 0,
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "downloads": 31,
+    "wilson": 0
   },
   {
     "id": "bauhaus-radiate",
@@ -15488,10 +15476,8 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/hot-dogs.png",
     "dateAdded": "2026-09-25",
-    "downloads": 19,
-    "wilson": 0,
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "downloads": 20,
+    "wilson": 0
   },
   {
     "id": "island-window",
@@ -15548,7 +15534,7 @@
     ],
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
     "wilson": 0.20654329147389294,
-    "downloads": 12,
+    "downloads": 13,
     "dateAdded": "2026-09-25",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/just-one-more-chapter.png",
     "likes": 1
@@ -15875,11 +15861,9 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/stop-war.png",
     "wilson": 0.20654329147389294,
-    "downloads": 27,
+    "downloads": 28,
     "dateAdded": "2026-09-25",
-    "likes": 1,
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "likes": 1
   },
   {
     "id": "table-wine-ocean",
@@ -15968,10 +15952,8 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/vhs.png",
     "wilson": 0.20654329147389294,
-    "downloads": 33,
+    "downloads": 34,
     "dateAdded": "2026-09-25",
-    "featured": true,
-    "featuredUntil": "2026-11-17",
     "likes": 1
   },
   {
@@ -16000,7 +15982,7 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wppati/35_koreader_screensavers_with_transparency/",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/waves.png",
     "wilson": 0.3423719528896193,
-    "downloads": 41,
+    "downloads": 42,
     "dateAdded": "2026-09-25",
     "likes": 2
   },
@@ -16236,10 +16218,8 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-109.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "dateAdded": "2026-09-27",
-    "downloads": 35,
-    "wilson": 0,
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "downloads": 38,
+    "wilson": 0
   },
   {
     "id": "screensaver-11",
@@ -16265,7 +16245,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-11.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
-    "downloads": 45,
+    "downloads": 46,
     "dateAdded": "2026-09-27"
   },
   {
@@ -16296,7 +16276,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-110.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
-    "downloads": 31,
+    "downloads": 32,
     "dateAdded": "2026-09-27"
   },
   {
@@ -16410,7 +16390,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-33.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "dateAdded": "2026-09-27",
-    "downloads": 31,
+    "downloads": 32,
     "wilson": 0
   },
   {
@@ -16469,7 +16449,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-39.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
-    "downloads": 45,
+    "downloads": 46,
     "dateAdded": "2026-09-27"
   },
   {
@@ -16529,7 +16509,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-40.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0.20654329147389294,
-    "downloads": 19,
+    "downloads": 20,
     "dateAdded": "2026-09-27",
     "likes": 1
   },
@@ -16560,7 +16540,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-41.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "dateAdded": "2026-09-27",
-    "downloads": 34,
+    "downloads": 35,
     "wilson": 0
   },
   {
@@ -16587,10 +16567,8 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-42.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0.20654329147389294,
-    "downloads": 62,
+    "downloads": 65,
     "dateAdded": "2026-09-27",
-    "featured": true,
-    "featuredUntil": "2026-11-17",
     "likes": 1
   },
   {
@@ -16708,7 +16686,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-47.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
-    "downloads": 15,
+    "downloads": 16,
     "dateAdded": "2026-09-27"
   },
   {
@@ -16739,10 +16717,8 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-49.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
-    "downloads": 22,
-    "dateAdded": "2026-09-27",
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "downloads": 23,
+    "dateAdded": "2026-09-27"
   },
   {
     "id": "screensaver-51",
@@ -16771,10 +16747,8 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-51.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
-    "downloads": 44,
-    "dateAdded": "2026-09-27",
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "downloads": 46,
+    "dateAdded": "2026-09-27"
   },
   {
     "id": "screensaver-52",
@@ -17004,7 +16978,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-68.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
-    "downloads": 62,
+    "downloads": 64,
     "dateAdded": "2026-09-27"
   },
   {
@@ -17267,7 +17241,7 @@
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "likes": 1,
     "wilson": 0.20654329147389294,
-    "downloads": 63,
+    "downloads": 65,
     "dateAdded": "2026-09-27"
   },
   {
@@ -17322,7 +17296,7 @@
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/screensaver-99.png",
     "sourceUrl": "https://www.reddit.com/r/koreader/comments/1wrpq14/screensavers_and_bookends_for_download/",
     "wilson": 0,
-    "downloads": 14,
+    "downloads": 15,
     "dateAdded": "2026-09-27"
   },
   {
@@ -17381,7 +17355,7 @@
       "sbr"
     ],
     "dateAdded": "2026-10-12",
-    "downloads": 17,
+    "downloads": 18,
     "wilson": 0
   },
   {
@@ -17429,7 +17403,7 @@
       "white"
     ],
     "dateAdded": "2026-10-14",
-    "downloads": 5,
+    "downloads": 6,
     "wilson": 0
   },
   {
@@ -17511,10 +17485,8 @@
       "vintage"
     ],
     "dateAdded": "2026-10-14",
-    "downloads": 34,
-    "wilson": 0,
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "downloads": 36,
+    "wilson": 0
   },
   {
     "id": "portuguese-boat",
@@ -17744,7 +17716,7 @@
       "sting"
     ],
     "dateAdded": "2026-10-18",
-    "downloads": 10,
+    "downloads": 12,
     "wilson": 0.20654329147389294,
     "likes": 1
   },
@@ -17816,9 +17788,7 @@
     ],
     "dateAdded": "2026-10-18",
     "wilson": 0,
-    "downloads": 31,
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "downloads": 34
   },
   {
     "id": "tomatoes",
@@ -18230,10 +18200,8 @@
     ],
     "dateAdded": "2026-10-29",
     "authorUrl": "https://openclipart.org/artist/Lazur",
-    "downloads": 62,
-    "wilson": 0,
-    "featured": true,
-    "featuredUntil": "2026-11-17"
+    "downloads": 66,
+    "wilson": 0
   },
   {
     "id": "mermaid",
@@ -18351,7 +18319,7 @@
       "taylor swift"
     ],
     "dateAdded": "2026-11-02",
-    "downloads": 11,
+    "downloads": 12,
     "wilson": 0
   },
   {
