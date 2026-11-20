@@ -58,6 +58,19 @@ def has_alpha_channel(im):
     return False
 
 
+def resize_aspect_fit(im, target_w, target_h):
+    """Proportionally resize an image (up or down) to fit within target_w x target_h."""
+    w, h = im.size
+    if w <= 0 or h <= 0:
+        return im
+    scale = min(target_w / w, target_h / h)
+    new_w = max(1, round(w * scale))
+    new_h = max(1, round(h * scale))
+    if (new_w, new_h) != (w, h):
+        return im.resize((new_w, new_h), Image.Resampling.LANCZOS)
+    return im
+
+
 def render_thumbnail(im, is_transparent=False, bake_checkerboard=False):
     """Resizes an image to standard 180x240 preserving full RGB/RGBA color.
     If bake_checkerboard=True, alpha is composited over an e-ink checkerboard (for plugin).
@@ -67,11 +80,11 @@ def render_thumbnail(im, is_transparent=False, bake_checkerboard=False):
     if actual_trans and has_alpha_channel(im):
         im_rgba = im.convert("RGBA")
         if bake_checkerboard:
-            im_rgba.thumbnail((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
+            fitted = resize_aspect_fit(im_rgba, TARGET_W, TARGET_H)
             bg = make_checkerboard(TARGET_W, TARGET_H)
-            x = (TARGET_W - im_rgba.width) // 2
-            y = (TARGET_H - im_rgba.height) // 2
-            bg.paste(im_rgba, (x, y), im_rgba)
+            x = (TARGET_W - fitted.width) // 2
+            y = (TARGET_H - fitted.height) // 2
+            bg.paste(fitted, (x, y), fitted)
             return bg, True
         else:
             # Preserve transparent alpha channel for web catalog
@@ -79,11 +92,11 @@ def render_thumbnail(im, is_transparent=False, bake_checkerboard=False):
                 resized = im_rgba.resize((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
                 return resized, True
             else:
-                im_rgba.thumbnail((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
+                fitted = resize_aspect_fit(im_rgba, TARGET_W, TARGET_H)
                 canvas = Image.new("RGBA", (TARGET_W, TARGET_H), (0, 0, 0, 0))
-                x = (TARGET_W - im_rgba.width) // 2
-                y = (TARGET_H - im_rgba.height) // 2
-                canvas.paste(im_rgba, (x, y))
+                x = (TARGET_W - fitted.width) // 2
+                y = (TARGET_H - fitted.height) // 2
+                canvas.paste(fitted, (x, y))
                 return canvas, True
     else:
         im_rgb = im.convert("RGB")
@@ -92,12 +105,12 @@ def render_thumbnail(im, is_transparent=False, bake_checkerboard=False):
             resized = im_rgb.resize((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
             return resized, False
         else:
-            # Aspect-preserving downscale without cropping away artwork
-            im_rgb.thumbnail((TARGET_W, TARGET_H), Image.Resampling.LANCZOS)
+            # Aspect-preserving fit without cropping away artwork
+            fitted = resize_aspect_fit(im_rgb, TARGET_W, TARGET_H)
             bg = Image.new("RGB", (TARGET_W, TARGET_H), (255, 255, 255))
-            x = (TARGET_W - im_rgb.width) // 2
-            y = (TARGET_H - im_rgb.height) // 2
-            bg.paste(im_rgb, (x, y))
+            x = (TARGET_W - fitted.width) // 2
+            y = (TARGET_H - fitted.height) // 2
+            bg.paste(fitted, (x, y))
             return bg, False
 
 

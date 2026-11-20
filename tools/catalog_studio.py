@@ -133,8 +133,14 @@ def make_checkerboard(w, h):
 def composite_over_checkerboard(img_rgba, target_w=600, target_h=800):
     """Composite RGBA image over a neutral checkerboard background."""
     bg = make_checkerboard(target_w, target_h)
-    img_thumb = img_rgba.copy()
-    img_thumb.thumbnail((target_w, target_h), Image.Resampling.LANCZOS)
+    w, h = img_rgba.size
+    if w > 0 and h > 0:
+        scale = min(target_w / w, target_h / h)
+        new_w = max(1, round(w * scale))
+        new_h = max(1, round(h * scale))
+        img_thumb = img_rgba.resize((new_w, new_h), Image.Resampling.LANCZOS) if (new_w, new_h) != (w, h) else img_rgba.copy()
+    else:
+        img_thumb = img_rgba.copy()
     x = (target_w - img_thumb.width) // 2
     y = (target_h - img_thumb.height) // 2
     bg.paste(img_thumb, (x, y), img_thumb)

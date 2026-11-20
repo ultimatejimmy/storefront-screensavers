@@ -592,6 +592,53 @@ class TestManageBatchPR(unittest.TestCase):
         self.assertFalse(table[3]["is_rejected"])
 
 
+class TestAspectFitUpscaling(unittest.TestCase):
+    def test_fit_transparent_upscales_small_rgba_image(self):
+        import process_change_suggestion as pcs
+        small = Image.new("RGBA", (600, 600), (255, 0, 0, 255))
+        fitted = pcs.fit_transparent(small, 1860, 2480)
+        self.assertEqual(fitted.size, (1860, 2480))
+        self.assertEqual(fitted.getbbox(), (0, 310, 1860, 2170))
+
+    def test_composite_over_checkerboard_upscales_small_rgba_image(self):
+        import process_change_suggestion as pcs
+        small = Image.new("RGBA", (90, 90), (255, 0, 0, 255))
+        comp = pcs.composite_over_checkerboard(small, 180, 240)
+        self.assertEqual(comp.size, (180, 240))
+        # Center strip should be solid red after upscaling to 180x180
+        self.assertEqual(comp.getpixel((0, 120)), (255, 0, 0))
+        self.assertEqual(comp.getpixel((179, 120)), (255, 0, 0))
+
+    def test_build_thumbnails_upscales_small_sources(self):
+        import build_thumbnails as bt
+        small_rgba = Image.new("RGBA", (60, 90), (0, 128, 255, 255))
+        small_rgba.putpixel((30, 45), (0, 0, 0, 0))
+        web_thumb, is_trans = bt.render_thumbnail(small_rgba, is_transparent=True, bake_checkerboard=False)
+        self.assertTrue(is_trans)
+        self.assertEqual(web_thumb.size, (180, 240))
+        self.assertEqual(web_thumb.getbbox(), (10, 0, 170, 240))
+
+        plugin_thumb, is_trans_plugin = bt.render_thumbnail(small_rgba, is_transparent=True, bake_checkerboard=True)
+        self.assertTrue(is_trans_plugin)
+        self.assertEqual(plugin_thumb.size, (180, 240))
+        self.assertEqual(plugin_thumb.getpixel((12, 12)), (0, 128, 255))
+
+        small_rgb = Image.new("RGB", (60, 90), (10, 20, 30))
+        rgb_thumb, is_trans_rgb = bt.render_thumbnail(small_rgb, is_transparent=False, bake_checkerboard=False)
+        self.assertFalse(is_trans_rgb)
+        self.assertEqual(rgb_thumb.size, (180, 240))
+        # Upscaled 60x90 -> 160x240 centered horizontally (x in 10..170)
+        self.assertEqual(rgb_thumb.getpixel((0, 120)), (255, 255, 255))
+        self.assertEqual(rgb_thumb.getpixel((90, 120)), (10, 20, 30))
+
+    def test_catalog_studio_composite_over_checkerboard_upscales(self):
+        small = Image.new("RGBA", (90, 90), (255, 0, 0, 255))
+        comp = cs.composite_over_checkerboard(small, 180, 240)
+        self.assertEqual(comp.size, (180, 240))
+        self.assertEqual(comp.getpixel((0, 120)), (255, 0, 0))
+        self.assertEqual(comp.getpixel((179, 120)), (255, 0, 0))
+
+
 if __name__ == '__main__':
     unittest.main()
 

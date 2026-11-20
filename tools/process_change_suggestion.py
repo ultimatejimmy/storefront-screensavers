@@ -49,21 +49,34 @@ def make_checkerboard(w, h):
     return bg
 
 
+def resize_aspect_fit(img_rgba, target_w, target_h):
+    """Proportionally resize image (up or down) to fit within target_w x target_h."""
+    w, h = img_rgba.size
+    if w <= 0 or h <= 0:
+        return img_rgba
+    scale = min(target_w / w, target_h / h)
+    new_w = max(1, round(w * scale))
+    new_h = max(1, round(h * scale))
+    if (new_w, new_h) != (w, h):
+        return img_rgba.resize((new_w, new_h), Image.Resampling.LANCZOS)
+    return img_rgba
+
+
 def fit_transparent(img_rgba, target_w, target_h):
     canvas = Image.new('RGBA', (target_w, target_h), (0, 0, 0, 0))
-    img_rgba.thumbnail((target_w, target_h), Image.Resampling.LANCZOS)
-    x = (target_w - img_rgba.width) // 2
-    y = (target_h - img_rgba.height) // 2
-    canvas.paste(img_rgba, (x, y), img_rgba)
+    fitted = resize_aspect_fit(img_rgba, target_w, target_h)
+    x = (target_w - fitted.width) // 2
+    y = (target_h - fitted.height) // 2
+    canvas.paste(fitted, (x, y), fitted)
     return canvas
 
 
 def composite_over_checkerboard(img_rgba, target_w, target_h):
     bg = make_checkerboard(target_w, target_h)
-    img_rgba.thumbnail((target_w, target_h), Image.Resampling.LANCZOS)
-    x = (target_w - img_rgba.width) // 2
-    y = (target_h - img_rgba.height) // 2
-    bg.paste(img_rgba, (x, y), img_rgba)
+    fitted = resize_aspect_fit(img_rgba, target_w, target_h)
+    x = (target_w - fitted.width) // 2
+    y = (target_h - fitted.height) // 2
+    bg.paste(fitted, (x, y), fitted)
     return bg.convert('RGB')
 
 
