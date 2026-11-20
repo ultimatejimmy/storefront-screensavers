@@ -585,3 +585,9 @@ All open access, Public Domain, CC0, and community-shared screensavers in this c
 | BANG CHAN FOR DAZED KOREA X FENDI | ot8biaswrecker | Minimalist | Community Share | ot8biaswrecker |
 | STRAY KIDS ODD&FRESH POPUP | ot8biaswrecker | Minimalist, Pop Culture | Community Share | ot8biaswrecker |
 | FELIX by @LAZYPUNCH | @lazyp | Abstract, Art, Pop Culture | Community Share | @lazyp |
+| Birds On Wires | GDJ | Minimalist, Nature, Transparent | Community Share | GDJ |
+| European Bee Eaters | GDJ | Minimalist, Nature, Transparent | Community Share | GDJ |
+| Palm tree | GDJ | Minimalist, Nature, Transparent | Community Share | GDJ |
+| Struggle For The Sky | GDJ | Minimalist, Nature, Transparent | Community Share | GDJ |
+| Sprawling In The Sky | GDJ | Minimalist, Nature, Transparent | Community Share | GDJ |
+| Fragile Sky | GDJ | Minimalist, Nature, Transparent | Community Share | GDJ |
