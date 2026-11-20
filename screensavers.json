@@ -18587,5 +18587,35 @@
     "dateAdded": "2026-11-20",
     "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/fragile-sky.png",
     "authorUrl": "https://openclipart.org/artist/GDJ"
+  },
+  {
+    "id": "monkeys-on-vines",
+    "title": "Monkeys on Vines",
+    "author": "j4p4n",
+    "category": [
+      "Minimalist",
+      "Nature",
+      "Transparent"
+    ],
+    "compatibility": [
+      "Kindle",
+      "Kobo",
+      "Boox"
+    ],
+    "thumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/monkeys-on-vines.png",
+    "fullUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/monkeys-on-vines.png",
+    "tags": [
+      "monkeys",
+      "vines",
+      "swing",
+      "hanging",
+      "tree",
+      "forest",
+      "silhouette",
+      "transparent"
+    ],
+    "dateAdded": "2026-11-20",
+    "pluginThumbnailUrl": "https://raw.githubusercontent.com/ultimatejimmy/storefront-screensavers/main/images/thumbnails/plugin/monkeys-on-vines.png",
+    "authorUrl": "https://openclipart.org/artist/j4p4n"
   }
 ]
